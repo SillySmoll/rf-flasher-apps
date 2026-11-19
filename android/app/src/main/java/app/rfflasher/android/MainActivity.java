@@ -8,8 +8,15 @@ import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
+import android.content.res.Configuration;
+import android.graphics.Insets;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowInsets;
+import android.view.WindowInsetsController;
 import android.view.WindowManager;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
@@ -18,6 +25,7 @@ import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import androidx.webkit.WebViewAssetLoader;
@@ -56,7 +64,7 @@ public class MainActivity extends Activity {
 		if ((getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0) WebView.setWebContentsDebuggingEnabled(true);
 
 		web = new WebView(this);
-		setContentView(web);
+		setContentView(edgeSafe(web));
 		WebSettings s = web.getSettings();
 		s.setJavaScriptEnabled(true);
 		s.setDomStorageEnabled(true);
@@ -142,6 +150,43 @@ public class MainActivity extends Activity {
 		bridge.shutdown();
 		web.destroy();
 		super.onDestroy();
+	}
+
+	// Android 15 draws apps under the status bar, camera cutout and navigation bar. The page goes in a frame padded by
+	// those insets, coloured like the page, with status bar icons that stay readable on it.
+	private View edgeSafe(WebView view) {
+		boolean dark = (getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES;
+		int bg = dark ? 0xFF121417 : 0xFFF7F7F5;
+		FrameLayout frame = new FrameLayout(this);
+		frame.setBackgroundColor(bg);
+		view.setBackgroundColor(bg);
+		frame.addView(view, new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
+		frame.setOnApplyWindowInsetsListener((v, insets) -> {
+			int l, t, r, b;
+			if (Build.VERSION.SDK_INT >= 30) {
+				Insets i = insets.getInsets(WindowInsets.Type.systemBars() | WindowInsets.Type.displayCutout() | WindowInsets.Type.ime());
+				l = i.left; t = i.top; r = i.right; b = i.bottom;
+			} else {
+				l = insets.getSystemWindowInsetLeft(); t = insets.getSystemWindowInsetTop();
+				r = insets.getSystemWindowInsetRight(); b = insets.getSystemWindowInsetBottom();
+			}
+			v.setPadding(l, t, r, b);
+			return insets;
+		});
+		Window w = getWindow();
+		w.setStatusBarColor(bg);
+		w.setNavigationBarColor(bg);
+		if (Build.VERSION.SDK_INT >= 30) {
+			WindowInsetsController c = w.getInsetsController();
+			if (c != null) {
+				int light = WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS | WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS;
+				c.setSystemBarsAppearance(dark ? 0 : light, light);
+			}
+		} else if (!dark && Build.VERSION.SDK_INT >= 23) {
+			int f = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR | (Build.VERSION.SDK_INT >= 26 ? View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR : 0);
+			w.getDecorView().setSystemUiVisibility(f);
+		}
+		return frame;
 	}
 
 	void openExternal(Uri u) {

@@ -1,0 +1,468 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SNMP agent · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="SNMP agent · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/docs/spec/snmp.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/snmp.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/snmp.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/snmp.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/snmp.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/snmp.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../es/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../../es/radios/index.html">Radios</a><a href="../../../es/features/index.html">Funciones</a><a href="../../../es/flash/index.html">Instalar</a><a href="../../../es/codeplug/index.html">Codeplug</a><a href="../../../es/docs/index.html" aria-current="page">Documentación</a><a href="../../../es/screenshots/index.html">Capturas</a><a href="../../../es/tools/index.html">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../../docs/spec/snmp.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/snmp.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/snmp.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/snmp.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Especificaciones">
+		<p class="eyebrow"><a href="../../../es/docs/index.html">Documentación</a> / Especificaciones</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html" aria-current="page">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Esta página aún no está traducida; se muestra en inglés.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="snmp-agent">SNMP agent</h1>
+<p>An SNMPv2c agent on the radio, reachable over the USB network link and over the air (<abbr class="gl" tabindex="0" title="Simple Network Management Protocol: reading a device&#x27;s state over the network." data-more="snmp.html">SNMP</abbr> over IP over <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr>), with
+notifications that double as the radio's event stream. Switch: <code>CONFIG_SNMP</code> (on with <code>CONFIG_DMR_IP_GATEWAY</code>,
+<a href="../build-config.html">build-config.md</a>). Status: built and host-tested (<code>tests/host/snmpTest.c</code>, the loopback check
+against independent managers); the USB <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> test is written, not yet run on the radio; <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> untested.</p>
+<p>Sources: RFC 3416 (operations and <abbr class="gl" tabindex="0" title="Protocol data unit: one packet or message of a protocol, as the standard defines its fields." data-more="../dev/glossary.html#t-pdu">PDUs</abbr>), RFC 3417 (transport over <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr>), RFC 1901 (the community-based message),
+RFC 3418 (system and snmp groups), RFC 2578 / 2579 / 2580 (SMIv2), ITU-T X.690 (<abbr class="gl" tabindex="0" title="Bit error rate: the share of received bits that were wrong. A measure of how clean a signal is." data-more="../dev/glossary.html#t-ber">BER</abbr>).</p>
+<h2 id="1-files">1. Files</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>File</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>core/snmp/snmpBer.c</code></td>
+<td>the <abbr class="gl" tabindex="0" title="Bit error rate: the share of received bits that were wrong. A measure of how clean a signal is." data-more="../dev/glossary.html#t-ber">BER</abbr> subset: definite lengths up to 0xFFFF, INTEGER, OCTET STRING, NULL, OID, SEQUENCE and <abbr class="gl" tabindex="0" title="Simple Network Management Protocol: reading a device&#x27;s state over the network." data-more="snmp.html">SNMP</abbr>'s application types; OID validation and ordering</td>
+</tr>
+<tr>
+<td><code>core/snmp/snmp.c</code></td>
+<td>message processing: Get, GetNext, GetBulk, Set, the error rules of RFC 3416 4.2, the community check, SNMPv2-Trap encoding. Pure, no state of its own</td>
+</tr>
+<tr>
+<td><code>core/snmp/snmpMib.c</code></td>
+<td>the MIB table (sorted instance OIDs, types, access) over a snapshot (<code>snmpData_t</code>); SET test and commit into <code>snmpConfig_t</code>; event detection, the notification queue, the <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> rate limit, trap encoding. Pure</td>
+</tr>
+<tr>
+<td><code>core/snmp/snmp_agent.c</code></td>
+<td>the firmware glue: fills the snapshot from the radio, the transports, settings, the host link task's poll</td>
+</tr>
+<tr>
+<td><code>core/debuglink/debuglink_snmp.c</code></td>
+<td>the <code>snmp</code> view section and the SNMP <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> command</td>
+</tr>
+<tr>
+<td><code>docs/spec/RFOUNDRY-MIB.txt</code></td>
+<td>the enterprise MIB (SMIv2)</td>
+</tr>
+<tr>
+<td><code>tools/rfoundry_snmp.py</code></td>
+<td>a small manager (get, walk, set, trap listener), standard library only; a second, independent BER implementation</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="2-transports">2. Transports</h2>
+<p>Both use <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr> port 161 at an address of the radio; the IP gateway's local port table (<code>ipGatewayBindUDP</code>,
+<a href="usb-network.html">usb-network.md</a> 3) hands the datagrams to the agent.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>USB network</th>
+<th><abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Address</td>
+<td>the radio's link address (the host's 12.<ID> xor 1)</td>
+<td>the radio's own 12.<DMR ID> (in another radio's or a gateway's IP over <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> view)</td>
+</tr>
+<tr>
+<td>Arrives</td>
+<td>in the host link task (<code>hostlink_net_poll</code> → <code>ipGatewayEthernetIn</code>), only from the host's address</td>
+<td>in the radio task: <code>hostlink_net_packet</code> takes individual <abbr class="gl" tabindex="0" title="Service access point: the field in a DMR data header that says what the payload is (IP, short data, GPS and so on)." data-more="../dev/glossary.html#t-sap">SAP</abbr> 4 (IPv4/UDP) or SAP 3 (compressed UDP) packets for our ID and port 161 before they would go to the host, whether or not the network link is up; copied into a one-request mailbox (at most 256 bytes)</td>
+</tr>
+<tr>
+<td>Answered</td>
+<td>at once, up to 548 bytes, waiting up to 50 ms for the USB IN endpoint</td>
+<td>by <code>snmp_agent_poll</code>, up to 300 bytes, as an IPv4/UDP packet (SAP 4, rate 1/2, 2 preamble <abbr class="gl" tabindex="0" title="Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control." data-more="dmr-data.html">CSBKs</abbr>) through the gateway's air side, which does the listen before talk; given up after 2 s</td>
+</tr>
+<tr>
+<td>Limits</td>
+<td>GetBulk max-repetitions capped at 32</td>
+<td>capped at 8; at most one answer per second (requests in between are dropped and counted); a second request while one waits is dropped</td>
+</tr>
+<tr>
+<td>SET</td>
+<td>with the write community</td>
+<td>refused (noAccess) unless <code>rfoundryAgentRfWrite</code> is true</td>
+</tr>
+</tbody>
+</table></div>
+<p>The RF path <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmits</abbr> only when the data service may (a DMR channel we may transmit on, not <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> only, not a
+<abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr>, the channel clear; <a href="dmr-data.html">dmr-data.md</a> 8). Answers go to the requester's ID and source port.
+Because the radio consumes UDP 161 for its own ID, a host behind the radio can't run its own agent reachable over
+the air on that port.</p>
+<h2 id="3-messages">3. Messages</h2>
+<ul>
+<li>SNMPv2c only (msgVersion 1). Other versions are dropped (<code>snmpInBadVersions</code>); SNMPv3 is not built (section 10).</li>
+<li>The community decides the access: the write community reads and writes, the read community reads. Unknown
+communities are dropped (<code>snmpInBadCommunityNames</code>) and, with <code>snmpEnableAuthenTraps</code> enabled, raise
+authenticationFailure to the host. A SET with the read community answers noAccess (<code>snmpInBadCommunityUses</code>).</li>
+<li>The settings keep a 32-bit FNV-1a hash of each community, not its text (the settings record has no room for two
+strings; <a href="settings-store.html">settings-store.md</a> 3). A community is clear text on the wire anyway; the hash only
+saves space. Read community 0 = &quot;public&quot;; write community 0 = none, SET refused for everyone.</li>
+<li>Get: a value; noSuchInstance when the instance exists but has no value now (rfoundryColorCode on an FM channel,
+rfoundryLastAge before any call); noSuchObject for any other name. Every object is a scalar, so a wrong instance number
+of a real object (sysDescr.1) also answers noSuchObject: the agent doesn't keep the object list apart from the
+instances (to save flash). Managers treat both the same.</li>
+<li>GetNext: the next instance with a value; endOfMibView named as the request's binding.</li>
+<li>GetBulk: the non-repeaters once, then rounds of the repeaters until max-repetitions, every column at the end of
+the MIB, or the answer is full (whole bindings only; RFC 3416 4.2.3 allows fewer). More than 16 repeaters: one
+round.</li>
+<li>Set: two phases. Every binding is checked first (in this order: access, noCreation for a name that isn't an
+instance (nothing can be created), notWritable, wrongType, wrongEncoding, then the object's own wrongLength / wrongValue); the first failure
+answers with its index and nothing changes. Then all are applied. The answer carries the request's bindings.</li>
+<li>An answer that doesn't fit is tooBig with no bindings; if even that doesn't fit, nothing (<code>snmpSilentDrops</code>).</li>
+<li>Malformed messages (bad lengths, indefinite length, a bad OID, trailing bytes) are dropped
+(<code>snmpInASNParseErrs</code>). Responses, traps and reports sent to the agent are ignored.</li>
+</ul>
+<h2 id="4-mib">4. MIB</h2>
+<p><code>docs/spec/RFOUNDRY-MIB.txt</code> defines the enterprise part. The enterprise number is <strong>32473, the IANA number reserved
+for documentation (RFC 5612), a placeholder</strong> until the project has its own Private Enterprise Number
+(<code>RFOUNDRY_SNMP_PEN</code> in <code>core/snmp/snmpMib.h</code>, <code>PEN</code> in <code>tools/rfoundry_snmp.py</code>, the MIB file).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Instances</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>system (1.3.6.1.2.1.1)</td>
+<td>sysDescr (&quot;RadioFoundry <board> <git>&quot;), sysObjectID (rfoundryRadioProduct, enterprises.32473.1.1), sysUpTime, sysContact and sysLocation (empty, read-only), sysName (the radio name, writable: stored as the radio-name setting, used for the <abbr class="gl" tabindex="0" title="A short text, usually a callsign and name, sent along with DMR voice." data-more="../user/22-glossary.html#t-talker-alias">talker alias</abbr> from the next start), sysServices (68: internet and applications)</td>
+</tr>
+<tr>
+<td>snmp (1.3.6.1.2.1.11)</td>
+<td>snmpInPkts, snmpInBadVersions, snmpInBadCommunityNames, snmpInBadCommunityUses, snmpInASNParseErrs, snmpEnableAuthenTraps (writable), snmpSilentDrops, snmpProxyDrops (0)</td>
+</tr>
+<tr>
+<td>rfoundryIdentity (.2.1.1)</td>
+<td>rfoundryDmrId, rfoundryCallsign, rfoundryBoard, rfoundryFirmware</td>
+</tr>
+<tr>
+<td>rfoundryPower (.2.1.2)</td>
+<td>rfoundryBatteryVoltage (mV), rfoundryBatteryPercent, rfoundryBatteryState</td>
+</tr>
+<tr>
+<td>rfoundryRadio (.2.1.3)</td>
+<td>rfoundryRadioState, rfoundryRssi, rfoundryMode, rfoundryZoneName, rfoundryChannelNumber, rfoundryChannelName, rfoundryRxFrequency, rfoundryTxFrequency, rfoundryTxPowerLevel, rfoundryTxPowerName, rfoundryColorCode, rfoundryTimeslot, rfoundryTalkTarget, rfoundryTalkTargetType (the last four <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> only), rfoundryRole (radio, <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr>, <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="sfr.html">SFR</abbr>, split <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> / <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr>)</td>
+</tr>
+<tr>
+<td>rfoundryDmr (.2.1.4)</td>
+<td>rfoundryCallState, rfoundryCallSource, rfoundryCallDestination, rfoundryLastSource, rfoundryLastDestination, rfoundryLastGroup, rfoundryLastAge</td>
+</tr>
+<tr>
+<td>rfoundryData (.2.1.5)</td>
+<td>rfoundryDataRxPackets, rfoundryDataRxForUs, rfoundrySmsReceived, rfoundrySmsSent, rfoundrySmsFailed, rfoundrySmsInbox, rfoundrySmsUnread, rfoundryArsState</td>
+</tr>
+<tr>
+<td>rfoundryNet (.2.1.6)</td>
+<td>rfoundryUsbNetwork, rfoundryNetToAir (the gateway's packets to the air), rfoundryNetPacketsUp (air packets to the host); the gateway's other counters are in the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>'s <code>net.*</code>. No interfaces group (RFC 2863): it didn't fit the smallest flash</td>
+</tr>
+<tr>
+<td>rfoundryAgent (.2.1.7)</td>
+<td>the agent's settings (section 6, writable) and its notification counters</td>
+</tr>
+<tr>
+<td>rfoundryEvent (.2.1.8)</td>
+<td>the notification objects (accessible-for-notify)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Enumerations start at 1 as SMIv2 asks (rfoundryBatteryState ok(1), low(2), critical(3), ...). A radio without a battery reports rfoundryBatteryVoltage 0, rfoundryBatteryPercent 0 and
+rfoundryBatteryState ok(1), and sends no rfoundryLowBattery. The radio has no
+temperature sensor the firmware reads, so there is no temperature object.</p>
+<h2 id="5-notifications">5. Notifications</h2>
+<p>SNMPv2-Trap messages (community &quot;public&quot;): sysUpTime.0, snmpTrapOID.0, then the objects.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Notification</th>
+<th>When</th>
+<th>Objects</th>
+<th><abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coldStart (SNMPv2-MIB)</td>
+<td>once after power-up, at the first check</td>
+<td>none</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>authenticationFailure</td>
+<td>a request with an unknown community, when snmpEnableAuthenTraps is enabled</td>
+<td>none</td>
+<td>never</td>
+</tr>
+<tr>
+<td>rfoundryCallStart</td>
+<td>a <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> call starts (received on our slot, played or not, or ours), or another follows straight on</td>
+<td>source, destination, group, slot</td>
+<td>only with rfoundryAgentRfCallTraps</td>
+</tr>
+<tr>
+<td>rfoundryCallEnd</td>
+<td>it ends</td>
+<td>the same and the duration</td>
+<td>only with rfoundryAgentRfCallTraps</td>
+</tr>
+<tr>
+<td>rfoundrySmsReceivedNotification</td>
+<td>a text message for us arrives</td>
+<td>source, destination (us), text (64 characters at most)</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>rfoundryEmergency</td>
+<td>an emergency alarm heard (destination 0), or a call with the emergency service option</td>
+<td>source, destination, group</td>
+<td>yes, exempt from the rate limit</td>
+</tr>
+<tr>
+<td>rfoundryArsChange</td>
+<td>the <abbr class="gl" tabindex="0" title="Automatic Registration Service: a radio tells a presence server it is on the air." data-more="../user/22-glossary.html#t-ars">ARS</abbr> state changes</td>
+<td>rfoundryEventValue = the new rfoundryArsState</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>rfoundryLowBattery</td>
+<td>the battery level goes to low or to critical</td>
+<td>rfoundryEventValue = mV</td>
+<td>yes</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>Detection: every 100 ms the agent compares a new snapshot with the last (calls by rfoundryCallState and the call's
+IDs, the battery level, the ARS state, the data service's last event). Two data events within 100 ms show as the
+later one only.</li>
+<li>Targets: the host, while the USB network personality is up, at its address port 162 (unless rfoundryAgentUsbTraps
+is false; the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> can move the port for a test host); and the RF manager (rfoundryAgentRfManager, off by
+default) at its 12.x.y.z address port 162. Events for the host while the link is down are not kept.</li>
+<li>Queue: 4 events; when full the oldest goes (counted in rfoundryAgentTrapsDropped).</li>
+<li>RF rate limit: at most one notification per rfoundryAgentRfTrapInterval (default 60 s); the others are dropped, not
+delayed. Emergency is exempt. One RF datagram (answer or notification) waits for the air side at a time.</li>
+</ul>
+<h2 id="6-settings">6. Settings</h2>
+<p>In the settings store (<code>snmp_*</code>, all zero = the defaults). Set with <abbr class="gl" tabindex="0" title="Simple Network Management Protocol: reading a device&#x27;s state over the network." data-more="snmp.html">SNMP</abbr> SET (USB, or <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> when allowed) or the debug
+link (section 7). There is no menu on the radio yet.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Default</th>
+<th>MIB object</th>
+<th><abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">Debug link</abbr></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>read community</td>
+<td>&quot;public&quot;</td>
+<td>none (write-only through the debug link)</td>
+<td><code>snmp read TEXT</code></td>
+</tr>
+<tr>
+<td>write community</td>
+<td>none: SET refused</td>
+<td>none</td>
+<td><code>snmp write TEXT</code></td>
+</tr>
+<tr>
+<td>agent off</td>
+<td>no</td>
+<td>none</td>
+<td>flags bit 0x01</td>
+</tr>
+<tr>
+<td>answers over RF</td>
+<td>yes</td>
+<td>rfoundryAgentRfAnswers</td>
+<td>flags bit 0x02 (set = off)</td>
+</tr>
+<tr>
+<td>SET over RF</td>
+<td>no</td>
+<td>rfoundryAgentRfWrite</td>
+<td>flags bit 0x04</td>
+</tr>
+<tr>
+<td>notifications to the host</td>
+<td>yes</td>
+<td>rfoundryAgentUsbTraps</td>
+<td>flags bit 0x08 (set = off)</td>
+</tr>
+<tr>
+<td>authenticationFailure</td>
+<td>disabled</td>
+<td>snmpEnableAuthenTraps</td>
+<td>flags bit 0x10</td>
+</tr>
+<tr>
+<td>call notifications over RF</td>
+<td>no</td>
+<td>rfoundryAgentRfCallTraps</td>
+<td>flags bit 0x20</td>
+</tr>
+<tr>
+<td>RF manager ID</td>
+<td>0 = none</td>
+<td>rfoundryAgentRfManager</td>
+<td><code>snmp set rf_manager ID</code></td>
+</tr>
+<tr>
+<td>RF notification interval</td>
+<td>60 s (10-3600)</td>
+<td>rfoundryAgentRfTrapInterval</td>
+<td><code>snmp set rf_gap_s S</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Defaults follow the amateur rules and <a href="../ux/principles.html">principles</a>: nothing <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmits</abbr> unless asked (no RF
+manager), management over the air is read-only, no encryption anywhere.</p>
+<h2 id="7-debug-link">7. Debug link</h2>
+<p>View section 15 <code>snmp</code>: <code>snmp.built snmp.flags snmp.write_set snmp.trap_port</code> and the transport counters
+<code>snmp.rf_requests rf_answers rf_dropped traps_usb traps_rf traps_dropped</code>. The protocol counters are the snmp group
+(snmpInPkts, snmpInBadCommunityNames, ...) and the other settings rfoundryAgent, both read over <abbr class="gl" tabindex="0" title="Simple Network Management Protocol: reading a device&#x27;s state over the network." data-more="snmp.html">SNMP</abbr>. Command 0x19 SNMP (<a href="debuglink.html">debuglink.md</a> 3.17); <code>rfoundry_debug.py snmp status | set FIELD VALUE | read [TEXT] | write [TEXT] | trap</code>.</p>
+<h2 id="8-resources">8. Resources</h2>
+<p>About 8-9 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> flash and 3.2 KB <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> (the radio view and settings copies the snapshot is filled from, the answer buffer,
+the <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> mailboxes). Per-radio figures and the free space left: <code>docs/feature-matrix.md</code>. Off, the image grows by about 0.35 KB flash and 0.1 KB RAM (the gateway's port table
+and the air-side check).</p>
+<h2 id="9-tests">9. Tests</h2>
+<ul>
+<li>Host: <code>tests/host/snmpTest.c</code>: <abbr class="gl" tabindex="0" title="Bit error rate: the share of received bits that were wrong. A measure of how clean a signal is." data-more="../dev/glossary.html#t-ber">BER</abbr> encodings worked out by hand from X.690 (integers at the sign boundaries,
+Counter32 with a leading zero, long-form lengths, OID subidentifiers to 2^32-1, ordering), a GetRequest built byte
+by byte and its answer checked byte by byte, missing objects and instances, community and version drops,
+malformed messages, a GetNext walk of the whole MIB (each instance once, increasing), GetBulk (rounds, the end of
+the MIB, truncation, the cap), tooBig, SET (access, <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr>, atomic failure, each error status, flags), the event
+detection, queue, RF rate limit and the encoded traps.</li>
+<li>Host, against independent peers (<code>snmp_peer_check.sh</code>): the agent with the real MIB on a loopback <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr> socket,
+walked, read and written with <code>tools/rfoundry_snmp.py</code>, and with the system's <abbr class="gl" tabindex="0" title="Simple Network Management Protocol: reading a device&#x27;s state over the network." data-more="snmp.html">SNMP</abbr> command line tools when installed
+(get, walk, bulkwalk, set must agree); the MIB file must name every enterprise instance the agent has; two traps
+decoded by <code>rfoundry_snmp.py traps</code>.</li>
+<li><abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> (the lead runs it): <code>python3 -m pytest tests/hil/test_snmp.py -v --allow-usb-switch</code> with a radio on USB and
+firmware with CONFIG_SNMP. It switches USB to network mode (as <code>test_usb_network.py</code>), walks the MIB at the
+radio's link address, compares values with the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> over UDP 3334, checks the SET rules with a temporary
+write community, sees a wrong community dropped, <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receives</abbr> the test notification on UDP 16162, and switches back.
+Nothing is transmitted. By hand: <code>tools/rfoundry_snmp.py walk &lt;radio IP&gt;</code>, <code>tools/rfoundry_snmp.py traps</code>.</li>
+</ul>
+<h3 id="91-rf-test-plan-not-run-yet">9.1 RF test plan (not run yet)</h3>
+<p>Needs a second station that can send IP over <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> to the radio: another RadioFoundry radio in USB network mode (the
+&quot;manager radio&quot;), or the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench as a DMR data source. All steps <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr>: <code>--allow-rf</code>, a dummy load or the
+bench's attenuated path, an amateur DMR simplex channel, both radios on the same <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr> and slot.</p>
+<ol>
+<li>Read over the air: from the manager radio's host, <code>rfoundry_snmp.py -t 10 get 12.&lt;target ID&gt; sysName.0 rfoundryRssi.0</code>.
+Expect an answer within a few seconds; on the target <code>snmp.rf_requests</code> and <code>snmp.rf_answers</code> go up by one,
+<code>net.air_sent</code> by one. The SDR bench's capture shows one data header with <abbr class="gl" tabindex="0" title="Service access point: the field in a DMR data header that says what the payload is (IP, short data, GPS and so on)." data-more="../dev/glossary.html#t-sap">SAP</abbr> 4 and its rate 1/2 blocks.</li>
+<li>Walk over the air: <code>rfoundry_snmp.py -t 10 walk 12.&lt;target ID&gt; rfoundry</code> (GetBulk, 8 repetitions, answers up to 300
+bytes). Every enterprise instance arrives; no answer comes sooner than 1 s after the last.</li>
+<li>Rate limit: two requests 0.3 s apart: the second is dropped (<code>snmp.rf_dropped</code>), the manager's retry gets it.</li>
+<li>SET refused: <code>rfoundry_snmp.py -c &lt;write community&gt; set ... rfoundryAgentRfTrapInterval.0 u:30</code> over the air answers
+noAccess; after <code>rfoundry_debug.py snmp set flags rf_write</code> on the target it works; clear the flag again.</li>
+<li>Answers off: <code>rfoundry_debug.py snmp set flags rf_off</code>: requests are counted, nothing is transmitted.</li>
+<li>RF notifications: <code>rfoundry_debug.py snmp set rf_manager &lt;manager ID&gt;</code>; on the manager's host <code>rfoundry_snmp.py traps</code>.
+Send the target an <abbr class="gl" tabindex="0" title="Short message service: text messages. On DMR, short data carries them." data-more="../user/22-glossary.html#t-sms">SMS</abbr>: one rfoundrySmsReceivedNotification arrives; a second event within 60 s is dropped
+(<code>snmp.traps_dropped</code>); an emergency alarm is not.</li>
+<li>Busy channel: start a voice call on the slot, then a request: the answer waits for the channel (listen before
+talk) and is dropped after 2 s if it never clears.</li>
+<li>Not for us: requests to another ID or a <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr>'s 225.x.y.z address are not answered (they go to the host as
+before).</li>
+</ol>
+<h2 id="10-not-built">10. Not built</h2>
+<ul>
+<li>SNMPv3 (USM authNoPriv with HMAC-SHA-96 or the RFC 7860 SHA-2 variants). It needs an engine ID, a persistent
+engineBoots counter (no room left in the settings record), discovery with Report <abbr class="gl" tabindex="0" title="Protocol data unit: one packet or message of a protocol, as the standard defines its fields." data-more="../dev/glossary.html#t-pdu">PDUs</abbr>, timeliness checks and the
+HMAC code, more than the radios with the least flash have left (<code>docs/feature-matrix.md</code>). Possible
+once the settings get a second record and flash allows. Privacy (encryption) is never offered over <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr>.</li>
+<li>A trap community setting (traps use &quot;public&quot;), informs, a configurable trap target other than the host.</li>
+<li>Writing channels, zones or the <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr> through <abbr class="gl" tabindex="0" title="Simple Network Management Protocol: reading a device&#x27;s state over the network." data-more="snmp.html">SNMP</abbr>.</li>
+<li>A radio menu for the agent's settings.</li>
+<li>The interfaces group (RFC 2863) and the gateway's other counters as objects (they didn't fit the radios with the least flash).</li>
+</ul>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/snmp.md">Ver el código fuente de esta página</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="En esta página">
+		<p class="eyebrow">En esta página</p>
+		<ul><li class="l2"><a href="#1-files">1. Files</a></li><li class="l2"><a href="#2-transports">2. Transports</a></li><li class="l2"><a href="#3-messages">3. Messages</a></li><li class="l2"><a href="#4-mib">4. MIB</a></li><li class="l2"><a href="#5-notifications">5. Notifications</a></li><li class="l2"><a href="#6-settings">6. Settings</a></li><li class="l2"><a href="#7-debug-link">7. Debug link</a></li><li class="l2"><a href="#8-resources">8. Resources</a></li><li class="l2"><a href="#9-tests">9. Tests</a></li><li class="l3"><a href="#91-rf-test-plan-not-run-yet">9.1 RF test plan (not run yet)</a></li><li class="l2"><a href="#10-not-built">10. Not built</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

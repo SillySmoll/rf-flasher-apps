@@ -1,0 +1,432 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compact DMR ID database (format C) · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Compact DMR ID database (format C) · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/spec/iddb-compact.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/iddb-compact.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/iddb-compact.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/iddb-compact.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/iddb-compact.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/iddb-compact.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/spec/iddb-compact.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/iddb-compact.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/iddb-compact.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/iddb-compact.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="规范">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 规范</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html" aria-current="page">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">本页尚未翻译，目前显示英文。</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<!-- Copyright (c) 2026 The RadioFoundry Authors -->
+<h1 id="compact-dmr-id-database-format-c">Compact DMR ID database (format C)</h1>
+<p>A second layout for the <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr> database, beside format N (<code>open-firmware-cps.md</code> 7.5). It holds the same thing: a
+name for each <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> ID. It is smaller, and a database refreshed from RadioID changes few 4 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> blocks, so a write with
+the fast <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> protocol (<code>cps-fast.md</code>) moves little.</p>
+<ul>
+<li>Firmware: <code>core/codeplug/dmr_iddb.c</code> reads both formats. Switch: <code>CONFIG_IDDB_COMPACT</code> (<code>docs/build-config.md</code>),
+on with <code>CONFIG_DMR</code>. A build with it lists <code>IDDB_COMPACT</code> in the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>'s VERSION features (<code>debuglink.md</code>).</li>
+<li>Host: <code>site/static/js/codeplug/iddb.js</code> writes and reads both. <code>tools/iddb_read.py</code> reads both and
+<code>tools/iddb_write.py</code> writes both (fresh only, for the <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> test's synthetic databases).</li>
+<li>Tests: <code>tests/host/codeplugTest.c</code> (the radio's lookup), <code>site/tests/codeplug.test.mjs</code> (the encoder against the
+radio's lookup through <code>cpsSim</code>, the compatibility cases of section 6), <code>tests/host/iddbLookupClientTest.py</code> (both
+formats built from the specs, <code>tools/iddb_read.py</code> and the debug link's IDDB command), <code>tests/hil/test_iddb.py</code> (the
+radio's answers against the database it holds, or a synthetic one written for the test and the original put back).</li>
+</ul>
+<h2 id="1-why">1. Why</h2>
+<p>Measured on a database of 133,148 records (<abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">RadioID</abbr>, one country, 32 characters of text):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Format N</th>
+<th>Format C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IDs</td>
+<td>3 bytes each (399 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr>)</td>
+<td>the gap from the record before, 1 byte for almost every record (133 KB)</td>
+</tr>
+<tr>
+<td>Callsign</td>
+<td>6 bits per character</td>
+<td>the same: callsigns are almost all different, so a dictionary doesn't help</td>
+</tr>
+<tr>
+<td>Name, city and state</td>
+<td>6 bits per character</td>
+<td>a code into a dictionary of the strings that repeat: 1 byte for the 128 most frequent, 2 for the rest</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>3.6 MB</td>
+<td>about 1.45 MB with the slack of section 3.4</td>
+</tr>
+</tbody>
+</table></div>
+<p>Format N packs records end to end, so one record added near the start moves every record after it: a monthly
+RadioID refresh rewrote 874 of 878 blocks in a simulation. Format C keeps each record inside one page and leaves room
+in each page, so the same refresh changes 143 pages.</p>
+<p>LZ4 (the fast protocol's transfer coding) shrinks format N by only 8 %: the text is already packed. The dictionary,
+not the wire, is where the size goes.</p>
+<h2 id="2-the-database-space">2. The database space</h2>
+<p>The database lives in the same two areas as format N (<code>open-firmware-cps.md</code> 7.5): area 1 (256 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr>) and then area 2,
+up to the radio's <code>openfw_end</code>. Offsets in this page are <strong>database offsets</strong>: offset <code>o</code> is image address
+<code>area1 + o</code> while <code>o &lt; 0x40000</code>, and <code>area2 + (o - 0x40000)</code> after that. Page <code>p</code> is the 4096 bytes at offset
+<code>p x 4096</code>. Both areas start on a 4 KB boundary, so a page is a flash block.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Pages</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The header (section 3.1). Nothing else, so it can be erased and written alone</td>
+</tr>
+<tr>
+<td>from <code>index</code></td>
+<td>The index: one entry per record page</td>
+</tr>
+<tr>
+<td>from <code>table</code></td>
+<td>The dictionary's table: one offset per entry</td>
+</tr>
+<tr>
+<td>from <code>strings</code></td>
+<td>The dictionary's strings</td>
+</tr>
+<tr>
+<td>from the first record page to the end</td>
+<td>Record pages, in any order</td>
+</tr>
+</tbody>
+</table></div>
+<p>The index and the dictionary come before the record pages and keep spare room (section 4.2). New record pages are
+added at the end, so nothing moves when the database grows.</p>
+<h2 id="3-structures">3. Structures</h2>
+<p>All numbers are little endian.</p>
+<h3 id="31-header-page-0">3.1 Header (page 0)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>2</td>
+<td><abbr class="gl" tabindex="0" title="The 7-bit character set of plain text." data-more="../dev/glossary.html#t-ascii">ASCII</abbr> <code>Id</code>, as format N</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td><code>C</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+<td>0. Firmware without this format reads byte 3 as the record size + 0x4A and rejects a header where it is below 0x4A: it sees no database rather than a wrong one</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1</td>
+<td>Version: 1. The radio rejects any other</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1</td>
+<td>The longest text in the database, characters (at most 48). For display</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2</td>
+<td>The first record page: where the strings' room ends. Hosts use it; the radio doesn't</td>
+</tr>
+<tr>
+<td>8</td>
+<td>4</td>
+<td>Records</td>
+</tr>
+<tr>
+<td>12</td>
+<td>4</td>
+<td>Size: the database offset where it ends (the end of the last record page)</td>
+</tr>
+<tr>
+<td>16</td>
+<td>4</td>
+<td>Index offset</td>
+</tr>
+<tr>
+<td>20</td>
+<td>2</td>
+<td>Index entries: the record pages in use</td>
+</tr>
+<tr>
+<td>22</td>
+<td>2</td>
+<td>Dictionary entries, at most 16,512</td>
+</tr>
+<tr>
+<td>24</td>
+<td>4</td>
+<td>Dictionary table offset</td>
+</tr>
+<tr>
+<td>28</td>
+<td>4</td>
+<td>Dictionary strings offset</td>
+</tr>
+</tbody>
+</table></div>
+<p>The rest of page 0 is 0xFF. The radio takes the header only when every offset plus its section's length lies inside
+<code>size</code>, and <code>size</code> inside the space the radio has.</p>
+<h3 id="32-index">3.2 Index</h3>
+<p><code>entries</code> entries of 5 bytes, sorted by first ID, ascending:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>3</td>
+<td>The first ID in the page</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+<td>The page number</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="33-dictionary">3.3 Dictionary</h3>
+<p>The table holds one 3-byte offset per entry, relative to the strings offset. A string is a length byte (1 to 48
+characters), then the characters packed at 6 bits, most significant first, in the alphabet of format N (space,
+<code>0</code>-<code>9</code>, <code>A</code>-<code>Z</code>, <code>a</code>-<code>z</code>, <code>.</code>). A string may contain spaces.</p>
+<h3 id="34-record-pages">3.4 Record pages</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>2</td>
+<td>Records in the page</td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td>The records, back to back. The rest of the page is 0xFF</td>
+</tr>
+</tbody>
+</table></div>
+<p>A record never crosses a page. Records in a page are sorted by ID, and each page's IDs lie between its index entry's
+first ID and the next entry's.</p>
+<p>A record is:</p>
+<ol>
+<li>The ID as a LEB128 number (7 bits per byte, low bits first, bit 7 set when more bytes follow): the first record of
+a page stores its whole ID, every other record the difference from the record before it.</li>
+<li>Three tokens. The text is the tokens that aren't empty, joined by one space.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>First byte</th>
+<th>Token</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00 - 0x7F</td>
+<td>dictionary entry 0 - 127</td>
+</tr>
+<tr>
+<td>0x80 - 0xBF</td>
+<td>with the next byte: entry 128 + ((first - 0x80) x 256 + next), up to 16,511</td>
+</tr>
+<tr>
+<td>0xC0</td>
+<td>empty</td>
+</tr>
+<tr>
+<td>0xC1 - 0xF0</td>
+<td>literal of 1 to 48 characters (first - 0xC0), then the characters packed at 6 bits as a dictionary string</td>
+</tr>
+<tr>
+<td>0xF1 - 0xFF</td>
+<td>not used: the radio stops reading the page</td>
+</tr>
+</tbody>
+</table></div>
+<p>The encoder splits a text at its first two spaces (callsign, first name, the rest), but the radio doesn't care: any
+three tokens are a record.</p>
+<h2 id="4-writing-one">4. Writing one</h2>
+<h3 id="41-fresh">4.1 Fresh</h3>
+<ol>
+<li>Records sorted by ID, the first of each ID kept, each text cleaned to the alphabet and cut to 48 characters (as
+format N, <code>iddb.js</code> <code>clean</code>).</li>
+<li>The dictionary: each token value that saves bytes as an entry (it appears more than once, and its uses as a code
+plus the string once cost less than as literals). The most frequent first, so the 128 most frequent get 1-byte
+codes. At most 16,512 entries.</li>
+<li>Records go into pages in ID order, a page closed when the next record would take it past 90 % (3,686 bytes).</li>
+<li>The index, the table and the strings each get their size plus a quarter, rounded up to whole pages.</li>
+<li>A database that doesn't fit the radio's space loses records from the top of the ID range, as format N does, and
+the editor says how many.</li>
+</ol>
+<h3 id="42-against-the-database-it-replaces">4.2 Against the database it replaces</h3>
+<p>When the image already holds a format C database (read from the radio or loaded with the file), a new one is written
+against it, so pages that didn't change stay byte for byte the same:</p>
+<ul>
+<li><strong>Dictionary</strong>: every old entry keeps its code. New strings that pass rule 2 are added after them. Entries no
+longer used stay.</li>
+<li><strong>Pages</strong>: a record goes to the old page whose range holds its ID. A page that overflows splits in two: the first
+half stays, the second goes to a new page at the end. A page left with no records leaves the index.</li>
+<li><strong>Index, table, strings</strong>: rewritten where they are when they fit their room. Otherwise the database is written
+fresh (4.1), once, and the write moves all of it.</li>
+</ul>
+<p>The output is deterministic: the same records against the same old database give the same bytes.</p>
+<h3 id="43-order-on-the-radio">4.3 Order on the radio</h3>
+<p>A database write is not staged (it is larger than any staging area). It never shows a mix:</p>
+<ol>
+<li>Page 0 erased: from here the radio has no database.</li>
+<li>Every other page that changed.</li>
+<li>Page 0 written last.</li>
+</ol>
+<p>A write cut short leaves no database, never a wrong one. The next write sends it again. The same order applies to
+format N through the fast protocol: the block holding its header goes first with the header erased, and again last.</p>
+<h2 id="5-the-radios-lookup">5. The radio's lookup</h2>
+<ol>
+<li>The header, checked as in 3.1 and cached until the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> serial changes (as format N).</li>
+<li>A binary search of the index for the last entry whose first ID is at most the ID: about log2(pages) reads of 5
+bytes.</li>
+<li>That page, record by record through a 32-byte window: IDs are decoded and tokens skipped until the ID is reached
+or passed.</li>
+<li>For the record found, each token: a code reads its table entry, then the string.</li>
+</ol>
+<p>It needs no buffer beyond the 32-byte window and keeps the header fields in <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr>. A lookup of a 4 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> page reads the
+part of the page before the record, about 2 KB on average.</p>
+<h2 id="6-compatibility">6. Compatibility</h2>
+<p>The editor keeps the database as records. The format on the radio is chosen when it writes, from what the radio says
+it reads (<code>IDDB_COMPACT</code> in VERSION features). So a newer format never reaches a radio that can't read it.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Case</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The radio reads format C, the database is format N (an old file, or read from the radio)</td>
+<td>The editor offers to convert it: a smaller database with room for more names and faster writes after it. Converting is a full write of the database, once. After a read the offer comes at most once in 12 hours for each radio model</td>
+</tr>
+<tr>
+<td>The radio doesn't read format C, the database is format C</td>
+<td>Written as format N. Each text keeps up to the length the longest one needs (16, 24, 32 or 48 characters). If they don't all fit the room, the editor says how many are left out and that a firmware update makes room</td>
+</tr>
+<tr>
+<td>A format C database on the radio, then older firmware flashed</td>
+<td>The older firmware sees no database (3.1, byte 3): no names, nothing wrong. The editor, on reading that radio, marks the database to be written again in format N</td>
+</tr>
+<tr>
+<td>Firmware without the fast protocol</td>
+<td>Format C is still written, through the open-firmware <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> (<code>cps-protocol.md</code>), in full</td>
+</tr>
+<tr>
+<td>TFTP (<code>tftp.md</code> 5)</td>
+<td>Takes format N only: a format C header is refused before anything is erased. The editor's <code>codeplug.bin</code> for <abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="tftp.html">TFTP</abbr> carries the database as format N</td>
+</tr>
+<tr>
+<td>qdmr and other open-firmware CPS</td>
+<td>Write format N. The radio reads it as before</td>
+</tr>
+</tbody>
+</table></div>
+<p>Format N stays readable by every build: <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr> writes it, and it is the way back.</p>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/iddb-compact.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#1-why">1. Why</a></li><li class="l2"><a href="#2-the-database-space">2. The database space</a></li><li class="l2"><a href="#3-structures">3. Structures</a></li><li class="l3"><a href="#31-header-page-0">3.1 Header (page 0)</a></li><li class="l3"><a href="#32-index">3.2 Index</a></li><li class="l3"><a href="#33-dictionary">3.3 Dictionary</a></li><li class="l3"><a href="#34-record-pages">3.4 Record pages</a></li><li class="l2"><a href="#4-writing-one">4. Writing one</a></li><li class="l3"><a href="#41-fresh">4.1 Fresh</a></li><li class="l3"><a href="#42-against-the-database-it-replaces">4.2 Against the database it replaces</a></li><li class="l3"><a href="#43-order-on-the-radio">4.3 Order on the radio</a></li><li class="l2"><a href="#5-the-radios-lookup">5. The radio&#x27;s lookup</a></li><li class="l2"><a href="#6-compatibility">6. Compatibility</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

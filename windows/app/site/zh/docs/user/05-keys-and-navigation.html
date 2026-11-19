@@ -1,0 +1,247 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>按键与导航 · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="按键与导航 · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/user/05-keys-and-navigation.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/user/05-keys-and-navigation.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/user/05-keys-and-navigation.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/user/05-keys-and-navigation.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/user/05-keys-and-navigation.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/user/05-keys-and-navigation.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/user/05-keys-and-navigation.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/user/05-keys-and-navigation.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/user/05-keys-and-navigation.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/user/05-keys-and-navigation.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="用户手册">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 用户手册</p>
+		<ul><li><a href="index.html">RadioFoundry 用户手册</a></li><li><a href="01-introduction.html">简介</a></li><li><a href="02-installing.html">安装</a></li><li><a href="03-first-boot.html">首次启动</a></li><li><a href="04-programming.html">为电台编程</a></li><li><a href="05-keys-and-navigation.html" aria-current="page">按键与导航</a></li><li><a href="06-home-screen.html">主屏幕</a></li><li><a href="07-channels-zones-vfo.html">信道、区域与 VFO</a></li><li><a href="08-fm.html">FM</a></li><li><a href="09-dmr.html">DMR</a></li><li><a href="10-messages-and-signaling.html">消息、呼叫提示与电台检查</a></li><li><a href="11-emergency.html">紧急</a></li><li><a href="12-scan.html">扫描与双守候</a></li><li><a href="13-aprs.html">APRS</a></li><li><a href="14-hotspot.html">热点模式</a></li><li><a href="15-usb-network.html">USB 网络模式</a></li><li><a href="16-battery-and-power.html">电池与供电</a></li><li><a href="17-settings.html">设置</a></li><li><a href="18-moving-from-stock-md380.html">从原厂 MD-380 固件迁移</a></li><li><a href="19-moving-from-stock-dm32.html">从原厂 DM-32UV 固件迁移</a></li><li><a href="20-troubleshooting.html">故障排查</a></li><li><a href="21-faq.html">常见问题</a></li><li><a href="22-glossary.html">术语表</a></li><li><a href="23-radios.html">电台参考</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<h1 id="keys-and-navigation">按键与导航</h1>
+<p>每个按键在每个屏幕上都做同类的事情。</p>
+<h2 id="the-five-rules">五条规则</h2>
+<ol>
+<li><strong>OK</strong> 打开或选择焦点所在的项目。长按 <strong>OK</strong> 执行持久版本，例如保存或设为永久。</li>
+<li><strong>返回</strong> 返回上一级。在主屏幕上，每按一次撤销一项临时更改。长按 <strong>返回</strong> 可从任何位置回到主屏幕。</li>
+<li><strong>*</strong> 打开当前操作的快速设置。长按 <strong>*</strong> 锁定或解锁按键。</li>
+<li><strong>#</strong> 打开焦点项目的操作，例如某个人、通话组、消息或最近来电。长按 <strong>#</strong> 打开“最近”。</li>
+<li><strong>PTT</strong> 在任何列表中与焦点所在的个人或通话组通话一次。没有焦点时，它与信道的通话目标通话。</li>
+</ol>
+<p>大多数屏幕的底行是提示行。它显示附近按键在此处的作用。<strong>返回</strong> 的作用在其右端，位于 <strong>返回</strong> 键上方。</p>
+<h2 id="key-reference">按键参考</h2>
+<p>按键以其功能命名（<a href="01-introduction.html#conventions-in-this-manual">约定</a>）。<a href="23-radios.html#key-roles">按键角色</a>列出你的电台上哪个物理键承担哪项功能，也列出电台没有某个键时的替代方式。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>按键</th>
+<th>短按</th>
+<th>长按</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OK</strong></td>
+<td>主屏幕：打开 hub。列表：打开或选择</td>
+<td>保存或设为永久</td>
+</tr>
+<tr>
+<td><strong>返回</strong></td>
+<td>返回上一级。主屏幕：撤销一项临时更改</td>
+<td>回到主屏幕</td>
+</tr>
+<tr>
+<td><strong>上</strong>、<strong>下</strong></td>
+<td>移动焦点。主屏幕：下一或上一信道（<abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr>：频率步进），或用 <strong>设置 &gt; 按键 &gt; 主页上下键</strong> 切换区域或通话目标（信道旋钮仍在信道上）。编辑器：更改数值</td>
+<td>连续重复</td>
+</tr>
+<tr>
+<td><strong>*</strong></td>
+<td>快速设置。在 FM 上用 <strong>PTT</strong> 发射时：其<a href="08-fm.html#touch-tones-dtmf">双音多频</a></td>
+<td>锁定或解锁按键</td>
+</tr>
+<tr>
+<td><strong>#</strong></td>
+<td>在 FM 上用 <strong>PTT</strong> 发射时：其<a href="08-fm.html#touch-tones-dtmf">双音多频</a>。否则：焦点项目的操作。主屏幕：最近来电的操作。VFO：为正在输入的频率调谐，作用同 <strong>OK</strong></td>
+<td><abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> 信道：通话目标选择器（选择通话组或输入 ID）。“最近”是 <strong>OK</strong>、<strong>3</strong></td>
+</tr>
+<tr>
+<td><strong>0</strong> 到 <strong>9</strong></td>
+<td>主屏幕：启动查找。列表：选择编号行，或输入以筛选。VFO：输入频率。用 <strong>PTT</strong> 发射时：FM 发送该键的<a href="08-fm.html#touch-tones-dtmf">双音多频</a>，DMR 无动作</td>
+<td>主屏幕：快速拨号（尚未构建）。用 <strong>PTT</strong> 发射时：同短按</td>
+</tr>
+<tr>
+<td><strong>上一区域</strong>、<strong>下一区域</strong></td>
+<td>主屏幕：上一或下一区域</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>监听</strong></td>
+<td>FM：按住时打开静噪。DMR：开或关数字监听（所有通话组）</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>通话目标</strong></td>
+<td>通话目标选择器（DMR 信道）</td>
+<td>开或关双守候</td>
+</tr>
+<tr>
+<td><strong>功率级别</strong></td>
+<td>主屏幕：下一功率级别</td>
+<td>按住 1.5 秒：紧急（<a href="11-emergency.html">紧急</a>）</td>
+</tr>
+<tr>
+<td><strong>PTT</strong></td>
+<td>发射</td>
+<td></td>
+</tr>
+<tr>
+<td>信道旋钮</td>
+<td>每格一步。顺时针：主屏幕上的下一信道（同 <strong>上</strong>），列表或菜单中的下一行，编辑器中的更大值。逆时针：相反</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>侧键（大多数电台上的<strong>监听</strong>、<strong>通话目标</strong>和<strong>功率级别</strong>）可以做其他工作。在<strong>设置 &gt; 按键</strong>中设置（<a href="17-settings.html#keys-key-8">设置</a>），或在电台频率中设置。</p>
+<p>每次按键都会发出短促的按键音，除非关闭<strong>设置 &gt; 声音 &gt; 按键音</strong>。</p>
+<p>按键锁定时（长按 <strong>*</strong>），<strong>PTT</strong> 仍然可用。当<strong>设置 &gt; 加密 &gt; 锁定时 PTT</strong> 关闭时，<strong>PTT</strong> 会发出错误提示音并显示“按键已锁：长按 * 解锁”。</p>
+<h2 id="moving-around">移动</h2>
+<p>主屏幕是基础。其他所有屏幕距离它最多三级。</p>
+<pre><code>主屏幕
+ |-- *            快速设置
+ |-- OK           Hub：1 联系人、2 消息、3 最近、4 区域、5 信道、6 工具、7 设置
+ |                    （没有 # 的电台在顶部显示 0 最近来电）
+ |-- #            最近来电的操作
+ |-- 长按 #       通话目标选择器（DMR）
+ |-- 0-9          查找
+ '-- 通话目标     通话目标选择器
+</code></pre>
+<p>在编号列表（hub、工具、设置、操作、快速设置）中，数字键直接选择对应编号的行。例如 <strong>OK</strong>、<strong>6</strong> 打开工具。</p>
+<p>在长列表（联系人、信道、某个区域的信道）中，数字键按名称筛选列表，如同手机键盘拼写单词。<strong>2</strong> 是 ABC，<strong>3</strong> 是 DEF，依此类推到 <strong>9</strong>（WXYZ）。每个键把列表缩小到含有以这些字母开头单词的名称。<strong>返回</strong> 删除最后输入的键，然后再按离开列表。</p>
+<img src="../ux/screens/160x120i5/hub.png" width="200" alt="hub">
+<h2 id="find">查找</h2>
+<p>在主屏幕上（<abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr> 中除外），数字键打开查找。查找会一次搜索所有内容。输入数字。查找按以下顺序列出：</p>
+<ol>
+<li>当前区域中该位置的信道。“12”列出信道 12。</li>
+<li>把数字当作电台某个频段中的频率，按 VFO 的方式解析：“461462”列出“将 VFO 调至 461.462”。<strong>OK</strong> 在其上打开 VFO。VFO 的模式、功率和亚音保持不变。</li>
+<li>区域中的信道、联系人和通话组、区域、位置（联系人、消息等）以及名称按字母匹配这些键的设置。</li>
+<li><abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr> 以该数字开头的联系人（从三位数字起）。</li>
+<li>数字本身，作为通话组（“通话到 <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="22-glossary.html#t-talkgroup">TG</abbr> 3100”，“未保存”）和作为私密呼叫（“私密呼叫 3100”）。</li>
+<li>没有联系人使用该 ID 时的“创建联系人 3100”。<strong>OK</strong> 打开新建联系人（<a href="09-dmr.html#contacts">联系人</a>）。</li>
+</ol>
+<p>然后：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>按键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OK</strong></td>
+<td>转到信道或区域，调谐 VFO，打开位置或设置，立即与通话组或个人通话，或创建联系人</td>
+</tr>
+<tr>
+<td><strong>PTT</strong></td>
+<td>与焦点所在的通话组或个人通话一次</td>
+</tr>
+<tr>
+<td><strong>#</strong></td>
+<td>焦点通话组或个人的操作</td>
+</tr>
+<tr>
+<td><strong>返回</strong></td>
+<td>删除最后一位数字。只剩一位时，离开查找</td>
+</tr>
+</tbody>
+</table></div>
+<p>设置也会响应其他名称。例如“promiscuous”可找到数字监听，“<abbr class="gl" tabindex="0" title="Transmit timeout: the longest transmission the radio allows." data-more="22-glossary.html#t-tot">TOT</abbr>”可找到发射超时。</p>
+<img src="../ux/screens/160x120i5/find_name.png" width="200" alt="查找，匹配名称">
+<img src="../ux/screens/160x120i5/find_number.png" width="200" alt="查找，匹配数字">
+<h2 id="temporary-and-permanent-changes">临时更改与永久更改</h2>
+<p>操作时所做的更改（功率、静噪、亚音、时隙、色码、模式、通话目标）都是临时的。它们会持续到你切换信道或在主屏幕按 <strong>返回</strong>。主屏幕会标记已更改的字段。要把更改保存到信道，请在主屏幕或快速设置中长按 <strong>OK</strong>。电台显示“已保存到信道”。在 <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr> 中，更改会自动保留，因此长按会显示“VFO 设置自动保存”。如果另一次写入正在进行，会显示“保存忙：请重试”；稍等片刻再长按 <strong>OK</strong>。</p>
+<p>在主屏幕按 <strong>返回</strong>，每按一次清除一项，顺序如下：</p>
+<ol>
+<li>正在输入的频率</li>
+<li>横幅</li>
+<li>扫描</li>
+<li>回复窗口</li>
+<li>数字监听</li>
+<li>所有临时更改一起清除（“更改已撤销”）</li>
+</ol>
+<h2 id="key-lock">按键锁</h2>
+<p>在主屏幕上长按 <strong>*</strong> 锁定按键。屏幕显示“按键已锁：长按 * 解锁”，状态行显示“L”。锁定时，<strong>PTT</strong> 和<strong>监听</strong>仍可用。其他按键会显示解锁提示。再次长按 <strong>*</strong> 解锁。在菜单中长按 <strong>*</strong> 不会锁定，因此缓慢按键不会在任务中途锁住按键。</p>
+<p><strong>设置 &gt; 加密 &gt; 自动锁键</strong>会在一段时间无按键后自行锁定按键。</p>
+<img src="../ux/screens/160x120i5/home_locked.png" width="200" alt="按键锁定后的主屏幕">
+<h2 id="toasts-and-banners">浮层与横幅</h2>
+<p>短消息（“toast”）会在提示行显示约两秒。toast 显示操作结果，或某项功能不可用的原因。较长的 toast 会占用提示行上方的一行，且不会被截断。横幅会公告事件（消息、呼叫提示、电台检查结果）八秒。当关于消息或呼叫提示的横幅显示时，<strong>#</strong> 打开相关内容。在主屏幕按 <strong>返回</strong> 可隐藏它。</p>
+
+		<nav class="prev-next"><a class="prev" href="04-programming.html">为电台编程</a><a class="next" href="06-home-screen.html">主屏幕</a></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/user/05-keys-and-navigation.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#the-five-rules">五条规则</a></li><li class="l2"><a href="#key-reference">按键参考</a></li><li class="l2"><a href="#moving-around">移动</a></li><li class="l2"><a href="#find">查找</a></li><li class="l2"><a href="#temporary-and-permanent-changes">临时更改与永久更改</a></li><li class="l2"><a href="#key-lock">按键锁</a></li><li class="l2"><a href="#toasts-and-banners">浮层与横幅</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

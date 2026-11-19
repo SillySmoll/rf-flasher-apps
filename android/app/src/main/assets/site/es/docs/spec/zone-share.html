@@ -1,0 +1,539 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zone sharing over DMR data · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Zone sharing over DMR data · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/docs/spec/zone-share.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/zone-share.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/zone-share.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/zone-share.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/zone-share.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/zone-share.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../es/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../../es/radios/index.html">Radios</a><a href="../../../es/features/index.html">Funciones</a><a href="../../../es/flash/index.html">Instalar</a><a href="../../../es/codeplug/index.html">Codeplug</a><a href="../../../es/docs/index.html" aria-current="page">Documentación</a><a href="../../../es/screenshots/index.html">Capturas</a><a href="../../../es/tools/index.html">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../../docs/spec/zone-share.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/zone-share.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/zone-share.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/zone-share.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Especificaciones">
+		<p class="eyebrow"><a href="../../../es/docs/index.html">Documentación</a> / Especificaciones</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html" aria-current="page">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Esta página aún no está traducida; se muestra en inglés.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<!-- Copyright (c) 2026 The RadioFoundry Authors -->
+<h1 id="zone-sharing-over-dmr-data">Zone sharing over DMR data</h1>
+<p>One radio sends a zone, or one channel, to another radio or to a <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr> over <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> data. The receiver shows it as an
+offer and imports it only when the user says so. Status: built and host-tested (<code>zoneShareTest</code>, <code>zoneShareSvcTest</code>,
+<code>zoneImportTest</code>, the UI flow tests; the modes part in <code>zoneShareModesTest</code> and <code>zoneImportModesTest</code>, untested on a
+radio). On a radio, sending one channel has been checked against the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench; sending
+a zone, offers and the import are untested there. The opt-in <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> test is <code>tests/hil/test_zone_share.py</code> (feature
+<code>zone_share</code>).</p>
+<p>Sources: <abbr class="gl" tabindex="0" title="European Telecommunications Standards Institute, which publishes the DMR standard." data-more="../dev/glossary.html#t-etsi">ETSI</abbr> <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">TS</abbr> 102 361-3 (packet data, the <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr>/IP bearer), RFC 768 (UDP), <a href="dmr-data.html">dmr-data.md</a> 11 and 12 (IP
+over DMR, the <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> queue). The record format is ours.</p>
+<h2 id="1-switches-and-files">1. Switches and files</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Switch</td>
+<td><code>CONFIG_ZONE_SHARE</code>, on by default where <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> is built (<a href="../build-config.html">build-config.md</a>). It also builds the <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> queue (<code>CONFIG_DMR_AIR_QUEUE</code>)</td>
+</tr>
+<tr>
+<td>Record and messages</td>
+<td><code>core/dmr/zoneShare.c</code>: encode, strict decode, reassembly. No state but the buffer the caller owns</td>
+</tr>
+<tr>
+<td>Service</td>
+<td><code>core/dmr/zoneShareSvc.c</code> (<code>zone_share_api.h</code>): sending through the TX queue, offers, the rate limit, directory requests</td>
+</tr>
+<tr>
+<td>Import and export</td>
+<td><code>core/codeplug/zone_import.c</code>: the only code that writes the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> for zone sharing (6)</td>
+</tr>
+<tr>
+<td>UI</td>
+<td><code>core/ui/ui_svc_zone.c</code> (the glue, the import as a storage job), screens in <code>core/ui/ui_menus.c</code></td>
+</tr>
+<tr>
+<td>Debug link</td>
+<td>the <code>air</code> view section: <code>zs.*</code> keys (<a href="debuglink.html">debuglink.md</a> 3.7)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="2-transport">2. Transport</h2>
+<ul>
+<li><abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr>, source and destination port <strong>4100</strong>, over the data service's IP bearer (<a href="dmr-data.html">dmr-data.md</a> 11). Port
+4100 is outside 4000-4099, so the UDP header is compressed on auto (<abbr class="gl" tabindex="0" title="Service access point: the field in a DMR data header that says what the payload is (IP, short data, GPS and so on)." data-more="../dev/glossary.html#t-sap">SAP</abbr> 3).</li>
+<li>To a radio: confirmed packets. To a <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr>: unconfirmed packets. Each message is one IP packet.</li>
+<li>Every message goes through the <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> queue (<a href="dmr-data.html">dmr-data.md</a> 12.6). A send puts all its fragments in at once
+or none of them. Unconfirmed fragments to one talkgroup go out chained in one transmission (12.6.2).</li>
+<li>A fragment the data service doesn't take within 10 s fails the send. The other fragments of that send are canceled.</li>
+</ul>
+<h2 id="3-messages">3. Messages</h2>
+<p>Every message starts with the version (1) and the type. Multi-octet fields are big-endian.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Octets</th>
+<th>Layout</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 Fragment</td>
+<td>7 to 328 sent, up to 568 taken</td>
+<td>version, type, transfer number, index (bits 7-4) and count (bits 3-0), offset (2), chunk</td>
+</tr>
+<tr>
+<td>2 Request</td>
+<td>5</td>
+<td>version, type, request number, what (1: the zone of the site the request came in through), options (0)</td>
+</tr>
+<tr>
+<td>3 Refusal</td>
+<td>4</td>
+<td>version, type, request number, code</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="31-fragments">3.1 Fragments</h3>
+<ul>
+<li>A record of up to 1024 octets goes in 1 to 4 fragments of 322-octet chunks, the last one shorter (<code>ZS_SEND_CHUNK</code>).</li>
+<li>The chunk size is the sender's. A receiver takes any from 128 octets up to the longest message the air MTU allows
+with the full IPv4 and <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr> headers (<code>ZS_MSG_MAX</code> = <code>DMR_DATA_IP_MTU</code> - 28: 568 octets, a 562-octet chunk,
+<a href="dmr-data.html">dmr-data.md</a> 12.8). That limit grows with the air MTU. A record in 128-octet chunks takes 8 fragments,
+the most a transfer may have.</li>
+<li>We still send 322: the first builds take only that chunk size and messages of at most 328 octets, and would drop
+larger fragments. Every build since takes chunks up to 562, so the sender can move up to 562 (2 fragments for a
+full record) once the first builds are no longer in use. A build whose air MTU is larger takes larger chunks, but
+must not send them while builds that take only 562 are in use. <code>zoneShareTest</code> checks our fragments against the
+first builds' rules.</li>
+<li>Every fragment but the last is full, and its offset is index x its length. The last fragment's offset is a whole
+number of chunks of a size the receiver takes, and it is no longer than one. Every fragment of a transfer must give the
+same chunk size. A fragment that breaks a rule is dropped (<code>zs.rx_bad</code>).</li>
+<li>The transfer number is the sender's, one per send.</li>
+</ul>
+<h3 id="32-reassembly">3.2 Reassembly</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>One at a time</td>
+<td>one transfer from one sender is assembled. A fragment from anyone else meanwhile is dropped (<code>zs.rx_busy</code>)</td>
+</tr>
+<tr>
+<td>Time-out</td>
+<td>a transfer whose fragments stop for 30 s is dropped when the next fragment arrives, from anyone</td>
+</tr>
+<tr>
+<td>Started over</td>
+<td>the same sender with another transfer number or fragment count replaces its transfer</td>
+</tr>
+<tr>
+<td>Duplicates</td>
+<td>a fragment already in is ignored</td>
+</tr>
+<tr>
+<td>Done</td>
+<td>when every fragment is in, the record is decoded (4) as a whole; one that fails is dropped</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="33-refusal-codes">3.3 Refusal codes</h3>
+<p>1 site unknown, 2 site not seen for a long time, 3 no frequency on record, 4 busy, 5 not supported, 255 other.</p>
+<h2 id="4-the-record">4. The record</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Octets</th>
+<th>Fields</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Header</td>
+<td>10 + name</td>
+<td>version (1), length (2, the whole record), zone ID (4, not 0), flags, channel count (1-80), contact count (0-32), name</td>
+</tr>
+<tr>
+<td>Contact</td>
+<td>4 + name</td>
+<td>type (bits 1-0: 0 group, 1 private, 2 <abbr class="gl" tabindex="0" title="DMR talkgroup 16777215, heard by every radio on the slot." data-more="../user/22-glossary.html#t-all-call">all call</abbr>) and slot (bits 3-2: 0 the channel's, 1, 2), ID (3, not 0), name</td>
+</tr>
+<tr>
+<td>Channel</td>
+<td>6 to 15 + name</td>
+<td>flags, <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> Hz (4), then as the flags say: <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> offset (4, signed, not 0), <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> (2), RX tone (2), TX tone (2); name</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>A name is a length (0 to 16) and that many printable <abbr class="gl" tabindex="0" title="The 7-bit character set of plain text." data-more="../dev/glossary.html#t-ascii">ASCII</abbr> octets. The sender writes <code>?</code> for anything else.</li>
+<li>Record flags: bit 0, one channel (the count must be 1); bit 1, a modes part follows the channels (4.2). The other
+bits are reserved and must be 0. A build without the modes part refuses a record with bit 1 set.</li>
+<li>Channel flags: bit 0 DMR, 1 25 kHz, 2 TX offset present, 3 RX tone present, 4 TX tone present, 5 receive only on
+the sender, bits 7-6 power (0 the default, 1 low, 2 mid, 3 high).</li>
+<li>DMR octets: the <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr> (bits 3-0), slot 2 (bit 4), <abbr class="gl" tabindex="0" title="DMR radio to radio on one frequency, with no repeater. The standard calls it DMO." data-more="../dev/glossary.html#t-direct-mode">direct mode</abbr> (bit 5), bits 7-6 reserved; then the contact, a
+1-based index into the record's contacts or 0. A DMR channel carries no tones.</li>
+<li>A tone: the type in bits 15-14 (1 <abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-ctcss">CTCSS</abbr>, 2 <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-dcs">DCS</abbr>, 3 DCS inverted), the value in bits 13-0. CTCSS is Hz x 10 (600 to
+2600). DCS is the code as an octal number (023 is 19), at most 0777.</li>
+<li>Contacts come first, then channels. The record must end exactly where its length says.</li>
+<li>The decoder checks every length, count, reference and value before use. A record that fails one check is refused
+whole.</li>
+<li>Zone ID: the sender's choice, the same each time it sends the same zone. Ours is an FNV-1a hash of the zone name and
+the flags.</li>
+</ul>
+<h3 id="41-what-a-send-holds">4.1 What a send holds</h3>
+<p>The sender takes the zone's channels in order, each with its contact, while the record fits 1024 octets and 80
+channels. The rest are left out, and the UI says how many go (&quot;Sending 40 of 60 channels&quot;). Nothing else of the
+<abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> is sent: no scan lists, no RX group lists, no privacy keys.</p>
+<h3 id="42-the-modes-part">4.2 The modes part</h3>
+<p>Channels of a kind (<a href="channel-modes.html">channel-modes.md</a>) go with their tags and the systems they are on. Builds with
+a mode that has channels of a kind carry them (<code>CONFIG_ZONE_SHARE_MODES</code>, on with <code>CONFIG_ZONE_SHARE</code> and <code>CONFIG_P25</code>
+or <code>CONFIG_DMR_TRUNK</code>). A record holds
+the part only when it has such a channel, so a share of plain channels is the same as before. Every length is one
+octet. Kinds' and system types' bytes are opaque here: their mode modules read them.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Octets</th>
+<th>Fields</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Systems</td>
+<td>1</td>
+<td>count, 0-8</td>
+</tr>
+<tr>
+<td>System</td>
+<td>5 + block + name, a whole one 2 + secret more</td>
+<td>type (not 0 or 0xFF), flags (the system record's, bits 2-3 0), level (1 identity, 2 whole), identity length (at most the block's), block length and block (at most 200; level 1: the identity alone), name; level 2 only: secret length and secret (at most 64), entry count</td>
+</tr>
+<tr>
+<td>Entry</td>
+<td>4 + body</td>
+<td>class, group, flags, body length and body (at most 64): a level 2 system's entries follow it. At most 64 in a record</td>
+</tr>
+<tr>
+<td>Tags</td>
+<td>1</td>
+<td>count, 1 up to the channel count</td>
+</tr>
+<tr>
+<td>Tag</td>
+<td>5 + params</td>
+<td>channel (1-based, each after the one before), kind (not 0 or 0xFF), system (0 none, 1 up to the systems count, 0xFF on a system the sender doesn't share), flags (the tag's, bits 2-3 0: the fallback channel is never carried), parameter block length and block (at most 64)</td>
+</tr>
+</tbody>
+</table></div>
+<p>What a sender carries of a system follows its sharing level (<a href="channel-modes.html">channel-modes.md</a> 7.1):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Carried</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Off</td>
+<td>nothing: its channels' tags say 0xFF</td>
+</tr>
+<tr>
+<td>Identity only</td>
+<td>type, flags, name and the identity</td>
+</tr>
+<tr>
+<td>Whole system with key</td>
+<td>the block and every entry too, and the secret only when the sender turns keys on for that share. A radio has no such switch yet and never sends a secret. A system whose block or entries pass the limits goes as its identity</td>
+</tr>
+</tbody>
+</table></div>
+<p>Never carried: the radio's own ID on a system, a system's or a channel's fallback channel. Targets
+(<a href="channel-modes.html">channel-modes.md</a> 5.2) are not carried yet: no kind in this tree refers to them.</p>
+<p>A channel whose tag's parameter block passes 64 octets is left out. Without the modes part a sender leaves every
+channel of a kind out: its record is a stand-in that a receiver would take for a plain channel.</p>
+<h2 id="5-receiving">5. Receiving</h2>
+<h3 id="51-the-setting">5.1 The setting</h3>
+<p><strong>Settings &gt; Connections &gt; Accept zone shares</strong>: On (the default) or Off. With On, a share is offered to the user,
+who imports it or not (5.2); nothing is imported without that. With Off, fragments are dropped (<code>zs.rx_off</code>) and
+nothing reaches the user. The setting is <code>zs_offers</code> in the settings record: 0 (never set) and 1 are On, 2 is Off
+(<a href="settings-store.html">settings-store.md</a>). In the service and on the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>, 1 (<code>ZS_OFFERS_ASK</code>) is On and 0 Off.</p>
+<h3 id="52-offers">5.2 Offers</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Offers at a time</td>
+<td>one. While it waits, other records are dropped (<code>zs.rx_busy</code>)</td>
+</tr>
+<tr>
+<td>Rate limit</td>
+<td>at most 6 offers an hour; more are dropped (<code>zs.rate_limited</code>)</td>
+</tr>
+<tr>
+<td>Lifetime</td>
+<td>an offer not opened within 10 minutes is dropped (<code>zs.expired</code>). Once opened, it waits for the user</td>
+</tr>
+<tr>
+<td>Group offers</td>
+<td>a record sent to a <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr> the radio listens to is offered like one sent to it</td>
+</tr>
+</tbody>
+</table></div>
+<p>The offer shows as a banner, &quot;Zone from <name or ID>&quot; with &quot;Zone <name>, <n> channels&quot;. <strong>#</strong> opens it. The banner
+has no timer: it stays until <strong>#</strong> opens it, <strong>Back</strong> hides it (on any screen), or the offer ends (it expires, or is answered from
+Tools, which also hides it). Another banner can take its place. While it waits it is also under <strong>Tools &gt; Zones/Chs Received</strong>. The offer screen (Zone Share Received, or Channel Share Received) reads &quot;Zone <name>, <n> channels, from <ID>&quot; and
+how many are not in this radio's bands, with three choices:</p>
+<ul>
+<li><strong>Import</strong> imports it (5.3).</li>
+<li><strong>Preview</strong> lists the channels: name, frequency, mode, and &quot;Not in band&quot; for those that can't be received.</li>
+<li><strong>Reject</strong> drops it.</li>
+</ul>
+<p>A one-channel offer asks which zone to add the channel to.</p>
+<h3 id="53-import">5.3 Import</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Band limits</td>
+<td>only channels whose <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> frequency is in this radio's bands are imported (<code>board_in_band</code>). The rest are counted and left out. None in band: nothing is imported</td>
+</tr>
+<tr>
+<td>Receive only</td>
+<td>every imported channel is receive only, whatever the sender had. The user turns <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> on per channel. The one exception: a channel of a kind on a system the radio has (5.5)</td>
+</tr>
+<tr>
+<td>Power</td>
+<td>the power class maps to this radio's levels: low the lowest, mid the middle, high the highest, default the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>'s default</td>
+</tr>
+<tr>
+<td>Contacts</td>
+<td>matched by ID and type against the user's contacts; a match keeps the user's name. Only contacts that imported channels use are added, in the lowest free slots. The same contact twice in a record becomes one</td>
+</tr>
+<tr>
+<td>New zone</td>
+<td>added through the zone editor's write layer, as a new zone there is (<a href="ui.html#22-zone-editor">ui.md 2.2</a>): it takes the lowest free slot, which can be ahead of other zones, and whoever holds a zone index follows the move. An update rewrites its zone in place. A name already in use gets &quot; 2&quot; to &quot; 99&quot;, shortened to fit 16 characters</td>
+</tr>
+<tr>
+<td>No stored zones</td>
+<td>the radio's &quot;All channels&quot; zone is stored as zone 0 first, so the user keeps it</td>
+</tr>
+<tr>
+<td>One channel</td>
+<td>added to the end of the zone the user picked (<code>zone_edit_insert</code>)</td>
+</tr>
+<tr>
+<td>Failure</td>
+<td>anything written is undone: no full zone list, no free channel or contact, a flash write error</td>
+</tr>
+</tbody>
+</table></div>
+<p>The import runs as a storage job, not on the UI task. The banner after it reads &quot;Imported <zone>&quot; or &quot;Updated
+<zone>&quot; with &quot;<n> channels, receive only&quot;.</p>
+<h3 id="54-updates">5.4 Updates</h3>
+<p>A zone sent again by the same sender with the same zone ID updates the earlier import instead of adding a zone.</p>
+<ul>
+<li>
+<p>The radio remembers its last four imports in the settings record (<code>zs_import</code>): a key (an FNV-1a hash of the
+sender's ID and the zone ID), the name the zone got, how many channels the import wrote and their signature (the
+<abbr class="gl" tabindex="0" title="Exclusive or: a bit operation that flips bits where the other operand has a 1." data-more="../dev/glossary.html#t-xor">XOR</abbr> of an FNV-1a hash of each channel's number and every field). The oldest is forgotten first.</p>
+</li>
+<li>
+<p>The update finds the zone by that name. If the user renamed or deleted it, the zone comes in as a new one.</p>
+</li>
+<li>
+<p>An update replaces only the earlier import's channels that the user left unchanged. Anything the user added to
+the zone or changed (a field, transmit turned on) stays in the zone, after the new channels, in its order.</p>
+</li>
+<li>
+<p>Which channels are the import's:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Case</th>
+<th>Replaced</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The zone still starts with the channels the import wrote, unchanged (the first <code>count</code> match the signature)</td>
+<td>those; everything after them is the user's</td>
+</tr>
+<tr>
+<td>Otherwise (the user changed, moved in or removed a channel among them)</td>
+<td>only channels identical to one the new copy brings. An earlier channel the sender has since changed or dropped stays; the user deletes it</td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<p>Replaced channels that no zone lists any more are deleted. Contacts are never deleted.</p>
+</li>
+</ul>
+<h3 id="55-channels-of-a-kind">5.5 Channels of a kind</h3>
+<p>With a modes part (4.2), after the import's channels are chosen:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Systems</td>
+<td>matched by type and identity against the radio's own. A match is used as it is: nothing of the radio's system is changed. A whole system the radio doesn't have is added when an imported channel is on it (its own ID 0, no fallback), with its entries and its secret if the record has one. It takes the lowest free system number among those a radio runs (0 to 7); with none free it is missing. Listen only comes as the sender set it: the receiver never forces it</td>
+</tr>
+<tr>
+<td>Missing</td>
+<td>a system sent as its identity that the radio doesn't have, one the sender withholds, or one with no room left: its channels come in with no system, receive only, and the import counts them as unavailable. The Codeplug Editor flags them</td>
+</tr>
+<tr>
+<td>Tags</td>
+<td>written for each imported channel: kind, flags and parameter block as sent</td>
+</tr>
+<tr>
+<td>Transmit</td>
+<td>kept only on a channel whose system the radio has; the system's listen-only flag then rules. Every other channel is receive only (5.3)</td>
+</tr>
+<tr>
+<td>Undo</td>
+<td>a failed import removes the systems, entries and secrets it added with its channels</td>
+</tr>
+</tbody>
+</table></div>
+<p>The offer counts the channels that will come in unavailable, and the banner after the import says how many did.</p>
+<h2 id="6-directory-requests">6. Directory requests</h2>
+<p>A radio may ask a directory service for the zone of the repeater or <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> its request went through
+(<code>zone_share_request</code>, type 2). The answer is a record, taken as an offer even with offers Off (the user asked), or
+a refusal (3.3). An answer later than 60 s is not taken. No screen sends requests yet.</p>
+<h2 id="7-sending">7. Sending</h2>
+<p>In a zone's channel list, <strong>#</strong> opens &quot;Share zone to...&quot; and &quot;Share channel to...&quot; (the focused channel). With the
+zone editor (<code>CONFIG_ZONE_EDIT</code>), <strong>#</strong> on a channel opens its Channel actions, where &quot;Share channel to...&quot; is item 5,
+and &quot;Share zone to...&quot; is item 3 of Zone options (<a href="ui.html">ui.md</a> 2.2). The channel editor has &quot;Share channel to...&quot;
+after &quot;Tune to this ch&quot; (<a href="ui.html">ui.md</a> 2.1); it sends the stored channel, so unsaved changes must be saved first. The rows
+carry a share icon, and the offer's title and banner a download icon. Then the contact list (Share To): a private contact gets confirmed packets, a <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr> unconfirmed ones. Digits that make an ID add two rows after the contacts,
+&quot;Private ID 9991234&quot; and &quot;TG 9991234&quot;, so a station that isn't a contact can be sent to. The send works only on a <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr>
+channel: on another, OK says &quot;Go to a DMR channel to send&quot; and sends nothing. The send's toast names the frequency:
+&quot;Sending to Q1AAA Joe via 442.375&quot; (&quot;Sending via 442.375&quot; where that doesn't fit). It is the channel's <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> frequency, which on a repeater is its output.
+The banner says &quot;Sent to <name>&quot; or &quot;Not sent to <name>&quot;. One send at a time.</p>
+<h2 id="8-limits">8. Limits</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Limit</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Record</td>
+<td>1024 octets, 80 channels, 32 contacts</td>
+</tr>
+<tr>
+<td>Names</td>
+<td>16 printable <abbr class="gl" tabindex="0" title="The 7-bit character set of plain text." data-more="../dev/glossary.html#t-ascii">ASCII</abbr> characters</td>
+</tr>
+<tr>
+<td>Fragments</td>
+<td>sent: up to 4 of 322 octets; taken: up to 8, chunks of 128 to 562 octets</td>
+</tr>
+<tr>
+<td>RAM</td>
+<td>about 4 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> on one board's build; the record being sent comes from the <abbr class="gl" tabindex="0" title="Real-time operating system: the scheduler that runs the firmware&#x27;s tasks." data-more="../dev/glossary.html#t-rtos">RTOS</abbr> heap while it is made (<a href="../feature-matrix.html">feature-matrix.md</a>)</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/zone-share.md">Ver el código fuente de esta página</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="En esta página">
+		<p class="eyebrow">En esta página</p>
+		<ul><li class="l2"><a href="#1-switches-and-files">1. Switches and files</a></li><li class="l2"><a href="#2-transport">2. Transport</a></li><li class="l2"><a href="#3-messages">3. Messages</a></li><li class="l3"><a href="#31-fragments">3.1 Fragments</a></li><li class="l3"><a href="#32-reassembly">3.2 Reassembly</a></li><li class="l3"><a href="#33-refusal-codes">3.3 Refusal codes</a></li><li class="l2"><a href="#4-the-record">4. The record</a></li><li class="l3"><a href="#41-what-a-send-holds">4.1 What a send holds</a></li><li class="l3"><a href="#42-the-modes-part">4.2 The modes part</a></li><li class="l2"><a href="#5-receiving">5. Receiving</a></li><li class="l3"><a href="#51-the-setting">5.1 The setting</a></li><li class="l3"><a href="#52-offers">5.2 Offers</a></li><li class="l3"><a href="#53-import">5.3 Import</a></li><li class="l3"><a href="#54-updates">5.4 Updates</a></li><li class="l3"><a href="#55-channels-of-a-kind">5.5 Channels of a kind</a></li><li class="l2"><a href="#6-directory-requests">6. Directory requests</a></li><li class="l2"><a href="#7-sending">7. Sending</a></li><li class="l2"><a href="#8-limits">8. Limits</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

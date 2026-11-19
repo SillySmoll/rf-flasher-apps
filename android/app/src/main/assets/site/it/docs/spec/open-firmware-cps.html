@@ -1,0 +1,2053 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="it" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open-firmware CPS interoperability · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Open-firmware CPS interoperability · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:url" content="https://radiofoundry.org/it/docs/spec/open-firmware-cps.html">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Le radio su cui gira RadioFoundry, ognuna con una schermata diversa.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/open-firmware-cps.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/open-firmware-cps.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/open-firmware-cps.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/open-firmware-cps.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/open-firmware-cps.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../it/" data-gl-more="Altro">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../it/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principale"><a href="../../../it/radios/index.html">Radio</a><a href="../../../it/features/index.html">Funzioni</a><a href="../../../it/flash/index.html">Installa</a><a href="../../../it/codeplug/index.html">Codeplug</a><a href="../../../it/docs/index.html" aria-current="page">Documenti</a><a href="../../../it/screenshots/index.html">Schermate</a><a href="../../../it/tools/index.html">Strumenti</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Lingua" title="Lingua">IT</summary><nav aria-label="Lingua"><a href="../../../docs/spec/open-firmware-cps.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/open-firmware-cps.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/open-firmware-cps.html" aria-current="true" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/open-firmware-cps.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Passa da chiaro a scuro" title="Passa da chiaro a scuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Specifiche">
+		<p class="eyebrow"><a href="../../../it/docs/index.html">Documentazione</a> / Specifiche</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html" aria-current="page">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Questa pagina non è ancora tradotta; è mostrata in inglese.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="open-firmware-cps-interoperability">Open-firmware CPS interoperability</h1>
+<p>This spec describes the serial protocol and the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> memory layout that the open-firmware <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> and <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr>'s MK22 and UV380
+open-firmware drivers use. A new implementation can use it to build an interop shim, so that existing PC tools can
+read and write our radios. It covers wire formats and stored data formats only. How the new firmware stores its own data internally
+is a separate decision. The shim can translate between the image described here and our own storage, or it can keep
+this image as the storage.</p>
+<p>Sources: qdmr's open-firmware drivers for the MK22 and the UV380 families (GPL-3, github.com/hmatuschek/qdmr; only protocol
+facts were taken from it) and the behavior of RadioFoundry's own implementation (<code>core/cps/cps_openfw.c</code>,
+<code>core/codeplug/</code>). The open-firmware CPS is closed source. What it reads and writes is what the radio accepts and what
+qdmr does.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Contents</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1, 2, 3</td>
+<td>Transports and framing, requests, memory areas</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Radio info and radio types</td>
+</tr>
+<tr>
+<td>5, 6</td>
+<td>The <code>D</code> data service commands, the <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> mode switch</td>
+</tr>
+<tr>
+<td>7</td>
+<td>The codeplug image: address mapping, <abbr class="gl" tabindex="0" title="Electrically erasable programmable read-only memory: a small chip that keeps settings." data-more="../dev/glossary.html#t-eeprom">EEPROM</abbr> map, records, <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr> database, voice prompts, settings block</td>
+</tr>
+<tr>
+<td>8, 9, 10</td>
+<td>Byte order, version differences, open questions</td>
+</tr>
+</tbody>
+</table></div>
+<p>Conventions: &quot;BE&quot; is big endian and &quot;LE&quot; is little endian. Offsets are hexadecimal unless they are plainly decimal
+counts. &quot;Image address&quot; means the address the PC tool puts on the wire. Strings in the codeplug are padded with 0xFF,
+not NUL terminated, unless stated otherwise.</p>
+<h2 id="1-transports-and-framing">1. Transports and framing</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Radio family</th>
+<th>Transport</th>
+<th>Framing of a request</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STM32F405 radios</td>
+<td>USB full speed CDC-ACM, VID 0x1FC9 PID 0x0094; <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr> matches on the VID and PID only</td>
+<td>USB bulk packets (64 bytes max), reassembled as below</td>
+</tr>
+<tr>
+<td>NXP MK22 radios</td>
+<td>USB full speed CDC-ACM, VID 0x1FC9 PID 0x0094</td>
+<td>as <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr></td>
+</tr>
+<tr>
+<td>HR_C7000 radios with no USB</td>
+<td>Programming cable on a <abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="../dev/glossary.html#t-uart">UART</abbr> at 115200 8N1, through a USB-serial adapter. No USB on the radio</td>
+<td>A request ends after 3 ms without a received byte, or when the header gives the length. Image at the STM32 addresses</td>
+</tr>
+</tbody>
+</table></div>
+<p>| STM32 radios in our USB network mode | USB <abbr class="gl" tabindex="0" title="Network control model: the USB class that makes the radio appear as a network adapter." data-more="../dev/glossary.html#t-ncm">CDC-NCM</abbr> (VID 0x1FC9 PID 0x0096, no serial port). The serial protocol is carried in <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr> datagrams to port 3334 at the radio's address | one datagram is one USB packet. Replies go back to the address and port that sent last. One client at a time |
+| MK22 radios in our USB network mode | Composite device VID 0x1FC9 PID 0x0095: CDC-ACM (interfaces 0-1) plus CDC-NCM (interfaces 2-3) | as USB |</p>
+<p>qdmr finds radios only by VID 0x1FC9 and PID 0x0094. A radio in network mode, or one behind a generic USB-serial adapter, has to be picked by port.</p>
+<h3 id="11-usb-reassembly-stm32-and-mk22">1.1 USB reassembly (STM32 and MK22)</h3>
+<p>Every request is handled to completion, and the reply is sent, before the next request is taken. Bytes that arrive
+while a request is being handled are dropped. The PC waits for each reply before it sends again.</p>
+<ul>
+<li>A packet shorter than the endpoint size (64 bytes) completes a request, unless more bytes are expected (below).</li>
+<li>If the first packet of a request is exactly 64 bytes long, the radio works out the expected total length from it:
+<ul>
+<li><code>R</code> (read): 8 bytes.</li>
+<li><code>W</code> or <code>X</code> with sub command 1: 5 bytes.</li>
+<li><code>W</code> or <code>X</code> with sub command 3: 2 bytes.</li>
+<li><code>W</code> or <code>X</code> with sub command 2, 4 or 7: 8 bytes plus the length field in bytes 6-7.</li>
+<li>Anything else: the packet alone.
+Packets are then appended until the expected count is reached or a short packet arrives.</li>
+</ul>
+</li>
+<li>The request buffer is 2048 bytes on the STM32 radios and 1536 bytes on the MK22. A request that would overflow it
+is discarded, and the radio answers with a single <code>-</code> (0x2D).</li>
+<li>The radio clears the request buffer before each new request. The text command (<code>C</code> 2) relies on this for NUL
+termination.</li>
+</ul>
+<h3 id="12-uart-framing-radios-without-usb">1.2 UART framing (radios without USB)</h3>
+<ul>
+<li>The <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> interrupt appends bytes to a 2048 byte request buffer. While a request is being handled, received
+bytes are dropped.</li>
+<li>When 3 ms have passed since the last byte, the main loop takes the bytes as one request. It handles the request,
+writes the reply on UART0 from the main loop, and clears the buffer.</li>
+<li>If the request overflowed the buffer, the reply is <code>-</code>.</li>
+<li>For 10 s after a request a &quot;<abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> session&quot; is active. Debug text on UART0 (a build option) is suppressed during the
+session, so it can never land in the middle of a reply.</li>
+<li>In <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> mode the bytes go to a separate 1024 byte ring instead, and are split into <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="mmdvm-protocol.html">MMDVM</abbr> frames by the frame
+length byte (section 6).</li>
+<li>The radio info reports the board's radio type (4); a board without a <code>radio_type</code> hook reports 6.</li>
+</ul>
+<h3 id="13-addresses-and-lengths">1.3 Addresses and lengths</h3>
+<p>All multi-byte fields in the request and reply headers are big endian. Data payloads are raw memory bytes. Most
+structures inside them are little endian (section 8).</p>
+<h2 id="2-requests">2. Requests</h2>
+<p>The first byte of a request selects the command.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Byte 0</th>
+<th>Meaning</th>
+<th>Radios</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>R</code> (0x52)</td>
+<td>Read from a memory area</td>
+<td>all</td>
+</tr>
+<tr>
+<td><code>W</code> (0x57)</td>
+<td>Write. On the MK22 this is the real write command. On the <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr> radios and the <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> radios it is a &quot;fake write&quot;: the radio acknowledges it (echoes bytes 0-1) and does nothing</td>
+<td>all</td>
+</tr>
+<tr>
+<td><code>X</code> (0x58)</td>
+<td>Write, on the STM32 radios and the HR_C7000 radios (sub commands as for <code>W</code>)</td>
+<td>STM32, HR_C7000</td>
+</tr>
+<tr>
+<td><code>C</code> (0x43)</td>
+<td>Control command</td>
+<td>all</td>
+</tr>
+<tr>
+<td><code>D</code> (0x44)</td>
+<td>Our <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> data service host commands (section 5). A build with USB debug commands uses <code>D</code> for the debug console</td>
+<td>all of our builds</td>
+</tr>
+<tr>
+<td>0xE0</td>
+<td>First byte of an <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="mmdvm-protocol.html">MMDVM</abbr> frame: switches to <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> mode (section 6)</td>
+<td>all, when a hotspot type is set</td>
+</tr>
+<tr>
+<td>anything else</td>
+<td>Answered with <code>-</code></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr> sends <code>W</code> to the MK22 family (its first variant: radio types 0-4) and <code>X</code> to the STM32 family (its variant
+&quot;UV380&quot;: radio types 5-10). It reads and writes in 32 byte blocks.</p>
+<h3 id="21-r-read">2.1 <code>R</code>: read</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td><code>R</code></td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>Area (section 3)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>4</td>
+<td>Address, BE</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2</td>
+<td>Length, BE</td>
+</tr>
+</tbody>
+</table></div>
+<p>Reply on success:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td><code>R</code></td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>Length actually returned, BE</td>
+</tr>
+<tr>
+<td>3</td>
+<td>n</td>
+<td>Data</td>
+</tr>
+</tbody>
+</table></div>
+<p>On failure the reply is a single <code>-</code>. The original firmware clips the length to its reply buffer size minus 3 (2045).
+RadioFoundry streams the reply in small pieces instead of building it in a buffer, so it clips at 32768: a client that reads
+large areas (the web flasher's backup) asks for 32 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> at a time and takes what comes back, which is 2045 bytes from
+the original firmware and older RadioFoundry builds. qdmr checks that the returned length equals the requested one, and asks
+for 2045 or less. The radio info area always returns its own structure length, whatever length was asked for.</p>
+<p>Send the header and the first data in one USB write. qdmr (0.15) reads a reply as soon as part of it has arrived and
+doesn't wait for the rest. A 32-byte block sent as the header and then the data reached it short. qdmr then read the
+late data byte as the next reply's first byte, reported an error and asked the radio to reboot. One write of 35 bytes
+fits a single full-speed USB packet, as the original firmware sends it.</p>
+<h3 id="22-w--x-write">2.2 <code>W</code> / <code>X</code>: write</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Sub (byte 1)</th>
+<th>Request after bytes 0-1</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Sector number, 3 bytes BE (image address / 4096)</td>
+<td>Prepare a 4 KB flash sector: the radio reads the sector into a <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> buffer. Fails if a sector is already pending</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Address 4 bytes BE, length 2 bytes BE, data</td>
+<td>Merge data into the pending sector buffer. Bytes outside the pending sector are ignored. Fails if no sector is pending</td>
+</tr>
+<tr>
+<td>3</td>
+<td>none</td>
+<td>Commit: erase the sector and program it as 16 pages of 256 bytes. Clears the pending state</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Address 4 bytes BE, length 2 bytes BE, data</td>
+<td><abbr class="gl" tabindex="0" title="Electrically erasable programmable read-only memory: a small chip that keeps settings." data-more="../dev/glossary.html#t-eeprom">EEPROM</abbr> write. Real only on the MK22 (<abbr class="gl" tabindex="0" title="Inter-integrated circuit: a 2-wire bus for small chips such as the RF transceiver." data-more="../dev/glossary.html#t-i2c">I2C</abbr> EEPROM). On the STM32 radios and the HR_C7000 radios the &quot;EEPROM&quot; is emulated in flash: the radio acknowledges and does nothing, and the PC writes the EEPROM image with sub commands 1-3 instead (section 7.1)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Address 4 bytes BE, length 2 bytes BE, data</td>
+<td>Write into the audio (WAV) buffer at that offset (section 3). The buffered sample count becomes (address + length) / 160</td>
+</tr>
+<tr>
+<td>9, other</td>
+<td></td>
+<td>Refused: reply <code>-</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>The reply on success is 2 bytes: byte 0 and byte 1 of the request echoed. On failure it is a single <code>-</code>, and any
+pending sector is dropped. Data lengths are clipped to the request buffer size minus 8.</p>
+<p>Special cases the radio applies to sub commands 1-3 (and 4 on the MK22). An interop shim must reproduce them:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Case</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Calibration window, flash image 0x10000..0x101FF (STM32 and HR_C7000 radios)</td>
+<td>Preparing sector 0x10 succeeds without reading flash. Data inside the window goes to the radio's working calibration copy. The commit saves that copy. Reads of the window are served from the copy (2.1). On an HR_C7000 radio the copy is the UV380-format table: the radio's own factory calibration is not exposed, and the <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> has no calibration window of its own (the sector is plain data). The MK22 family has no window: its calibration is plain flash at 0xF000 (working copy) and 0x8F000 (factory)</td>
+</tr>
+<tr>
+<td>Codeplug settings area, EEPROM image 0xE000..0xEFFF</td>
+<td>RadioFoundry only. At the commit the radio keeps its own sector when its area is valid and the pending one isn't, or its area is of a newer version (<code>codeplug-settings.md</code> 6). The commit is acknowledged either way, so a CPS that writes 0xFF there doesn't erase the settings</td>
+</tr>
+<tr>
+<td>Quick-key slots, EEPROM image 0x7524..0x7537 (10 entries of 2 bytes)</td>
+<td>Written like the rest of the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>. RadioFoundry keeps the key assignment there (<code>ui.md</code> 3.1); values another firmware left are ignored</td>
+</tr>
+<tr>
+<td>Channel bank 0 rewritten (a write that falls entirely inside EEPROM image 0x3780..0x538F)</td>
+<td>Remembered. At &quot;save and reboot&quot; (<code>C</code> 6 0) the radio re-reads the zones and channels, selects the All Channels zone, and points it at its last used channel, or else the first channel in use</td>
+</tr>
+<tr>
+<td>LUCZ rewritten (a write inside 0x6000..0x6049)</td>
+<td>Remembered. The radio then doesn't overwrite the LUCZ with its own copy at &quot;save and reboot&quot;</td>
+</tr>
+<tr>
+<td>Voice prompt header written</td>
+<td>If a sub command 2 write starts at the voice prompt header address (new or old location, section 7.6) and its first 8 bytes carry a valid magic and version, the radio switches announcements to voice level 1</td>
+</tr>
+<tr>
+<td>DMR ID database upload</td>
+<td>Preparing the sector at image 0x30000 marks a <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr> upload. On Close (<code>C</code> 5) the radio re-reads the database header. The check uses the address without the 128 KB offset, so on STM32 radios it doesn't match the real database location (0x50000). A new implementation should re-read the database after any write that touches it</td>
+</tr>
+<tr>
+<td>VFO overlay on read (STM32 and HR_C7000 radios)</td>
+<td>When a flash read starts at or before 0x7590 and runs past the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> pair, the radio replaces those 112 bytes in the reply with its live VFO settings in codeplug format. The check uses the radio's in-memory record size, so the read must extend somewhat beyond 0x75FF. A tool that reads 32-byte blocks never triggers it. A large-block CPS read does. The MK22 doesn't do this. The CPS sends <code>C</code> 6 2 first, so the VFOs are already saved</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="23-c-control">2.3 <code>C</code>: control</h3>
+<p>The reply to every <code>C</code> request is a single <code>-</code>. It means &quot;done&quot;, not &quot;error&quot;. qdmr sends every <code>C</code> request as a
+23-byte packet: the command, then zeros. The radio takes the command at its own length and drops the zeros, since no
+request starts with a zero byte (<a href="cps-protocol.html">cps-protocol.md</a> 2.1, <code>cps.junk</code>).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Byte 1</th>
+<th>Arguments</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td></td>
+<td>Enter programming mode: show the CPS screen. The radio also stops GPS <abbr class="gl" tabindex="0" title="The text format GPS receivers use to report position and time." data-more="../user/22-glossary.html#t-nmea">NMEA</abbr> output to the port (remembering the GPS mode) and leaves any satellite screen</td>
+</tr>
+<tr>
+<td>1</td>
+<td></td>
+<td>Clear the CPS screen buffer</td>
+</tr>
+<tr>
+<td>2</td>
+<td>byte 2 x, byte 3 y (pixels), byte 4 font (0 small, 1 small bold, 2 medium, 3 large, 4 extra large), byte 5 alignment (0 left, 1 center, 2 right), byte 6 inverted (0/1), bytes 7.. text (up to 16 characters, NUL terminated or zero filled)</td>
+<td>Print one line on the CPS screen buffer</td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+<td>Render the CPS screen</td>
+</tr>
+<tr>
+<td>4</td>
+<td></td>
+<td>Turn on the backlight</td>
+</tr>
+<tr>
+<td>5</td>
+<td></td>
+<td>Close: re-read the DMR ID database if one was uploaded, end <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE</abbr> compress mode, restore power saving, leave the CPS screen</td>
+</tr>
+<tr>
+<td>6</td>
+<td>byte 2 option, further arguments below</td>
+<td>Miscellaneous (table below)</td>
+</tr>
+<tr>
+<td>7</td>
+<td></td>
+<td>Restore the GPS mode that <code>C</code> 0 / <code>C</code> 254 suspended</td>
+</tr>
+<tr>
+<td>254</td>
+<td></td>
+<td>Ping. Also suspends GPS NMEA output</td>
+</tr>
+<tr>
+<td><code>P</code> (debug builds only)</td>
+<td><abbr class="gl" tabindex="0" title="The 7-bit character set of plain text." data-more="../dev/glossary.html#t-ascii">ASCII</abbr> &quot;lat lon&quot; in 1/10000 degree</td>
+<td>Set the radio's location</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>C</code> 6 options:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Save settings and reboot. Apply the channel rewrite handling of 2.2. Save the settings (not the VFOs) and the LUCZ. Wait about 50 ms, then reset 500 ms later. The CPS sends this after writing a codeplug</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Reboot (500 ms later), without saving</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Save settings and the VFOs into the codeplug image. The CPS and qdmr send this before reading or writing, so the VFOs in the image are current</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Flash the green <abbr class="gl" tabindex="0" title="Light-emitting diode: the radio&#x27;s status light." data-more="../user/22-glossary.html#t-led">LED</abbr> (shown while reading)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Flash the red LED (shown while writing)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Enter AMBE compress mode: power saving off, encoder initialized</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Reset the sound buffers and clear 960 bytes of the WAV buffer</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Set the clock. Bytes 3-6 are Unix time in seconds UTC, LE (4 bytes). On the STM32 radios this also sets the RTC. Satellite predictions are cleared</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Wait 10 ms</td>
+</tr>
+<tr>
+<td>8, 9, other</td>
+<td>Ignored</td>
+</tr>
+</tbody>
+</table></div>
+<p>RadioFoundry takes <code>C</code> 6 0 and <code>C</code> 6 1 only in programming mode: after a <code>C</code> 0, with no quiet longer than the session time
+(10 s) since. Without it the reply is <code>-</code> and nothing happens (<code>cps.reboots_ignored</code> on the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>). On a radio
+whose debug link shares the CPS's serial port, any three bytes &quot;C 6 1&quot; would otherwise reboot it (bench 2026-10-15).
+qdmr sends <code>C</code> 0 first (the typical session below).</p>
+<p>A typical session, as qdmr does it:</p>
+<ul>
+<li>Read: <code>C</code> 0, <code>C</code> 1, three <code>C</code> 2 lines, <code>C</code> 3, <code>C</code> 6 3, <code>C</code> 6 2, the reads, then <code>C</code> 5.</li>
+<li>Write: the same opening with <code>C</code> 6 4 instead of <code>C</code> 6 3, then <code>C</code> 6 2, the writes as prepare/data.../commit for
+each sector, then <code>C</code> 5, and finally <code>C</code> 6 0 (or <code>C</code> 6 1).</li>
+</ul>
+<h2 id="3-memory-areas-r-byte-1">3. Memory areas (<code>R</code> byte 1)</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Name</th>
+<th>Address space</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Flash</td>
+<td>Image address in the external <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> flash (section 7)</td>
+<td><abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr> and <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> radios: the calibration window is served from the working copy, and the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> overlay applies (2.2). HR_C7000: image addresses are offset by +0x700000 physically (section 7.4). RadioFoundry serves it on a radio without a flash map too (a chip smaller than the board's map needs), up to the chip's end, so a backup can read it</td>
+</tr>
+<tr>
+<td>2</td>
+<td><abbr class="gl" tabindex="0" title="Electrically erasable programmable read-only memory: a small chip that keeps settings." data-more="../dev/glossary.html#t-eeprom">EEPROM</abbr></td>
+<td>EEPROM image address, 0x0000..0xFFFF</td>
+<td>MK22: the 64 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> <abbr class="gl" tabindex="0" title="Inter-integrated circuit: a 2-wire bus for small chips such as the RF transceiver." data-more="../dev/glossary.html#t-i2c">I2C</abbr> EEPROM. STM32 and HR_C7000: emulated in the external flash at flash image 0x00000 (same bytes as area 1 at the same address). Refused on a radio without a flash map</td>
+</tr>
+<tr>
+<td>5</td>
+<td><abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr> <abbr class="gl" tabindex="0" title="Read-only memory: code fixed in the chip." data-more="../dev/glossary.html#t-rom">ROM</abbr></td>
+<td>Offset into the MCU's program flash</td>
+<td>STM32: offset from 0x08000000. MK22: absolute address from 0. HR_C7000: offset from 0x03000000, bounds-checked to 1 MB (other builds don't check bounds)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Display buffer</td>
+<td>Byte offset into the frame buffer</td>
+<td>MK22: 128x64 mono, 1 bit per pixel (1024 bytes, 8-pixel pages). STM32 and HR_C7000: RGB565, 2 bytes per pixel (160x128 on the STM32 radios). Some panels have an 8-row top offset: the first 8 rows read 0xFF (white). Used for screenshots</td>
+</tr>
+<tr>
+<td>7</td>
+<td>WAV buffer</td>
+<td>Byte offset into the audio / <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> buffer (2400 bytes on STM32)</td>
+<td>Read or write raw <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> (8 kHz, 16 bit)</td>
+</tr>
+<tr>
+<td>8</td>
+<td><abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE</abbr> compress</td>
+<td>ignored</td>
+<td>Encodes the PCM in the WAV buffer (960 bytes = 3 voice frames) and returns 27 bytes of AMBE+2, zero-padded to the requested length (the <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> asks for 32). Then clears 960 bytes of the WAV buffer. Used by the CPS to make voice prompts. <strong>The new firmware carries no AMBE codec, so the shim should answer <code>-</code></strong></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Radio info</td>
+<td>ignored</td>
+<td>Section 4</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Flash security registers</td>
+<td>Register address in the SPI flash's OTP security register space</td>
+<td>Not on the MK22. Used by the CPS for identification. The shim may answer <code>-</code> or return the chip's registers</td>
+</tr>
+</tbody>
+</table></div>
+<p>A client that reads a radio running the original firmware (the web flasher's backup before an install,
+<a href="../dev/web-flasher.html">web-flasher.md</a>) keeps to what that firmware is known to take:</p>
+<ul>
+<li>Ask at most 2045 bytes per <code>R</code>. The reply buffer holds no more.</li>
+<li>Area 5 has no bounds check on the STM32 builds. A read past the end of the MCU flash can fault the radio. Read
+exactly the MCU flash, from its base to its end, as the board data gives them.</li>
+<li>Area 10 may not be answered at all: one STM32 build sent nothing, not even <code>-</code>. Don't ask it, or don't wait on it.</li>
+<li>Area 1 at 0x7590-0x75FF is the live VFO overlay (2.2). Read that range in 32-byte requests to get the flash's own
+bytes.</li>
+<li>Send no <code>C</code> command when only reading. <code>C</code> 6 2 saves settings, and once left a radio's USB hung.</li>
+<li>Long runs of reads hung one radio once. Reads change nothing, so a read that goes unanswered can be asked again, and
+a backup can stop and continue later.</li>
+</ul>
+<p>These points come from one radio and this spec, not from the original firmware's source. Not all are confirmed on
+every build.</p>
+<h2 id="4-radio-info-area-9">4. Radio info (area 9)</h2>
+<p>The structure is little endian, packed, 46 bytes in struct version 3.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>4</td>
+<td>structVersion: 3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>radioType (table below)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>16</td>
+<td>Git revision, <abbr class="gl" tabindex="0" title="The 7-bit character set of plain text." data-more="../dev/glossary.html#t-ascii">ASCII</abbr>, NUL padded</td>
+</tr>
+<tr>
+<td>24</td>
+<td>16</td>
+<td>Build date and time, ASCII <code>YYYYMMDDhhmmss</code>, NUL padded</td>
+</tr>
+<tr>
+<td>40</td>
+<td>4</td>
+<td>Flash chip JEDEC capacity / part id: 0x4014 for an 8 Mbit (MK22 radios), 0x4018 for a 128 Mbit (<abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr> radios), 0x4017 for a 64 Mbit (modified MK22 radios)</td>
+</tr>
+<tr>
+<td>44</td>
+<td>2</td>
+<td>Features, bit field: bit 0 inverted (night) display; bit 1 the <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr> database extends into the voice prompt area (header format byte <code>n</code>, section 7.5); bit 2 voice prompts are loaded</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>radioType</th>
+<th>Radio</th>
+<th><abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr>'s driver</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>first MK22 type</td>
+<td>qdmr (MK22 driver)</td>
+</tr>
+<tr>
+<td>1</td>
+<td>second MK22 type</td>
+<td>qdmr (MK22 driver)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>MK22 radio (DM-860 family)</td>
+<td>qdmr (MK22 driver)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>RD-5R / DM-5R Tier2</td>
+<td>qdmr (MK22 driver)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>MK22 radio (single band)</td>
+<td>qdmr (MK22 driver)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>a dual-band mobile radio on the STM32 and <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> pair</td>
+<td>qdmr (UV380 driver)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>UV380 family. Also what a board reports when it sets no radio type, such as the <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> boards</td>
+<td>qdmr (UV380 driver)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>the HR_C5000 radio and its sibling model</td>
+<td>qdmr (UV380 driver)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>a UV380-class radio with a BGR panel</td>
+<td>qdmr (UV380 driver)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>MD-2017 / RT-82</td>
+<td>qdmr (UV380 driver)</td>
+</tr>
+<tr>
+<td>10</td>
+<td>the same radio as 8 with an RGB panel (the type follows the detected panel color order)</td>
+<td>qdmr (UV380 driver)</td>
+</tr>
+<tr>
+<td>11</td>
+<td>an HR_C7000 radio (known to the open-firmware <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> since E2026.07.13)</td>
+<td><strong>not known to qdmr</strong>: it fails with an &quot;Unknown ... variant&quot; error</td>
+</tr>
+</tbody>
+</table></div>
+<p>qdmr chooses its &quot;extended callsign DB&quot; layout when features bit 1 is set and bit 2 is clear.</p>
+<h2 id="5-d-dmr-data-service-host-commands-ours">5. <code>D</code>: DMR data service host commands (ours)</h2>
+<p>This is our protocol: it has no open-firmware counterpart and no other users yet. It is available in programming mode on
+the serial port, and on the <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr> radios also over <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr> 3334 in network mode. It doesn't run in <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> mode.</p>
+<p>Each request is one USB packet (64 bytes at most) or one <abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="../dev/glossary.html#t-uart">UART</abbr> frame: <code>D</code>, the sub command, then the arguments. Every
+reply starts with <code>D</code>, the sub command, and a result byte: 1 means OK; 0 means failed, busy or nothing available.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Sub</th>
+<th>Request arguments</th>
+<th>Reply after the result byte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 Clear</td>
+<td>none</td>
+<td>none. Fails while a transmission is in progress</td>
+</tr>
+<tr>
+<td>2 Append bytes</td>
+<td>len (1 byte), then len bytes (up to 61)</td>
+<td>none. Appends to a 300 byte message buffer; fails when full</td>
+</tr>
+<tr>
+<td>3 Append burst</td>
+<td>data type (1), flags (1: bit 0 = the payload already holds its <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> / mask, send it verbatim), len (1, at most 24), payload</td>
+<td>none. Up to 64 bursts; fails while busy</td>
+</tr>
+<tr>
+<td>4 Send</td>
+<td>kind (1), flags (1), destination (3 bytes BE), port (2 bytes BE; for kind 3: byte 0 = <abbr class="gl" tabindex="0" title="Data packet format: the field of a data header that says what follows (unconfirmed or confirmed data, UDT, short data)." data-more="../dev/glossary.html#t-dpf">DPF</abbr>, low 4 bits of byte 1 = <abbr class="gl" tabindex="0" title="Service access point: the field in a DMR data header that says what the payload is (IP, short data, GPS and so on)." data-more="../dev/glossary.html#t-sap">SAP</abbr>)</td>
+<td>none. Result 1 means queued</td>
+</tr>
+<tr>
+<td>5 Status</td>
+<td>none</td>
+<td>The result byte is the <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> status (0 idle, 1 running, 2 done, 3 failed); then the received bursts waiting (1 byte) and the inbox messages not yet read by the host (1 byte)</td>
+</tr>
+<tr>
+<td>6 Pop RX burst</td>
+<td>none</td>
+<td>data type, flags (bit 1 = the receiver reported a CRC error), len, payload (oldest first; the queue holds the last 8)</td>
+</tr>
+<tr>
+<td>7 Pop message</td>
+<td>none</td>
+<td>source ID (3 BE), destination ID (3 BE), group flag (1), text length (1), text (Latin-1). The oldest message the host hasn't read. The inbox holds 4</td>
+</tr>
+<tr>
+<td>8 Network mode</td>
+<td>1 on, 0 off, 0xFF query</td>
+<td>saved mode (1 byte), network link up (1 byte). Saved with the other settings (for example by <code>C</code> 6 0). Takes effect at the next boot</td>
+</tr>
+</tbody>
+</table></div>
+<p>Send kinds:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Send the appended bursts as they are, at whatever rate they were built</td>
+</tr>
+<tr>
+<td>1</td>
+<td><abbr class="gl" tabindex="0" title="Text message service: Motorola&#x27;s text message format on DMR. The standard&#x27;s own short data uses other formats." data-more="../user/22-glossary.html#t-tms">TMS</abbr> text message from the appended bytes (Latin-1 text)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>UDP datagram from the appended bytes, to and from the given port</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Unconfirmed packet from the appended bytes, with the DPF and SAP given in the port bytes</td>
+</tr>
+</tbody>
+</table></div>
+<p>Send flags:</p>
+<ul>
+<li>bit 0: group destination (a <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr>, not an individual).</li>
+<li>bit 1: request a TMS acknowledgement (kind 1).</li>
+<li>bits 2-3: block rate for kinds 1-3 (0 Rate 1/2, 1 Rate 3/4, 2 Rate 1). The value 3 is refused.</li>
+</ul>
+<p>Data types are the <abbr class="gl" tabindex="0" title="European Telecommunications Standards Institute, which publishes the DMR standard." data-more="../dev/glossary.html#t-etsi">ETSI</abbr> <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">TS</abbr> 102 361-1 values: 0 <abbr class="gl" tabindex="0" title="A DMR header that announces encryption with a changing key. RadioFoundry never plays such calls." data-more="../user/22-glossary.html#t-pi-header">PI header</abbr>, 1 voice <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr> header, 2 terminator with LC, 3 <abbr class="gl" tabindex="0" title="Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control." data-more="dmr-data.html">CSBK</abbr>, 4 <abbr class="gl" tabindex="0" title="Multi block control: a DMR signaling message that spans several bursts." data-more="../dev/glossary.html#t-mbc">MBC</abbr>
+header, 5 MBC continuation, 6 data header, 7 Rate 1/2 data, 8 Rate 3/4 data, 9 idle, 10 Rate 1 data.</p>
+<h2 id="6-hotspot-mode-switch-0xe0">6. Hotspot mode switch (0xE0)</h2>
+<p>The <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="mmdvm-protocol.html">MMDVM</abbr> protocol itself is public and is specified separately. The switch works as follows:</p>
+<ul>
+<li><strong>Entering.</strong> In programming mode, a request whose first byte is 0xE0 and that is at least 3 bytes long switches
+the radio to <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> mode, if a hotspot type is configured (MMDVM or BlueDV) and <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> isn't disabled. There is no
+<abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> reply. The request is queued as the first MMDVM frame. The radio also stops GPS <abbr class="gl" tabindex="0" title="The text format GPS receivers use to report position and time." data-more="../user/22-glossary.html#t-nmea">NMEA</abbr> output, so MMDVMHost
+doesn't see stray text.</li>
+<li><strong>Trial.</strong> Line noise on a <abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="../dev/glossary.html#t-uart">UART</abbr> (a loose cable) is full of 0xE0 bytes, so the switch starts a trial first. The radio
+shows nothing and keeps the modem until two host-like frames arrive in a row: a command a host starts with
+(GET_VERSION, GET_STATUS, SET_MODE, SET_FREQ, SET_CONFIG) at the payload length that command takes. The first is
+answered at once, since a host waits for the GET_VERSION reply. Anything else ends the trial without a reply: a
+frame that isn't host-like, a byte the framer throws away, or 500 ms without the second frame. The <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> counts
+failed trials (<code>hostlink.noise</code>).</li>
+<li><strong>USB (<abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr>, MK22).</strong> From then on, every USB packet starting with 0xE0 and at least 3 bytes long is taken as one
+MMDVM frame. The radio does not parse the MMDVM length byte. A packet that doesn't fit in the frame ring is dropped
+and counted.</li>
+<li><strong>UART (radios without USB).</strong> Bytes are split into frames by the MMDVM length byte, resynchronizing on 0xE0. A host may
+send frames back to back, so gaps can't be used. Bytes that came with the first request are split the same way.</li>
+<li><strong><abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr> 3334 (network mode).</strong> A datagram is treated like a USB packet.</li>
+<li><strong>Leaving.</strong> In MMDVMHost mode the radio leaves after 20 s without traffic from the host. In BlueDV mode the user
+leaves. The radio then returns to programming mode. While in hotspot mode, <code>R</code>, <code>W</code>, <code>X</code>, <code>C</code> and <code>D</code> are not
+answered.</li>
+</ul>
+<h2 id="7-the-codeplug-image">7. The codeplug image</h2>
+<p>The PC tools see two images, &quot;<abbr class="gl" tabindex="0" title="Electrically erasable programmable read-only memory: a small chip that keeps settings." data-more="../dev/glossary.html#t-eeprom">EEPROM</abbr>&quot; and &quot;flash&quot;, in the MK22 radios' terms. They have a 64 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> <abbr class="gl" tabindex="0" title="Inter-integrated circuit: a 2-wire bus for small chips such as the RF transceiver." data-more="../dev/glossary.html#t-i2c">I2C</abbr> EEPROM and a 1 MB
+<abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> flash. The <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr> radios and the <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> radios have no EEPROM: both images live in one large SPI flash. The tools address
+it with the per-family offsets below. A new firmware can store the data any way it likes, as long as the shim
+presents these addresses.</p>
+<p>The <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> reads the image as stored, whatever it holds. RadioFoundry uses it only when its records in use look like an
+open-firmware <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> (<a href="codeplug-native.html">codeplug-native.md</a> 2, &quot;Another firmware's codeplug&quot;). The check runs
+again after every write.</p>
+<h3 id="71-per-family-address-mapping">7.1 Per-family address mapping</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Family</th>
+<th>EEPROM image</th>
+<th>Flash image (codeplug regions, <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr> DB, voice prompts)</th>
+<th>Wire commands used for the EEPROM image</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MK22</td>
+<td>Real EEPROM, address = EEPROM image address</td>
+<td>Flash address = flash image address (offset 0)</td>
+<td><code>R</code> 2 / <code>W</code> 4</td>
+</tr>
+<tr>
+<td>STM32 (radio types 5-10)</td>
+<td>Flash address = EEPROM image address (offset 0; this occupies flash 0x00000..0x0FFFF)</td>
+<td>Flash address = flash image address + 0x20000 (the &quot;128 KB offset&quot;)</td>
+<td><code>R</code> 1 or 2 / <code>X</code> 1-3 (flash sector writes). <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr>'s OpenUV380 driver puts everything in its flash bank</td>
+</tr>
+<tr>
+<td>HR_C7000</td>
+<td>As STM32 at the physical offset EEPROM image + 0x700000 (7.4)</td>
+<td>flash image + 0x20000 + 0x700000, the STM32 mapping</td>
+<td><code>R</code> 1 or 2 / <code>X</code> 1-3</td>
+</tr>
+</tbody>
+</table></div>
+<p>The rest of this section gives flash image addresses without the offset. For the STM32 family, add 0x20000 to get
+the address on the wire.</p>
+<p>Flash regions that qdmr transfers:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Region</th>
+<th>MK22 wire address</th>
+<th>STM32 wire address</th>
+<th>Size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EEPROM image part 1</td>
+<td>EEPROM 0x00080</td>
+<td>flash 0x00080</td>
+<td>0x5FE0 (to 0x6060)</td>
+</tr>
+<tr>
+<td>EEPROM image part 2</td>
+<td>EEPROM 0x07500</td>
+<td>flash 0x07500</td>
+<td>0x3B00 (to 0xB000)</td>
+</tr>
+<tr>
+<td>Custom data (&quot;additional settings&quot;)</td>
+<td>flash 0x00000</td>
+<td>flash 0x20000</td>
+<td>0x11A0 used by qdmr (boot melody plus satellites)</td>
+</tr>
+<tr>
+<td>Flash codeplug</td>
+<td>flash 0x7B000</td>
+<td>flash 0x9B000</td>
+<td>0x13E60 (to 0x8EE60 / 0xAEE60)</td>
+</tr>
+<tr>
+<td>DMR ID DB</td>
+<td>flash 0x30000 (+ 0xB8000)</td>
+<td>flash 0x50000 (+ 0xD8000)</td>
+<td>section 7.5</td>
+</tr>
+</tbody>
+</table></div>
+<p>EEPROM image part 1 ends at 0x6060. It therefore includes the first 0x15 bytes of the radio's own settings block at
+0x604B (7.2). A tool that writes back what it read restores those bytes unchanged. A shim must accept writes to that
+range without letting them corrupt the live settings. It can ignore the range, or validate it against the magic.</p>
+<h3 id="72-eeprom-image-map">7.2 EEPROM image map</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Address</th>
+<th>Size</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0000</td>
+<td>0x80</td>
+<td>Unused by the firmware</td>
+</tr>
+<tr>
+<td>0x0080</td>
+<td>0x60</td>
+<td>Device info (7.3.1)</td>
+</tr>
+<tr>
+<td>0x00E0</td>
+<td>0x28</td>
+<td>General settings: callsign at 0x00E0 (8 bytes), <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> ID at 0x00E8 (7.3.2)</td>
+</tr>
+<tr>
+<td>0x1400</td>
+<td>0x78</td>
+<td><abbr class="gl" tabindex="0" title="Dual tone multi frequency: the touch tones a keypad sends, in the audio." data-more="../user/22-glossary.html#t-dtmf">DTMF</abbr> signaling settings (7.3.9). The DTMF durations are at 0x1472 (5 bytes)</td>
+</tr>
+<tr>
+<td>0x1588</td>
+<td>8 x 0x40</td>
+<td><abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> configurations (7.3.8), to 0x1788</td>
+</tr>
+<tr>
+<td>0x2F88</td>
+<td>63 x 0x20</td>
+<td>DTMF contacts (7.3.7), to 0x3768</td>
+</tr>
+<tr>
+<td>0x3780</td>
+<td>0x10 + 128 x 0x38</td>
+<td>Channel bank 0: a 16 byte in-use bitmap, then channels 1-128 at 0x3790 (to 0x538F)</td>
+</tr>
+<tr>
+<td>0x6000</td>
+<td>4 + 70</td>
+<td>LUCZ, last used channel in each zone (7.3.10)</td>
+</tr>
+<tr>
+<td>0x604B</td>
+<td>0x70-0x80</td>
+<td>The radio's own settings block. Not part of the CPS codeplug (7.7)</td>
+</tr>
+<tr>
+<td>0x7500</td>
+<td></td>
+<td>Start of &quot;CPS section 2&quot;</td>
+</tr>
+<tr>
+<td>0x7518</td>
+<td>1</td>
+<td>Boot screen type: 0x01 text, 0x00 picture. This byte is also the start of the 7 byte boot PIN block read from 0x7518</td>
+</tr>
+<tr>
+<td>0x7519</td>
+<td>1</td>
+<td>Bit 0: boot password (PIN) enabled</td>
+</tr>
+<tr>
+<td>0x751C</td>
+<td>3</td>
+<td>Boot PIN as <abbr class="gl" tabindex="0" title="Binary coded decimal: each decimal digit in 4 bits." data-more="../dev/glossary.html#t-bcd">BCD</abbr> digits, high nibble first. A nibble of 0xF ends the PIN. Up to 6 digits</td>
+</tr>
+<tr>
+<td>0x7524</td>
+<td>10 x 2</td>
+<td>Quick-key slots (LE). The CPS's function ids there aren't documented here. RadioFoundry uses the slots for its key assignment: slot 0 the marker 0x4B02, slots 1-9 one per assignable key, the press's <code>keyfn_t</code> (including 17, Tone burst, press only) in the low byte and the long press's in the high byte (<code>core/input/keyassign.h</code>, <code>ui.md</code> 3.1). Layout 1 (marker 0x4B01, a slot each for the press and long press of three keys) is read and rewritten as layout 2 on the first change</td>
+</tr>
+<tr>
+<td>0x7540</td>
+<td>16</td>
+<td>Boot text line 1</td>
+</tr>
+<tr>
+<td>0x7550</td>
+<td>16</td>
+<td>Boot text line 2</td>
+</tr>
+<tr>
+<td>0x7590</td>
+<td>0x38</td>
+<td><abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> A, channel record format (7.3.3)</td>
+</tr>
+<tr>
+<td>0x75C8</td>
+<td>0x38</td>
+<td>VFO B</td>
+</tr>
+<tr>
+<td>0x8000</td>
+<td>0x10</td>
+<td>Reserved (&quot;extended zone basic&quot;), not read by the firmware</td>
+</tr>
+<tr>
+<td>0x8010</td>
+<td>0x20</td>
+<td>Zone in-use bitmap: bit j of byte i means zone slot (i x 8 + j) is in use. 68 slots are used</td>
+</tr>
+<tr>
+<td>0x8030</td>
+<td>68 x 0xB0</td>
+<td>Zone records (7.3.4), 80 channels each, to 0xAEF0. Open-firmware 16-channel layout: 68 x 0x30</td>
+</tr>
+<tr>
+<td>0xE000</td>
+<td>0x1000</td>
+<td>RadioFoundry's codeplug settings area (<a href="codeplug-settings.html">codeplug-settings.md</a>): keyed settings this layout has no field for. Outside the regions qdmr transfers</td>
+</tr>
+</tbody>
+</table></div>
+<p>Zone layout detection: the firmware reads the 16 bytes at 0x8060 and looks at the last one (0x806F). In the 16-channel
+layout, 0x806F is the last byte of the second zone's name, so it is 0xFF. In the 80-channel layout, it is the high byte
+of a channel number (at most 0x04). A value 0x00-0x04 therefore selects 80 channels per zone. Current tools always
+write the 80-channel layout.</p>
+<h3 id="73-records">7.3 Records</h3>
+<h4 id="731-device-info-eeprom-0x0080-96-bytes">7.3.1 Device info (EEPROM 0x0080, 96 bytes)</h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00</td>
+<td>2</td>
+<td>Minimum <abbr class="gl" tabindex="0" title="Ultra high frequency: 300 MHz to 3 GHz. The amateur 70 cm band is UHF." data-more="../user/22-glossary.html#t-uhf">UHF</abbr> frequency</td>
+</tr>
+<tr>
+<td>0x02</td>
+<td>2</td>
+<td>Maximum UHF frequency</td>
+</tr>
+<tr>
+<td>0x04</td>
+<td>2</td>
+<td>Minimum <abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="../user/22-glossary.html#t-vhf">VHF</abbr> frequency</td>
+</tr>
+<tr>
+<td>0x06</td>
+<td>2</td>
+<td>Maximum VHF frequency</td>
+</tr>
+<tr>
+<td>0x08</td>
+<td>6</td>
+<td>Last programming time</td>
+</tr>
+<tr>
+<td>0x0E</td>
+<td>2</td>
+<td>Reserved</td>
+</tr>
+<tr>
+<td>0x10</td>
+<td>8</td>
+<td>Model</td>
+</tr>
+<tr>
+<td>0x18</td>
+<td>16</td>
+<td>Serial number</td>
+</tr>
+<tr>
+<td>0x28</td>
+<td>8</td>
+<td>CPS software version</td>
+</tr>
+<tr>
+<td>0x30</td>
+<td>8</td>
+<td>Hardware version</td>
+</tr>
+<tr>
+<td>0x38</td>
+<td>8</td>
+<td>Firmware version</td>
+</tr>
+<tr>
+<td>0x40</td>
+<td>24</td>
+<td><abbr class="gl" tabindex="0" title="Digital signal processor: a chip, or a processor core, that does the audio and modem math." data-more="../dev/glossary.html#t-dsp">DSP</abbr> firmware version</td>
+</tr>
+<tr>
+<td>0x58</td>
+<td>8</td>
+<td>Reserved</td>
+</tr>
+</tbody>
+</table></div>
+<p>The firmware treats all of these as informational (inherited from the vendor layout). The shim should store and return
+them unchanged.</p>
+<h4 id="732-general-settings-eeprom-0x00e0-40-bytes">7.3.2 General settings (EEPROM 0x00E0, 40 bytes)</h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00</td>
+<td>8</td>
+<td>Callsign / radio name, <abbr class="gl" tabindex="0" title="The 7-bit character set of plain text." data-more="../dev/glossary.html#t-ascii">ASCII</abbr>, 0xFF padded</td>
+</tr>
+<tr>
+<td>0x08</td>
+<td>4</td>
+<td>The radio's DMR ID: 8 BCD digits stored big endian (bytes in reading order, for example ID 9992345 is 09 99 23 45)</td>
+</tr>
+<tr>
+<td>0x0C</td>
+<td>1</td>
+<td>Codeplug version byte, written by the CPS. Not used by the firmware</td>
+</tr>
+<tr>
+<td>0x0D</td>
+<td>3</td>
+<td>Reserved</td>
+</tr>
+<tr>
+<td>0x10</td>
+<td>1 each</td>
+<td><abbr class="gl" tabindex="0" title="Automatic Registration Service: a radio tells a presence server it is on the air." data-more="../user/22-glossary.html#t-ars">ARS</abbr> init delay, <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> preamble duration, monitor type, <abbr class="gl" tabindex="0" title="Voice-operated transmit." data-more="../user/22-glossary.html#t-vox">VOX</abbr> sensitivity, <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> low battery, <abbr class="gl" tabindex="0" title="A DMR page that makes another radio ring." data-more="../user/22-glossary.html#t-call-alert">call alert</abbr> duration, response timer, reminder timer, group hang, private hang (0x10..0x19)</td>
+</tr>
+<tr>
+<td>0x1A</td>
+<td>4</td>
+<td>flag1..flag4</td>
+</tr>
+<tr>
+<td>0x1E</td>
+<td>2</td>
+<td>Reserved</td>
+</tr>
+<tr>
+<td>0x20</td>
+<td>8</td>
+<td>Programming password</td>
+</tr>
+</tbody>
+</table></div>
+<p>Only the callsign and the DMR ID matter to the firmware. The rest is vendor layout and should be kept.
+The group and private hang bytes (0x18, 0x19) have no unit here. Our firmware reads them as the <abbr class="gl" tabindex="0" title="The time after a call during which PTT answers it." data-more="../user/22-glossary.html#t-reply-window">reply window</abbr>,
+assuming 500 ms steps (<code>codeplug.c</code> <code>GEN_HANG_UNIT_MS</code>, <code>dmr-voice.md</code> 7); that unit is not confirmed.</p>
+<h4 id="733-channel-56-bytes-eeprom-0x3790--56-x-n-1-for-n--1128-flash-banks-for-1291024-vfos-too">7.3.3 Channel (56 bytes; EEPROM 0x3790 + 56 x (n-1) for n = 1..128, flash banks for 129..1024; VFOs too)</h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00</td>
+<td>16</td>
+<td>Name, 0xFF padded. A record is empty when its in-use bit is clear</td>
+</tr>
+<tr>
+<td>0x10</td>
+<td>4</td>
+<td>RX frequency: BCD of the frequency in 10 Hz units, stored as a LE 32-bit word (438.500 MHz = 43850000 -&gt; 0x43850000 -&gt; bytes 00 00 85 43)</td>
+</tr>
+<tr>
+<td>0x14</td>
+<td>4</td>
+<td>TX frequency, same encoding</td>
+</tr>
+<tr>
+<td>0x18</td>
+<td>1</td>
+<td>Mode: 0 FM, 1 DMR</td>
+</tr>
+<tr>
+<td>0x19</td>
+<td>1</td>
+<td>Power: 0 = use the radio's master power; n = power level n-1. qdmr maps 1 min, 3 low, 6 mid, 9 high, 10 max; the levels themselves are per radio. Radios with 9 or more levels read n as level n-1; radios with fewer spread the scale over their levels (2 levels: 1-5 low, 6-10 high)</td>
+</tr>
+<tr>
+<td>0x1A</td>
+<td>1</td>
+<td>Fixed location latitude, low byte</td>
+</tr>
+<tr>
+<td>0x1B</td>
+<td>1</td>
+<td>TX timeout in 15 s units; 0 = the radio's own TX time-out (the <abbr class="gl" tabindex="0" title="Transmit timeout: the longest transmission the radio allows." data-more="../user/22-glossary.html#t-tot">TOT</abbr> setting), which zone sharing's imported channels use</td>
+</tr>
+<tr>
+<td>0x1C</td>
+<td>2</td>
+<td>Latitude, middle and high bytes</td>
+</tr>
+<tr>
+<td>0x1E</td>
+<td>2</td>
+<td>Longitude, low and middle bytes</td>
+</tr>
+<tr>
+<td>0x20</td>
+<td>2</td>
+<td>RX tone (LE): 0xFFFF or 0 = none. <abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-ctcss">CTCSS</abbr>: BCD of tenths of Hz (0x0885 = 88.5 Hz), bits 14-15 clear. <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-dcs">DCS</abbr>: bit 15 set, bit 14 set = inverted, the low bits are the code's octal digits written as hex digits (D023 = 0x8023, D023I = 0xC023)</td>
+</tr>
+<tr>
+<td>0x22</td>
+<td>2</td>
+<td>TX tone, same encoding</td>
+</tr>
+<tr>
+<td>0x24</td>
+<td>1</td>
+<td>Longitude, high byte</td>
+</tr>
+<tr>
+<td>0x25</td>
+<td>1</td>
+<td><abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="sfr.html">SFR</abbr> byte A (ours; was unused, see below)</td>
+</tr>
+<tr>
+<td>0x26</td>
+<td>1</td>
+<td>flag byte 1 (bits below)</td>
+</tr>
+<tr>
+<td>0x27</td>
+<td>3</td>
+<td>Per-channel DMR ID override, 24-bit BE, valid when flag 1 bit 7 is set. When unset, the CPS writes 00 16 00 (the vendor defaults of the fields these bytes replaced)</td>
+</tr>
+<tr>
+<td>0x2A</td>
+<td>1</td>
+<td>SFR byte B (ours; was unused, see below)</td>
+</tr>
+<tr>
+<td>0x2B</td>
+<td>1</td>
+<td><abbr class="gl" tabindex="0" title="The talkgroups a channel listens to. The codeplug calls it the RX group list." data-more="../user/22-glossary.html#t-listen-list">RX group list</abbr> (<abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">TG</abbr> list) index, 1-based, 0 = none</td>
+</tr>
+<tr>
+<td>0x2C</td>
+<td>1</td>
+<td><abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">Color code</abbr> 0-15</td>
+</tr>
+<tr>
+<td>0x2D</td>
+<td>1</td>
+<td>APRS configuration index, 1-based, 0 = none</td>
+</tr>
+<tr>
+<td>0x2E</td>
+<td>2</td>
+<td>TX contact index, LE, 1-based, 0 = none</td>
+</tr>
+<tr>
+<td>0x30</td>
+<td>1</td>
+<td>flag1: bits 0-1 <abbr class="gl" tabindex="0" title="A short text, usually a callsign and name, sent along with DMR voice." data-more="../user/22-glossary.html#t-talker-alias">talker alias</abbr> TX on <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">TS1</abbr>, bits 2-3 on TS2 (0 off, 1 APRS, 2 text, 3 both). RadioFoundry reads APRS as &quot;our position in this channel's calls&quot; (GPS Info, <code>dmr-voice.md</code> 3.1), in builds without APRS too</td>
+</tr>
+<tr>
+<td>0x31</td>
+<td>1</td>
+<td>flag2: bit 6 = timeslot 2 (clear = TS1)</td>
+</tr>
+<tr>
+<td>0x32</td>
+<td>1</td>
+<td>flag3: bits 6-7 = 0b11 STE, bit 5 non-STE.</td>
+</tr>
+<tr>
+<td>0x33</td>
+<td>1</td>
+<td>flag4: bit 7 power (vendor; superseded by 0x19), bit 6 VOX, bit 5 zone scan skip, bit 4 all-channel scan skip, bit 3 talkaround (unused), bit 2 RX only, bit 1 bandwidth 25 kHz (clear = 12.5 kHz), bit 0 squelch (vendor)</td>
+</tr>
+<tr>
+<td>0x34</td>
+<td>2</td>
+<td>VFO offset frequency (vendor; qdmr uses it as the VFO TX offset)</td>
+</tr>
+<tr>
+<td>0x36</td>
+<td>1</td>
+<td>VFO flags: bits 4-7 step index (2.5, 5, 6.25, 10, 12.5, 25, 30, 50 kHz); bits 2-3 offset mode (qdmr)</td>
+</tr>
+<tr>
+<td>0x37</td>
+<td>1</td>
+<td>Squelch: 0 = the radio's default, 1-21 = level. Values above 21 are read as 10</td>
+</tr>
+</tbody>
+</table></div>
+<p>Location: each coordinate is 24 bits, assembled from its high, middle and low bytes. Bit 23 is the sign (1 = south or
+west). Bits 22-15 are whole degrees. Bits 14-0 are the fraction in 1/10000 degree (0..9999). The location is used for
+distance sorting and the like when flag 1 bit 3 is set.</p>
+<p>Flag 1 (offset 0x26):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Bit</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td>Per-channel DMR ID override present (0x27..0x29)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>No beep</td>
+</tr>
+<tr>
+<td>5</td>
+<td>No power saving on this channel</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Out of band (set at run time on boards that have it, never saved)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Use the fixed location</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Force <abbr class="gl" tabindex="0" title="DMR radio to radio on one frequency, with no repeater. The standard calls it DMO." data-more="../dev/glossary.html#t-direct-mode">DMO</abbr> (direct mode on a duplex channel; qdmr calls it &quot;simplex&quot;)</td>
+</tr>
+<tr>
+<td>1</td>
+<td>SFR enabled for this channel (ours)</td>
+</tr>
+<tr>
+<td>0</td>
+<td>Roaming (ours reads it: in a roaming zone, flagged channels narrow the sites to themselves; <code>dmr-roaming.md</code> 5.2)</td>
+</tr>
+</tbody>
+</table></div>
+<p>SFR bytes (ours; the CPS doesn't know them and leaves them as read). The SFR fields are only read when flag 1 bit 1 is set; byte B bit 6 (the tone burst) is read on every channel:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Byte</th>
+<th>Bits</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A (0x25)</td>
+<td>2-0</td>
+<td>Role: 0 off, 1 user of a standard SFR, 2 user of a Motorola <abbr class="gl" tabindex="0" title="Motorola&#x27;s style of single frequency repeater, with different inbound and outbound color codes." data-more="../dev/glossary.html#t-erdm">ERDM</abbr> repeater, 3 this radio is a standard SFR repeater, 4 this radio is an ERDM-style repeater</td>
+</tr>
+<tr>
+<td>A</td>
+<td>4-3</td>
+<td>Outbound framing: 0 auto (<abbr class="gl" tabindex="0" title="Base station: the repeater or modem side of a DMR link, as opposed to the radio (MS)." data-more="../dev/glossary.html#t-bs">BS</abbr> for the Motorola role, else TS), 1 <abbr class="gl" tabindex="0" title="Mobile station: the radio, as opposed to the base station (BS)." data-more="../dev/glossary.html#t-ms">MS</abbr> sync, 2 TS1/TS2 sync, 3 BS sync</td>
+</tr>
+<tr>
+<td>A</td>
+<td>5</td>
+<td>Inbound slot: 1 = TS2, 0 = TS1. The outbound slot is the other one</td>
+</tr>
+<tr>
+<td>A</td>
+<td>7-6</td>
+<td><abbr class="gl" tabindex="0" title="How long after a call a repeater or radio keeps the call&#x27;s talkgroup ready for a reply." data-more="../user/22-glossary.html#t-hang-time">Hang time</abbr> index: 1 s, 2 s, 4 s, none</td>
+</tr>
+<tr>
+<td>B (0x2A)</td>
+<td>7</td>
+<td>Outbound color code set</td>
+</tr>
+<tr>
+<td>B</td>
+<td>6</td>
+<td>FM: the 1750 Hz tone burst at each PTT key-up (<a href="radio-features.html">radio-features.md</a> 3.3). Read and written without the SFR flag. A byte of 0xFF reads as off (a writer that fills bytes it doesn't know); setting the bit on such a byte writes 0xCF (the unused bits 5-4 cleared), never 0xFF</td>
+</tr>
+<tr>
+<td>B</td>
+<td>3-0</td>
+<td>That color code (else the channel's)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The repeater's timeout is the channel TOT, or 180 s when the TOT is 0.</p>
+<p>Channel banks in the flash image: banks 1-7 (channels 129-1024) start at flash image 0x7B1B0. Each bank is a 16 byte
+in-use bitmap followed by 128 channels of 56 bytes (0x1C10 bytes per bank), so channel n (n &gt;= 129) is at
+0x7B1C0 + 16 x ((n-129) / 128) + 56 x (n-129). Bitmaps: bit (k % 8) of byte k / 8 marks the bank's channel k (0-based)
+in use. The flash image from 0x7B000 to 0x7B1AF is unused by the firmware; keep it as read.</p>
+<h4 id="734-zone-eeprom-0x8030--0xb0-x-slot">7.3.4 Zone (EEPROM 0x8030 + 0xB0 x slot)</h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00</td>
+<td>16</td>
+<td>Name, 0xFF padded</td>
+</tr>
+<tr>
+<td>0x10</td>
+<td>80 x 2</td>
+<td>Channel numbers (LE, 1-based). The first 0 ends the list</td>
+</tr>
+</tbody>
+</table></div>
+<p>The firmware counts zones by walking the in-use bitmap. Slots need not be packed. The radio adds a virtual &quot;All
+Channels&quot; zone after the real ones.</p>
+<h4 id="735-contact-flash-image-0x87620--24-x-n-1-n--11024">7.3.5 Contact (flash image 0x87620 + 24 x (n-1), n = 1..1024)</h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00</td>
+<td>16</td>
+<td>Name, 0xFF padded. 0xFF in the first byte means empty</td>
+</tr>
+<tr>
+<td>0x10</td>
+<td>4</td>
+<td>Talkgroup or ID: 8 BCD digits stored big endian (as the DMR ID in 7.3.2)</td>
+</tr>
+<tr>
+<td>0x14</td>
+<td>1</td>
+<td>Call type: 0 group, 1 private, 2 <abbr class="gl" tabindex="0" title="DMR talkgroup 16777215, heard by every radio on the slot." data-more="../user/22-glossary.html#t-all-call">all call</abbr>. 0xFF means empty</td>
+</tr>
+<tr>
+<td>0x15</td>
+<td>1</td>
+<td>Call receive tone (vendor)</td>
+</tr>
+<tr>
+<td>0x16</td>
+<td>1</td>
+<td>Ring style (vendor)</td>
+</tr>
+<tr>
+<td>0x17</td>
+<td>1</td>
+<td>Timeslot override: bit 0 set = no override; otherwise bit 1 is the timeslot minus 1. 0xFF = no override</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="736-rx-group-lists-tg-lists">7.3.6 RX group lists (TG lists)</h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Address</th>
+<th>Size</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Flash image 0x8D620</td>
+<td>76 bytes, padded to 0x80</td>
+<td>Per list: 0 = unused, otherwise the member count plus 1</td>
+</tr>
+<tr>
+<td>Flash image 0x8D6A0 + 80 x (n-1)</td>
+<td>80 bytes each, 76 lists, to 0x8EE60</td>
+<td>Name 16 bytes (0xFF padded), then 32 contact indices (LE, 1-based; the first 0 ends the list)</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="737-dtmf-contact-eeprom-0x2f88--32-x-n-1-n--163">7.3.7 DTMF contact (EEPROM 0x2F88 + 32 x (n-1), n = 1..63)</h4>
+<p>The record is a name (16 bytes, 0xFF padded; a first byte of 0xFF or 0x00 means empty) followed by a code of 16 bytes:
+one digit per byte (0x00-0x09 the digits, 0x0A-0x0D A-D, 0x0E <code>*</code>, 0x0F <code>#</code>), ended by 0xFF. qdmr assumes 64 contacts,
+but a 64th would overlap the channel bank 0 bitmap at 0x3780. Use 63.</p>
+<h4 id="738-aprs-configuration-eeprom-0x1588--64-x-n-1-n--18">7.3.8 APRS configuration (EEPROM 0x1588 + 64 x (n-1), n = 1..8)</h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00</td>
+<td>8</td>
+<td>Name (0xFF in the first byte means empty)</td>
+</tr>
+<tr>
+<td>0x08</td>
+<td>1</td>
+<td>Sender SSID</td>
+</tr>
+<tr>
+<td>0x09</td>
+<td>3</td>
+<td>Fixed latitude, 24-bit (as for channels)</td>
+</tr>
+<tr>
+<td>0x0C</td>
+<td>3</td>
+<td>Fixed longitude</td>
+</tr>
+<tr>
+<td>0x0F</td>
+<td>6 + 1</td>
+<td>Path 1: callsign, SSID</td>
+</tr>
+<tr>
+<td>0x16</td>
+<td>6 + 1</td>
+<td>Path 2: callsign, SSID</td>
+</tr>
+<tr>
+<td>0x1D</td>
+<td>1</td>
+<td>Symbol table</td>
+</tr>
+<tr>
+<td>0x1E</td>
+<td>1</td>
+<td>Symbol index</td>
+</tr>
+<tr>
+<td>0x1F</td>
+<td>24</td>
+<td>Comment (qdmr uses 23 characters)</td>
+</tr>
+<tr>
+<td>0x37</td>
+<td>4</td>
+<td>TX frequency (unaligned, LE)</td>
+</tr>
+<tr>
+<td>0x3B</td>
+<td>2</td>
+<td>Reserved</td>
+</tr>
+<tr>
+<td>0x3D</td>
+<td>1</td>
+<td>Flags: bit 0 300 baud (else 1200); bit 1 use the fixed position; bit 2 transmit QSY info; bit 3 beacon silently; bits 5-7 position ambiguity</td>
+</tr>
+<tr>
+<td>0x3E</td>
+<td>2</td>
+<td>Magic / version, LE: 0x4153 now. 0x4152 was the older layout, whose ambiguity field sat one bit lower; RadioFoundry accepts both and reads the ambiguity field at the matching position</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="739-dtmf-signaling-eeprom-0x1400-120-bytes">7.3.9 DTMF signaling (EEPROM 0x1400, 120 bytes)</h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>8</td>
+<td>Self ID</td>
+</tr>
+<tr>
+<td>8</td>
+<td>16</td>
+<td>Kill code</td>
+</tr>
+<tr>
+<td>24</td>
+<td>16</td>
+<td>Wake code</td>
+</tr>
+<tr>
+<td>40</td>
+<td>1 each</td>
+<td>Delimiter, group code, decode response, auto reset timer, flag1 (40..44)</td>
+</tr>
+<tr>
+<td>45</td>
+<td>3</td>
+<td>Reserved</td>
+</tr>
+<tr>
+<td>48</td>
+<td>30</td>
+<td>PTT ID up code</td>
+</tr>
+<tr>
+<td>78</td>
+<td>2</td>
+<td>Reserved</td>
+</tr>
+<tr>
+<td>80</td>
+<td>30</td>
+<td>PTT ID down code</td>
+</tr>
+<tr>
+<td>110</td>
+<td>2</td>
+<td>Reserved</td>
+</tr>
+<tr>
+<td>112</td>
+<td>1</td>
+<td>Response hold time</td>
+</tr>
+<tr>
+<td>113</td>
+<td>1</td>
+<td>Decode time</td>
+</tr>
+<tr>
+<td>114 (0x72)</td>
+<td>1</td>
+<td>First digit delay, in 100 ms units</td>
+</tr>
+<tr>
+<td>115</td>
+<td>1</td>
+<td>First digit duration, in 100 ms units</td>
+</tr>
+<tr>
+<td>116</td>
+<td>1</td>
+<td><code>*</code> and <code>#</code> duration, in 100 ms units</td>
+</tr>
+<tr>
+<td>117</td>
+<td>1</td>
+<td>Rate, 1-10 digits per second</td>
+</tr>
+<tr>
+<td>118</td>
+<td>1</td>
+<td>TX tail, in 100 ms units</td>
+</tr>
+<tr>
+<td>119</td>
+<td>1</td>
+<td>Reserved</td>
+</tr>
+</tbody>
+</table></div>
+<p>The firmware uses only the five duration bytes at 114-118. qdmr reads this block starting at 0x1470.</p>
+<h4 id="7310-lucz-eeprom-0x6000">7.3.10 LUCZ (EEPROM 0x6000)</h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>4</td>
+<td>ASCII <code>LUCZ</code>. Without it, every zone starts at its first channel</td>
+</tr>
+<tr>
+<td>4 + z</td>
+<td>1</td>
+<td>For real zone slot z = 0..67: the index within that zone (0-based)</td>
+</tr>
+<tr>
+<td>4 + 68</td>
+<td>2</td>
+<td>All Channels: channel number minus 1, LE</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="74-custom-data-calibration-and-the-data-flash-offset">7.4 Custom data, calibration and the data flash offset</h3>
+<p>Flash image 0x00000 holds the custom data area:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>8</td>
+<td>the 8 ASCII bytes <code>4F 70 65 6E 47 44 37 37</code>. If missing, there is no custom data</td>
+</tr>
+<tr>
+<td>8</td>
+<td>4</td>
+<td>Version (LE)</td>
+</tr>
+<tr>
+<td>12</td>
+<td></td>
+<td>Blocks, each a header of type (4 bytes LE) and length (4 bytes LE), followed by the data. The walk ends at an empty header (type or length 0xFFFFFFFF) or a length of 0, and never goes past 0x10000</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Boot image. On mono radios a 128x64 1-bit bitmap (the RD-5R uses fewer rows)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Boot melody. qdmr writes 0x208 bytes: magic 2, then 256 notes of 2 bytes (pitch index, duration)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Satellite TLE set. qdmr writes 0x9E0 bytes: magic 3, then 25 records of 0x64 bytes (name, epoch, orbit elements as packed BCD, FM and APRS up/downlinks, CTCSS, beacon, APRS path)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Day theme colors (color radios)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Night theme colors</td>
+</tr>
+</tbody>
+</table></div>
+<p>A block's length can't change once written; the firmware rewrites a block only when the length is the same.</p>
+<p>Calibration: on the STM32 and HR_C7000 radios, the window at flash image 0x10000..0x101FF is the working calibration
+copy (2.2). This address is physical, not offset. On an MK22 radio, calibration is at 0xF000 (working copy) and 0x8F000
+(factory; 0x6F000 on type 2), read raw.</p>
+<p>HR_C7000 specifics:</p>
+<ul>
+<li><strong>Physical offset.</strong> Every flash address the CPS uses (the EEPROM image, the flash image, the DMR ID DB, voice
+prompts) is placed at +0x700000 in the 16 MB data flash (<code>board.openfw_eeprom</code> 0x700000, <code>board.openfw_flash</code>
+0x720000, end 0xF00000). Below that is the radio's own data (settings, contacts, fonts, voice prompts,
+recordings, factory calibration), which is never touched. The window therefore covers 9 MB (to 0xFFFFFF).</li>
+<li><strong>Collision with the radio's own firmware.</strong> The window sits inside a region (0x6DC000..0xFFFFFF) that the original
+firmware may use for recording and extended contacts. Going back to the original firmware and recording can
+overwrite the codeplug.</li>
+<li><strong>Flash image offset.</strong> The build uses the STM32 mapping: the EEPROM image at 0x700000 and the flash image at
++0x20000 from it, so the custom data area and the EEPROM image don't overlap.</li>
+</ul>
+<h3 id="75-dmr-id-database">7.5 DMR ID database</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Family</th>
+<th>Header and area 1</th>
+<th>Area 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MK22</td>
+<td>Flash 0x30000, 256 KB</td>
+<td>Flash 0xB8000 (0x48000 bytes)</td>
+</tr>
+<tr>
+<td>STM32</td>
+<td>Flash 0x50000</td>
+<td>Flash 0xD8000. qdmr allows up to 0xD28000 bytes, to the 14 MB mark</td>
+</tr>
+<tr>
+<td>Format <code>n</code></td>
+<td></td>
+<td>Area 2 starts at the voice prompt header address instead, overwriting the prompts (features bit 1)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Header (12 bytes):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>2</td>
+<td>ASCII <code>Id</code>. Anything else means no database. The old <code>ID</code> tag is rejected</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>Format. <code>N</code> (78): compressed text with 3-byte binary IDs. <code>n</code>: the same, with area 2 in the voice prompt area. Any other value: 4-byte BCD IDs with plain text. qdmr's &quot;uncompressed&quot; format is 45 (<code>-</code>)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+<td>Record size + 0x4A</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>Version, ASCII (qdmr writes <code>001</code>)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>4</td>
+<td>Record count, LE</td>
+</tr>
+</tbody>
+</table></div>
+<p>Records follow the header in area 1, sorted by ascending ID, with no gaps. Area 1 holds as many whole records as fit
+in 256 KB minus the header. The rest continue at the start of area 2. The radio reads only the records that end before
+the flash image's end (the board's <code>openfw_end</code>): on a board with a smaller data flash, records a header counts past
+it are not read. Each record is:</p>
+<ul>
+<li>An ID: 3 bytes LE binary (formats <code>N</code> and <code>n</code>) or 4 bytes BCD.</li>
+<li>The text. With <code>N</code> and <code>n</code>, the text is packed at 6 bits per character, 4 characters in 3 bytes, most
+significant first. The 64-character alphabet is, in order: space, <code>0</code>-<code>9</code>, <code>A</code>-<code>Z</code>, <code>a</code>-<code>z</code>, <code>.</code> (codes 0-63).
+Trailing spaces are trimmed after unpacking. The text is &quot;callsign name [city state country]&quot; (qdmr's
+convention). The record size is 3 + 3/4 of the text length. qdmr's default text length is 16 characters (15 byte
+records) on the MK22 family and 32 (27 byte records) on the UV380 family.</li>
+</ul>
+<p>The radio looks IDs up by binary search, using a cache of 14 evenly spaced IDs once there are more than 40 records.</p>
+<p>RadioFoundry takes a header only if its records end inside the open-firmware area (<code>openfw_end</code>, or the data
+flash's end on a board without a flash map). A larger count or record size is no database, so a lookup never reads
+what follows the area.</p>
+<p>RadioFoundry also reads format <code>C</code> (header bytes 2-3 <code>C</code>, 0): a dictionary-coded database about half the size of
+<code>N</code>, laid out so a refresh changes few 4 KB blocks (<a href="iddb-compact.html">iddb-compact.md</a>). Byte 3 is 0, so firmware
+that doesn't read it sees no database.</p>
+<h3 id="76-voice-prompts-file">7.6 Voice prompts file</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Family</th>
+<th>Header address (flash image)</th>
+<th>Old address, still read</th>
+<th>Version</th>
+<th>TOC entries</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Color radios (STM32, HR_C7000)</td>
+<td>0x8F400 (+0x20000)</td>
+<td>0xE0000 (+0x20000)</td>
+<td>9</td>
+<td>368</td>
+</tr>
+<tr>
+<td>Mono radios (MK22)</td>
+<td>0x8F400</td>
+<td>0xE0000</td>
+<td>8</td>
+<td>331</td>
+</tr>
+</tbody>
+</table></div>
+<p>Layout:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>4</td>
+<td>Magic 0x5056 (<code>VP</code>), LE</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>Version (table above)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>4 x N</td>
+<td>Table of contents: prompt i plays the bytes from TOC[i] to TOC[i+1], as offsets from the end of the TOC. A zero entry means the prompt is absent (silence is played instead)</td>
+</tr>
+<tr>
+<td>8 + 4N</td>
+<td></td>
+<td><abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE+2</abbr> data in 27-byte units (three 9-byte voice frames)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Prompt numbering, fixed part:</p>
+<ul>
+<li>0 silence, 1 &quot;point&quot;, 2-11 digits 0-9, 12-37 letters A-Z, 38 an alternate Z.</li>
+<li>39 onward: channel, contact, milliseconds, megahertz, kilohertz, talkgroup, degrees, VFO, seconds, minutes, volts,
+watt, watts, milliwatts, percent, receive, transmit, mode, DMR, FM, plus, minus, the three VFO exchange and copy
+phrases, power, channel mode, scan mode, timeslot mode, filter mode, zone mode, power mode, color code mode,
+hertz, settings update, star, hash, VOX, sweep scan mode, eco mode, duration, reverse repeater, distance, km/h,
+kilometers, then three unused slots.</li>
+<li>That gives 88 fixed prompts. Entries from 88 onward follow the order of the language strings of the firmware the CPS targets; the
+mono builds skip the theme strings.</li>
+</ul>
+<p>The voice prompt files are made with the AMBE codec, and the new firmware carries no codec. Whether the new firmware
+reads this file at all is a product decision. If it does, the language-string index list has to be supplied as interop data, which is an open question.</p>
+<h3 id="77-the-radios-own-settings-block">7.7 The radio's own settings block</h3>
+<p>At EEPROM image 0x604B, right after the LUCZ, the firmware keeps its own non-volatile settings. This block is not a
+CPS codeplug structure, and the CPS doesn't interpret it. The first field is a 32-bit LE magic, which changes whenever
+the layout changes; on a mismatch the radio resets the block to defaults.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Family</th>
+<th>Magic</th>
+<th>Size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STM32 base</td>
+<td>0x4780</td>
+<td>0x74</td>
+</tr>
+<tr>
+<td>STM32 with the DMR data settings</td>
+<td>0x4781</td>
+<td>0x80</td>
+</tr>
+<tr>
+<td>MK22 base</td>
+<td>0x4784 (0x4785 with GPS logging)</td>
+<td>112</td>
+</tr>
+<tr>
+<td>HR_C7000</td>
+<td>0x477C</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>The new firmware should keep its settings elsewhere, and treat bytes 0x604B..0x605F of a codeplug write as noise
+(7.1).</p>
+<h2 id="8-byte-order-summary">8. Byte order summary</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Encoding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Request and reply headers (address, length)</td>
+<td>BE</td>
+</tr>
+<tr>
+<td>Radio info, zone and group member lists, contact indices, quick keys, LUCZ All Channels entry, custom data headers, DMR ID DB count, voice prompt header and TOC</td>
+<td>LE</td>
+</tr>
+<tr>
+<td>Channel frequencies</td>
+<td><abbr class="gl" tabindex="0" title="Binary coded decimal: each decimal digit in 4 bits." data-more="../dev/glossary.html#t-bcd">BCD</abbr> in 10 Hz units, as a LE 32-bit word</td>
+</tr>
+<tr>
+<td>CTCSS</td>
+<td>BCD in tenths of Hz, as a LE 16-bit word. <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-dcs">DCS</abbr>: flags in bits 14-15, octal digits as hex</td>
+</tr>
+<tr>
+<td>Contact numbers and the radio's DMR ID</td>
+<td>BCD, big-endian byte order</td>
+</tr>
+<tr>
+<td>Per-channel DMR ID override</td>
+<td>24-bit binary, BE</td>
+</tr>
+<tr>
+<td>DMR ID DB IDs</td>
+<td>24-bit binary LE (formats <code>N</code> and <code>n</code>) or 32-bit BCD</td>
+</tr>
+<tr>
+<td>Strings</td>
+<td><abbr class="gl" tabindex="0" title="The 7-bit character set of plain text." data-more="../dev/glossary.html#t-ascii">ASCII</abbr>, 0xFF padded (<abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> text command: NUL terminated)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="9-version-differences-to-handle">9. Version differences to handle</h2>
+<ul>
+<li><strong>structVersion.</strong> Version 3 (46 bytes, with features). <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr> reads version 1 (44 bytes, no features field) as well.</li>
+<li><strong>radioType 11 (<abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr>).</strong> Known to the open-firmware <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> since E2026.07.13, unknown to qdmr (checked against its current source). RadioFoundry reports 6 on HR_C7000 boards, which qdmr accepts because the image mapping matches (7.4); qdmr then shows the UV380 model.</li>
+<li><strong>Panel types 8 and 10.</strong> The type follows the panel's color order. The CPS needs it only for screenshots.
+qdmr treats the two alike.</li>
+<li><strong><abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> magic.</strong> 0x4153 now, 0x4152 in older records (7.3.8).</li>
+<li><strong>Voice prompt versions.</strong> 8 for mono radios, 9 for color radios. A version mismatch makes the radio fall back to
+beeps.</li>
+<li><strong>Our additions.</strong> The <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="sfr.html">SFR</abbr> bytes (with the tone burst bit) and flag 1 bit 1, the <code>D</code> commands, the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> settings
+area at <abbr class="gl" tabindex="0" title="Electrically erasable programmable read-only memory: a small chip that keeps settings." data-more="../dev/glossary.html#t-eeprom">EEPROM</abbr> image 0xE000 (<a href="codeplug-settings.html">codeplug-settings.md</a>) and the network mode USB identities
+(PID 0x0095 / 0x0096) don't exist in R20260131. They are invisible to the CPS, which round-trips the bytes it read.</li>
+</ul>
+<h2 id="10-open-questions">10. Open questions</h2>
+<ol>
+<li>Which flash image offset does the open-firmware <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> use for radio type 11? RadioFoundry reports type 6 and uses the <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr> mapping (7.4), which works with <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr>.</li>
+<li>Which radio type the <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> boards should report: 11 for the open-firmware CPS, or an STM32 type (today 6) so that qdmr works, or a qdmr change to add type 11.</li>
+<li>Exactly which <abbr class="gl" tabindex="0" title="Electrically erasable programmable read-only memory: a small chip that keeps settings." data-more="../dev/glossary.html#t-eeprom">EEPROM</abbr> and flash ranges the closed open-firmware CPS reads and writes, beyond the qdmr ranges above
+(themes, boot image, calibration, security registers). This needs a USB capture of a full CPS read and write.</li>
+<li>Whether to support voice prompt files (they need the language-string index list and <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE</abbr> playback).</li>
+<li>Whether the shim answers area 8 (AMBE compress) and area 10 (security registers) at all, or always with <code>-</code>.</li>
+</ol>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/open-firmware-cps.md">Vedi il sorgente di questa pagina</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="In questa pagina">
+		<p class="eyebrow">In questa pagina</p>
+		<ul><li class="l2"><a href="#1-transports-and-framing">1. Transports and framing</a></li><li class="l3"><a href="#11-usb-reassembly-stm32-and-mk22">1.1 USB reassembly (STM32 and MK22)</a></li><li class="l3"><a href="#12-uart-framing-radios-without-usb">1.2 UART framing (radios without USB)</a></li><li class="l3"><a href="#13-addresses-and-lengths">1.3 Addresses and lengths</a></li><li class="l2"><a href="#2-requests">2. Requests</a></li><li class="l3"><a href="#21-r-read">2.1 R: read</a></li><li class="l3"><a href="#22-w--x-write">2.2 W / X: write</a></li><li class="l3"><a href="#23-c-control">2.3 C: control</a></li><li class="l2"><a href="#3-memory-areas-r-byte-1">3. Memory areas (R byte 1)</a></li><li class="l2"><a href="#4-radio-info-area-9">4. Radio info (area 9)</a></li><li class="l2"><a href="#5-d-dmr-data-service-host-commands-ours">5. D: DMR data service host commands (ours)</a></li><li class="l2"><a href="#6-hotspot-mode-switch-0xe0">6. Hotspot mode switch (0xE0)</a></li><li class="l2"><a href="#7-the-codeplug-image">7. The codeplug image</a></li><li class="l3"><a href="#71-per-family-address-mapping">7.1 Per-family address mapping</a></li><li class="l3"><a href="#72-eeprom-image-map">7.2 EEPROM image map</a></li><li class="l3"><a href="#73-records">7.3 Records</a></li><li class="l3"><a href="#74-custom-data-calibration-and-the-data-flash-offset">7.4 Custom data, calibration and the data flash offset</a></li><li class="l3"><a href="#75-dmr-id-database">7.5 DMR ID database</a></li><li class="l3"><a href="#76-voice-prompts-file">7.6 Voice prompts file</a></li><li class="l3"><a href="#77-the-radios-own-settings-block">7.7 The radio&#x27;s own settings block</a></li><li class="l2"><a href="#8-byte-order-summary">8. Byte order summary</a></li><li class="l2"><a href="#9-version-differences-to-handle">9. Version differences to handle</a></li><li class="l2"><a href="#10-open-questions">10. Open questions</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Unisciti alla comunità RadioFoundry</strong><span class="small muted">Domande, aiuto con la tua radio e novità, su Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Hai trovato un bug? Vuoi che la tua radio sia supportata?</strong><span class="small muted">Apri una segnalazione su GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry ha licenza MIT · <a href="https://github.com/radiofoundry/radiofoundry">Codice sorgente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunità</a> · <a href="../../../it/docs/index.html">Documenti</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Novità</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

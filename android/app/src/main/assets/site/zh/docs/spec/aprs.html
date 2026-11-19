@@ -1,0 +1,699 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>APRS · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="APRS · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/spec/aprs.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/aprs.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/aprs.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/aprs.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/aprs.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/aprs.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/spec/aprs.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/aprs.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/aprs.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/aprs.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="规范">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 规范</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html" aria-current="page">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">本页尚未翻译，目前显示英文。</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<!-- Copyright (c) 2026 The RadioFoundry Authors -->
+<h1 id="aprs">APRS</h1>
+<p><abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> (Automatic Packet Reporting System) on RadioFoundry: our position, status and messages as AX.25 UI frames in
+Bell 202 <abbr class="gl" tabindex="0" title="Audio frequency shift keying: data as two audio tones on an FM carrier. APRS at 1200 baud uses it." data-more="../dev/glossary.html#t-afsk">AFSK</abbr> on FM; positions over <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> to an APRS gateway ID; automatic beaconing from several trigger sources; a
+<abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="../user/22-glossary.html#t-kiss">KISS</abbr> <abbr class="gl" tabindex="0" title="Terminal node controller: the modem that turns packet data into audio tones and back." data-more="../dev/glossary.html#t-tnc">TNC</abbr> on the host port (and on <abbr class="gl" tabindex="0" title="Transmission Control Protocol: IP connections with ordered, guaranteed delivery." data-more="../dev/glossary.html#t-tcp">TCP</abbr> port 8001 in USB network mode); the <abbr class="gl" tabindex="0" title="A station that passes APRS packets between the air and the APRS-IS internet network." data-more="../user/22-glossary.html#t-igate">iGate</abbr> rules, with the APRS-IS connection
+held by a host helper or by the radio's own client (<code>tcp-services.md</code> 4, 7); and, on radios that can sample their
+received audio, a demodulator, a station list, messages to us and a digipeater.</p>
+<p>Code: <code>core/aprs</code> (portable, host tested), the <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> part in <code>core/radio/radio_sm.c</code> (the APRS block), the board's tone
+path behind <code>hal/hal_afsk.h</code>, the UI in <code>core/ui/ui_aprs.c</code>, the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> in <code>core/debuglink/debuglink_aprs.c</code>, the
+host helper <code>tools/aprs_gate.py</code>. Build switches: <code>CONFIG_APRS</code> (the engine), <code>CONFIG_APRS_AFSK</code> and
+<code>CONFIG_APRS_DMR</code> (its two ways out, section 2), <code>CONFIG_APRS_RX</code>, <code>CONFIG_APRS_IGATE</code>, and on the USB network link
+<code>CONFIG_NET_KISS</code> and <code>CONFIG_NET_APRSIS</code> (<code>docs/build-config.md</code>). Where our position comes from is the position
+service's (<a href="position.html">position.md</a>); DMR GPS Info and <abbr class="gl" tabindex="0" title="Location Request and Response Protocol: a dispatcher asks a radio for its position. Motorola&#x27;s position format; the standard has LIP." data-more="../user/22-glossary.html#t-lrrp">LRRP</abbr> use it too and need no APRS.</p>
+<p>Sources (all public, read for the formats only; no implementation was used as a source, <code>CLEANROOM.md</code>):</p>
+<ul>
+<li>AX.25 Link Access Protocol for Amateur Packet Radio, version 2.2 (TAPR, 1998): address field, UI frames, FCS,
+bit stuffing (sections 3, 6).</li>
+<li>APRS Protocol Reference 1.0 (APRS Working Group, 2000), &quot;APRS101&quot;, and the APRS 1.1 and 1.2 addenda: data types,
+positions (plain and compressed), Mic-E, status, messages and acks, the third-party format, tocalls, paths,
+position ambiguity.</li>
+<li>The KISS TNC protocol (Chepponis and Karn, 1987): framing, escapes, the command bytes.</li>
+<li>aprs-is.net: &quot;IGate Design&quot;, &quot;q Construct&quot;, &quot;Connecting to APRS-IS&quot; (login, passcode, filters).</li>
+<li>SmartBeaconing as published by Tony Arnerich KD7TA and Steve Bragg KA9MVA (HamHUD), released for anyone to use.</li>
+<li><abbr class="gl" tabindex="0" title="A worldwide amateur DMR network of linked servers and talkgroups." data-more="../user/22-glossary.html#t-brandmeister">BrandMeister</abbr>'s APRS documentation: the location service IDs (the retired 5050-5059 and the MCC999 gateway) that turn Motorola (LRRP) and
+Hytera position reports into APRS positions (&quot;Position reports of Hytera and Motorola radios can be forwarded to
+APRS&quot;, wiki.brandmeister.network/index.php/APRS, last edited 2020-07-03).</li>
+<li>Bell 202: 1200 baud, mark 1200 Hz, space 2200 Hz, NRZI (a 0 bit is a tone change).</li>
+</ul>
+<p>Black-box oracles (never read for code): Direwolf decodes the WAV that <code>aprsTest --wav</code> writes
+(<code>tests/host/aprs_wav_check.sh</code>) and the radio's transmission on the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench (section 13); APRSdroid, Xastir or
+aprx can stand in.</p>
+<h2 id="1-what-each-radio-does">1. What each radio does</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Needs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FM AFSK transmit</td>
+<td><code>CONFIG_APRS_AFSK</code> and <code>board.afsk-&gt;tx_*</code> (5.1)</td>
+</tr>
+<tr>
+<td>FM AFSK receive, station list, digipeater, messages to us</td>
+<td><code>CONFIG_APRS_RX</code> and <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> audio: <code>board.afsk-&gt;rx_*</code>, or FM receive audio on the <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> stream (<code>AUDIO_TAP_FM_RX</code>) (5.3)</td>
+</tr>
+<tr>
+<td>Positions over DMR (LRRP / UDT)</td>
+<td><code>CONFIG_APRS_DMR</code>, on a <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> channel</td>
+</tr>
+<tr>
+<td>KISS TNC on the host port (UDP 3334 and TCP 8001 in network mode)</td>
+<td><code>CONFIG_APRS_AFSK</code> (<abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> path; RX frames only with RX)</td>
+</tr>
+<tr>
+<td>iGate</td>
+<td>RX for <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> -&gt; IS; IS -&gt; RF messages only once RX exists</td>
+</tr>
+<tr>
+<td>Position</td>
+<td>the position service (<a href="position.html">position.md</a>): the board GPS, host <abbr class="gl" tabindex="0" title="The text format GPS receivers use to report position and time." data-more="../user/22-glossary.html#t-nmea">NMEA</abbr> or the fixed position</td>
+</tr>
+</tbody>
+</table></div>
+<p>What a board provides:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Path</th>
+<th><abbr class="gl" tabindex="0" title="Audio frequency shift keying: data as two audio tones on an FM carrier. APRS at 1200 baud uses it." data-more="../dev/glossary.html#t-afsk">AFSK</abbr> transmit</th>
+<th>AFSK receive</th>
+<th>GPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RF chip with a tone generator (AT1846S)</td>
+<td>The tone generator retuned per symbol</td>
+<td>FM receive audio on the PCM stream (<code>AUDIO_TAP_FM_RX</code>, 5.3)</td>
+<td><code>CAP_GPS</code></td>
+</tr>
+<tr>
+<td>HR_C7000</td>
+<td>8 kHz PCM through the modem's prompt <abbr class="gl" tabindex="0" title="First in, first out: a queue of data between a producer and a consumer." data-more="../dev/glossary.html#t-fifo">FIFO</abbr> into the FM modulator (<a href="modem-hrc7000.html">modem-hrc7000.md</a> 8.4)</td>
+<td>The modem's FM receive audio, ungated (8.5)</td>
+<td><code>CAP_GPS</code></td>
+</tr>
+<tr>
+<td>No tone path written</td>
+<td>None (DMR positions still work)</td>
+<td>None</td>
+<td><code>CAP_GPS</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><a href="../feature-matrix.html">feature-matrix.md</a> shows which radios have AFSK transmit (<code>APRS</code>) and receive (<code>APRS_RX</code>).</p>
+<p>Everything is host tested. On the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench (section 13): positions over DMR (<abbr class="gl" tabindex="0" title="Location Request and Response Protocol: a dispatcher asks a radio for its position. Motorola&#x27;s position format; the standard has LIP." data-more="../user/22-glossary.html#t-lrrp">LRRP</abbr> and <abbr class="gl" tabindex="0" title="Unified data transport: DMR short data sent as a plain block of bytes." data-more="../dev/glossary.html#t-udt">UDT</abbr>) decode, and FM AFSK
+decodes with a valid FCS.</p>
+<h2 id="2-model">2. Model</h2>
+<p>The engine (<code>core/aprs/aprs.c</code>) runs in the radio task: <code>aprs_tick</code> from <code>radio_sm_poll</code> every 25 ms. The UI, the
+<abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> and the host link reach it through the &quot;any task&quot; calls, which take a lock the radio task sets up
+(<code>aprs_set_lock</code>, the scheduler suspended for short copies). Settings and <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> reads take the storage mutex and so
+happen outside that lock.</p>
+<p>The engine sends through two backends. Each has its own switch and works without the other:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Switch</th>
+<th>File</th>
+<th>Holds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Engine</td>
+<td><code>CONFIG_APRS</code></td>
+<td><code>aprs.c</code></td>
+<td>the settings, the beacon triggers, the view, &quot;Send position now&quot;</td>
+</tr>
+<tr>
+<td>AX.25 on FM</td>
+<td><code>CONFIG_APRS_AFSK</code> (needs <code>APRS</code> and <code>FM</code>)</td>
+<td><code>aprs_ax25.c</code></td>
+<td>the callsign, the frame queue and the <abbr class="gl" tabindex="0" title="Audio frequency shift keying: data as two audio tones on an FM carrier. APRS at 1200 baud uses it." data-more="../dev/glossary.html#t-afsk">AFSK</abbr> jobs the radio core sends, status and messages, the <abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="../user/22-glossary.html#t-kiss">KISS</abbr> <abbr class="gl" tabindex="0" title="Terminal node controller: the modem that turns packet data into audio tones and back." data-more="../dev/glossary.html#t-tnc">TNC</abbr> and APRS-IS lines, <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr></td>
+</tr>
+<tr>
+<td>Positions over DMR</td>
+<td><code>CONFIG_APRS_DMR</code> (needs <code>APRS</code> and <code>DMR</code>)</td>
+<td><code>aprs_dmr.c</code></td>
+<td>the <abbr class="gl" tabindex="0" title="Location Request and Response Protocol: a dispatcher asks a radio for its position. Motorola&#x27;s position format; the standard has LIP." data-more="../user/22-glossary.html#t-lrrp">LRRP</abbr> or <abbr class="gl" tabindex="0" title="Unified data transport: DMR short data sent as a plain block of bytes." data-more="../dev/glossary.html#t-udt">UDT</abbr> report to the gateway ID (section 8); turns on the <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> data core</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><code>CONFIG_APRS=y</code> needs at least one backend; the build stops otherwise.</li>
+<li><code>CONFIG_APRS_RX</code>, <code>CONFIG_APRS_IGATE</code>, <code>CONFIG_NET_KISS</code> and <code>CONFIG_NET_APRSIS</code> need <code>CONFIG_APRS_AFSK</code>.</li>
+<li>The halves share one state block (<code>aprs_int.h</code>). The engine calls the AX.25 half through <code>aprs_ax25_*</code>, which are
+empty inline functions when it isn't built. Calls other modules make into it (<code>aprs_send_message</code>,
+<code>aprs_rf_pending</code>, <code>aprs_host_frame</code>, ...) answer &quot;nothing there&quot; the same way, so callers need no switch.</li>
+<li>With one backend built, &quot;Send via&quot; is not asked: a beacon goes the way there is, whatever the setting stored by
+another build says. The settings record is the same in every build.</li>
+<li>Without the AX.25 half: no callsign, <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> frequency, path, messages or station list; the radio core has no APRS
+<abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> job; the host port takes <abbr class="gl" tabindex="0" title="The text format GPS receivers use to report position and time." data-more="../user/22-glossary.html#t-nmea">NMEA</abbr> lines only (<code>$...</code>, no KISS decoder).</li>
+</ul>
+<p>Pure parts, each with host tests in <code>tests/host/aprsTest.c</code>: <code>ax25.c</code> (addresses, frames, TNC2 text), <code>hdlc.c</code> (FCS,
+bit stuffing, NRZI symbols, the receive deframer), <code>afsk.c</code> (the tone plan for <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr>, a correlator demodulator with a <abbr class="gl" tabindex="0" title="Phase locked loop: the circuit that holds the radio&#x27;s synthesizer on its frequency." data-more="../dev/glossary.html#t-pll">PLL</abbr>
+for RX), <code>kiss.c</code>, <code>aprs_fmt.c</code> (APRS formats in and out), <code>aprs_beacon.c</code> (when to send),
+<code>aprs_igate.c</code> (gating and digipeater rules). <code>tests/host/aprsRadioTest.c</code> runs the engine with the radio core on a
+fake board whose AFSK output is demodulated back to frames, in a build without DMR; <code>radioCoreTestAprsDmr</code> runs it
+with the DMR backend alone.</p>
+<h2 id="3-rules">3. Rules</h2>
+<ul>
+<li><abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">Transmit</abbr> is off by default. Automatic beacons need Tools &gt; <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> &gt; Automatic beacons; &quot;Send position now&quot; works
+without it.</li>
+<li>A callsign is required: the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>'s test call, else Settings &gt; My radio's radio name, else the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>'s
+radio name; its first word, upper case, 3-6 letters and digits with a digit after the first character, not N0CALL.
+Our SSID comes from the APRS settings (7 by default). No callsign: nothing goes out, the page says why.</li>
+<li><abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> only on amateur frequencies: the APRS frequency must be in 144-148, 222-225, 420-450 or 902-928 MHz and in a
+band the board transmits in; else the reason is &quot;not amateur&quot; and nothing is keyed.</li>
+<li>A hard minimum of 30 s between automatic beacons (<code>AUTO_MIN_S</code>), 10 s for any configuration
+(<code>APRS_MIN_INTERVAL_FLOOR_S</code>), and &quot;send now&quot; pressed again within 5 s is ignored.</li>
+<li>Frames from the host (<abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="../user/22-glossary.html#t-kiss">KISS</abbr>) must carry our callsign (any SSID) as the source and are rate limited: a burst of 3,
+then one per 10 s.</li>
+<li>CSMA before every RF transmission (section 6); our own PTT always wins (an APRS transmission is aborted, the
+channel restored).</li>
+<li><abbr class="gl" tabindex="0" title="A station that passes APRS packets between the air and the APRS-IS internet network." data-more="../user/22-glossary.html#t-igate">iGate</abbr> transmit (IS -&gt; RF) only for messages to stations heard directly in the last 30 minutes (section 9.1).</li>
+</ul>
+<h2 id="4-frames">4. Frames</h2>
+<h3 id="41-what-we-send">4.1 What we send</h3>
+<ul>
+<li>Position: <code>!</code> (or <code>=</code> when messaging is on), plain <code>DDMM.mmN/DDDMM.mmW</code> with the symbol, or compressed (base 91,
+the default), course / speed when known, altitude <code>/A=</code> when known, then the comment (the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> record's
+comment if any). Position ambiguity 0-4 blanks digits as APRS101 chapter 8 says.</li>
+<li>Status: <code>&gt;text</code> (40 characters).</li>
+<li>Messages: <code>:ADDRESSEE:text{NN</code> (67 characters), acks <code>:ADDRESSEE:ackNN</code>; ours retried at 30, 60 and 120 s
+(3 tries) until the ack. The composer can omit the message number (one transmission, no retry or acknowledgment)
+and append a position snapshot as <code> @DD.DDDDN DDD.DDDDW</code> in the message text. Both are per-message choices; requesting
+an acknowledgment is on and including position is off when the composer opens. A position needs a current GPS, host
+or fixed source. Its text counts toward the 67-character limit; a message that cannot fit is refused.
+The send API accepts printable <abbr class="gl" tabindex="0" title="The 7-bit character set of plain text." data-more="../dev/glossary.html#t-ascii">ASCII</abbr> text and rejects control bytes. An incoming <code>rej</code> stops retries without
+reporting the message as acknowledged.</li>
+<li>Messages &gt; New APRS message appears when APRS is built and our callsign is set. A station in Stations heard has a
+Message action that fills its callsign. The composer asks for an AX.25 callsign with optional SSID, then sends a
+localized preset or typed text through <code>aprs_send_message</code>. Presets fold accented letters to printable ASCII; typed
+text holds at most 67 characters. The callsign editor holds at most nine characters (six for the call, a hyphen and
+up to two for the SSID). Received APRS messages appear in Messages; replies use APRS. <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> replies use DMR, and
+Settings &gt; Connections &gt; Message format selects only a DMR encoding. A new outgoing APRS message replaces one still
+awaiting acknowledgment. <code>aprs_send_message</code> refuses a message when the <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> path is blocked.</li>
+<li>Path: none, WIDE1-1, WIDE1-1,WIDE2-1 (the default), WIDE2-1, WIDE2-2. Set on the APRS page (section 10), over the
+<abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>, or in the codeplug's APRS record (section 11).</li>
+</ul>
+<h3 id="411-arithmetic">4.1.1 Arithmetic</h3>
+<p>No libm: the 32-bit math library costs flash on every board and nothing here needs it.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Method</th>
+<th>Accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compressed speed byte <code>round(ln(knots + 1) / ln 1.08)</code>, at most 89</td>
+<td>table of the lowest speed for each byte value</td>
+<td>the formula's byte for all 65536 speeds (the nearest tie is 0.0007 of a step away)</td>
+</tr>
+<tr>
+<td>Compressed speed read back <code>1.08^k - 1</code></td>
+<td>squared table, 32-bit mantissas</td>
+<td>the formula's knots for every byte</td>
+</tr>
+<tr>
+<td>Compressed altitude read back <code>1.002^n</code> feet, as meters</td>
+<td>the same table method, Q24</td>
+<td>within 1 m</td>
+</tr>
+<tr>
+<td>Distance (haversine, 6371 km) and bearing</td>
+<td>float polynomials (sine and cosine to the 13th and 12th power, arctangent to 1e-5 rad); past a quarter of the globe the arc to the antipode, subtracted from pi</td>
+<td>distance under 1 m below 1 km, 14 m to 100 km, 150 m beyond; bearing within the rounding to a whole degree for stations 20 m or more away</td>
+</tr>
+</tbody>
+</table></div>
+<p>The bearing uses <code>x = sin(dp) + 2 sin(p1) cos(p2) sin(dl / 2)^2</code>, which has no cancellation, so a station tens of
+meters away gets a true bearing. The longitude difference is wrapped to the short way round first.</p>
+<h3 id="42-tocall">4.2 Tocall</h3>
+<p>Destination <code>APRDF?</code>. The <a href="https://github.com/aprsorg/aprs-deviceid">APRS device identifier list</a> allocates <code>APRDF?</code>
+to RadioFoundry as one entry, so APRS apps and aprs.fi name the firmware, not yet the radio. The sixth character tells
+the radios apart: each board's <code>board.toml</code> sets it (<code>aprs_tocall</code>, <a href="../dev/board-registry.html">board-registry.md</a>), and
+<code>tools/boards.py check</code> keeps it unique. A character stays with its radio for good, so the list can later name the
+model per character. <code>0</code> is no radio: the host tests build without a board. The debug link shows the tocall in use as <code>aprs.tocall</code>.</p>
+<h3 id="43-received-rx-builds">4.3 Received (RX builds)</h3>
+<p>Positions (plain, compressed, with and without timestamps), Mic-E (the destination field's latitude and message bits,
+longitude, speed and course from the information field), objects, items, status, messages, third-party packets,
+queries, weather and telemetry recognized by type (not decoded further).</p>
+<p>Third-party packets (<code>}SRC&gt;DST,PATH:info</code>, how an <abbr class="gl" tabindex="0" title="A station that passes APRS packets between the air and the APRS-IS internet network." data-more="../user/22-glossary.html#t-igate">iGate</abbr> puts APRS-IS traffic on RF): a message or ack inside one is
+handled as from SRC (<code>aprs_ax25.c</code>, <code>third_party_in</code>). It is kept, matched to our pending message and acked under SRC; the
+ack goes to SRC on our own path. One level only. A packet from our own call is ignored. Nothing else inside is
+decoded: the station list keeps the iGate, the station actually heard, so an Internet station never counts as heard
+on RF for the iGate rules (section 9.1).</p>
+<h2 id="5-the-radio-side">5. The radio side</h2>
+<h3 id="51-hal_afsk">5.1 hal_afsk</h3>
+<p><code>hal/hal_afsk.h</code>: <code>tx_start(tones, nbits, baud, mark, space, level)</code> plays a symbol string (one bit per symbol,
+1 = mark), <code>tx_busy</code>, <code>tx_stop</code>; <code>rx_rate_hz</code>, <code>rx_start</code>, <code>rx_read</code>, <code>rx_stop</code> deliver received audio samples.
+<code>board.afsk</code> is NULL on boards without a tone path. A board that can only <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> sets the <code>rx_*</code> members and leaves
+<code>tx_start</code> NULL. Without a <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> path the reason is &quot;no <abbr class="gl" tabindex="0" title="Audio frequency shift keying: data as two audio tones on an FM carrier. APRS at 1200 baud uses it." data-more="../dev/glossary.html#t-afsk">AFSK</abbr>&quot; and only <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> positions go out.</p>
+<h3 id="52-transmit">5.2 Transmit</h3>
+<p>The radio core keys the transmitter in FM, then the board switches the tone at each symbol boundary (a timer at the
+baud rate), with phase continuity where the hardware allows, and keeps the <abbr class="gl" tabindex="0" title="Real-time operating system: the scheduler that runs the firmware&#x27;s tasks." data-more="../dev/glossary.html#t-rtos">RTOS</abbr> out of its symbol interrupt. While
+AFSK runs, the radio core leaves the transmitter alone (<code>status()</code> returns its cached reading). The level (0-100, 50
+default) sets the deviation around the board's nominal (about 3 kHz peak at 25 kHz bandwidth). <code>tests/hil/test_aprs.py</code> measures on air the phase continuity across a tone change, the deviation the level
+gives, the mark / space flatness and the TX delay (section 13). Each board's tone path is on its hardware page (the table in
+section 1).</p>
+<h3 id="53-receive">5.3 Receive</h3>
+<p>Received FM audio comes from one of two places (<code>aprs.c</code>, <code>rx_service</code>):</p>
+<ol>
+<li>The board's own AFSK receive path: <code>hal_afsk_t.rx_start</code>, <code>rx_read</code>, <code>rx_stop</code> at <code>rx_rate_hz</code>. The <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> boards
+have one (shared <code>hrc_afsk</code>): the modem's FM receive audio at 8 kHz, not squelch gated
+(<a href="modem-hrc7000.html">modem-hrc7000.md</a> 8.5). While it runs the
+speaker plays FM through the HR_C7000 instead of straight from the <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> chip.</li>
+<li>Otherwise FM receive audio on the board's <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> stream, when its audio tap has <code>AUDIO_TAP_FM_RX</code> (<code>hal_audio_tap.h</code>):
+8 kHz, de-emphasized, squelch gated. An <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> puts it on <abbr class="gl" tabindex="0" title="Inter-IC sound: the bus audio samples travel on between chips." data-more="../dev/glossary.html#t-i2s">I2S</abbr>; that stream exists only while the FM
+feed-through is on, so the volume knob at zero mutes the amp but leaves the feed-through and the RX gain alone. The
+shared stream (<code>core/usbaudio/audio_mux.c</code>) gives <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> a ring of its own (1024 samples, 128 ms) next to a <abbr class="gl" tabindex="0" title="The UDP stream that carries a call&#x27;s audio between RadioFoundry and a network gateway." data-more="../dev/glossary.html#t-usrp">USRP</abbr>
+session's, keeps the stream running while APRS asks for it, and drops whole 20 ms blocks when the radio task reads
+too late.</li>
+</ol>
+<p>The path runs while the receive setting is on, the radio receives FM on the APRS frequency (<code>aprs_cfg_freq</code>: the
+region's, or the custom one) and no APRS transmission is under way. Anywhere else the stream is left alone: a
+repeater channel's audio isn't APRS, and battery saving would be blocked for nothing. While it runs, battery saving
+(<code>radio-features.md</code>) stays off: a sleeping receiver misses packets, and the squelch closes only after 300 ms of
+noise readings over the line (<code>RADIO_SQL_CLOSE_POLLS_APRS</code>) instead of 50 ms. A start the board's path refuses (no
+memory, its audio busy) is tried again 1 s later (<code>RX_RETRY_MS</code>), not on every tick, since each try routes the
+receiver and back; <code>aprs.rx_start_fails</code> counts them. On air, a packet's tones
+at full deviation pushed the <abbr class="gl" tabindex="0" title="The RF transceiver chip that sets the frequency, deviation and power of many handheld DMR radios. Programmed over I2C." data-more="../dev/glossary.html#t-at1846s">AT1846S</abbr> noise reading over the line for a poll or two, the squelch closed, and the
+squelch gated audio cut the packet in pieces: the preamble in one opening, the frame in the next. <code>aprs_rx_listening()</code>
+says whether the path runs.</p>
+<p>The receive setting and messaging default to on when the radio can receive (<code>aprs_can_receive()</code>: the build has
+<code>CONFIG_APRS_RX</code> and one of the two paths exists).</p>
+<p>The demodulator (<code>afsk.c</code>): 8-48 kHz samples, a correlator per tone with hysteresis and a <abbr class="gl" tabindex="0" title="Phase locked loop: the circuit that holds the radio&#x27;s synthesizer on its frequency." data-more="../dev/glossary.html#t-pll">PLL</abbr> that tightens once a
+flag is seen. Integer arithmetic only: the float version's soft-float square roots and divisions took most of the
+<abbr class="gl" tabindex="0" title="Central processing unit." data-more="../dev/glossary.html#t-cpu">CPU</abbr> of an HR_C7000 board (no FPU) at 8 kHz.</p>
+<p>Two decision paths run side by side on the same samples, each with its own correlators, clock and HDLC decoder: one
+on the audio as received, one after a high pass (two first-order stages at 700 Hz). A frame either path finds is
+delivered once: the second copy (same length and FCS within a quarter second) is dropped. The correlators span one bit,
+so their passbands are wide, and audio under the tones leaks into the mark correlator. A receiver on an HR_C7000 board getting a flat
+transmitter at a strong level had 320-400 Hz 1-10 dB under the tones in its receive audio and decoded 50-80 % of
+the frames with one path; with both, 12 of 12 (measured). The high pass alone costs weak signals (its phase
+shift between the tones moves the tone edges), which is why the received path stays. Both paths together take about
+6 % of that CPU at 8 kHz.</p>
+<p>Host sweep (<code>aprsTest --sweep</code>, frames decoded of 100, noise over the full band):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Audio</th>
+<th>10 dB <abbr class="gl" tabindex="0" title="Signal to noise ratio." data-more="../dev/glossary.html#t-snr">SNR</abbr></th>
+<th>12 dB</th>
+<th>14 dB</th>
+<th>20 dB, 350 Hz 3 dB under the tones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Flat</td>
+<td>96</td>
+<td>100</td>
+<td>100</td>
+<td>100 (one path: 7)</td>
+</tr>
+<tr>
+<td>De-emphasized (flat transmitter, 750 us receiver)</td>
+<td>98</td>
+<td>100</td>
+<td>100</td>
+<td>99 (one path: 57)</td>
+</tr>
+<tr>
+<td>Pre-emphasized (pre-emphasizing transmitter, flat receiver)</td>
+<td>11</td>
+<td>51</td>
+<td>76</td>
+<td>92 (one path: 0)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Squelch gated audio loses the start of a transmission until the squelch opens; the sender's TX delay (flags before
+the frame) covers that. The <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>'s <code>aprs.rx_peak</code>, <code>rx_bits</code> and HDLC counters
+tell missing audio from a demodulator that finds no frame.</p>
+<p>A possible later step on an HR_C6000 board: its RX <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> carries the same audio ungated so packets
+below the squelch could be decoded. That needs a board receive path (1 above) reading the RAM 31 times a second.</p>
+<h2 id="6-rf-transmission">6. RF transmission</h2>
+<p>The radio core's <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> block (<code>radio_sm.c</code>, <code>aprs_*</code>): when a frame waits (<code>aprs_rf_pending</code>) and the radio is idle
+(no PTT, no call heard or sent, no zone or <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> scan, no <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr>, no monitor, no <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> inhibit, battery not critical),
+it takes the job (<code>aprs_rf_take</code>: our queued frames, 1 flag between them, a TX delay of flags before, 3 after), and:</p>
+<ol>
+<li>LISTEN: tunes the APRS frequency (25 kHz, or 12.5 kHz when narrow is set), 50 ms to settle, then 100 ms slots with
+p-persistence 64/256 while the squelch is closed; gives up after 10 s (<code>rf_busy</code>, retried later).</li>
+<li>KEYUP: keys the FM transmitter on the APRS frequency at APRS's own power level when one is set (<code>aprs_power</code>:
+n = the board's level n - 1), else at the radio's current level (a <abbr class="gl" tabindex="0" title="A change that lasts until the channel changes or you press Back on Home. Hold OK to keep it." data-more="../user/22-glossary.html#t-temporary-change">temporary change</abbr> included, as for PTT).
+<code>aprs.tx_power</code> on the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> is the level it will use. 25 ms.</li>
+<li>SEND: <code>board.afsk-&gt;tx_start</code>; at most 6 s.</li>
+<li>Back: transmitter off, the user's channel retuned exactly as it was.</li>
+</ol>
+<p>While keyed, Home keeps the selected channel on screen. Its status pill says &quot;TX APRS&quot; and its activity says
+&quot;SENDING&quot;, without elapsed or remaining TX time. The ordinary status and activity return when the APRS job ends or is
+aborted.</p>
+<p>During <abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="../user/22-glossary.html#t-dual-watch">dual watch</abbr>, the job temporarily interrupts the watch and sends on APRS's configured frequency regardless of
+which channel is selected or tuned. A call on either receiver defers the job. A second receiver is stopped during the
+job. After the channel is restored, dual watch resumes its normal listen dwell; a second receiver is engaged again. A
+short look at the other channel finishes before a job starts. Zone and VFO scans still defer APRS transmission until
+they stop.</p>
+<p>PTT, a channel change or any request other than beeps, <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> focus and settings aborts it (<code>rf_failed</code>, the frame
+retried after 15 s, 3 tries). A failure counts in <code>rf_failed</code> and names its step in <code>rf_fail</code>: <code>aborted</code>, <code>no_key</code>
+(the transmitter didn't key), <code>no_afsk</code> (<code>tx_start</code> refused), <code>timeout</code> (the tones didn't finish in 6 s). The settings save waits while a job is pending.</p>
+<h2 id="7-position-and-triggers">7. Position and triggers</h2>
+<p>The position is the position service's (<a href="position.html">position.md</a>): its source setting and the fixed position
+are in Settings &gt; Location and serve <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> GPS Info and <abbr class="gl" tabindex="0" title="Location Request and Response Protocol: a dispatcher asks a radio for its position. Motorola&#x27;s position format; the standard has LIP." data-more="../user/22-glossary.html#t-lrrp">LRRP</abbr> as well. The engine reads
+<code>position_fix</code> every tick; GPS and host fixes carry speed and course. Host <abbr class="gl" tabindex="0" title="The text format GPS receivers use to report position and time." data-more="../user/22-glossary.html#t-nmea">NMEA</abbr> (<code>$GPRMC</code>, <code>$GPGGA</code> with valid
+checksums) comes from <abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="../user/22-glossary.html#t-kiss">KISS</abbr> SetHardware 'N' or a bare <code>$</code> line on the host port.</p>
+<p>Triggers (<code>aprs_beacon.c</code>), all under the hard minimum:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Trigger</th>
+<th>Default</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interval</td>
+<td>10 min when beacons are on</td>
+<td>0 = none</td>
+</tr>
+<tr>
+<td>SmartBeaconing</td>
+<td>on</td>
+<td>slow 5 km/h -&gt; 30 min, fast 90 km/h -&gt; 3 min, linear in between; corner pegging: a turn sharper than 28 degrees + 400 / speed sends after 30 s</td>
+</tr>
+<tr>
+<td>Distance</td>
+<td>off</td>
+<td>after moving N meters</td>
+</tr>
+<tr>
+<td>After PTT</td>
+<td>off</td>
+<td>after our own transmission (the user's PTT, not a DMR data burst list), if the last beacon is 2 min old</td>
+</tr>
+<tr>
+<td>Manual</td>
+<td></td>
+<td>&quot;Send position now&quot; (UI, <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>)</td>
+</tr>
+<tr>
+<td>Boot</td>
+<td>off</td>
+<td>the first position after power-up</td>
+</tr>
+</tbody>
+</table></div>
+<p>Without a known speed SmartBeaconing falls back to the interval. The defaults are an open decision (section 14).</p>
+<h2 id="8-positions-over-dmr">8. Positions over DMR</h2>
+<p>Built with <code>CONFIG_APRS_DMR</code>. Send via (<abbr class="gl" tabindex="0" title="Audio frequency shift keying: data as two audio tones on an FM carrier. APRS at 1200 baud uses it." data-more="../dev/glossary.html#t-afsk">AFSK</abbr> / <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> / Both; DMR always in a build without the AX.25 half): DMR
+positions go out when the radio is on a DMR channel with the call stack running,
+as a private data call to the destination ID (default 310999). <abbr class="gl" tabindex="0" title="A worldwide amateur DMR network of linked servers and talkgroups." data-more="../user/22-glossary.html#t-brandmeister">BrandMeister</abbr>'s <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> gateway is a private ID
+&quot;MCC999&quot;, with MCC replaced by the master's MCC (310999 for US masters, 204999 for a Dutch one). 310999 works from any master; your own master's prefix
+(<code>&lt;MCC&gt;999</code>) is recommended. The old 5057 was
+retired on 2019-03-01 (<a href="https://news.brandmeister.network/gps-5057-destination/">https://news.brandmeister.network/gps-5057-destination/</a>,
+<a href="https://wiki.brandmeister.network/index.php/APRS">https://wiki.brandmeister.network/index.php/APRS</a>). A radio that already saved its APRS settings keeps the stored
+value: run <code>aprs set dmr_dst &lt;MCC&gt;999</code> (US: <code>aprs set dmr_dst 310999</code>).</p>
+<ul>
+<li>Motorola <abbr class="gl" tabindex="0" title="Location Request and Response Protocol: a dispatcher asks a radio for its position. Motorola&#x27;s position format; the standard has LIP." data-more="../user/22-glossary.html#t-lrrp">LRRP</abbr> triggered location report (the default): <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr> port 4001, built by <code>dmrLrrp.c</code>.</li>
+<li><abbr class="gl" tabindex="0" title="European Telecommunications Standards Institute, which publishes the DMR standard." data-more="../dev/glossary.html#t-etsi">ETSI</abbr> <abbr class="gl" tabindex="0" title="Unified data transport: DMR short data sent as a plain block of bytes." data-more="../dev/glossary.html#t-udt">UDT</abbr> location (<code>dmr_udt</code> on): <code>dmrDataBuildUDTLocation</code>. BrandMeister forwards the position reports of Motorola
+(LRRP) and Hytera radios to APRS, so use LRRP, not UDT, for BrandMeister.</li>
+<li>The position in either report has the ambiguity setting applied (<code>position_blur</code>, <a href="position.html">position.md</a> 3), as
+the AX.25 packets and the other DMR reports do.</li>
+</ul>
+<h3 id="81-lrrp-details">8.1 LRRP details</h3>
+<p>An unsolicited report carries request ID 00000001 (no request came). BrandMeister's gateway accepts it with no <abbr class="gl" tabindex="0" title="Automatic Registration Service: a radio tells a presence server it is on the air." data-more="../user/22-glossary.html#t-ars">ARS</abbr>
+registration. Checked on master 3102 through a <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr>: each report to 310999 appeared on APRS-IS as
+<code>&lt;callsign&gt;-7&gt;APBM1D,&lt;callsign&gt;,DMR*,qAR,&lt;callsign&gt;:=&lt;lat&gt;/&lt;lon&gt;[&lt;name&gt; D</code> (SSID and comment from the BrandMeister
+profile, tocall APBM1D).
+The retired 5050-5059 IDs chose the SSID and icon; whether MCC999 does is unverified (<abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> step, section 13). The APRS settings
+on BrandMeister's self care page set the comment.</p>
+<h3 id="82-positions-heard-over-dmr">8.2 Positions heard over DMR</h3>
+<p>Some radios of other makes send their DMR APRS position as an <abbr class="gl" tabindex="0" title="The text format GPS receivers use to report position and time." data-more="../user/22-glossary.html#t-nmea">NMEA</abbr> sentence over UDP port 10110 (compressed UDP/IP
+header, <abbr class="gl" tabindex="0" title="Service access point: the field in a DMR data header that says what the payload is (IP, short data, GPS and so on)." data-more="../dev/glossary.html#t-sap">SAP</abbr> 3), as a private data call or to a <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr>, usually to the APRS gateway's ID (BrandMeister's <MCC>999,
+e.g. 310999). As on FM, where every station heard goes into the list, the data service hands each one heard on the
+channel to the radio core whoever it is addressed to (only <abbr class="gl" tabindex="0" title="A radio a dispatch program on a computer uses to reach the fleet over the air." data-more="../user/22-glossary.html#t-control-station">control station</abbr> passthrough, our own repeated back and a
+compressed header for a host behind the radio, <abbr class="gl" tabindex="0" title="Source address ID: the field of a compressed UDP/IP header that says where the source IP address comes from, for example from the LLID." data-more="../dev/glossary.html#t-said">DAID</abbr> 1, are left out; <code>dmr-data.md</code> 3; the stock radio sends DAID 0).
+The core parses it with <code>nmea_parse_unchecked</code> and puts a position with a fix into the station list through
+<code>aprs_dmr_heard</code>, as a caller's GPS Info. The packet has no callsign and a data call no <abbr class="gl" tabindex="0" title="A short text, usually a callsign and name, sent along with DMR voice." data-more="../user/22-glossary.html#t-talker-alias">talker alias</abbr>, so the station
+is named by the <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr> database (<code>dmr_iddb_lookup</code>: its callsign, the record's first word) when the ID is in it,
+else by the DMR ID. BrandMeister names the same report on APRS-IS by the callsign registered for the ID, with the
+SSID set in SelfCare; no SSID is made up here. What one stock radio sent on air:
+<code>$GPRMC,...,3000.0000,N,8700.0000\0,W,...,A</code> with no <code>*hh</code> checksum, a NUL before <code>,W</code>, a NUL from the pad after the
+sentence, and the longitude with 4 integer digits. The checksum is optional here (the packet's CRC-32 covered it,
+but one that is given is checked), NULs are skipped, and the coordinates are read as numbers, so 8700.0000 is 87
+degrees (anything past 90 / 180 degrees, or an integer part too long to scale, is refused, as in <code>nmea_parse</code>). Time
+and date are not used. Like a caller's GPS Info, it does not depend on the APRS <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> setting (<code>rx_on</code>, which is
+the FM decoder's). Host tests: <code>aprsTest</code> (<code>test_nmea_unchecked</code>: input classes, the 90 / 180 degree, 60 minute,
+32-bit and length edges, a seeded fuzz and a metamorphic check against the strict parse), <code>dmrDataServiceTest</code>
+(<code>testNmeaPosition</code>: the packet heard on air rebuilt with placeholder IDs, its blocks and CRC-32 matching the ones
+heard; the packet classes, ports and payload lengths) and <code>radioCoreTestAprs</code> (<code>test_dmr_aprs_position</code>: through the
+radio core into the station list).</p>
+<h2 id="9-host-port-kiss-tnc">9. Host port: KISS TNC</h2>
+<p>With Tools &gt; <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> &gt; <abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="../user/22-glossary.html#t-kiss">KISS</abbr> on USB, the host link claims KISS frames (0xC0) and <code>$</code> lines on the USB serial port (and on
+<abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr> port 3334 in USB network mode, where the host port runs over the network). The host link's <abbr class="gl" tabindex="0" title="Terminal node controller: the modem that turns packet data into audio tones and back." data-more="../dev/glossary.html#t-tnc">TNC</abbr> mode
+(<code>HOSTLINK_TNC</code>) holds while frames flow and ends after 30 s idle, like the <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> and <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> modes.</p>
+<p>Port 0 only. DATA frames are checked (section 3) and queued for <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr>; TXDELAY, PERSIST and SLOTTIME are accepted and
+ignored (the engine's own CSMA applies); SetHardware 'G' carries an APRS-IS line, 'N' an <abbr class="gl" tabindex="0" title="The text format GPS receivers use to report position and time." data-more="../user/22-glossary.html#t-nmea">NMEA</abbr> sentence. To the host:
+received frames (<abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> builds) as KISS DATA, and lines for APRS-IS as SetHardware 'G'.</p>
+<h3 id="91-igate">9.1 iGate</h3>
+<p>The rules are in firmware (<code>aprs_igate.c</code>, after aprs-is.net &quot;IGate Design&quot; and &quot;q Construct&quot;); the APRS-IS <abbr class="gl" tabindex="0" title="Transmission Control Protocol: IP connections with ordered, guaranteed delivery." data-more="../dev/glossary.html#t-tcp">TCP</abbr>
+connection is in the host helper <code>tools/aprs_gate.py</code>, which logs in with the callsign and passcode, applies a
+filter, and passes lines both ways as KISS SetHardware 'G' frames (serial port or UDP 3334), or, in USB network mode,
+in the radio's own APRS-IS client (<code>CONFIG_NET_APRSIS</code>, <code>tcp-services.md</code> 7), which carries the same lines.</p>
+<ul>
+<li>RF -&gt; IS: never a packet whose path holds TCPIP, TCPXX, NOGATE or RFONLY, nor a query; a third-party packet is
+gated as the packet it carries unless that one came from the Internet; the line gets <code>,qAR,&lt;our call&gt;</code>; each
+packet once per 30 s.</li>
+<li>IS -&gt; RF (<code>igate_tx</code>, off): only messages and acks, to a station heard directly in the last 30 minutes, from a
+station not heard on RF in the last 10 minutes, not seen in the last 30 s; sent as <code>}SRC&gt;DST,TCPIP,OURCALL*:info</code>.</li>
+<li>Our own beacons to APRS-IS (<code>to_is</code>): <code>CALL&gt;APRDF?,TCPIP*:info</code> over the same channel.</li>
+<li>Digipeater (RX builds, off): fill-in (WIDE1-1 only) or wide (WIDE1-1 and WIDE2-N), also our own call in the path;
+our call inserted before the WIDE entry, marked used (traced), the hop count decremented; duplicates suppressed
+for 30 s.</li>
+</ul>
+<h2 id="10-ui">10. UI</h2>
+<p>Tools &gt; <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> (<code>ui_aprs.c</code>): the body shows the callsign and frequency, why nothing can be sent (no callsign, no
+frequency, not amateur, no <abbr class="gl" tabindex="0" title="Audio frequency shift keying: data as two audio tones on an FM carrier. APRS at 1200 baud uses it." data-more="../dev/glossary.html#t-afsk">AFSK</abbr>), the position and its source, the next beacon and the count sent. Rows: Send
+position now, Automatic beacons, Frequency (region: N America 144.390, Europe 144.800, Australia 145.175, New Zealand
+144.575, Japan 144.660, China 144.640, Custom), Power (As channel, then each of the board's levels), Path (the
+digipeater path of <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> packets: None, WIDE1-1, WIDE1-1,WIDE2-1, WIDE2-1, WIDE2-2; OK steps to the next and WIDE2-2
+wraps to None), Interval (Off, 1, 2, 5, 10, 30 min), SmartBeaconing, Send via (AFSK, <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr>, Both), <abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="../user/22-glossary.html#t-kiss">KISS</abbr> on USB, Stations
+heard (<abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> builds: the list, most recent first, dimmed when heard through a digipeater; a station with a position shows
+its distance and compass point from ours, <code>position_now</code> as DMR GPS Info uses it, &quot;14.5 km NE&quot; by <code>sb_range</code>,
+left out first when the row is too narrow, and nothing without a position on either side; that row's age is the
+position's, <code>pos_ms</code>, else the last packet's. An object's or item's position is not stored as its sender's; a
+station's position is dropped at 24 h, <code>STATION_POS_MS</code>, so its age never wraps). On a radio without
+<code>board.afsk</code>, Power, Path and SSID are dimmed, and so is Frequency unless the build receives APRS. SSID (the last
+row, so the rows above keep their digits): 0-15, OK steps up and wraps 15 to 0, a long OK steps down.</p>
+<p>The page shows the rows the build has:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Build</th>
+<th>Rows left out</th>
+<th>Body</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Both backends</td>
+<td>none</td>
+<td>callsign and frequency, why RF is blocked, position, next beacon, count</td>
+</tr>
+<tr>
+<td>No <code>CONFIG_APRS_DMR</code></td>
+<td>Send via</td>
+<td>the same</td>
+</tr>
+<tr>
+<td>No <code>CONFIG_APRS_AFSK</code></td>
+<td>Frequency, Power, Path, Send via, Stations heard, SSID; &quot;KISS on USB&quot; reads &quot;<abbr class="gl" tabindex="0" title="The text format GPS receivers use to report position and time." data-more="../user/22-glossary.html#t-nmea">NMEA</abbr> on USB&quot;</td>
+<td>position, next beacon, count</td>
+</tr>
+</tbody>
+</table></div>
+<p>The digit keys follow the rows shown. Where the position comes from, the fixed position and &quot;Send in DMR calls&quot; are
+in Settings &gt; Location (<a href="position.html">position.md</a> 6).</p>
+<p>Selecting a heard station opens <code>aprs-station</code>, a scrollable detail list. The UI keeps its callsign,
+not its row index, and resolves the current station through <code>ui_svc_aprs_station_find</code> on each draw. New packets
+can reorder the heard list without changing the open station or Message recipient. Message is the first row and
+opens the composer with that callsign. The remaining rows show distance and compass direction when both positions
+exist, heard age, Direct or Via digipeater, position age when different from heard age, speed in km/h and course
+when the retained position has them, symbol table and code, the retained comment/status text, and packet count.
+Unknown speed and course have no row. Text is limited to the engine's 24-byte field; no digipeater identity or
+additional comment text is retained. Detail rows scroll with Up / Down and do not perform actions. If the station
+is evicted, the screen says &quot;No longer in list&quot; and Message still addresses the saved callsign. This detail code
+and the saved callsign are guarded by <code>CONFIG_APRS_RX</code>; the engine storage is unchanged.</p>
+<p>The rest (symbol, comment, digital destination, ambiguity, <abbr class="gl" tabindex="0" title="A station that passes APRS packets between the air and the APRS-IS internet network." data-more="../user/22-glossary.html#t-igate">iGate</abbr>, digipeater, fixed altitude) is set over the
+<abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> (<code>rfoundry_debug.py aprs set</code>) and later by <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr> through the native <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>.</p>
+<h2 id="11-settings">11. Settings</h2>
+<p><code>settings_t</code> (<code>core/settings/settings.h</code>), taken only when <code>aprs_stored</code> is 1, else the defaults: <code>aprs_flags</code>
+(<abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr>, SmartBeaconing, compressed, after PTT, boot, <abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="../user/22-glossary.html#t-kiss">KISS</abbr>, narrow, <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr>), <code>aprs_flags2</code> (<abbr class="gl" tabindex="0" title="A station that passes APRS packets between the air and the APRS-IS internet network." data-more="../user/22-glossary.html#t-igate">iGate</abbr>, iGate TX, messaging, <abbr class="gl" tabindex="0" title="Unified data transport: DMR short data sent as a plain block of bytes." data-more="../dev/glossary.html#t-udt">UDT</abbr>,
+to APRS-IS), <code>aprs_region</code>, <code>aprs_ssid</code>, <code>aprs_freq_hz</code>, <code>aprs_dmr_dst</code>, <code>aprs_interval_s</code>, <code>aprs_distance_m</code>,
+<code>aprs_symbol</code>, <code>aprs_path</code>, <code>aprs_level</code>, <code>aprs_power</code> (0 = the radio's current level, n = the board's level n - 1),
+<code>aprs_txdelay</code>, <code>aprs_misc</code> bits 0-3 (via, digipeater). The position fields in the same record (<code>aprs_lat</code>,
+<code>aprs_lon</code>, <code>aprs_alt_m</code>, <code>aprs_pos_src</code>, the <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> GPS Info flag, <code>aprs_misc</code> bits 4-7) are the position service's
+(<a href="position.html">position.md</a> 5): <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> never changes them, and its save keeps them. The <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>'s APRS record 1 (<abbr class="gl" tabindex="0" title="Electrically erasable programmable read-only memory: a small chip that keeps settings." data-more="../dev/glossary.html#t-eeprom">EEPROM</abbr> 0x1588,
+64 bytes each) gives the SSID, path, symbol, comment and ambiguity when present; its fixed position and frequency
+encodings are unknown and not used. Of these the radio takes the comment, the path and the SSID.</p>
+<p>The path and the SSID live in both places, and the one changed last wins, each on its own:</p>
+<ul>
+<li>Codeplug to radio: <code>aprs_cp_path</code> holds what was last taken from the record, bits 0-2 the path (<code>aprs_path_t</code> + 1)
+and bits 3-7 the SSID (+ 1); 0 = none yet (<code>settings_aprs_cp_path</code> / <code>_ssid</code>). When the record's path or SSID
+differs from it, it replaces <code>aprs_path</code> or <code>aprs_ssid</code> and is stored there. Checked at start-up and whenever the
+codeplug serial changes (a <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> write). A path that isn't one of the five (another callsign, a second entry without a
+first) is left alone.</li>
+<li>Radio to codeplug: a change of the path or SSID on the APRS page posts a storage job (<code>aprs_to_codeplug</code>) that
+rewrites what differs in the record (the two path entries, callsign space padded with an SSID byte; the SSID byte at
+0x08) and sets <code>aprs_cp_path</code> to match. No record is made when there is none: the radio then keeps them in the
+settings only. A change over the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> stays in the settings.</li>
+</ul>
+<p>The SSID marker uses <code>aprs_cp_path</code>'s upper bits, so a record from before it reads &quot;none yet&quot; and the codeplug's SSID
+is taken once at the first start-up, unless it is 0: that first time a 0 is marked as taken and the radio keeps its own
+SSID (a byte no one set would otherwise drop the SSID from every packet). A later CPS write of another SSID is taken.</p>
+<p>Defaults: TX off, region N America, SSID 7, symbol <code>/[</code>, path WIDE1-1,WIDE2-1, compressed, interval 10 min,
+SmartBeaconing on, level 50, TX delay 300 ms, via Radio, destination 310999; messaging and RX only on boards with a
+receive path.</p>
+<h2 id="12-size">12. Size</h2>
+<p>The flash and <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> cost of <code>CONFIG_APRS</code> and <code>CONFIG_APRS_RX</code> per radio is in <a href="../feature-matrix.html">feature-matrix.md</a>.
+<code>CONFIG_DMR_GPS</code> costs about 2.2 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> flash. A build with <code>CONFIG_APRS_AFSK=n</code> (positions over <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> only) leaves out
+AX.25, the tone plan, <abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="../user/22-glossary.html#t-kiss">KISS</abbr>, messages and the <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> path.</p>
+<h2 id="13-tests">13. Tests</h2>
+<p>Host: <code>make -C tests/host</code> runs <code>aprsTest</code> (spec vectors: AX.25, FCS, stuffing, <abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="../user/22-glossary.html#t-kiss">KISS</abbr>, every <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> format, <abbr class="gl" tabindex="0" title="The text format GPS receivers use to report position and time." data-more="../user/22-glossary.html#t-nmea">NMEA</abbr>, the
+triggers, the <abbr class="gl" tabindex="0" title="A station that passes APRS packets between the air and the APRS-IS internet network." data-more="../user/22-glossary.html#t-igate">iGate</abbr> rules, a modulate / demodulate loop; <code>--sweep</code> prints the decode rate against <abbr class="gl" tabindex="0" title="Signal to noise ratio." data-more="../dev/glossary.html#t-snr">SNR</abbr>, <code>--wav DIR</code>
+writes <code>aprs_test_44k1.wav</code> with three frames) and <code>aprsRadioTest</code> (the engine with the radio core: beacons on the
+air decoded back, the minimum interval, CSMA on a busy channel, PTT cutting a transmission, the not-amateur block,
+manual and after-PTT triggers, KISS and NMEA from the host, messages with acks, the station list, digipeating and
+the iGate both ways, the <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> position source, a packet as <abbr class="gl" tabindex="0" title="Audio frequency shift keying: data as two audio tones on an FM carrier. APRS at 1200 baud uses it." data-more="../dev/glossary.html#t-afsk">AFSK</abbr> audio through the <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> stream into the station list
+only on the APRS frequency). <code>usrpNetTest</code> checks the stream's APRS ring. <code>tests/host/aprs_wav_check.sh</code> feeds the WAV to Direwolf's <code>atest</code>
+when it is installed (a black-box check).</p>
+<p><abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> (opt-in, <code>tests/hil/test_aprs.py</code>, README there): <code>--allow-rf --allow-service-stop --aprs-call CALL</code> (a licensed
+operator's callsign, set as the RAM-only test call; SSID <code>--aprs-ssid</code>, default 15).</p>
+<p>Where the AFSK tests <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr>, so nothing reaches the APRS network: the custom region on <code>--aprs-test-mhz</code>
+(a simplex frequency the operator may use, away from the APRS network: 144.390 would be digipeated and gated to
+APRS-IS, and every regional APRS frequency is refused), no path, the radio's lowest power (checked through <code>aprs.tx_power</code> before keying;
+6 <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> says APRS keys at the radio's current level). Each transmission is about 0.6 s. Every APRS setting touched is
+saved and put back once the queued frames and message retries have gone out on the test frequency.</p>
+<ol>
+<li>Position, status, message: a bench board decodes Bell 202 / AX.25 itself while the radio sends (an FM <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr>
+job with APRS decode: frames with a good FCS and their tone measurements, no I/Q). Asserted: a valid FCS,
+<code>CALL-SSID&gt;</code> the radio's <code>aprs.tocall</code> with no digipeaters, the payload (position within 1e-4 degree, <code>&gt;status</code>,
+<code>:ADDRESSEE:text{N</code>), <code>aprs.rf_sent</code> +1, the radio back on its channel, deviation peak 2.0-4.5 kHz, twist under
+6 dB. Printed: mark and space deviation, TX delay (flags before the frame). The position is sent from the DMR
+channel and from the FM <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr>.</li>
+<li>Digital: on the DMR test channel the position goes to <code>--aprs-dmr-dst</code> as an <abbr class="gl" tabindex="0" title="Location Request and Response Protocol: a dispatcher asks a radio for its position. Motorola&#x27;s position format; the standard has LIP." data-more="../user/22-glossary.html#t-lrrp">LRRP</abbr> report and as a <abbr class="gl" tabindex="0" title="Unified data transport: DMR short data sent as a plain block of bytes." data-more="../dev/glossary.html#t-udt">UDT</abbr> location;
+the bench modem's listener hears the header and blocks, the test checks the CRCs, the IPv4 / <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr> 4001 / LRRP or
+UDT NMEA layers and the position (within 2e-5 degree). Passed on air (a 70 cm DMR channel, <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr> 2, 50 mW).</li>
+<li>Still manual: <abbr class="gl" tabindex="0" title="A worldwide amateur DMR network of linked servers and talkgroups." data-more="../user/22-glossary.html#t-brandmeister">BrandMeister</abbr> (<code>aprs set via dmr</code> through a BrandMeister repeater or <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr>; the position on aprs.fi
+with the SSID BrandMeister assigns, and the LRRP request ID question, 8.1) and KISS (<code>aprs set kiss 1</code>,
+<code>tools/aprs_gate.py --port PORT --kiss-tcp 8001</code>, or in USB network mode the radio's own KISS port 8001; a position
+from APRSdroid / Xastir goes out on RF).</li>
+</ol>
+<p>Results (<abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench): DMR LRRP and UDT pass. AFSK decodes off air with a valid FCS on each kind of board with a tone
+path, with twist under 1.5 dB and continuous phase (about 6 to 15 degrees residual); the tone level is set per board so
+the peak deviation stays near 3 kHz (a transmitter limits at 5.1 kHz peak). <code>test_aprs.py</code> on the 2 m amateur band
+is still to run on the <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> boards. Per-radio levels and results are in the hardware specs.</p>
+<h2 id="14-open-decisions">14. Open decisions</h2>
+<ul>
+<li>Default triggers: SmartBeaconing on with a 10 min interval fallback, after-PTT and boot off.</li>
+<li>The <abbr class="gl" tabindex="0" title="Location Request and Response Protocol: a dispatcher asks a radio for its position. Motorola&#x27;s position format; the standard has LIP." data-more="../user/22-glossary.html#t-lrrp">LRRP</abbr> request ID and token for unsolicited reports to <abbr class="gl" tabindex="0" title="A worldwide amateur DMR network of linked servers and talkgroups." data-more="../user/22-glossary.html#t-brandmeister">BrandMeister</abbr>; whether LRRP answers should use the <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr>
+position when there is no GPS; whether Settings &gt; Location &gt; Send position should drive APRS.</li>
+<li>The <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> APRS record's fixed position and frequency encodings.</li>
+<li><abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">Receive</abbr> from the <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr>'s ungated RX <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> (5.3).</li>
+<li>Settings and <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> section / command numbers may need renumbering when merged with other branches.</li>
+</ul>
+<p>Future, not done:</p>
+<ul>
+<li>9600 baud APRS (G3RUH <abbr class="gl" tabindex="0" title="Frequency shift keying: data as frequency steps. DMR uses 4-level FSK." data-more="../dev/glossary.html#t-fsk">FSK</abbr>, scrambled NRZI direct FM): needs a flat (discriminator / modulator direct) audio path
+and an FSK modem; a tone generator path can't do it. Not planned for now.</li>
+<li>Settings &gt; Location tied to APRS; GPS Info in the <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr>'s own transmissions.</li>
+</ul>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/aprs.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#1-what-each-radio-does">1. What each radio does</a></li><li class="l2"><a href="#2-model">2. Model</a></li><li class="l2"><a href="#3-rules">3. Rules</a></li><li class="l2"><a href="#4-frames">4. Frames</a></li><li class="l3"><a href="#41-what-we-send">4.1 What we send</a></li><li class="l3"><a href="#411-arithmetic">4.1.1 Arithmetic</a></li><li class="l3"><a href="#42-tocall">4.2 Tocall</a></li><li class="l3"><a href="#43-received-rx-builds">4.3 Received (RX builds)</a></li><li class="l2"><a href="#5-the-radio-side">5. The radio side</a></li><li class="l3"><a href="#51-hal_afsk">5.1 hal_afsk</a></li><li class="l3"><a href="#52-transmit">5.2 Transmit</a></li><li class="l3"><a href="#53-receive">5.3 Receive</a></li><li class="l2"><a href="#6-rf-transmission">6. RF transmission</a></li><li class="l2"><a href="#7-position-and-triggers">7. Position and triggers</a></li><li class="l2"><a href="#8-positions-over-dmr">8. Positions over DMR</a></li><li class="l3"><a href="#81-lrrp-details">8.1 LRRP details</a></li><li class="l3"><a href="#82-positions-heard-over-dmr">8.2 Positions heard over DMR</a></li><li class="l2"><a href="#9-host-port-kiss-tnc">9. Host port: KISS TNC</a></li><li class="l3"><a href="#91-igate">9.1 iGate</a></li><li class="l2"><a href="#10-ui">10. UI</a></li><li class="l2"><a href="#11-settings">11. Settings</a></li><li class="l2"><a href="#12-size">12. Size</a></li><li class="l2"><a href="#13-tests">13. Tests</a></li><li class="l2"><a href="#14-open-decisions">14. Open decisions</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

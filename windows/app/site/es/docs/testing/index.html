@@ -1,0 +1,345 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Testing · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Testing · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/docs/testing/">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/testing/">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/testing/">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/testing/">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/testing/">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/testing/">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../es/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../../es/radios/index.html">Radios</a><a href="../../../es/features/index.html">Funciones</a><a href="../../../es/flash/index.html">Instalar</a><a href="../../../es/codeplug/index.html">Codeplug</a><a href="../../../es/docs/index.html" aria-current="page">Documentación</a><a href="../../../es/screenshots/index.html">Capturas</a><a href="../../../es/tools/index.html">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../../docs/testing/index.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/testing/index.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/testing/index.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/testing/index.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Pruebas">
+		<p class="eyebrow"><a href="../../../es/docs/index.html">Documentación</a> / Pruebas</p>
+		<ul><li><a href="index.html" aria-current="page">Testing</a></li><li><a href="results/index.html">Bring-up results</a></li><li><a href="backlight-curve.html">Backlight curve</a></li><li><a href="dm1801pro-bringup.html">DM-1801 Pro bring-up checklist</a></li><li><a href="dm32-bringup.html">DM-32UV bring-up checklist</a></li><li><a href="dmr-bench.html">DMR bench testing on the SDR bench</a></li><li><a href="md380-bringup.html">MD-380 bring-up checklist</a></li><li><a href="md9600-bringup.html">MD-9600 bring-up checklist</a></li><li><a href="mduv380-bringup.html">MD-UV380 bring-up checklist</a></li><li><a href="mmdvm-audit.html">MMDVM implementation audit (2d45a21)</a></li><li><a href="on-air-coverage.html">On-air test coverage</a></li><li><a href="power-calibration.html">Transmit power calibration with a wattmeter</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Esta página aún no está traducida; se muestra en inglés.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="testing">Testing</h1>
+<p>How to run every test of RadioFoundry, from the host tests to the radio on the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench. Each tier is
+repeatable and skips cleanly what it can't reach. What each level is for and where a new test goes:
+<a href="../dev/testing.html">docs/dev/testing.md</a>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Needs</th>
+<th>Command</th>
+<th>Where it is described</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Release gate (host tests, build matrix, license checks)</td>
+<td>a Mac or Linux host with the ARM toolchain</td>
+<td><code>tools/ci.sh</code></td>
+<td>this page, section 1</td>
+</tr>
+<tr>
+<td>Coverage, sanitizers, fuzzing</td>
+<td>the host (gcovr for coverage)</td>
+<td><code>tools/coverage.sh</code>, <code>make -C tests/host SANITIZE=1</code></td>
+<td><a href="../dev/ci.html#coverage">docs/dev/ci.md</a></td>
+</tr>
+<tr>
+<td>Hardware in the loop, radio only</td>
+<td>the radio on USB</td>
+<td><code>python3 -m pytest tests/hil -v -rs</code></td>
+<td><code>tests/hil/README.md</code></td>
+</tr>
+<tr>
+<td>Hardware in the loop, on air</td>
+<td>the radio and the SDR bench</td>
+<td>the same with opt-in flags</td>
+<td><code>tests/hil/README.md</code>, section 3 here</td>
+</tr>
+<tr>
+<td>Manual bench cases</td>
+<td>the bench board, a person at the radio</td>
+<td><code>tools/bench/bench_line.py HOST run bench_tx ARGS</code></td>
+<td><code>docs/testing/dmr-bench.md</code></td>
+</tr>
+<tr>
+<td>DM-32UV first hardware test</td>
+<td>a DM-32UV on its programming cable, a dummy load</td>
+<td>step by step</td>
+<td><code>docs/testing/dm32-bringup.md</code></td>
+</tr>
+<tr>
+<td>MD-380 first hardware test</td>
+<td>an MD-380 / MD-390 / RT3 on USB, a dummy load, an SDR or signal generator</td>
+<td>step by step</td>
+<td><code>docs/testing/md380-bringup.md</code></td>
+</tr>
+<tr>
+<td>MD-9600 first hardware test</td>
+<td>an MD-9600 / RT90 on USB, DC supply, a dummy load, a signal source</td>
+<td>step by step</td>
+<td><code>docs/testing/md9600-bringup.md</code></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="1-the-release-gate-toolscish">1. The release gate: <code>tools/ci.sh</code></h2>
+<pre><code>tools/ci.sh                    # everything below
+tools/ci.sh --quick            # each board's default and maximal builds (no feature matrix)
+tools/ci.sh --board &lt;b&gt;        # one board, for example dm1701
+tools/ci.sh --matrix           # only the feature matrix (no default builds)
+tools/ci.sh --steps host,python   # only some steps: host, python, firmware, licenses, similarity
+JOBS=8 tools/ci.sh             # parallel make jobs (default: the CPU count)
+RFOUNDRY_CI_PRUNE=0 tools/ci.sh     # keep every build tree (by default each is dropped once its size is recorded and it built clean)
+RFOUNDRY_CI_SANITIZE=1 tools/ci.sh  # the host step also runs the host tests under ASan and UBSan
+</code></pre>
+<p>The CI workflows run these pieces per push and nightly (<a href="../dev/ci.html">docs/dev/ci.md</a>).</p>
+<p>It runs, and reports each as ok / FAIL / skip (exit status 0 only when nothing failed):</p>
+<ol>
+<li>
+<p><strong>Host tests</strong>: <code>make -C tests/host</code> (the same as <code>make test</code>), built with no warnings. They need only the host's
+C compiler. Their binaries, <code>.dSYM</code> bundles and outputs stay in <code>tests/host/</code> and are ignored by git
+(<code>tests/host/.gitignore</code> tracks only sources); <code>make -C tests/host clean</code> removes them.</p>
+</li>
+<li>
+<p><strong>Python</strong>: every tool and <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> test parses, and pytest collects <code>tests/hil</code> (skipped without pytest:
+<code>pip install pytest pyserial</code>). Every HIL skip names its kind (<code>tools/check_hil_skips.py</code>), and the feature
+checklist is consistent (<code>tools/bringup.py check</code> and the bring-up mode tests, <a href="../dev/ci.html">ci.md</a>). The flashing tools' tests run: <code>tools/rfoundry/tests</code> (sector planning, manifests,
+the codec library and key derivation, the codec decision, whole flashes against a fake bootloader with a flash
+model; <a href="../dev/release.html">release.md</a>) and the <code>--self-test</code> of <code>tools/codec_extract.py</code>, <code>tools/stm32_dfu.py</code>,
+<code>tools/md380_migrate.py</code>, <code>tools/serial_loader.py</code> (against a simulated Baofeng bootloader) and
+<code>tools/dm32_migrate.py</code> (DfuSe files, the conversion report, <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> writes against a simulated DM-32 shim), and the
+stack check's (<code>tools/stack_check.py</code>). <code>tools/check_doc_links.py</code> checks that every relative link, image and anchor in the Markdown resolves. <code>tools/check_keys.py</code> checks that the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> settings area's keys agree in the spec, the firmware and the Codeplug Editor.</p>
+</li>
+<li>
+<p><strong>Firmware, every board with the feature matrix</strong>. For each <code>boards/&lt;b&gt;/board.mk</code> whose compiler is installed:</p>
+<ul>
+<li><code>default</code>: the board's defaults;</li>
+<li><code>no-&lt;FEATURE&gt;</code>: every switch that is on by default, turned off alone (its sub-features follow it,
+<code>docs/build-config.md</code>);</li>
+<li><code>fm-minimal</code>: FM only, without <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr>, USB, <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr>, diagnostics and sub-audio tones;</li>
+<li><code>maximal</code>: every switch on, except the board's <code>BOARD_UNSUPPORTED</code>, <code>BOARD_NOT_WRITTEN</code> and <code>MAXIMAL_SKIP</code>,
+with its <code>MAXIMAL_VARS</code> (for example <code>LTO=1</code> on the DM-1701);</li>
+<li><code>vhf</code>: the MD-380's <abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="../user/22-glossary.html#t-vhf">VHF</abbr> image (MD-380 only).</li>
+</ul>
+<p>Every configuration must build with zero compiler and linker warnings. The default and maximal ones must also pass
+the stack check: every task's deepest call chain fits its stack (<a href="../dev/stack-check.html">docs/dev/stack-check.md</a>).
+A board without its compiler (the DM-32's
+csky GCC comes from <code>tools/build-csky-toolchain.sh</code> or the Docker image, <a href="../dev/ci-runners.html#the-csky-elf-image">docs/dev/ci-runners.md</a>)
+is skipped with a notice. Build trees are <code>build/ci/&lt;board&gt;-&lt;config&gt;/</code>, each
+with its log next to it. The sizes go to <code>build/ci/size-report.md</code>: image bytes, the change against the board's
+default, and the space left in the linker's application region (the codec windows lie outside it, so &quot;free&quot; is
+what code can still grow into).</p>
+</li>
+<li>
+<p><strong>Licenses</strong>: <code>tools/license_grep.sh</code> (markers of code that must not be here, <code>docs/CLEANROOM.md</code>) and
+<code>reuse lint</code>. Without <code>reuse</code> installed the lint is skipped with a notice; install it with <code>pipx install reuse</code>
+(or <code>pip install --user reuse</code>).</p>
+</li>
+<li>
+<p><strong>Similarity scan</strong>, only when <code>RFOUNDRY_SIMILARITY_REFS</code> names the reference trees (space separated). The reference
+trees are never part of this repository or of public CI; the project lead runs it against the aftermarket firmware trees
+before a release:</p>
+<pre><code>RFOUNDRY_SIMILARITY_REFS=&quot;/path/to/aftermarket-tree /path/to/other-tree&quot; tools/ci.sh
+tools/similarity_scan.py /path/to/aftermarket-tree                    # the scan alone, every region with lines
+tools/similarity_scan.py --ids --report scan.txt /path/to/tree   # also finds copies with renamed identifiers
+</code></pre>
+<p>Each reported region gives our file and lines and the reference file and line it shares a run of 25 tokens with.
+Every region is reviewed by hand; <code>#include</code> blocks and generic idioms are expected noise. Options:
+<code>tools/similarity_scan.py --help</code>.</p>
+</li>
+</ol>
+<h3 id="the-firmware-version">The firmware version</h3>
+<p>The image carries the commit it was built from (<code>RFOUNDRY_GIT</code>, shown on the splash screen, in the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>'s VERSION
+and in the <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="../spec/mmdvm-protocol.html">MMDVM</abbr> GET_VERSION description) with <code>-dirty</code> appended when tracked files differ from that commit or untracked
+sources sit in the built directories. The build prints it on the image line (<code>image ...: N bytes, version c1544f29-dirty</code>). An image for anyone else is built from a clean, committed tree. A clean build of a release tag also
+carries the release name (<code>RFOUNDRY_RELEASE</code>, <a href="../dev/release.html#release-names">release.md</a>): the splash screen shows it
+in place of the commit, About and the debug link's VERSION (<code>release=</code>) show both.</p>
+<h3 id="the-ui-without-a-radio">The UI without a radio</h3>
+<p>The UI's host tests (<code>make -C tests/host run-ui</code>, part of the host tests above) replay every task flow of
+<code>docs/ux/task-flows.md</code> against the press budgets of <code>docs/ux/usability-tests.md</code> on four display and key map pairs,
+and crawl every screen for the rules that hold everywhere (<code>docs/spec/ui.md</code> 7). <code>make -C tests/host ui-gallery</code>
+renders every screen at every display class into <code>docs/ux/screens/</code>; run it after a UI change and commit the PNGs
+with it, so the review shows what changed. <code>tests/host/uiSim</code> renders one screen after a key script, to PNG.</p>
+<h2 id="2-hardware-in-the-loop-radio-only">2. Hardware in the loop, radio only</h2>
+<pre><code>python3 -m pytest tests/hil -v -rs
+</code></pre>
+<p>The radio on USB with firmware built with <code>CONFIG_DEBUGLINK</code> (the default). Nothing <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmits</abbr>: version and features,
+screenshots, injected keys, FM <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> on NOAA weather, <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="../spec/mmdvm-protocol.html">MMDVM</abbr> requests. Without a radio every test is skipped with
+the reason, which starts with the skip's kind (<code>[bench]</code>). Every test file, rig assumptions and pass criteria:
+<code>tests/hil/README.md</code>. A radio's feature checklist run is <code>tools/bringup.py run --radio &lt;id&gt;</code> (its &quot;Bring-up mode&quot;).</p>
+<p>The USB network tests (<code>test_usb_network*.py</code>, <code>test_tcp_services.py</code>, <code>test_net_services.py</code>, <code>test_snmp.py</code>) switch
+the radio to the network personality and back, so they need <code>--allow-usb-switch</code>. On macOS a missed <abbr class="gl" tabindex="0" title="Network control model: the USB class that makes the radio appear as a network adapter." data-more="../dev/glossary.html#t-ncm">NCM</abbr> carrier can
+leave the radio a network adapter until it is power cycled (<a href="../dev/ci-runners.html#hil-runner">docs/dev/ci-runners.md</a>, &quot;Gotchas&quot;).</p>
+<p><abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> and settings (<code>test_cps.py</code>): the radio-only tests read the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> twice over the open-firmware CPS protocol and
+compare, and check a channel change is saved. Two opt-in flags change the radio but don't transmit:</p>
+<pre><code>python3 -m pytest tests/hil -v -rs -s -k cps --allow-codeplug-write   # backs up, renames a channel, restores
+python3 -m pytest tests/hil -v -rs -s -k cps --allow-reboot           # channel position survives a restart
+</code></pre>
+<p>The write test saves the backup in its tmp directory and prints the path. If the restore fails, the path and the
+<code>tools/cps_client.py write</code> command are in the failure message.</p>
+<p>The UI controls (<code>test_ui.py</code>): the Quick tiles drive the radio core with injected keys and read it back (<abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr>,
+<abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr> and mode for now, hear all, monitor latch, <abbr class="gl" tabindex="0" title="Voice-operated transmit." data-more="../user/22-glossary.html#t-vox">VOX</abbr>), the picker hands its focus row to the radio core, Settings
+reach the input layer (long press time) and the UI (auto lock, about 35 s). The <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> tests need a DMR channel, the
+monitor and VOX tests an FM channel; the others skip. Three change the radio and are opt-in:</p>
+<pre><code>python3 -m pytest tests/hil/test_ui.py -v -rs -k save --allow-codeplug-write          # timeslot saved to the channel and back
+RFOUNDRY_HIL_DELETE_MESSAGE=1 python3 -m pytest tests/hil/test_ui.py -v -rs -k delete      # deletes the newest inbox message
+RFOUNDRY_HIL_FACTORY_RESET=1 python3 -m pytest tests/hil/test_ui.py -v -rs -k factory --allow-reboot   # erases all settings
+</code></pre>
+<p>Factory reset puts every setting back to its default (brightness, privacy keys, radio settings, the channel position)
+and erases the native area; the codeplug and calibration stay. Note the settings before running it.</p>
+<h2 id="3-hardware-in-the-loop-on-air-opt-in">3. Hardware in the loop, on air (opt-in)</h2>
+<p>Each flag allows one more kind of action, and a test runs only when all it needs is allowed:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Allows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--allow-rf</code></td>
+<td>anything that <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmits</abbr>: the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench's modem, the radio itself</td>
+</tr>
+<tr>
+<td><code>--allow-service-stop</code></td>
+<td>accepted and ignored: a bench board stops nothing</td>
+</tr>
+<tr>
+<td><code>--allow-usb-switch</code>, <code>--allow-codeplug-write</code>, <code>--allow-reboot</code></td>
+<td>as in section 2 (no <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr>)</td>
+</tr>
+</tbody>
+</table></div>
+<pre><code>python3 -m pytest tests/hil -v -rs -s --allow-rf --ambe SPEECH.ambe --dmr-freq MHZ   # the default bench pass, DMR audio smoke included
+python3 -m pytest tests/hil -v -rs -s --allow-rf --allow-service-stop                  # DMR RX / voice, DMR TX, FM TX
+python3 -m pytest tests/hil -v -rs -s --allow-rf --allow-service-stop -k &quot;dmr_tx or fm_tx&quot;
+python3 -m pytest tests/hil -v -rs -s --allow-rf --allow-service-stop -k dmr_data   # DMR data services
+python3 -m pytest tests/hil -v -rs -s --allow-rf --allow-service-stop -k aprs   # APRS on --aprs-test-mhz, as --callsign
+RFOUNDRY_SPLIT_VARIANT=0 python3 -m pytest tests/hil/test_split_duplex.py -v -rs -s --allow-rf --allow-service-stop
+</code></pre>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Test</th>
+<th>What is checked</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>test_dmr_rx</code>, <code>test_dmr_voice</code></td>
+<td>the bench modem sends calls; the radio's counters show every burst, every voice frame reaches the speaker path</td>
+</tr>
+<tr>
+<td><code>test_dmr_audio_smoke</code></td>
+<td><abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> audio both ways, which no counter shows: the bench's speech decodes to audio on the radio, frames not repeated; the radio's test signal reaches the air as distinct, non-silent frames that decode to audio when played back. Part of every bench pass on every radio with DMR (<code>tests/hil/README.md</code>, Default bench pass); a run without it prints <code>DMR AUDIO NOT CHECKED</code></td>
+</tr>
+<tr>
+<td><code>test_dmr_tx</code></td>
+<td>the radio keys 3 s; the <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> board's burst records and envelope and the bench modem's listener check source ID, <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr>, <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr>, headers / voice / terminator, slot timing, ramps, carrier offset</td>
+</tr>
+<tr>
+<td><code>test_fm_tx</code></td>
+<td>the radio's FM <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> keys with <abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-ctcss">CTCSS</abbr> 100.0 Hz, <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-dcs">DCS</abbr> D023N, at 12.5 and 25 kHz, the 1750 Hz burst, the roger beep, three power levels; the bench board demodulates, and the test checks its tones, sub-audio and deviations</td>
+</tr>
+<tr>
+<td><code>test_aprs</code></td>
+<td><abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> at the lowest power on the rig's amateur simplex test frequency (<code>--aprs-test-mhz</code>, never an APRS frequency, no path): position, status and message decoded off air by the bench board, with the deviation, twist and TX delay; positions over DMR (<abbr class="gl" tabindex="0" title="Location Request and Response Protocol: a dispatcher asks a radio for its position. Motorola&#x27;s position format; the standard has LIP." data-more="../user/22-glossary.html#t-lrrp">LRRP</abbr>, <abbr class="gl" tabindex="0" title="Unified data transport: DMR short data sent as a plain block of bytes." data-more="../dev/glossary.html#t-udt">UDT</abbr>) decoded from the bench modem</td>
+</tr>
+<tr>
+<td><code>test_dmr_data</code></td>
+<td>the bench sends data, a text message, a <abbr class="gl" tabindex="0" title="A DMR page that makes another radio ring." data-more="../user/22-glossary.html#t-call-alert">call alert</abbr> and <abbr class="gl" tabindex="0" title="A DMR request another radio answers automatically, to show it is on and in range." data-more="../user/22-glossary.html#t-radio-check">radio checks</abbr> to the radio, which answers (its <code>dmr_data</code> counters, the answers heard by the bench modem); the radio sends a call alert, a radio check and a text message the bench modem hears (<code>docs/spec/dmr-data.md</code>)</td>
+</tr>
+<tr>
+<td><code>test_split_duplex</code></td>
+<td>a <code>CONFIG_HOTSPOT_SPLIT=y</code> build: the 0xD6 protocol (no RF); the TX half's continuous <abbr class="gl" tabindex="0" title="Base station: the repeater or modem side of a DMR link, as opposed to the radio (MS)." data-more="../dev/glossary.html#t-bs">BS</abbr> outbound at the lowest power checked off air with the <abbr class="gl" tabindex="0" title="Common announcement channel: 24 bits ahead of each burst a repeater sends. It carries the slot number and short link control." data-more="../dev/glossary.html#t-cach">CACH</abbr> decode of the BS framing experiment (variant from <code>RFOUNDRY_SPLIT_VARIANT</code>); the RX half labeling bench calls, the label flipping with the epoch (<code>docs/spec/split-duplex.md</code> 10)</td>
+</tr>
+<tr>
+<td><code>test_radio_features</code> (rf)</td>
+<td>the zone scan, VFO scan and <abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="../user/22-glossary.html#t-dual-watch">dual watch</abbr> holding on a bench call; battery save waking for it</td>
+</tr>
+</tbody>
+</table></div>
+<p>Which feature is covered on air, and what the last run found: <a href="on-air-coverage.html">on-air-coverage.md</a>. On this
+bench the radio overloads both receivers even at 50 mW; <code>tests/hil/README.md</code> (&quot;On this bench&quot;) says what the tests
+do about it.</p>
+<p>The bench board comes from <code>--bench-api HOST[:PORT]</code> or <code>RFOUNDRY_BENCH_API</code> (<code>docs/testing/dmr-bench.md</code> section 1).</p>
+<h2 id="4-manual-bench-cases">4. Manual bench cases</h2>
+<p><code>docs/testing/dmr-bench.md</code>: the <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> test cases that need a person at the radio (reading the display), sent as bench
+board jobs with <code>tools/bench/bench_line.py</code>. <code>docs/testing/mmdvm-audit.md</code>: the <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="../spec/mmdvm-protocol.html">MMDVM</abbr> protocol audit of the <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr>. <code>docs/testing/dm32-bringup.md</code>: the
+DM-32UV port's first test on a radio, in order, with what to change when a step fails; <code>docs/testing/md380-bringup.md</code>
+is the same for the MD-380.</p>
+<p>The <abbr class="gl" tabindex="0" title="Transmitting on one frequency and receiving on another at the same time. Repeaters do, and so does the duplex hotspot setup." data-more="../spec/split-duplex.html">split duplex</abbr> repeater has no hardware-free gap: <code>make -C tests/host</code> runs <code>splitDuplexTest</code> (the <abbr class="gl" tabindex="0" title="Common announcement channel: 24 bits ahead of each burst a repeater sends. It carries the slot number and short link control." data-more="../dev/glossary.html#t-cach">CACH</abbr> and short
+<abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr> against the standard's tables, the outbound buffer, the epoch, both roles through the MMDVM core),
+<code>hrc6000BsTest</code> (the <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> <abbr class="gl" tabindex="0" title="Base station: the repeater or modem side of a DMR link, as opposed to the radio (MS)." data-more="../dev/glossary.html#t-bs">BS</abbr> outbound engine on a fake chip) and <code>sim/splitPairTest.py</code> (two radios' cores in
+lockstep virtual time with drift, a clock wrap and USB jitter, a repeated call end to end); the bench steps are
+<code>docs/spec/split-duplex.md</code> 10.</p>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/testing/README.md">Ver el código fuente de esta página</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="En esta página">
+		<p class="eyebrow">En esta página</p>
+		<ul><li class="l2"><a href="#1-the-release-gate-toolscish">1. The release gate: tools/ci.sh</a></li><li class="l3"><a href="#the-firmware-version">The firmware version</a></li><li class="l3"><a href="#the-ui-without-a-radio">The UI without a radio</a></li><li class="l2"><a href="#2-hardware-in-the-loop-radio-only">2. Hardware in the loop, radio only</a></li><li class="l2"><a href="#3-hardware-in-the-loop-on-air-opt-in">3. Hardware in the loop, on air (opt-in)</a></li><li class="l2"><a href="#4-manual-bench-cases">4. Manual bench cases</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

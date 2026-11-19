@@ -1,0 +1,291 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moving from Stock MD-380 Firmware · RadioFoundry</title>
+<meta name="description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Moving from Stock MD-380 Firmware · RadioFoundry">
+<meta property="og:description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:url" content="https://radiofoundry.org/docs/user/18-moving-from-stock-md380.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="The radios RadioFoundry runs on, each showing a different screen.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/user/18-moving-from-stock-md380.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/user/18-moving-from-stock-md380.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/user/18-moving-from-stock-md380.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/user/18-moving-from-stock-md380.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/user/18-moving-from-stock-md380.html">
+<link rel="icon" href="../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../" data-home="../../" data-gl-more="More">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../index.html">
+			<img src="../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Main"><a href="../../radios/index.html">Radios</a><a href="../../features/index.html">Features</a><a href="../../flash/index.html">Install</a><a href="../../codeplug/index.html">Codeplug</a><a href="../../docs/index.html" aria-current="page">Docs</a><a href="../../screenshots/index.html">Screenshots</a><a href="../../tools/index.html">Tools</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Language" title="Language">EN</summary><nav aria-label="Language"><a href="../../docs/user/18-moving-from-stock-md380.html" aria-current="true" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../es/docs/user/18-moving-from-stock-md380.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../it/docs/user/18-moving-from-stock-md380.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../zh/docs/user/18-moving-from-stock-md380.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Switch light and dark" title="Switch light and dark">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="User Manual">
+		<p class="eyebrow"><a href="../../docs/index.html">Documentation</a> / User Manual</p>
+		<ul><li><a href="index.html">RadioFoundry User Manual</a></li><li><a href="01-introduction.html">Introduction</a></li><li><a href="02-installing.html">Installing</a></li><li><a href="03-first-boot.html">First Boot</a></li><li><a href="04-programming.html">Programming the Radio</a></li><li><a href="05-keys-and-navigation.html">Keys and Navigation</a></li><li><a href="06-home-screen.html">The Home Screen</a></li><li><a href="07-channels-zones-vfo.html">Channels, Zones and the VFO</a></li><li><a href="08-fm.html">FM</a></li><li><a href="09-dmr.html">DMR</a></li><li><a href="10-messages-and-signaling.html">Messages, Call Alert and Radio Check</a></li><li><a href="11-emergency.html">Emergency</a></li><li><a href="12-scan.html">Scan and Dual Watch</a></li><li><a href="13-aprs.html">APRS</a></li><li><a href="14-hotspot.html">Hotspot Mode</a></li><li><a href="15-usb-network.html">USB Network Mode</a></li><li><a href="16-battery-and-power.html">Battery and Power</a></li><li><a href="17-settings.html">Settings</a></li><li><a href="18-moving-from-stock-md380.html" aria-current="page">Moving from Stock MD-380 Firmware</a></li><li><a href="19-moving-from-stock-dm32.html">Moving from Stock DM-32UV Firmware</a></li><li><a href="20-troubleshooting.html">Troubleshooting</a></li><li><a href="21-faq.html">FAQ</a></li><li><a href="22-glossary.html">Glossary</a></li><li><a href="23-radios.html">Radio Reference</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<h1 id="moving-from-stock-md-380-firmware">Moving from Stock MD-380 Firmware</h1>
+<p>This chapter is for a <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="22-glossary.html#t-tyt">TYT</abbr> MD-380, MD-390 or Retevis RT3 that runs TYT's stock firmware. One program, <code>md380_migrate.py</code>, does the whole move:</p>
+<ol>
+<li>It reads your <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> from the radio: channels, zones, contacts, <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">RX</abbr> group lists, your <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr>.</li>
+<li>It flashes RadioFoundry.</li>
+<li>It writes the codeplug back, plus the <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> ID (callsign) database.</li>
+</ol>
+<p>The web installer does the same: it backs up the radio, installs RadioFoundry, then converts the codeplug and writes it
+back (<a href="02-installing.html">Installing</a>). The Codeplug Editor converts a backup later (<a href="04-programming.html#files">Programming the
+radio</a>). Use this program to do it from the command line, with the ID database. What has been checked on the radio is in
+the <a href="23-radios.html#tyt-md-380">Radio reference</a>. Keep your stock firmware file, so you can go back to stock with TYT's
+updater.</p>
+<h2 id="what-you-need">What you need</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python 3.8 or newer</td>
+<td>macOS and Linux tested on files only, Windows untested</td>
+</tr>
+<tr>
+<td>qdmr 0.12 or newer</td>
+<td>Brings the <code>dmrconf</code> command that converts the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>. macOS: <code>brew install qdmr</code>. Linux: your distribution's <code>qdmr</code> package. Windows: the installer from dm3mat.darc.de/qdmr</td>
+</tr>
+<tr>
+<td><code>pip install pyusb pyserial</code> and libusb</td>
+<td>libusb: macOS <code>brew install libusb</code>, Linux <code>apt install libusb-1.0-0</code></td>
+</tr>
+<tr>
+<td>The RadioFoundry image for your band</td>
+<td><code>rfoundry_md380_codec.bin</code> (codec included), or <code>rfoundry_md380.bin</code> with <code>--stock</code> (the tool merges the codec). A <abbr class="gl" tabindex="0" title="Ultra high frequency: 300 MHz to 3 GHz. The amateur 70 cm band is UHF." data-more="22-glossary.html#t-uhf">UHF</abbr> image for a UHF radio, a <abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="22-glossary.html#t-vhf">VHF</abbr> image for a VHF radio. See <a href="#getting-the-image">Getting the image</a></td>
+</tr>
+<tr>
+<td>TYT's <code>MD-380-D2.32(AD).bin</code>, or the bootloader key file</td>
+<td>The tool derives the bootloader key from the stock file and checks it. A key file (<code>--key</code>) works too</td>
+</tr>
+<tr>
+<td>The programming cable</td>
+<td>The radio's USB cable</td>
+</tr>
+</tbody>
+</table></div>
+<p>Where to get the stock file: <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="22-glossary.html#t-tyt">TYT</abbr>'s download page (<a href="https://www.tyt888.com/download.html">tyt888.com/download.html</a>) ships
+the firmware update as a Windows program, and the <code>.bin</code> is inside it. The archive at
+<a href="https://md380.org/firmware/orig/">md380.org/firmware/orig</a> has every known MD-380 release as plain files. Use
+<strong>D2.32</strong> (<code>MD-380-D2.32(AD).bin</code>): it gives both the bootloader key and the voice codec. D2.30 gives the key only.
+The web flasher also takes TYT's download zip as it is, and checks every file by its SHA-256.</p>
+<p>A tester kit (<code>md380_migrate.py package</code>) is one folder with the script, its helpers, the image, a <code>README.txt</code> and
+a <code>requirements.txt</code>.</p>
+<h2 id="getting-the-image">Getting the image</h2>
+<p>The release page carries the image of each band. To build one yourself (<a href="../dev/building.html">building</a>):</p>
+<pre><code>make BOARD=md380                                         # UHF: build/md380/rfoundry_md380.bin
+make BOARD=md380 BAND=vhf                                # VHF: build/md380-vhf/rfoundry_md380.bin
+</code></pre>
+<p>With <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="22-glossary.html#t-tyt">TYT</abbr>'s <code>MD-380-D2.32(AD).bin</code> in <code>codecs/</code>, the build also writes <code>rfoundry_md380_codec.bin</code> with the codec merged in.</p>
+<h2 id="run-it">Run it</h2>
+<p>Look at every step first. This reads only files and touches nothing:</p>
+<pre><code>python3 md380_migrate.py all --image rfoundry_md380_codec.bin --stock &quot;MD-380-D2.32(AD).bin&quot; --dry-run
+</code></pre>
+<p>Then run it for real:</p>
+<pre><code>python3 md380_migrate.py all --image rfoundry_md380_codec.bin --stock &quot;MD-380-D2.32(AD).bin&quot;
+</code></pre>
+<p>The program asks before each step that needs you at the radio:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>You do</th>
+<th>The program does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0. Check</td>
+<td>nothing</td>
+<td>Checks dmrconf, the USB libraries, the image and the key. If something is missing, it stops before it touches the radio</td>
+</tr>
+<tr>
+<td>1. Backup</td>
+<td>Switch the radio on normally, cable in</td>
+<td>Reads the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> (<code>backup-stock.dfu</code>, <code>backup-stock.yaml</code>). Converts it for RadioFoundry and shows the counts before and after</td>
+</tr>
+<tr>
+<td>2. Flash</td>
+<td>Radio off. Hold <strong>PTT</strong> and the <strong>upper side key</strong>, switch on. The screen stays dark</td>
+<td>Shows the USB device and asks once more, then writes RadioFoundry</td>
+</tr>
+<tr>
+<td>3. Settings area</td>
+<td>Wait for the RadioFoundry Home screen</td>
+<td>Checks the radio runs RadioFoundry. The stock firmware's data sits where RadioFoundry keeps its settings, so it asks, saves that area to a file, and gives it to RadioFoundry</td>
+</tr>
+<tr>
+<td>4. Codeplug</td>
+<td>nothing</td>
+<td>Writes the codeplug, waits for the restart, reads it back and compares</td>
+</tr>
+<tr>
+<td>5. ID database</td>
+<td>nothing</td>
+<td>Writes the <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr> database. A large one takes several minutes</td>
+</tr>
+</tbody>
+</table></div>
+<p>It keeps everything in <code>~/RadioFoundry-MD380-migration/&lt;date-time&gt;/</code> and never deletes those files. If a step fails, it
+stops and says why. When the failure comes after the flash, it prints the command that continues:</p>
+<pre><code>python3 md380_migrate.py restore --workdir ~/RadioFoundry-MD380-migration/20261011-101500
+</code></pre>
+<h2 id="your-codeplug-from-a-file">Your codeplug from a file</h2>
+<p>If you have the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> as a file, the program doesn't need to read the radio first. Give it with <code>--from</code>:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>File</th>
+<th>From</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.rdt</code> (262,709 bytes)</td>
+<td>The <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="22-glossary.html#t-tyt">TYT</abbr> <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="04-programming.html">CPS</abbr></td>
+</tr>
+<tr>
+<td><code>.dfu</code></td>
+<td>dmrconf</td>
+</tr>
+<tr>
+<td><code>.yaml</code></td>
+<td><abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr></td>
+</tr>
+</tbody>
+</table></div>
+<pre><code>python3 md380_migrate.py all --from my-codeplug.rdt --image rfoundry_md380_codec.bin --stock &quot;MD-380-D2.32(AD).bin&quot;
+</code></pre>
+<p><code>md380_migrate.py backup --from FILE</code> only converts and checks, with no radio needed.</p>
+<h2 id="what-fits">What fits</h2>
+<p>RadioFoundry holds 1024 channels, 68 zones of 80 channels, 1024 contacts and 76 <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">RX</abbr> group lists. A stock MD-380 holds up to
+250 zones and 250 RX group lists. If yours has more, the program lists what would be left out (the last ones). It
+asks before it flashes. To choose yourself, open <code>backup-stock.yaml</code> in <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr> and delete what you don't need. Save it,
+and run again with <code>--from</code> on the saved file.</p>
+<p>The program also tidies the RX group lists. The <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="22-glossary.html#t-tyt">TYT</abbr> <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="04-programming.html">CPS</abbr> heard only the <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="22-glossary.html#t-talkgroup">talkgroups</abbr> in a channel's list, so many
+<abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplugs</abbr> have one list per channel holding just that channel's talkgroup. RadioFoundry always hears the talkgroup a channel
+talks to, so those lists go, as do empty, duplicate and unused ones. Every channel keeps its talkgroup. <code>--no-cleanup</code>
+keeps the lists as they are.</p>
+<p>RadioFoundry uses the parts of the codeplug listed in <a href="04-programming.html">Programming the radio</a>. Scan lists, GPS
+systems and TYT's menu and button settings are not carried over.</p>
+<h2 id="the-dmr-id-database">The DMR ID database</h2>
+<p>The program writes RadioFoundry's <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr> database in one of two ways:</p>
+<ul>
+<li>By default, dmrconf downloads the public <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> user database and picks the IDs nearest yours (internet needed).</li>
+<li><code>--users FILE</code> takes a users <abbr class="gl" tabindex="0" title="Comma separated values: a table as plain text, as programming software exports it." data-more="22-glossary.html#t-csv">CSV</abbr> instead: radioid.net's <code>user.csv</code>. The program shows the first records it read. If a file has no header row and the columns
+look wrong, give their order with <code>--users-columns id,callsign,fname,surname,city,state,country</code>.</li>
+</ul>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--db-limit N</code></td>
+<td>At most N records</td>
+</tr>
+<tr>
+<td><code>--id-prefix</code></td>
+<td>Picks records by your country's ID prefix</td>
+</tr>
+<tr>
+<td><code>--no-db</code></td>
+<td>Writes no database</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="going-back-to-stock">Going back to stock</h2>
+<p><abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="22-glossary.html#t-tyt">TYT</abbr>'s updater file goes through the same bootloader:</p>
+<pre><code>python3 md380_migrate.py flash --image &quot;MD-380-D2.32(AD).bin&quot;
+</code></pre>
+<p>If the screen stays dark and the <abbr class="gl" tabindex="0" title="Light-emitting diode: the radio&#x27;s status light." data-more="22-glossary.html#t-led">LED</abbr> keeps blinking afterwards, the radio is still in the bootloader: switch it off
+and on. If the switch does nothing, take the battery off and refit it. The program tells you when it sees this.</p>
+<p>Then write your <code>backup-stock.rdt</code> or <code>backup-stock.dfu</code> with the TYT <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="04-programming.html">CPS</abbr> or <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr> (<code>dmrconf write --radio md390</code>).</p>
+<h2 id="limits-and-notes">Limits and notes</h2>
+<ul>
+<li>Some early <abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="22-glossary.html#t-vhf">VHF</abbr> radios have a small 1 MB flash chip. RadioFoundry keeps settings and the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> on it as on other
+radios, but its <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr> database is limited to what fits.</li>
+<li>The program never changes the radio's calibration.</li>
+<li>Windows (untested): to flash, bind the bootloader (0483:DF11) to WinUSB with Zadig
+(<a href="02-installing.html#windows-the-bootloader-driver">steps</a>). That replaces the driver the <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="22-glossary.html#t-tyt">TYT</abbr> <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="04-programming.html">CPS</abbr> uses for the same USB
+ID, so run the backup step first.</li>
+<li>Linux: the program prints the udev rule for 0483:DF11 if access is denied. Add yourself to the <code>dialout</code> group for
+the radio's serial port once it runs RadioFoundry.</li>
+<li>macOS: the radio's serial port is listed twice (<code>cu.usbmodem…</code> and <code>tty.usbmodem…</code>), and <code>dmrconf</code> can't choose
+between them. The program finds the radio by its USB ID and gives <code>dmrconf</code> the <code>cu.</code> name. <code>--port</code> takes
+<code>/dev/cu.usbmodem…</code> or <code>cu.usbmodem…</code>. With two radios connected it stops and asks for <code>--port</code>. <code>RFOUNDRY_PORT</code>
+works like <code>--port</code>.</li>
+</ul>
+
+		<nav class="prev-next"><a class="prev" href="17-settings.html">Settings</a><a class="next" href="19-moving-from-stock-dm32.html">Moving from Stock DM-32UV Firmware</a></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/user/18-moving-from-stock-md380.md">View the source of this page</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="On this page">
+		<p class="eyebrow">On this page</p>
+		<ul><li class="l2"><a href="#what-you-need">What you need</a></li><li class="l2"><a href="#getting-the-image">Getting the image</a></li><li class="l2"><a href="#run-it">Run it</a></li><li class="l2"><a href="#your-codeplug-from-a-file">Your codeplug from a file</a></li><li class="l2"><a href="#what-fits">What fits</a></li><li class="l2"><a href="#the-dmr-id-database">The DMR ID database</a></li><li class="l2"><a href="#going-back-to-stock">Going back to stock</a></li><li class="l2"><a href="#limits-and-notes">Limits and notes</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Join the RadioFoundry community</strong><span class="small muted">Questions, help with your radio and news, on Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Found a bug? Want your radio supported?</strong><span class="small muted">Open an issue on GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry is MIT licensed · <a href="https://github.com/radiofoundry/radiofoundry">Source Code</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Community</a> · <a href="../../docs/index.html">Docs</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Changelog</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

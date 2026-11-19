@@ -1,0 +1,426 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Releases · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Releases · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/docs/dev/release.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/dev/release.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/dev/release.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/dev/release.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/dev/release.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/dev/release.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../es/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../../es/radios/index.html">Radios</a><a href="../../../es/features/index.html">Funciones</a><a href="../../../es/flash/index.html">Instalar</a><a href="../../../es/codeplug/index.html">Codeplug</a><a href="../../../es/docs/index.html" aria-current="page">Documentación</a><a href="../../../es/screenshots/index.html">Capturas</a><a href="../../../es/tools/index.html">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../../docs/dev/release.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/dev/release.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/dev/release.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/dev/release.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Guía del desarrollador">
+		<p class="eyebrow"><a href="../../../es/docs/index.html">Documentación</a> / Guía del desarrollador</p>
+		<ul><li><a href="index.html">Developer Documentation</a></li><li><a href="adding-a-mode.html">Adding a Mode</a></li><li><a href="adding-a-radio.html">Adding a Radio</a></li><li><a href="architecture.html">Architecture</a></li><li><a href="board-registry.html">The Board Registry</a></li><li><a href="building.html">Building</a></li><li><a href="ci-runners.html">CI Runners and Images</a></li><li><a href="ci.html">Continuous Integration</a></li><li><a href="codec.html">The Codec</a></li><li><a href="codeplug-editor.html">The Codeplug Editor</a></li><li><a href="contributing.html">Contributing</a></li><li><a href="cps-and-codeplug.html">CPS, Codeplug and Settings</a></li><li><a href="debug-link.html">Debug Link</a></li><li><a href="glossary.html">Developer glossary</a></li><li><a href="manual-pdf.html">The User Manual PDF</a></li><li><a href="release.html" aria-current="page">Releases</a></li><li><a href="stack-check.html">Stack Check</a></li><li><a href="testing.html">Testing</a></li><li><a href="translating.html">Translating</a></li><li><a href="web-flasher.html">The Web Flasher</a></li><li><a href="website.html">The Web Site</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Esta página aún no está traducida; se muestra en inglés.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="releases">Releases</h1>
+<p>A release is a git tag on main named for its year and month (<code>v26.11</code>, below) and a GitHub release that carries,
+for each releasable radio, the firmware image <strong>without the <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="codec.html">AMBE</abbr> codec</strong>, its manifest, <code>SHA256SUMS</code>, the <code>rfoundry</code>
+flashing tool as single-file executables for Linux, macOS and Windows, and the user manual as a PDF. Users never
+build firmware: <code>rfoundry</code> downloads the image, checks it, and either keeps the codec already in the radio or writes
+the codec from the user's own stock firmware file (<a href="https://github.com/radiofoundry/radiofoundry/blob/main/tools/rfoundry/README.md">tools/rfoundry/README.md</a>).</p>
+<h2 id="release-names">Release names</h2>
+<p>A release is named for the year and month it comes out, so a user sees at a glance how old the firmware is.
+<code>tools/release_version.py</code> holds the rule; the Makefile, <code>tools/release_build.sh</code>, the release workflow and the site
+all ask it.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vYY.M</code></td>
+<td>The first release of a month: <code>v26.11</code></td>
+</tr>
+<tr>
+<td><code>vYY.M.N</code></td>
+<td>Another release that month: <code>v26.11.1</code>, <code>v26.11.2</code></td>
+</tr>
+<tr>
+<td><code>vYY.MbN</code></td>
+<td>A pre-release (beta) of that name: <code>v26.12b1</code>. The final keeps the name even if it ships the next month</td>
+</tr>
+</tbody>
+</table></div>
+<p>The year has two digits (<code>26</code> is 2026) and a beta is a bare <code>b</code> and its count, to save room on the radios' small
+displays. The month has no leading zero and the count starts at 1, so <code>v26.11.3</code> never reads as March. Main is the
+alpha; there is no release candidate yet. <code>tools/release_build.sh</code> and the release workflow refuse any other tag.</p>
+<p><strong>On the radio.</strong> A clean build of a commit that carries a release tag gets <code>RFOUNDRY_RELEASE</code> (the Makefile reads the
+tag; <code>make RELEASE=&lt;tag&gt;</code> sets it, as <code>tools/release_build.sh</code> does, and <code>RELEASE=</code> leaves it out). The splash screen
+shows the release name in place of the commit, About shows both on their own lines (Release, then Build), and the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="debug-link.html">debug link</abbr>'s VERSION adds <code>release=</code>
+(<a href="../spec/debuglink.html">debuglink.md</a> 3.1). <code>RFOUNDRY_GIT</code> stays the commit everywhere else: the crash record's build
+id, the manifests and the <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> id need it. The build service fetches tags, so a custom build of a tagged commit shows
+the release name too.</p>
+<p><strong>Betas.</strong> A tag ending <code>bN</code> becomes a GitHub pre-release. GitHub's latest release skips pre-releases, and so does
+the site: the flasher installs the newest release that is not a pre-release by default, and offers a newer beta only as
+an opt-in version link (<code>?version=&lt;tag&gt;</code>, <a href="website.html#flasher-notices">website.md</a>). <code>?version=main</code> still builds main.</p>
+<p><strong>On the site.</strong> The footer shows the firmware release the flasher installs, linked to its GitHub release, and a
+Changelog link to the GitHub releases. The release notes start from GitHub's generated notes (<code>--generate-notes</code>):
+edit them into a short list of what changed for users.</p>
+<h2 id="checklist">Checklist</h2>
+<ol>
+<li>Main is green: <code>JOBS=8 tools/ci.sh</code> ends with &quot;all checks passed&quot; (<a href="ci.html">ci.md</a>), on a machine with both compilers and <code>reuse</code>.</li>
+<li>The project lead runs the similarity scan against the reference trees and reviews every hit
+(<a href="../testing/index.html">docs/testing/README.md</a> 1).</li>
+<li>A comprehensive legal scan of what the release ships, reviewed by the project lead: the license and notices of
+every file and dependency (<code>reuse lint</code>, <code>third_party/</code>, the rfoundry executables' bundled packages), the names
+and marks used in the docs, the site and the images, and nothing in the tree, the release or the site that the
+clean-room rules (<a href="../CLEANROOM.html">CLEANROOM.md</a>) or &quot;Never commit&quot; (<a href="https://github.com/radiofoundry/radiofoundry/blob/main/AGENTS.md">AGENTS.md</a>) forbid.</li>
+<li>The <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="testing.html">HIL</abbr> tests pass on each radio the release claims, with the flags its features need.</li>
+<li>rfoundry has flashed the release candidate on each radio the release claims, in both codec modes (below, &quot;Testing
+rfoundry on a radio&quot;).</li>
+<li>The user manual matches the release: the status of each setting in <a href="../user/17-settings.html">Settings</a>, the
+supported radios in the <a href="../user/01-introduction.html">Introduction</a>, the screenshots (<code>make -C tests/host ui-gallery</code>).</li>
+<li>The README's radio status table is current.</li>
+<li>Build the manual locally and read it through (<a href="manual-pdf.html">manual-pdf.md</a>).</li>
+<li>Update the contributors list and commit it if it changed: <code>python3 tools/gen_contributors.py</code> writes
+<code>CONTRIBUTORS</code> from the git history. CI never checks that the file is current, so a new contributor's pull
+request can't fail over it.</li>
+<li>Tag and push the tag:</li>
+</ol>
+<pre><code>git tag -a v26.11 -m &quot;RadioFoundry 26.11&quot;
+git push origin v26.11
+</code></pre>
+<ol start="11">
+<li>The release workflow builds the firmware and rfoundry and attaches them; the manual workflow attaches the PDF
+(<a href="manual-pdf.html">manual-pdf.md</a>). Edit the release notes on GitHub (they are the changelog the site links).</li>
+<li>The next push to main redeploys the site, which then installs the new release (or offers the new beta).</li>
+</ol>
+<h2 id="release-artifacts">Release artifacts</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>File</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rfoundry-&lt;board&gt;-&lt;version&gt;.bin</code></td>
+<td>The raw image <code>make BOARD=&lt;board&gt;</code> built, linked for the board's application base. No codec. A board with a first stage releases <code>rfoundry_&lt;board&gt;_install.bin</code>, the first stage then the application; <code>tools/release.py</code> refuses the application alone</td>
+</tr>
+<tr>
+<td><code>rfoundry-&lt;board&gt;-&lt;version&gt;.json</code></td>
+<td>Its manifest (below)</td>
+</tr>
+<tr>
+<td><code>rfoundry-&lt;version&gt;-&lt;os&gt;-&lt;arch&gt;[.exe]</code></td>
+<td>rfoundry, one file per system: <code>linux-x86_64</code>, <code>macos-arm64</code>, <code>macos-x86_64</code>, <code>windows-x86_64</code></td>
+</tr>
+<tr>
+<td><code>SHA256SUMS</code></td>
+<td>SHA-256 of every file above</td>
+</tr>
+<tr>
+<td><code>RadioFoundry-manual-&lt;version&gt;.pdf</code></td>
+<td>The user manual (the manual workflow)</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>tools/release.py --board &lt;id&gt; --version v26.11</code> writes the first two (with <code>--variant amateur</code>, the image of <code>make VARIANT=amateur</code> as <code>rfoundry-&lt;board&gt;-amateur-&lt;version&gt;.bin</code>, its manifest naming the variant: <a href="../build-config.html#variants">build-config.md</a>) and the sums for a built image into <code>dist/</code>
+(or <code>--out DIR</code>). It refuses an image that reaches into a codec sector or carries the codec's signature word, so a
+release can never contain the codec, even by accident.</p>
+<p>The manifest (<code>format</code> <code>rfoundry-release/1</code>, written and checked by <code>tools/rfoundry/rfoundry/manifest.py</code>):</p>
+<pre><code class="language-json">{
+  &quot;format&quot;: &quot;rfoundry-release/1&quot;,
+  &quot;board&quot;: &quot;&lt;id&gt;&quot;, &quot;board_name&quot;: &quot;&lt;name&gt;&quot;,
+  &quot;version&quot;: &quot;v26.11&quot;, &quot;git&quot;: &quot;5f034440&quot;, &quot;git_full&quot;: &quot;5f03444001b77a00ebaef28d3358dd902c03474b&quot;,
+  &quot;image&quot;: {&quot;file&quot;: &quot;rfoundry-&lt;id&gt;-v26.11.bin&quot;, &quot;size&quot;: 220780, &quot;sha256&quot;: &quot;dc8b8ed7...&quot;},
+  &quot;ranges&quot;: [{&quot;addr&quot;: &quot;0x0800C000&quot;, &quot;size&quot;: 220780}],
+  &quot;sectors&quot;: [3, 4, 5, 6],
+  &quot;codec&quot;: {&quot;included&quot;: false, &quot;profile&quot;: &quot;&lt;id&gt;-&lt;codec&gt;-s11&quot;, &quot;sectors&quot;: [10, 11],
+            &quot;windows&quot;: [{&quot;addr&quot;: &quot;0x080E3A74&quot;, &quot;size&quot;: 66076}, {&quot;addr&quot;: &quot;0x080D19F0&quot;, &quot;size&quot;: 73858},
+                        {&quot;addr&quot;: &quot;0x080FFF80&quot;, &quot;size&quot;: 128}],
+            &quot;keep_supported&quot;: true},
+  &quot;features&quot;: &quot;FM,SUBTONE,DMR,...&quot;,
+  &quot;toolchain&quot;: &quot;arm-none-eabi-gcc (Arm GNU Toolchain 13.3.Rel1 (Build arm-13.24)) 13.3.1 20240614&quot;,
+  &quot;variant&quot;: &quot;full&quot;, &quot;git_time&quot;: 1761840000
+}
+</code></pre>
+<p><code>git_time</code> is the commit's time, which the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="cps-and-codeplug.html">codeplug</abbr> editor compares with a radio's <code>git_time=</code> (<abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="debug-link.html">debug link</abbr> VERSION) to
+offer the release to a build that isn't one. Manifests from before it have none; the site's build then looks the
+commit up in its clone. <code>ranges</code> says where the <code>.bin</code> goes: one range, the application at the board's base. <code>sectors</code> are the flash sectors
+the image covers. <code>codec.windows</code> are where the merge puts the codec: on an <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="glossary.html#t-stm32">STM32F4</abbr> radio the code, the tables and the
+descriptor (<a href="../spec/codec-placement.html">codec-placement.md</a>, &quot;STM32 radios&quot;). <code>codec.profile</code> is the id the firmware
+reports for a matching codec (<code>codec=</code> in the debug link's VERSION, <a href="../spec/debuglink.html">debuglink.md</a> 3.1).</p>
+<h2 id="sector-maps">Sector maps</h2>
+<p>Each board's map comes from the board registry. The application region and the codec symbols come from its linker
+script. The sectors are the platform's default geometry (<code>default_sectors</code> in <code>platform.toml</code>) from the application's
+start up, or <code>app+slot</code> on the <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="glossary.html#t-hr-c7000">HR_C7000</abbr>; a board's <code>[flash] sectors</code> overrides that. The protected range is the flash
+from the platform's <code>flash_base</code> to the application. <code>tools/boards.py json --for rfoundry</code> writes them to
+<code>tools/rfoundry/rfoundry/registry.json</code>, which rfoundry, <code>tools/release.py</code> and the <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="glossary.html#t-stub">stub</abbr> tools read; <code>tools/ci.sh</code>
+fails when it is out of date. The <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="glossary.html#t-stm32">STM32</abbr> codec windows come from the codec profile (<code>stockfw.PROFILES</code>), which rfoundry reads when it loads the
+registry.</p>
+<p>A flash sector can only be erased whole, so each board's linker script keeps the application out of the sectors that
+hold the codec. Whether an update can leave the codec alone (keep) depends on that map:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Family</th>
+<th>Application</th>
+<th>Codec</th>
+<th>Keep</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STM32F4</td>
+<td>The sectors from the application's start to the codec sectors</td>
+<td>The tables stay at their stock address, the code moves into the last sectors, a descriptor says where (<a href="../spec/codec-placement.html">codec-placement.md</a> &quot;STM32 radios&quot;)</td>
+<td>Yes: the update writes only the application's sectors</td>
+</tr>
+<tr>
+<td>HR_C7000</td>
+<td>From the application base to the slot</td>
+<td>A slot at the end of the region (<a href="../spec/codec-placement.html">codec-placement.md</a> &quot;HR_C7000 radios&quot;)</td>
+<td>Per route: through the stub yes (it writes only the image's sectors), through an updater that erases the whole area no</td>
+</tr>
+</tbody>
+</table></div>
+<p>The exact map of a radio is in its hardware spec (<code>hardware-&lt;id&gt;.md</code>) and in <code>tools/rfoundry/rfoundry/registry.json</code>.</p>
+<p><strong>What an interrupted update leaves.</strong> All erases come first, then the writes, both in the board's sector order, so
+sector 3 (the vector table) is the first one written back: an update cut off before that leaves the bootloader in <abbr class="gl" tabindex="0" title="Device Firmware Upgrade: the USB protocol of the radio&#x27;s bootloader." data-more="../user/22-glossary.html#t-dfu">DFU</abbr>.
+Cut off later, the radio may boot half an application: a crash, never a brick. Enter the bootloader by hand (the
+board's key combination at power on) and flash again.</p>
+<p>An install that moves the codec out of a former layout (<a href="../spec/codec-placement.html">codec-placement.md</a>, &quot;Moving to a
+new layout&quot;) erases sector 3 first and writes it last instead (<code>vector_last</code> in rfoundry's <code>plan.py</code>, <code>vectorLast</code> in
+the web flasher's <code>plan.js</code>). Cut off anywhere before that last sector, sector 3 is blank, the bootloader stays in DFU
+and the same install, run again, finishes the move from the saved copy; no half application runs in between.</p>
+<h2 id="releases-from-before-the-codec-moved">Releases from before the codec moved</h2>
+<p>Releases made before the codec moved on an <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="glossary.html#t-stm32">STM32F4</abbr> radio carried a second range for read-only data and named the old
+codec profile (without the <code>-s11</code> suffix). rfoundry and the web flasher refuse a manifest with two ranges or with an
+old profile, and <code>tools/stm32_dfu.py</code> refuses a release image whose manifest lists two ranges.</p>
+<h2 id="codec-handling">Codec handling</h2>
+<p>rfoundry picks one of two modes; <code>--dry-run</code> prints the exact sectors either would erase and write.</p>
+<p><strong>Keep (the default when it is known to be safe).</strong> Erase and write only the sectors the image covers; never touch the codec sectors, so the codec already in the radio stays. Flash can't be read back
+over the bootloader (the radio is at RDP level 1), so rfoundry needs another way to know the codec is there:</p>
+<ol>
+<li><strong>RadioFoundry is running.</strong> Before the user switches the radio into its bootloader, rfoundry asks over the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="debug-link.html">debug link</abbr>
+(<code>rfoundry probe</code>, or automatically at the start of <code>rfoundry flash</code>). VERSION's <code>codec=</code> is the firmware's own check,
+the same one that gates <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> voice (on an <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="glossary.html#t-stm32">STM32F4</abbr> radio: the descriptor, the signature word and the CRC-32 of both
+windows at their placed addresses). If it reports the board's codec profile (<code>codec.id</code> in the registry), keep is safe. If it reports
+the id of an earlier layout (the profiles' <code>former</code> entries, the registry's <code>codec_former</code>), the codec sits where this
+release's image goes: rfoundry reads it back over the debug link, checks it and merges it in the new layout
+(<a href="../spec/codec-placement.html">codec-placement.md</a>, &quot;Moving to a new layout&quot;).
+The answer is remembered for 30 minutes (rfoundry's settings directory), because the debug link is gone once the
+radio is in its bootloader. A build from before the codec moved reports the profile without <code>-s11</code>: its codec code is in
+sectors the update overwrites, so keep is not safe.</li>
+<li><strong>Otherwise the codec is written (merge),</strong> from the copy rfoundry saved from this radio if it has one, else from
+the stock file. A vendor firmware doesn't hold the codec where RadioFoundry keeps it, so <code>--stock-installed</code> never makes keep safe.</li>
+<li><code>--codec keep</code> forces keep in every case. Where the radio is known to have no codec, the keep expects none, so the
+check after flashing doesn't count <code>codec=absent</code> as a failure: the radio reported no codec, or the user says it runs
+its stock firmware (<code>--stock-installed</code>, or the web flasher's &quot;Original firmware&quot; with or without a version) and no
+stock version of the board holds the codec where RadioFoundry keeps it (the board's <code>codec.installed</code> is empty).
+rfoundry and the web flasher (<code>site/static/js/flasher/decide.js</code>) apply the same rules.</li>
+</ol>
+<p><strong>The saved copy.</strong> Whenever rfoundry or the web flasher sees a radio running RadioFoundry, it reads the codec over the debug
+link (READ_MEM, in the stock, the placed or an earlier placed layout), checks it against the profile's hashes and saves it (rfoundry's
+config directory, or the browser). It uses that copy instead of the stock file whenever the radio's codec can't be
+kept or checked: no answer over the debug link, the radio back on stock firmware, or no codec reported
+(<code>rfoundry/codecsave.py</code>, <code>site/static/js/flasher/codecsave.js</code>). There is no read-back during the update itself, so
+a radio on a build from before the move needs the stock file once unless a copy was saved earlier.</p>
+<p>Why a wrong guess is harmless: the firmware never runs the codec without checking it first (descriptor, signature and both CRCs, <code>boards/&lt;id&gt;/vocoder_&lt;id&gt;.c</code>). If the bytes in sectors 10 and 11 aren't the expected codec, <code>present()</code> is false: FM
+works, DMR calls show &quot;No codec: voice off&quot;, and the debug link reports <code>codec=absent</code>. The fix is to flash again with
+<code>--stock</code>. rfoundry checks this itself after flashing: it waits for the radio to restart and reads <code>codec=</code> again.</p>
+<p><strong>Merge.</strong> The user supplies the stock firmware file (<code>--stock</code>). rfoundry checks it by SHA-256 against the codec
+profile, decrypts the two windows, checks their SHA-256 and the signature (<code>rfoundry/stockfw.py</code>, the same library
+<code>tools/codec_extract.py</code> uses), places them as the board's codec map says and writes the descriptor
+(<a href="../spec/codec-placement.html">codec-placement.md</a>, &quot;STM32 radios&quot;). The image's sectors and the codec sectors are erased and written. The merged codec exists only in memory on the user's machine and in the radio.</p>
+<p><strong>Getting the stock file.</strong> rfoundry only reads a file the user downloaded; it doesn't fetch vendor firmware.</p>
+<h2 id="the-bootloader-key">The bootloader key</h2>
+<p>An <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="glossary.html#t-stm32">STM32F4</abbr> radio's vendor bootloader XORs what it <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receives</abbr> with a 1024-byte per-model key. The key is not in this
+repository and not in a release. rfoundry and <code>tools/codec_extract.py</code> get it, in order:</p>
+<ol>
+<li><code>--key FILE</code>;</li>
+<li>derived from the user's stock firmware file (<code>--stock</code>, or once with <code>rfoundry key --stock FILE --save</code>) and checked
+against the published key hash, so a wrong key can't pass (<code>stockfw.derive_key</code>);</li>
+<li>a key saved earlier with <code>--save</code> (rfoundry's settings directory);</li>
+<li>read from a radio that runs RadioFoundry, over the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="debug-link.html">debug link</abbr> (<code>rfoundry/bootkey.py</code>; the web flasher's <code>bootkey.js</code>
+does the same).</li>
+</ol>
+<p>So a user needs one file from the vendor's firmware for the first install, which they need anyway for the codec, and
+never handles the key. Updates of a radio that runs RadioFoundry need no stock file.</p>
+<h2 id="the-release-workflow">The release workflow</h2>
+<p><code>.github/workflows/release.yml</code>:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Job</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>firmware (&lt;toolchain&gt;)</code></td>
+<td>One job per toolchain: <code>firmware (Arm)</code> and <code>firmware (C-SKY)</code>. Sets up the pinned compiler with <code>.github/actions/toolchain</code> (<a href="ci.html#toolchains">ci.md</a>): the self-hosted image's, the Arm GNU Toolchain checked by SHA-256, or the csky-elf image, never a source build. Without csky-elf GCC on the runner and without the image, the C-SKY job fails. On a tag runs the gate: <code>tools/ci.sh --quick --steps registry,host,python,licenses</code> on the runner, then <code>tools/ci.sh --quick --steps firmware --toolchain &lt;id&gt;</code> with the toolchain's compiler (through <code>tools/docker/csky-toolchain/run.sh</code> for the image). Then <code>tools/release_build.sh --toolchain &lt;id&gt;</code>, the same way: for every board on the toolchain with <code>[status] release = &quot;stable&quot;</code> (<code>tools/boards.py list --toolchain &lt;id&gt; --release stable</code>), it builds the default image and each build option value's image (<code>tools/boards.py builds</code>) and runs <code>tools/release.py</code> on each. Uploads them as <code>firmware-arm</code> or <code>firmware-csky</code></td>
+</tr>
+<tr>
+<td><code>rfoundry</code></td>
+<td>On Ubuntu 22.04, macOS 14 (arm64), macOS 13 (x86_64) and Windows 2022: installs the package, runs its tests, builds a single-file executable with PyInstaller 6.11.1 (libusb from the <code>libusb-package</code> wheel, the <code>certifi</code> CA bundle, and <code>serial_loader</code>, <code>hrc7000_codec</code> and <code>stubtool</code> for the serial route inside) and runs <code>--version</code> on it</td>
+</tr>
+<tr>
+<td><code>publish</code></td>
+<td>On a <code>v*</code> tag only, after every toolchain's job and every rfoundry build passed: one <code>SHA256SUMS</code> over everything, checks every manifest against its image and that none includes the codec, creates the release if the manual workflow hasn't, uploads with <code>--clobber</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>On a pull request nothing is published and the release gate doesn't run (the pull request's own checks run the same
+tests):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>What the pull request changes</th>
+<th>What builds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tools/rfoundry/</code> (with the <code>registry.json</code> a <code>board.toml</code> change regenerates), the serial flashing tools, <code>stub/stubtool.py</code></td>
+<td><code>release.yml</code>: <code>version</code> and <code>rfoundry</code>, as artifacts</td>
+</tr>
+<tr>
+<td><code>release.yml</code> or the toolchain action</td>
+<td><code>release.yml</code>: everything, as artifacts</td>
+</tr>
+<tr>
+<td>A <code>board.toml</code>, <code>board.mk</code> or <code>platform.toml</code>, <code>tools/release.py</code>, <code>tools/release_build.sh</code>, <code>tools/boards.py</code>, the toolchain scripts</td>
+<td><code>pr-tests.yml</code>: its <code>firmware (&lt;toolchain&gt;)</code> jobs run <code>tools/release_build.sh</code> after their builds, so every stable board is packaged as a tag would package it</td>
+</tr>
+<tr>
+<td>A manual run on a tag rebuilds and</td>
+<td></td>
+</tr>
+<tr>
+<td>replaces the assets.</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>The executables are not code-signed. macOS marks downloads as quarantined: <code>xattr -d com.apple.quarantine rfoundry-*</code> (or right-click, Open). Windows SmartScreen asks once.</p>
+<h2 id="the-serial-route-hr_c7000-radios">The serial route (HR_C7000 radios)</h2>
+<p>Radios on the serial-loader and serial-iap families are flashed over the programming cable, not <abbr class="gl" tabindex="0" title="Device Firmware Upgrade: the USB protocol of the radio&#x27;s bootloader." data-more="../user/22-glossary.html#t-dfu">DFU</abbr>. rfoundry
+(<code>rfoundry/serialflash.py</code>, <a href="https://github.com/radiofoundry/radiofoundry/blob/main/tools/rfoundry/README.md">tools/rfoundry/README.md</a>) doesn't speak either protocol
+itself; it calls the tools that do:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Route</th>
+<th>Tool</th>
+<th>Chosen by <code>--route auto</code> when</th>
+<th>Codec</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stub</td>
+<td><code>stub/stubtool.py</code> (<code>Radio.rfoundry_enter</code>, <code>write_image</code>, <code>reset_chip</code>)</td>
+<td>VERSION answers on the cable with this board and the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="debug-link.html">debug link</abbr>'s <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="glossary.html#t-stub">STUB</abbr> info (op 0, <a href="../spec/debuglink.html">debuglink.md</a> 3.18) carries its magic</td>
+<td>keep: only the image's sectors are written, so the slot stays; merge when the image carries a slot or <code>--stock</code> builds one</td>
+</tr>
+<tr>
+<td>bootloader</td>
+<td><code>tools/serial_loader.py</code> <code>Flasher</code></td>
+<td>otherwise</td>
+<td>merge only where the loader erases the slot, so a plain image without <code>--stock</code> is refused</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>--stock</code> is a program flash read of the radio or the vendor's firmware file, depending on the board;
+<code>tools/hrc7000_codec.py</code> recognizes it by the code window's SHA-256 and builds the slot. The release package never
+carries the codec, so the first install of a release through update mode needs it. Later updates through the stub keep
+the slot. Each radio's route, slot and keep rule are in its hardware spec (<code>hardware-&lt;id&gt;.md</code>,
+<a href="../spec/codec-placement.html">codec-placement.md</a> &quot;<abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="glossary.html#t-hr-c7000">HR_C7000</abbr> radios&quot;), and the open items in its bring-up record under
+<a href="../testing/index.html">docs/testing/</a>. Host tests (<code>tools/rfoundry/tests/test_serialflash.py</code>) run <code>write_image</code> against
+stubtool's simulated radio and the update mode protocol against serial_loader's simulated loader.</p>
+<h2 id="testing-rfoundry-on-a-radio">Testing rfoundry on a radio</h2>
+<p>Host tests cover the planning, manifests, the codec library, key derivation, the codec decision and complete runs
+against a fake bootloader with a flash model (<code>python3 -m unittest discover -s tools/rfoundry/tests</code>; <code>tools/ci.sh</code> runs
+them). <code>rfoundry flash IMAGE --simulate rfoundry-codec</code> runs the whole command against that fake. What only a radio can
+answer, in this order (the first flash of a new build is always a merge, so the radio has a known codec):</p>
+<ol>
+<li><code>rfoundry detect</code> with the radio in its bootloader.</li>
+<li>Merge: <code>rfoundry flash &lt;image&gt; --stock &lt;stock file&gt; --dry-run</code>, then without <code>--dry-run</code>. The radio restarts;
+rfoundry reports the codec profile and &quot;<abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> voice is ready&quot;.</li>
+<li>Keep, which proves the bootloader erases only the listed sectors: with RadioFoundry running, <code>rfoundry probe</code>, then
+<code>rfoundry flash &lt;image&gt;</code> without <code>--stock</code>. The plan must erase only the image's sectors and keep the codec's. After
+the restart rfoundry must report the codec still present. If it reports <code>absent</code>, the bootloader erased more than
+asked: keep must be disabled for that board (<code>keep_codec_supported=False</code>) and step 2 repairs the radio.</li>
+<li>A DMR call both ways after step 3 (the codec works, not only its <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="glossary.html#t-crc">CRC</abbr>).</li>
+</ol>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/dev/release.md">Ver el código fuente de esta página</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="En esta página">
+		<p class="eyebrow">En esta página</p>
+		<ul><li class="l2"><a href="#release-names">Release names</a></li><li class="l2"><a href="#checklist">Checklist</a></li><li class="l2"><a href="#release-artifacts">Release artifacts</a></li><li class="l2"><a href="#sector-maps">Sector maps</a></li><li class="l2"><a href="#releases-from-before-the-codec-moved">Releases from before the codec moved</a></li><li class="l2"><a href="#codec-handling">Codec handling</a></li><li class="l2"><a href="#the-bootloader-key">The bootloader key</a></li><li class="l2"><a href="#the-release-workflow">The release workflow</a></li><li class="l2"><a href="#the-serial-route-hr_c7000-radios">The serial route (HR_C7000 radios)</a></li><li class="l2"><a href="#testing-rfoundry-on-a-radio">Testing rfoundry on a radio</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

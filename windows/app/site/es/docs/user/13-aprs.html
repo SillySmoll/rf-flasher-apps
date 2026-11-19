@@ -1,0 +1,329 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>APRS · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="APRS · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/docs/user/13-aprs.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/user/13-aprs.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/user/13-aprs.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/user/13-aprs.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/user/13-aprs.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/user/13-aprs.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../es/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../../es/radios/index.html">Radios</a><a href="../../../es/features/index.html">Funciones</a><a href="../../../es/flash/index.html">Instalar</a><a href="../../../es/codeplug/index.html">Codeplug</a><a href="../../../es/docs/index.html" aria-current="page">Documentación</a><a href="../../../es/screenshots/index.html">Capturas</a><a href="../../../es/tools/index.html">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../../docs/user/13-aprs.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/user/13-aprs.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/user/13-aprs.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/user/13-aprs.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Manual del usuario">
+		<p class="eyebrow"><a href="../../../es/docs/index.html">Documentación</a> / Manual del usuario</p>
+		<ul><li><a href="index.html">RadioFoundry User Manual</a></li><li><a href="01-introduction.html">Introduction</a></li><li><a href="02-installing.html">Installing</a></li><li><a href="03-first-boot.html">First Boot</a></li><li><a href="04-programming.html">Programming the Radio</a></li><li><a href="05-keys-and-navigation.html">Keys and Navigation</a></li><li><a href="06-home-screen.html">The Home Screen</a></li><li><a href="07-channels-zones-vfo.html">Channels, Zones and the VFO</a></li><li><a href="08-fm.html">FM</a></li><li><a href="09-dmr.html">DMR</a></li><li><a href="10-messages-and-signaling.html">Messages, Call Alert and Radio Check</a></li><li><a href="11-emergency.html">Emergency</a></li><li><a href="12-scan.html">Scan and Dual Watch</a></li><li><a href="13-aprs.html" aria-current="page">APRS</a></li><li><a href="14-hotspot.html">Hotspot Mode</a></li><li><a href="15-usb-network.html">USB Network Mode</a></li><li><a href="16-battery-and-power.html">Battery and Power</a></li><li><a href="17-settings.html">Settings</a></li><li><a href="18-moving-from-stock-md380.html">Moving from Stock MD-380 Firmware</a></li><li><a href="19-moving-from-stock-dm32.html">Moving from Stock DM-32UV Firmware</a></li><li><a href="20-troubleshooting.html">Troubleshooting</a></li><li><a href="21-faq.html">FAQ</a></li><li><a href="22-glossary.html">Glossary</a></li><li><a href="23-radios.html">Radio Reference</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Esta página aún no está traducida; se muestra en inglés.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="aprs">APRS</h1>
+<p><abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr> (Automatic Packet Reporting System) shares your position with other amateur stations and maps such as aprs.fi.
+The radio sends APRS two ways:</p>
+<ul>
+<li><strong>On FM</strong>: as 1200 baud AFSK packets on the APRS frequency of your region. The radio leaves your channel for about
+a second, sends, and comes back.</li>
+<li><strong>Over <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr></strong>: as a position report to an APRS gateway ID (<abbr class="gl" tabindex="0" title="A worldwide amateur DMR network of linked servers and talkgroups." data-more="22-glossary.html#t-brandmeister">BrandMeister</abbr>'s 310999 by default; it works from any master, but your own master's MCC plus 999 is recommended, for example 204999). This works on DMR
+channels. BrandMeister forwards Motorola (<abbr class="gl" tabindex="0" title="Location Request and Response Protocol: a dispatcher asks a radio for its position. Motorola&#x27;s position format; the standard has LIP." data-more="22-glossary.html#t-lrrp">LRRP</abbr>) and Hytera position reports to APRS, so keep the default LRRP format
+(not UDT). A radio that already saved APRS settings keeps its stored ID: run <code>aprs set dmr_dst 310999</code> (US) or
+<code>aprs set dmr_dst &lt;MCC&gt;999</code>. The position appears on APRS-IS as your callsign with the SSID from your BrandMeister
+profile (aprs.fi may take a minute to show it).</li>
+</ul>
+<p>Not every radio does both. Some send only, some can't send APRS on FM yet, and a build can leave APRS out for flash
+room. The <a href="23-radios.html">Radio reference</a> lists them and says where APRS is verified.</p>
+<h2 id="before-you-start">Before you start</h2>
+<ul>
+<li>You need an amateur radio license. <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr> sends only on amateur frequencies, and the radio refuses others.</li>
+<li>Your callsign is the first word of the radio name (Settings &gt; My radio, or the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>'s radio name). Without a
+valid callsign nothing is sent, and the APRS page says why.</li>
+<li>Sending is off until you turn it on. &quot;Send position now&quot; works at any time.</li>
+</ul>
+<h2 id="the-aprs-page">The APRS page</h2>
+<p>Press <strong>OK</strong>, <strong>6</strong> (Tools), <strong>8</strong> (<abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr>). The top of the page shows your callsign, the APRS
+frequency, your position and its source, and when the next beacon goes out. If the radio can't send, it says why.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Row</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Send position now</td>
+<td>One position at once</td>
+</tr>
+<tr>
+<td>Automatic beacons</td>
+<td>On: positions go out by themselves (see Triggers)</td>
+</tr>
+<tr>
+<td>Frequency</td>
+<td>Your region: N America 144.390, Europe 144.800, Australia 145.175, New Zealand 144.575, Japan 144.660, China 144.640 MHz, or Custom (<code>tools/rfoundry_debug.py aprs set region custom</code>, then <code>aprs set freq_hz 144390000</code>)</td>
+</tr>
+<tr>
+<td>Power</td>
+<td>As channel: APRS <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">transmits</abbr> at the radio's current power level. Or pick a level of its own, for example a low one for a nearby digipeater. Dimmed on radios that can't send APRS over the air</td>
+</tr>
+<tr>
+<td>Path</td>
+<td>How far digipeaters pass your packets on: None, WIDE1-1, WIDE1-1,WIDE2-1 (the default), WIDE2-1 or WIDE2-2. See Path below. Dimmed on radios that can't send APRS over the air</td>
+</tr>
+<tr>
+<td>Interval</td>
+<td>How often: Off, 1, 2, 5, 10 or 30 minutes</td>
+</tr>
+<tr>
+<td>SmartBeaconing</td>
+<td>More often when you move fast, at once after a turn, rarely when you stand still</td>
+</tr>
+<tr>
+<td>Send via</td>
+<td>AFSK (on FM), <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr>, or both</td>
+</tr>
+<tr>
+<td>KISS on USB</td>
+<td>The radio works as a <abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="22-glossary.html#t-kiss">KISS</abbr> TNC for APRS programs on the computer</td>
+</tr>
+<tr>
+<td>Stations heard</td>
+<td>Stations the radio heard (radios that can <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">receive</abbr> APRS), newest first. A station that sent its position shows how far away and which way it was from yours, when the radio has a position too; the age on that row is then the age of that position. Other rows show when the station was last heard. Objects and items a station sends don't count as its position, and a position more than a day old is dropped. Select one and choose Message to fill its callsign</td>
+</tr>
+<tr>
+<td>SSID</td>
+<td>The number after your callsign (<code>N0ABC-9</code>): 0 to 15, 7 by default. <strong>OK</strong> steps up, holding <strong>OK</strong> steps down; 0 sends the callsign alone. See SSID below. Dimmed on radios that can't send APRS over the air</td>
+</tr>
+</tbody>
+</table></div>
+<p>A firmware built with only one way to send APRS shows only the rows for it. With APRS over DMR only there is no
+Frequency, Power, Path, Send via, Stations heard or SSID, and KISS on USB is called <abbr class="gl" tabindex="0" title="The text format GPS receivers use to report position and time." data-more="22-glossary.html#t-nmea">NMEA</abbr> on USB (the computer can still give
+the radio its position).</p>
+<p>The symbol, comment and the DMR destination are set with the debug tool for now
+(<code>tools/rfoundry_debug.py aprs set ...</code>), later with <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr>.</p>
+<h2 id="station-details">Station details</h2>
+<p>Open <strong>Stations heard</strong>, select a callsign, and press <strong>OK</strong>. <strong>Message</strong> is first; press OK again to open a message
+addressed to that station. The selection stays on the same callsign when incoming packets reorder the heard list.</p>
+<p>Scroll with <strong>Up / Down</strong> to see distance and direction (when both positions are known), when the station was heard,
+<strong>Direct</strong> or <strong>Via digipeater</strong>, and the position's age if it differs from the last packet's age. Speed in km/h and
+course appear only when known for the retained position. The remaining rows show the symbol's table and code,
+the retained comment or status, and the packet count. The radio retains at most 23 text characters plus the end
+marker; longer comments are incomplete. No digipeater name is retained.</p>
+<p>If the station leaves the heard list, the page says <strong>No longer in list</strong>. You can still choose Message to address
+that callsign.</p>
+<h2 id="path">Path</h2>
+<p>The path says how many digipeater hops a packet may take on FM. Each <strong>WIDEn-N</strong> entry allows N more hops. Press
+<strong>OK</strong> on Path to step to the next choice.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Hops</th>
+<th>Use it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None</td>
+<td>0</td>
+<td>Only stations that hear you directly (an <abbr class="gl" tabindex="0" title="A station that passes APRS packets between the air and the APRS-IS internet network." data-more="22-glossary.html#t-igate">iGate</abbr> nearby)</td>
+</tr>
+<tr>
+<td>WIDE1-1</td>
+<td>1</td>
+<td>A fill-in digipeater or one wide digipeater</td>
+</tr>
+<tr>
+<td>WIDE1-1,WIDE2-1</td>
+<td>2</td>
+<td>Mobile and handheld use in most of North America and Europe (the default)</td>
+</tr>
+<tr>
+<td>WIDE2-1</td>
+<td>1</td>
+<td>Fixed stations that reach a wide digipeater directly</td>
+</tr>
+<tr>
+<td>WIDE2-2</td>
+<td>2</td>
+<td>Sparse areas; skips fill-in digipeaters</td>
+</tr>
+</tbody>
+</table></div>
+<p>More hops mean more copies on a busy frequency. Use the fewest that reach an iGate. The path doesn't apply to
+positions sent over <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr>.</p>
+<p>The path is also in the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>'s first <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr> configuration, which <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr> edits. A change on the radio is written
+there too, and a codeplug written with a different path changes the radio's. Whichever changed last is used.</p>
+<h2 id="ssid">SSID</h2>
+<p>The SSID tells your stations apart on <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr>: a mobile and a handheld with the same callsign need different ones
+(commonly 9 for a mobile, 7 for a handheld). It applies to packets sent on FM; positions sent over <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> carry the SSID
+set for your ID at <abbr class="gl" tabindex="0" title="A worldwide amateur DMR network of linked servers and talkgroups." data-more="22-glossary.html#t-brandmeister">BrandMeister</abbr>.</p>
+<p>Like the path, the SSID is also in the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>'s first APRS configuration. Set it on the APRS page or in the
+codeplug: a change on the radio is written to the codeplug, and a codeplug written with a different SSID changes the
+radio's. Whichever changed last is used. Only the first APRS configuration counts. After a firmware update, a codeplug
+SSID of 0 is not taken the first time: the radio keeps its own (7 by default). To send without an SSID, set 0 on the
+radio.</p>
+<h2 id="receiving">Receiving</h2>
+<p>On radios that can <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">receive</abbr> <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr>, the radio decodes packets while you listen on the APRS frequency. Make a channel on
+the frequency shown in <strong>Frequency</strong> on the APRS page (your region's, 144.390 MHz in North America) in FM, or tune
+the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr> there, and leave the radio on it. If the packets are sent on another frequency, set <strong>Frequency</strong> to Custom
+and enter it first. Heard
+stations go into <strong>Stations heard</strong>, messages to your callsign appear in <strong>Messages</strong> and are acknowledged, and the digipeater (if you
+turned it on) passes packets on. Messages from internet stations (an APRS messaging service, for example) reach you
+through a nearby <abbr class="gl" tabindex="0" title="A station that passes APRS packets between the air and the APRS-IS internet network." data-more="22-glossary.html#t-igate">iGate</abbr>. They appear under the sender's callsign, and the acknowledgment goes back to that sender.</p>
+<ul>
+<li>It listens only on the APRS frequency, in FM, and the tuned frequency must equal the APRS <strong>Frequency</strong> exactly.
+On other FM channels nothing is decoded.</li>
+<li>The volume knob doesn't matter: a radio turned all the way down still decodes.</li>
+<li>On a radio that decodes only what opens the squelch (<a href="23-radios.html">Radio reference</a>), a packet must be strong enough to open it. Keep the squelch at its usual level, not tight.</li>
+<li>Battery saving pauses while the radio listens for APRS: a sleeping receiver misses packets.</li>
+<li>Receiving is on by default. Turn it off with <code>tools/rfoundry_debug.py aprs set rx 0</code> (FM only).</li>
+</ul>
+<p>On a <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> channel, a DMR APRS position another radio sends (some makes send it as an <abbr class="gl" tabindex="0" title="The text format GPS receivers use to report position and time." data-more="22-glossary.html#t-nmea">NMEA</abbr> position) also goes into
+<strong>Stations heard</strong>, whoever it is addressed to: usually the APRS gateway, as on FM every station heard is listed. It
+is listed under the sender's callsign when its <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr> is in the radio's DMR ID database, else under the DMR ID. This
+works whatever the receive setting. <strong>Stations heard</strong> shows the station and when it was heard, not its position.</p>
+<h2 id="triggers">Triggers</h2>
+<p>Automatic beacons go out at the interval, or with SmartBeaconing by speed and turns. Never more often than every
+30 seconds. The radio waits for a clear <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr> frequency before it sends, and gives up after 10 seconds. Pressing PTT
+always wins: an APRS transmission in progress stops and your channel comes back.</p>
+<p>An FM beacon can interrupt <abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="22-glossary.html#t-dual-watch">dual watch</abbr>. It always sends on the APRS frequency you set, then dual watch resumes on the
+channel it was listening to. A or B selection still controls where PTT <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">transmits</abbr>; it does not choose the beacon
+frequency. A zone or <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr> scan delays the beacon until the scan stops.</p>
+<h2 id="position">Position</h2>
+<p>The position comes from:</p>
+<ul>
+<li><strong>GPS</strong>: on radios that have one (<a href="23-radios.html">Radio reference</a>).</li>
+<li><strong>Computer</strong>: <abbr class="gl" tabindex="0" title="The text format GPS receivers use to report position and time." data-more="22-glossary.html#t-nmea">NMEA</abbr> from a GPS on the computer, sent over USB by <code>tools/aprs_gate.py --nmea &lt;GPS port&gt;</code> (<abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="22-glossary.html#t-kiss">KISS</abbr> on USB
+must be on).</li>
+<li><strong>Fixed</strong>: a position you enter.</li>
+</ul>
+<p>Auto takes a fresh GPS position, else the computer's, else the fixed one.</p>
+<p>The position is not only <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr>'s: <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> calls and location requests (<abbr class="gl" tabindex="0" title="Location Request and Response Protocol: a dispatcher asks a radio for its position. Motorola&#x27;s position format; the standard has LIP." data-more="22-glossary.html#t-lrrp">LRRP</abbr>) use the same one. Its settings are under
+<strong>Settings &gt; Location</strong>: <strong>Position source</strong> (Auto, GPS, Computer, Fixed) and <strong>Fixed position</strong>, a page with
+<strong>Latitude</strong> and <strong>Longitude</strong>. To set the fixed position:</p>
+<ol>
+<li>Open Settings &gt; Location &gt; Fixed position, select Latitude and press OK. The value opens for editing.</li>
+<li>Type the degrees with the digits, decimal places included: <code>3</code>,<code>3</code>,<code>7</code>,<code>4</code>,<code>9</code>,<code>0</code> is 33.7490. The decimal point is
+already there. Longitude has three places before the point: 84.3880 is <code>8</code>,<code>4</code>,<code>3</code>,<code>8</code>,<code>8</code>,<code>0</code> (the radio puts the
+leading 0 in for you), and 122.4194 is <code>1</code>,<code>2</code>,<code>2</code>,<code>4</code>,<code>1</code>,<code>9</code>,<code>4</code>. For 10 to 19 degrees, type the 0 yourself.</li>
+<li>Press Up or Down (or turn the knob) to switch between N and S, or E and W. West longitudes are W.</li>
+<li>Press OK to save. Places you didn't type count as zeros. BACK removes the last digit; with nothing typed it closes
+the value unchanged.</li>
+</ol>
+<p>Four decimal places put you within about 11 m. You can also type &quot;latitude&quot; or &quot;fixed&quot; on Home to find the page.</p>
+<h2 id="gps-status">GPS status</h2>
+<p><strong>Tools &gt; Position</strong> shows what the radio's GPS is doing, on four pages. Press Up or Down (or turn the knob) for the
+next page, or press 1 to 4. On a radio with a tall screen, Status also shows the grid locator and degrees, minutes and
+seconds, so there are three pages.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Page</th>
+<th>What it shows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 Status</td>
+<td>3D Fix, 2D Fix (Fix when the receiver doesn't say which) or Searching; satellites used and seen; position, altitude, speed, HDOP (accuracy: good, fair, poor) and the UTC time of the fix</td>
+</tr>
+<tr>
+<td>2 Sky</td>
+<td>where each satellite is: the outer ring is the horizon, the middle ring 45 degrees up, north at the top. A filled dot is used in the fix. The colors and the legend show the system: GPS, GLONASS, Galileo, BeiDou, QZSS</td>
+</tr>
+<tr>
+<td>3 Signal</td>
+<td>each satellite's signal strength as a bar; filled bars are used in the fix</td>
+</tr>
+<tr>
+<td>4 Grid</td>
+<td>your Maidenhead grid locator (FN42li), and the position in degrees, minutes and seconds</td>
+</tr>
+</tbody>
+</table></div>
+<p>&quot;No GPS, or it is off&quot; means the radio has no GPS or <strong>Settings &gt; Location &gt; GPS</strong> is off. A first fix outdoors takes
+from a few seconds to a few minutes; indoors there may be none.</p>
+<h2 id="with-a-computer-kiss-and-igate">With a computer (KISS and iGate)</h2>
+<p>Turn on <strong><abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="22-glossary.html#t-kiss">KISS</abbr> on USB</strong>, then run <code>tools/aprs_gate.py --port &lt;radio port&gt;</code>:</p>
+<ul>
+<li><code>--kiss-tcp 8001</code>: <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr> programs (APRSdroid, Xastir, YAAC) connect to TCP port 8001 and send through the radio. The
+radio sends only packets from your own callsign, at most one every 10 seconds after a burst of three.</li>
+<li><code>--call &lt;your call&gt;</code>: connects to APRS-IS. A radio that can <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">receive</abbr> APRS is then an <abbr class="gl" tabindex="0" title="A station that passes APRS packets between the air and the APRS-IS internet network." data-more="22-glossary.html#t-igate">iGate</abbr>. It passes what it hears
+to APRS-IS. If you allow it, it also passes messages from APRS-IS to local stations back on the air.</li>
+<li>In USB network mode use <code>--port udp:&lt;radio address&gt;</code>.</li>
+</ul>
+<p>The radio can't be in <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="14-hotspot.html">hotspot</abbr> mode at the same time.</p>
+<p>In USB network mode the radio does both without the helper. APRS programs connect to the radio's address on TCP
+port 8001 directly (<a href="15-usb-network.html#services-on-the-radio">Services on the radio</a>). The radio logs in to an
+APRS-IS server itself (<a href="15-usb-network.html#aprs-is-from-the-radio">APRS-IS from the radio</a>). KISS on USB must be on
+for both.</p>
+</div>
+		<nav class="prev-next"><a class="prev" href="12-scan.html">Scan and Dual Watch</a><a class="next" href="14-hotspot.html">Hotspot Mode</a></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/user/13-aprs.md">Ver el código fuente de esta página</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="En esta página">
+		<p class="eyebrow">En esta página</p>
+		<ul><li class="l2"><a href="#before-you-start">Before you start</a></li><li class="l2"><a href="#the-aprs-page">The APRS page</a></li><li class="l2"><a href="#station-details">Station details</a></li><li class="l2"><a href="#path">Path</a></li><li class="l2"><a href="#ssid">SSID</a></li><li class="l2"><a href="#receiving">Receiving</a></li><li class="l2"><a href="#triggers">Triggers</a></li><li class="l2"><a href="#position">Position</a></li><li class="l2"><a href="#gps-status">GPS status</a></li><li class="l2"><a href="#with-a-computer-kiss-and-igate">With a computer (KISS and iGate)</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

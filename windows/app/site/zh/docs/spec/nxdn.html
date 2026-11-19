@@ -1,0 +1,816 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NXDN · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="NXDN · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/spec/nxdn.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/nxdn.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/nxdn.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/nxdn.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/nxdn.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/nxdn.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/spec/nxdn.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/nxdn.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/nxdn.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/nxdn.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="规范">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 规范</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html" aria-current="page">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">本页尚未翻译，目前显示英文。</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<!-- Copyright (c) 2026 The RadioFoundry Authors -->
+<h1 id="nxdn">NXDN</h1>
+<p>NXDN conventional voice (the NXDN Technical Specifications: <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">TS</abbr> 1-A Common Air Interface, TS 1-B Basic Operation), on
+the air interface (<a href="air-interface.html">air-interface.md</a>). Switch: <code>CONFIG_NXDN</code>, which also builds the air interface
+(<a href="../build-config.html">build-config.md</a>). Which radios could carry it: <a href="../feature-matrix.html">feature-matrix.md</a>.
+Clause numbers below are TS 1-A's unless they say TS 1-B.</p>
+<p>State:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>State</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Frame codec: FSW, LICH, scrambler, SACCH, FACCH1, the four VCH (1, 2)</td>
+<td>written, host tested</td>
+</tr>
+<tr>
+<td>Receive, the call layer, the engine (3, 4, 7)</td>
+<td>written, host tested; 4800 bit/s, and 9600 bit/s with half-rate voice</td>
+</tr>
+<tr>
+<td>Voice (5)</td>
+<td>through the <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> side's voice path to the <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">vocoder</abbr> the board hosts (<code>hal_vocoder_t</code>); host tested</td>
+</tr>
+<tr>
+<td>The radio core: mode, settings, PTT, debug link, home screen (6)</td>
+<td>written, host tested</td>
+</tr>
+<tr>
+<td>Codeplug channels, the site's Codeplug Editor (<a href="nxdn-codeplug.html">nxdn-codeplug.md</a>)</td>
+<td>written, host tested</td>
+</tr>
+<tr>
+<td>Scan (6.4)</td>
+<td>written, host tested; not checked on a radio</td>
+</tr>
+<tr>
+<td>Dual watch</td>
+<td>written, host tested: a stored NXDN channel on either side, the receiver alternating onto it (<a href="radio-features.html">radio-features.md</a> 2.1); not checked on a radio</td>
+</tr>
+<tr>
+<td>Channel editor on the radio</td>
+<td>written, host tested: RAN, rate, group, unit ID (<a href="ui.html">ui.md</a> 2.1)</td>
+</tr>
+<tr>
+<td>On air</td>
+<td><abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> checked off air on a radio at both rates (<code>test_nxdn_tx_off_air</code>); <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> checked at both rates with a bench transmitter, speech frames through the vocoder included (<code>test_nxdn_rx_from_bench</code>, <code>test_nxdn_rx_speech</code>); the sound at the speaker is not checked (8)</td>
+</tr>
+<tr>
+<td>9600 bit/s full-rate voice (EFR), data, trunking, encryption</td>
+<td>not written (10). Encrypted calls are recognized and not played</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="1-on-air">1. On air</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>4800 bit/s</th>
+<th>9600 bit/s</th>
+<th>Clause</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Channel</td>
+<td>6.25 kHz</td>
+<td>12.5 kHz</td>
+<td>table 2.3-1</td>
+</tr>
+<tr>
+<td>Symbol rate</td>
+<td>2400 symbols/s</td>
+<td>4800 symbols/s</td>
+<td>table 2.3-1</td>
+</tr>
+<tr>
+<td>Deviation of the outer symbols (+3, -3)</td>
+<td>1050 Hz</td>
+<td>2400 Hz</td>
+<td>table 3.3-1</td>
+</tr>
+<tr>
+<td>Transmit filter</td>
+<td>root raised cosine, roll-off 0.2, times the shaper sin(πfT)/(πfT)</td>
+<td>same</td>
+<td>3.4</td>
+</tr>
+<tr>
+<td>Receive filter</td>
+<td>root raised cosine times the inverse shaper</td>
+<td>same</td>
+<td>3.5</td>
+</tr>
+</tbody>
+</table></div>
+<p>The dibit map is the air interface's (<code>01</code> +3, <code>00</code> +1, <code>10</code> -1, <code>11</code> -3; 3.3).</p>
+<p>A frame is 192 symbols (80 ms at 4800 bit/s, 40 ms at 9600):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Symbols</th>
+<th>Field</th>
+<th>Bits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-9</td>
+<td>Frame sync word (FSW), <code>CDF59</code></td>
+<td>20</td>
+</tr>
+<tr>
+<td>10-17</td>
+<td>LICH</td>
+<td>16</td>
+</tr>
+<tr>
+<td>18-47</td>
+<td>SACCH</td>
+<td>60</td>
+</tr>
+<tr>
+<td>48-191</td>
+<td>four VCH of 72 bits, or a FACCH1 in VCH 1-2 and/or 3-4</td>
+<td>288</td>
+</tr>
+</tbody>
+</table></div>
+<p>A transmission opens with a preamble: the reference deviation pattern (<code>5F</code> three times, 3.6), then <code>5775FD</code> (4.4.3),
+24 symbols. Every frame but the FSW is scrambled (4.6: X⁹ + X⁴ + 1, starting at <code>0 1 1 1 0 0 1 0 0</code>, one bit per
+dibit's high bit).</p>
+<p>The LICH (4.5.1, figure 4.5-7): seven bits (<abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> channel type 2, functional channel 2, steal option 2, direction 1) and
+even parity over the first four, each bit sent as an outer symbol (0 as <code>01</code>, 1 as <code>11</code>). A conventional voice
+channel's frames are RDCH (<code>10</code>).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Functional channel (USC)</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>00</code></td>
+<td>SACCH non-superframe: a call's first and last frames</td>
+</tr>
+<tr>
+<td><code>10</code></td>
+<td>SACCH superframe: a call's voice frames; four make a superframe</td>
+</tr>
+<tr>
+<td><code>11</code></td>
+<td>SACCH superframe whose FACCH1 frame is idle (9600 bit/s, <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">TS</abbr> 1-B 4.1.2.1)</td>
+</tr>
+<tr>
+<td><code>01</code></td>
+<td>UDCH (data): refused</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Steal option</th>
+<th>VCH 1-2</th>
+<th>VCH 3-4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>00</code></td>
+<td>FACCH1</td>
+<td>FACCH1</td>
+</tr>
+<tr>
+<td><code>01</code></td>
+<td>FACCH1</td>
+<td>voice</td>
+</tr>
+<tr>
+<td><code>10</code></td>
+<td>voice</td>
+<td>FACCH1</td>
+</tr>
+<tr>
+<td><code>11</code></td>
+<td>voice</td>
+<td>voice</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="2-fields-and-fec-corenxdnnxdn_framec-corefecconvc">2. Fields and FEC (<code>core/nxdn/nxdn_frame.c</code>, <code>core/fec/conv.c</code>)</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Content</th>
+<th>Code</th>
+<th>Clause</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SACCH</td>
+<td>SR (structure 2 bits, RAN 6), 18 bits of message</td>
+<td>CRC6 (x⁶+x⁵+x²+x+1), 4 tail bits, rate 1/2 K=5, punctured to 60 bits (<code>111111 / 110110</code>), interleaved in rows of 12</td>
+<td>4.5.3</td>
+</tr>
+<tr>
+<td>FACCH1</td>
+<td>one 80-bit layer 3 message</td>
+<td>CRC12 (x¹²+x¹¹+x³+x²+x+1), 4 tail bits, rate 1/2 K=5, punctured to 144 bits (<code>11 / 01</code>), interleaved in rows of 16</td>
+<td>4.5.4</td>
+</tr>
+<tr>
+<td>VCH</td>
+<td>72 bits of voice with the voice frame's own <abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="../dev/glossary.html#t-fec">FEC</abbr></td>
+<td>none on the frame level (5)</td>
+<td>4.5.2, 7.2</td>
+</tr>
+</tbody>
+</table></div>
+<p>The convolutional code is G1 = 1 + D³ + D⁴, G2 = 1 + D + D² + D⁴ (4.5.3). The CRCs start with all ones and are sent
+highest register bit first (figures 4.5-10, 4.5-11).</p>
+<p>The Viterbi decoder is shared (<code>core/fec/conv.c</code>): any rate 1/2 code of constraint length 5, soft or hard, punctured
+bits as erasures. Its memory is the caller's: one <code>uint16_t</code> of decisions per input bit (192 bytes for a FACCH1),
+plus 64 bytes of path metrics and 32 of branch outputs on the stack (160 bytes of stack on Cortex-M4 at <code>-Os</code>). About
+160 operations per input bit:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Decode</th>
+<th>Input bits</th>
+<th>Operations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SACCH</td>
+<td>36</td>
+<td>about 5,800</td>
+</tr>
+<tr>
+<td>FACCH1</td>
+<td>96</td>
+<td>about 15,400</td>
+</tr>
+<tr>
+<td>A voice frame (SACCH)</td>
+<td></td>
+<td>about 5,800 per frame: 72,000/s at 4800 bit/s</td>
+</tr>
+<tr>
+<td>A header or FACCH1 frame (SACCH, two FACCH1)</td>
+<td></td>
+<td>about 36,500</td>
+</tr>
+</tbody>
+</table></div>
+<p>Soft values come from the frame's soft symbols: a dibit's high bit by the sign, its low bit by the distance from the
+inner level. The free distance after puncturing is 5 (SACCH) and 4 (FACCH1).</p>
+<h2 id="3-receive-corenxdnnxdn_rxc">3. Receive (<code>core/nxdn/nxdn_rx.c</code>)</h2>
+<p>The framer looks for two patterns:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Symbols</th>
+<th>Errors</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FSW</td>
+<td>10</td>
+<td>2 bits</td>
+<td>every frame (5.3.1.2, N5)</td>
+</tr>
+<tr>
+<td>Preamble tail and FSW</td>
+<td>19</td>
+<td>3 bits</td>
+<td>a transmission's start only (N6 = 1)</td>
+</tr>
+</tbody>
+</table></div>
+<p>A 10-symbol pattern turns up in noise and in payload, so the head hook decides whether a frame is there:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Case</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LICH parity holds, RDCH, not UDCH, at most one LICH symbol inner</td>
+<td>the frame is taken; the SACCH is decoded</td>
+</tr>
+<tr>
+<td>SACCH CRC holds and its RAN is not ours (unless ours is 0)</td>
+<td>refused, counted (<code>ran_rejects</code>): another system on the channel</td>
+</tr>
+<tr>
+<td>LICH lost inside a call's superframes</td>
+<td>up to two frames in a row are placed by the call's order</td>
+</tr>
+<tr>
+<td>Five frames without a sync (N7)</td>
+<td>the signal is lost</td>
+</tr>
+</tbody>
+</table></div>
+<p>The profile: 4-level, root raised cosine 0.2, the deviations of 1, <code>bw</code> 12.5 kHz (the narrowest a radio sets; 6.25
+kHz is open, 9), and <code>sync_any_syms</code> = 192: a sync opens every frame, though none is 24 symbols long
+(<a href="air-interface.html">air-interface.md</a> 2).</p>
+<h2 id="4-the-call-layer-corenxdnnxdn_callc">4. The call layer (<code>core/nxdn/nxdn_call.c</code>)</h2>
+<p>Messages (<abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">TS</abbr> 1-B 6.4): VCALL <code>01</code> and TX_REL <code>08</code> carry the same octets (type, control option, call type and voice
+option, source ID, destination ID, cipher and key ID in VCALL only). VCALL_IV <code>03</code> carries an encrypted call's
+initialization vector. IDs are 16 bits; <code>FFFF</code> is all.</p>
+<p><abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">Receive</abbr>:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Frame</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Header (non-superframe, two FACCH1 VCALL)</td>
+<td>a call starts with its fields</td>
+</tr>
+<tr>
+<td>A superframe frame without a call</td>
+<td>a call starts as a late entry; its fields come once the four SACCH parts (structures 1/4 to 4/4) are in, in order (TS 1-B 4.1.6)</td>
+</tr>
+<tr>
+<td>VCALL_IV in either FACCH1</td>
+<td>the call is encrypted</td>
+</tr>
+<tr>
+<td>Header VCALL with other fields during a call</td>
+<td>the old call ended unseen: a new one starts</td>
+</tr>
+<tr>
+<td>TX_REL, or the signal lost</td>
+<td>the call ends</td>
+</tr>
+</tbody>
+</table></div>
+<p>Voice is handed on only once the VCALL is in, the cipher is none, no VCALL_IV was seen and the voice option is half
+rate (4800 or 9600 EHR). Everything else is counted (<code>voice_held</code>), not played.</p>
+<p><abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">Transmit</abbr> (TS 1-B 4.1.3): preamble, a header frame (SACCH IDLE, VCALL in both FACCH1), superframe frames (SACCH VCALL
+part 1/4 to 4/4, four VCH), and a release frame (SACCH IDLE, TX_REL in both FACCH1). Frames go out symbol by symbol:
+a voice frame's FSW, LICH, SACCH and first VCH leave with its first voice frame, each later voice frame releases the
+next 36 symbols. At 9600 bit/s every second frame is a FACCH1 frame (TS 1-B 4.1.2.1). When the key is let go, the
+frame in hand is filled with silence; a frame with nothing on air yet is dropped and the release frame follows the
+one before. The direction bit is inbound (table 5.2-2).</p>
+<h2 id="5-voice">5. Voice</h2>
+<p>A VCH is one 20 ms voice frame of the half-rate <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">vocoder</abbr> (3600 bit/s with <abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="../dev/glossary.html#t-fec">FEC</abbr>, 2450 without; 7.2), 72 bits. NXDN
+carries it scrambled with the frame (2) and otherwise as the vocoder gives it: its FEC is the vocoder's. The
+standard's two FEC test frames (7.2.1) give the same 72 bits through the <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> side's frame FEC (<code>nxdnTest</code>), so the
+frame is the one the board's DMR vocoder takes.</p>
+<p>The voice path is the DMR side's (<code>core/dmr/ambe/ambeVoice.c</code>, <a href="dmr-voice.html">dmr-voice.md</a>): the engine's <code>rx_voice</code>
+hook hands each 72-bit frame to its sink, which takes the FEC off (<code>ambeFec</code>, 72 to 49 bits) and queues the 49
+parameter bits for <code>hal_vocoder_t</code>; <code>tx_voice</code> takes the next frame from its source, which encodes the microphone's
+49 bits and adds the FEC. The audio stream runs while the engine does. Nothing in the tree encodes or decodes NXDN
+speech: the engine, the call layer, the tests and <code>nxdntool</code> move made-up patterns.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>State</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bit order</td>
+<td>settled: the standard's FEC test frames (7.2.1) are what <code>ambeFecEncode</code> gives for their parameter bits (<code>nxdnTest</code>), so the VCH is the DMR frame bit for bit</td>
+</tr>
+<tr>
+<td>Silence</td>
+<td>the DMR side's silence frame (<code>dmr_ambe_silence</code>), which is 7.2.1's second test frame</td>
+</tr>
+<tr>
+<td>9600 bit/s full rate (EFR, 144-bit VCH, 7200 bit/s)</td>
+<td>out of scope: such calls are held, not played</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="6-the-radio-core-coreradioradio_nxdnc">6. The radio core (<code>core/radio/radio_nxdn.c</code>)</h2>
+<p><code>RADIO_MODE_NXDN</code> runs the engine on the board's air interface with the board in its digital mode and the <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> stack
+stopped, as P25 does (<a href="p25.html">p25.md</a> 7). The engine's memory is its own, or with P25 built and no lending <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">vocoder</abbr>
+the memory P25 keeps for itself (one engine runs at a time).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>State</th>
+<th>Engine</th>
+<th>PTT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NXDN, the provider's fit has TX at the rate</td>
+<td>running</td>
+<td>keys: preamble, header, voice, release frame</td>
+</tr>
+<tr>
+<td>NXDN, the fit has TX only</td>
+<td>running, nothing is received</td>
+<td>keys</td>
+</tr>
+<tr>
+<td>NXDN, the fit has RX only</td>
+<td>running, <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> only</td>
+<td>refused, <code>TXDENY_AIR_NO_TX</code> (&quot;This mode: receive only&quot;)</td>
+</tr>
+<tr>
+<td>NXDN, the fit has neither</td>
+<td>not started (<code>nxdn.begin_fails</code>)</td>
+<td>refused, <code>TXDENY_REFUSED</code></td>
+</tr>
+<tr>
+<td>No codec on a board that needs one</td>
+<td>running</td>
+<td>refused, <code>TXDENY_NO_CODEC</code></td>
+</tr>
+<tr>
+<td>Leaving NXDN, a retune</td>
+<td>stopped, started again on the new frequency</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">Transmit</abbr> timing, the time-out and the release follow P25's (one table of operations per air mode, <code>radio_air.h</code>).
+Settings sent while transmitting take effect when the transmission ends; a rate change starts the engine over.</p>
+<h3 id="61-selecting-it">6.1 Selecting it</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Where</th>
+<th>How</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VFO</td>
+<td>the mode tile: FM, DMR, P25, NXDN in turn, each where the board runs it (<code>radio_nxdn_fits</code>); saved with the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr></td>
+</tr>
+<tr>
+<td>A channel</td>
+<td>a channel of kind 4 (<a href="nxdn-codeplug.html">nxdn-codeplug.md</a>), or a temporary mode change (<abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> op 31, mode 3), which Save to channel stores as one</td>
+</tr>
+<tr>
+<td>Debug link</td>
+<td><code>rfoundry_debug.py radio mode nxdn</code> (<a href="debuglink.html">debuglink.md</a> 3.8)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Refused in the listen-only bands, and where the board's air interface carries neither rate.</p>
+<h3 id="62-settings">6.2 Settings</h3>
+<p><abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> only, one set for the VFO and for channels in NXDN for now (<code>radio_req_nxdn_settings</code>, debug link op 43,
+<code>rfoundry_debug.py radio nxdn</code>). A stored NXDN channel runs on its own: the rate, both RANs, the squelch and the talk
+target from its record, the unit ID from it or the radio-wide record (<a href="nxdn-codeplug.html">nxdn-codeplug.md</a>); these
+settings don't reach it. The debug link view shows what is in force (<code>nxdn.run.*</code>).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Values</th>
+<th>Default</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rate</td>
+<td>4800 bit/s, 9600 bit/s</td>
+<td>9600</td>
+<td>the engine's <code>rate9600</code>; a rate change is a new session</td>
+</tr>
+<tr>
+<td>RAN, receive</td>
+<td>0 to 63</td>
+<td>0</td>
+<td>0 takes every RAN (<abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">TS</abbr> 1-B 4.1.7.1)</td>
+</tr>
+<tr>
+<td>RAN, transmit</td>
+<td>0 to 63</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>Unit ID</td>
+<td>1 to 65519 (9)</td>
+<td>1</td>
+<td>the source of what the radio sends</td>
+</tr>
+<tr>
+<td>Call</td>
+<td>group or unit, ID</td>
+<td>group 1</td>
+<td><code>tx_call_type</code>, <code>tx_dst</code></td>
+</tr>
+<tr>
+<td>Group squelch</td>
+<td>0 (RAN only) or a group ID</td>
+<td>0</td>
+<td><code>rx_gid</code>: group calls to it or to all, unit calls to the unit (TS 1-B 4.1.7)</td>
+</tr>
+<tr>
+<td>Emergency</td>
+<td>on, off</td>
+<td>off</td>
+<td>the control option's bit</td>
+</tr>
+<tr>
+<td>Bandwidth</td>
+<td>12.5 kHz</td>
+<td></td>
+<td>radios set 12.5 kHz at both rates (9)</td>
+</tr>
+<tr>
+<td>Talk-around</td>
+<td></td>
+<td></td>
+<td>not a setting: the frames are inbound either way (table 5.2-2)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="63-what-it-shows">6.3 What it shows</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Where</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Home screen</td>
+<td>the mode name, the group or unit PTT calls on the talk line, the power, transmit RAN and rate in the chips; a call heard: who calls whom, or why it isn't played (encrypted, another group)</td>
+</tr>
+<tr>
+<td>Debug link</td>
+<td>the <code>nxdn</code> view section (<a href="debuglink.html">debuglink.md</a> 3.7): the call, the settings, the provider's fit at each rate, counters</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="64-scan">6.4 Scan</h3>
+<p>A zone scan (or a VFO scan in NXDN) stops on a stored NXDN channel as on any other: the tune starts the engine at the
+channel's rate. As P25's (<a href="p25.html">p25.md</a> 7.1): nothing heard moves on after the dwell; a carrier (the noise reading or
+the signal strength) probes up to 700 ms for a call of the channel's RAN; such a call probes up to 1.5 s while its
+squelch waits for the VCALL (late entry: from the SACCH superframe); a call that plays holds; one that doesn't (another
+group, encrypted) moves on. A channel at a rate the board's provider can't receive (<code>radio_nxdn_receives</code>: a transmit
+only fit) is never a stop.</p>
+<h2 id="7-the-engine-corenxdnnxdn_enginec">7. The engine (<code>core/nxdn/nxdn_engine.c</code>)</h2>
+<p><code>nxdn_engine</code> is NXDN on a channel: the call layer on an air interface session, as <code>p25_engine</code> is P25's
+(<a href="p25.html">p25.md</a> 6). The settings are those of 6 plus <code>silence</code>, the hooks <code>rx_start</code>, <code>rx_update</code>, <code>rx_voice</code>,
+<code>rx_end</code> and <code>tx_voice</code>. A call that is not played is still tracked: the view says a call is on the channel, from
+whom, to whom, encrypted or not. <code>nxdn_engine_set</code> changes the RAN and squelch while running; the call in hand is
+judged again at its next voice frame.</p>
+<p><abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">Transmit</abbr> follows p25.md 6: prepare (preamble and header queued), the radio core keys, go, voice pulled as the queue
+drains (a frame not ready is waited for while the queue holds more than the provider's lead plus a chunk, then
+silence goes), stop (the frame on air finished, the release frame), <code>AIR_TX_DONE</code>, clear.</p>
+<p>Memory on Cortex-M4 (<code>-Os</code>):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Bytes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nxdn_engine_t</code> (session, call layer both ways, frame buffers)</td>
+<td>1104</td>
+</tr>
+<tr>
+<td>of it <code>nxdn_call_rx_t</code> / <code>nxdn_rx_t</code> / the decoders' memory</td>
+<td>488 / 416 / 384</td>
+</tr>
+<tr>
+<td><code>nxdn_call_tx_t</code></td>
+<td>82</td>
+</tr>
+<tr>
+<td>Code: frame codec, receive, call layer, engine, Viterbi</td>
+<td>1658 + 615 + 1659 + 1054 + 712</td>
+</tr>
+<tr>
+<td>Deepest receive stack below the framer</td>
+<td>about 310 (call layer 80, field decoder 72, Viterbi 160)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The radio core needs from a board: a provider (<code>board_t.air</code>) whose fit takes 2400 or 4800 symbols/s with a 10- and a
+19-symbol sync, and its <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">vocoder</abbr> (<code>hal_vocoder_t</code>) for the 72-bit frames (6).</p>
+<h2 id="8-tests">8. Tests</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tests/host/fecTest.c</code> (<code>test_conv</code>)</td>
+<td>the Viterbi decoder: clean, punctured, soft against hard in noise</td>
+</tr>
+<tr>
+<td><code>tests/host/nxdnTest.c</code></td>
+<td>the scrambler against its register, the syncs, the LICH and its parity, SACCH and FACCH1 round trips through errors and <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> checks, VCH places, the 7.2.1 <abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="../dev/glossary.html#t-fec">FEC</abbr> frames, messages; calls through the framer: clear, RAN squelch, RAN 0, late entry, LICH coasting, symbol errors, a header sync with an error, encrypted, 9600 bit/s</td>
+</tr>
+<tr>
+<td><code>tests/host/nxdnEngineTest.c</code></td>
+<td>two engines on made-up providers at both rates: a call heard with its fields and voice in order, an encoder stall covered by silence, no underruns, late entry, group and individual squelch, a squelch change mid-call, an abort, another RAN, RAN 0, an encrypted call; a call through a modeled discriminator tap and the soft modem at 2400 symbols/s, eight calls per noise level</td>
+</tr>
+<tr>
+<td><code>tests/host/radioCoreTest.c</code> (<code>radioCoreTestNxdn</code>, <code>radioCoreTestP25Nxdn</code>)</td>
+<td>the radio core against an NXDN engine on a fake provider: a call heard, its voice in order to the <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">vocoder</abbr>, another RAN, group squelch; PTT heard by the far engine with the settings, settings sent mid-transmission, 4800 bit/s, a TX-only and an RX-only fit, no fit, the time-out; the mode by request, the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> and the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> saved; P25 and NXDN in turn in the same memory; a zone scan over a stored NXDN channel: a stop with nothing on air, held on a late entry to its group, not on another group or RAN, never a stop at a rate the provider can't <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> (<code>test_nxdn_scan</code>); <abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="../user/22-glossary.html#t-dual-watch">dual watch</abbr> with it as B: a hold on its group's call, not on another group, refused at such a rate, and with P25 on A one engine at a time (<code>test_nxdn_dual</code>)</td>
+</tr>
+<tr>
+<td><code>tests/host/uiFlowTest.c</code></td>
+<td>the mode tile's order, the home screen in NXDN, the FM-only tiles</td>
+</tr>
+<tr>
+<td><code>tests/hil/test_nxdn.py</code></td>
+<td>on the radio: the mode switch, the settings, a stored channel written over <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr>; opt-in, an over decoded off air by the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench's 4FSK receiver and <code>nxdntool</code> (one <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> radio: 9600 bit/s 78 frames, outer deviation 2399 Hz; 4800 bit/s 40 frames, 1012 Hz; no CRC failure), a stored channel that <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmits</abbr> keyed and decoded the same way with the channel's RAN, unit and group (<code>test_nxdn_stored_channel_tx</code>), a call the bench plays received (<code>test_nxdn_rx_from_bench</code>), and one whose voice frames are a speech recording's, decoded by the vocoder: every frame into the voice path, none silent, bad or lost, the decoded <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> peaking as speech does (<code>test_nxdn_rx_speech</code>, with <code>--ambe FILE</code>), and a zone scan or dual watch that holds on a stored NXDN channel when the bench calls there (<code>test_nxdn_scan_from_bench</code>, with <code>--allow-codeplug-write</code>; not yet run on a radio). They skip where the fit has no RX. Nothing measures the sound at the speaker</td>
+</tr>
+<tr>
+<td><code>tools/bench/nxdntool.py selftest</code></td>
+<td>the bench tool (below) both ways at both rates, with bit errors and through the soft modem, from bench receiver records, the summary line</td>
+</tr>
+</tbody>
+</table></div>
+<p>The soft modem test (8 kHz tap, 2000 counts per kHz, so the outer level is 2100 counts and the step between levels
+1400): every call whole up to 300 counts of noise; at 400 and 500 one call in eight misses its header and is joined
+late; at 600 three in eight are whole; every call is still found up to 700. The voice bits there are raw channel
+bits: their own FEC is the vocoder's.</p>
+<p><code>tools/bench/nxdntool.py</code> (built from <code>tools/bench/nxdn/</code>) runs the firmware's code on the host: <code>gen</code> writes a call as
+symbols with an expect file, <code>mod</code> turns symbols into discriminator samples, <code>decode</code> and <code>disc</code> read them back
+through the framer (and the soft modem) and compare. <code>decode</code> reads what <code>p25tool.py decode</code> reads: a dibit file, the
+bench receiver's records (<code>--records</code>) or <code>rfoundry_debug.py air rx</code> records (<code>--air-jsonl</code>), and ends with a summary:
+RAN, source, destination, call type, frames, voice frames, CRC failures. Voice is made-up patterns, or with
+<code>gen --voice-file FILE</code> the 72-bit frames of a recording as they came off the air (9 bytes each): the tool never looks
+inside a voice frame.</p>
+<p>An over checked off air: the radio in NXDN on a test frequency, the SDR bench's 4FSK receiver on it (2400 baud at
+4800 bit/s, 4800 baud at 9600 bit/s, root raised cosine, the FSW <code>CDF59</code> as a 10-symbol sync), its symbols through
+<code>nxdntool.py decode --records</code> (<code>test_nxdn_tx_off_air</code>).</p>
+<h2 id="9-unconfirmed">9. Unconfirmed</h2>
+<p>Facts the documents leave open, and what the code assumes. The documents have no frame-level test vectors (no <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> or
+scrambler examples), so the codec checks against itself and the clauses only.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Assumed</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scrambler: is the first output bit the register's state before or after the first shift</td>
+<td>before: the sequence starts <code>0 1 1 1 0 0 1 0 0</code></td>
+<td>4.6</td>
+</tr>
+<tr>
+<td>CRC register form (the bit order of the remainder on air)</td>
+<td>highest register bit first, as figure 4.5-10 draws it</td>
+<td>4.5.3, 4.5.4</td>
+</tr>
+<tr>
+<td>Encoder start state</td>
+<td>zero</td>
+<td>4.5.3</td>
+</tr>
+<tr>
+<td>What a 9600 bit/s call's FACCH1 frames carry</td>
+<td>the VCALL again</td>
+<td><abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">TS</abbr> 1-B 4.1.2.1</td>
+</tr>
+<tr>
+<td>The transmit shaper</td>
+<td>the soft modem and <code>nxdntool mod</code> use root raised cosine alone on <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr>; the sinc shaper is in the model only</td>
+<td>3.4, 3.5</td>
+</tr>
+<tr>
+<td>A 6.25 kHz channel</td>
+<td>radios set 12.5 kHz; whether a board's filter can do 6.25 is per board</td>
+<td>table 2.3-1</td>
+</tr>
+<tr>
+<td>A short sync</td>
+<td>one wrong symbol in a header's FSW makes the framer miss the header (10 symbols, the fit's limit); the call is joined late at the next superframe</td>
+<td>5.3.1.2</td>
+</tr>
+<tr>
+<td>Unit ID range</td>
+<td>1 to 65519 (the top IDs are special)</td>
+<td>TS 1-B</td>
+</tr>
+<tr>
+<td>A board's transmit pulse</td>
+<td>the provider's shaping at the profile's symbol rate and deviation, as its fit reports (<code>AIR_FIT_SHAPE_APPROX</code>, <code>AIR_FIT_DEV_APPROX</code>); whether a receiver of another make takes it is untested</td>
+<td>3.4, 3.5</td>
+</tr>
+<tr>
+<td>Voice on air</td>
+<td>the VCH bit order is settled against 7.2.1 (5); a call heard by a radio of another make is untested</td>
+<td>7.2</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="10-not-written">10. Not written</h2>
+<p>Changing an NXDN channel's squelch on the radio, 9600 bit/s full rate, data (UDCH, short data), trunking (RCCH), status and other supplementary messages,
+encryption, a <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> filter in a provider.</p>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/nxdn.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#1-on-air">1. On air</a></li><li class="l2"><a href="#2-fields-and-fec-corenxdnnxdn_framec-corefecconvc">2. Fields and FEC (core/nxdn/nxdn_frame.c, core/fec/conv.c)</a></li><li class="l2"><a href="#3-receive-corenxdnnxdn_rxc">3. Receive (core/nxdn/nxdn_rx.c)</a></li><li class="l2"><a href="#4-the-call-layer-corenxdnnxdn_callc">4. The call layer (core/nxdn/nxdn_call.c)</a></li><li class="l2"><a href="#5-voice">5. Voice</a></li><li class="l2"><a href="#6-the-radio-core-coreradioradio_nxdnc">6. The radio core (core/radio/radio_nxdn.c)</a></li><li class="l3"><a href="#61-selecting-it">6.1 Selecting it</a></li><li class="l3"><a href="#62-settings">6.2 Settings</a></li><li class="l3"><a href="#63-what-it-shows">6.3 What it shows</a></li><li class="l3"><a href="#64-scan">6.4 Scan</a></li><li class="l2"><a href="#7-the-engine-corenxdnnxdn_enginec">7. The engine (core/nxdn/nxdn_engine.c)</a></li><li class="l2"><a href="#8-tests">8. Tests</a></li><li class="l2"><a href="#9-unconfirmed">9. Unconfirmed</a></li><li class="l2"><a href="#10-not-written">10. Not written</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

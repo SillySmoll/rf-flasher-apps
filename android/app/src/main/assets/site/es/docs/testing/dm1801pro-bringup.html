@@ -1,0 +1,511 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DM-1801 Pro bring-up checklist · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="DM-1801 Pro bring-up checklist · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/docs/testing/dm1801pro-bringup.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/testing/dm1801pro-bringup.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/testing/dm1801pro-bringup.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/testing/dm1801pro-bringup.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/testing/dm1801pro-bringup.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/testing/dm1801pro-bringup.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../es/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../../es/radios/index.html">Radios</a><a href="../../../es/features/index.html">Funciones</a><a href="../../../es/flash/index.html">Instalar</a><a href="../../../es/codeplug/index.html">Codeplug</a><a href="../../../es/docs/index.html" aria-current="page">Documentación</a><a href="../../../es/screenshots/index.html">Capturas</a><a href="../../../es/tools/index.html">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../../docs/testing/dm1801pro-bringup.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/testing/dm1801pro-bringup.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/testing/dm1801pro-bringup.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/testing/dm1801pro-bringup.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Pruebas">
+		<p class="eyebrow"><a href="../../../es/docs/index.html">Documentación</a> / Pruebas</p>
+		<ul><li><a href="index.html">Testing</a></li><li><a href="results/index.html">Bring-up results</a></li><li><a href="backlight-curve.html">Backlight curve</a></li><li><a href="dm1801pro-bringup.html" aria-current="page">DM-1801 Pro bring-up checklist</a></li><li><a href="dm32-bringup.html">DM-32UV bring-up checklist</a></li><li><a href="dmr-bench.html">DMR bench testing on the SDR bench</a></li><li><a href="md380-bringup.html">MD-380 bring-up checklist</a></li><li><a href="md9600-bringup.html">MD-9600 bring-up checklist</a></li><li><a href="mduv380-bringup.html">MD-UV380 bring-up checklist</a></li><li><a href="mmdvm-audit.html">MMDVM implementation audit (2d45a21)</a></li><li><a href="on-air-coverage.html">On-air test coverage</a></li><li><a href="power-calibration.html">Transmit power calibration with a wattmeter</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Esta página aún no está traducida; se muestra en inglés.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="dm-1801-pro-bring-up-checklist">DM-1801 Pro bring-up checklist</h1>
+<p>The order to bring the DM-1801 Pro port (<code>make BOARD=dm1801pro</code>) up on a radio, what each step proves, and what to
+change when it doesn't work. Steps 0 to 3, 7 and 8 passed on 2026-10-15 (hardware-dm1801pro.md 12). Hardware facts:
+<a href="../spec/hardware-dm1801pro.html">hardware-dm1801pro.md</a>.</p>
+<p>The feature checklist, with every feature's required <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> tests and the last recorded result, is
+<code>tools/bringup.py list --radio dm1801pro</code>. <code>tools/bringup.py run --radio dm1801pro</code> records a run
+(<a href="https://github.com/radiofoundry/radiofoundry/blob/main/tests/hil/README.md#bring-up-mode">tests/hil/README.md</a>). This page keeps the hardware steps and what to
+change when one fails.</p>
+<h2 id="0-before-anything">0. Before anything</h2>
+<ol>
+<li><strong>Back up both flashes</strong> (1 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">MB</abbr> program flash, 16 MB data flash). The port never writes the data flash below
+0x700000 and never touches the boot loader, but a backup is the only way back from a mistake.</li>
+<li>Confirm update mode before the first flash: it is the recovery path for every step below. The loader stays in it while
+PTT and SK1 are held at power-on (<a href="../spec/hardware-dm1801pro.html">hardware-dm1801pro.md</a> 6.2). Push the cable fully
+into the jack, or the loader doesn't answer. <code>python3 tools/serial_loader.py --model dm1801pro --dry-run IMAGE</code>
+checks the image and the cable first.</li>
+<li>Flash: <code>python3 tools/serial_loader.py --model dm1801pro build/dm1801pro/rfoundry_dm1801pro.bin</code> over the programming cable.
+The erase takes about 13 s. <code>rfoundry flash IMAGE --board dm1801pro</code> wraps the same tool, and the <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr> for a radio
+that runs RadioFoundry with <code>CONFIG_STUB_ENTRY=y</code> (<a href="https://github.com/radiofoundry/radiofoundry/blob/main/tools/rfoundry/README.md#the-dm-1801-pro">tools/rfoundry/README.md</a>);
+neither rfoundry route has flashed a radio yet.</li>
+<li>The <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> runs on the same cable at 115200 (<code>RFOUNDRY_PORT=/dev/cu.usbserial-... tools/rfoundry_debug.py diag</code>). The
+cable's plug switches the internal speaker off: unplug it to listen.</li>
+<li>Build: <code>make BOARD=dm1801pro</code> (csky-elf GCC: <code>tools/build-csky-toolchain.sh</code>).</li>
+</ol>
+<h2 id="1-power-and-display">1. Power and display</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Expect</th>
+<th>If not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Switch on</td>
+<td>The radio stays on after the power key is released</td>
+<td>Wrong polarity of the power key (<code>PIN_POWER_KEY</code>, <code>power_dm1801pro.c</code>: the level at start-up counts as &quot;on&quot;); wrong latch pin</td>
+</tr>
+<tr>
+<td>Backlight</td>
+<td>Comes on</td>
+<td><code>PIN_LCD_BACKLIGHT</code></td>
+</tr>
+<tr>
+<td>Picture</td>
+<td>The Home screen, upright and readable</td>
+<td>Blank: the controller's init (<code>display_dm1801pro.c</code>, <code>st7567.c</code>); mirrored: <code>seg_reverse</code> / <code>com_reverse</code>; faint or black: <code>contrast</code>, <code>regulator</code>, <code>bias</code>; shifted: <code>col_offset</code> (4)</td>
+</tr>
+<tr>
+<td>IO mux</td>
+<td>The display and the flash both work</td>
+<td><code>io_init</code> in <code>board.c</code>: PTC2-PTC8 must be GPIOs, SPI0's pins on the peripheral</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="2-keys">2. Keys</h2>
+<p>Open the Diagnostics page (Settings &gt; Diagnostics). The <code>keys</code> line shows the raw scan: matrix bit = strobe x 4 + input
+(bits 0-19), the four direct pins in bits 20-23. Press every key in turn and write down the bit. Then fix, in
+<code>input_dm1801pro.c</code>: the <code>map</code> table (matrix keys) and <code>direct_keys</code> (PTT, SK1, SK2, SOS). Until then keys are mixed up.</p>
+<h2 id="3-flash-calibration-battery">3. Flash, calibration, battery</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Expect</th>
+<th>If not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Diagnostics <code>flash</code></td>
+<td>A JEDEC ID (<code>C84018</code> GD25Q128, <code>852018</code> Puya)</td>
+<td>Chip select, the SPI0 mux, <code>hrc_ssi_init</code> clock</td>
+</tr>
+<tr>
+<td><code>cal</code></td>
+<td><code>factory</code>; the <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> center, <abbr class="gl" tabindex="0" title="Power amplifier: the stage that boosts the transmit signal to the output power." data-more="../dev/glossary.html#t-pa">PA</abbr> points at 145 and 435 MHz are non-zero</td>
+<td><code>none</code>: the page tagged 2 wasn't found; compare with a dump (hardware-dm1801pro.md 6.4)</td>
+</tr>
+<tr>
+<td>Change a setting, switch off and on</td>
+<td>It stays</td>
+<td>The write floor and flash map in <code>board.c</code></td>
+</tr>
+<tr>
+<td><code>bat</code></td>
+<td>Rises with a full battery; the percentage is close</td>
+<td>The <abbr class="gl" tabindex="0" title="Analog to digital converter." data-more="../dev/glossary.html#t-adc">ADC</abbr> divider isn't known: compute the scale from a multimeter and set it in <code>power_dm1801pro.c</code></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="4-fm-receive">4. FM receive</h2>
+<p>Tune a known local signal on <abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="../user/22-glossary.html#t-vhf">VHF</abbr> and <abbr class="gl" tabindex="0" title="Ultra high frequency: 300 MHz to 3 GHz. The amateur 70 cm band is UHF." data-more="../user/22-glossary.html#t-uhf">UHF</abbr>. Audio, <abbr class="gl" tabindex="0" title="Received signal strength indicator: how strong the received signal is, in dBm." data-more="../user/22-glossary.html#t-rssi">RSSI</abbr> (<code>rssi</code> line) and squelch should follow the signal.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely cause</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No audio on either band</td>
+<td>The cable is plugged in (it mutes the speaker); <code>PIN_AMP_EN</code> (PTA16) or <code>PIN_SPK_SOURCE</code> (PTB15)</td>
+</tr>
+<tr>
+<td>Audio on one band only</td>
+<td>The path pins' band side is inverted (<code>radio_dm1801pro.c</code> <code>path_pins</code>; hardware-dm1801pro.md 5.5)</td>
+</tr>
+<tr>
+<td>Wrong frequency or very weak</td>
+<td><code>fd6818_variant_b</code> tables, the <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> bus speed (<code>RF_BIT_SCALE_US</code>), <code>PIN_RF_CS</code></td>
+</tr>
+<tr>
+<td>Narrow / wide swapped</td>
+<td>The 12.5 kHz word (<code>bw_fm_12k5</code>, hardware-dm1801pro.md 5.2)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="5-fm-transmit">5. FM transmit</h2>
+<p>Only with a dummy load or a test set on an allowed frequency. The radio refuses to <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> when the calibration isn't
+read.</p>
+<ol>
+<li>Key at low power: the carrier is on frequency with no splatter. Check the <abbr class="gl" tabindex="0" title="Power amplifier: the stage that boosts the transmit signal to the output power." data-more="../dev/glossary.html#t-pa">PA</abbr> ramp and the TX path pins.</li>
+<li>Compare the three power levels with a meter: L &lt; M &lt; H, the nominal values are
+<a href="../spec/hardware-dm1801pro.html">hardware-dm1801pro.md</a> 6.4's open item (which level uses which array).</li>
+<li>Deviation and modulation balance with a test set; the modulation byte is read at the calibration page's TX points
+(hardware-dm1801pro.md 6.4).</li>
+<li>Repeat 1 to 3 on <abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="../user/22-glossary.html#t-vhf">VHF</abbr>. The <code>pa 145</code> line shows the VHF drive. No power on VHF while <abbr class="gl" tabindex="0" title="Ultra high frequency: 300 MHz to 3 GHz. The amateur 70 cm band is UHF." data-more="../user/22-glossary.html#t-uhf">UHF</abbr> works points at the TX path's
+VHF side (PTA31, hardware-dm1801pro.md 5.5).</li>
+</ol>
+<h3 id="51-fm-mic-gain">5.1 FM mic gain</h3>
+<p>The FM mic gain is the board's level for the channel bandwidth (<code>MIC_GAIN_FM_12K5_DB</code>, <code>MIC_GAIN_FM_25K_DB</code> in
+<code>boards/dm1801pro/radio_dm1801pro.c</code>) plus the Mic gain setting's offset, (step - 5) x 2 dB
+(<a href="../spec/radio-features.html">radio-features.md</a> 3.6). The programming cable cuts the microphone, and no injected
+tone passes the mic gain, so every measurement is an over with the cable out. <code>tests/hil/test_mic_gain.py</code> runs the
+session: it sets the step and the bandwidth over the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>, the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench records while you key, and it reads
+the step back once the cable is in again.</p>
+<pre><code>python3 -m pytest tests/hil/test_mic_gain.py -v -rs -s --manual --allow-rf --fm-mhz MHZ --mic-gain-steps 3,5,7
+</code></pre>
+<p>For each over (3 steps at 12.5 kHz, then at 25 kHz):</p>
+<ol>
+<li>Wait for <code>=== over N/6: ... ===</code> and <code>GO</code>. The bench records for <code>--mic-gain-window</code> s (30).</li>
+<li>Unplug the cable, key PTT, give the same source each time for about 5 s (a steady whistle or a phone playing a
+1 kHz tone at a fixed distance, or the same sentence), release PTT, plug the cable back in.</li>
+<li>The test prints the bench board's measurements and <code>link back: step S, GCR_ADCL 0xNN</code>.</li>
+</ol>
+<p>At the end it prints one row per over: bandwidth, step, offset, GCR_ADCL (bits 5:0 = dB), segment length, voice peak
+(99.5 %) and rms deviation, and the strongest tone with its deviation. Expect the deviation to rise about 2 dB a step
+until the deviation limiter. Target with speech: peak about 2.5 kHz at 12.5 kHz and 5 kHz at 25 kHz. Set the two
+board levels from the step that reaches the target (level = 11 + offset), then rerun at step 5 to confirm.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>If</th>
+<th>Check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GCR_ADCL doesn't follow the step</td>
+<td><code>set.mic_gain_board=1</code> in the features view; the FM transmit start writes the register (<code>tx()</code>)</td>
+</tr>
+<tr>
+<td>No keyed segment</td>
+<td>PTT pressed inside the window; the capture under <code>~/&lt;bench dir&gt;/hil_mic_gain_N/</code></td>
+</tr>
+<tr>
+<td>The same deviation at every step</td>
+<td>the limiter (DEV_LIMITER) clips: try lower steps; or the gain isn't in the path the microphone takes</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="6-broadcast-fm-and-air-band">6. Broadcast FM and air band</h2>
+<h3 id="61-broadcast-fm-tuner">6.1 Broadcast FM tuner</h3>
+<p>Tune the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> into the broadcast band (<a href="../spec/airband-and-broadcast.html">airband-and-broadcast.md</a> 4).
+<code>tests/hil/test_listen_bands.py</code> checks the view keys without keying.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Expect</th>
+<th>If not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VFO to 100.1 MHz</td>
+<td><code>bcast=1</code>, <code>bcast_fault=0</code> in the view: the chip answers at 0x11 with ID 0x58</td>
+<td><code>bcast_fault=1</code>: <code>PIN_BCAST_EN</code> polarity, <code>PIN_BCAST_SDA</code> / <code>PIN_BCAST_SCL</code>, the <abbr class="gl" tabindex="0" title="Inter-integrated circuit: a 2-wire bus for small chips such as the RF transceiver." data-more="../dev/glossary.html#t-i2c">I2C</abbr> speed (<code>half_us</code>), the reference clock mode (<code>clk_mode</code>), all in <code>platform/hrc7000/bcast_hrc.c</code> and the board's <code>hrc_bcast_cfg_t</code></td>
+</tr>
+<tr>
+<td>A local station</td>
+<td>Audible; the signal meter moves; the knob steps 200 kHz on the odd tenths</td>
+<td>The tuner's audio route; the amplifier (<code>PIN_AMP_EN</code>) is shared with the channel audio</td>
+</tr>
+<tr>
+<td>Squelch 9 on a weak station</td>
+<td>Still plays (broadcast audio ignores the squelch); the green <abbr class="gl" tabindex="0" title="Light-emitting diode: the radio&#x27;s status light." data-more="../user/22-glossary.html#t-led">LED</abbr> stays on</td>
+<td>The squelch threshold (<code>RADIO_BCAST_SQL_REF</code>)</td>
+</tr>
+<tr>
+<td>Scan a zone of broadcast channels</td>
+<td>Stops on stations, quiet between them</td>
+<td>The squelch threshold</td>
+</tr>
+<tr>
+<td>PTT</td>
+<td>&quot;Broadcast: <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> only&quot;, nothing keys</td>
+<td>The core's refusal</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="62-air-band-am">6.2 Air band AM</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Expect</th>
+<th>If not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VFO to the local ATIS</td>
+<td><code>am=1</code>, &quot;Air Band AM&quot; on Home, AM audio</td>
+<td>FD6818 0x47 (AF type, <code>fd6818_set_am</code>), the <abbr class="gl" tabindex="0" title="Automatic gain control: the receiver adjusting itself to the signal level." data-more="../dev/glossary.html#t-agc">AGC</abbr> and filter (<a href="../spec/airband-and-broadcast.html">airband-and-broadcast.md</a> 2, 3.3)</td>
+</tr>
+<tr>
+<td>PTT</td>
+<td>&quot;Air band: receive only&quot;, nothing keys</td>
+<td>The core's refusal</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="7-accelerometer">7. Accelerometer</h2>
+<p>The diagnostics page has an <code>acc</code> line: x, y and z in milli-g. Lay the radio flat: z reads about +1000 or -1000 and x
+and y near 0; tilt it and the values follow. <code>accel none</code> means the chip didn't answer: check <code>PIN_ACCEL_SCL</code> /
+<code>PIN_ACCEL_SDA</code> and the address (<code>ACCEL_ADDR</code> in <code>accel_dm1801pro.c</code>; 0x18 if the chip's address pin is low). <code>accel id NN</code> means the chip answered with an ID the driver doesn't accept (this radio's SC7A20 reads 0x11).</p>
+<h2 id="8-vibration-motor">8. Vibration motor</h2>
+<p>The radio vibrates for about 0.3 s when it powers on. No pulse: put a meter on PTB24 (<code>PIN_VIBRATION</code>); if the pin moves
+and the motor doesn't, the pin isn't the motor driver (hardware-dm1801pro.md 8 is inferred, no label names it).</p>
+<h2 id="9-dmr">9. DMR</h2>
+<p><abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> is built (<code>CONFIG_DMR</code>), without voice. Do this after FM <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> and <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> work. The Diagnostics page starts with the
+DMR counters.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Expect</th>
+<th>If not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Select a DMR channel on a local repeater or hotspot</td>
+<td><code>tk</code> (ticks) climbs by about 33 a second, <code>ts</code> interrupts count up</td>
+<td>No ticks: the modem never got timing; check the DMR mode register set (<code>dmr_table</code> in <code>drivers/rf/fd6818/fd6818_setup_b.c</code>) and the RX path</td>
+</tr>
+<tr>
+<td>Receive a transmission</td>
+<td><code>H</code> (headers) and <code>V</code> / <code>T</code> counters rise, <code>crc</code> stays low</td>
+<td>Many <code>crc</code> or <code>u</code> (unusable): the bandwidth word 0x3048 or the DMR register set</td>
+</tr>
+<tr>
+<td>Hear a call</td>
+<td>Silence: the codec is located but not hosted yet</td>
+<td></td>
+</tr>
+<tr>
+<td>Transmit on a dummy load (data call or a short key-up)</td>
+<td>A burst per slot on a meter or <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr>, <code>tx</code>, <code>rf</code> and <code>ok</code> rise</td>
+<td><code>un</code> (underrun) or <code>rj</code>: the per-burst switch takes too long (<code>dmr_rf_switch</code>, <code>RF_BIT_SCALE_US</code>); no carrier: <code>dmr_pa_on</code>, the 28 ms <abbr class="gl" tabindex="0" title="Power amplifier: the stage that boosts the transmit signal to the output power." data-more="../dev/glossary.html#t-pa">PA</abbr> delay</td>
+</tr>
+<tr>
+<td>The mic on DMR transmit, no person: <code>pytest tests/hil -k mic_uart_inject --allow-rf --mic-inject</code> on the host the cable is plugged into (its device path, not a network bridge)</td>
+<td>The tone bursts sent on the cable's line show at the <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">vocoder</abbr>: <code>voice.tx_mic_spread_db</code> 12 or more, <code>tx_mic_level_db</code> 9 dB over a quiet over</td>
+<td>Both overs at the <abbr class="gl" tabindex="0" title="Analog to digital converter." data-more="../dev/glossary.html#t-adc">ADC</abbr>'s floor (level about 6, no spread): the mic doesn't reach the codec ADC on DMR. PTB14 must be high, as for FM (<a href="../spec/hardware-dm1801pro.html">hardware-dm1801pro.md</a> 3.1)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="91-tier-iii-receive-listen-only">9.1 Tier III receive (listen only)</h3>
+<p>Against a Tier III site on the SDR bench (<abbr class="gl" tabindex="0" title="Trunked station control channel: the Tier III channel that carries control signaling." data-more="../dev/glossary.html#t-tscc">TSCC</abbr> on one carrier, a second traffic carrier), with the engine staged over
+the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> listen-only (<code>T3_OPT_LISTEN_ONLY</code>) and <code>tx_inhibit</code> set, read from the <code>t3</code> and <code>dmr_stats</code> views
+(<a href="../spec/dmr-trunking.html">dmr-trunking.md</a> 11):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Seen</th>
+<th>If not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start on the TSCC</td>
+<td><code>t3.state=camped</code> within 0.4-0.7 s, <code>t3.syscode</code> the site's, <code>t3.csbk</code> rising at the site's <abbr class="gl" tabindex="0" title="Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control." data-more="../spec/dmr-data.html">CSBK</abbr> rate, <code>t3.crc_bad</code> 0-1 in 400</td>
+<td>No CSBKs: the <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">CC</abbr>, or the channel not in <abbr class="gl" tabindex="0" title="DMR through a repeater, which receives on one frequency and transmits on another. The standard calls it RMO." data-more="../dev/glossary.html#t-repeater-mode">repeater mode</abbr> (the TSCC is a <abbr class="gl" tabindex="0" title="Base station: the repeater or modem side of a DMR link, as opposed to the radio (MS)." data-more="../dev/glossary.html#t-bs">BS</abbr> signal)</td>
+</tr>
+<tr>
+<td>Short LC</td>
+<td><code>t3.slc_ok</code> rising 6-8 a second on the TSCC, <code>t3.slc_bad</code> under 1 % of them (a few more on a payload channel)</td>
+<td><code>slc_ok</code> 0: system interrupt bit 4 not enabled, or the short <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr> read (<code>hrc7000_dmr_short_lc</code>) not called by the event task</td>
+</tr>
+<tr>
+<td>Slot ticks</td>
+<td><code>t3.ticks</code> about 33 a second, <code>t3.at_known</code> rising with them once the <abbr class="gl" tabindex="0" title="TDMA channel: the TACT bit that names the timeslot, so a radio can tell TS1 from TS2." data-more="../dev/glossary.html#t-tc">TC</abbr> lock holds, <code>t3.at_busy</code> while the inbound is in use</td>
+<td><code>at_known</code> 0: no TC lock (the channel not in repeater mode, or the TC not alternating)</td>
+</tr>
+<tr>
+<td>Group call on the TSCC carrier's other slot</td>
+<td>followed in about 0.5-1 s (<code>t3.state=follow</code>, <code>t3.slot=2</code>), voice decoded (<code>call.rx_voice_bursts</code> about 49 of 50 a 3 s call), back on the TSCC (<code>t3.returns</code>)</td>
+<td></td>
+</tr>
+<tr>
+<td>Group call on the second carrier</td>
+<td>followed there (<code>t3.rx_hz</code> the carrier's, <code>t3.slot=1</code>), voice decoded, back on the TSCC</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Not checked on the radio: an <abbr class="gl" tabindex="0" title="Multi block control: a DMR signaling message that spans several bursts." data-more="../dev/glossary.html#t-mbc">MBC</abbr> continuation with the chip's <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> flag set (host test only) and the audio heard (the
+cable mutes the speaker; the counters show it decoded).</p>
+<h3 id="92-tier-iii-transmit">9.2 Tier III transmit</h3>
+<p>The same site, the engine staged over the debug link with transmit, the lowest power setting, the radio's ID
+registered (<code>t3</code>, <code>t3_svc</code>, <code>dmr_ext</code>, <code>dmr_ip</code> views). Every step starts the engine again, so each one registers
+first:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Seen</th>
+<th>If not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Register</td>
+<td><code>t3.reg=ok</code>, <code>t3.ax_reason=0x62</code>, 1-4 random accesses (<code>t3.ra_tries</code>)</td>
+<td><code>t3.sent</code> 0: the engine listen-only or <code>tx_inhibit</code> set</td>
+</tr>
+<tr>
+<td>Group call, PTT with the test tone (<code>voice_test</code>)</td>
+<td>granted in about 0.3 s, <code>t3.slot=2</code>, keyed (<code>state=tx</code>), back on the TSCC (<code>t3.returns</code>) after the hang</td>
+<td></td>
+</tr>
+<tr>
+<td>Private call</td>
+<td>the same, <code>t3.call_dst</code> the called ID</td>
+<td></td>
+</tr>
+<tr>
+<td>Group and private call from another MS</td>
+<td>followed, 49 voice bursts a 3 s call, <code>voice.rx_peak</code> about 16700 (speech), back on the TSCC</td>
+<td><code>voice.rx_peak</code> near 0: the other <abbr class="gl" tabindex="0" title="Mobile station: the radio, as opposed to the base station (BS)." data-more="../dev/glossary.html#t-ms">MS</abbr> sent silence</td>
+</tr>
+<tr>
+<td>Status, short data to another MS</td>
+<td><code>t3.ax_result=done</code>, <code>t3.ax_reason=0x44</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Short data poll from another MS</td>
+<td>the poll ahoy (<code>t3.ahoy_kind=6</code>), the answer <abbr class="gl" tabindex="0" title="Unified data transport: DMR short data sent as a plain block of bytes." data-more="../dev/glossary.html#t-udt">UDT</abbr> sent (<code>t3.last_tx_op=0x1b</code>)</td>
+<td></td>
+</tr>
+<tr>
+<td>Radio check during the radio's own call</td>
+<td>the answer sent in the call (<code>t3.last_tx_op=0x23</code>), back on the TSCC</td>
+<td></td>
+</tr>
+<tr>
+<td>IP datagram to the gateway, unconfirmed</td>
+<td>a data grant (<code>t3.call_data=1</code>), <code>ip.sent</code> +1, <code>ip.result=ok</code>, back on the TSCC</td>
+<td>confirmed: <code>ip.cnf_timeouts</code> with no response from the site (the site sends none yet)</td>
+</tr>
+<tr>
+<td>Power save, PowerSave_RQ 2</td>
+<td><code>t3.ps_offset</code> granted, <code>t3.sleeps</code> and <code>t3.rx_offs</code> rising, the receiver off about half the time (<code>t3.rx_off_ms</code>); a status, short data, a poll (answered) and a group call from another MS all reach the sleeping radio</td>
+<td><code>t3.rx_off_ms</code> 0: the board's <code>rx_sleep_dmr</code> not set</td>
+</tr>
+<tr>
+<td>Emergency: alarm, hot-mic call, cancel</td>
+<td><code>em.state=active</code>, <code>data.emergency_alarms_sent</code> +1, <code>em.hot_mic_keyed</code> 1, a call followed and back on the TSCC, the cancel <code>done</code></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="10-vox-and-the-microphone-level">10. VOX and the microphone level</h2>
+<p>The level comes from the codec <abbr class="gl" tabindex="0" title="Analog to digital converter." data-more="../dev/glossary.html#t-adc">ADC</abbr>'s mic <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> (<a href="../spec/hardware-dm1801pro.html">hardware-dm1801pro.md</a> 12). The
+programming cable in the speaker/mic jack cuts the microphone: unplug it for the talking steps, or read the values
+from the diagnostics page.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Expect</th>
+<th>If not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FM channel, VOX off; read the features view twice (<code>vox.level</code>), then the diagnostics line <code>mic lvl</code></td>
+<td><code>vox.mic=1</code>; <code>mic lvl ... on</code>, and <code>n</code> grows by about 100 a second while the view is read</td>
+<td><code>off</code> or <code>n</code> stuck: the PCM interrupt or AUDIO_CONTROL b4 (<code>c7 ac</code> line, bit 4)</td>
+</tr>
+<tr>
+<td>Quiet room, then talk at the radio from 10 cm</td>
+<td><code>lvl</code> and <code>pk</code> low in silence, well up while talking</td>
+<td>Flat while talking: the samples don't carry the microphone in <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> (PTB14, the codec ADC mute, CR_ADC b7 in the <code>cd</code> lines)</td>
+</tr>
+<tr>
+<td>VOX on (Quick tile, FM), dummy load, talk</td>
+<td>Keys on speech, drops <code>vox_tail_ms</code> after it</td>
+<td>Keys in silence: the noise floor is above the threshold; lower <code>vox_level</code> or check <code>pk</code></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="11-after-this">11. After this</h2>
+<p><abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> voice needs the codec hosted (it is the DM-32UV's: <a href="../spec/hardware-dm1801pro.html">hardware-dm1801pro.md</a> 6.5) and the air band and the tuner a check on the radio (6). The
+open items are in <a href="../spec/hardware-dm1801pro.html">hardware-dm1801pro.md</a> 10.</p>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/testing/dm1801pro-bringup.md">Ver el código fuente de esta página</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="En esta página">
+		<p class="eyebrow">En esta página</p>
+		<ul><li class="l2"><a href="#0-before-anything">0. Before anything</a></li><li class="l2"><a href="#1-power-and-display">1. Power and display</a></li><li class="l2"><a href="#2-keys">2. Keys</a></li><li class="l2"><a href="#3-flash-calibration-battery">3. Flash, calibration, battery</a></li><li class="l2"><a href="#4-fm-receive">4. FM receive</a></li><li class="l2"><a href="#5-fm-transmit">5. FM transmit</a></li><li class="l3"><a href="#51-fm-mic-gain">5.1 FM mic gain</a></li><li class="l2"><a href="#6-broadcast-fm-and-air-band">6. Broadcast FM and air band</a></li><li class="l3"><a href="#61-broadcast-fm-tuner">6.1 Broadcast FM tuner</a></li><li class="l3"><a href="#62-air-band-am">6.2 Air band AM</a></li><li class="l2"><a href="#7-accelerometer">7. Accelerometer</a></li><li class="l2"><a href="#8-vibration-motor">8. Vibration motor</a></li><li class="l2"><a href="#9-dmr">9. DMR</a></li><li class="l3"><a href="#91-tier-iii-receive-listen-only">9.1 Tier III receive (listen only)</a></li><li class="l3"><a href="#92-tier-iii-transmit">9.2 Tier III transmit</a></li><li class="l2"><a href="#10-vox-and-the-microphone-level">10. VOX and the microphone level</a></li><li class="l2"><a href="#11-after-this">11. After this</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

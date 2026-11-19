@@ -1,0 +1,213 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>从原厂 DM-32UV 固件迁移 · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="从原厂 DM-32UV 固件迁移 · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/user/19-moving-from-stock-dm32.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/user/19-moving-from-stock-dm32.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/user/19-moving-from-stock-dm32.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/user/19-moving-from-stock-dm32.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/user/19-moving-from-stock-dm32.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/user/19-moving-from-stock-dm32.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/user/19-moving-from-stock-dm32.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/user/19-moving-from-stock-dm32.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/user/19-moving-from-stock-dm32.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/user/19-moving-from-stock-dm32.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="用户手册">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 用户手册</p>
+		<ul><li><a href="index.html">RadioFoundry 用户手册</a></li><li><a href="01-introduction.html">简介</a></li><li><a href="02-installing.html">安装</a></li><li><a href="03-first-boot.html">首次启动</a></li><li><a href="04-programming.html">为电台编程</a></li><li><a href="05-keys-and-navigation.html">按键与导航</a></li><li><a href="06-home-screen.html">主屏幕</a></li><li><a href="07-channels-zones-vfo.html">信道、区域与 VFO</a></li><li><a href="08-fm.html">FM</a></li><li><a href="09-dmr.html">DMR</a></li><li><a href="10-messages-and-signaling.html">消息、呼叫提示与电台检查</a></li><li><a href="11-emergency.html">紧急</a></li><li><a href="12-scan.html">扫描与双守候</a></li><li><a href="13-aprs.html">APRS</a></li><li><a href="14-hotspot.html">热点模式</a></li><li><a href="15-usb-network.html">USB 网络模式</a></li><li><a href="16-battery-and-power.html">电池与供电</a></li><li><a href="17-settings.html">设置</a></li><li><a href="18-moving-from-stock-md380.html">从原厂 MD-380 固件迁移</a></li><li><a href="19-moving-from-stock-dm32.html" aria-current="page">从原厂 DM-32UV 固件迁移</a></li><li><a href="20-troubleshooting.html">故障排查</a></li><li><a href="21-faq.html">常见问题</a></li><li><a href="22-glossary.html">术语表</a></li><li><a href="23-radios.html">电台参考</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<h1 id="moving-from-stock-dm-32uv-firmware">从原厂 DM-32UV 固件迁移</h1>
+<p>本章适用于运行宝锋原厂固件的宝锋 DM-32UV。一个程序 <code>dm32_migrate.py</code> 通过编程线完成整个迁移：</p>
+<ol>
+<li>从电台读取你的电台频率：信道、区域、联系人、接收组列表、你的 <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr>。</li>
+<li>通过电台自带的引导程序（更新模式）刷写 RadioFoundry。</li>
+<li>写回电台频率，以及 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> ID（呼号）数据库。</li>
+</ol>
+<p>网页安装器和电台频率编辑器分两步完成同样的事（<a href="02-installing.html">安装</a>）。使用本程序可一次运行完成全部。电台上已验证的内容见<a href="23-radios.html#baofeng-dm-32uv">电台参考</a>，<a href="../testing/dm32-bringup.html">bring-up 检查表</a>列出尚未完成的项目。请保留宝锋的固件文件（<code>DM32.01.01.049.bin</code>），以便回到原厂。</p>
+<p>RadioFoundry 绝不触碰引导程序，因此更新模式始终可用。它也绝不触碰 7 MB 以下的数据闪存。原厂电台频率、出厂校准和原厂联系人数据库都在那里。回到原厂时，你的旧电台频率会原样恢复。</p>
+<h2 id="what-you-need">你需要什么</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python 3.8 或更新</td>
+<td>macOS、Linux 和 Windows。仅用文件测试过</td>
+</tr>
+<tr>
+<td>qdmr 0.15 或更新</td>
+<td>提供读取原厂电台并转换电台频率的 <code>dmrconf</code> 命令。macOS：<code>brew install qdmr</code>。Linux：发行版的 <code>qdmr</code> 包。Windows：dm3mat.darc.de/qdmr 的安装程序</td>
+</tr>
+<tr>
+<td><code>pip install pyserial</code></td>
+<td>用于线缆</td>
+</tr>
+<tr>
+<td>RadioFoundry 镜像</td>
+<td>已合并编解码器的 <code>rfoundry_dm32_codec.bin</code>，来自测试包或你自己的构建（<a href="../testing/dm32-bringup.html">bring-up 检查表</a>第 0 步）。不含编解码器的镜像可配合 <code>--codec-from DM32.01.01.049.bin</code> 使用</td>
+</tr>
+<tr>
+<td>编程线</td>
+<td>DM-32 的 USB 串口线（CH340、FTDI 或 CP210x）。电台本身没有 USB：原厂 <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="04-programming.html">CPS</abbr>、引导程序和 RadioFoundry 都使用这条线</td>
+</tr>
+</tbody>
+</table></div>
+<p>测试包（<code>dm32_migrate.py package</code>）是一个文件夹，含脚本、辅助文件、镜像、<code>README.txt</code> 和 <code>requirements.txt</code>。</p>
+<h2 id="run-it">运行</h2>
+<p>先查看每一步。此操作只读文件，不触碰任何东西：</p>
+<pre><code>python3 dm32_migrate.py all --image rfoundry_dm32_codec.bin --dry-run
+</code></pre>
+<p>然后实际运行。插入一条 USB 串口线时，程序会自动找到它。否则请加 <code>--port /dev/ttyUSB0</code>（Linux）、<code>--port /dev/cu.usbserial-XXXX</code>（macOS）或 <code>--port COM5</code>（Windows）：</p>
+<pre><code>python3 dm32_migrate.py all --image rfoundry_dm32_codec.bin
+</code></pre>
+<p>程序在需要你在电台旁操作的每一步之前询问：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>你要做</th>
+<th>程序会做</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0. 检查</td>
+<td>无</td>
+<td>检查 dmrconf、pyserial、线缆和镜像。若有缺失，会在触碰电台前停止</td>
+</tr>
+<tr>
+<td>1. 备份</td>
+<td>正常开机，插好线</td>
+<td>读取电台频率（<code>backup-stock.dfu</code>、<code>backup-stock.yaml</code>），为 RadioFoundry 转换，并显示哪些能放下、哪些不能（<code>conversion-report.txt</code>）</td>
+</tr>
+<tr>
+<td>2. 刷写</td>
+<td>关机。按住 <strong>PTT</strong> 和 <strong>SK1</strong>（PTT 下方的侧键），开机。绿色 <abbr class="gl" tabindex="0" title="Light-emitting diode: the radio&#x27;s status light." data-more="22-glossary.html#t-led">LED</abbr> 点亮</td>
+<td>再次询问，然后写入 RadioFoundry。电台会先擦除旧固件，最多需要 15 秒</td>
+</tr>
+<tr>
+<td>3. 设置区</td>
+<td>等待 RadioFoundry 主屏幕</td>
+<td>确认电台运行 RadioFoundry。若原厂数据位于 RadioFoundry 保存设置的位置，它会询问、把该区域保存到文件并交给 RadioFoundry</td>
+</tr>
+<tr>
+<td>3b. 数据闪存备份</td>
+<td>无</td>
+<td>把原厂电台频率和校准区域（800 KB，约 2 分钟）读入工作目录。<code>--flash-backup full</code> 保存全部 16 MB（约 30 分钟），<code>none</code> 跳过</td>
+</tr>
+<tr>
+<td>4. 电台频率</td>
+<td>无</td>
+<td>保存 RadioFoundry 电台频率区域中的内容，写入电台频率，等待重启，读回并比较</td>
+</tr>
+<tr>
+<td>5. ID 数据库</td>
+<td>无</td>
+<td>写入 <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr> 数据库。较大的数据库经线缆需要许多分钟</td>
+</tr>
+</tbody>
+</table></div>
+<p>它把所有内容保存在 <code>~/RadioFoundry-DM32-migration/&lt;日期时间&gt;/</code>，绝不删除这些文件。某步失败时会停止并说明原因。若失败发生在刷写之后，它会打印继续执行的命令：</p>
+<pre><code>python3 dm32_migrate.py restore --workdir ~/RadioFoundry-DM32-migration/20261011-101500
+</code></pre>
+<h2 id="your-codeplug-from-a-file">从文件使用你的电台频率</h2>
+<p><code>--from</code> 接受用 <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr> 从原厂电台保存的电台频率，可以是 <code>.dfu</code>（<code>dmrconf read --radio dm32uv</code>）或 <code>.yaml</code>。<code>dm32_migrate.py import --from FILE</code> 只转换并检查，无需电台。此处不支持宝锋自带 <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="04-programming.html">CPS</abbr> 的文件。请用 qdmr 读取电台并从那里保存电台频率。</p>
+<p>网页安装器在从原厂固件安装结束时自行迁移这些内容。没有 qdmr 时，<a href="04-programming.html#the-codeplug-editor">电台频率编辑器</a>和工具页可直接从数据闪存读取来转换原厂电台频率：原厂固件上由网页安装器取得的备份 <code>.zip</code>，或其中的 <code>data-memory.bin</code> 或 <code>original-channels.bin</code>。它们会迁移带发射联系人的信道、联系人、接收组列表、区域、你的 <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr> 和启动文字。功率、带宽、亚音、时隙和色码随每个信道迁移。静噪、发射超时和扫描列表保持 RadioFoundry 的默认值，且前 84 个之后的信道尚未读取（<a href="../spec/dm32-stock-codeplug.html">格式</a>）。qdmr 0.15 不读取原厂发射联系人，因此这是保留它们的方式。</p>
+<h2 id="from-a-web-installer-backup">容量</h2>
+<p>RadioFoundry 支持 1024 个信道、68 个区域（每区 80 个信道）、1024 个联系人和 76 个接收组列表，名称最多 16 个字符。原厂电台支持更多。若你的超出，程序会列出将被略去的内容（最后那些），并在刷写前询问。要自行选择，请在 <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr> 中打开 <code>backup-stock.yaml</code> 并删除不需要的内容。保存后，用 <code>--from</code> 指向保存的文件再次运行。</p>
+<p>程序还会整理接收组列表：只含信道自身通话组的列表会被删除（RadioFoundry 总是收听信道通话的通话组），空列表、重复列表和未使用的列表也一样。每个信道保留其通话组。<code>--no-cleanup</code> 保持列表原样。</p>
+<p><code>conversion-report.txt</code> 列出所有变化：前后数量、被缩短的名称、136-174 和 400-480 MHz 之外的信道，以及 RadioFoundry 不使用的电台频率部分。这些部分不会迁移：原厂菜单、按键和显示设置、扫描列表、漫游、GPS 和 <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr> 设置、加密密钥以及原厂联系人数据库。RadioFoundry 使用<a href="04-programming.html">为电台编程</a>中列出的电台频率部分。</p>
+<h2 id="what-fits">DMR ID 数据库</h2>
+<p>默认情况下，dmrconf 下载公开的 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> 用户数据库，并选取与你最接近的 ID（需要互联网）。电台可容纳约 300,000 条记录。列表更长时，工具保留与你的 ID 最接近的记录。<code>--users FILE</code> 改用 radioid.net 的 <code>user.csv</code>。选项：<code>--db-limit N</code>、<code>--id-prefix</code>、<code>--no-db</code>。</p>
+<h2 id="the-dmr-id-database">仅刷写</h2>
+<p><code>serial_loader.py</code> 可刷写任意镜像而不触碰电台频率：</p>
+<pre><code>python3 serial_loader.py --model dm32 rfoundry_dm32_codec.bin   # 原始镜像（_BFUV32.bin 文件无需 --model）
+python3 serial_loader.py --list-ports                       # 它看到的线缆
+</code></pre>
+<h2 id="flashing-only">回到原厂</h2>
+<p>宝锋的固件文件通过同一个引导程序刷写：</p>
+<pre><code>python3 serial_loader.py --stock DM32.01.01.049.bin
+</code></pre>
+<p>原厂电台频率从未被覆盖，因此电台会带着它回来。若没有，请用 <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr> 写入 <code>backup-stock.dfu</code>（<code>dmrconf write --radio dm32uv</code>）。RadioFoundry 自己的数据保持在 7 MB 及以上，原厂固件以后可能会复用该空间。</p>
+<h2 id="going-back-to-stock">限制与说明</h2>
+<ul>
+<li>若刷写后电台无法启动，请取出并重新装上电池。更新模式仍然可用。</li>
+<li>程序绝不更改电台的校准。</li>
+<li>Linux：请把自己加入 <code>dialout</code> 组以使用线缆。</li>
+<li>Windows：请先安装线缆驱动（CH340 或 FTDI）。未测试。</li>
+</ul>
+
+		<nav class="prev-next"><a class="prev" href="18-moving-from-stock-md380.html">从原厂 MD-380 固件迁移</a><a class="next" href="20-troubleshooting.html">故障排查</a></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/user/19-moving-from-stock-dm32.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#what-you-need">你需要什么</a></li><li class="l2"><a href="#run-it">运行</a></li><li class="l2"><a href="#your-codeplug-from-a-file">从文件使用你的电台频率</a></li><li class="l2"><a href="#from-a-web-installer-backup">容量</a></li><li class="l2"><a href="#what-fits">DMR ID 数据库</a></li><li class="l2"><a href="#the-dmr-id-database">仅刷写</a></li><li class="l2"><a href="#flashing-only">回到原厂</a></li><li class="l2"><a href="#going-back-to-stock">限制与说明</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

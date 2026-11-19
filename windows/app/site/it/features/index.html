@@ -1,0 +1,1235 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="it" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Funzioni · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Funzioni · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:url" content="https://radiofoundry.org/it/features/">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Le radio su cui gira RadioFoundry, ognuna con una schermata diversa.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/features/">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/features/">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/features/">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/features/">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/features/">
+<link rel="icon" href="../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-features" data-root="../../" data-home="../../it/" data-gl-more="Altro">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../it/index.html">
+			<img src="../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principale"><a href="../../it/radios/index.html">Radio</a><a href="../../it/features/index.html" aria-current="page">Funzioni</a><a href="../../it/flash/index.html">Installa</a><a href="../../it/codeplug/index.html">Codeplug</a><a href="../../it/docs/index.html">Documenti</a><a href="../../it/screenshots/index.html">Schermate</a><a href="../../it/tools/index.html">Strumenti</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Lingua" title="Lingua">IT</summary><nav aria-label="Lingua"><a href="../../features/index.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../es/features/index.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../it/features/index.html" aria-current="true" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../zh/features/index.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Passa da chiaro a scuro" title="Passa da chiaro a scuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<section class="wrap section page-head">
+	<h1>Funzioni</h1>
+	<p class="lead">Quali funzioni ha ogni radio e quali esclude ogni build.</p>
+</section>
+<section class="wrap section">
+	<h2>Versioni della build</h2>
+	<div class="cards variants"><article class="card variant-card" data-variant="full">
+	<h3>Full</h3>
+	<p>Every feature the radio supports.</p>
+	<p class="small muted"><b>Esclude:</b> Niente</p>
+</article>
+<article class="card variant-card" data-variant="amateur">
+	<h3>Amateur</h3>
+	<p>For amateur radio. Leaves out business features.</p>
+	<p class="small muted"><b>Esclude:</b> Basic privacy (Motorola / Anytone BP), Motorola TMS text format, ARS registration, LRRP location, Control station mode (boot as network, PC answers data, fixed link), SNMP v2c agent and traps (USB and over the air)</p>
+</article>
+<article class="card variant-card" data-variant="commercial">
+	<h3>Commercial</h3>
+	<p>For business and public service radios. Leaves out amateur-only features.</p>
+	<p class="small muted"><b>Esclude:</b> MMDVM hotspot, APRS: AFSK positions, status, messages; DMR positions; KISS TNC</p>
+</article>
+<article class="card variant-card" data-variant="custom">
+	<h3>Personalizzata</h3>
+	<p>Personalizza la tua build del software con le funzioni che vuoi, direttamente dal browser.</p>
+</article>
+</div>
+</section>
+<section class="wrap section">
+	<h2>Tutte le funzioni</h2>
+	<nav class="toc-inline" aria-label="Gruppi di funzioni"><a href="#network-usb-network-adapter-and-ip-over-dmr">Network (USB network adapter and IP over DMR)</a><a href="#radio-and-voice">Radio and voice</a><a href="#dmr-data">DMR data</a><a href="#host-link-and-usb">Host link and USB</a><a href="#user-interface">User interface</a><a href="#storage">Storage</a></nav>
+	<div class="filter-bar">
+		<label><span class="sr">Filtra le funzioni</span><input type="search" id="feature-filter" placeholder="Filtra le funzioni"></label>
+	</div>
+	<div class="table-wrap">
+		<table class="data matrix features-table" id="features-table">
+			<thead><tr><th scope="col">Funzione</th><th scope="col"><a href="../../it/radios/dm32.html">DM-32UV</a></th><th scope="col"><a href="../../it/radios/dm1701.html">DM-1701</a></th><th scope="col"><a href="../../it/radios/dm1801pro.html">DM-1801 Pro</a></th><th scope="col"><a href="../../it/radios/db25d.html">DB25-D PRO</a></th><th scope="col"><a href="../../it/radios/md380.html">MD-380</a></th><th scope="col"><a href="../../it/radios/mduv380.html">MD-UV380</a></th><th scope="col"><a href="../../it/radios/md9600.html">MD-9600</a></th><th scope="col"><a href="../../it/radios/rt10.html">RT10</a></th></tr></thead>
+			<tbody><tr class="group"><th colspan="9" scope="rowgroup" id="network-usb-network-adapter-and-ip-over-dmr">Network (USB network adapter and IP over DMR)</th></tr><tr id="f-usb_serial_request" data-search="USB_SERIAL_REQUEST Leave network mode from a web page ">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Leave network mode from a web page</span> <code>USB_SERIAL_REQUEST</code> </summary>
+			<p></p>
+			<p class="small muted">The web flasher and editor take a radio in USB network mode back to serial mode, with no key press on the radio (endpoint 0 request, /api/usb, TCP at 12.255.255.254). Follows USB_NETWORK</p>
+			<p class="small"><b>Richiede:</b> USB_NETWORK · <b>Flash:</b> DM-1701 644 B · MD-380 696 B</p>
+		</details>
+	</th>
+	<td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td>
+</tr>
+<tr id="f-dmr_ip_gateway" data-search="DMR_IP_GATEWAY IP over DMR gateway IP over DMR packet data through a network link to the host: the USB network adapter or PPP on the serial host port (needs DMR and USB_NETWORK or NET_PPP; core/hostlink/hostlink_net.c)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">IP over DMR gateway</span> <code>DMR_IP_GATEWAY</code> </summary>
+			<p>IP over DMR packet data through a network link to the host: the USB network adapter or PPP on the serial host port (needs DMR and USB_NETWORK or NET_PPP; core/hostlink/hostlink_net.c)</p>
+			<p class="small muted">Includes the radio&#x27;s own services below</p>
+			<p class="small"><b>Richiede:</b> DMR, (USB_NETWORK | NET_PPP) · <b>Flash:</b> DM-1701 44,128 B · MD-380 43,220 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td>
+</tr>
+<tr id="f-net_tcp" data-search="NET_TCP Minimal TCP a minimal TCP for the radio&#x27;s own services on the USB network link, never over RF (needs DMR_IP_GATEWAY, whose IPv4 layer it uses; core/net, docs/spec/tcp-services.md)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Minimal TCP</span> <code>NET_TCP</code> </summary>
+			<p>a minimal TCP for the radio&#x27;s own services on the USB network link, never over RF (needs DMR_IP_GATEWAY, whose IPv4 layer it uses; core/net, docs/spec/tcp-services.md)</p>
+			<p class="small muted">Includes KISS, HTTP, rigctld, APRS-IS. About 4.5 KB RAM</p>
+			<p class="small"><b>Richiede:</b> DMR, DMR_IP_GATEWAY · <b>Flash:</b> DM-1701 16,240 B · MD-380 15,656 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td>
+</tr>
+<tr id="f-net_kiss" data-search="NET_KISS KISS over TCP, port 8001 KISS over TCP on port 8001, bridged to the APRS KISS TNC (needs NET_TCP and APRS_AFSK; core/net/kiss_tcp.c)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">KISS over TCP, port 8001</span> <code>NET_KISS</code> <span class="chip chip-out">non in Commercial</span></summary>
+			<p>KISS over TCP on port 8001, bridged to the APRS KISS TNC (needs NET_TCP and APRS_AFSK; core/net/kiss_tcp.c)</p>
+			<p class="small muted"></p>
+			<p class="small"><b>Richiede:</b> DMR, NET_TCP, APRS_AFSK · <b>Flash:</b> DM-1701 700 B · MD-380 752 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td>
+</tr>
+<tr id="f-net_http" data-search="NET_HTTP HTTP status page and JSON, port 80 the HTTP status server on port 80: a page, JSON status and view sections, the screen (needs NET_TCP; core/net/http.c)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">HTTP status page and JSON, port 80</span> <code>NET_HTTP</code> </summary>
+			<p>the HTTP status server on port 80: a page, JSON status and view sections, the screen (needs NET_TCP; core/net/http.c)</p>
+			<p class="small muted"></p>
+			<p class="small"><b>Richiede:</b> DMR, NET_TCP · <b>Flash:</b> DM-1701 4,796 B · MD-380 4,860 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td>
+</tr>
+<tr id="f-net_http_gzip" data-search="NET_HTTP_GZIP HTTP static files stored and served gzip compressed the status server&#x27;s static files (core/net/http_assets) stored gzip compressed at build time and served with Content-Encoding: gzip; off: stored and served as they are (needs NET_HTTP; tools/gen_http_assets.py)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">HTTP static files stored and served gzip compressed</span> <code>NET_HTTP_GZIP</code> </summary>
+			<p>the status server&#x27;s static files (core/net/http_assets) stored gzip compressed at build time and served with Content-Encoding: gzip; off: stored and served as they are (needs NET_HTTP; tools/gen_http_assets.py)</p>
+			<p class="small muted">Negative: saves flash, nearly all of it on web control&#x27;s files. MD-380: web control follows this switch (hardware-md380.md 19)</p>
+			<p class="small"><b>Richiede:</b> DMR, NET_HTTP · <b>Flash:</b> DM-1701 -19,456 B · MD-380 -18,572 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td>
+</tr>
+<tr id="f-net_webctl" data-search="NET_WEBCTL Web control: the front panel page, keys, status and receive audio over /ws web control on the status server: /ws (WebSocket) for the radio&#x27;s front panel page, keys, status and receive audio (needs NET_HTTP; core/net/ws.c, docs/spec/tcp-services.md 5)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Web control: the front panel page, keys, status and receive audio over /ws</span> <code>NET_WEBCTL</code> </summary>
+			<p>web control on the status server: /ws (WebSocket) for the radio&#x27;s front panel page, keys, status and receive audio (needs NET_HTTP; core/net/ws.c, docs/spec/tcp-services.md 5)</p>
+			<p class="small muted">The page and the radio&#x27;s drawing included (about 6 KB gzip compressed); 1 KB RAM (tcp-services.md 5.1)</p>
+			<p class="small"><b>Richiede:</b> NET_HTTP · <b>Flash:</b> DM-1701 9,620 B · MD-380 9,332 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td>
+</tr>
+<tr id="f-net_rigctl" data-search="NET_RIGCTL rigctld, port 4532 Hamlib rigctld on port 4532: frequency, mode, PTT, S meter for loggers and SDR programs (needs NET_TCP; core/net/rigctld.c)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">rigctld, port 4532</span> <code>NET_RIGCTL</code> </summary>
+			<p>Hamlib rigctld on port 4532: frequency, mode, PTT, S meter for loggers and SDR programs (needs NET_TCP; core/net/rigctld.c)</p>
+			<p class="small muted"></p>
+			<p class="small"><b>Richiede:</b> DMR, NET_TCP · <b>Flash:</b> DM-1701 3,852 B · MD-380 3,728 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td>
+</tr>
+<tr id="f-net_aprsis" data-search="NET_APRSIS APRS-IS client the radio&#x27;s own APRS-IS client through the host: our beacons and the iGate&#x27;s lines, off until a server is set (needs NET_TCP and APRS_AFSK; core/net/aprsis.c)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">APRS-IS client</span> <code>NET_APRSIS</code> <span class="chip chip-out">non in Commercial</span></summary>
+			<p>the radio&#x27;s own APRS-IS client through the host: our beacons and the iGate&#x27;s lines, off until a server is set (needs NET_TCP and APRS_AFSK; core/net/aprsis.c)</p>
+			<p class="small muted">Needs NAT on the host</p>
+			<p class="small"><b>Richiede:</b> DMR, NET_TCP, APRS_AFSK · <b>Flash:</b> DM-1701 2,856 B · MD-380 2,720 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td>
+</tr>
+<tr id="f-net_usrp" data-search="NET_USRP Audio linking (USRP over UDP, port 34001) audio linking for AllStarLink, DVSwitch and bridges (USRP voice over UDP, port 34001): the radio sends what it receives, with the squelch as keyup, and transmits what the computer sends. DMR works both ways on every radio; FM needs the radio&#x27;s audio paths to the processor, which radios have both ways, DMR only or FM one way (docs/feature-matrix.md) (needs DMR_IP_GATEWAY; core/usbaudio, docs/spec/usb-audio.md)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Audio linking (USRP over UDP, port 34001)</span> <code>NET_USRP</code> </summary>
+			<p>audio linking for AllStarLink, DVSwitch and bridges (USRP voice over UDP, port 34001): the radio sends what it receives, with the squelch as keyup, and transmits what the computer sends. DMR works both ways on every radio; FM needs the radio&#x27;s audio paths to the processor, which radios have both ways, DMR only or FM one way (docs/feature-matrix.md) (needs DMR_IP_GATEWAY; core/usbaudio, docs/spec/usb-audio.md)</p>
+			<p class="small muted">DM-1701: DMR and FM both ways. MD-380: DMR only (FM audio doesn&#x27;t reach the processor yet). DM-32UV: DMR only until its board code has the FM audio paths</p>
+			<p class="small"><b>Richiede:</b> DMR, DMR_IP_GATEWAY · <b>Flash:</b> DM-1701 4,552 B · MD-380 4,888 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-nw"><span aria-hidden="true">…</span><span class="sr">non ancora scritta per questa radio</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-nw"><span aria-hidden="true">…</span><span class="sr">non ancora scritta per questa radio</span></td>
+</tr>
+<tr id="f-mdns" data-search="MDNS mDNS / DNS-SD (rfoundry-&lt;id&gt;.local) mDNS / DNS-SD responder on the USB network link: &lt;host&gt;.local and the radio&#x27;s services (needs DMR_IP_GATEWAY, the IP stack it runs on; core/net/mdns.c, docs/spec/mdns.md)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">mDNS / DNS-SD (rfoundry-&lt;id&gt;.local)</span> <code>MDNS</code> </summary>
+			<p>mDNS / DNS-SD responder on the USB network link: &lt;host&gt;.local and the radio&#x27;s services (needs DMR_IP_GATEWAY, the IP stack it runs on; core/net/mdns.c, docs/spec/mdns.md)</p>
+			<p class="small muted"></p>
+			<p class="small"><b>Richiede:</b> DMR, DMR_IP_GATEWAY · <b>Flash:</b> DM-1701 6,744 B · MD-380 6,504 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td>
+</tr>
+<tr id="f-tftp" data-search="TFTP TFTP codeplug read / write TFTP server on the USB network link: codeplug.bin read and (staged, checked) written, info.txt (needs DMR_IP_GATEWAY; core/net/tftp.c, docs/spec/tftp.md)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">TFTP codeplug read / write</span> <code>TFTP</code> </summary>
+			<p>TFTP server on the USB network link: codeplug.bin read and (staged, checked) written, info.txt (needs DMR_IP_GATEWAY; core/net/tftp.c, docs/spec/tftp.md)</p>
+			<p class="small muted">Without the ID database below</p>
+			<p class="small"><b>Richiede:</b> DMR, DMR_IP_GATEWAY · <b>Flash:</b> DM-1701 6,356 B · MD-380 6,412 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td>
+</tr>
+<tr id="f-tftp_iddb" data-search="TFTP_IDDB DMR ID database over TFTP (iddb.bin, combined codeplug.bin) DMR ID database over TFTP: iddb.bin read and written in place, and the database part of a combined codeplug.bin (needs TFTP; core/net/tftp_iddb.c, docs/spec/tftp.md 5)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">DMR ID database over TFTP (iddb.bin, combined codeplug.bin)</span> <code>TFTP_IDDB</code> </summary>
+			<p>DMR ID database over TFTP: iddb.bin read and written in place, and the database part of a combined codeplug.bin (needs TFTP; core/net/tftp_iddb.c, docs/spec/tftp.md 5)</p>
+			<p class="small muted">Follows TFTP</p>
+			<p class="small"><b>Richiede:</b> TFTP · <b>Flash:</b> DM-1701 2,184 B · MD-380 2,264 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td>
+</tr>
+<tr id="f-iddb_compact" data-search="IDDB_COMPACT Compact DMR ID database (format C) read beside format N the compact DMR ID database (format C): dictionary-coded names, IDs as gaps, pages with room to grow, read beside format N (needs DMR; core/codeplug/dmr_iddb.c, docs/spec/iddb-compact.md)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Compact DMR ID database (format C) read beside format N</span> <code>IDDB_COMPACT</code> </summary>
+			<p>the compact DMR ID database (format C): dictionary-coded names, IDs as gaps, pages with room to grow, read beside format N (needs DMR; core/codeplug/dmr_iddb.c, docs/spec/iddb-compact.md)</p>
+			<p class="small muted">Follows DMR (iddb-compact.md)</p>
+			<p class="small"><b>Richiede:</b> DMR · <b>Flash:</b> DM-1701 988 B · MD-380 992 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-dmr_control_station" data-search="DMR_CONTROL_STATION Control station mode (boot as network, PC answers data, fixed link) control station mode for PC dispatch software on the USB network link: the PC as the endpoint of the radio&#x27;s own data ports (passthrough) and a fixed private link address pair (needs DMR_IP_GATEWAY; docs/spec/usb-network.md 5)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Control station mode (boot as network, PC answers data, fixed link)</span> <code>DMR_CONTROL_STATION</code> <span class="chip chip-out">non in Amateur</span></summary>
+			<p>control station mode for PC dispatch software on the USB network link: the PC as the endpoint of the radio&#x27;s own data ports (passthrough) and a fixed private link address pair (needs DMR_IP_GATEWAY; docs/spec/usb-network.md 5)</p>
+			<p class="small muted"></p>
+			<p class="small"><b>Richiede:</b> DMR_IP_GATEWAY · <b>Flash:</b> DM-1701 288 B · MD-380 484 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td>
+</tr>
+<tr id="f-snmp" data-search="SNMP SNMP v2c agent and traps (USB and over the air) SNMP agent (SNMPv2c) on UDP 161 of the radio&#x27;s address, over the USB network and over the air, with notifications (needs DMR_IP_GATEWAY; core/snmp, docs/spec/snmp.md)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">SNMP v2c agent and traps (USB and over the air)</span> <code>SNMP</code> <span class="chip chip-out">non in Amateur</span></summary>
+			<p>SNMP agent (SNMPv2c) on UDP 161 of the radio&#x27;s address, over the USB network and over the air, with notifications (needs DMR_IP_GATEWAY; core/snmp, docs/spec/snmp.md)</p>
+			<p class="small muted"></p>
+			<p class="small"><b>Richiede:</b> DMR_IP_GATEWAY · <b>Flash:</b> DM-1701 8,460 B · MD-380 8,036 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td>
+</tr>
+<tr id="f-usb_network" data-search="USB_NETWORK USB network adapter (CDC-NCM) USB network adapter personality (CDC-NCM, switched with the serial one at run time; needs USB)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">USB network adapter (CDC-NCM)</span> <code>USB_NETWORK</code> </summary>
+			<p>USB network adapter personality (CDC-NCM, switched with the serial one at run time; needs USB)</p>
+			<p class="small muted">Includes everything below</p>
+			<p class="small"><b>Richiede:</b> USB, HOSTLINK · <b>Flash:</b> DM-1701 48,344 B · MD-380 47,468 B</p>
+		</details>
+	</th>
+	<td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-net_ppp" data-search="NET_PPP PPP on the serial host port (IPv4 into the gateway) IPv4 over PPP on the serial host port, into the IP gateway and its services: for radios whose only host link is a USB-serial cable, and a fallback on the USB serial port (needs HOSTLINK and DMR_IP_GATEWAY, which it turns on by default; core/net/ppp.c, core/hostlink/hostlink_ppp.c, docs/spec/ppp.md). On in the config.mk of a radio whose only IP link it is; off on the USB radios (docs/feature-matrix.md)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">PPP on the serial host port (IPv4 into the gateway)</span> <code>NET_PPP</code> </summary>
+			<p>IPv4 over PPP on the serial host port, into the IP gateway and its services: for radios whose only host link is a USB-serial cable, and a fallback on the USB serial port (needs HOSTLINK and DMR_IP_GATEWAY, which it turns on by default; core/net/ppp.c, core/hostlink/hostlink_ppp.c, docs/spec/ppp.md). On in the config.mk of a radio whose only IP link it is; off on the USB radios (docs/feature-matrix.md)</p>
+			<p class="small muted">Interop tested with pppd; checked on the DB25-D PRO and the DM-1801 Pro (docs/spec/ppp.md 8). Fits neither default image as it is when measured (DM-1701 688 B short, MD-380 1,588 B short of its 275 KB then; DM-1701 with LTO: +3,948, fits). DM-32: its only IP link, on by default with the gateway and every service (Whole images, DM-32UV)</p>
+			<p class="small"><b>Richiede:</b> HOSTLINK, DMR_IP_GATEWAY · <b>Flash:</b> DM-1701 4,368* B · MD-380 3,816* B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td>
+</tr>
+</tbody><tbody><tr class="group"><th colspan="9" scope="rowgroup" id="radio-and-voice">Radio and voice</th></tr><tr id="f-fm" data-search="FM Analog FM receive and transmit analog FM receive and transmit">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Analog FM receive and transmit</span> <code>FM</code> </summary>
+			<p>analog FM receive and transmit</p>
+			<p class="small muted">Includes its children (tones, VOX, APRS, FM VFO)</p>
+			<p class="small"><b>Richiede:</b> — · <b>Flash:</b> DM-1701 29,296 B · MD-380 28,056 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-subtone" data-search="SUBTONE CTCSS / DCS encode and decode CTCSS / DCS encode and decode (needs FM)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">CTCSS / DCS encode and decode</span> <code>SUBTONE</code> </summary>
+			<p>CTCSS / DCS encode and decode (needs FM)</p>
+			<p class="small muted">MD-380: software decode (ADC) and PWM encode; CTCSS 100.0 Hz works on air both ways (2026-10-19), DCS not yet checked</p>
+			<p class="small"><b>Richiede:</b> FM · <b>Flash:</b> DM-1701 904 B · MD-380 3,292* B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-dmr" data-search="DMR DMR Tier II voice (modem, call stack, AMBE FEC, vocoder) DMR Tier II voice: modem driver, call stack, AMBE FEC, vocoder hosting">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">DMR Tier II voice (modem, call stack, AMBE FEC, vocoder)</span> <code>DMR</code> </summary>
+			<p>DMR Tier II voice: modem driver, call stack, AMBE FEC, vocoder hosting</p>
+			<p class="small muted">Includes every DMR feature and everything on IP over DMR</p>
+			<p class="small"><b>Richiede:</b> — · <b>Flash:</b> DM-1701 175,856 B · MD-380 134,308 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-dmr_privacy" data-search="DMR_PRIVACY Basic privacy (Motorola / Anytone BP) basic privacy (Motorola / Anytone BP) on the voice path (needs DMR)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Basic privacy (Motorola / Anytone BP)</span> <code>DMR_PRIVACY</code> <span class="chip chip-out">non in Amateur</span></summary>
+			<p>basic privacy (Motorola / Anytone BP) on the voice path (needs DMR)</p>
+			<p class="small muted"></p>
+			<p class="small"><b>Richiede:</b> DMR · <b>Flash:</b> DM-1701 1,936 B · MD-380 1,992 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-dmr_talker_alias" data-search="DMR_TALKER_ALIAS Talker alias receive and send talker alias decode and TX of our radio name (needs DMR)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Talker alias receive and send</span> <code>DMR_TALKER_ALIAS</code> </summary>
+			<p>talker alias decode and TX of our radio name (needs DMR)</p>
+			<p class="small muted"></p>
+			<p class="small"><b>Richiede:</b> DMR · <b>Flash:</b> DM-1701 984 B · MD-380 1,300 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-dmr_gps" data-search="DMR_GPS ETSI GPS Info in the embedded LC ETSI GPS Info in the embedded LC (FLCO 8): the caller&#x27;s position decoded and shown, ours sent from the position service (core/position) when Settings &gt; Location &gt; Position in DMR calls is on (needs DMR)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">ETSI GPS Info in the embedded LC</span> <code>DMR_GPS</code> </summary>
+			<p>ETSI GPS Info in the embedded LC (FLCO 8): the caller&#x27;s position decoded and shown, ours sent from the position service (core/position) when Settings &gt; Location &gt; Position in DMR calls is on (needs DMR)</p>
+			<p class="small muted"></p>
+			<p class="small"><b>Richiede:</b> DMR · <b>Flash:</b> DM-1701 2,208 B · MD-380 2,152 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td>
+</tr>
+<tr id="f-dmr_signaling" data-search="DMR_SIGNALING CSBK signaling: call alert, radio check CSBK signaling: call alert, radio check (needs DMR)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">CSBK signaling: call alert, radio check</span> <code>DMR_SIGNALING</code> </summary>
+			<p>CSBK signaling: call alert, radio check (needs DMR)</p>
+			<p class="small muted"></p>
+			<p class="small"><b>Richiede:</b> DMR · <b>Flash:</b> DM-1701 592 B · MD-380 752 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-dmr_emergency" data-search="DMR_EMERGENCY DMR emergency (alarm, emergency call, hot mic) DMR emergency: the emergency alarm CSBK sent and heard, emergency calls (the LC&#x27;s emergency service option, hot mic), the receive alert (needs DMR; core/dmr/dmr_emergency.c, docs/spec/dmr-emergency.md)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">DMR emergency (alarm, emergency call, hot mic)</span> <code>DMR_EMERGENCY</code> </summary>
+			<p>DMR emergency: the emergency alarm CSBK sent and heard, emergency calls (the LC&#x27;s emergency service option, hot mic), the receive alert (needs DMR; core/dmr/dmr_emergency.c, docs/spec/dmr-emergency.md)</p>
+			<p class="small muted"></p>
+			<p class="small"><b>Richiede:</b> DMR · <b>Flash:</b> DM-1701 3,296 B · MD-380 3,188 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-dmr_roaming" data-search="DMR_ROAMING Repeater roaming DMR repeater roaming: move between the repeater sites of a roaming zone by signal strength (needs DMR; core/radio/roam.c, docs/spec/dmr-roaming.md)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Repeater roaming</span> <code>DMR_ROAMING</code> </summary>
+			<p>DMR repeater roaming: move between the repeater sites of a roaming zone by signal strength (needs DMR; core/radio/roam.c, docs/spec/dmr-roaming.md)</p>
+			<p class="small muted"></p>
+			<p class="small"><b>Richiede:</b> DMR · <b>Flash:</b> DM-1701 11,952 B · MD-380 12,380 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-dmr_trunk" data-search="DMR_TRUNK Tier III trunked systems: control channel, registration, following calls DMR Tier III trunking, the mobile station side: camp on a trunked system&#x27;s control channel and follow its grants (needs DMR; core/dmr/trunk, docs/spec/dmr-trunking.md)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Tier III trunked systems: control channel, registration, following calls</span> <code>DMR_TRUNK</code> </summary>
+			<p>DMR Tier III trunking, the mobile station side: camp on a trunked system&#x27;s control channel and follow its grants (needs DMR; core/dmr/trunk, docs/spec/dmr-trunking.md)</p>
+			<p class="small muted">Includes its children. Off, a trunked channel is shown as a mode not in this build (dmr-trunking). The four trunking figures are from the default builds they were added to</p>
+			<p class="small"><b>Richiede:</b> DMR · <b>Flash:</b> DM-1701 37,540 B · MD-380 38,176 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-dmr_trunk_tx" data-search="DMR_TRUNK_TX Trunked calls and services: voice, status, short data, packet data, authentication Tier III access: registration, call requests, answers to the control channel, ending calls. Off: a listen-only trunking receiver (needs DMR_TRUNK)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Trunked calls and services: voice, status, short data, packet data, authentication</span> <code>DMR_TRUNK_TX</code> </summary>
+			<p>Tier III access: registration, call requests, answers to the control channel, ending calls. Off: a listen-only trunking receiver (needs DMR_TRUNK)</p>
+			<p class="small muted">Needs DMR_TRUNK. Includes its children. Off, the radio follows a system and never transmits there</p>
+			<p class="small"><b>Richiede:</b> DMR_TRUNK · <b>Flash:</b> DM-1701 11,548 B · MD-380 11,876 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-dmr_trunk_supl" data-search="DMR_TRUNK_SUPL Trunked supplementary data and the short data poll Tier III supplementary user data: data offered with a call request, and the last heard from the system kept for the debug link (needs DMR_TRUNK_TX; docs/spec/dmr-trunking.md 7.6)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Trunked supplementary data and the short data poll</span> <code>DMR_TRUNK_SUPL</code> </summary>
+			<p>Tier III supplementary user data: data offered with a call request, and the last heard from the system kept for the debug link (needs DMR_TRUNK_TX; docs/spec/dmr-trunking.md 7.6)</p>
+			<p class="small muted">Needs DMR_TRUNK_TX</p>
+			<p class="small"><b>Richiede:</b> DMR_TRUNK_TX · <b>Flash:</b> DM-1701 724 B · MD-380 684 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-dmr_trunk_gw" data-search="DMR_TRUNK_GW Trunked calls through a system&#x27;s telephone, line and dispatcher gateways: dialed digits sent with the call Tier III calls through the PSTN, PABX, line and dispatcher gateways: dialed digits uploaded with the call, and the caller&#x27;s number a gateway sends kept for the debug link (needs DMR_TRUNK_TX; docs/spec/dmr-trunking.md 7.6)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Trunked calls through a system&#x27;s telephone, line and dispatcher gateways: dialed digits sent with the call</span> <code>DMR_TRUNK_GW</code> </summary>
+			<p>Tier III calls through the PSTN, PABX, line and dispatcher gateways: dialed digits uploaded with the call, and the caller&#x27;s number a gateway sends kept for the debug link (needs DMR_TRUNK_TX; docs/spec/dmr-trunking.md 7.6)</p>
+			<p class="small muted">Needs DMR_TRUNK_TX</p>
+			<p class="small"><b>Richiede:</b> DMR_TRUNK_TX · <b>Flash:</b> DM-1701 1,552 B · MD-380 1,732 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-vfo" data-search="VFO VFO (hand-tuned frequency) VFO: tune a frequency by hand (off: programmed channels only)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">VFO (hand-tuned frequency)</span> <code>VFO</code> </summary>
+			<p>VFO: tune a frequency by hand (off: programmed channels only)</p>
+			<p class="small muted">Includes the DMR VFO; VFO and VFO_DMR re-measured 2026-10-17 (DM-1701 plain build, MD-380 with LTO). Copy to VFO (dmr-voice.md 2.2) is on top of that figure, behind the same switch: about 630 B on the DM-1701 and 730 B on the MD-380 (default builds, LTO as each has it), 750 B on the C-SKY radios</p>
+			<p class="small"><b>Richiede:</b> — · <b>Flash:</b> DM-1701 656 B · MD-380 516 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-vfo_fm" data-search="VFO_FM FM VFO analog FM VFO (needs VFO and FM)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">FM VFO</span> <code>VFO_FM</code> </summary>
+			<p>analog FM VFO (needs VFO and FM)</p>
+			<p class="small muted"></p>
+			<p class="small"><b>Richiede:</b> VFO, FM · <b>Flash:</b> DM-1701 504 B · MD-380 452 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-vfo_dmr" data-search="VFO_DMR DMR VFO (color code, slot, talk target typed in; mode change FM / DMR) digital DMR VFO: color code, timeslot and talk target typed in, the Mode tile switches it FM / DMR (needs VFO and DMR)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">DMR VFO (color code, slot, talk target typed in; mode change FM / DMR)</span> <code>VFO_DMR</code> </summary>
+			<p>digital DMR VFO: color code, timeslot and talk target typed in, the Mode tile switches it FM / DMR (needs VFO and DMR)</p>
+			<p class="small muted">The VFO&#x27;s mode, color code, slot and talk target are settings of the VFO, kept across power cycles (dmr-voice.md 2.1)</p>
+			<p class="small"><b>Richiede:</b> VFO, DMR · <b>Flash:</b> DM-1701 144 B · MD-380 104 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-scan" data-search="SCAN Scan, band scan, dual watch, nuisance delete channel / zone scan, VFO band scan, dual watch, nuisance delete (docs/spec/radio-features.md)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Scan, band scan, dual watch, nuisance delete</span> <code>SCAN</code> </summary>
+			<p>channel / zone scan, VFO band scan, dual watch, nuisance delete (docs/spec/radio-features.md)</p>
+			<p class="small muted"></p>
+			<p class="small"><b>Richiede:</b> — · <b>Flash:</b> DM-1701 2,576 B · MD-380 3,032 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-dual_watch" data-search="DUAL_WATCH Dual watch: A and B in any zone or the VFO, PTT on the selected one, its screens, talk back the dual watch screens: two channels on Home, which one PTT uses and which one a call came in on; the radio core&#x27;s dual watch across zones and with the VFO, PTT on the selected channel (needs SCAN; docs/ux/dual-watch.md)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Dual watch: A and B in any zone or the VFO, PTT on the selected one, its screens, talk back</span> <code>DUAL_WATCH</code> </summary>
+			<p>the dual watch screens: two channels on Home, which one PTT uses and which one a call came in on; the radio core&#x27;s dual watch across zones and with the VFO, PTT on the selected channel (needs SCAN; docs/ux/dual-watch.md)</p>
+			<p class="small muted">Needs SCAN. Without it, only the debug link&#x27;s dual watch (two channels of one zone). Measured 2026-10-21 on the dual watch branch, default builds</p>
+			<p class="small"><b>Richiede:</b> SCAN · <b>Flash:</b> DM-1701 10,864 B · MD-380 11,456 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-beep" data-search="BEEP Beeps and alert tones beeps and alert tones as PCM through the speaker (needs the board&#x27;s PCM audio, which some radios have only with DMR)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Beeps and alert tones</span> <code>BEEP</code> </summary>
+			<p>beeps and alert tones as PCM through the speaker (needs the board&#x27;s PCM audio, which some radios have only with DMR)</p>
+			<p class="small muted"></p>
+			<p class="small"><b>Richiede:</b> — · <b>Flash:</b> DM-1701 1,552 B · MD-380 1,800 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-sig_tones" data-search="SIG_TONES Signaling tone chains (Settings &gt; Signaling tones) signaling tones: Settings &gt; Signaling tones, a chain of up to ten tones for the start of a transmission, its end and a reception&#x27;s end, on the speaker, on air or both, in DMR and FM (docs/spec/radio-features.md 4.3; needs BEEP)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Signaling tone chains (Settings &gt; Signaling tones)</span> <code>SIG_TONES</code> </summary>
+			<p>signaling tones: Settings &gt; Signaling tones, a chain of up to ten tones for the start of a transmission, its end and a reception&#x27;s end, on the speaker, on air or both, in DMR and FM (docs/spec/radio-features.md 4.3; needs BEEP)</p>
+			<p class="small muted">Needs BEEP. Not measured yet: no C-SKY or ARM compiler in the session that wrote it</p>
+			<p class="small"><b>Richiede:</b> BEEP · <b>Flash:</b> —</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-fm_tx_tones" data-search="FM_TX_TONES FM TX tones: roger beep, 1750 Hz burst FM transmit tones: roger beep and the 1750 Hz repeater access burst (needs FM)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">FM TX tones: roger beep, 1750 Hz burst</span> <code>FM_TX_TONES</code> </summary>
+			<p>FM transmit tones: roger beep and the 1750 Hz repeater access burst (needs FM)</p>
+			<p class="small muted">MD-380: TX tone path not written</p>
+			<p class="small"><b>Richiede:</b> FM · <b>Flash:</b> DM-1701 568 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-nw"><span aria-hidden="true">…</span><span class="sr">non ancora scritta per questa radio</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-dtmf" data-search="DTMF DTMF transmit from the keys DTMF transmit: keypad digits send touch tones while PTT is held on FM (needs FM; docs/spec/radio-features.md 3.7)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">DTMF transmit from the keys</span> <code>DTMF</code> </summary>
+			<p>DTMF transmit: keypad digits send touch tones while PTT is held on FM (needs FM; docs/spec/radio-features.md 3.7)</p>
+			<p class="small muted">MD-380: TX tone path not written</p>
+			<p class="small"><b>Richiede:</b> FM · <b>Flash:</b> DM-1701 920 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-nw"><span aria-hidden="true">…</span><span class="sr">non ancora scritta per questa radio</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-rx_ext" data-search="RX_EXT Receive past the rated bands, Settings &gt; Advanced receive past the band table: a range in board.bands (rx_ext_count) that receives only while Settings &gt; Advanced says so, off by default, never transmit (docs/spec/radio-features.md). Off where the chip documents give no range">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Receive past the rated bands, Settings &gt; Advanced</span> <code>RX_EXT</code> </summary>
+			<p>receive past the band table: a range in board.bands (rx_ext_count) that receives only while Settings &gt; Advanced says so, off by default, never transmit (docs/spec/radio-features.md). Off where the chip documents give no range</p>
+			<p class="small muted">Receive only, FM, off by default; ranges from each receiver chip&#x27;s documents. MD-380: no receiver range in its chip documents</p>
+			<p class="small"><b>Richiede:</b> — · <b>Flash:</b> DM-1701 484 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-nw"><span aria-hidden="true">…</span><span class="sr">non ancora scritta per questa radio</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-nw"><span aria-hidden="true">…</span><span class="sr">non ancora scritta per questa radio</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-vox" data-search="VOX FM VOX FM VOX: voice-operated transmit from the microphone level (needs FM; unverified on the bench)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">FM VOX</span> <code>VOX</code> </summary>
+			<p>FM VOX: voice-operated transmit from the microphone level (needs FM; unverified on the bench)</p>
+			<p class="small muted"></p>
+			<p class="small"><b>Richiede:</b> FM · <b>Flash:</b> DM-1701 496 B · MD-380 1,064 B</p>
+		</details>
+	</th>
+	<td class="st st-nw"><span aria-hidden="true">…</span><span class="sr">non ancora scritta per questa radio</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-nw"><span aria-hidden="true">…</span><span class="sr">non ancora scritta per questa radio</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-nw"><span aria-hidden="true">…</span><span class="sr">non ancora scritta per questa radio</span></td>
+</tr>
+<tr id="f-ref_trim" data-search="REF_TRIM Frequency trim, Settings &gt; Advanced reference oscillator trim: Settings &gt; Advanced &gt; Freq trim moves receive and transmit together (needs the board&#x27;s hal_radio_t.ref_trim; docs/spec/radio-features.md 6.1)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Frequency trim, Settings &gt; Advanced</span> <code>REF_TRIM</code> </summary>
+			<p>reference oscillator trim: Settings &gt; Advanced &gt; Freq trim moves receive and transmit together (needs the board&#x27;s hal_radio_t.ref_trim; docs/spec/radio-features.md 6.1)</p>
+			<p class="small muted">Figures from tools/ci.sh (2026-10-30); the hook on each radio, the page and the setting</p>
+			<p class="small"><b>Richiede:</b> — · <b>Flash:</b> DM-1701 2,156 B · MD-380 2,232 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-battery_save" data-search="BATTERY_SAVE Receiver battery saver receiver battery saving: FM receiver duty cycling while idle (needs FM)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Receiver battery saver</span> <code>BATTERY_SAVE</code> </summary>
+			<p>receiver battery saving: FM receiver duty cycling while idle (needs FM)</p>
+			<p class="small muted"></p>
+			<p class="small"><b>Richiede:</b> FM · <b>Flash:</b> DM-1701 296 B · MD-380 740 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-vibrate" data-search="VIBRATE Vibration alerts (Settings &gt; Sound &gt; Vibrate) vibration alerts on the board&#x27;s motor (hal_power_t.vibrate) for messages, call alerts, private calls and emergencies, Settings &gt; Sound &gt; Vibrate (core/radio/vibe.c, docs/spec/radio-features.md 4.1). On for radios with a motor (their config.mk); a board without one shows the setting dimmed">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Vibration alerts (Settings &gt; Sound &gt; Vibrate)</span> <code>VIBRATE</code> </summary>
+			<p>vibration alerts on the board&#x27;s motor (hal_power_t.vibrate) for messages, call alerts, private calls and emergencies, Settings &gt; Sound &gt; Vibrate (core/radio/vibe.c, docs/spec/radio-features.md 4.1). On for radios with a motor (their config.mk); a board without one shows the setting dimmed</p>
+			<p class="small muted">Needs a vibration motor (hal_power_t.vibrate): none of these radios has one RadioFoundry drives. On for the DM-1801 Pro. Measured 2026-10-16 with CONFIG_SNMP=n; 236 B with LTO</p>
+			<p class="small"><b>Richiede:</b> — · <b>Flash:</b> DM-1701 520* B</p>
+		</details>
+	</th>
+	<td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-gps" data-search="GPS GPS receiver: the module driver and its NMEA input (Settings &gt; Location &gt; GPS) the GPS receiver: the board&#x27;s module driver and its NMEA parsing (drivers/gps, platform/*/gps*, CAP_GPS). Off, the radio has no GPS: DMR_GPS, LRRP and APRS send the fixed position when one is set (core/position), else none. Off where the radio has none">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">GPS receiver: the module driver and its NMEA input (Settings &gt; Location &gt; GPS)</span> <code>GPS</code> </summary>
+			<p>the GPS receiver: the board&#x27;s module driver and its NMEA parsing (drivers/gps, platform/*/gps*, CAP_GPS). Off, the radio has no GPS: DMR_GPS, LRRP and APRS send the fixed position when one is set (core/position), else none. Off where the radio has none</p>
+			<p class="small muted">Needs a GPS receiver. Off, DMR GPS Info, LRRP and APRS send the fixed position when one is set (position). MD-380 measured 2026-10-22 (LTO, 58f2cebe). The DM-1701 has none from the factory but listens for an owner-fitted one (1,308 B, LTO)</p>
+			<p class="small"><b>Richiede:</b> — · <b>Flash:</b> MD-380 1,196 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-am_rx" data-search="AM_RX Air band AM receive (108-137 MHz) air band AM receive: FM channels and the VFO in 108-137 MHz are received in AM, receive only, on radios whose receiver does AM (CAP_AM_RX; needs FM; docs/spec/airband-and-broadcast.md). Off where the receiver can&#x27;t">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Air band AM receive (108-137 MHz)</span> <code>AM_RX</code> </summary>
+			<p>air band AM receive: FM channels and the VFO in 108-137 MHz are received in AM, receive only, on radios whose receiver does AM (CAP_AM_RX; needs FM; docs/spec/airband-and-broadcast.md). Off where the receiver can&#x27;t</p>
+			<p class="small muted">Needs a receiver that does AM; DM-32 board glue not written yet, so nothing runs</p>
+			<p class="small"><b>Richiede:</b> FM · <b>Flash:</b> DM-1701 408* B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-bcast_fm" data-search="BCAST_FM Broadcast FM receiver broadcast FM receive: FM channels and the VFO in the broadcast receiver&#x27;s range play on that second receiver chip, receive only (board.bcast, CAP_BCAST_FM; docs/spec/airband-and-broadcast.md). Off where there is none">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Broadcast FM receiver</span> <code>BCAST_FM</code> </summary>
+			<p>broadcast FM receive: FM channels and the VFO in the broadcast receiver&#x27;s range play on that second receiver chip, receive only (board.bcast, CAP_BCAST_FM; docs/spec/airband-and-broadcast.md). Off where there is none</p>
+			<p class="small muted">Needs a second receiver chip (DM-32&#x27;s RDA5807M); glue not written yet</p>
+			<p class="small"><b>Richiede:</b> — · <b>Flash:</b> DM-1701 ~0* B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-nw"><span aria-hidden="true">…</span><span class="sr">non ancora scritta per questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-key_assign" data-search="KEY_ASSIGN Key assignment (Settings &gt; Keys, codeplug) key assignment: Settings &gt; Keys and the codeplug&#x27;s quick-key slots say what the board&#x27;s programmable keys do (core/input/keyassign.c, docs/spec/ui.md 3.1)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Key assignment (Settings &gt; Keys, codeplug)</span> <code>KEY_ASSIGN</code> </summary>
+			<p>key assignment: Settings &gt; Keys and the codeplug&#x27;s quick-key slots say what the board&#x27;s programmable keys do (core/input/keyassign.c, docs/spec/ui.md 3.1)</p>
+			<p class="small muted">Up to 9 keys. Measured 2026-10-24</p>
+			<p class="small"><b>Richiede:</b> — · <b>Flash:</b> DM-1701 2,120 B · MD-380 2,188 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-channel_list" data-search="CHANNEL_LIST Channels list: every channel by number, a channel&#x27;s settings (hub 5) the hub&#x27;s Channels list: every codeplug channel by number, and a channel&#x27;s settings (read only; core/ui/ui_menus.c, docs/spec/ui.md 2)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Channels list: every channel by number, a channel&#x27;s settings (hub 5)</span> <code>CHANNEL_LIST</code> </summary>
+			<p>the hub&#x27;s Channels list: every codeplug channel by number, and a channel&#x27;s settings (read only; core/ui/ui_menus.c, docs/spec/ui.md 2)</p>
+			<p class="small muted"></p>
+			<p class="small"><b>Richiede:</b> — · <b>Flash:</b> DM-1701 1,536 B · MD-380 2,140 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-channel_edit" data-search="CHANNEL_EDIT Channel editor: edit a channel, New channel from current settings, text entry editing a channel on the radio, New channel from current settings, keypad text entry (docs/spec/ui.md 2.1): with the Channels list">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Channel editor: edit a channel, New channel from current settings, text entry</span> <code>CHANNEL_EDIT</code> </summary>
+			<p>editing a channel on the radio, New channel from current settings, keypad text entry (docs/spec/ui.md 2.1): with the Channels list</p>
+			<p class="small muted">Needs CHANNEL_LIST. Without it a channel&#x27;s settings are read only. Measured 2026-10-17</p>
+			<p class="small"><b>Richiede:</b> CHANNEL_LIST · <b>Flash:</b> DM-1701 4,656 B · MD-380 4,252 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-zone_edit" data-search="ZONE_EDIT Zone editor: move, add, copy and remove channels in a zone; rename, copy and delete a zone the zone editor in a zone&#x27;s list: add, move, copy here, remove channels; rename, copy, delete zones (docs/spec/ui.md 2.2): with the channel editor">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Zone editor: move, add, copy and remove channels in a zone; rename, copy and delete a zone</span> <code>ZONE_EDIT</code> </summary>
+			<p>the zone editor in a zone&#x27;s list: add, move, copy here, remove channels; rename, copy, delete zones (docs/spec/ui.md 2.2): with the channel editor</p>
+			<p class="small muted">Needs CHANNEL_EDIT. Measured 2026-10-24 on the default builds, LTO as each has it; also about 1.3 KB of RAM</p>
+			<p class="small"><b>Richiede:</b> CHANNEL_EDIT · <b>Flash:</b> DM-1701 6,580 B · MD-380 6,928 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-contact_edit" data-search="CONTACT_EDIT Contact editor: a new contact from Find or a call&#x27;s actions (name, ID, type, timeslot) the contact editor: a new contact from Find, a call&#x27;s actions or a typed number, its name, ID, type and timeslot (docs/spec/ui.md 2.4): with the channel editor (its text entry) and DMR">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Contact editor: a new contact from Find or a call&#x27;s actions (name, ID, type, timeslot)</span> <code>CONTACT_EDIT</code> </summary>
+			<p>the contact editor: a new contact from Find, a call&#x27;s actions or a typed number, its name, ID, type and timeslot (docs/spec/ui.md 2.4): with the channel editor (its text entry) and DMR</p>
+			<p class="small muted">Needs CHANNEL_EDIT and DMR. Measured 2026-10-30 on the default builds</p>
+			<p class="small"><b>Richiede:</b> CHANNEL_EDIT, DMR · <b>Flash:</b> DM-1701 1,580 B · MD-380 1,580 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-volume_bar" data-search="VOLUME_BAR Volume bar when a knob the MCU reads turns (#354) the volume bar over the screen when a knob the MCU reads turns (docs/spec/radio-features.md 4.2)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Volume bar when a knob the MCU reads turns (#354)</span> <code>VOLUME_BAR</code> </summary>
+			<p>the volume bar over the screen when a knob the MCU reads turns (docs/spec/radio-features.md 4.2)</p>
+			<p class="small muted">Measured 2026-11-08 on the default builds; shows only on a radio with such a knob. Off, the volume screen keeps the segment drawing it now shares (about 90 bytes)</p>
+			<p class="small"><b>Richiede:</b> — · <b>Flash:</b> DM-1701 496 B · MD-380 428 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-p25" data-search="P25 P25 channels in the codeplug: the conventional codec P25 Phase 1 conventional (core/p25, docs/spec/p25.md): the one switch for everything P25 needs. It brings the air interface (core/air: the framer, the soft modem, the shared FEC, and the board&#x27;s provider behind board.air), the engine and the P25 channel mode, the full-rate voice decoder and the MBE core it sits on (core/mbe). A board without an air interface provider (board.air) lists it in BOARD_NOT_WRITTEN. Needs DMR: its talk groups are the codeplug&#x27;s contacts and RX group lists">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">P25 channels in the codeplug: the conventional codec</span> <code>P25</code> </summary>
+			<p>P25 Phase 1 conventional (core/p25, docs/spec/p25.md): the one switch for everything P25 needs. It brings the air interface (core/air: the framer, the soft modem, the shared FEC, and the board&#x27;s provider behind board.air), the engine and the P25 channel mode, the full-rate voice decoder and the MBE core it sits on (core/mbe). A board without an air interface provider (board.air) lists it in BOARD_NOT_WRITTEN. Needs DMR: its talk groups are the codeplug&#x27;s contacts and RX group lists</p>
+			<p class="small muted">The codec only: a P25 channel is shown as a mode not in this build (p25-codeplug.md). A stored P25 channel runs on its own parameters (p25.md 7)</p>
+			<p class="small"><b>Richiede:</b> DMR · <b>Flash:</b> DM-1701 56 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-nw"><span aria-hidden="true">…</span><span class="sr">non ancora scritta per questa radio</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-p25_trunk" data-search="P25_TRUNK P25 trunked systems in the codeplug: the codec P25 trunked: the codec of its systems and channels (docs/spec/p25-codeplug.md 3), a control channel decoded and voice channel grants followed, and where the system allows it registration, voice requests and transmit on the grant (core/p25/p25_follow.c, docs/spec/p25-trunking.md). Needs P25">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">P25 trunked systems in the codeplug: the codec</span> <code>P25_TRUNK</code> </summary>
+			<p>P25 trunked: the codec of its systems and channels (docs/spec/p25-codeplug.md 3), a control channel decoded and voice channel grants followed, and where the system allows it registration, voice requests and transmit on the grant (core/p25/p25_follow.c, docs/spec/p25-trunking.md). Needs P25</p>
+			<p class="small muted">Needs P25; on top of it. Off on the MD-380 with P25. A trunked channel hunts its system&#x27;s control channel and follows voice grants for its talk group; where the system allows transmit it registers, affiliates, asks for a voice channel on PTT and transmits on the grant (p25-trunking.md). Run on the DM-1701 and the DM-32UV against a control channel the SDR bench plays, not on a live system. RAM: 1,232 B on the DM-1701</p>
+			<p class="small"><b>Richiede:</b> P25 · <b>Flash:</b> DM-1701 13,300* B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-nw"><span aria-hidden="true">…</span><span class="sr">non ancora scritta per questa radio</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-nxdn" data-search="NXDN NXDN conventional voice, 4800 and 9600 bit/s: the frame codec, receive, the call layer, the engine and the NXDN mode in the radio core NXDN conventional voice (core/nxdn, docs/spec/nxdn.md): 4800 and 9600 bit/s frames, the call layer and its engine on the air interface, and the NXDN channel mode. Voice frames go to and from the vocoder the board already hosts for DMR, through the DMR voice path; nothing of the vocoder is in it. Needs DMR">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">NXDN conventional voice, 4800 and 9600 bit/s: the frame codec, receive, the call layer, the engine and the NXDN mode in the radio core</span> <code>NXDN</code> </summary>
+			<p>NXDN conventional voice (core/nxdn, docs/spec/nxdn.md): 4800 and 9600 bit/s frames, the call layer and its engine on the air interface, and the NXDN channel mode. Voice frames go to and from the vocoder the board already hosts for DMR, through the DMR voice path; nothing of the vocoder is in it. Needs DMR</p>
+			<p class="small muted">Needs DMR (its voice goes through the DMR vocoder path) and a board with an air interface provider (board.air); where the provider only receives a rate, PTT is refused at that rate. The VFO&#x27;s mode tile, the debug link or a stored NXDN channel sets it (nxdn.md 6, nxdn-codeplug.md). On the DM-1701 and the DM-32UV transmit is checked off air at both rates and receive with a bench transmitter, speech frames through the vocoder included (DM-1701); the sound at the speaker is untested (modem-hrc6000.md 10.6). RAM: 2,184 B on the DM-1701; with P25 also on it shares P25&#x27;s engine memory (9,464 B flash, 256 B RAM on top of P25)</p>
+			<p class="small"><b>Richiede:</b> DMR · <b>Flash:</b> DM-1701 27,300* B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-nw"><span aria-hidden="true">…</span><span class="sr">non ancora scritta per questa radio</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+</tbody><tbody><tr class="group"><th colspan="9" scope="rowgroup" id="dmr-data">DMR data</th></tr><tr id="f-dmr_sms" data-search="DMR_SMS Text messages (ETSI IP text by default) DMR text messages (SMS; needs DMR): ETSI IP text and ETSI defined short data, sent and received (docs/spec/dmr-data.md 5)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Text messages (ETSI IP text by default)</span> <code>DMR_SMS</code> </summary>
+			<p>DMR text messages (SMS; needs DMR): ETSI IP text and ETSI defined short data, sent and received (docs/spec/dmr-data.md 5)</p>
+			<p class="small muted">Includes the TMS format. Individual ETSI IP texts go confirmed (&quot;Delivered to&quot;)</p>
+			<p class="small"><b>Richiede:</b> DMR · <b>Flash:</b> DM-1701 2,640 B · MD-380 5,072 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-dmr_tms" data-search="DMR_TMS Motorola TMS text format Motorola TMS format support for text messages: send, receive, the TMS ACK (needs DMR_SMS; docs/spec/dmr-data.md 5.1)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Motorola TMS text format</span> <code>DMR_TMS</code> <span class="chip chip-out">non in Amateur</span></summary>
+			<p>Motorola TMS format support for text messages: send, receive, the TMS ACK (needs DMR_SMS; docs/spec/dmr-data.md 5.1)</p>
+			<p class="small muted">Optional format next to ETSI IP text</p>
+			<p class="small"><b>Richiede:</b> DMR_SMS · <b>Flash:</b> DM-1701 784 B · MD-380 740 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-dmr_ars" data-search="DMR_ARS ARS registration ARS registration with a presence server (needs DMR; docs/spec/dmr-data.md)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">ARS registration</span> <code>DMR_ARS</code> <span class="chip chip-out">non in Amateur</span></summary>
+			<p>ARS registration with a presence server (needs DMR; docs/spec/dmr-data.md)</p>
+			<p class="small muted"></p>
+			<p class="small"><b>Richiede:</b> DMR · <b>Flash:</b> DM-1701 1,112 B · MD-380 1,324 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-dmr_lrrp" data-search="DMR_LRRP LRRP location LRRP location request / response (needs DMR; uses GPS where the board has it, else answers &quot;no fix&quot;)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">LRRP location</span> <code>DMR_LRRP</code> <span class="chip chip-out">non in Amateur</span></summary>
+			<p>LRRP location request / response (needs DMR; uses GPS where the board has it, else answers &quot;no fix&quot;)</p>
+			<p class="small muted"></p>
+			<p class="small"><b>Richiede:</b> DMR · <b>Flash:</b> DM-1701 8,548 B · MD-380 2,048 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td>
+</tr>
+<tr id="f-zone_share" data-search="ZONE_SHARE Zone and channel sharing: send a zone or a channel, import an offered one zone and channel sharing over DMR data: &quot;Share zone to...&quot; and offers of zones from other radios, imported only when the user accepts (needs DMR; core/dmr/zoneShare*.c, docs/spec/zone-share.md)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Zone and channel sharing: send a zone or a channel, import an offered one</span> <code>ZONE_SHARE</code> </summary>
+			<p>zone and channel sharing over DMR data: &quot;Share zone to...&quot; and offers of zones from other radios, imported only when the user accepts (needs DMR; core/dmr/zoneShare*.c, docs/spec/zone-share.md)</p>
+			<p class="small muted">Includes its screens and the import; about 4 KB of RAM. Received shares are offered by default, imported only when the user says so (zone-share.md). Measured 2026-10-24 with LTO, on the zone share branch</p>
+			<p class="small"><b>Richiede:</b> DMR · <b>Flash:</b> DM-1701 12,240 B · MD-380 12,388 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-dmr_udp_compress" data-search="DMR_UDP_COMPRESS Compressed UDP/IP headers on transmit (SAP 3) compressed UDP/IPv4 headers on transmit (SAP 3, ETSI TS 102 361-3 5.6 / 7.2): UDP packets whose header fits the compression rules go with a 5 to 9 octet header instead of 28 (needs DMR; docs/spec/dmr-data.md 11)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Compressed UDP/IP headers on transmit (SAP 3)</span> <code>DMR_UDP_COMPRESS</code> </summary>
+			<p>compressed UDP/IPv4 headers on transmit (SAP 3, ETSI TS 102 361-3 5.6 / 7.2): UDP packets whose header fits the compression rules go with a 5 to 9 octet header instead of 28 (needs DMR; docs/spec/dmr-data.md 11)</p>
+			<p class="small muted">Auto: not for ports 4000-4099 or ETSI IP text</p>
+			<p class="small"><b>Richiede:</b> DMR · <b>Flash:</b> DM-1701 408 B · MD-380 356 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-sfr" data-search="SFR Single frequency repeater: MMDVM SFR, and the standalone SFR (experimental) single frequency repeater (needs DMR): the MMDVM hotspot&#x27;s SFR mode (core/hotspot/hotspotSfr.c, core/dmr/sfrRunner.c) and the standalone repeater and user roles of a channel (core/radio/radio_sfr.c, docs/spec/sfr.md 4)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Single frequency repeater: MMDVM SFR, and the standalone SFR (experimental)</span> <code>SFR</code> </summary>
+			<p>single frequency repeater (needs DMR): the MMDVM hotspot&#x27;s SFR mode (core/hotspot/hotspotSfr.c, core/dmr/sfrRunner.c) and the standalone repeater and user roles of a channel (core/radio/radio_sfr.c, docs/spec/sfr.md 4)</p>
+			<p class="small muted">MD-380: HR_C5000 lacks what the SFR glue uses</p>
+			<p class="small"><b>Richiede:</b> DMR · <b>Flash:</b> DM-1701 6,884 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-sfr_dualpath_rx" data-search="SFR_DUALPATH_RX Experimental: SFR user receive &quot;dual-path RX&quot;: a voice frame whose FEC failed comes from the other copy SFR user receive mode &quot;dual-path RX&quot;: a voice frame whose FEC failed is taken from the other copy (needs SFR)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Experimental: SFR user receive &quot;dual-path RX&quot;: a voice frame whose FEC failed comes from the other copy</span> <code>SFR_DUALPATH_RX</code> </summary>
+			<p>SFR user receive mode &quot;dual-path RX&quot;: a voice frame whose FEC failed is taken from the other copy (needs SFR)</p>
+			<p class="small muted">Needs SFR. DM-1701 figure with LTO (2026-10-22)</p>
+			<p class="small"><b>Richiede:</b> SFR · <b>Flash:</b> DM-1701 696 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-sfr_cwid" data-search="SFR_CWID Experimental: standalone SFR repeater&#x27;s periodic CW ID (callsign in Morse, FM) the standalone SFR repeater&#x27;s periodic CW ID: its callsign in Morse, in FM on the channel (needs SFR)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Experimental: standalone SFR repeater&#x27;s periodic CW ID (callsign in Morse, FM)</span> <code>SFR_CWID</code> </summary>
+			<p>the standalone SFR repeater&#x27;s periodic CW ID: its callsign in Morse, in FM on the channel (needs SFR)</p>
+			<p class="small muted">Needs SFR. DM-1701 figure with LTO (2026-10-22)</p>
+			<p class="small"><b>Richiede:</b> SFR · <b>Flash:</b> DM-1701 900 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-aprs" data-search="APRS APRS: AFSK positions, status, messages; DMR positions; KISS TNC APRS (core/aprs, docs/spec/aprs.md): our position sent by the beacon triggers, its settings and its page. The engine only: it sends through the two backends below, and needs at least one. Transmit stays off until the user turns it on">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">APRS: AFSK positions, status, messages; DMR positions; KISS TNC</span> <code>APRS</code> <span class="chip chip-out">non in Commercial</span></summary>
+			<p>APRS (core/aprs, docs/spec/aprs.md): our position sent by the beacon triggers, its settings and its page. The engine only: it sends through the two backends below, and needs at least one. Transmit stays off until the user turns it on</p>
+			<p class="small muted">Includes APRS receive, KISS over TCP and APRS-IS where built. MD-380: AFSK TX needs the tone path (not written), DMR positions work</p>
+			<p class="small"><b>Richiede:</b> APRS_AFSK · <b>Flash:</b> DM-1701 26,568 B · MD-380 26,628 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-aprs_afsk" data-search="APRS_AFSK APRS on FM: AX.25 / AFSK packets, messages, KISS TNC APRS on FM: position, status and message packets as AX.25 / 1200 baud AFSK through board.afsk, a KISS TNC on the host port (needs APRS and FM). Off, APRS goes over DMR only and nothing of AX.25 is built">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">APRS on FM: AX.25 / AFSK packets, messages, KISS TNC</span> <code>APRS_AFSK</code> <span class="chip chip-out">non in Commercial</span></summary>
+			<p>APRS on FM: position, status and message packets as AX.25 / 1200 baud AFSK through board.afsk, a KISS TNC on the host port (needs APRS and FM). Off, APRS goes over DMR only and nothing of AX.25 is built</p>
+			<p class="small muted">Needs APRS and FM. Includes APRS receive, KISS over TCP and APRS-IS where built. Off, APRS sends positions over DMR only. Measured with LTO</p>
+			<p class="small"><b>Richiede:</b> FM, APRS · <b>Flash:</b> DM-1701 21,876 B · MD-380 11,872 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-aprs_dmr" data-search="APRS_DMR APRS over DMR: LRRP or UDT positions to a gateway ID APRS over DMR: positions as LRRP or UDT reports to a gateway ID (core/aprs/aprs_dmr.c; needs APRS and DMR). It builds the DMR data service by itself">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">APRS over DMR: LRRP or UDT positions to a gateway ID</span> <code>APRS_DMR</code> <span class="chip chip-out">non in Commercial</span></summary>
+			<p>APRS over DMR: positions as LRRP or UDT reports to a gateway ID (core/aprs/aprs_dmr.c; needs APRS and DMR). It builds the DMR data service by itself</p>
+			<p class="small muted">Needs APRS and DMR. Off, APRS is FM only. Measured with LTO</p>
+			<p class="small"><b>Richiede:</b> DMR, APRS · <b>Flash:</b> DM-1701 692 B · MD-380 1,380 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-aprs_rx" data-search="APRS_RX APRS receive: demodulator, station list, digipeater APRS receive: the AFSK demodulator, station list, messages to us, digipeater (needs APRS_AFSK; useful only on boards whose board.afsk can sample received audio)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">APRS receive: demodulator, station list, digipeater</span> <code>APRS_RX</code> <span class="chip chip-out">non in Commercial</span></summary>
+			<p>APRS receive: the AFSK demodulator, station list, messages to us, digipeater (needs APRS_AFSK; useful only on boards whose board.afsk can sample received audio)</p>
+			<p class="small muted">DM-1701: FM receive audio on the I2S stream, squelch gated (aprs 5.3). MD-380: not written</p>
+			<p class="small"><b>Richiede:</b> APRS_AFSK · <b>Flash:</b> DM-1701 8,892 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-nw"><span aria-hidden="true">…</span><span class="sr">non ancora scritta per questa radio</span></td><td class="st st-nw"><span aria-hidden="true">…</span><span class="sr">non ancora scritta per questa radio</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-aprs_igate" data-search="APRS_IGATE APRS iGate rules (with tools/aprs_gate.py) APRS iGate rules, RF &lt;-&gt; APRS-IS through the host helper tools/aprs_gate.py (needs APRS_RX and HOSTLINK)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">APRS iGate rules (with tools/aprs_gate.py)</span> <code>APRS_IGATE</code> <span class="chip chip-out">non in Commercial</span></summary>
+			<p>APRS iGate rules, RF &lt;-&gt; APRS-IS through the host helper tools/aprs_gate.py (needs APRS_RX and HOSTLINK)</p>
+			<p class="small muted">Needs APRS receive. DM-1701: off by default</p>
+			<p class="small"><b>Richiede:</b> APRS_RX, HOSTLINK · <b>Flash:</b> DM-1701 1,820* B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-nw"><span aria-hidden="true">…</span><span class="sr">non ancora scritta per questa radio</span></td><td class="st st-nw"><span aria-hidden="true">…</span><span class="sr">non ancora scritta per questa radio</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-gps_sky" data-search="GPS_SKY GPS screen: sky plot, signal bars, grid locator (Tools &gt; Position) the GPS status screen: satellites on a sky plot and signal bars, fix quality, grid locator (core/position/nmea_sky.c, core/ui/ui_gps.c, docs/spec/position.md 3). Needs GPS; off, Tools &gt; Position is a page of text">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">GPS screen: sky plot, signal bars, grid locator (Tools &gt; Position)</span> <code>GPS_SKY</code> </summary>
+			<p>the GPS status screen: satellites on a sky plot and signal bars, fix quality, grid locator (core/position/nmea_sky.c, core/ui/ui_gps.c, docs/spec/position.md 3). Needs GPS; off, Tools &gt; Position is a page of text</p>
+			<p class="small muted">Needs GPS. 176 B of RAM. MD-380 measured 2026-10-29 (LTO)</p>
+			<p class="small"><b>Richiede:</b> GPS · <b>Flash:</b> MD-380 5,244 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+</tbody><tbody><tr class="group"><th colspan="9" scope="rowgroup" id="host-link-and-usb">Host link and USB</th></tr><tr id="f-task_stacks" data-search="TASK_STACKS Task stacks in the debug link view every task&#x27;s least free stack in the debug link&#x27;s tasks view: the kernel&#x27;s task create / delete trace hooks keep a table of the tasks (core/app/task_stack.c, docs/spec/debuglink.md 3.7; needs DEBUGLINK). About 0.6 KB">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Task stacks in the debug link view</span> <code>TASK_STACKS</code> </summary>
+			<p>every task&#x27;s least free stack in the debug link&#x27;s tasks view: the kernel&#x27;s task create / delete trace hooks keep a table of the tasks (core/app/task_stack.c, docs/spec/debuglink.md 3.7; needs DEBUGLINK). About 0.6 KB</p>
+			<p class="small muted">Each task&#x27;s least free stack, the tasks view section (debuglink 3.7)</p>
+			<p class="small"><b>Richiede:</b> DEBUGLINK · <b>Flash:</b> DM-1701 536 B · MD-380 560 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-usb" data-search="USB USB device USB device (CDC serial)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">USB device</span> <code>USB</code> </summary>
+			<p>USB device (CDC serial)</p>
+			<p class="small muted">DM-32 has no USB (host link on the programming cable&#x27;s UART). Includes everything on USB</p>
+			<p class="small"><b>Richiede:</b> — · <b>Flash:</b> DM-1701 127,300 B · MD-380 87,848 B</p>
+		</details>
+	</th>
+	<td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-hostlink" data-search="HOSTLINK Host link: hotspot, CPS, debug link on the host port the host link (core/hostlink): MMDVM hotspot, CPS and debug link over the board&#x27;s host port (USB CDC, or the programming cable&#x27;s UART on radios without USB)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Host link: hotspot, CPS, debug link on the host port</span> <code>HOSTLINK</code> </summary>
+			<p>the host link (core/hostlink): MMDVM hotspot, CPS and debug link over the board&#x27;s host port (USB CDC, or the programming cable&#x27;s UART on radios without USB)</p>
+			<p class="small muted">Includes its children</p>
+			<p class="small"><b>Richiede:</b> — · <b>Flash:</b> DM-1701 115,640 B · MD-380 77,644 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-hotspot" data-search="HOTSPOT MMDVM hotspot MMDVM modem / hotspot mode over the host port (needs DMR and HOSTLINK)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">MMDVM hotspot</span> <code>HOTSPOT</code> <span class="chip chip-out">non in Commercial</span></summary>
+			<p>MMDVM modem / hotspot mode over the host port (needs DMR and HOSTLINK)</p>
+			<p class="small muted">Includes split duplex and MMDVM SFR where built. MD-380: size estimated</p>
+			<p class="small"><b>Richiede:</b> DMR, HOSTLINK · <b>Flash:</b> DM-1701 34,196 B · MD-380 ~12,400 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td>
+</tr>
+<tr id="f-hotspot_split" data-search="HOTSPOT_SPLIT Split duplex repeater (two radios, one duplex modem) split duplex repeater: two radios as one duplex MMDVM modem through the hotspot&#x27;s vendor command 0xD6 (needs HOTSPOT; core/hotspot/hotspotSplit.c, core/dmr/bsOutbound.c, core/dmr/slotEpoch.c, docs/spec/split-duplex.md)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Split duplex repeater (two radios, one duplex modem)</span> <code>HOTSPOT_SPLIT</code> <span class="chip chip-out">non in Commercial</span></summary>
+			<p>split duplex repeater: two radios as one duplex MMDVM modem through the hotspot&#x27;s vendor command 0xD6 (needs HOTSPOT; core/hotspot/hotspotSplit.c, core/dmr/bsOutbound.c, core/dmr/slotEpoch.c, docs/spec/split-duplex.md)</p>
+			<p class="small muted">MD-380: HR_C6000-only glue. DM-1701, DM-32UV, DM-1801 Pro: each half checked alone on the SDR bench; one pair (DM-1801 Pro TX, DM-32UV RX) with a subscriber: 29 of 31 calls on the right slot</p>
+			<p class="small"><b>Richiede:</b> HOTSPOT · <b>Flash:</b> DM-1701 12,584 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-nw"><span aria-hidden="true">…</span><span class="sr">non ancora scritta per questa radio</span></td><td class="st st-nw"><span aria-hidden="true">…</span><span class="sr">non ancora scritta per questa radio</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-nw"><span aria-hidden="true">…</span><span class="sr">non ancora scritta per questa radio</span></td>
+</tr>
+<tr id="f-debuglink" data-search="DEBUGLINK Debug link the debug link: framed commands on the host port for bench automation (docs/spec/debuglink.md; needs HOSTLINK)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Debug link</span> <code>DEBUGLINK</code> </summary>
+			<p>the debug link: framed commands on the host port for bench automation (docs/spec/debuglink.md; needs HOSTLINK)</p>
+			<p class="small muted"></p>
+			<p class="small"><b>Richiede:</b> HOSTLINK · <b>Flash:</b> DM-1701 32,376 B · MD-380 29,084 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-cps_openfw" data-search="CPS_OPENFW Open-firmware CPS protocol (qdmr) the open-firmware CPS protocol shim on the host port, so qdmr and the open-firmware CPS can read and write the codeplug (docs/spec/open-firmware-cps.md; needs HOSTLINK)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Open-firmware CPS protocol (qdmr)</span> <code>CPS_OPENFW</code> </summary>
+			<p>the open-firmware CPS protocol shim on the host port, so qdmr and the open-firmware CPS can read and write the codeplug (docs/spec/open-firmware-cps.md; needs HOSTLINK)</p>
+			<p class="small muted"></p>
+			<p class="small"><b>Richiede:</b> HOSTLINK · <b>Flash:</b> DM-1701 3,064 B · MD-380 3,008 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-cps_fast" data-search="CPS_FAST Fast codeplug protocol (debug link CODEPLUG) the fast codeplug protocol on the debug link&#x27;s framing: blank blocks skipped, CRC-32 compare so only changed blocks move, LZ4 both ways, staged writes with a power-cut safe commit (docs/spec/cps-fast.md; needs CPS_OPENFW, and DEBUGLINK or STUB_ENTRY, whose own listener carries it without the debug link)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Fast codeplug protocol (debug link CODEPLUG)</span> <code>CPS_FAST</code> </summary>
+			<p>the fast codeplug protocol on the debug link&#x27;s framing: blank blocks skipped, CRC-32 compare so only changed blocks move, LZ4 both ways, staged writes with a power-cut safe commit (docs/spec/cps-fast.md; needs CPS_OPENFW, and DEBUGLINK or STUB_ENTRY, whose own listener carries it without the debug link)</p>
+			<p class="small muted">Changed 4 KB blocks only, LZ4 both ways, staged commit (cps-fast.md). DM-1701 figure with LTO (2026-10-18)</p>
+			<p class="small"><b>Richiede:</b> CPS_OPENFW, (DEBUGLINK | STUB_ENTRY) · <b>Flash:</b> DM-1701 3,732 B · MD-380 3,948* B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-stub_entry" data-search="STUB_ENTRY Loader hand-over (stub entry, command 0x1A) runtime RAM-monitor entry: command 0x1A on the host port loads the host&#x27;s flash-access stub into free RAM and jumps to it without a power cycle, so updates need no key combo at power-on (the web flasher, stub/stubtool.py, rfoundry; core/stubentry, docs/spec/stub-entry.md). Its own feature: with the debug link off it answers on its own small listener (PING, VERSION, STUB). Needs HOSTLINK (the task that owns the port) and a platform with hal_system_t.enter_stub: the HR_C7000, and the STM32F4 with an 8 KB staging buffer (docs/spec/stub-stm32f4.md). On wherever the host link is; a board leaves it off in its config.mk only for a stated reason">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Loader hand-over (stub entry, command 0x1A)</span> <code>STUB_ENTRY</code> </summary>
+			<p>runtime RAM-monitor entry: command 0x1A on the host port loads the host&#x27;s flash-access stub into free RAM and jumps to it without a power cycle, so updates need no key combo at power-on (the web flasher, stub/stubtool.py, rfoundry; core/stubentry, docs/spec/stub-entry.md). Its own feature: with the debug link off it answers on its own small listener (PING, VERSION, STUB). Needs HOSTLINK (the task that owns the port) and a platform with hal_system_t.enter_stub: the HR_C7000, and the STM32F4 with an 8 KB staging buffer (docs/spec/stub-stm32f4.md). On wherever the host link is; a board leaves it off in its config.mk only for a stated reason</p>
+			<p class="small muted">Updates and backups over the radio&#x27;s own link without the bootloader key press: the web flasher and stub/stubtool.py. On by default on every radio, with or without the debug link (stub-entry.md); on the STM32 radios a RAM flash stub that also takes 8 KB of RAM (stub-stm32f4.md) (the DM-1701&#x27;s RAM is 95 % used with it on)</p>
+			<p class="small"><b>Richiede:</b> HOSTLINK · <b>Flash:</b> DM-1701 768* B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-crash_log" data-search="CRASH_LOG Crash log the crash log: a CPU fault, a task stack overflow, running out of heap or a failed assertion keeps a record (registers, fault status, task, stack words) where a reset doesn&#x27;t clear it and restarts the radio; the next start shows it (core/crash, docs/spec/crash-log.md). Off: a crash stops the radio until a power cycle, as before. Needs nothing else">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Crash log</span> <code>CRASH_LOG</code> </summary>
+			<p>the crash log: a CPU fault, a task stack overflow, running out of heap or a failed assertion keeps a record (registers, fault status, task, stack words) where a reset doesn&#x27;t clear it and restarts the radio; the next start shows it (core/crash, docs/spec/crash-log.md). Off: a crash stops the radio until a power cycle, as before. Needs nothing else</p>
+			<p class="small muted">A fault, stack overflow, heap exhaustion or failed assertion keeps a record across the restart; the debug link shows it (crash-log.md)</p>
+			<p class="small"><b>Richiede:</b> — · <b>Flash:</b> DM-1701 1,572 B · MD-380 1,756 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-crash_screen" data-search="CRASH_SCREEN Crash log screen the crash log&#x27;s screen: Settings &gt; Advanced &gt; Crash log, the record&#x27;s summary and Clear (needs CRASH_LOG). Off, the debug link still shows the record">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Crash log screen</span> <code>CRASH_SCREEN</code> </summary>
+			<p>the crash log&#x27;s screen: Settings &gt; Advanced &gt; Crash log, the record&#x27;s summary and Clear (needs CRASH_LOG). Off, the debug link still shows the record</p>
+			<p class="small muted">Settings &gt; Advanced &gt; Crash log: the record&#x27;s summary and Clear</p>
+			<p class="small"><b>Richiede:</b> CRASH_LOG · <b>Flash:</b> DM-1701 1,024 B · MD-380 1,408* B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-crash_report" data-search="CRASH_REPORT Crash report over DMR the crash report: the crash log&#x27;s record, packed (76-124 bytes), as one UDP datagram over DMR packet data to a codeplug contact, from the Crash log screen or after the restart (off / ask / automatic; docs/spec/crash-log.md 5) (needs CRASH_SCREEN and DMR)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Crash report over DMR</span> <code>CRASH_REPORT</code> </summary>
+			<p>the crash report: the crash log&#x27;s record, packed (76-124 bytes), as one UDP datagram over DMR packet data to a codeplug contact, from the Crash log screen or after the restart (off / ask / automatic; docs/spec/crash-log.md 5) (needs CRASH_SCREEN and DMR)</p>
+			<p class="small muted">Sends the crash record as one UDP datagram to a codeplug contact, from the menu or after the restart (Off, Ask, Auto) (crash-log.md 5). Needs the screen</p>
+			<p class="small"><b>Richiede:</b> CRASH_SCREEN, DMR · <b>Flash:</b> DM-1701 1,440 B · MD-380 1,712* B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-watchdog" data-search="WATCHDOG Hardware watchdog the hardware watchdog: started in main(), fed by the idle task, so a hang or a starved system of a few seconds resets the chip (the IWDG on the STM32F4, the SoC&#x27;s watchdog on the HR_C7000; docs/spec/watchdog.md). With the debug link it also has a bench test (command 0x1D). Off: no watchdog runs, as before. Needs nothing else">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Hardware watchdog</span> <code>WATCHDOG</code> </summary>
+			<p>the hardware watchdog: started in main(), fed by the idle task, so a hang or a starved system of a few seconds resets the chip (the IWDG on the STM32F4, the SoC&#x27;s watchdog on the HR_C7000; docs/spec/watchdog.md). With the debug link it also has a bench test (command 0x1D). Off: no watchdog runs, as before. Needs nothing else</p>
+			<p class="small muted">Fed by the idle task; a hang or a starved system resets the radio. Timeout about 5 s on the STM32 radios, 4 s on the HR_C7000 radios (watchdog.md)</p>
+			<p class="small"><b>Richiede:</b> — · <b>Flash:</b> DM-1701 932 B · MD-380 856 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+<tr id="f-fault_trace" data-search="FAULT_TRACE Fault trace on the host UART the fault trace: a CPU fault prints its registers on the host UART, three framed lines a second apart, before the restart (core/crash/crash_trace.c, tools/rfoundry_fault_trace.py; docs/spec/crash-log.md 2.3). Only where the host port is a UART the fault handler can drive polled: the HR_C7000 radios (the STM32 radios&#x27; config.mk turn it off: USB only). Off: straight to the record and the restart. Needs nothing else">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Fault trace on the host UART</span> <code>FAULT_TRACE</code> </summary>
+			<p>the fault trace: a CPU fault prints its registers on the host UART, three framed lines a second apart, before the restart (core/crash/crash_trace.c, tools/rfoundry_fault_trace.py; docs/spec/crash-log.md 2.3). Only where the host port is a UART the fault handler can drive polled: the HR_C7000 radios (the STM32 radios&#x27; config.mk turn it off: USB only). Off: straight to the record and the restart. Needs nothing else</p>
+			<p class="small muted">A CPU fault&#x27;s registers in three framed lines before the restart, about 600 B (crash-log.md 2.3). The STM32 radios&#x27; host port is USB</p>
+			<p class="small"><b>Richiede:</b> — · <b>Flash:</b> —</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td>
+</tr>
+</tbody><tbody><tr class="group"><th colspan="9" scope="rowgroup" id="user-interface">User interface</th></tr><tr id="f-diag" data-search="DIAG Diagnostics page the diagnostics page">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Diagnostics page</span> <code>DIAG</code> </summary>
+			<p>the diagnostics page</p>
+			<p class="small muted"></p>
+			<p class="small"><b>Richiede:</b> — · <b>Flash:</b> DM-1701 3,752 B · MD-380 3,532 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-backlight_test" data-search="BACKLIGHT_TEST Backlight test pages Settings &gt; Advanced &gt; Backlight tests: a bench tool that sets the backlight&#x27;s PWM compare value, brightness and rate by hand, to measure a radio&#x27;s backlight drive (docs/testing/backlight-curve.md). Untranslated; off in every release">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Backlight test pages</span> <code>BACKLIGHT_TEST</code> </summary>
+			<p>Settings &gt; Advanced &gt; Backlight tests: a bench tool that sets the backlight&#x27;s PWM compare value, brightness and rate by hand, to measure a radio&#x27;s backlight drive (docs/testing/backlight-curve.md). Untranslated; off in every release</p>
+			<p class="small muted">Off by default; bench work (backlight-curve.md)</p>
+			<p class="small"><b>Richiede:</b> — · <b>Flash:</b> DM-1701 1,536 B · MD-380 1,552 B</p>
+		</details>
+	</th>
+	<td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-font_xl" data-search="FONT_XL 16x32 font 16x32 font, only useful on 240 px and wider displays">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">16x32 font</span> <code>FONT_XL</code> </summary>
+			<p>16x32 font, only useful on 240 px and wider displays</p>
+			<p class="small muted">Only useful at 240 px and wider (MD-380 is 160 px). Anti-aliased on the DM-32 (7.4 KB of glyphs)</p>
+			<p class="small"><b>Richiede:</b> — · <b>Flash:</b> DM-1701 6,352* B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-font_aa" data-search="FONT_AA Anti-aliased fonts anti-aliased fonts from 6x12 up (JetBrains Mono Bold, 2 bits a pixel) instead of the bitmap ones: smooth text on color panels. About 5 KB more flash, 12 KB more with FONT_XL; a mono panel draws them as plain ink and gains nothing. On a 4 bpp color panel the edge grays share the 16 palette entries with the screen&#x27;s colors: some font sizes or colors can be slightly harder to read (docs/spec/ui.md 5)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Anti-aliased fonts</span> <code>FONT_AA</code> </summary>
+			<p>anti-aliased fonts from 6x12 up (JetBrains Mono Bold, 2 bits a pixel) instead of the bitmap ones: smooth text on color panels. About 5 KB more flash, 12 KB more with FONT_XL; a mono panel draws them as plain ink and gains nothing. On a 4 bpp color panel the edge grays share the 16 palette entries with the screen&#x27;s colors: some font sizes or colors can be slightly harder to read (docs/spec/ui.md 5)</p>
+			<p class="small muted">Smooth text on color panels (measured 2026-10-17); the DM-32&#x27;s image grew 9.5 KB with it and FONT_XL</p>
+			<p class="small"><b>Richiede:</b> — · <b>Flash:</b> DM-1701 3,004* B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-font_big" data-search="FONT_BIG Larger text larger text on 240 px and wider color panels: lists, labels and the status strip in a 9x18 font instead of 8x16 (12% larger, 24 characters a line on a 240 px panel instead of 27). About 3 KB more flash (needs FONT_AA)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Larger text</span> <code>FONT_BIG</code> </summary>
+			<p>larger text on 240 px and wider color panels: lists, labels and the status strip in a 9x18 font instead of 8x16 (12% larger, 24 characters a line on a 240 px panel instead of 27). About 3 KB more flash (needs FONT_AA)</p>
+			<p class="small muted">9x18 lists and labels on 240 px color panels (needs FONT_AA); 3,588 B on the DM-32 (measured 2026-10-17)</p>
+			<p class="small"><b>Richiede:</b> FONT_AA · <b>Flash:</b> —</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-lang_es" data-search="LANG_ES Spanish on the radio Spanish on the radio (Settings &gt; Display &gt; Language; core/ui/lang/es.po, docs/dev/translating.md). About 28 KB with the lookup and the accented letters of every font (7.5 KB), which the first language brings; each further one adds its text only (about 17 KB)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Spanish on the radio</span> <code>LANG_ES</code> </summary>
+			<p>Spanish on the radio (Settings &gt; Display &gt; Language; core/ui/lang/es.po, docs/dev/translating.md). About 28 KB with the lookup and the accented letters of every font (7.5 KB), which the first language brings; each further one adds its text only (about 17 KB)</p>
+			<p class="small muted">The first language brings the lookup and the accented letters of every font (about 7.5 KB); the rest is its text. Measured 2026-10-31</p>
+			<p class="small"><b>Richiede:</b> — · <b>Flash:</b> DM-1701 28,456 B · MD-380 28,348 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-lang_it" data-search="LANG_IT Italian on the radio Italian on the radio (core/ui/lang/it.po): off by default, listed dimmed; the web flasher offers it to Italian browsers. About 17 KB with Spanish on">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Italian on the radio</span> <code>LANG_IT</code> </summary>
+			<p>Italian on the radio (core/ui/lang/it.po): off by default, listed dimmed; the web flasher offers it to Italian browsers. About 17 KB with Spanish on</p>
+			<p class="small muted">Off by default; measured with Spanish on (its text, and the hashes of strings Spanish leaves untranslated). Alone it costs about as much as Spanish</p>
+			<p class="small"><b>Richiede:</b> — · <b>Flash:</b> DM-1701 17,304 B · MD-380 17,304 B</p>
+		</details>
+	</th>
+	<td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-lang_fr" data-search="LANG_FR French on the radio French on the radio (core/ui/lang/fr.po): off by default, listed dimmed; the web flasher offers it to French browsers. About 15.5 KB with Spanish on">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">French on the radio</span> <code>LANG_FR</code> </summary>
+			<p>French on the radio (core/ui/lang/fr.po): off by default, listed dimmed; the web flasher offers it to French browsers. About 15.5 KB with Spanish on</p>
+			<p class="small muted">Off by default; measured with Spanish on, as Italian</p>
+			<p class="small"><b>Richiede:</b> — · <b>Flash:</b> DM-1701 15,540 B · MD-380 15,528 B</p>
+		</details>
+	</th>
+	<td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td>
+</tr>
+<tr id="f-lang_zh" data-search="LANG_ZH Chinese on the radio Chinese on the radio (core/ui/lang/zh.po): the Latin fonts have no glyph for it, so it brings a 16x16 CJK font of the characters its catalog uses (core/ui/cjk_font_data.c, built by tools/cjkfont.py) and text the text layer decodes. Off by default: about 16 KB of glyphs and 12 KB of text. Each radio with another display font needs its glyphs checked against that font&#x27;s height (docs/dev/translating.md)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Chinese on the radio</span> <code>LANG_ZH</code> </summary>
+			<p>Chinese on the radio (core/ui/lang/zh.po): the Latin fonts have no glyph for it, so it brings a 16x16 CJK font of the characters its catalog uses (core/ui/cjk_font_data.c, built by tools/cjkfont.py) and text the text layer decodes. Off by default: about 16 KB of glyphs and 12 KB of text. Each radio with another display font needs its glyphs checked against that font&#x27;s height (docs/dev/translating.md)</p>
+			<p class="small muted">Off by default. Not the text alone: 15,360 B of 16x16 glyphs (480 characters, core/ui/cjk_font_data.c) and about 17 KB of UTF-8 text, with the text layer&#x27;s decoder. Needs a 16 px line height: a 240 px color radio draws its words in 8x16 and shows Chinese on every screen, while a layout whose words use the 5x8 or 6x12 font (128x64, 160x128) has no room for it and must not build it. Measured with Spanish on, 2026-11-04</p>
+			<p class="small"><b>Richiede:</b> — · <b>Flash:</b> DM-1701 32,856 B · MD-380 32,856 B</p>
+		</details>
+	</th>
+	<td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-lang_default_es" data-search="LANG_DEFAULT_ES Start in Spanish the language the radio starts in, until the user picks one in Settings &gt; Display &gt; Language: one switch per language, at most one on (with more, the first listed wins), off = English. Needs that language&#x27;s switch. No flash cost">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Start in Spanish</span> <code>LANG_DEFAULT_ES</code> </summary>
+			<p>the language the radio starts in, until the user picks one in Settings &gt; Display &gt; Language: one switch per language, at most one on (with more, the first listed wins), off = English. Needs that language&#x27;s switch. No flash cost</p>
+			<p class="small muted">The language the radio starts in until the user picks one (needs LANG_ES); the web flasher sets it from its Radio language choice</p>
+			<p class="small"><b>Richiede:</b> LANG_ES · <b>Flash:</b> DM-1701 0 B · MD-380 0 B</p>
+		</details>
+	</th>
+	<td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-lang_default_it" data-search="LANG_DEFAULT_IT Start in Italian ">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Start in Italian</span> <code>LANG_DEFAULT_IT</code> </summary>
+			<p></p>
+			<p class="small muted">As LANG_DEFAULT_ES (needs LANG_IT)</p>
+			<p class="small"><b>Richiede:</b> LANG_IT · <b>Flash:</b> DM-1701 0 B · MD-380 0 B</p>
+		</details>
+	</th>
+	<td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-lang_default_fr" data-search="LANG_DEFAULT_FR Start in French ">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Start in French</span> <code>LANG_DEFAULT_FR</code> </summary>
+			<p></p>
+			<p class="small muted">As LANG_DEFAULT_ES (needs LANG_FR)</p>
+			<p class="small"><b>Richiede:</b> LANG_FR · <b>Flash:</b> DM-1701 0 B · MD-380 0 B</p>
+		</details>
+	</th>
+	<td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td>
+</tr>
+<tr id="f-lang_default_zh" data-search="LANG_DEFAULT_ZH Start in Chinese ">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Start in Chinese</span> <code>LANG_DEFAULT_ZH</code> </summary>
+			<p></p>
+			<p class="small muted">As LANG_DEFAULT_ES (needs LANG_ZH)</p>
+			<p class="small"><b>Richiede:</b> LANG_ZH · <b>Flash:</b> DM-1701 0 B · MD-380 0 B</p>
+		</details>
+	</th>
+	<td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-off"><span aria-hidden="true">○</span><span class="sr">esclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-ui_color" data-search="UI_COLOR Color screen settings (theme, highlight color, filled status bar) color screen settings: theme, highlight color, filled status bar (off: the dark theme only; for radios whose only screen is monochrome)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Color screen settings (theme, highlight color, filled status bar)</span> <code>UI_COLOR</code> </summary>
+			<p>color screen settings: theme, highlight color, filled status bar (off: the dark theme only; for radios whose only screen is monochrome)</p>
+			<p class="small muted">Off on the DM-1801 Pro (monochrome screen; 628 B there). Measured 2026-10-17; DM-1701 with LTO 612 B</p>
+			<p class="small"><b>Richiede:</b> — · <b>Flash:</b> DM-1701 672 B · MD-380 608 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+<tr id="f-ui_settings" data-search="UI_SETTINGS Settings menu on the radio the Settings menu on the radio (off: settings keep their stored values and are set with qdmr; docs/spec/ui.md)">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Settings menu on the radio</span> <code>UI_SETTINGS</code> </summary>
+			<p>the Settings menu on the radio (off: settings keep their stored values and are set with qdmr; docs/spec/ui.md)</p>
+			<p class="small muted"></p>
+			<p class="small"><b>Richiede:</b> — · <b>Flash:</b> DM-1701 5,304 B · MD-380 5,640 B</p>
+		</details>
+	</th>
+	<td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+</tbody><tbody><tr class="group"><th colspan="9" scope="rowgroup" id="storage">Storage</th></tr><tr id="f-nand_storage" data-search="NAND_STORAGE Settings and codeplug storage on SPI NAND the core&#x27;s storage (settings, codeplug) on SPI NAND: the NOR-like 4 KB sector layer over the board&#x27;s own block range (drivers/flash/nand_sectors, docs/spec/nand-sectors.md). On in the config.mk of radios whose data flash is SPI NAND (docs/feature-matrix.md); off, such a radio runs on the default settings and stores nothing. Radios with SPI NOR don&#x27;t use it">
+	<th scope="row">
+		<details>
+			<summary><span class="ftitle">Settings and codeplug storage on SPI NAND</span> <code>NAND_STORAGE</code> </summary>
+			<p>the core&#x27;s storage (settings, codeplug) on SPI NAND: the NOR-like 4 KB sector layer over the board&#x27;s own block range (drivers/flash/nand_sectors, docs/spec/nand-sectors.md). On in the config.mk of radios whose data flash is SPI NAND (docs/feature-matrix.md); off, such a radio runs on the default settings and stores nothing. Radios with SPI NOR don&#x27;t use it</p>
+			<p class="small muted">For radios whose data flash is SPI NAND: on for the DB25-D (about 6.6 KB flash, 1.5 KB RAM), not in these columns. These radios have SPI NOR and don&#x27;t use it (nand-sectors)</p>
+			<p class="small"><b>Richiede:</b> — · <b>Flash:</b> —</p>
+		</details>
+	</th>
+	<td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-on"><span aria-hidden="true">●</span><span class="sr">inclusa</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td><td class="st st-na"><span aria-hidden="true">✕</span><span class="sr">non disponibile su questa radio</span></td>
+</tr>
+</tbody>
+		</table>
+	</div>
+	<p class="legend small"><span class="st-on">●</span> inclusa · <span class="st-off">○</span> esclusa · <span class="st-nw">…</span> non ancora scritta per questa radio · <span class="st-na">✕</span> non disponibile su questa radio</p>
+</section>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Unisciti alla comunità RadioFoundry</strong><span class="small muted">Domande, aiuto con la tua radio e novità, su Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Hai trovato un bug? Vuoi che la tua radio sia supportata?</strong><span class="small muted">Apri una segnalazione su GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry ha licenza MIT · <a href="https://github.com/radiofoundry/radiofoundry">Codice sorgente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunità</a> · <a href="../../it/docs/index.html">Documenti</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Novità</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

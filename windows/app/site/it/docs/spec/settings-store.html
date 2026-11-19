@@ -1,0 +1,704 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="it" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Settings store and safe flash writes · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Settings store and safe flash writes · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:url" content="https://radiofoundry.org/it/docs/spec/settings-store.html">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Le radio su cui gira RadioFoundry, ognuna con una schermata diversa.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/settings-store.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/settings-store.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/settings-store.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/settings-store.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/settings-store.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../it/" data-gl-more="Altro">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../it/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principale"><a href="../../../it/radios/index.html">Radio</a><a href="../../../it/features/index.html">Funzioni</a><a href="../../../it/flash/index.html">Installa</a><a href="../../../it/codeplug/index.html">Codeplug</a><a href="../../../it/docs/index.html" aria-current="page">Documenti</a><a href="../../../it/screenshots/index.html">Schermate</a><a href="../../../it/tools/index.html">Strumenti</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Lingua" title="Lingua">IT</summary><nav aria-label="Lingua"><a href="../../../docs/spec/settings-store.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/settings-store.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/settings-store.html" aria-current="true" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/settings-store.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Passa da chiaro a scuro" title="Passa da chiaro a scuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Specifiche">
+		<p class="eyebrow"><a href="../../../it/docs/index.html">Documentazione</a> / Specifiche</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html" aria-current="page">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Questa pagina non è ancora tradotta; è mostrata in inglese.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<!-- Copyright (c) 2026 The RadioFoundry Authors -->
+<h1 id="settings-store-and-safe-flash-writes">Settings store and safe flash writes</h1>
+<p>How the radio keeps its own state across power cycles (<code>core/settings</code>) and how the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>'s flash sectors are
+rewritten without a power cut corrupting them (<code>core/storage</code>). Both live in the board's <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> <abbr class="gl" tabindex="0" title="The flash chip type that holds code and can run it in place." data-more="../dev/glossary.html#t-nor">NOR</abbr>. Both are generic:
+the board gives the addresses in its <code>hal_flash_map_t</code> (<code>board.flash-&gt;map</code>) and core code never names a radio.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1, 2, 3</td>
+<td>Areas, settings records, fields and the append-only rule</td>
+</tr>
+<tr>
+<td>4, 5</td>
+<td>The sector journal, the foreign region guard</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Testing</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="1-areas">1. Areas</h2>
+<p>The board's flash map (<code>hal/hal_flash.h</code>) names these areas. A board without a map runs everything from <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr>: the
+settings start from the defaults at every boot and nothing can be written.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>settings_addr</code> / <code>settings_size</code></td>
+<td>the settings ring (2), at least 2 sectors</td>
+</tr>
+<tr>
+<td><code>journal_addr</code></td>
+<td>the sector journal (4), 2 sectors</td>
+</tr>
+<tr>
+<td><code>openfw_eeprom</code></td>
+<td>the open-firmware 64 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> &quot;<abbr class="gl" tabindex="0" title="Electrically erasable programmable read-only memory: a small chip that keeps settings." data-more="../dev/glossary.html#t-eeprom">EEPROM</abbr>&quot; image (<code>open-firmware-cps.md</code> 7)</td>
+</tr>
+<tr>
+<td><code>openfw_flash</code></td>
+<td>the open-firmware 1 MB &quot;flash&quot; image</td>
+</tr>
+<tr>
+<td><code>openfw_end</code></td>
+<td>the end of the area an open-firmware <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> may write</td>
+</tr>
+<tr>
+<td><code>calibration_addr</code> / <code>_size</code></td>
+<td>the calibration working copy (the CPS window, <code>cps-protocol.md</code> 2.4); 0 when the board has none</td>
+</tr>
+<tr>
+<td><code>native_addr</code> / <code>native_size</code></td>
+<td>reserved for the native <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> (<code>codeplug-native.md</code> 4)</td>
+</tr>
+<tr>
+<td><code>staging_addr</code> / <code>staging_size</code></td>
+<td>a new codeplug image waits here, checked, before it replaces the stored one (the <abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="tftp.html">TFTP</abbr> write, <code>tftp.md</code> 4); never written by the open-firmware CPS (above <code>openfw_end</code>); 0 when the board has none</td>
+</tr>
+</tbody>
+</table></div>
+<p>The settings ring and journal go where no open-firmware tool reads or writes, and the CPS shim refuses to write there.
+Each board fixes the values in its <code>hal_flash_map_t</code>, and its hardware page lists the map. The usual order, low to
+high, is the open-firmware EEPROM image, the settings ring (32 KB, 8 sectors), the journal (2 sectors), the
+open-firmware flash image (up to <code>openfw_end</code>), the native codeplug (1 MB) and, on boards with room, a 256 KB staging
+area. A board that keeps its calibration in the vendor layout lists no calibration window. A map assumes its chip's
+size: when the probed chip is smaller than the map's highest area (<code>hal_flash_map_end</code>), the driver offers the board's
+map for a smaller part if it has one and the chip holds it (<code>hal_flash_map_for</code>), else no map, and an address past the
+chip fails rather than wrapping to a lower one. A map without a native area makes the factory reset skip that step. The boards are in
+<a href="../feature-matrix.html">feature-matrix.md</a>.</p>
+<p>The core works in 4 KB erase units (<code>STORAGE_SECTOR</code>). A board whose flash erases in other units gets no writes. A
+<abbr class="gl" tabindex="0" title="The flash chip type that holds large data, such as the codeplug and contacts, in some radios." data-more="../dev/glossary.html#t-nand">NAND</abbr> board puts <code>drivers/flash/nand_sectors</code> in between, which gives <abbr class="gl" tabindex="0" title="The flash chip type that holds code and can run it in place." data-more="../dev/glossary.html#t-nor">NOR</abbr> behavior in 4 KB sectors
+(<a href="nand-sectors.html">nand-sectors.md</a>).</p>
+<h2 id="2-settings-records">2. Settings records</h2>
+<p>The settings area is a ring of sectors. Each sector holds 16 slots of 256 bytes, and each slot holds at most one
+record (little endian):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>4</td>
+<td>magic <code>0x5445534F</code> (&quot;OSET&quot;)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>sequence number, +1 per record (compared modulo 2^32)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2</td>
+<td>bits 0-11: layout (<code>SETTINGS_LAYOUT</code>, now 1); bits 12-15: the page (2.1)</td>
+</tr>
+<tr>
+<td>10</td>
+<td>2</td>
+<td>payload length n (at most 236)</td>
+</tr>
+<tr>
+<td>12</td>
+<td>n</td>
+<td>payload: the page's bytes of <code>settings_t</code> as it is in <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> (fixed-width fields, no padding)</td>
+</tr>
+<tr>
+<td>12 + n</td>
+<td>4</td>
+<td>CRC-32 (IEEE 802.3) of bytes 0 to 11 + n</td>
+</tr>
+<tr>
+<td>252</td>
+<td>4</td>
+<td>commit word: programmed to 0 last</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Load</strong> (<code>settings_init</code>, once at boot, after <code>storage_init</code>): every slot is read. A slot is free when all its
+bytes are 0xFF. It is valid when the magic, the length and the <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> match and the commit word is 0. Anything else
+(a torn write) is counted in <code>settings.skipped</code> and ignored. The valid page 0 record with the highest sequence
+number is in force (2.1 has the other pages). When its layout is not <code>SETTINGS_LAYOUT</code>, or no page 0 record is
+valid, the radio starts from the defaults (<code>settings.load=defaults</code>). A shorter or longer payload of the same layout
+fills the fields both firmwares know, and the rest keep their defaults (<code>upgraded</code>).</p>
+<p><strong>Save</strong>: the records go to the next free slots after the newest record. When a sector is full, the next sector of
+the ring is erased first. Each record is programmed, then its commit word, then the slot is read back. A cut before
+page 0's commit word leaves the previous set in force. A slot that doesn't read back is skipped and the next one is
+tried, up to 4 slots per record. No save erases a sector that holds a page of the set in force, or a page this save
+already wrote: the walk passes over such a sector to the next one. When every sector is protected that way the save
+fails, and the set in force stays. Erases go round the ring: 8 sectors (every board's ring today) hold 128 records,
+so with two pages a sector is erased once every 64 saves.</p>
+<h3 id="21-pages">2.1 Pages</h3>
+<p><code>settings_t</code> is longer than one slot's payload, so it is stored as pages: page k holds bytes <code>236 * k</code> on.
+<code>SETTINGS_PAGES</code> is the number its size needs (2 now, 408 bytes); the page field allows 16 (3776 bytes). Each page is
+a record with its own length, so <code>settings_t</code> grows by appending fields, and a short page fills the fields it has.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A save writes every page, the last first and page 0 last, each with the next sequence number</td>
+<td>Page 0's commit makes the set the one in force. A cut before it leaves the previous set</td>
+</tr>
+<tr>
+<td>Load: the newest page 0, then for each other page k the newest page k older than that page 0</td>
+<td>A page newer than page 0 belongs to a save that was cut</td>
+</tr>
+<tr>
+<td><code>loaded</code> only when every page is exact (page 0's sequence minus k) and full length, else <code>upgraded</code></td>
+<td>A firmware with one page (before pages) writes page 0 alone: the other pages come from the set before it, or their defaults</td>
+</tr>
+<tr>
+<td>The next save numbers past the newest record of any page</td>
+<td>Sequence numbers stay unique</td>
+</tr>
+<tr>
+<td>No save erases a sector holding a page of the set in force (up to 32 sectors are tracked)</td>
+<td>A page that an older firmware left behind stays readable until the next full save</td>
+</tr>
+</tbody>
+</table></div>
+<p>Firmware from before pages reads a page 1 record as an ordinary record of layout 0x1001, which it doesn't know, and
+never sees it as newest: page 0 is always written last.</p>
+<p><strong>When</strong>: <code>settings_begin()</code> returns the live copy under a short RAM-only lock (<code>storage_quick_lock</code>) and
+<code>settings_end(now)</code> releases it. If anything changed, it notes the time. No flash operation happens inside, so the
+radio task may change settings. The housekeeping task calls <code>settings_poll()</code> every 100 ms. It saves once the
+changes have rested <code>SETTINGS_SAVE_DELAY_MS</code> (2 s), so turning the knob through 20 channels writes one record.
+<code>settings_flush()</code> saves at once: at power-off, on the <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr>'s &quot;save&quot; (<code>C 6 0</code> and <code>C 6 2</code>), and before a <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>
+restart or <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">boot stub</abbr> entry (a change still in its save delay would otherwise be lost).</p>
+<p><strong>Who writes what</strong>:</p>
+<ul>
+<li>The radio core (<code>radio_sm.c</code> <code>persist()</code>): <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> or channel mode, the zone, the channel number and its position,
+the VFO's frequency and settings, the privacy key in use, and <code>squelch</code> when it was changed in the VFO (squelch is
+radio-wide, so a VFO change is the default; a saved channel writes it the same way).</li>
+<li>The radio core, for <code>radio_set_settings()</code>: the <code>rs_*</code> fields (<abbr class="gl" tabindex="0" title="Transmit timeout: the longest transmission the radio allows." data-more="../user/22-glossary.html#t-tot">TOT</abbr>, busy channel lockout, scan, beeps, <abbr class="gl" tabindex="0" title="Voice-operated transmit." data-more="../user/22-glossary.html#t-vox">VOX</abbr>,
+battery saving, backlight times; <code>radio-features.md</code> 1). <code>rs_stored</code> 0 means the radio core's defaults.</li>
+<li>The radio core's data tick, for the <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> data service (<code>dmr-data.md</code>; the <abbr class="gl" tabindex="0" title="Automatic Registration Service: a radio tells a presence server it is on the air." data-more="../user/22-glossary.html#t-ars">ARS</abbr> server and IP gateway follow the
+<abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>'s settings area when it has their keys, <a href="codeplug-settings.html">codeplug-settings.md</a> 5): the <code>ds_*</code> fields (ARS server, radio
+check reply, <abbr class="gl" tabindex="0" title="A DMR page that makes another radio ring." data-more="../user/22-glossary.html#t-call-alert">call alert</abbr> <abbr class="gl" tabindex="0" title="Acknowledgment: the reply that says a message arrived." data-more="../dev/glossary.html#t-ack">ACK</abbr>, <abbr class="gl" tabindex="0" title="Location Request and Response Protocol: a dispatcher asks a radio for its position. Motorola&#x27;s position format; the standard has LIP." data-more="../user/22-glossary.html#t-lrrp">LRRP</abbr> reply, the formats). <code>ds_stored</code> 0 means the service's defaults.</li>
+<li>The UI and the debug link's radio op 27: <code>usb_mode</code>, <code>net_flags</code>, <code>net_link_ip</code> (<code>usb-network.md</code> 5.4); the host
+link reads them at start and on <code>hostlink_settings_changed()</code>.</li>
+<li>The UI: brightness.</li>
+<li>The CPS shim: the VFO when a CPS writes a changed VFO A record (<code>cps-protocol.md</code> 2.3).</li>
+</ul>
+<p>At boot, <code>apply_prefs</code> and <code>restore_vfo</code> read the squelch, the master power, the VFO step, the radio
+name override and the privacy key. The radio name override is the <abbr class="gl" tabindex="0" title="A short text, usually a callsign and name, sent along with DMR voice." data-more="../user/22-glossary.html#t-talker-alias">talker alias</abbr> text; empty means the codeplug's
+callsign. The own <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr> is always the codeplug's.</p>
+<h2 id="3-fields-and-the-append-only-rule">3. Fields and the append-only rule</h2>
+<p><code>settings_t</code> (<code>core/settings/settings.h</code>) is the payload. The rules that keep old records readable:</p>
+<ol>
+<li><strong>Fields are only appended.</strong> A new field goes at the end, before nothing. Its default comes from
+<code>settings_defaults()</code>, which a record written by an older firmware doesn't overwrite.</li>
+<li><strong>No padding.</strong> Members are fixed width and ordered so the compiler adds none. <code>sizeof</code> is a multiple of 4, which
+a static assert checks. Page 1 starts at byte 236 (a field there must not straddle the page boundary; a static
+assert checks the first page 1 field's offset).</li>
+<li><strong>Reserved bytes stay 0</strong> in records we write. A later firmware may give them a meaning only if 0 means &quot;as
+before&quot;.</li>
+<li><strong><code>SETTINGS_LAYOUT</code> is bumped only when a field moves or changes meaning.</strong> Old records are then ignored and the
+radio starts from the defaults. Avoid this: append a new field instead.</li>
+<li>8-bit &quot;not set&quot; is <code>SETTINGS_UNSET8</code> (0xFF), meaning the radio's or the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>'s default applies.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Fields</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>position</td>
+<td><code>vfo</code>, <code>squelch</code>, <code>zone_index</code>, <code>channel</code>, <code>zone_pos</code> (used when the channel number is gone after a codeplug write)</td>
+</tr>
+<tr>
+<td>VFO</td>
+<td><code>vfo_rx_hz</code> (0 = never set), <code>vfo_tx_hz</code>, <code>vfo_step_hz</code> (0 = auto: the width's step), <code>vfo_mode</code> (bits 0-3: FM, <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> or P25 (<code>radio_mode_t</code>); a record from before the DMR <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> holds FM, a build without the DMR VFO reads DMR as FM, and one without P25, or a board that can't run it, reads P25 as its default mode), <code>vfo_bw</code> (bits 0-3), <code>vfo_power</code>, <code>vfo_cc</code> (bits 0-3, the <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr>), <code>vfo_ts</code> (bits 0-1, the slot), tone types and values; the DMR VFO's <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr> (a 24-bit ID and a <abbr class="gl" tabindex="0" title="A DMR call to one radio." data-more="../user/22-glossary.html#t-private-call">private call</abbr> flag) is packed into bytes that were reserved or hold a small number, so the record stays 236 bytes and an old record reads as no target (ID 0, <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr> 9): ID bits 0-7 in <code>vfo_talk_lo</code> (the old <code>reserved1</code>'s second byte; <code>accent</code> has the first), bits 8-11 in <code>vfo_mode</code> bits 4-7, bits 12-15 in <code>vfo_bw</code> bits 4-7, bits 16-19 in <code>vfo_cc</code> bits 4-7, bits 20-23 in <code>vfo_ts</code> bits 2-5, private call in <code>vfo_ts</code> bit 7 (always through <code>settings_vfo_mode</code> / <code>_bw</code> / <code>_cc</code> / <code>_ts</code> / <code>_talk_id</code> / <code>_talk_private</code> and the setters in <code>settings.h</code>; appended for the DMR VFO); <code>net_flags</code> sits in the VFO block's spare byte (was <code>reserved0</code>; 0 = as before): bit 0 refuses <abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="tftp.html">TFTP</abbr> codeplug writes (<code>tftp.md</code> 4, appended for mdnstftp), bit 1 <abbr class="gl" tabindex="0" title="A radio a dispatch program on a computer uses to reach the fleet over the air." data-more="../user/22-glossary.html#t-control-station">control station</abbr> passthrough, bit 2 the fixed link (<code>usb-network.md</code> 5.4, appended for dispatch)</td>
+</tr>
+<tr>
+<td>preferences</td>
+<td><code>brightness</code>, <code>backlight_s</code>, <code>beeps</code> (0 or 1), <code>hotspot_allowed</code>, <code>master_power</code>, <code>usb_mode</code> (the USB personality at power-on: 0 serial, 1 network; <code>usb-network.md</code> 1), <code>accent</code> (in the old <code>reserved1</code>'s first byte: bits 0-2 the highlight color, 0 the theme's own, 1 red, 2 orange, 3 yellow, 4 teal, 5 light blue, 6 purple, 7 pink; bit 3 set: the status strip not filled; bits 4-5 the crash report mode; bits 6-7 the <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">vocoder</abbr>'s mic options, bit 6 noise reduction off and bit 7 <abbr class="gl" tabindex="0" title="Automatic gain control: the receiver adjusting itself to the signal level." data-more="../dev/glossary.html#t-agc">AGC</abbr> on (<code>dmr-voice.md</code> 6), so a record from before them reads as noise reduction on and AGC off; 0 = the defaults, the theme's highlight and the strip filled with it; <code>ui.md</code> 8)</td>
+</tr>
+<tr>
+<td>identity</td>
+<td><code>unused_dmr_id</code> (was an own <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr> override; ignored: the own ID is the codeplug's, which Settings &gt; My radio writes), <code>radio_name[16]</code> (&quot;&quot; = the codeplug's callsign)</td>
+</tr>
+<tr>
+<td>privacy keys</td>
+<td><code>privacy_key[4]</code>, <code>privacy_type[4]</code>, <code>privacy_active</code> (appended for dmr-voice)</td>
+</tr>
+<tr>
+<td>radio core settings</td>
+<td><code>rs_tot_s rs_tot_warn_s rs_bcl rs_flags</code> (roger beep, <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> inhibit, scan priority, scan beep, key beep, no talk permit tone: 0 = on, as before) <code>rs_scan_resume rs_scan_hold_s rs_beep_level rs_scan_delay_ms rs_scan_dwell_ms rs_vox rs_vox_level rs_vox_tail_ms rs_rx_save rs_stored rs_rx_save_idle_s rs_battery_off_s rs_backlight_dim_s rs_backlight_off_s</code> (appended for radio-features)</td>
+</tr>
+<tr>
+<td>DMR data settings</td>
+<td><code>ds_ars_server ds_flags</code> (<abbr class="gl" tabindex="0" title="A DMR request another radio answers automatically, to show it is on and in range." data-more="../user/22-glossary.html#t-radio-check">radio check</abbr> reply, <abbr class="gl" tabindex="0" title="A DMR page that makes another radio ring." data-more="../user/22-glossary.html#t-call-alert">call alert</abbr> <abbr class="gl" tabindex="0" title="Acknowledgment: the reply that says a message arrived." data-more="../dev/glossary.html#t-ack">ACK</abbr>, <abbr class="gl" tabindex="0" title="Location Request and Response Protocol: a dispatcher asks a radio for its position. Motorola&#x27;s position format; the standard has LIP." data-more="../user/22-glossary.html#t-lrrp">LRRP</abbr> reply, <abbr class="gl" tabindex="0" title="Short message service: text messages. On DMR, short data carries them." data-more="../user/22-glossary.html#t-sms">SMS</abbr> format <abbr class="gl" tabindex="0" title="European Telecommunications Standards Institute, which publishes the DMR standard." data-more="../dev/glossary.html#t-etsi">ETSI</abbr> short data, radio check ETSI form, <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr> compression off, UDP compression all, SMS format ETSI IP text) <code>ds_stored</code> (appended for dmr-data; the ETSI bits for dmr-ext and dispatch, 0 = as before: a record with neither SMS format bit sends <abbr class="gl" tabindex="0" title="Text message service: Motorola&#x27;s text message format on DMR. The standard&#x27;s own short data uses other formats." data-more="../user/22-glossary.html#t-tms">TMS</abbr>, while the default without a record is ETSI IP text, <code>dmr-data.md</code> 8), <code>ds_ip_cnf</code> (in the old reserved4: confirmed IP tries in bits 0-3, 0 = the default 4; bits 4-5 0 rules, 1 off, 2 all; bit 6 set: the radio check reply bit is the user's choice, clear: a record from before the reply default became On, which answers) and <code>ds_ip_rule[2]</code> (appended at the end for sap3: 0 unused, a radio ID, or 0x80000000 | a UDP port); the two compression bits 0 = auto (<a href="dmr-data.html">dmr-data.md</a> 11, 12). Page 1: <code>ds_ip_gateway</code>, the IP gateway's off-net route (<code>ipGatewayId</code>: a gateway radio's DMR ID in bits 0-23, 0 = off-net packets dropped; a record without it reads 0, as before; <a href="usb-network.html">usb-network.md</a> 3.1)</td>
+</tr>
+<tr>
+<td>UI settings</td>
+<td><code>rs_reply_s</code> (the <abbr class="gl" tabindex="0" title="The time after a call during which PTT answers it." data-more="../user/22-glossary.html#t-reply-window">reply window</abbr> in s, 0..30; <code>SETTINGS_UNSET8</code> = the codeplug's <abbr class="gl" tabindex="0" title="How long after a call a repeater or radio keeps the call&#x27;s talkgroup ready for a reply." data-more="../user/22-glossary.html#t-hang-time">hang times</abbr>; a radio core setting), <code>mic_gain</code> (0..10, default 5 = the board's levels; <code>radio_set_mic_gain</code>, radio-features.md 3.6), <code>auto_lock_s</code> (0 = off), <code>long_press_ms</code>, <code>repeat_ms</code> (0 = the input layer's defaults), <code>gps</code> (Settings &gt; Location &gt; GPS: <code>ui_svc_apply</code> hands it to <code>board_gps_enable</code> and <code>position_gps_enable</code>, at start-up and on each change, see position.md 2), <code>pos_format</code>, <code>pos_send_s</code> (stored for a GPS owner, act on nothing yet) (appended for glue)</td>
+</tr>
+<tr>
+<td>DMR emergency</td>
+<td><code>em_dst em_mode em_flags</code> (target is a radio, ETSI alarm <abbr class="gl" tabindex="0" title="Feature set ID: the byte that says whether a message is standard or manufacturer specific." data-more="../dev/glossary.html#t-fid">FID</abbr>, no alert tone) <code>em_alarm_tries em_hot_mic_s em_stored</code> (appended for dmr-ext, <code>dmr-emergency.md</code> 5)</td>
+</tr>
+<tr>
+<td>hotspot CW ID</td>
+<td><code>cw_wpm cw_tone_hz</code> (0 = 20 wpm / 800 Hz; appended for dmr-ext)</td>
+</tr>
+<tr>
+<td>DMR roaming</td>
+<td><code>roam_rssi_dbm roam_hyst_db roam_probe roam_stored roam_check_s</code> (the radio core's roaming settings, taken when <code>roam_stored</code> is 1) and <code>roam_zones[10]</code> (bit z: zone z is a roaming zone, zones 0..79; written by the radio core on RREQ_ROAM) (appended for roaming, <code>dmr-roaming.md</code> 5.1)</td>
+</tr>
+<tr>
+<td>more UI settings</td>
+<td><code>theme</code> (0 dark, 1 light, 2 high contrast), <code>ui_flags</code> (large text, hint row, message tone, <abbr class="gl" tabindex="0" title="A short text, usually a callsign and name, sent along with DMR voice." data-more="../user/22-glossary.html#t-talker-alias">talker alias</abbr> shown, PTT when locked, hear all by default, 0x40 vibrate off, 0x80 <code>SETTINGS_UI_DUAL_TALK_BACK</code> <abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="../user/22-glossary.html#t-dual-watch">dual watch</abbr> talk back; default hint row, message tone, talker alias and PTT when locked on, and the vibrate-off and talk back bits clear, so vibrate is on and talk back is off), <code>updown_home</code> (0 channel, 1 zone, 2 talk target; bit 7 <code>SETTINGS_HOME_LABEL_FIRST</code>, Home's talk line with the talkgroup's name first, 0 in older records: the number first), <code>low_batt_pct</code> (5..30, default 15; 0 = the radio core's voltage levels only), <code>auto_off_min</code> (0 = never) and a reserved u16, now <code>aprsis_port</code> (appended for uifix; a record without them keeps these defaults)</td>
+</tr>
+<tr>
+<td>roaming survey</td>
+<td><code>roam_beacon_s</code> (the repeaters' beacon interval, 0 = none, else 10..600, default 60), <code>roam_beacon_len_s</code> (1..10, default 4), <code>roam_survey</code> (0 off, 1 synced, 2 per site; default 1), <code>rpt_beacon</code> (bit 0: our repeater roles' idle beacon, default 0; bits 1-2: an <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="sfr.html">SFR</abbr> user's <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> mode <code>sfr_rx</code>, 0 repeater only (default), 1 first copy, 2 dual-path RX, <code>sfr.md</code> 4; bits 3-5: the SFR repeater's <abbr class="gl" tabindex="0" title="A station&#x27;s callsign sent in Morse code. A standalone SFR repeater channel sends one in FM every few minutes after traffic (Settings &gt; Talk &amp; listen &gt; SFR CW ID)." data-more="../user/14-hotspot.html">CW ID</abbr> interval <code>sfr_cwid</code>, 0 off (default), 1 5 min, 2 10 min, 3 15 min, 4 30 min, <code>sfr.md</code> 4; a record from before reads 0), <code>aprs_power</code> (<abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr>'s <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> power, <code>aprs.md</code> 11; 0 = the radio's current level, which a record from before it reads as), <code>aprs_cp_path</code> (what was last taken from the codeplug APRS record,</td>
+</tr>
+<tr>
+<td><code>aprs.md</code> 11: bits 0-2 the path into <code>aprs_path</code>, bits 3-7 the SSID into <code>aprs_ssid</code>, each + 1, 0 = none yet; through</td>
+<td></td>
+</tr>
+<tr>
+<td><code>settings_aprs_cp_path</code> / <code>_ssid</code>, so a record from before the SSID reads none), <code>volume</code> (the speaker volume of a radio without a knob; in the old <code>reserved6</code>, so a record from before it reads as the default. 0 = the default step; bit 7 set = `0x80</td>
+<td>(step + 1)<code>for step 0..16 (0 = mute); 1..11 = step + 1 of the first version's 0..10 range, read as step 0..10 scaled to 0..16 (round(step * 16 / 10): the default 5 is 8, 10 is 16) and rewritten in the new form at the next save;</code>radio-features.md` 4.2)</td>
+</tr>
+<tr>
+<td>APRS</td>
+<td><code>aprs_flags aprs_flags2</code> (TX, SmartBeaconing, compressed, after PTT, boot, <abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="../user/22-glossary.html#t-kiss">KISS</abbr>, narrow, RX; <abbr class="gl" tabindex="0" title="A station that passes APRS packets between the air and the APRS-IS internet network." data-more="../user/22-glossary.html#t-igate">iGate</abbr>, iGate TX, messaging, <abbr class="gl" tabindex="0" title="Unified data transport: DMR short data sent as a plain block of bytes." data-more="../dev/glossary.html#t-udt">UDT</abbr>, to APRS-IS, DMR GPS Info) <code>aprs_region aprs_ssid aprs_freq_hz aprs_lat aprs_lon aprs_dmr_dst aprs_alt_m aprs_interval_s aprs_distance_m aprs_symbol[2] aprs_path aprs_pos_src aprs_level aprs_txdelay aprs_misc aprs_stored</code> and a reserved u16, now <code>snmp_rf_gap_s</code>; taken when <code>aprs_stored</code> is 1 (appended for aprs, <code>aprs.md</code> 11)</td>
+</tr>
+<tr>
+<td>position</td>
+<td>In the APRS block, owned by the position service (<code>position.md</code> 5): <code>aprs_pos_src aprs_lat aprs_lon aprs_alt_m</code>, the DMR GPS Info flag in <code>aprs_flags2</code>, <code>aprs_misc</code> bits 4-6 (ambiguity). Taken when <code>aprs_misc</code> bit 7 (<code>SETTINGS_APRS_MISC_POSITION</code>, the position's own stored marker) is set or <code>aprs_stored</code> is 1. A record written before the marker has bit 7 clear and reads as before</td>
+</tr>
+<tr>
+<td>APRS-IS client</td>
+<td><code>aprsis_ip</code> (the server's IPv4 address, 0 = off; appended for tcp), <code>aprsis_port</code> (0 = 14580; in the old <code>reserved5</code>), <code>aprsis_range_km</code> (the filter <code>m/&lt;km&gt;</code>, 0 = none; in the old <code>reserved3</code>) (<code>tcp-services.md</code> 7)</td>
+</tr>
+<tr>
+<td>control station</td>
+<td><code>net_link_ip</code> (the radio's fixed link address, 0 = 192.168.10.1; in force with <code>net_flags</code> bit 2), 0 = off, the link by DMR ID (appended for dispatch after <code>aprsis_ip</code>, <code>usb-network.md</code> 5.4)</td>
+</tr>
+<tr>
+<td>SNMP agent</td>
+<td><code>snmp_read_hash snmp_write_hash</code> (FNV-1a hashes of the communities, 0 = &quot;public&quot; / none; appended for snmp after <code>net_link_ip</code>), <code>snmp_rf_manager[3]</code> (the RF manager's DMR ID, little endian, 0 = none; in the old <code>reserved2[3]</code>), <code>snmp_flags</code> (in the old <code>reserved4</code>), <code>snmp_rf_gap_s</code> (0 = 60; in the APRS block's old <code>reserved7</code>); all zero = the defaults (<code>snmp.md</code> 6)</td>
+</tr>
+<tr>
+<td>dual watch</td>
+<td><code>ui_flags</code> bit 7 (0x80) is talk back (Settings &gt; Talk &gt; Dual watch talk back; off = the bit clear, as in a record from before). Page 1: <code>dual_b</code>, the last B: 0 none, 1..1024 a codeplug channel number, 1025 the first VFO, 1026 the second. The UI looks the channel number up again at power-on, in A's zone first, then in the first zone that holds it; if it is gone, the picker opens (<a href="../ux/dual-watch.html">dual-watch.md</a> 5). <code>dual_state</code> bit 0 (<code>SETTINGS_DUAL_ON</code>) says the watch was on: the UI starts it again at power-on, with <code>dual_b</code> as the channel that wasn't selected and bit 1 (<code>SETTINGS_DUAL_B_SEL</code>) set when B was the selected one</td>
+</tr>
+<tr>
+<td>second VFO</td>
+<td>Page 1: <code>vfo_index</code> (the VFO in use at power off, 0 or 1) and <code>vfo2_rx_hz</code> (0 = never set), <code>vfo2_tx_hz</code>, <code>vfo2_talk</code> (the DMR talk target: ID in bits 0-23, bit 31 private call), tone values and types, <code>vfo2_mode</code>, <code>vfo2_bw</code>, <code>vfo2_power</code> (<code>SETTINGS_UNSET8</code> = default), <code>vfo2_cc</code>, <code>vfo2_ts</code>: the first VFO's fields, unpacked. Dual watch gives each channel its own VFO (<a href="radio-features.html">radio-features.md</a> 2.1). A record without page 1 reads as the first VFO in use and no second VFO frequency</td>
+</tr>
+<tr>
+<td>dual watch wait</td>
+<td>Page 1: <code>rs_dual_delay</code>, <code>radio_settings_t.dual_delay_ms</code> as n - 1 steps of 100 ms (1 = no wait, 11 = 1 s); 0 (never set, or no page 1) = the default, 1 s. Settings &gt; Talk &gt; Dual watch delay</td>
+</tr>
+<tr>
+<td>broadcast step</td>
+<td>Page 1: <code>rs_bcast_step</code>, <code>radio_settings_t.bcast_step</code> + 1 (1 = 200 kHz on the odd tenths, 2 = 100 kHz); 0 (never set, or no page 1) = the default, 200 kHz. Settings &gt; Talk &amp; listen &gt; FM broadcast step (<a href="airband-and-broadcast.html">airband-and-broadcast.md</a> 4.4)</td>
+</tr>
+<tr>
+<td>zone journal</td>
+<td>Page 1, appended for the zone editor: <code>zone_jrn_kind</code> (0 none, 1 add, 2 delete), <code>zone_jrn_index</code> (the index added at or deleted from), <code>zone_jrn_count</code> (the stored zone count before it, 0 with only the built-in zone). Written before a zone write that moves zone indexes and cleared in the record that moves <code>zone_index</code> and <code>roam_zones</code> to match; set at power on, the change is finished from the zone list (<code>zone_edit_settle</code>, <a href="ui.html">ui.md</a> 2.2). 0 (no page 1, an older record) = none</td>
+</tr>
+<tr>
+<td>language</td>
+<td>Page 1, after the zone journal (was reserved): <code>lang</code>, the UI's language as its two ISO 639-1 letters (<code>es</code>), English <code>en</code>; both 0 = never picked, which reads as the build's default language (<code>CONFIG_LANG_DEFAULT_&lt;CODE&gt;</code>, else English). A language this image wasn't built with reads as English (<a href="ui.html">ui.md</a> 4)</td>
+</tr>
+<tr>
+<td>receive past the band table</td>
+<td>Page 1: <code>cp_flags</code> bit 1 (<code>SETTINGS_CP_RX_EXT</code>), <a href="radio-features.html">radio-features.md</a> 6.2. Cleared by a factory reset.</td>
+</tr>
+<tr>
+<td>codeplug acceptance</td>
+<td>Page 1, after <code>lang</code> (was reserved): <code>cp_flags</code> bit 0 (<code>SETTINGS_CP_ACCEPTED</code>), the user chose Use anyway for another firmware's codeplug (<a href="codeplug-native.html">codeplug-native.md</a> 2). Cleared when a <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> or TFTP write of the codeplug commits and by a factory reset. 0 (an older record) = not accepted</td>
+</tr>
+<tr>
+<td>zone sharing</td>
+<td>Page 1: <code>zs_offers</code> (zone shares accepted: 0 the default and what an older record reads as, On; 1 On, as the old Ask; 2 Off. A record from before On became the default reads On whatever it stored), then <code>ref_trim_ppb</code> (an int16, the reference trim in ppb, -10000..+10000, <code>radio-features.md</code> 6.1; in the old <code>reserved8</code>, so an older record reads 0, no trim) and <code>ds_ip_gateway</code> (DMR data settings). <code>zs_import[4]</code> (appended, after the zone journal): the last four zone imports, newest first, each a key (an FNV-1a hash of the sender's ID and the zone ID; 0 unused), the 16-byte name the zone got (not terminated at 16), <code>sig</code> (the <abbr class="gl" tabindex="0" title="Exclusive or: a bit operation that flips bits where the other operand has a 1." data-more="../dev/glossary.html#t-xor">XOR</abbr> of the written channels' hashes) and <code>count</code> (how many it wrote), then three reserved bytes. Settings &gt; Connections &gt; Zone offers (<a href="zone-share.html">zone-share.md</a> 5.1, 5.4)</td>
+</tr>
+<tr>
+<td>volume knob</td>
+<td>Page 1, appended after <code>zs_import</code>: <code>sound_flags</code> (was <code>knob_flags</code>) bit 0 (<code>SETTINGS_KNOB_LOCK</code>) ignores the knob while the keys are locked, bits 1..3 reserved (0), bits 4..7 the Settings &gt; Sound tones (below); then the VFO SFR bytes, <code>power_levels</code>, <code>t3_stun</code> and <code>t3_kill</code>. 0 (an older record) = the knob works. Settings &gt; Key lock &gt; Knob when locked, shown inverted (On = bit clear), on a radio whose <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr> reads the knob</td>
+</tr>
+<tr>
+<td>Settings &gt; Sound tones</td>
+<td>Page 1, <code>sound_flags</code> bits 4..7 (<code>settings_tones_off</code>): <code>radio_settings_t.tones_off</code>, the radio's own copy of the tone keys of the codeplug's settings area (<a href="codeplug-settings.html">codeplug-settings.md</a> 3, 5.2). Bit 4 call end, 5 <abbr class="gl" tabindex="0" title="Transmit timeout: the longest transmission the radio allows." data-more="../user/22-glossary.html#t-tot">TOT</abbr> warning, 6 battery, 7 TX denied: set = the tone is off. 0 (an older record) = every tone on. Firmware from before them changes only bit 0, so it keeps them</td>
+</tr>
+<tr>
+<td>VFO SFR role</td>
+<td>Page 1, after <code>sound_flags</code> in the old <code>reserved9[0..1]</code>: <code>vfo_sfr</code> (the first VFO) and <code>vfo2_sfr</code> (the second), each byte A of a codeplug channel's SFR bytes (<a href="sfr.html">sfr.md</a> 4: role, framing, inbound slot, hang); role bits 0-2 0 = none, as an older record reads. No byte B: the VFO's outbound color code is its own. Written with the VFO, set by RREQ_VFO_SFR and Copy to VFO; then <code>power_levels</code></td>
+</tr>
+<tr>
+<td>power level count</td>
+<td>Page 1, after <code>vfo2_sfr</code> (was <code>reserved9</code>): <code>power_levels</code>, the board's power level count (<code>board_t.power_count</code>) that <code>vfo_power</code>, <code>vfo2_power</code>, <code>master_power</code> and <code>aprs_power</code> count against. A level is an index into the board's levels, so when a board's levels change the same index names another power, possibly a higher one. A record whose count isn't the board's, an older record's 0 included, loads with those four back to their defaults (not set, and <code>aprs_power</code> 0, the current level) and the board's count; the next save stores it</td>
+</tr>
+<tr>
+<td>Tier III stun</td>
+<td>Page 1, appended after <code>power_levels</code>: <code>t3_stun</code>, a stun kept across a restart (<a href="dmr-trunking.html">dmr-trunking.md</a> 7.9). Bit 7 (<code>SETTINGS_T3_STUN</code>) set: stunned on the codeplug system in slot bits 4-6, whose network ID and model hash to bits 0-3. Written by the radio core when a stun is taken or revived. 0 (an older record) = not stunned. Cleared by a factory reset</td>
+</tr>
+<tr>
+<td>Tier III kill</td>
+<td>Page 1, appended after <code>t3_stun</code>: <code>t3_kill</code>, bit 0 (<code>SETTINGS_T3_KILLED</code>) a kill taken (<a href="dmr-trunking.html">dmr-trunking.md</a> 7.9): no DMR at all, in any build, until a factory reset clears it; bits 1-7 reserved (0). Then <code>reserved10[2]</code> (0). 0 (an older record) = not killed</td>
+</tr>
+<tr>
+<td>signaling tones</td>
+<td>Page 1, appended after <code>reserved10</code>, then <code>reserved11[2]</code> (0) (a record from before is shorter and reads these as 0): <code>sig_dmr[3]</code> and <code>sig_fm[3]</code>, where the start, end and idle tone sound in DMR and in FM (0 default, 1 off, 2 speaker, 3 on air, 4 speaker + air). 0, as an older record reads, is the radio's own tone. The chains of steps are not here: each event's is its codeplug record (<code>CODEPLUG_KEY_SIG_BEGIN</code> + event, <a href="codeplug-settings.html">codeplug-settings.md</a> 3.3), read at start and on every change, so <code>settings_t</code> copies on task stacks stay small. <code>radio_settings_t.sig_dmr</code>, <code>sig_fm</code>, <code>sig_hz</code>, <code>sig_ms</code> (<a href="radio-features.html">radio-features.md</a> 4.3)</td>
+</tr>
+<tr>
+<td>crash report</td>
+<td>packed into spare bits, so an older record reads as off with no target: the mode (0 off, 1 ask, 2 send at once) in <code>accent</code> bits 4-5; the target's codeplug contact number (0 none, else 1..1024, 11 bits) bits 0-5 in <code>theme</code> bits 2-7 and bits 6-10 in <code>updown_home</code> bits 2-6. <code>theme</code> and <code>updown_home</code> keep their value in bits 0-1; read and write them through <code>settings_theme</code> / <code>settings_updown_home</code> and <code>settings_crash_*</code> (<code>settings.h</code>). Firmware from before reads a <code>theme</code> or <code>updown_home</code> with these bits as out of range: the dark theme and Up/Down = channel (<a href="crash-log.html">crash-log.md</a> 5.2)</td>
+</tr>
+</tbody>
+</table></div>
+<p>All of these are still layout 1: they were appended before any firmware with the settings store shipped. Page 0
+is full: its later fields went into reserved bytes where 0 already meant
+&quot;as before&quot; (<code>net_flags</code>, <code>snmp_rf_manager[3]</code>, <code>aprsis_range_km</code>, <code>snmp_flags</code>, <code>aprsis_port</code>, <code>snmp_rf_gap_s</code>, <code>aprs_power</code>, <code>aprs_cp_path</code>, <code>volume</code>, <code>vfo_talk_lo</code>), or the new defaults (<code>accent</code>: the filled status strip, a new look on purpose). No reserved byte is left. One-byte
+fields that hold small numbers (<code>hotspot_allowed</code>, <code>usb_mode</code>) still have free upper bits (<code>theme</code> and <code>updown_home</code> hold the crash report's target, <code>updown_home</code> bit 7 the talk line order;
+<code>accent</code> bits 6-7 are free); <code>vfo_power</code> does not (its &quot;not set&quot; is 0xFF). New settings are appended to page 1 as
+plain fields; a page 2 follows when page 1 is full (2.1).</p>
+<h3 id="30-who-writes-and-storage-jobs">3.0 Who writes, and storage jobs</h3>
+<p>The settings are written through <code>settings_save</code> (debounced, written by <code>settings_poll</code> on the housekeeping task in
+<code>app.c</code>). Other flash writes that a screen asks for (save to channel, the permanent talk target, factory reset) are
+storage jobs: <code>storage_job_post(fn, ctx)</code> hands a function to the housekeeping task, which runs it from
+<code>storage_job_poll</code> right after <code>settings_poll</code>. There is one slot: a second post while a job is pending is refused
+(the UI says so), and <code>storage.job_busy</code> on the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> shows a pending job. A job runs with no UI lock held, so
+the UI keeps drawing during the flash write; the job reports back through <code>ui_notify</code>.</p>
+<p>Factory reset (a job): <code>settings_defaults</code> into the live copy and save it at once, then <code>storage_native_erase</code>.
+That erases the native area only when its first word is the native magic <code>STORAGE_NATIVE_MAGIC</code> (0x4E52444F, bytes 4F 44 52 4E)
+or when it is blank already; anything else is reported as foreign and left alone. The open-firmware codeplug, the
+calibration and the foreign-guarded regions (section 5) are never touched; a reset of those would need its own
+second confirmation and is not offered.</p>
+<h3 id="31-privacy-key-slots-the-hook-for-dmr-basic-privacy">3.1 Privacy key slots (the hook for DMR basic privacy)</h3>
+<p>The key store for <code>core/dmr/dmrPrivacy.c</code> (<code>dmr-voice.md</code> 5). Four slots, each a key value (<code>privacy_key[i]</code>,
+u32: 16 bits are used today by Motorola and Anytone <abbr class="gl" tabindex="0" title="A fixed voice scrambling from Motorola and Anytone radios. Not encryption." data-more="../user/22-glossary.html#t-basic-privacy">basic privacy</abbr>, and the slot is wide enough for a 32-bit key
+later) and a type (<code>privacy_type[i]</code>, <code>dmrPrivacyType_t</code>). <code>privacy_active</code> picks the slot in use radio-wide: 1 to
+4, or 0 for privacy off. Turning privacy off keeps the key in its slot.</p>
+<p>Today the radio core writes slot 1 when the key is set (the debug link's <code>RADIO</code> privacy op) and loads the
+active slot at boot, checking it with <code>dmrPrivacyKeyIsValid</code>. A per-channel choice of key will be a slot number in
+the native channel record (<code>codeplug-native.md</code> 3: 0 = the radio-wide choice, 1 to 4 = that slot). The keys
+themselves stay in the settings and never go into a codeplug file, so a codeplug can be shared without its keys.</p>
+<p><strong>Open: the keys are stored in plain text in the <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> <abbr class="gl" tabindex="0" title="The flash chip type that holds code and can run it in place." data-more="../dev/glossary.html#t-nor">NOR</abbr>.</strong> Anyone with the radio and a flash reader, or with the
+CPS shim's area 1 reads, can see them. The settings area is outside what the open-firmware CPS reads by region, but area 1
+reads any address. Options: refuse area 1 reads of the settings area, or obfuscate with a key from the MCU's UID.
+Neither stops a determined reader, and basic privacy is weak anyway.</p>
+<h2 id="4-the-sector-journal">4. The sector journal</h2>
+<p>A <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> edit, or a <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> commit, rewrites a whole 4 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> sector: erase, then program. A cut between the two would
+leave the sector erased: channels, zones or contacts gone. The journal (<code>core/storage/storage.c</code>) makes the rewrite
+repeatable. It uses two sectors at <code>journal_addr</code>:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Sector</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>J0</td>
+<td>header, 16 bytes: magic <code>0x4C4E4A4F</code> (&quot;OJNL&quot;), target address, CRC-32 of the copy, CRC-32 of the first 12 bytes; then a &quot;done&quot; byte at offset 16 (0xFF = pending, 0x00 = done)</td>
+</tr>
+<tr>
+<td>J1</td>
+<td>the new content of the target sector</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>storage_sector_write(addr, data)</code>:</p>
+<ol>
+<li>If the target already holds exactly <code>data</code>, nothing is done (<code>storage.sector_skips</code>).</li>
+<li>Erase J1, program the copy, read it back and check its <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr>.</li>
+<li>Erase J0, program the header.</li>
+<li>Erase the target, program <code>data</code>, read it back.</li>
+<li>Program the done byte to 0.</li>
+</ol>
+<p><code>storage_init()</code> at boot, before the settings and the codeplug are read: a J0 with a valid header and a pending
+done byte means a cut after step 3. If J1's CRC matches, steps 4 and 5 run again (<code>storage.replays</code>). A cut before
+the header is complete leaves the target untouched, because the header is the commit point. A cut during the replay
+is replayed again at the next boot.</p>
+<p><code>storage_write(addr, buf, len)</code> writes any range (the codeplug editor's records, names and bitmaps). Open-firmware
+channel, zone and contact records don't divide 4 KB, so some cross a sector end; two separate sector rewrites would
+leave such a record half old, half new after a cut between them (a channel with the new frequency and the old
+<abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr>). So a write of up to 4072 bytes, which touches one or two sectors, is one transaction:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>J0 offset</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>magic <code>0x324E4A4F</code> (&quot;OJN2&quot;), then the address, the length and the CRC-32 of bytes 0 to 11 and the data</td>
+</tr>
+<tr>
+<td>16</td>
+<td>marks, 0xFF = not yet: first sector staged, first sector done, second sector staged, second sector done</td>
+</tr>
+<tr>
+<td>20</td>
+<td>all done</td>
+</tr>
+<tr>
+<td>24</td>
+<td>the data</td>
+</tr>
+</tbody>
+</table></div>
+<ol>
+<li>If the flash already holds exactly the data, nothing is done.</li>
+<li>Erase J0, program the header and the data, read them back (the commit point).</li>
+<li>For each sector: J1 erased and programmed with the sector merged with the data, &quot;staged&quot;; the sector erased and
+programmed from J1, read back, &quot;done&quot;.</li>
+<li>Program &quot;all done&quot;.</li>
+</ol>
+<p>Replay: a header with a good CRC and &quot;all done&quot; pending finishes the sectors not done. A sector not staged has not
+been erased yet, so it is merged with the data from J0 again; a staged one is copied from J1. A longer write
+(none of the core's callers makes one) goes sector by sector through <code>storage_sector_write</code>. The bytes are merged
+in the shared 4 KB buffer, which is shared with the CPS shim's pending sector (<code>storage_buffer_acquire</code>), so an edit
+while a CPS write is going on fails cleanly instead of waiting.</p>
+<p>A flash that is copy on write underneath offers <code>hal_flash_t.replace</code> (a <abbr class="gl" tabindex="0" title="The flash chip type that holds large data, such as the codeplug and contacts, in some radios." data-more="../dev/glossary.html#t-nand">NAND</abbr> flash, <code>nand-sectors.md</code> 5): the
+sector rewrite then calls it and checks the result. There is no journal on such a flash (J0 and J1 stay blank), because
+the replace is one atomic record, and the replay at boot finds nothing to finish. The patch transaction of
+<code>storage_write</code> (up to 4 KB across one or two sectors) still uses the journal.</p>
+<p>Wear: J0 and J1 are erased once per sector rewrite. A full <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr> write is about 46 sectors, so the journal sectors
+take 46 erases per write. At 100,000 cycles, that is about 2,000 full codeplug writes. Spreading the journal over a
+ring is possible later. The map has room after 0x01B000.</p>
+<p><strong>Locks</strong>: <code>storage_lock()</code> is a recursive FreeRTOS mutex around every flash sequence of the core: the codeplug
+calls, a settings save, a CPS commit. <code>storage_quick_lock()</code> guards only <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr>: the live settings copy. The radio task
+takes only the quick lock on its own, so it never waits for an erase. A codeplug read from the radio task (a channel
+change) does take <code>storage_lock</code> and may wait out a sector rewrite (about 100 ms) during a CPS write.</p>
+<p>A run of writes (a zone import, a CPS commit) takes and gives <code>storage_lock</code> once per record, from a task above the
+waiters. A give alone only makes a lower-priority waiter ready, and the writer takes the lock again before it runs, so
+the waiter would wait out the whole run (6 s for a zone import on an <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> <abbr class="gl" tabindex="0" title="The flash chip type that holds code and can run it in place." data-more="../dev/glossary.html#t-nor">NOR</abbr> radio). The last give therefore yields
+one tick when a task is waiting: each waiter waits one record at most.</p>
+<h2 id="5-foreign-region-guard">5. Foreign region guard</h2>
+<p>The flash of a radio that ran other firmware may hold that firmware's data where our settings ring and journal go.
+Before anything is erased or programmed
+there, <code>storage_init()</code> classifies the region:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Ours</th>
+<th>Anything else</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>settings slot</td>
+<td>all 0xFF; a valid record; our magic with a torn rest; a save cut inside the magic (the bytes so far on their way to &quot;OSET&quot;, the rest 0xFF)</td>
+<td>other bytes</td>
+</tr>
+<tr>
+<td>J0</td>
+<td>all 0xFF; our header (magic &quot;OJNL&quot;), nothing after the done byte; our patch header (&quot;OJN2&quot;), nothing after its data</td>
+<td>other bytes</td>
+</tr>
+<tr>
+<td>J1</td>
+<td>all 0xFF, or anything once J0 holds our header</td>
+<td>non-blank while J0 is blank</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Foreign</strong> = some part holds other bytes <strong>and</strong> no valid record of ours (a settings record or a J0 header with
+a good <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr>) exists anywhere in the region. Then:</p>
+<ul>
+<li><code>storage_init()</code> returns false, <code>storage_ready()</code> is false, nothing is replayed.</li>
+<li>Every erase and program in the region is refused. <code>storage_sector_write</code> and <code>storage_write</code> fail
+(<code>storage.foreign_refusals</code>), so <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> edits and <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> commits fail too (the journal is the region). The CPS
+shim refuses <code>X 1</code> (<code>cps-protocol.md</code> 2.3).</li>
+<li><code>settings_init()</code> returns <code>SETTINGS_FOREIGN</code> and the radio runs on the defaults in <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr>; changes are kept in RAM
+and not saved.</li>
+<li>The <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>'s view shows <code>settings.load=foreign</code>, <code>storage.region=foreign</code>, <code>storage.journal=foreign</code> and
+<code>storage.foreign_slots</code> (slots and journal sectors with other bytes).</li>
+</ul>
+<p>Junk beside a valid record of ours (a torn erase of our own ring) is not foreign: the slots are skipped and
+reused once their sector comes round.</p>
+<p><strong>Ownership mark.</strong> When the region is ours but holds no valid record (a blank flash), <code>storage_init()</code> programs
+one valid settings slot of layout 0 and sequence 0 (no payload) in the first free slot. The settings load their
+defaults past it (no settings layout is 0) and the first real save gets sequence 1. From then on a valid record
+always exists, because saves never erase the sector with the newest record, so a power cut inside a journal
+rewrite (J0 erased, J1 full) can't make the region look foreign at the next boot.</p>
+<p><strong>Claim.</strong> Only through the debug link, behind the chip UID token like REBOOT (<code>debuglink.md</code> 3.13). Two clients
+send it:</p>
+<ul>
+<li>The web radio programming utility, right after a full backup (the backup holds the whole <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> flash, the region
+included), when <code>STORAGE INFO</code> reports the region foreign. The Codeplug Editor checks before every write and, on a
+foreign region, explains and claims only when the user confirms. Both poll INFO until the region is ours (20 s
+limit).</li>
+<li><code>rfoundry_debug.py storage claim --out DIR</code>:</li>
+</ul>
+<ol>
+<li><code>rfoundry_debug.py storage claim</code> reads the settings ring, the journal and the calibration copy through the debug
+link's read-only SPI flash window (twice, compared) into <code>--out DIR</code> (refused inside any git
+work tree), then sends the claim with the token.</li>
+<li>The firmware notes the request (<code>storage.claim_pending</code>). The housekeeping task (<code>settings_poll</code>) erases every
+settings sector and both journal sectors, checks they read blank, marks the region ours and writes the
+ownership mark, then saves the settings the radio is running with.</li>
+<li>The tool polls until <code>storage.region=ours</code>.</li>
+</ol>
+<p><code>rfoundry_debug.py storage dump</code> saves the same files without claiming; <code>storage info</code> shows the state and addresses.</p>
+<h2 id="6-testing">6. Testing</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Test</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tests/host/settingsTest.c</code></td>
+<td>load, save, debounce, ring wrap, layout change, older and newer payload sizes; pages (a page 0 alone from an older firmware, a page newer than page 0, a save that passes over a sector holding an old page); power levels stored against another level count reset; a power cut at every flash operation of a save (the previous or the new set is in force, never neither, and never pages of two saves)</td>
+</tr>
+<tr>
+<td>the journal part of <code>settingsTest.c</code></td>
+<td>a power cut at every one of the 701 flash operations of a sequence of sector rewrites, then a boot: every sector holds either its old or its new content, and the replayed ones the new</td>
+</tr>
+<tr>
+<td><code>tests/host/sim/sim_flash.c</code></td>
+<td>the simulated <abbr class="gl" tabindex="0" title="The flash chip type that holds code and can run it in place." data-more="../dev/glossary.html#t-nor">NOR</abbr>: program only clears bits (violations counted), erase per 4 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr>, a power cut after N operations (a torn program or erase leaves random bits)</td>
+</tr>
+<tr>
+<td><code>tests/host/radioCoreTest.c</code> <code>test_persist</code></td>
+<td>the radio core saves the zone, the channel and the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> and comes back to them after a reboot</td>
+</tr>
+<tr>
+<td><code>tests/hil/test_cps.py</code> <code>test_settings_saved</code></td>
+<td>on the radio: a channel change is saved within 2 s (the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>'s <code>storage</code> view section, <code>debuglink.md</code> 3.7)</td>
+</tr>
+<tr>
+<td><code>settingsTest.c</code> <code>test_foreign</code></td>
+<td>another firmware's bytes in the ring / J0 / J1: foreign, no flash operation at all, writes refused, <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> defaults, the read window's limits; claim erases and saves; junk beside our record, our J0 header beside junk, a cut inside a journal rewrite after the mark, a cut inside the first mark: ours</td>
+</tr>
+<tr>
+<td><code>cpsTest.c</code> <code>test_foreign</code></td>
+<td>a foreign region: reads answered, <code>X 1</code> and <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> edits refused, flash unchanged; after a claim, <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> writes work</td>
+</tr>
+<tr>
+<td><code>tests/hil/test_cps.py</code> <code>test_storage_region</code></td>
+<td>on the radio: the region state matches the view, reads inside the window work and outside it are refused (skips with instructions when foreign)</td>
+</tr>
+<tr>
+<td><code>tests/hil/test_cps.py</code> <code>test_settings_survive_restart</code></td>
+<td>opt-in <code>--allow-reboot</code>: the channel position survives a restart</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/settings-store.md">Vedi il sorgente di questa pagina</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="In questa pagina">
+		<p class="eyebrow">In questa pagina</p>
+		<ul><li class="l2"><a href="#1-areas">1. Areas</a></li><li class="l2"><a href="#2-settings-records">2. Settings records</a></li><li class="l3"><a href="#21-pages">2.1 Pages</a></li><li class="l2"><a href="#3-fields-and-the-append-only-rule">3. Fields and the append-only rule</a></li><li class="l3"><a href="#30-who-writes-and-storage-jobs">3.0 Who writes, and storage jobs</a></li><li class="l3"><a href="#31-privacy-key-slots-the-hook-for-dmr-basic-privacy">3.1 Privacy key slots (the hook for DMR basic privacy)</a></li><li class="l2"><a href="#4-the-sector-journal">4. The sector journal</a></li><li class="l2"><a href="#5-foreign-region-guard">5. Foreign region guard</a></li><li class="l2"><a href="#6-testing">6. Testing</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Unisciti alla comunità RadioFoundry</strong><span class="small muted">Domande, aiuto con la tua radio e novità, su Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Hai trovato un bug? Vuoi che la tua radio sia supportata?</strong><span class="small muted">Apri una segnalazione su GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry ha licenza MIT · <a href="https://github.com/radiofoundry/radiofoundry">Codice sorgente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunità</a> · <a href="../../../it/docs/index.html">Documenti</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Novità</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

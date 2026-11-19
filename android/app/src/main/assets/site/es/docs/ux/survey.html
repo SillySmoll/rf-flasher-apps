@@ -1,0 +1,265 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UI survey: what good radio and device interfaces do · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="UI survey: what good radio and device interfaces do · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/docs/ux/survey.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/ux/survey.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/ux/survey.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/ux/survey.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/ux/survey.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/ux/survey.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../es/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../../es/radios/index.html">Radios</a><a href="../../../es/features/index.html">Funciones</a><a href="../../../es/flash/index.html">Instalar</a><a href="../../../es/codeplug/index.html">Codeplug</a><a href="../../../es/docs/index.html" aria-current="page">Documentación</a><a href="../../../es/screenshots/index.html">Capturas</a><a href="../../../es/tools/index.html">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../../docs/ux/survey.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/ux/survey.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/ux/survey.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/ux/survey.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Experiencia de usuario">
+		<p class="eyebrow"><a href="../../../es/docs/index.html">Documentación</a> / Experiencia de usuario</p>
+		<ul><li><a href="wireframes/index.html">Wireframes</a></li><li><a href="dual-watch.html">Dual watch</a></li><li><a href="information-architecture.html">Information architecture</a></li><li><a href="principles.html">UI design principles</a></li><li><a href="survey.html" aria-current="page">UI survey: what good radio and device interfaces do</a></li><li><a href="task-flows.html">Task flows</a></li><li><a href="usability-tests.html">Usability test protocol</a></li><li><a href="wireframes/128x64.html">128x64 monochrome</a></li><li><a href="wireframes/160x128.html">160x128 color</a></li><li><a href="wireframes/240x320.html">240x320 color (portrait)</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Esta página aún no está traducida; se muestra en inglés.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="ui-survey-what-good-radio-and-device-interfaces-do">UI survey: what good radio and device interfaces do</h1>
+<p>This is the background for <code>principles.md</code>. It looks at commercial two-way radios, amateur <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> radios, other open firmware, handheld gadgets, phones and vehicle/aviation HMI guidance, and notes for each what RadioFoundry should borrow and what it should avoid.</p>
+<p>Clean-room note: this survey deliberately leaves out the aftermarket firmware and its derivatives. Nothing here, and nothing in <code>docs/ux/</code>, is based on their menus, screens or key mappings.</p>
+<p>Observations come from public user guides, reviews, forum threads and general product knowledge. Where something is the author's judgment and not a documented fact, it says so.</p>
+<h2 id="1-commercial-land-mobile-radios">1. Commercial land mobile radios</h2>
+<h3 id="motorola-mototrbo-xpr-70007000e-sl-series-and-apx">Motorola MOTOTRBO (XPR 7000/7000e, SL series) and APX</h3>
+<p>What they do well:</p>
+<ul>
+<li><strong>Home screen built around &quot;where am I and what will PTT do&quot;.</strong> The idle screen shows the zone, the channel alias and the current <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr>, with a slim status icon row (<abbr class="gl" tabindex="0" title="Received signal strength indicator: how strong the received signal is, in dBm." data-more="../user/22-glossary.html#t-rssi">RSSI</abbr>, battery, scan, privacy, GPS, messages) across the top. Little else.</li>
+<li><strong>Programmable buttons with short press and long press.</strong> The side buttons and the top button each carry two functions (short and long) set by the dealer, so the user's two or three most frequent jobs (monitor, scan, privacy, talkaround, power) never need the menu.</li>
+<li><strong>One Touch Access / One Touch Call.</strong> A single button can start a group call, <abbr class="gl" tabindex="0" title="A DMR call to one radio." data-more="../user/22-glossary.html#t-private-call">private call</abbr>, <abbr class="gl" tabindex="0" title="A DMR page that makes another radio ring." data-more="../user/22-glossary.html#t-call-alert">call alert</abbr>, text or phone call to a preset target. The guides list &quot;make a group, private or <abbr class="gl" tabindex="0" title="DMR talkgroup 16777215, heard by every radio on the slot." data-more="../user/22-glossary.html#t-all-call">All Call</abbr> with the programmable number key&quot;: number keys double as speed dial on the keypad models.</li>
+<li><strong>Talkback in <abbr class="gl" tabindex="0" title="How long after a call a repeater or radio keeps the call&#x27;s talkgroup ready for a reply." data-more="../user/22-glossary.html#t-hang-time">hang time</abbr>.</strong> After a call, pressing PTT during the system hang time replies to the group or person who just spoke. The display shows this.</li>
+<li><strong>Consistent menu navigation.</strong> Up/down move, OK enters, Back leaves, and long-press Back goes Home on several models. The same pattern runs through contacts, call log, messages, scan lists and utilities.</li>
+<li><strong>Distinct alert tones.</strong> Talk permit tone, channel busy, invalid key, low battery, call alert and emergency each have a different sound, so the radio can be used without looking.</li>
+<li><strong>APX: emergency is physically distinct</strong> (orange top button, recessed, hold to activate) and the top display on APX models lets you read the channel with the radio on your belt or shoulder.</li>
+<li><strong>APX: a large, high-contrast font and glove-friendly key spacing</strong>, plus a dedicated two- or three-position toggle (A/B/C) and a concentric channel knob for operation by feel.</li>
+</ul>
+<p>What to avoid:</p>
+<ul>
+<li><strong>Dealer-locked behavior.</strong> Much is only changeable in <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr>, so the user can't fix a bad button assignment in the field. We should let users reassign keys on the radio.</li>
+<li><strong>Deep menus for occasional settings.</strong> On keypad models, things like the talkaround toggle or power level are several levels down unless a button is programmed for them.</li>
+<li><strong>Icon-only status.</strong> New users don't know what half the status icons mean, and there is no on-radio legend. Every icon should be explainable from the radio itself (a &quot;what does this mean&quot; view).</li>
+</ul>
+<h3 id="kenwood-nx-series-nx-100030005000">Kenwood NX series (NX-1000/3000/5000)</h3>
+<p>Borrow:</p>
+<ul>
+<li><strong>Very short key repertoire</strong> (often only a few front keys on non-keypad models) with consistent short/long semantics. Shows that a radio with four keys can be fully usable if the key layer is designed for it.</li>
+<li><strong>Voice announcement</strong> of channel and zone on change, configurable, useful for blind operation and for operators who can't look down.</li>
+<li><strong>Scan with &quot;priority&quot; and &quot;nuisance delete&quot;</strong>: a single press removes a busy channel from the current scan pass without editing the scan list.</li>
+</ul>
+<p>Avoid:</p>
+<ul>
+<li><strong>Different meaning for the same key on different screens</strong> (on some models the same key is &quot;Scan&quot; at idle and &quot;Select&quot; in a list, configured by the dealer). It saves keys but breaks muscle memory.</li>
+</ul>
+<h3 id="icom-ic-f-series-iplte-d-star-amateur-handhelds-like-id-52">Icom (IC-F series, IP/LTE, D-STAR amateur handhelds like ID-52)</h3>
+<p>Borrow:</p>
+<ul>
+<li><strong>ID-52/ID-50: the &quot;DR&quot; (D-STAR repeater) mode</strong> picks repeaters and destinations from lists (&quot;From&quot; and &quot;To&quot;), the closest thing in amateur radio to a phone-like &quot;who do I want to talk to&quot; flow. Users regularly compare <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> radios unfavorably with it.</li>
+<li><strong>Quick menu (QUICK key)</strong> with the context-appropriate few settings for the current screen. This is the direct ancestor of our QUICK action.</li>
+<li><strong>Call sign and name of the station heard, plus <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> history</strong> with one-key reply (&quot;RX&gt;CS&quot; picks the last heard as the destination).</li>
+</ul>
+<p>Avoid:</p>
+<ul>
+<li><strong>Very long settings lists</strong> with flat, alphabetical-ish ordering and cryptic abbreviations. The quick menu helps, but the full menu is long.</li>
+</ul>
+<h3 id="hytera-pdhp-series">Hytera (PD/HP series)</h3>
+<p>Borrow:</p>
+<ul>
+<li><strong>Icon grid main menu</strong> (Contacts, Messages, Call Records, Zone, Scan, Settings): a small set of top-level destinations, each one a noun the user already knows.</li>
+<li><strong>Clear call state screens</strong>: &quot;Group Call&quot;, &quot;Private Call&quot;, &quot;Emergency&quot; banners with the far party.</li>
+</ul>
+<p>Avoid:</p>
+<ul>
+<li><strong>Too many top-level icons on later models</strong> (a dozen plus), many of them rarely used (Recording, Man Down, Lone Worker setup). Rare things belong one level down.</li>
+</ul>
+<h2 id="2-amateur-dmr-radios">2. Amateur DMR radios</h2>
+<h3 id="anytone-at-d878uv--at-d578uv">Anytone AT-D878UV / AT-D578UV</h3>
+<p>Borrow:</p>
+<ul>
+<li><strong>Icon main menu</strong> with Talk Group, <abbr class="gl" tabindex="0" title="Short message service: text messages. On DMR, short data carries them." data-more="../user/22-glossary.html#t-sms">SMS</abbr>, Call Log, Zone, Scan, Settings, GPS, <abbr class="gl" tabindex="0" title="Playing every talkgroup on the timeslot (promiscuous mode; &quot;hear all&quot; in older RadioFoundry builds)." data-more="../user/22-glossary.html#t-digital-monitor">Digital Monitor</abbr>. A reviewer who expected a &quot;Chinglish&quot; <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> menu found it &quot;pretty easy&quot;.</li>
+<li><strong><abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">Talkgroup</abbr> entry on the radio</strong> (type a TG number and <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> to it without programming it) and <strong>digital monitor</strong> (promiscuous) per <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr>. Users praise being able to &quot;key up a talkgroup like TAC310 even if it isn't in the radio&quot;.</li>
+<li><strong>Roaming between repeaters</strong> from a list.</li>
+<li><strong>Last call / call log with reply.</strong></li>
+</ul>
+<p>Avoid (public complaints):</p>
+<ul>
+<li><strong>Steep learning curve</strong>: a reviewer found it &quot;much more difficult and less intuitive&quot; than Icom D-STAR radios; others say the manual &quot;tells you what controls do but gives no examples of how to do anything&quot; and asks for step-by-step instructions for each setting. Our task flows and on-radio hints are the answer.</li>
+<li><strong>Fear of breaking the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr></strong>: a vendor blog exists just because users fear &quot;accidentally erasing their meticulously organized channel list&quot; when using the list function to switch talkgroups. The UI must make it obvious when a change is temporary and when it writes the codeplug.</li>
+<li><strong>Range/format surprises</strong>: a user's 8-digit TG got an &quot;out of range&quot; error with no explanation of the allowed range. Errors must say what is allowed.</li>
+<li><strong>Many hidden modes</strong> (sub channel, A/B, talkgroup list vs digital contact list, &quot;Talk Group&quot; vs &quot;Contact&quot; vs &quot;<abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">Receive</abbr> group&quot;) whose interplay users find confusing.</li>
+</ul>
+<h3 id="tyt-md-380--md-uv380-baofeng-dm-1701-retevis-rt3s--rt84-stock-firmware">TYT MD-380 / MD-UV380, Baofeng DM-1701, Retevis RT3S / RT84 (stock firmware)</h3>
+<p>Avoid (public complaints, consistent across forums):</p>
+<ul>
+<li><strong>You can't hear or reply to other talkgroups without reprogramming.</strong> The stock radio usually listens to one TG; a RadioReference newcomer couldn't hear active traffic and experienced users guessed at a wrong timeslot. md380tools and experimental firmware became popular largely for &quot;promiscuous&quot; and &quot;talkgroup-free&quot; modes that reply to whatever was heard. Promiscuous monitoring and reply-to-heard must be first class.</li>
+<li><strong>The channel is the only unit of choice</strong>: TG, TS and <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">CC</abbr> are fixed per channel, so a <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> user needs dozens of channels that differ only by TG.</li>
+<li><strong>Menus with abbreviated, inconsistent labels</strong> and no way back to idle except repeated Back presses.</li>
+<li><strong>No <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr> database on the radio</strong> (or a truncated one): the screen shows a bare number.</li>
+</ul>
+<h3 id="retevis--radioddity-budget-dmr-in-general">Retevis / Radioddity budget DMR in general</h3>
+<p>Avoid: slow screen redraws after key presses (users press again, overshoot), key beeps that can't be separated from talk permit tones, and settings whose effect only appears after a power cycle.</p>
+<h3 id="yaesu-ft-5d-ftm-500-system-fusion">Yaesu (FT-5D, FTM-500, System Fusion)</h3>
+<p>Borrow:</p>
+<ul>
+<li><strong>Touch-free &quot;band scope&quot; and &quot;memory list&quot; views</strong> that show many channels at once. Useful for our scan view on 240x320.</li>
+<li><strong>Dedicated DX/&quot;GM&quot; (group monitor) screen</strong> showing who is in range: an analog for our last-heard list.</li>
+<li><strong>Backtrack (GPS) screen</strong>: a clear single-purpose page for &quot;where is that station / where did I start&quot;.</li>
+</ul>
+<p>Avoid:</p>
+<ul>
+<li><strong>Overloaded multifunction knobs</strong> where push, push-and-hold, turn and push-and-turn all mean different things. Users regularly report not knowing which mode the knob is in.</li>
+</ul>
+<h2 id="3-open-firmware-and-open-devices">3. Open firmware and open devices</h2>
+<h3 id="openrtx">OpenRTX</h3>
+<p>Borrow:</p>
+<ul>
+<li><strong>Multi-radio from one core</strong> with a small set of keys and a clear separation of radio-independent UI from per-device input. Same shape as our logical action layer.</li>
+<li><strong>Voice prompts for vision-impaired operators</strong> (added November 2022): an existence proof that a small team can make a radio usable without looking at it.</li>
+<li><strong>M17 and modern codec support</strong> shows the value of a clean UI layer that isn't tied to a single mode.</li>
+</ul>
+<p>Avoid: the UI is still sparse (functional more than designed) and some radios have fewer features than their hardware allows. We should not wait for feature completeness to design the UX.</p>
+<h3 id="meshtastic-devices-t-deck-t-echo-heltec-rak-wisblock-with-screens">Meshtastic devices (T-Deck, T-Echo, Heltec, RAK WisBlock with screens)</h3>
+<p>Borrow:</p>
+<ul>
+<li><strong>Paged home screens</strong> on tiny OLEDs: one press cycles pages (nodes, messages, position, battery), each page with one job. Proven on 128x64.</li>
+<li><strong>Message-first design</strong>: unread count, a single-line preview, and &quot;reply&quot; from the message itself.</li>
+<li><strong>Canned messages</strong> selectable with an encoder or a single button. Directly useful for <abbr class="gl" tabindex="0" title="Text message service: Motorola&#x27;s text message format on DMR. The standard&#x27;s own short data uses other formats." data-more="../user/22-glossary.html#t-tms">TMS</abbr> on radios without a full keyboard.</li>
+<li><strong>Node list with distance and bearing</strong> from GPS: a model for last heard with position.</li>
+</ul>
+<p>Avoid:</p>
+<ul>
+<li><strong>Hidden single-button gestures</strong> (triple press = GPS toggle, long press = shutdown on some boards). Users discover them by accident. We avoid triple presses and anything a pocket can do.</li>
+<li><strong>Settings only reachable from the phone app</strong> on some boards. Every setting a user needs in the field should be on the radio.</li>
+</ul>
+<h2 id="4-garmin-handhelds-gpsmap-etrex-inreach">4. Garmin handhelds (GPSMAP, eTrex, inReach)</h2>
+<p>Borrow:</p>
+<ul>
+<li><strong>Page/back model</strong>: a fixed ring of main pages (map, compass, trip computer, main menu) navigated with one key, with &quot;Quit&quot;/Back always going up one level.</li>
+<li><strong>Customizable data fields</strong> on the main pages. On our 240x320 home, the user could pick which secondary fields appear (GPS, battery volts, <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> timer).</li>
+<li><strong>Glove-friendly physical keys</strong> with a large tactile difference between the &quot;enter&quot; key and the others.</li>
+<li><strong>inReach: canned messages and a &quot;preset&quot; message</strong> that can be sent in two presses.</li>
+</ul>
+<p>Avoid: <strong>long, nested setup menus</strong> (Setup &gt; System &gt; ...) organized by internal subsystem rather than by what the user wants.</p>
+<h2 id="5-phone-patterns">5. Phone patterns</h2>
+<p>Borrow:</p>
+<ul>
+<li><strong>Quick settings</strong>: a single gesture shows the five to nine most toggled settings as tiles with their current state. Our QUICK action.</li>
+<li><strong>Universal search</strong>: type anything (contact, app, setting) from the home screen. Old feature phones did this with T9 too: typing on the home screen dialed digits and simultaneously matched contact names. Our &quot;type to find&quot;.</li>
+<li><strong>One back stack</strong>: Back always means &quot;where I was&quot;, Home always means &quot;start&quot;. Feature phones (Nokia Series 40) used a left soft key = select, right soft key = back, and the center/OK key for the main action on every screen. People learned it once.</li>
+<li><strong>Notifications that don't steal focus</strong>: a banner appears, the current task continues, and the notification waits in a list.</li>
+<li><strong>Settings search and settings grouped by intent</strong> (&quot;Sound &amp; vibration&quot;, &quot;Display&quot;, &quot;Battery&quot;, &quot;Connections&quot;, &quot;Privacy&quot;) rather than by hardware module.</li>
+<li><strong>Undo instead of confirm</strong> for reversible actions (&quot;Message deleted. Undo&quot;).</li>
+<li><strong>Accessibility built in</strong>: screen readers announce the focused item; large text and high contrast are system settings, not app settings.</li>
+</ul>
+<p>Avoid:</p>
+<ul>
+<li><strong>Gestures with no visual affordance</strong>, and <strong>hamburger menus that hide primary actions</strong>. A radio has no touch screen anyway, but the same applies to hidden long-presses.</li>
+</ul>
+<h2 id="6-automotive-and-aviation-hmi-guidance">6. Automotive and aviation HMI guidance</h2>
+<ul>
+<li><strong>NHTSA Visual-Manual Driver Distraction Guidelines (2013, Phase 2 for portable devices 2016)</strong>: no single glance away from the road of 2 s or more, total eyes-off-road time of 12 s or less per task, about six inputs per task. Some functions (manual text entry, scrolling text) are locked out while driving. For the MD-9600 mobile and for any radio used while walking or driving, task budgets in <code>task-flows.md</code> use these numbers: every common task completes in six or fewer presses, and every screen can be read in one glance under 2 s.</li>
+<li><strong>Aviation (FAA AC 25.1302 / human factors for avionics, Garmin G1000 style)</strong>: consistent knob behavior (outer knob coarse, inner fine), a &quot;direct-to&quot; key that does the most common navigation task in one press, a fixed location for each kind of information, color reserved for meaning (red = warning, amber = caution, green = active/safe), and checklists that can't be left in an ambiguous state.</li>
+<li><strong>Gloves and vibration</strong>: physical keys over touch, no double-press timing requirements, minimum target separation, auditory confirmation, and hold-to-activate for anything with consequences.</li>
+</ul>
+<p>Borrow for us: glance budgets, color only for meaning (<abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> red, <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> green, warnings amber, never the only cue), fixed screen regions, coarse/fine knob semantics on encoders, hold-to-activate for emergency.</p>
+<h2 id="7-summary-of-the-most-common-dmr-usability-complaints">7. Summary of the most common DMR usability complaints</h2>
+<ol>
+<li>Can't hear or reply to a <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr> that isn't programmed (no promiscuous, no reply-to-heard, <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">TS</abbr>/CC fixed per channel).</li>
+<li>Screen shows an ID number, not a name; no alias display.</li>
+<li>Steep learning curve and manuals that list controls instead of tasks.</li>
+<li>Fear that a field change will damage the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>.</li>
+<li>Many presses to change power, TG or timeslot; settings buried in long flat menus.</li>
+<li>Errors with no guidance (&quot;Out of range&quot;, &quot;Invalid&quot;).</li>
+<li>Too many modes whose state isn't visible (A/B, sub channel, <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> vs channel, TG list vs contact list).</li>
+<li>No easy way back to the idle screen.</li>
+<li>Texting is painful (multi-tap only, no canned replies, inbox hard to find).</li>
+<li><abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">Hotspot</abbr> and data modes require a computer to switch.</li>
+</ol>
+<p>Every principle in <code>principles.md</code> exists to remove at least one of these.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li><a href="https://www.bridgecomsystems.com/blogs/bridgecom-tx-rx-blog/menu-guide-to-the-anytone-878-plus-by-hamradioconcepts">BridgeCom: Menu guide to the AnyTone 878 Plus</a></li>
+<li><a href="https://www.bridgecomsystems.com/blogs/bridgecom-official-blog/how-to-use-the-list-function-on-your-anytone-radio">BridgeCom: How to use the List function on your AnyTone radio</a></li>
+<li><a href="https://www.bridgecomsystems.com/blogs/bridgecom-tx-rx-blog/sevenfortyone-overviews-the-anytone-at-d878uv">BridgeCom: SevenFortyOne overviews the AnyTone AT-D878UV</a></li>
+<li><a href="https://www.bridgecomsystems.com/blogs/bridgecom-brag-board-testimonials/anytone-at-d878uv-plus-is-a-great-radio-review-by-phil-w">BridgeCom: AnyTone AT-D878UV PLUS review by Phil W</a></li>
+<li><a href="https://forums.radioreference.com/threads/dmr-basics.491080/">RadioReference: DMR basics thread</a></li>
+<li><a href="https://va3xpr.net/experimental-firmware-tyt-md-380/">VA3XPR: experimental firmware for the TYT MD-380</a></li>
+<li><a href="https://dmrhub.ru/tech/en/md380tools">dmrhub: md380tools overview</a></li>
+<li><a href="https://www.motorolasolutions.com:443/content/dam/msi/docs/products/mototrbo/portable-radios/user-guides/user_guide_sl_series.pdf">Motorola Solutions: SL series user guide</a></li>
+<li><a href="https://northgeorgiacommunications.com/wp-content/uploads/2022/05/xpr7550_xpr7580userguide.pdf">XPR 7550/7580 user guide</a></li>
+<li><a href="https://archive.fosdem.org/2024/events/attachments/fosdem-2024-2537-openrtx-an-open-source-firmware-for-ham-radio-devices/slides/22760/OpenRTX_ePTXH62.pdf">FOSDEM 2024: OpenRTX slides</a></li>
+<li><a href="https://hamradio.my/openrtx-open-source-firmware-powering-the-future-of-digital-radios/">hamradio.my: OpenRTX overview</a></li>
+<li><a href="https://swov.nl/en/publicatie/visual-manual-nhtsa-driver-distraction-guidelines-portable-and-aftermarket-devices">SWOV: Visual-manual NHTSA driver distraction guidelines for portable and aftermarket devices</a></li>
+<li><a href="https://nap.nationalacademies.org/read/26550/chapter/4">National Academies Press: NHTSA guidelines chapter</a></li>
+<li><a href="https://dashboardsymbols.com/2013/04/two-second-rule-distraction-guidelines-seek-to-limit-eyes-on-text/amp/">Dashboard Symbols: Two second rule</a></li>
+</ul>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/ux/survey.md">Ver el código fuente de esta página</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="En esta página">
+		<p class="eyebrow">En esta página</p>
+		<ul><li class="l2"><a href="#1-commercial-land-mobile-radios">1. Commercial land mobile radios</a></li><li class="l3"><a href="#motorola-mototrbo-xpr-70007000e-sl-series-and-apx">Motorola MOTOTRBO (XPR 7000/7000e, SL series) and APX</a></li><li class="l3"><a href="#kenwood-nx-series-nx-100030005000">Kenwood NX series (NX-1000/3000/5000)</a></li><li class="l3"><a href="#icom-ic-f-series-iplte-d-star-amateur-handhelds-like-id-52">Icom (IC-F series, IP/LTE, D-STAR amateur handhelds like ID-52)</a></li><li class="l3"><a href="#hytera-pdhp-series">Hytera (PD/HP series)</a></li><li class="l2"><a href="#2-amateur-dmr-radios">2. Amateur DMR radios</a></li><li class="l3"><a href="#anytone-at-d878uv--at-d578uv">Anytone AT-D878UV / AT-D578UV</a></li><li class="l3"><a href="#tyt-md-380--md-uv380-baofeng-dm-1701-retevis-rt3s--rt84-stock-firmware">TYT MD-380 / MD-UV380, Baofeng DM-1701, Retevis RT3S / RT84 (stock firmware)</a></li><li class="l3"><a href="#retevis--radioddity-budget-dmr-in-general">Retevis / Radioddity budget DMR in general</a></li><li class="l3"><a href="#yaesu-ft-5d-ftm-500-system-fusion">Yaesu (FT-5D, FTM-500, System Fusion)</a></li><li class="l2"><a href="#3-open-firmware-and-open-devices">3. Open firmware and open devices</a></li><li class="l3"><a href="#openrtx">OpenRTX</a></li><li class="l3"><a href="#meshtastic-devices-t-deck-t-echo-heltec-rak-wisblock-with-screens">Meshtastic devices (T-Deck, T-Echo, Heltec, RAK WisBlock with screens)</a></li><li class="l2"><a href="#4-garmin-handhelds-gpsmap-etrex-inreach">4. Garmin handhelds (GPSMAP, eTrex, inReach)</a></li><li class="l2"><a href="#5-phone-patterns">5. Phone patterns</a></li><li class="l2"><a href="#6-automotive-and-aviation-hmi-guidance">6. Automotive and aviation HMI guidance</a></li><li class="l2"><a href="#7-summary-of-the-most-common-dmr-usability-complaints">7. Summary of the most common DMR usability complaints</a></li><li class="l2"><a href="#sources">Sources</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

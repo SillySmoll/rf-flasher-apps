@@ -1,0 +1,867 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build configuration · RadioFoundry</title>
+<meta name="description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Build configuration · RadioFoundry">
+<meta property="og:description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:url" content="https://radiofoundry.org/docs/build-config.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="The radios RadioFoundry runs on, each showing a different screen.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/build-config.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/build-config.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/build-config.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/build-config.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/build-config.html">
+<link rel="icon" href="../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../" data-home="../" data-gl-more="More">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../index.html">
+			<img src="../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Main"><a href="../radios/index.html">Radios</a><a href="../features/index.html">Features</a><a href="../flash/index.html">Install</a><a href="../codeplug/index.html">Codeplug</a><a href="../docs/index.html" aria-current="page">Docs</a><a href="../screenshots/index.html">Screenshots</a><a href="../tools/index.html">Tools</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Language" title="Language">EN</summary><nav aria-label="Language"><a href="../docs/build-config.html" aria-current="true" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../es/docs/build-config.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../it/docs/build-config.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../zh/docs/build-config.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Switch light and dark" title="Switch light and dark">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Project">
+		<p class="eyebrow"><a href="../docs/index.html">Documentation</a> / Project</p>
+		<ul><li><a href="index.html">Documentation</a></li><li><a href="CLEANROOM.html">Clean-room rules</a></li><li><a href="build-config.html" aria-current="page">Build configuration</a></li><li><a href="feature-matrix.html">Feature matrix</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<h1 id="build-configuration">Build configuration</h1>
+<p>Features that cost flash, and values that differ per radio, are chosen at build time. Defaults live in
+<code>config/features.mk</code>. A platform changes them for every radio on it in <code>platform/&lt;p&gt;/config.mk</code>, a board changes them
+in <code>boards/&lt;board&gt;/config.mk</code>, and the make command line overrides all of them. The Makefile reads the board's file
+before the platform's: both use <code>?=</code>, which keeps the first value set, so the board wins over its platform:</p>
+<pre><code>make BOARD=&lt;id&gt;                          # the board's defaults
+make BOARD=&lt;id&gt; CONFIG_DMR=n             # FM only
+make BOARD=&lt;id&gt; CONFIG_VFO=n             # programmed channels only
+make BOARD=&lt;id&gt; CONFIG_DISPLAY_INSET=3   # smaller screen margins
+make BOARD=&lt;id&gt; BAND=vhf                 # a build option, on a board that has one: build/&lt;id&gt;-vhf
+</code></pre>
+<p>Each switch reaches C as <code>CONFIG_&lt;NAME&gt;</code> = 0 or 1, always defined: test it with <code>#if CONFIG_X</code>, never <code>#ifdef</code>.
+<code>core/config.h</code> holds the same defaults (all on) for host tests and checks the dependencies. Switches can also leave
+whole source directories out of the build (<code>Makefile</code>, <code>platform/*/platform.mk</code>). A sub-feature follows its parent
+unless it is set: <code>CONFIG_DMR=n</code> turns off every <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="user/22-glossary.html#t-dmr">DMR</abbr> feature, and asking for a sub-feature without its parent is an
+error. Changing a switch rebuilds everything (the build keeps the flags in <code>build/&lt;board&gt;/flags</code>, checked when make
+starts). <code>make BOARD=&lt;b&gt; print-config</code> lists the resolved switches.</p>
+<p>Every feature is on by default wherever the radio has what it needs. A board turns a feature off only for hardware
+it lacks, for board code not written yet, or when the image doesn't fit, and then the most obscure large features go
+first. Bench diagnostics such as <code>CONFIG_AUDIO_PROBE</code> stay off.</p>
+<p>A feature that needs a part only some radios have (a vibration motor, a GPS receiver, <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="dev/glossary.html#t-spi">SPI</abbr> <abbr class="gl" tabindex="0" title="The flash chip type that holds large data, such as the codeplug and contacts, in some radios." data-more="dev/glossary.html#t-nand">NAND</abbr>) is a hardware switch:
+<code>hardware = &quot;...&quot;</code> on its entry in <code>tests/hil/features.toml</code>. Each board then builds it, lists it in
+<code>BOARD_UNSUPPORTED</code> or <code>BOARD_NOT_WRITTEN</code>, or names it in <code>board.toml</code> <code>[hardware] unconfirmed</code>, and
+<code>tools/boards.py check</code> enforces that.
+The accelerometer is the next one: today its driver (<code>drivers/sensor/lis3dh</code>) only feeds a board's
+diagnostics page under <code>CONFIG_DIAG</code>, so it has no switch. The first feature that uses motion brings a hardware
+switch with it. A real-time clock driver is the same: none exists yet, and it arrives as <code>CONFIG_RTC</code>, a hardware
+switch (<a href="spec/radio-features.html">radio-features.md</a> 5.6).</p>
+<h3 id="unsupported-not-written-unconfirmed">Unsupported, not written, unconfirmed</h3>
+<p>A feature a radio's default image leaves out is in exactly one of these. ✕ is only for what no firmware can change,
+so the docs never understate what a radio can do.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Mark</th>
+<th>Meaning</th>
+<th>Where</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✕</td>
+<td>The hardware can't: a part is missing, or the chip or the board lacks something</td>
+<td><code>config.mk</code> <code>BOARD_UNSUPPORTED += X  # &lt;the reason&gt;</code></td>
+<td>GPS on a board without a receiver, <code>SFR</code> on a modem lacking the register the glue uses, <code>FONT_XL</code> on a 160 px panel</td>
+</tr>
+<tr>
+<td>…</td>
+<td>The hardware can, but this radio's driver or glue isn't written yet</td>
+<td><code>config.mk</code> <code>BOARD_NOT_WRITTEN += X  # &lt;what isn't written&gt;</code></td>
+<td><abbr class="gl" tabindex="0" title="Transmit." data-more="user/22-glossary.html#t-tx">TX</abbr> tones and <abbr class="gl" tabindex="0" title="Dual tone multi frequency: the touch tones a keypad sends, in the audio." data-more="user/22-glossary.html#t-dtmf">DTMF</abbr> on a board whose tone path isn't written, a broadcast receiver whose glue isn't written</td>
+</tr>
+<tr>
+<td>?</td>
+<td>Not known yet whether the radio has the part</td>
+<td><code>board.toml</code> <code>[hardware] unconfirmed</code></td>
+<td>a vibration motor no source confirms</td>
+</tr>
+<tr>
+<td>●</td>
+<td>Written, built, not yet checked on the radio</td>
+<td>no list: on by default. The bring-up records and <code>board.toml</code> <code>[status]</code> hold its test state</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Both <code>config.mk</code> lists take one switch a line with the reason in its comment (<code>tools/boards.py check</code> fails on one
+without a reason, or on a switch in both). Either one turns the switch off by default (the Makefile does it: no
+<code>CONFIG_X ?= n</code> needed), keeps it out of ci's maximal configuration, and satisfies a hardware switch's check. A platform's <code>config.mk</code> can
+list switches for all of its radios, and <code>config/features.mk</code> lists the ones a build rules out by itself: <code>FONT_BIG</code> on a
+panel under 220 px wide, the width taken from the <code>hardware.gallery</code> class in <code>board.toml</code>, so a new small-panel board
+needs no line for it. The feature matrix and the web site show the mark. Say &quot;untested&quot; in bring-up
+records and pull requests, never in <code>config.mk</code>.</p>
+<h2 id="variants">Variants</h2>
+<p>A variant is a named preset of switches for the prebuilt release images and the web flasher's build picker
+(<a href="dev/website.html">website.md</a>): <code>config/variants/&lt;name&gt;.mk</code>, read after the board's <code>board.mk</code> and before its
+<code>config.mk</code>, so it wins over the board's defaults and the command line wins over it. A variant only turns switches
+off (<code>CONFIG_X ?= n</code>); the board's own limits still apply. Without <code>VARIANT</code> the build is the full default.</p>
+<pre><code>make BOARD=&lt;id&gt; VARIANT=amateur          # build/&lt;id&gt;-amateur/
+make BOARD=&lt;id&gt; VARIANT=commercial       # build/&lt;id&gt;-commercial/
+</code></pre>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Variant</th>
+<th>Leaves out</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(none: full)</td>
+<td>nothing</td>
+</tr>
+<tr>
+<td><code>amateur</code></td>
+<td><abbr class="gl" tabindex="0" title="A fixed voice scrambling from Motorola and Anytone radios. Not encryption." data-more="user/22-glossary.html#t-basic-privacy">basic privacy</abbr>, Motorola <abbr class="gl" tabindex="0" title="Text message service: Motorola&#x27;s text message format on DMR. The standard&#x27;s own short data uses other formats." data-more="user/22-glossary.html#t-tms">TMS</abbr>, <abbr class="gl" tabindex="0" title="Automatic Registration Service: a radio tells a presence server it is on the air." data-more="user/22-glossary.html#t-ars">ARS</abbr>, <abbr class="gl" tabindex="0" title="Location Request and Response Protocol: a dispatcher asks a radio for its position. Motorola&#x27;s position format; the standard has LIP." data-more="user/22-glossary.html#t-lrrp">LRRP</abbr>, <abbr class="gl" tabindex="0" title="A radio a dispatch program on a computer uses to reach the fleet over the air." data-more="user/22-glossary.html#t-control-station">control station</abbr> mode, <abbr class="gl" tabindex="0" title="Simple Network Management Protocol: reading a device&#x27;s state over the network." data-more="spec/snmp.html">SNMP</abbr></td>
+</tr>
+<tr>
+<td><code>commercial</code></td>
+<td>the <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="spec/mmdvm-protocol.html">MMDVM</abbr> <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="user/14-hotspot.html">hotspot</abbr> (and <abbr class="gl" tabindex="0" title="Transmitting on one frequency and receiving on another at the same time. Repeaters do, and so does the duplex hotspot setup." data-more="spec/split-duplex.html">split duplex</abbr>), <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="user/13-aprs.html">APRS</abbr> (and <abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="user/22-glossary.html#t-kiss">KISS</abbr>, APRS-IS)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Each variant file starts with <code>## title:</code> and <code>## summary:</code> lines, and the comment above each switch says why it is
+left out; the site shows both. The lists are a draft for the project lead to settle.</p>
+<p>The firmware version (<code>RFOUNDRY_GIT</code>) is the commit plus <code>-dirty</code> when the tree differs from it (tracked changes, or
+untracked sources in the built directories). The release name (<code>RFOUNDRY_RELEASE</code>, for example <code>v26.11</code>) is the
+release tag on that commit, empty for a dirty tree or an untagged commit; <code>make RELEASE=&lt;tag&gt;</code> sets it and <code>RELEASE=</code>
+leaves it out (<a href="dev/release.html#release-names">dev/release.md</a>). Only the few files that use either are rebuilt when it
+changes.</p>
+<h2 id="switches">Switches</h2>
+<p>What each switch costs in flash, and where it's on by default: <a href="feature-matrix.html">feature-matrix.md</a>. <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="dev/glossary.html#t-ram">RAM</abbr> figures
+below are for an <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="dev/glossary.html#t-stm32">STM32F4</abbr> radio.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Switch</th>
+<th>Default</th>
+<th>What it covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CONFIG_FM</code></td>
+<td>y</td>
+<td>analog FM <abbr class="gl" tabindex="0" title="Receive." data-more="user/22-glossary.html#t-rx">receive</abbr> and <abbr class="gl" tabindex="0" title="Transmit." data-more="user/22-glossary.html#t-tx">transmit</abbr></td>
+</tr>
+<tr>
+<td><code>CONFIG_SUBTONE</code></td>
+<td>= FM</td>
+<td><abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="user/22-glossary.html#t-ctcss">CTCSS</abbr> / <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="user/22-glossary.html#t-dcs">DCS</abbr> encode and decode (in software from the <abbr class="gl" tabindex="0" title="Analog to digital converter." data-more="dev/glossary.html#t-adc">ADC</abbr> and <abbr class="gl" tabindex="0" title="Pulse width modulation: a pin switched on and off to give an average level, as for backlight or tone." data-more="dev/glossary.html#t-pwm">PWM</abbr> on a board without a tone chip)</td>
+</tr>
+<tr>
+<td><code>CONFIG_FM_TX_TONES</code></td>
+<td>= FM (n where the tone path isn't written)</td>
+<td>roger beep and 1750 Hz burst sent over the air (<code>docs/spec/radio-features.md</code> 3)</td>
+</tr>
+<tr>
+<td><code>CONFIG_DTMF</code></td>
+<td>= FM (n where the tone path isn't written)</td>
+<td><abbr class="gl" tabindex="0" title="Dual tone multi frequency: the touch tones a keypad sends, in the audio." data-more="user/22-glossary.html#t-dtmf">DTMF</abbr> digits sent from the keys while PTT is held on FM (<code>docs/spec/radio-features.md</code> 3.7)</td>
+</tr>
+<tr>
+<td><code>CONFIG_VOX</code></td>
+<td>= FM (n where the mic level hook isn't written)</td>
+<td>voice-operated transmit on FM, from the microphone level (<code>hal_power_t.mic_level</code>; <code>docs/spec/radio-features.md</code> 3.4)</td>
+</tr>
+<tr>
+<td><code>CONFIG_BATTERY_SAVE</code></td>
+<td>= FM</td>
+<td>receiver duty cycling on an idle FM channel (<code>docs/spec/radio-features.md</code> 5.4)</td>
+</tr>
+<tr>
+<td><code>CONFIG_VIBRATE</code></td>
+<td>n (radios with a vibration motor: y)</td>
+<td>vibration alerts on the board's motor (<code>hal_power_t.vibrate</code>) for messages, <abbr class="gl" tabindex="0" title="A DMR page that makes another radio ring." data-more="user/22-glossary.html#t-call-alert">call alerts</abbr>, <abbr class="gl" tabindex="0" title="A DMR call to one radio." data-more="user/22-glossary.html#t-private-call">private calls</abbr> and emergencies, and Settings &gt; Sound &gt; Vibrate (<code>docs/spec/radio-features.md</code> 4.1). No radio on main has a motor yet; a board without one shows the row dimmed</td>
+</tr>
+<tr>
+<td><code>CONFIG_GPS</code></td>
+<td>y (radios without a GPS receiver: n)</td>
+<td>the GPS receiver: the board's module driver and its <abbr class="gl" tabindex="0" title="The text format GPS receivers use to report position and time." data-more="user/22-glossary.html#t-nmea">NMEA</abbr> input (<code>drivers/gps</code>, <code>platform/*/gps*</code>, <code>CAP_GPS</code>). Off, the radio has no GPS; <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="user/22-glossary.html#t-dmr">DMR</abbr> GPS Info, <abbr class="gl" tabindex="0" title="Location Request and Response Protocol: a dispatcher asks a radio for its position. Motorola&#x27;s position format; the standard has LIP." data-more="user/22-glossary.html#t-lrrp">LRRP</abbr> and <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="user/13-aprs.html">APRS</abbr> send the fixed position when one is set (<code>docs/spec/position.md</code>)</td>
+</tr>
+<tr>
+<td><code>CONFIG_APRS</code></td>
+<td>= FM</td>
+<td>APRS (<code>core/aprs</code>, <code>docs/spec/aprs.md</code>): the engine: our position sent by the beacon triggers, its settings and its page. It needs at least one of the two backends below. Transmit stays off until the user turns it on. About 2.8 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="dev/glossary.html#t-kb">KB</abbr> RAM with both</td>
+</tr>
+<tr>
+<td><code>CONFIG_APRS_AFSK</code></td>
+<td>= APRS and FM</td>
+<td>APRS on FM: position, status and message packets as AX.25 / Bell 202 <abbr class="gl" tabindex="0" title="Audio frequency shift keying: data as two audio tones on an FM carrier. APRS at 1200 baud uses it." data-more="dev/glossary.html#t-afsk">AFSK</abbr> through <code>board.afsk</code>, a <abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="user/22-glossary.html#t-kiss">KISS</abbr> <abbr class="gl" tabindex="0" title="Terminal node controller: the modem that turns packet data into audio tones and back." data-more="dev/glossary.html#t-tnc">TNC</abbr> on the host port. Off, APRS goes over DMR only and nothing of AX.25 is built</td>
+</tr>
+<tr>
+<td><code>CONFIG_APRS_DMR</code></td>
+<td>= APRS and DMR</td>
+<td>APRS over DMR: positions as LRRP or <abbr class="gl" tabindex="0" title="Unified data transport: DMR short data sent as a plain block of bytes." data-more="dev/glossary.html#t-udt">UDT</abbr> reports to a gateway ID. It builds the DMR data core. Off, APRS is FM only</td>
+</tr>
+<tr>
+<td><code>CONFIG_APRS_RX</code></td>
+<td>= APRS_AFSK (n where no receive audio is written)</td>
+<td>APRS receive: the AFSK demodulator on the board's received audio, station list, messages to us with acks, the digipeater. Useful only where the board can sample received audio: its own AFSK receive path, or FM receive audio on the <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="dev/glossary.html#t-pcm">PCM</abbr> stream (<code>docs/spec/aprs.md</code> 5.3). About 6 KB RAM more</td>
+</tr>
+<tr>
+<td><code>CONFIG_GPS_SKY</code></td>
+<td>= GPS</td>
+<td>the GPS screen under Tools &gt; Position: satellites on a sky plot and signal bars, fix quality, grid locator (<code>core/position/nmea_sky.c</code>, <code>core/ui/ui_gps.c</code>; <code>docs/spec/ui.md</code> 2.3). Off, that page is text</td>
+</tr>
+<tr>
+<td><code>CONFIG_APRS_IGATE</code></td>
+<td>= APRS_RX and HOSTLINK (n where flash is short)</td>
+<td>the <abbr class="gl" tabindex="0" title="A station that passes APRS packets between the air and the APRS-IS internet network." data-more="user/22-glossary.html#t-igate">iGate</abbr> rules, <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="user/22-glossary.html#t-rf">RF</abbr> to APRS-IS and messages back, with the host helper <code>tools/aprs_gate.py</code> holding the APRS-IS connection</td>
+</tr>
+<tr>
+<td><code>CONFIG_DMR</code></td>
+<td>y</td>
+<td>DMR voice: modem driver, call stack, <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="dev/codec.html">AMBE</abbr> <abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="dev/glossary.html#t-fec">FEC</abbr>, vocoder hosting, PCM audio</td>
+</tr>
+<tr>
+<td><code>CONFIG_DMR_PRIVACY</code></td>
+<td>= DMR</td>
+<td><abbr class="gl" tabindex="0" title="A fixed voice scrambling from Motorola and Anytone radios. Not encryption." data-more="user/22-glossary.html#t-basic-privacy">basic privacy</abbr> (Motorola / Anytone BP) on the voice path, <code>core/dmr/dmrPrivacy.c</code> (<code>docs/spec/dmr-voice.md</code> 5)</td>
+</tr>
+<tr>
+<td><code>CONFIG_DMR_TALKER_ALIAS</code></td>
+<td>= DMR</td>
+<td><abbr class="gl" tabindex="0" title="A short text, usually a callsign and name, sent along with DMR voice." data-more="user/22-glossary.html#t-talker-alias">talker alias</abbr> decode and our own alias TX (<code>docs/spec/dmr-voice.md</code> 3)</td>
+</tr>
+<tr>
+<td><code>CONFIG_DMR_GPS</code></td>
+<td>= DMR</td>
+<td><abbr class="gl" tabindex="0" title="European Telecommunications Standards Institute, which publishes the DMR standard." data-more="dev/glossary.html#t-etsi">ETSI</abbr> GPS Info in the <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="dev/glossary.html#t-lc">embedded LC</abbr> (<abbr class="gl" tabindex="0" title="Full link control opcode: the field of a link control message that says its kind." data-more="dev/glossary.html#t-flco">FLCO</abbr> 8): the caller's position on the receive screen (with distance and bearing when ours is known), in Recent and on the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="dev/debug-link.html">debug link</abbr>; ours sent in the alias superframes when Settings &gt; Location &gt; Send in DMR calls is on and there is a position (GPS, host, fixed: <code>docs/spec/position.md</code>; no APRS needed; <code>docs/spec/dmr-voice.md</code>)</td>
+</tr>
+<tr>
+<td><code>CONFIG_DMR_SMS</code></td>
+<td>= DMR</td>
+<td>text messages: ETSI IP text (the default format) and ETSI defined short data, received (inbox, ETSI response) and sent (docs/spec/dmr-data.md 5)</td>
+</tr>
+<tr>
+<td><code>CONFIG_DMR_TMS</code></td>
+<td>= DMR_SMS</td>
+<td>Motorola <abbr class="gl" tabindex="0" title="Text message service: Motorola&#x27;s text message format on DMR. The standard&#x27;s own short data uses other formats." data-more="user/22-glossary.html#t-tms">TMS</abbr> format support for text messages: TMS receive (inbox, the TMS <abbr class="gl" tabindex="0" title="Acknowledgment: the reply that says a message arrived." data-more="dev/glossary.html#t-ack">ACK</abbr>) and send with retries, the Motorola entry of the format setting. Off: a TMS heard is neither kept nor acknowledged (<abbr class="gl" tabindex="0" title="DMR packet data the receiving radio acknowledges. What didn&#x27;t arrive is sent again." data-more="user/22-glossary.html#t-confirmed-data">confirmed data</abbr> still gets its ETSI response; the IP gateway still forwards it) and a stored TMS default sends ETSI IP text (docs/spec/dmr-data.md 5.1)</td>
+</tr>
+<tr>
+<td><code>CONFIG_DMR_ARS</code></td>
+<td>= DMR</td>
+<td><abbr class="gl" tabindex="0" title="Automatic Registration Service: a radio tells a presence server it is on the air." data-more="user/22-glossary.html#t-ars">ARS</abbr> registration with a presence server, at power-up and channel change, refreshed (off until a server ID is set)</td>
+</tr>
+<tr>
+<td><code>CONFIG_DMR_LRRP</code></td>
+<td>= DMR</td>
+<td>LRRP location answers (a radio without GPS answers &quot;no fix&quot;); builds core/dmr/dmrLrrp.c into the image</td>
+</tr>
+<tr>
+<td><code>CONFIG_DMR_SIGNALING</code></td>
+<td>= DMR</td>
+<td><abbr class="gl" tabindex="0" title="Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control." data-more="spec/dmr-data.html">CSBK</abbr> signaling: call alert and <abbr class="gl" tabindex="0" title="A DMR request another radio answers automatically, to show it is on and in range." data-more="user/22-glossary.html#t-radio-check">radio check</abbr>, answered and sent</td>
+</tr>
+<tr>
+<td><code>CONFIG_DMR_EMERGENCY</code></td>
+<td>= DMR</td>
+<td>DMR emergency: the alarm CSBK, the emergency call with hot mic, the alert heard (<code>spec/dmr-emergency.md</code>)</td>
+</tr>
+<tr>
+<td><code>CONFIG_DMR_ROAMING</code></td>
+<td>= DMR</td>
+<td>DMR repeater roaming: per-zone roaming between repeater sites with the same <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="user/22-glossary.html#t-talkgroup">talkgroup</abbr>, chosen by <abbr class="gl" tabindex="0" title="Base station: the repeater or modem side of a DMR link, as opposed to the radio (MS)." data-more="dev/glossary.html#t-bs">base station</abbr> sync with our <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="user/22-glossary.html#t-color-code">color code</abbr> and signal, passive (an optional wake probe sends a standard <abbr class="gl" tabindex="0" title="The CSBK that tells a repeater to start transmitting. It wakes a repeater." data-more="dev/glossary.html#t-bs-dwn-act">BS_Dwn_Act</abbr>); Tools &gt; Roaming, the Home chip (<code>docs/spec/dmr-roaming.md</code>). About 1 KB RAM</td>
+</tr>
+<tr>
+<td><code>CONFIG_DMR_TRUNK</code></td>
+<td>= DMR</td>
+<td>DMR Tier III trunking, the <abbr class="gl" tabindex="0" title="Mobile station: the radio, as opposed to the base station (BS)." data-more="dev/glossary.html#t-ms">mobile station</abbr> side (<code>docs/spec/dmr-trunking.md</code>): trunked systems and channels from the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="dev/cps-and-codeplug.html">codeplug</abbr>, the control channel receiver, calls followed to their payload channels. Off: a trunked channel is parked (<code>docs/spec/channel-modes.md</code> 6)</td>
+</tr>
+<tr>
+<td><code>CONFIG_DMR_TRUNK_TX</code></td>
+<td>= DMR_TRUNK</td>
+<td>Tier III access: registration, call requests, answers to the control channel and ending a call (<code>dmr-trunking.md</code>). Off: trunking only listens</td>
+</tr>
+<tr>
+<td><code>CONFIG_DMR_TRUNK_GW</code></td>
+<td>= DMR_TRUNK_TX</td>
+<td>Tier III calls through the <abbr class="gl" tabindex="0" title="Public switched telephone network. Tier III can connect calls to it." data-more="dev/glossary.html#t-pstn">PSTN</abbr>, <abbr class="gl" tabindex="0" title="Private automatic branch exchange: an office telephone system. Tier III can connect calls to it." data-more="dev/glossary.html#t-pabx">PABX</abbr>, line and dispatcher gateways: the dialed digits go up with a voice, short data or packet data request, and the caller's number a gateway sends is kept (<code>dmr-trunking.md</code> 7.6). Off: a call to one of them is refused, and a caller's number is dropped</td>
+</tr>
+<tr>
+<td><code>CONFIG_DMR_TRUNK_SUPL</code></td>
+<td>= DMR_TRUNK_TX</td>
+<td>Tier III supplementary user data: data offered with a call request, and the last heard from the system, staged and read over the debug link (<code>dmr-trunking.md</code> 7.6). About 300 B RAM. Off: none is offered, and what the system sends is dropped unanswered</td>
+</tr>
+<tr>
+<td><code>CONFIG_VOICE_CAPTURE</code></td>
+<td>n</td>
+<td>Voice capture for receive tests: the next 32 voice frames received, raw as on air, read over the debug link (RADIO op 41, the <code>voice_cap</code> view; <a href="spec/debuglink.html">debuglink.md</a>). About 330 B RAM. Needs DMR</td>
+</tr>
+<tr>
+<td><code>CONFIG_DMR_IP_GATEWAY</code></td>
+<td>= DMR and (USB_NETWORK or NET_PPP)</td>
+<td>IP over DMR packet data through a network link to the host, the USB network adapter or <abbr class="gl" tabindex="0" title="Point-to-point protocol: IP over a serial link." data-more="spec/ppp.html">PPP</abbr> on the serial host port, carried by the data service (<code>docs/spec/usb-network.md</code>, <code>docs/spec/ppp.md</code>). Needs one of the two links</td>
+</tr>
+<tr>
+<td><code>CONFIG_ZONE_SHARE</code></td>
+<td>= DMR</td>
+<td>zone and channel sharing over DMR data: send a zone or one channel to a contact or talkgroup, and a received one offered for import as receive-only channels (<abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="dev/glossary.html#t-udp">UDP</abbr> port 4100, <code>docs/spec/zone-share.md</code>). Received shares are offered by default (Settings &gt; Connections &gt; Accept zone shares) and imported only when the user says so. About 12 KB flash and 4 KB RAM, with its screens and the import (one board's build, measured on and off); it also builds the TX queue</td>
+</tr>
+<tr>
+<td><code>CONFIG_DMR_UDP_COMPRESS</code></td>
+<td>= DMR</td>
+<td>compressed UDP/IPv4 headers (<abbr class="gl" tabindex="0" title="Service access point: the field in a DMR data header that says what the payload is (IP, short data, GPS and so on)." data-more="dev/glossary.html#t-sap">SAP</abbr> 3, <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="user/22-glossary.html#t-timeslot">TS</abbr> 102 361-3 5.6) on transmit: UDP packets go with a 5-9 octet header instead of 28 where the setting allows (default: ports outside 4000-4099; <code>docs/spec/dmr-data.md</code> 11)</td>
+</tr>
+<tr>
+<td><code>CONFIG_NET_TCP</code></td>
+<td>= DMR_IP_GATEWAY</td>
+<td>a minimal <abbr class="gl" tabindex="0" title="Transmission Control Protocol: IP connections with ordered, guaranteed delivery." data-more="dev/glossary.html#t-tcp">TCP</abbr> for the radio's own services on the USB network link, never over RF (<code>core/net</code>, <code>docs/spec/tcp-services.md</code>). About 4.6 KB RAM (4 connections)</td>
+</tr>
+<tr>
+<td><code>CONFIG_NET_KISS</code></td>
+<td>= NET_TCP and APRS</td>
+<td>KISS over TCP on port 8001 for APRS programs, bridged to the APRS KISS TNC (<code>docs/spec/tcp-services.md</code> 4). About 0.8 KB RAM</td>
+</tr>
+<tr>
+<td><code>CONFIG_NET_HTTP</code></td>
+<td>= NET_TCP</td>
+<td>the HTTP status server on port 80: a page, the status and the debug link's view sections as JSON, the screen as a BMP (<code>docs/spec/tcp-services.md</code> 5). About 3.2 KB RAM</td>
+</tr>
+<tr>
+<td><code>CONFIG_NET_HTTP_GZIP</code></td>
+<td>= NET_HTTP</td>
+<td>the status server's static files (<code>core/net/http_assets/</code>) stored gzip compressed at build time and served with <code>Content-Encoding: gzip</code> (<code>tools/gen_http_assets.py</code>, <code>docs/spec/tcp-services.md</code> 5); off: stored and served as they are, about 19 KB more flash with <code>CONFIG_NET_WEBCTL</code></td>
+</tr>
+<tr>
+<td><code>CONFIG_NET_WEBCTL</code></td>
+<td>= NET_HTTP</td>
+<td>web control on the status server: <code>/ws</code> (WebSocket, RFC 6455) for the radio's front panel page, keys, status and receive audio (<code>docs/spec/tcp-services.md</code> 5.1). About 12 KB flash with the page, 1 KB RAM</td>
+</tr>
+<tr>
+<td><code>CONFIG_NET_RIGCTL</code></td>
+<td>= NET_TCP</td>
+<td>Hamlib <abbr class="gl" tabindex="0" title="Hamlib&#x27;s network rig control protocol, used by loggers and SDR programs." data-more="user/22-glossary.html#t-rigctld">rigctld</abbr> on port 4532: frequency, mode, PTT (from the host only, rate limited), S meter for loggers and <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="dev/glossary.html#t-sdr">SDR</abbr> programs (<code>docs/spec/tcp-services.md</code> 6). About 0.8 KB RAM</td>
+</tr>
+<tr>
+<td><code>CONFIG_NET_USRP</code></td>
+<td>= DMR_IP_GATEWAY</td>
+<td><abbr class="gl" tabindex="0" title="The UDP stream that carries a call&#x27;s audio between RadioFoundry and a network gateway." data-more="dev/glossary.html#t-usrp">USRP</abbr> voice over UDP on port 34001: the receiver's audio to AllStarLink / DVSwitch / a bridge with the squelch as keyup, the peer's keyup frames transmitted (FM through the board's audio tap, DMR through the encoder; <code>docs/spec/usb-audio.md</code> 9.1). About 5.6 KB RAM</td>
+</tr>
+<tr>
+<td><code>CONFIG_NET_APRSIS</code></td>
+<td>= NET_TCP and APRS</td>
+<td>the radio's own APRS-IS client out through the host (NAT on the host): our beacons and the iGate's lines, off until a server address is set (<code>docs/spec/tcp-services.md</code> 7). About 0.2 KB RAM</td>
+</tr>
+<tr>
+<td><code>CONFIG_MDNS</code></td>
+<td>= DMR_IP_GATEWAY</td>
+<td><abbr class="gl" tabindex="0" title="Multicast DNS: finding a device on a local network by a `.local` name." data-more="spec/mdns.html">mDNS</abbr> / DNS-SD responder on the USB network link: the radio answers for <code>rfoundry-&lt;DMR ID&gt;.local</code> and advertises its debug link, <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="spec/mmdvm-protocol.html">MMDVM</abbr> modem and <abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="spec/tftp.html">TFTP</abbr> server (<code>docs/spec/mdns.md</code>). About 0.4 KB RAM</td>
+</tr>
+<tr>
+<td><code>CONFIG_TFTP</code></td>
+<td>= DMR_IP_GATEWAY</td>
+<td>TFTP server on the USB network link: <code>codeplug.bin</code> read and written (staged in <code>hal_flash_map_t.staging_*</code>, checked, then committed through the journal), <code>info.txt</code> (<code>docs/spec/tftp.md</code>). About 0.1 KB RAM</td>
+</tr>
+<tr>
+<td><code>CONFIG_TFTP_IDDB</code></td>
+<td>= TFTP</td>
+<td>the <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="user/22-glossary.html#t-dmr-id">DMR ID</abbr> database over TFTP: <code>iddb.bin</code> read and written in place (header erased first, programmed last), and the database part of a combined <code>codeplug.bin</code> (<code>docs/spec/tftp.md</code> 5). About 2.2 KB of flash</td>
+</tr>
+<tr>
+<td><code>CONFIG_IDDB_COMPACT</code></td>
+<td>= DMR</td>
+<td>the compact DMR ID database (format C, <code>docs/spec/iddb-compact.md</code>) read beside format N, listed as <code>IDDB_COMPACT</code> in the debug link features so the editor writes it only to radios that read it</td>
+</tr>
+<tr>
+<td><code>CONFIG_DMR_CONTROL_STATION</code></td>
+<td>= DMR_IP_GATEWAY</td>
+<td><abbr class="gl" tabindex="0" title="A radio a dispatch program on a computer uses to reach the fleet over the air." data-more="user/22-glossary.html#t-control-station">control station</abbr> mode for PC dispatch software: passthrough (the PC is the endpoint of the radio's own IP data while the link is up; the link layer stays on the radio) and the fixed link pair 192.168.10.1 / .2 instead of the address by DMR ID (<code>docs/spec/usb-network.md</code> 5). The power-on network setting belongs to <code>CONFIG_USB_NETWORK</code></td>
+</tr>
+<tr>
+<td><code>CONFIG_SNMP</code></td>
+<td>= DMR_IP_GATEWAY</td>
+<td>the SNMPv2c agent on UDP 161 over the USB network and over the air, the RadioFoundry MIB, notifications to the host and an RF manager (<code>core/snmp</code>, <code>docs/spec/snmp.md</code>). Management over the air read-only and RF notifications off by default. About 3.2 KB RAM</td>
+</tr>
+<tr>
+<td><code>CONFIG_P25</code></td>
+<td>= DMR</td>
+<td>P25 Phase 1 conventional voice (<code>docs/spec/p25.md</code>), the one switch for all of it: the air interface (symbols with time stamps between a board's modem hardware and the core, the framer, the soft modem, the shared FEC; <code>docs/spec/air-interface.md</code>), the engine and the P25 channel mode in the radio core, which runs it in memory the DMR vocoder lends where the platform has it, the full-rate voice decoder and encoder in integers on the MBE core (<code>core/mbe</code>), and the codec of P25 channels in the codeplug (<code>core/p25/p25_codeplug.c</code>, <code>docs/spec/p25-codeplug.md</code>). Needs <code>DMR</code> (talk groups are the codeplug's contacts) and a board with <code>board_t.air</code> to run: a board without one lists it in <code>BOARD_NOT_WRITTEN</code></td>
+</tr>
+<tr>
+<td><code>CONFIG_P25_TRUNK</code></td>
+<td>= P25</td>
+<td>P25 trunked: the codec of its systems and channels (<code>docs/spec/p25-codeplug.md</code> 3), the control channel's signaling decoded, its control channel hunted and held, voice channel grants for the chosen talk groups followed, and where the system allows transmit: registration, affiliation, voice requests and transmit on the granted channel (<code>docs/spec/p25-trunking.md</code>). The radio core runs it on a trunked channel. Host tested, and run on a radio against a control channel the SDR bench plays, not on a live system. Needs P25</td>
+</tr>
+<tr>
+<td><code>CONFIG_NXDN</code></td>
+<td>= DMR</td>
+<td>NXDN conventional voice at 4800 and 9600 bit/s (<code>docs/spec/nxdn.md</code>): the frame codec, receive, the call layer and its engine, and the air interface under them. The radio core's NXDN mode (the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="user/22-glossary.html#t-vfo">VFO</abbr>'s mode tile, a temporary mode change, the debug link), RAM settings, the home screen; NXDN conventional channels in the codeplug (<code>docs/spec/nxdn-codeplug.md</code>); voice through the DMR side's vocoder path. Needs <code>DMR</code>. With P25 on and no lending vocoder it shares P25's engine memory</td>
+</tr>
+<tr>
+<td><code>CONFIG_AIR_RAW</code></td>
+<td>n</td>
+<td>diagnostics: debug link commands that open an air interface session and move raw symbols and tap samples, for bench tests (<code>docs/spec/debuglink.md</code>). Needs P25 or NXDN (an air-framed mode) and DEBUGLINK</td>
+</tr>
+<tr>
+<td><code>CONFIG_SFR</code></td>
+<td>= DMR (n where the modem can't)</td>
+<td>single frequency repeater: MMDVM <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="spec/sfr.html">SFR</abbr> (the <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="user/14-hotspot.html">hotspot</abbr>, duplex with RX = TX) and Standalone SFR (the repeater and user roles of a channel, <code>docs/spec/sfr.md</code>)</td>
+</tr>
+<tr>
+<td><code>CONFIG_SFR_CWID</code></td>
+<td>= SFR</td>
+<td>the standalone SFR repeater's periodic <abbr class="gl" tabindex="0" title="A station&#x27;s callsign sent in Morse code. A standalone SFR repeater channel sends one in FM every few minutes after traffic (Settings &gt; Talk &amp; listen &gt; SFR CW ID)." data-more="user/14-hotspot.html">CW ID</abbr>: the callsign from the radio name in Morse, in FM on the channel (<code>sfr.md</code> 4). Off: the setting isn't offered</td>
+</tr>
+<tr>
+<td><code>CONFIG_SFR_DUALPATH_RX</code></td>
+<td>= SFR</td>
+<td>the SFR user receive mode &quot;Dual-path RX&quot;: a voice frame whose FEC failed is taken from the other copy of the call. Off: the mode isn't offered</td>
+</tr>
+<tr>
+<td><code>CONFIG_AM_RX</code></td>
+<td>= <code>CONFIG_FM</code></td>
+<td>air band AM receive: an FM channel or the VFO in 108-137 MHz is received in AM on a board with <code>CAP_AM_RX</code> and <code>rx_am</code>, transmit there refused, the board's AM squelch value, 8.33 kHz steps (<code>docs/spec/airband-and-broadcast.md</code> 3); needs FM. Off on boards whose receiver has no AM (<code>BOARD_UNSUPPORTED</code>)</td>
+</tr>
+<tr>
+<td><code>CONFIG_BCAST_FM</code></td>
+<td>y</td>
+<td>broadcast FM receive: an FM channel or the VFO in the range of a second receiver chip (<code>hal_bcast.h</code>) plays on it, transmit there refused, the FM broadcast step setting (<code>core/radio/radio_bcast.c</code>, the board's tuner glue; <code>docs/spec/airband-and-broadcast.md</code> 4). Off on boards without one</td>
+</tr>
+<tr>
+<td><code>CONFIG_RX_EXT</code></td>
+<td>y (n on a radio whose chip documents give no range)</td>
+<td>receive past the band table: the board's receive-only range, switched on in Settings &gt; Advanced (<a href="spec/radio-features.html">radio-features.md</a> 6.2)</td>
+</tr>
+<tr>
+<td><code>CONFIG_USB</code></td>
+<td>y (n on a radio without a USB data connector)</td>
+<td>USB device (CDC serial)</td>
+</tr>
+<tr>
+<td><code>CONFIG_HOSTLINK</code></td>
+<td>= USB (y on a radio whose host port is a <abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="dev/glossary.html#t-uart">UART</abbr>)</td>
+<td>the host link (<code>core/hostlink</code>) on the board's host port: USB CDC, or the programming cable's UART on radios without USB</td>
+</tr>
+<tr>
+<td><code>CONFIG_USB_SERIAL_REQUEST</code></td>
+<td>= USB_NETWORK</td>
+<td>the two requests that take a radio in network mode back to the serial port at run time, for a web page: a vendor request on endpoint 0 and <code>GET /api/usb?mode=serial</code> on the HTTP server (<code>docs/spec/usb-network.md</code> 1). Off: the radio is switched on its screen or with debug link op 25</td>
+</tr>
+<tr>
+<td><code>CONFIG_USB_NETWORK</code></td>
+<td>= USB and HOSTLINK</td>
+<td>USB network adapter personality: <abbr class="gl" tabindex="0" title="Network control model: the USB class that makes the radio appear as a network adapter." data-more="dev/glossary.html#t-ncm">CDC-NCM</abbr>, switched with the serial one at run time (debug link op 25) or chosen at power-on by the stored setting (<code>docs/spec/usb-network.md</code> 1)</td>
+</tr>
+<tr>
+<td><code>CONFIG_NET_PPP</code></td>
+<td>n (= HOSTLINK and DMR on a radio whose only IP link is the cable; off with <code>CONFIG_DMR_IP_GATEWAY=n</code>)</td>
+<td>IPv4 over PPP on the serial host port into the IP gateway and its services (<code>core/net/ppp.c</code>, <code>core/hostlink/hostlink_ppp.c</code>, <code>docs/spec/ppp.md</code>): for radios whose only host link is a USB-serial cable, and a fallback on the USB serial port. The host link enters it on pppd's first <abbr class="gl" tabindex="0" title="A MOTOTRBO system of several Capacity Plus sites joined by a network." data-more="dev/glossary.html#t-linked-capacity-plus">LCP</abbr> frame or debug link radio op 28. Needs HOSTLINK and DMR_IP_GATEWAY, and turns the gateway (with its services) on by default. Which radios it was checked on: <a href="feature-matrix.html">feature-matrix.md</a>. About 3.9 KB flash and 90 B RAM on its own (it borrows the adapter's receive buffer); with the gateway about 10.7 KB flash and 4.1 KB RAM on an <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="dev/glossary.html#t-hr-c7000">HR_C7000</abbr> radio (<code>docs/spec/ppp.md</code> 7). On by default where it is the radio's only IP link (<a href="feature-matrix.html">feature-matrix.md</a>)</td>
+</tr>
+<tr>
+<td><code>CONFIG_HOTSPOT</code></td>
+<td>= DMR and HOSTLINK</td>
+<td>MMDVM modem / hotspot over the host port</td>
+</tr>
+<tr>
+<td><code>CONFIG_HOTSPOT_SPLIT</code></td>
+<td>= HOTSPOT (n where the glue isn't written)</td>
+<td><abbr class="gl" tabindex="0" title="Transmitting on one frequency and receiving on another at the same time. Repeaters do, and so does the duplex hotspot setup." data-more="spec/split-duplex.html">split duplex</abbr> repeater: two radios, each an MMDVM modem, as one duplex repeater (the TX half sends the continuous BS outbound with the <abbr class="gl" tabindex="0" title="Common announcement channel: 24 bits ahead of each burst a repeater sends. It carries the slot number and short link control." data-more="dev/glossary.html#t-cach">CACH</abbr>, the RX half labels both inbound slots from the TX half's slot clock); the vendor command 0xD6 and the version suffix &quot; SPLIT1&quot;, roles only after SET_ROLE, the <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="dev/glossary.html#t-hr-c6000">HR_C6000</abbr> BS outbound engine, the debug link's SPLIT command (<code>docs/spec/split-duplex.md</code>). Needs <code>CONFIG_HOTSPOT</code>. Off, the image is unchanged. About 2.1 KB RAM</td>
+</tr>
+<tr>
+<td><code>CONFIG_DEBUGLINK</code></td>
+<td>= HOSTLINK</td>
+<td>debug link for bench automation on the host port: diagnostics, screenshots, key / PTT injection, log ring (<code>docs/spec/debuglink.md</code>)</td>
+</tr>
+<tr>
+<td><code>CONFIG_STUB_ENTRY</code></td>
+<td>= HOSTLINK</td>
+<td>the <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="dev/glossary.html#t-stub">stub</abbr> entry: the flashing tools load their flash-access RAM monitor through the host link (command 0x1A) and the radio jumps to it, so updates need no key held at power-on (<code>docs/spec/stub-entry.md</code>). Its own feature: with <code>CONFIG_DEBUGLINK=n</code> it brings its own listener (PING, VERSION with the build's features, preset and off list, STUB, and CODEPLUG with <code>CONFIG_CPS_FAST</code>), so the web tools identify, update and program a radio without the debug link. Needs <code>CONFIG_HOSTLINK</code>. On the STM32 radios 8 KB of RAM (the staging buffer); with the debug link on, under 0.1 KB flash more than the debug link alone</td>
+</tr>
+<tr>
+<td><code>CONFIG_TASK_STACKS</code></td>
+<td>= DEBUGLINK</td>
+<td>every task's least free stack in the debug link's <code>tasks</code> view section (<code>docs/spec/debuglink.md</code> 3.7): the kernel's task create / delete trace hooks keep a table of the tasks (<code>core/app/task_stack.c</code>). About 0.5 KB flash (0.7 KB on the HR_C7000 radios) and 72 bytes RAM</td>
+</tr>
+<tr>
+<td><code>CONFIG_CPS_OPENFW</code></td>
+<td>= HOSTLINK</td>
+<td>open-firmware <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="user/04-programming.html">CPS</abbr> protocol on the host port (USB serial, or the programming cable's UART; <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="user/04-programming.html">qdmr</abbr>, the open-firmware CPS, <code>tools/cps_client.py</code>): codeplug read / write, radio info (<code>docs/spec/cps-protocol.md</code> 2). The settings store and the sector journal (<code>docs/spec/settings-store.md</code>) are always built</td>
+</tr>
+<tr>
+<td><code>CONFIG_CPS_FAST</code></td>
+<td>= CPS_OPENFW and (DEBUGLINK or STUB_ENTRY)</td>
+<td>the fast codeplug protocol, command 0x1C on the debug link or the stub entry's own listener (<code>docs/spec/cps-fast.md</code>): the same codeplug image in 4 KB blocks, blank blocks reported and not sent, CRC-32 sums so a host moves only the blocks that changed, LZ4 both ways, writes staged and committed under a power-cut safe record where the board has a staging area (through the sector journal otherwise), the codeplug re-read at the end. Needs <code>CONFIG_CPS_OPENFW</code>, and <code>CONFIG_DEBUGLINK</code> or <code>CONFIG_STUB_ENTRY</code>. No buffer of its own (it streams through the storage sector buffer and the listener's reply). About 3.9 KB flash and 0.2 KB RAM</td>
+</tr>
+<tr>
+<td><code>CONFIG_VFO</code></td>
+<td>y</td>
+<td>tuning a frequency by hand, and Copy to VFO from a channel (about 0.6 to 0.7 KB, no switch of its own)</td>
+</tr>
+<tr>
+<td><code>CONFIG_VFO_FM</code></td>
+<td>= VFO and FM</td>
+<td>analog VFO</td>
+</tr>
+<tr>
+<td><code>CONFIG_VFO_DMR</code></td>
+<td>= VFO and DMR</td>
+<td>digital VFO: the VFO can be a DMR channel with its own color code, slot and <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="user/22-glossary.html#t-talk-target">talk target</abbr>, and the Mode tile switches it FM / DMR (needs both VFO kinds; <code>docs/spec/dmr-voice.md</code> 2.1). About 140 B flash. Off, the VFO is analog and nothing about it changes</td>
+</tr>
+<tr>
+<td><code>CONFIG_DIAG</code></td>
+<td>y</td>
+<td>the diagnostics page</td>
+</tr>
+<tr>
+<td><code>CONFIG_BACKLIGHT_TEST</code></td>
+<td>n</td>
+<td>backlight test pages for bench work (<a href="testing/backlight-curve.html">backlight-curve.md</a>). About 1.5 KB</td>
+</tr>
+<tr>
+<td><code>CONFIG_CRASH_LOG</code></td>
+<td>y</td>
+<td>the crash log: a <abbr class="gl" tabindex="0" title="Central processing unit." data-more="dev/glossary.html#t-cpu">CPU</abbr> fault, a task stack overflow, running out of heap or a failed assertion keeps a record (registers, fault status, task, stack words) where a reset doesn't clear it and restarts the radio; the next start takes it up, the debug link and (with <code>CONFIG_CRASH_SCREEN</code>) <strong>Settings &gt; Advanced &gt; Crash log</strong> show it (<code>core/crash</code>, <code>docs/spec/crash-log.md</code>). Needs no other feature. About 1.6 KB flash and 1.4 KB RAM (mostly the fault path's own stack), and 32 bytes more idle task stack. Off: a crash stops the radio until a power cycle</td>
+</tr>
+<tr>
+<td><code>CONFIG_CRASH_SCREEN</code></td>
+<td>= <code>CRASH_LOG</code></td>
+<td><strong>Settings &gt; Advanced &gt; Crash log</strong>: the record's summary and Clear, and the controls of the crash report (<code>docs/spec/crash-log.md</code> 5.2). Needs <code>CONFIG_CRASH_LOG</code>. About 1 KB flash. Off, the debug link still shows the record</td>
+</tr>
+<tr>
+<td><code>CONFIG_CRASH_REPORT</code></td>
+<td>= <code>CRASH_SCREEN</code> with DMR</td>
+<td>sends the crash log's packed record as one UDP datagram (port 4090) over DMR to a codeplug contact, from the Crash log screen or after the restart (Off, Ask, Auto) (<code>docs/spec/crash-log.md</code> 5). Needs <code>CONFIG_CRASH_SCREEN</code> and <code>CONFIG_DMR</code>; brings in the DMR data core. About 1.4 KB flash</td>
+</tr>
+<tr>
+<td><code>CONFIG_WATCHDOG</code></td>
+<td>y</td>
+<td>the hardware watchdog: <code>main()</code> starts it (the STM32 IWDG, about 5 s; the HR_C7000's, 4 s) and the idle task feeds it, so a hang or a starved system resets the radio (<code>docs/spec/watchdog.md</code>). With the debug link, command 0x1D and the <code>watchdog</code> view section test it on the bench. Needs no other feature. About 0.9 KB flash, 1.4 KB on the HR_C7000 radios. Off: no watchdog runs</td>
+</tr>
+<tr>
+<td><code>CONFIG_FAULT_TRACE</code></td>
+<td>y (n where the one UART is not free)</td>
+<td>the fault trace: a CPU fault prints its registers on the host UART, three framed lines a second apart, then the record and the restart (<code>docs/spec/crash-log.md</code> 2.3, <code>tools/rfoundry_fault_trace.py</code>); without the crash log the radio restarts too. Needs a host port on a UART: the HR_C7000 radios. About 600 B flash. Off: straight to the record and the restart</td>
+</tr>
+<tr>
+<td><code>CONFIG_NAND_STORAGE</code></td>
+<td>n (y on a radio with <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="dev/glossary.html#t-spi">SPI</abbr> <abbr class="gl" tabindex="0" title="The flash chip type that holds large data, such as the codeplug and contacts, in some radios." data-more="dev/glossary.html#t-nand">NAND</abbr>)</td>
+<td>the core's storage (settings, sector journal, codeplug areas) on SPI NAND: the NOR-like 4 KB sector layer over the board's own block range (<code>drivers/flash/nand_sectors</code>, <code>docs/spec/nand-sectors.md</code>) and the NAND driver's write side. Off, a NAND radio runs on the default settings and stores nothing. Radios with SPI <abbr class="gl" tabindex="0" title="The flash chip type that holds code and can run it in place." data-more="dev/glossary.html#t-nor">NOR</abbr> don't use it. About 6.6 KB flash and 1.5 KB RAM where used (no page buffer)</td>
+</tr>
+<tr>
+<td><code>CONFIG_CHANNEL_LIST</code></td>
+<td>y</td>
+<td>the hub's Channels list: every codeplug channel by number, and a channel's settings (<code>docs/spec/ui.md</code> 2)</td>
+</tr>
+<tr>
+<td><code>CONFIG_CHANNEL_EDIT</code></td>
+<td>= <code>CHANNEL_LIST</code></td>
+<td>editing a channel on the radio, New channel from current settings, keypad text entry (<code>docs/spec/ui.md</code> 2.1). Needs <code>CONFIG_CHANNEL_LIST</code>; without it the channel's settings are read only</td>
+</tr>
+<tr>
+<td><code>CONFIG_VOLUME_BAR</code></td>
+<td>y</td>
+<td>the volume bar over the screen for 3 s when a knob the <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="dev/glossary.html#t-mcu">MCU</abbr> reads turns (<code>docs/spec/radio-features.md</code> 4.2). About 0.3 KB flash. Off, turning the knob shows nothing</td>
+</tr>
+<tr>
+<td><code>CONFIG_ZONE_EDIT</code></td>
+<td>= <code>CHANNEL_EDIT</code></td>
+<td>the zone editor in a zone's list: add, move, copy here and remove channels; rename, copy and delete zones (<code>docs/spec/ui.md</code> 2.2). Needs <code>CONFIG_CHANNEL_EDIT</code>; without it a zone's list only goes to its channels</td>
+</tr>
+<tr>
+<td><code>CONFIG_CONTACT_EDIT</code></td>
+<td>= <code>CHANNEL_EDIT</code> and <code>DMR</code></td>
+<td>the contact editor: a new contact from Find's Create contact or Save as contact in actions (<code>docs/spec/ui.md</code> 2.4). Needs <code>CONFIG_CHANNEL_EDIT</code> and <code>CONFIG_DMR</code>; without it contacts come only from a CPS</td>
+</tr>
+<tr>
+<td><code>CONFIG_KEY_ASSIGN</code></td>
+<td>y</td>
+<td>key assignment: Settings &gt; Keys and the codeplug's quick-key slots say what the board's programmable keys do (<code>docs/spec/ui.md</code> 3.1)</td>
+</tr>
+<tr>
+<td><code>CONFIG_SCAN</code></td>
+<td>y</td>
+<td>zone, VFO band and <abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="user/22-glossary.html#t-dual-watch">dual watch</abbr> scan (<code>docs/spec/radio-features.md</code> 2)</td>
+</tr>
+<tr>
+<td><code>CONFIG_DUAL_WATCH</code></td>
+<td>y (with <code>SCAN</code>)</td>
+<td>the dual watch screens: Home with both channels, the channel picker and the dual watch actions (<a href="ux/dual-watch.html">dual-watch</a>); in the radio core, channels of other zones and the VFO, and PTT on the selected channel without ending the watch (<code>docs/spec/radio-features.md</code> 2.1). Off: dual watch stays reachable only from the debug link (two channels of the current zone)</td>
+</tr>
+<tr>
+<td><code>CONFIG_BEEP</code></td>
+<td>y</td>
+<td>key, TX permit / deny, call end, time-out warning, battery and scan beeps (<code>docs/spec/radio-features.md</code> 4)</td>
+</tr>
+<tr>
+<td><code>CONFIG_SIG_TONES</code></td>
+<td>= <code>BEEP</code></td>
+<td>Settings &gt; Signaling tones: a chain of up to ten tones (frequency and length) for the start of a transmission, its end and a reception's end, on the speaker, on air or both, in DMR and FM (<code>docs/spec/radio-features.md</code> 4.3). Needs <code>CONFIG_BEEP</code>; an FM tone on air also needs <code>CONFIG_FM_TX_TONES</code>. Off: the radio's own talk permit, end and roger sounds</td>
+</tr>
+<tr>
+<td><code>CONFIG_FONT_XL</code></td>
+<td>n (y on a 240 px color radio)</td>
+<td>16x32 font, for 240 px and wider displays</td>
+</tr>
+<tr>
+<td><code>CONFIG_FONT_AA</code></td>
+<td>n (y on a color radio)</td>
+<td>the fonts from 6x12 up anti-aliased (JetBrains Mono Bold, 2 bits a pixel) on color panels instead of the bitmap ones; a mono panel would draw them as plain ink, so mono radios leave it off. Glyphs: 15.6 KB with <code>FONT_XL</code> (8.2 KB without) in place of 9.2 KB (5.3 KB) of bitmap ones (<code>core/ui/fonts.c</code>). On a 4 bpp panel (every color board) the edge grays share the 16 palette entries with the screen's own colors; a screen that already uses many colors loses some of them, and some font sizes or colors can then be slightly harder to read (<code>docs/spec/ui.md</code> 5)</td>
+</tr>
+<tr>
+<td><code>CONFIG_FONT_BIG</code></td>
+<td>n (y on a 240 px color radio)</td>
+<td>larger text on 240 px and wider color panels: lists, labels, the status strip and hints in a 9x18 font instead of 8x16 (24 characters a line instead of 27 on a 240 px panel; the 8x16 one takes the small print). Needs <code>FONT_AA</code>; 3.5 KB of flash. Unsupported on a panel under 220 px wide (the board's <code>hardware.gallery</code>), and so off in its maximal build</td>
+</tr>
+<tr>
+<td><code>CONFIG_LANG_ES</code></td>
+<td>y</td>
+<td>Spanish on the radio: Settings &gt; Display &gt; Language (<code>docs/spec/ui.md</code> 2.5, <code>core/ui/lang/es.po</code>). The first language also brings the accented letters of every font (<code>CONFIG_LANG_ANY</code>); each further language adds only its text. Off: Spanish is listed but dimmed. One switch per language, <a href="dev/translating.html">translating.md</a></td>
+</tr>
+<tr>
+<td><code>CONFIG_LANG_IT</code></td>
+<td>n</td>
+<td>Italian on the radio (<code>core/ui/lang/it.po</code>), as <code>CONFIG_LANG_ES</code>. Off: Italian is listed but dimmed</td>
+</tr>
+<tr>
+<td><code>CONFIG_LANG_FR</code></td>
+<td>n</td>
+<td>French on the radio (<code>core/ui/lang/fr.po</code>), as <code>CONFIG_LANG_ES</code>. Off: French is listed but dimmed</td>
+</tr>
+<tr>
+<td><code>CONFIG_LANG_ZH</code></td>
+<td>n</td>
+<td>Chinese on the radio (<code>core/ui/lang/zh.po</code>), as <code>CONFIG_LANG_ES</code>, plus what Chinese needs and the Latin-1 languages do not: a 16x16 glyph for every character its catalog uses (<code>core/ui/cjk_font_data.c</code>, built by <code>tools/cjkfont.py</code>; 480 characters, 15.4 KB) and UTF-8 text the text layer decodes (<code>core/ui/gfx.c</code>). 32,856 bytes with Spanish on (measured 2026-11-04). <strong>A line must be at least 16 px high</strong>: the glyph is the height of the 8x16 font. A 240 px color radio draws its words in 8x16 (and its text pages move up to it in a CJK build), so Chinese shows on every screen; a layout that draws its words in the 5x8 or 6x12 font (a 128x64 display, and the 160x128 class) has no room for 16 px lines, so Chinese must stay off there. Off: Chinese is listed but dimmed</td>
+</tr>
+<tr>
+<td><code>CONFIG_LANG_DEFAULT_ES</code></td>
+<td>n</td>
+<td>The radio starts in Spanish until the user picks a language (an empty language setting means the build's default). Needs <code>CONFIG_LANG_ES</code>. Off, for every <code>CONFIG_LANG_DEFAULT_*</code>: English. With more than one on, the first in <code>config/features.mk</code> wins. No flash cost</td>
+</tr>
+<tr>
+<td><code>CONFIG_LANG_DEFAULT_IT</code></td>
+<td>n</td>
+<td>The radio starts in Italian, as <code>CONFIG_LANG_DEFAULT_ES</code>. Needs <code>CONFIG_LANG_IT</code></td>
+</tr>
+<tr>
+<td><code>CONFIG_LANG_DEFAULT_FR</code></td>
+<td>n</td>
+<td>The radio starts in French, as <code>CONFIG_LANG_DEFAULT_ES</code>. Needs <code>CONFIG_LANG_FR</code></td>
+</tr>
+<tr>
+<td><code>CONFIG_LANG_DEFAULT_ZH</code></td>
+<td>n</td>
+<td>The radio starts in Chinese, as <code>CONFIG_LANG_DEFAULT_ES</code>. Needs <code>CONFIG_LANG_ZH</code></td>
+</tr>
+<tr>
+<td><code>CONFIG_UI_COLOR</code></td>
+<td>y (n on a monochrome radio)</td>
+<td>color screen settings: Theme, Highlight color and Filled status bar in Settings &gt; Display (<code>docs/spec/ui.md</code> 5, 8). Off: no such rows, the dark theme's colors. About 600 B; off for radios whose only screen is monochrome</td>
+</tr>
+<tr>
+<td><code>CONFIG_AUDIO_PROBE</code></td>
+<td>n</td>
+<td>diagnostics: debug link command 0x10 reads / writes the audio chip's registers and measures the PCM stream, for the USB audio bench tests (<code>docs/spec/debuglink.md</code> 3.14); needs DEBUGLINK and DMR; about 2 KB RAM and 2.2 KB flash. Never for a release; CI builds it in one board's <code>audio-probe</code> configuration (with <code>LTO=1</code>: the default image has no room for it without), not in maximal. A bench image without <abbr class="gl" tabindex="0" title="Link-time optimization: the compiler optimizes across files. It shrinks the firmware." data-more="dev/glossary.html#t-lto">LTO</abbr>: add <code>CONFIG_SNMP=n</code></td>
+</tr>
+<tr>
+<td><code>CONFIG_UI_SETTINGS</code></td>
+<td>y</td>
+<td>the Settings menu on the radio; off: settings keep their stored values and are set with qdmr (<code>docs/spec/ui.md</code> 5)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Derived (not set by hand): <code>CONFIG_DMR_DATA_CORE</code>, the shared packet data / CSBK code, on when any data feature is;
+<code>CONFIG_DMR_AIR_QUEUE</code>, the data service's TX queue (<code>docs/spec/dmr-data.md</code> 12.6), on with <code>CONFIG_DMR_IP_GATEWAY</code> or
+<code>CONFIG_ZONE_SHARE</code>. <code>CONFIG_AIR</code> (the air interface) is on with <code>CONFIG_P25</code> or <code>CONFIG_NXDN</code>; <code>CONFIG_IMBE</code> and <code>CONFIG_MBE</code>
+(the full-rate voice decoder, the MBE core) follow <code>CONFIG_P25</code>; a command line or a board's <code>config.mk</code> that sets one stops the build. <code>CONFIG_ZONE_SHARE_MODES</code>: zone sharing carries channels of a kind and their systems
+(<code>docs/spec/zone-share.md</code> 4.2), on with <code>CONFIG_ZONE_SHARE</code> and <code>CONFIG_P25</code>, <code>CONFIG_NXDN</code> or <code>CONFIG_DMR_TRUNK</code>. <code>CONFIG_LANG_ANY</code>
+(<code>core/config.h</code>): on when any <code>CONFIG_LANG_*</code> is, the translation lookup and the fonts' Latin-1 glyphs.</p>
+<h2 id="values">Values</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CONFIG_DMR_AIR_QUEUE_BYTES</code></td>
+<td>2048</td>
+<td>octets in the data service's <abbr class="gl" tabindex="0" title="Transmit." data-more="user/22-glossary.html#t-tx">TX</abbr> queue: each queued packet takes its length plus a 36-octet record header, rounded up to 4 (<code>docs/spec/dmr-data.md</code> 12.6.1). At least 1296 (two longest packets)</td>
+</tr>
+<tr>
+<td><code>CONFIG_DMR_DATA_TX_GUARD_MS</code></td>
+<td>250</td>
+<td>the gap the data service leaves after our own transmission before it starts another that isn't a reply. A workaround for receivers that lose a packet sent right after ours ended; the cause is open (<code>docs/spec/dmr-data.md</code> 12.6.3). 0 turns it off</td>
+</tr>
+<tr>
+<td><code>CONFIG_DISPLAY_INSET</code></td>
+<td>0 (a board sets its own)</td>
+<td>pixels hidden by the bezel or lens at each edge; the UI draws inside them. A board may set the top and bottom to 0 when only the sides are covered</td>
+</tr>
+<tr>
+<td><code>CONFIG_DISPLAY_INSET_TOP</code> / <code>_BOTTOM</code> / <code>_LEFT</code> / <code>_RIGHT</code></td>
+<td>= <code>CONFIG_DISPLAY_INSET</code></td>
+<td>one edge</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="board-build-variables">Board build variables</h3>
+<p>Not <abbr class="gl" tabindex="0" title="A CONFIG_ option that turns a feature&#x27;s code in or out of the build." data-more="build-config.html">feature switches</abbr>: they pick the hardware variant or set bench knobs, and <code>print-config</code> doesn't list them.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Board</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BAND</code></td>
+<td>boards with a band option</td>
+<td>A build option (<code>board.toml</code> <code>[[build_options]]</code>, <code>board.mk</code> <code>BUILD_OPTIONS</code>): a band such as <code>uhf</code> (the default) or <code>vhf</code>, which picks the band table, the frequency plan and the board name. Given on the command line, it adds its value to the build directory (<code>build/&lt;id&gt;-vhf</code>)</td>
+</tr>
+<tr>
+<td>bench defines</td>
+<td>a board's <code>board.mk</code></td>
+<td>A board may take extra <code>-D</code> defines for the bench (panel type, switch polarity, battery divider, keeping the debug pins); they are listed in its bring-up page under <a href="testing/index.html">docs/testing</a></td>
+</tr>
+<tr>
+<td><code>LTO</code></td>
+<td>0 (<abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="dev/glossary.html#t-stm32">STM32F4</abbr> platform: 1)</td>
+<td>link time optimization (<code>-flto=auto</code> at compile and link): about 17 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="dev/glossary.html#t-kb">KB</abbr> smaller (20 KB with <code>LTO_3P=1</code>). The STM32F4 boards needed it while their application areas were small; since the codec moved (<a href="spec/codec-placement.html">codec-placement.md</a>) they have 464 KB or more, and it stays on for the smaller image. The csky builds don't use it</td>
+</tr>
+<tr>
+<td><code>LTO_3P</code></td>
+<td>0 (a board turns it on to fit)</td>
+<td>with <code>LTO=1</code>, the third-party code too (<abbr class="gl" tabindex="0" title="Hardware abstraction layer: the interfaces the core uses instead of touching a chip." data-more="dev/architecture.html">HAL</abbr>, CMSIS, FreeRTOS, TinyUSB): about 3 KB more. FreeRTOS marks what its port's assembly reaches <code>portDONT_DISCARD</code>; the vectors are referenced from the assembly start-up. <code>LTO_EXCLUDE</code> lists files kept out (file-scope assembly: <code>platform/stm32f4/codec_call.c</code>)</td>
+</tr>
+<tr>
+<td><code>TCP_CONNS</code></td>
+<td><abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="dev/glossary.html#t-hr-c7000">HR_C7000</abbr> platform</td>
+<td><abbr class="gl" tabindex="0" title="Transmission Control Protocol: IP connections with ordered, guaranteed delivery." data-more="dev/glossary.html#t-tcp">TCP</abbr> connections in all states (<code>core/net/tcp.h</code>, 4 elsewhere): 3 by default on the HR_C7000 platform, about 1.5 KB <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="dev/glossary.html#t-ram">RAM</abbr> each across TCP, HTTP and <abbr class="gl" tabindex="0" title="Hamlib&#x27;s network rig control protocol, used by loggers and SDR programs." data-more="user/22-glossary.html#t-rigctld">rigctld</abbr></td>
+</tr>
+<tr>
+<td><code>MAXIMAL_VARS</code></td>
+<td>a board's own</td>
+<td>set in a board's <code>config.mk</code>: make variables <code>tools/ci.sh</code> adds to that board's maximal build (<code>make print-maximal-vars</code>)</td>
+</tr>
+<tr>
+<td><code>BOARD_UNSUPPORTED</code></td>
+<td>a board's own</td>
+<td>set in a board's or platform's <code>config.mk</code>, one switch a line with the reason in its comment: switches the radio's hardware can't do (<a href="#unsupported-not-written-unconfirmed">above</a>); the maximal build leaves them off (<code>make print-unsupported</code>)</td>
+</tr>
+<tr>
+<td><code>BOARD_NOT_WRITTEN</code></td>
+<td>a board's own</td>
+<td>the same form: switches the hardware can do but whose driver or glue isn't written for the radio yet; the maximal build leaves them off too (<code>make print-not-written</code>), and every switch that needs one of them</td>
+</tr>
+<tr>
+<td><code>BOARD_DEFAULT_OFF</code></td>
+<td>a board's own</td>
+<td>the same form: switches that work but carry a risk on this radio. The switch stays off by default (<code>CONFIG_X ?= n</code> next to it) and stays selectable in a custom build; the web flasher shows the comment by its checkbox, so write it for users</td>
+</tr>
+<tr>
+<td><code>BOARD_REQUIRED</code></td>
+<td>a board's own</td>
+<td>set in a board's <code>config.mk</code>: switches the board can't build without; ci.sh builds no <code>no-</code> configuration for them (<code>make print-required</code>)</td>
+</tr>
+<tr>
+<td><code>MAXIMAL_SKIP</code></td>
+<td>a board's own</td>
+<td>set in a board's <code>config.mk</code>: switches that work on the radio but that it doesn't need, which the maximal build leaves off too (<code>make print-maximal-skip</code>). <code>NET_PPP</code> stands in for the USB network adapter on UART-only radios. The maximal build also leaves <code>CONFIG_AUDIO_PROBE</code> off on every board (<code>MAXIMAL_SKIP</code> in <code>tools/ci.sh</code>); one board's <code>audio-probe</code> build covers it</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="board-defaults">Board defaults</h3>
+<p>A board's <code>config.mk</code> (and its platform's) turn switches off where the radio differs from the project defaults, each
+with its reason in a comment. Two lists carry the reasons that matter to the docs: <code>BOARD_UNSUPPORTED</code> and
+<code>BOARD_NOT_WRITTEN</code> (<a href="#unsupported-not-written-unconfirmed">above</a>). To see them for a board:</p>
+<pre><code>make BOARD=&lt;id&gt; print-config            # the resolved switches
+make BOARD=&lt;id&gt; print-unsupported       # what the hardware can't do
+make BOARD=&lt;id&gt; print-not-written       # what is not written yet
+</code></pre>
+<p><a href="feature-matrix.html">feature-matrix.md</a> shows the result for every radio (&quot;Built by default on each radio&quot;) and its
+notes give the reasons; a radio's hardware spec (<code>hardware-&lt;id&gt;.md</code>) holds the facts behind them. The switches off on
+most boards are <code>CONFIG_AUDIO_PROBE</code> (a bench diagnostic) and the ones that need a part the radio lacks.</p>
+<h2 id="adding-a-feature">Adding a feature</h2>
+<ol>
+<li>Add the switch with a comment and its default to <code>config/features.mk</code>, to <code>FEATURES</code>, and to the dependency checks.</li>
+<li>Add the default and the checks to <code>core/config.h</code>.</li>
+<li>Guard the code, and leave a directory out in the Makefile when the whole directory belongs to the feature.</li>
+<li>Add a row here and in <a href="feature-matrix.html">feature-matrix.md</a> (the web site takes the feature's group, title and
+size from it; <code>site/build.py --strict</code> fails without the row), and check the build links with the switch off (<code>make BOARD=&lt;b&gt; CONFIG_X=n BUILD=build/test-x</code>).
+<code>tools/ci.sh</code> builds every board with each default-on switch off alone, an FM-minimal and a maximal
+configuration, all with zero warnings, and reports the image sizes (<code>docs/testing/README.md</code>). The maximal
+configuration leaves out the switches a board lists in <code>BOARD_UNSUPPORTED</code> (its <code>config.mk</code>: what its hardware
+can't do, such as <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="spec/sfr.html">SFR</abbr> on a modem chip lacking what the glue uses) or <code>BOARD_NOT_WRITTEN</code> (what its code doesn't do yet). Leaving the not-written switches out keeps the maximal build to code that
+runs on the radio: built on, they can fill a radio's memory (one radio's maximal build reached 99% of its CCM
+<abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="dev/glossary.html#t-ram">RAM</abbr>), and any shared addition would then fail CI on unrelated pull requests.
+A switch that needs a left-out one is off too: <code>tools/ci.sh</code> drops each switch the checks in <code>config/features.mk</code>
+name until the set passes them (<abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="user/22-glossary.html#t-dmr">DMR</abbr> not written takes all of DMR's family with it).</li>
+</ol>
+
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/build-config.md">View the source of this page</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="On this page">
+		<p class="eyebrow">On this page</p>
+		<ul><li class="l3"><a href="#unsupported-not-written-unconfirmed">Unsupported, not written, unconfirmed</a></li><li class="l2"><a href="#variants">Variants</a></li><li class="l2"><a href="#switches">Switches</a></li><li class="l2"><a href="#values">Values</a></li><li class="l3"><a href="#board-build-variables">Board build variables</a></li><li class="l3"><a href="#board-defaults">Board defaults</a></li><li class="l2"><a href="#adding-a-feature">Adding a feature</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Join the RadioFoundry community</strong><span class="small muted">Questions, help with your radio and news, on Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Found a bug? Want your radio supported?</strong><span class="small muted">Open an issue on GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry is MIT licensed · <a href="https://github.com/radiofoundry/radiofoundry">Source Code</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Community</a> · <a href="../docs/index.html">Docs</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Changelog</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

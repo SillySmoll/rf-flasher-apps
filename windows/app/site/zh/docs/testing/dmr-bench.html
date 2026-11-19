@@ -1,0 +1,313 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DMR bench testing on the SDR bench · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="DMR bench testing on the SDR bench · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/testing/dmr-bench.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/testing/dmr-bench.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/testing/dmr-bench.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/testing/dmr-bench.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/testing/dmr-bench.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/testing/dmr-bench.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/testing/dmr-bench.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/testing/dmr-bench.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/testing/dmr-bench.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/testing/dmr-bench.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="测试">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 测试</p>
+		<ul><li><a href="index.html">Testing</a></li><li><a href="results/index.html">Bring-up results</a></li><li><a href="backlight-curve.html">Backlight curve</a></li><li><a href="dm1801pro-bringup.html">DM-1801 Pro bring-up checklist</a></li><li><a href="dm32-bringup.html">DM-32UV bring-up checklist</a></li><li><a href="dmr-bench.html" aria-current="page">DMR bench testing on the SDR bench</a></li><li><a href="md380-bringup.html">MD-380 bring-up checklist</a></li><li><a href="md9600-bringup.html">MD-9600 bring-up checklist</a></li><li><a href="mduv380-bringup.html">MD-UV380 bring-up checklist</a></li><li><a href="mmdvm-audit.html">MMDVM implementation audit (2d45a21)</a></li><li><a href="on-air-coverage.html">On-air test coverage</a></li><li><a href="power-calibration.html">Transmit power calibration with a wattmeter</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">本页尚未翻译，目前显示英文。</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="dmr-bench-testing-on-the-sdr-bench">DMR bench testing on the SDR bench</h1>
+<p>How to test the <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> work (the board's modem driver behind <code>hal/hal_dmr_modem.h</code>, the call stack in <code>core/dmr/call/</code>,
+the <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE</abbr> <abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="../dev/glossary.html#t-fec">FEC</abbr> and vocoder hosting, the audio path) on the bench: the rig, the tools, and the cases a person runs at the
+radio.</p>
+<p>Status words as in <code>docs/spec/gotchas.md</code>: &quot;on air&quot; = checked with the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> or another radio.</p>
+<p>A radio's checklist of required <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> tests is <code>tools/bringup.py list --radio &lt;id&gt;</code>
+(<a href="https://github.com/radiofoundry/radiofoundry/blob/main/tests/hil/README.md#bring-up-mode">tests/hil/README.md</a>). The cases here are the manual procedures and what
+the HIL tests don't script yet.</p>
+<h2 id="1-the-rig">1. The rig</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Radio under test</td>
+<td>A radio with RadioFoundry, on the bench, on USB: driven by the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> (<code>tools/rfoundry_debug.py</code>, the <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> tests) or its keys; the board's diagnostics page</td>
+</tr>
+<tr>
+<td>Bench board</td>
+<td>A board that serves the bench line protocol (<abbr class="gl" tabindex="0" title="Transmission Control Protocol: IP connections with ordered, guaranteed delivery." data-more="../dev/glossary.html#t-tcp">TCP</abbr> 7373): it builds and sends <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> bursts as jobs, decodes what it <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receives</abbr> into burst records, and sends and receives FM. Given as <code>--bench-api HOST[:PORT]</code> or <code>$RFOUNDRY_BENCH_API</code></td>
+</tr>
+<tr>
+<td>Second bench board (optional)</td>
+<td>The receive side (<code>--bench-api-rx</code>, <code>$RFOUNDRY_BENCH_API_RX</code>). A half-duplex board can't hear while it <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmits</abbr></td>
+</tr>
+<tr>
+<td>Second transmitter (optional)</td>
+<td>A board that transmits while the first does (<code>--bench-api-2</code>, <code>$RFOUNDRY_BENCH_API_2</code>): a test with two signals at once</td>
+</tr>
+</tbody>
+</table></div>
+<p>The test channel is the rig's (<code>--dmr-freq</code> / <code>--dmr-cc</code>: tests/hil/README.md, &quot;The rig's configuration&quot;). It must be
+inside the board's transmit list and receive window.</p>
+<h2 id="2-the-tools">2. The tools</h2>
+<p>All in <code>tools/bench/</code>, MIT.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bench_line.py</code></td>
+<td>Client of the bench line protocol. <code>bench_line.py HOST[:PORT] info</code> shows the board; <code>run bench_tx ARGS...</code> sends one job</td>
+</tr>
+<tr>
+<td><code>mmdvm_hotspot.py</code></td>
+<td>The radio as an <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="../spec/mmdvm-protocol.html">MMDVM</abbr> modem over USB CDC (or the optional MMDVM <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr> transport): configure simplex or <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="../spec/sfr.html">SFR</abbr>, poll status, log what it sends up; our extensions: command 0xD5 (SFR experiment switches) and the SFR counters at the end of GET_STATUS. Needs pyserial</td>
+</tr>
+<tr>
+<td><code>dmr_packet.py</code></td>
+<td>Reassembles the data packets in a listen job's JSON lines and decodes the IP in them</td>
+</tr>
+<tr>
+<td><code>dmr_cach.py</code></td>
+<td>The <abbr class="gl" tabindex="0" title="Common announcement channel: 24 bits ahead of each burst a repeater sends. It carries the slot number and short link control." data-more="../dev/glossary.html#t-cach">CACH</abbr> and short <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr>, from the standard</td>
+</tr>
+<tr>
+<td><code>dmr_bench.py</code></td>
+<td>The <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> checks the <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> tests share (<code>check_tx</code>, <code>check_modem_calls</code>), their limits and a board's overrides</td>
+</tr>
+<tr>
+<td><code>sdrmon.py</code></td>
+<td>The carrier floor and off-slot residual of a power envelope</td>
+</tr>
+</tbody>
+</table></div>
+<p>Burst analysis of what the radio sends comes from the <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> board's records through the HIL harness
+(<a href="https://github.com/radiofoundry/radiofoundry/blob/main/tests/hil/README.md#the-bench-board">tests/hil/README.md</a>).</p>
+<h2 id="3-the-radio-receives">3. The radio receives</h2>
+<p>The bench board sends with <code>bench_line.py HOST run bench_tx ARGS...</code>; the user reads the diagnostics page and the main
+screen. Each transmission is a known stimulus: source 9990301, <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE</abbr> silence unless stated. Many of these are also
+automated in <code>tests/hil</code> (<code>test_dmr_rx</code>, <code>test_dmr_call_features</code>, <code>test_dmr_data</code>). A board refuses an option it
+doesn't do (<code>unsupported</code>).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Case</th>
+<th>Job</th>
+<th>Radio should show</th>
+<th>Pass</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R1 group voice</td>
+<td><code>voice --dst TG --superframes 3</code></td>
+<td>+18 voice bursts, 8 headers, 3 terminators, <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> errors unchanged, the channel's <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">CC</abbr>, sync <abbr class="gl" tabindex="0" title="Mobile station: the radio, as opposed to the base station (BS)." data-more="../dev/glossary.html#t-ms">MS</abbr>; call 9990301 -&gt; <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">TG</abbr></td>
+<td>All counted, call shown and ended by the terminator</td>
+</tr>
+<tr>
+<td>R2 private</td>
+<td><code>voice --private --dst &lt;radio ID&gt;</code></td>
+<td><abbr class="gl" tabindex="0" title="A DMR call to one radio." data-more="../user/22-glossary.html#t-private-call">Private call</abbr> from 9990301</td>
+<td>Shown; not shown when sent to another ID</td>
+</tr>
+<tr>
+<td>R3 late entry</td>
+<td><code>voice --late 8 --superframes 5</code> (no header, first 8 bursts dropped)</td>
+<td>Call acquired from the <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">embedded LC</abbr></td>
+<td>Right caller (not a stale LC) within ~1 s; no call started by a lone burst</td>
+</tr>
+<tr>
+<td>R4 back to back</td>
+<td><code>voice --superframes 2 --calls 3 --gap-ms 60</code></td>
+<td>Three calls, callers alternate</td>
+<td>None merged or lost</td>
+</tr>
+<tr>
+<td>R5 no terminator</td>
+<td><code>voice --superframes 2 --terminators 0</code></td>
+<td>Call ends by time-out</td>
+<td>Ends 0.3-0.8 s after the last burst; slot ticks keep counting</td>
+</tr>
+<tr>
+<td>R6 wrong CC</td>
+<td><code>voice --burst-cc N</code> (N not the radio's color code)</td>
+<td>No call, no audio</td>
+<td>Never counted as voice for us</td>
+</tr>
+<tr>
+<td>R7 CSBK</td>
+<td><code>csbk --count 4 --opcode 1F --dst &lt;radio ID&gt;</code></td>
+<td>+5 <abbr class="gl" tabindex="0" title="Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control." data-more="../spec/dmr-data.html">CSBKs</abbr>; with the data service, a <abbr class="gl" tabindex="0" title="A DMR page that makes another radio ring." data-more="../user/22-glossary.html#t-call-alert">call alert</abbr></td>
+<td>Counted with good CRC</td>
+</tr>
+<tr>
+<td>R8 data</td>
+<td><code>data --dst &lt;radio ID&gt; --octets 40</code></td>
+<td>2 CSBK + 1 data header + 4 rate 1/2 blocks</td>
+<td>Counted with good CRC</td>
+</tr>
+<tr>
+<td>R9 confirmed data</td>
+<td><code>data --confirmed</code></td>
+<td>Data received</td>
+<td>Data counted</td>
+</tr>
+<tr>
+<td>R10 BS sync</td>
+<td><code>voice --family bs</code></td>
+<td>Sync family <abbr class="gl" tabindex="0" title="Base station: the repeater or modem side of a DMR link, as opposed to the radio (MS)." data-more="../dev/glossary.html#t-bs">BS</abbr></td>
+<td>BS reported (no <abbr class="gl" tabindex="0" title="Common announcement channel: 24 bits ahead of each burst a repeater sends. It carries the slot number and short link control." data-more="../dev/glossary.html#t-cach">CACH</abbr>: not a repeater outbound)</td>
+</tr>
+<tr>
+<td>R11 TS1/TS2 sync</td>
+<td><code>voice --family ts1</code>, then <code>ts2</code></td>
+<td>Sync family <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">TS1</abbr>, then TS2</td>
+<td>Both reported</td>
+</tr>
+<tr>
+<td>R12 long call</td>
+<td><code>voice --superframes 50</code> (18 s)</td>
+<td>One call, +300 voice bursts</td>
+<td>No restart, no SYNC_LOST, CRC errors unchanged</td>
+</tr>
+<tr>
+<td>R13 emergency / privacy</td>
+<td><code>voice --emergency</code>; <code>voice --service-options 40 --pi</code></td>
+<td>Emergency shown; <abbr class="gl" tabindex="0" title="A DMR header that announces encryption with a changing key. RadioFoundry never plays such calls." data-more="../user/22-glossary.html#t-pi-header">PI</abbr> call not played without a key</td>
+<td>As stated</td>
+</tr>
+<tr>
+<td>R14 talker alias</td>
+<td><code>voice --superframes 8 --talker-alias 'RadioFoundry bench modem'</code></td>
+<td>Alias shown</td>
+<td>Within ~2 s; the call LC stays right</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="4-voice-quality">4. Voice quality</h2>
+<p><code>tests/hil/test_dmr_audio_smoke.py</code> runs in every bench pass (<code>tests/hil/README.md</code>, Default bench pass). <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr>: the
+bench's recording to the call the radio's channel listens to. <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr>: the voice layer's test signal (RADIO op 33) in place
+of the mic, and the bench's recording played back to the radio.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Direction</th>
+<th>Pass</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RX</td>
+<td><code>voice.rx_peak</code> &gt;= 1000, frames not one frame repeated (<code>voice.rx_repeats</code>)</td>
+</tr>
+<tr>
+<td>TX</td>
+<td>Distinct, non-silent frames on air, and the played-back recording decodes to audio on the radio</td>
+</tr>
+</tbody>
+</table></div>
+<p>Missing prerequisites with the radio and bench present fail; they don't skip.</p>
+<p><code>test_dmr_audio_rx_deviation</code> checks the receive level window (<code>docs/spec/dmr-voice.md</code> 7.1) and needs a bench board
+that scales its deviation (info feature <code>dev_scale</code>) and sets its level in dBm (<code>power_dbm</code>); it skips on others. To
+tune a board's receive level, <code>tools/dmr_rx_sweep.py</code> (its help has the options), for example:</p>
+<pre><code>tools/dmr_rx_sweep.py --allow-rf --port PORT --bench-api HOST --freq MHZ --ambe SPEECH.ambe \
+    --reg 0:0x44 --values 0x07FF,0x07EF,0x07DF,0x07CF --dbm=-30,-50 --devs 0.85,1.15 --offsets=-1000,0,1000
+</code></pre>
+<p>For a carrier offset window, <code>--detune --offsets=-4000:4000:500</code> tunes the radio away from the bench's carrier instead
+of moving the carrier: any bench board can do it, and it reaches past the bench's own offset limit (2.5 kHz).
+<code>test_dmr_audio_rx_offset_wide</code> checks the window from the other side, with the bench's carrier offset.</p>
+<p><code>test_dmr_audio_rx_strong</code> checks the receiver's <abbr class="gl" tabindex="0" title="Automatic gain control: the receiver adjusting itself to the signal level." data-more="../dev/glossary.html#t-agc">AGC</abbr> with strong simplex speech (-75 and -55 dBm at the radio), where a
+clean receiver corrects almost nothing. A bit or more a frame there, and none from a repeater's continuous carrier,
+is an AGC that overloads the start of every burst (<code>docs/spec/dmr-voice.md</code> 7.1). Sweep the AGC's settings at those
+levels, and one undocumented bit field at a time with <code>--field</code>, for example:</p>
+<pre><code>tools/dmr_rx_sweep.py --allow-rf --port PORT --bench-api HOST --freq MHZ --ambe SPEECH.ambe \
+    --reg 0:0x32 --field 2:0 --values 0:7 --dbm=-60,-40,-20
+</code></pre>
+<p>Then check the value that wins near sensitivity as well (levels some 120 dB down at the radio, <code>--devs 0.85,1,1.15</code>).</p>
+<p>Decoding <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE</abbr> to audio on the test host needs an AMBE+2 vocoder, and this project ships none (README,
+<code>docs/CLEANROOM.md</code>). Options: a DVSI hardware vocoder on USB (ThumbDV / DV3000 class, AMBE-3000 chip), or an open
+decoder the tester installs locally, never vendored here. Independent of any vocoder, the radio's own decoder judges a
+call (<code>voice.rx_peak</code>, the radio's own over played back to it).</p>
+<h2 id="5-hotspot-and-sfr">5. Hotspot and SFR</h2>
+<p><code>test_hotspot</code> covers the <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="../spec/mmdvm-protocol.html">MMDVM</abbr> protocol and <code>test_hotspot_sfr</code> the repeat on air. By hand: <code>mmdvm_hotspot.py --sfr</code>
+turns <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="../spec/sfr.html">SFR</abbr> on and logs what the radio sends up, and <code>mmdvm_hotspot.py --debug</code> sends our 0xD5 experiment switches and
+prints the SFR counters from GET_STATUS.</p>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/testing/dmr-bench.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#1-the-rig">1. The rig</a></li><li class="l2"><a href="#2-the-tools">2. The tools</a></li><li class="l2"><a href="#3-the-radio-receives">3. The radio receives</a></li><li class="l2"><a href="#4-voice-quality">4. Voice quality</a></li><li class="l2"><a href="#5-hotspot-and-sfr">5. Hotspot and SFR</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

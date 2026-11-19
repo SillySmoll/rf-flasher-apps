@@ -1,0 +1,1249 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STM32F4 flash stub · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="STM32F4 flash stub · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/spec/stub-stm32f4.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/stub-stm32f4.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/stub-stm32f4.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/stub-stm32f4.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/stub-stm32f4.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/stub-stm32f4.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/spec/stub-stm32f4.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/stub-stm32f4.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/stub-stm32f4.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/stub-stm32f4.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="规范">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 规范</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html" aria-current="page">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">本页尚未翻译，目前显示英文。</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="stm32f4-flash-stub">STM32F4 flash stub</h1>
+<p>A small <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> monitor that installs, checks and backs up the internal flash of the <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32F405</abbr> radios behind the vendor bootloader, one image for all of them. A running RadioFoundry loads it
+through the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> (<a href="debuglink.html">debuglink.md</a> 3.18) and jumps to it with no power cycle. The host then sends
+the radio's board record (section 5.2), and only then can the <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr> write. It does for the STM32 radios what the <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> stub does for those radios (<code>stub/README.md</code>).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RadioFoundry side: staging buffer, quiesce, copy, jump</td>
+<td><code>platform/stm32f4/stub_entry.c</code>, <code>hal_system_t.stub_region / enter_stub / stub_run_addr</code>, <code>board_rf_safe</code> in each board's <code>board.c</code></td>
+</tr>
+<tr>
+<td>The stub</td>
+<td><code>stub/stm32f4/</code> (<code>make -C stub/stm32f4</code> writes <code>build/stub-stm32f4/f4stub.bin</code>)</td>
+</tr>
+<tr>
+<td>Its protocol engine (portable, shared with other stubs, host tested)</td>
+<td><code>stub/common/stubeng.c</code> (section 13), <code>tests/host/f4stubTest.c</code></td>
+</tr>
+<tr>
+<td>The STM32F4 target's facts and board record check (portable)</td>
+<td><code>stub/stm32f4/f4stub.h</code>, <code>f4stub_board.c</code></td>
+</tr>
+<tr>
+<td>Host tool</td>
+<td><code>stub/f4stub.py</code>, called by <code>stub/stubtool.py</code>; <code>tests/host/f4stub_wire_check.py</code> runs it against the real engine</td>
+</tr>
+<tr>
+<td>The board profiles</td>
+<td>each board's <code>board.toml</code> <code>[flash.stub]</code> with the <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> flash pins of its <code>pins.h</code> (<code>PIN_FLASH_SCK</code>, <code>_MISO</code>, <code>_MOSI</code>, <code>_CS</code>), its crystal and image address from <code>board.mk</code>; <code>tools/boards.py</code> derives the profile and checks it (<a href="../dev/board-registry.html">board-registry.md</a>), <code>stub/f4stub.py</code> <code>BOARDS</code> reads it</td>
+</tr>
+<tr>
+<td>Switch</td>
+<td><code>CONFIG_STUB_ENTRY</code>, on by default on every radio, with or without the debug link (<a href="stub-entry.html">stub-entry.md</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Status (2026-10-25): built, host tested and run on an <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> board (section 11, with protocol 2). Protocol 4 (the board
+record) and protocol 5 (the SPI flash's security registers, section 6.2) are host tested only (<code>tested = false</code> in each
+board's <code>[flash.stub]</code>).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Contents</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1, 2</td>
+<td>Why a stub, feasibility and options</td>
+</tr>
+<tr>
+<td>3, 4</td>
+<td>Entry from RadioFoundry, USB in the stub</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Protocol and the board record</td>
+</tr>
+<tr>
+<td>6, 7, 8, 9</td>
+<td>Safety rules, update order and recovery, the codec sector, backups</td>
+</tr>
+<tr>
+<td>10, 11, 12</td>
+<td>Size, first hardware test, open points</td>
+</tr>
+<tr>
+<td>13</td>
+<td>The shared engine</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="1-why">1. Why</h2>
+<p>The bootloader route costs three things:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Cost</th>
+<th>With the <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The user holds PTT + side key 1 while switching on</td>
+<td>not needed for an update: RadioFoundry enters the stub on request</td>
+</tr>
+<tr>
+<td>The image goes XOR-keyed (the key comes from the bootloader sectors or the stock firmware file the user has)</td>
+<td>not needed: the stub writes plain bytes</td>
+</tr>
+<tr>
+<td>The bootloader reads no flash, so a host can't back up or verify</td>
+<td>the stub reads all of internal flash, CRC-checks it and compares it with a file</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="2-feasibility">2. Feasibility</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Can code in SRAM erase and program the internal flash?</td>
+<td>Yes. The flash interface takes sector erase and word program from any bus master once unlocked (the FLASH_KEYR key pair). Code fetched from <abbr class="gl" tabindex="0" title="Static RAM: the processor&#x27;s fast working memory." data-more="../dev/glossary.html#t-sram">SRAM</abbr> keeps running while the flash is busy; only a flash access stalls. The <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr> runs entirely from SRAM, so it services USB during a 2 s erase</td>
+</tr>
+<tr>
+<td>Does read protection level 1 stop it?</td>
+<td>No. Level 1 locks flash out only while a debugger is connected, or when the chip booted from SRAM or system memory (the BOOT pins). After a normal boot from user flash, reads, erases and programs from user code are allowed, wherever that code runs. RadioFoundry enters the stub from a normal boot. Bench check: section 11, step 3</td>
+</tr>
+<tr>
+<td>Sector size</td>
+<td>16 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> (0-3), 64 KB (4), 128 KB (5-11). Erase is per sector, so an update rewrites whole sectors. The stub CRCs 4 KB blocks so the host can tell which sectors changed</td>
+</tr>
+<tr>
+<td>Erase and program time</td>
+<td>128 KB: about 1 s, at most 2 s; 16 KB: at most 0.5 s; one word: 16 us, at most 100 us (data sheet, x32 parallelism, 2.7 to 3.6 V). An update erases only the sectors the image covers (at most sectors 3-9), about 1 s per 128 KB sector</td>
+</tr>
+<tr>
+<td>USB</td>
+<td>The stub carries its own polled CDC-ACM device on the <abbr class="gl" tabindex="0" title="USB On-The-Go: the controller can act as the host or the device." data-more="../dev/glossary.html#t-otg">OTG_FS</abbr> core (section 4). It adopts the device RadioFoundry already enumerated when it can</td>
+</tr>
+<tr>
+<td>RAM</td>
+<td>RadioFoundry's 128 KB SRAM and 64 KB CCM are nearly full (86 % and 97 % on the <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> build). RadioFoundry keeps an 8 KB staging buffer for the image (switch on only). After the jump the stub owns all of SRAM</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="21-options-compared">2.1 Options compared</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>For</th>
+<th>Against</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A. A separate stub with its own minimal USB device</td>
+<td>Independent of RadioFoundry's state once entered; reads and writes every application sector, sector 3 included; the same model as the <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> stub, so the host tools share framing and flow</td>
+<td>Needs its own USB code (about 2 KB); entry reaches the stub only while RadioFoundry runs</td>
+<td><strong>Chosen</strong></td>
+</tr>
+<tr>
+<td>B. The stub keeps using RadioFoundry's USB stack (TinyUSB)</td>
+<td>No USB code in the stub</td>
+<td>TinyUSB runs from flash, and the stub erases flash. Its state lives in SRAM the stub overwrites</td>
+<td>Not possible as such. Option A takes the useful part: it adopts the configured device (address and endpoints) without re-enumerating</td>
+</tr>
+<tr>
+<td>C. RadioFoundry writes flash itself (in-app updater, RAM-resident routine)</td>
+<td>No second program to load</td>
+<td>RadioFoundry runs from the sectors an update rewrites (3-9), so it can't erase them while it runs. It would have to stage the image elsewhere (the external <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> flash has room) and copy it with a <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> routine that has no USB. That copier is the stub without the host link, with less checking (no verify after the copy)</td>
+<td>Rejected. A later &quot;stage over the network, copy at reboot&quot; path could reuse the stub's engine</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="3-entry">3. Entry</h2>
+<ol>
+<li>The host sends <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">STUB</abbr> INFO, BEGIN, DATA and ENTER (<a href="debuglink.html">debuglink.md</a> 3.18). INFO reports the run address
+0x20000000 and the 8 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> span. The data goes into RadioFoundry's staging buffer (<code>stub_region</code>), which lies anywhere in RadioFoundry's
+<code>.bss</code>.</li>
+<li>ENTER is refused with busy (3) while the radio <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmits</abbr>. Otherwise the reply goes out, the banner &quot;PC Loader
+Connected&quot; is drawn with the backlight at full (the generic entry code in <code>core/stubentry/stub_entry.c</code>, so a
+dimmed or switched-off backlight does not hide it), and <code>enter_stub</code> runs in the host link task:</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Note whether USB is in serial mode (<code>usb_device_mode</code>)</td>
+<td>the handoff flag; in network mode the host bound <abbr class="gl" tabindex="0" title="Network control model: the USB class that makes the radio appear as a network adapter." data-more="../dev/glossary.html#t-ncm">CDC-NCM</abbr> to the same endpoint numbers</td>
+</tr>
+<tr>
+<td><code>board_rf_safe</code> (<a href="crash-log.html">crash-log.md</a> 8): transmitter off (the board's PA enables, band select, supply and APC DAC)</td>
+<td>nothing transmits while the stub runs. The backlight (already at full for the banner), power latch and USB pins stay</td>
+</tr>
+<tr>
+<td><code>stm32_stub_image_ok</code> (<code>CONFIG_WATCHDOG</code>, also checked at ENTER): with the IWDG running, the image header (3.1) must say the stub feeds the IWDG, or RadioFoundry refuses it</td>
+<td>a stub that doesn't feed the IWDG would be reset part way through a write</td>
+</tr>
+<tr>
+<td><code>stm32_watchdog_stretch</code> (<code>CONFIG_WATCHDOG</code>): the IWDG to its longest timeout (prescaler 256, reload 4095: about 32 s, at least 22 s), then a feed</td>
+<td>the IWDG can't be stopped; the stub feeds it from here on (<a href="watchdog.html">watchdog.md</a> 3.1)</td>
+</tr>
+<tr>
+<td>Interrupts masked, SysTick off, every NVIC enable and pending bit cleared</td>
+<td>the stub polls; RadioFoundry's handlers live in flash it may erase</td>
+</tr>
+<tr>
+<td>DMA1 and DMA2 reset</td>
+<td>circular <abbr class="gl" tabindex="0" title="Inter-IC sound: the bus audio samples travel on between chips." data-more="../dev/glossary.html#t-i2s">I2S</abbr>, <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> and <abbr class="gl" tabindex="0" title="Analog to digital converter." data-more="../dev/glossary.html#t-adc">ADC</abbr> streams write into <abbr class="gl" tabindex="0" title="Static RAM: the processor&#x27;s fast working memory." data-more="../dev/glossary.html#t-sram">SRAM</abbr>, where the stub is about to run</td>
+</tr>
+<tr>
+<td>Copy the staging buffer to 0x20000000 (8 KB, a forward word copy)</td>
+<td>the stub is linked there. The copy runs from flash and its stack is the task stack in CCM, so it overwrites nothing it uses. The buffer lies at or above the target, so a forward copy is safe even if they overlap</td>
+</tr>
+<tr>
+<td>CONTROL = 0, r0 = flags, branch to the entry</td>
+<td>thread mode on the main stack. The stub sets SP to the top of SRAM first</td>
+</tr>
+</tbody>
+</table></div>
+<p>Clocks stay as RadioFoundry set them (72 MHz, USB 48 MHz on every <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32F4</abbr> radio; the reduced clock is never active while USB is configured). <abbr class="gl" tabindex="0" title="General purpose input/output: a pin the firmware can read or drive." data-more="../dev/glossary.html#t-gpio">GPIO</abbr> levels stay, so the power latch holds. The option bytes select the software
+watchdog, so the IWDG runs only when RadioFoundry started it (<code>CONFIG_WATCHDOG</code>). Once started only a reset stops it, so the
+stub feeds it: first thing in <code>stub_main</code>, in <code>stub_ms()</code>, which every wait loop reads (the main loop, the flash and
+SPI busy waits, the USB waits, the delays), and from the protocol engine at every request, before each erase or
+program and once per 4 KB block of SUMS and READ (<code>stubeng_port_t.feed</code>). A feed does nothing while the IWDG isn't
+running. The image header (3.1) says so; RadioFoundry with its IWDG running refuses a stub whose header doesn't
+(<a href="watchdog.html">watchdog.md</a> 3.1).</p>
+<p>Handoff flags in r0:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Bit</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>USB is RadioFoundry's configured CDC-ACM serial port: adopt it</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="31-image-header">3.1 Image header</h3>
+<p>16 bytes at offset 0x10 of the image (0x20000010 once copied), right after the 12-byte entry code; the linker script
+puts section <code>.stub_header</code> there and fails the build if the entry code grows past it. Little endian. One definition,
+<code>stub/stm32f4/f4stub_header.h</code>, shared by the stub and RadioFoundry (<code>platform/stm32f4/stub_entry.c</code>); <code>f4stub.py</code> and the web
+flasher (<code>f4stub.js</code>) read the same layout, and their self-tests check their numbers against that file.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x10</td>
+<td>4</td>
+<td>magic</td>
+<td><code>0x48533446</code> (bytes <code>F4SH</code>)</td>
+</tr>
+<tr>
+<td>0x14</td>
+<td>2</td>
+<td>layout</td>
+<td>1; a later layout only appends fields</td>
+</tr>
+<tr>
+<td>0x16</td>
+<td>2</td>
+<td>size</td>
+<td>16</td>
+</tr>
+<tr>
+<td>0x18</td>
+<td>4</td>
+<td>stub version</td>
+<td>5 (<code>F4STUB_VERSION</code>, also in HELLO)</td>
+</tr>
+<tr>
+<td>0x1C</td>
+<td>4</td>
+<td>flags</td>
+<td>bit 0: feeds the IWDG (<code>F4STUB_FLAG_FEEDS_IWDG</code>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Versions: 1 the first stub, 2 the SPI flash, 3 the header and the IWDG feeds (<code>F4STUB_VERSION_FEEDS_IWDG</code>), 4 the
+shared engine with CONFIG and the board record (section 5), 5 the SPI flash's security registers (SREAD, SWRITE). Stubs
+before version 3 have no header: those bytes are code. While its IWDG runs, RadioFoundry enters a stub only when all three hold:
+the magic, a version of at least 3 and the feed flag (<code>f4stub_image_ok</code>). Otherwise ENTER is refused with reason 1
+(<a href="debuglink.html">debuglink.md</a> 3.18). With the IWDG not running any stub is entered. <code>stubtool.py --rfoundry-enter</code> and the
+web flasher print the version from the header before they send the image.</p>
+<h2 id="4-usb-in-the-stub">4. USB in the stub</h2>
+<p>A CDC-ACM device on the <abbr class="gl" tabindex="0" title="USB On-The-Go: the controller can act as the host or the device." data-more="../dev/glossary.html#t-otg">OTG_FS</abbr> core in slave mode (no <abbr class="gl" tabindex="0" title="Direct memory access: moving data between memory and a peripheral without the processor." data-more="../dev/glossary.html#t-dma">DMA</abbr>, no interrupt line): bulk OUT 0x01 and IN 0x81 (64 bytes),
+interrupt IN 0x82 (8 bytes), VID 0x1FC9, PID 0x0094, the serial number RadioFoundry uses (the 96-bit UID in hex, lowest byte
+first), product &quot;RadioFoundry flash <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr>&quot;.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Start</th>
+<th>When</th>
+<th>What the host sees</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Adopt</td>
+<td>flag bit 0 set, the device has an address, and endpoints 1 IN and OUT are active</td>
+<td>nothing: the same port keeps working. An IN transfer TinyUSB left open is cut off and the FIFOs flushed</td>
+</tr>
+<tr>
+<td>Enumerate again</td>
+<td>otherwise</td>
+<td>the port disappears for about 0.1 s and comes back with the same IDs and serial number (on macOS the same <code>/dev/cu.usbmodem…</code> name)</td>
+</tr>
+</tbody>
+</table></div>
+<p>After a fresh enumeration Linux may give the port the next number (<code>/dev/ttyACM1</code>) while it still holds the old name.
+<code>stubtool.py</code> waits up to 20 s for the stub. It tries the port name it was given for the first 10 s (a <code>/dev/serial/by-path/…</code>
+name stays valid across this). After that it also tries a port with the stub's USB ID, taken only from the same USB
+location as the port RadioFoundry was on, or, if the location is unknown, the one port with RadioFoundry's serial number or USB ID. Two
+candidates are never guessed between: it stops and says so.</p>
+<p>The stub handles a bus reset at any time, so a host that resets the port gets a fresh enumeration. <abbr class="gl" tabindex="0" title="First in, first out: a queue of data between a producer and a consumer." data-more="../dev/glossary.html#t-fifo">FIFO</abbr> <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> in cold
+start: <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> 128 words, EP0 <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> 16, EP1 TX 64, EP2 TX 16. A transfer that ends on a full 64-byte packet gets a
+zero-length packet after it. HELLO's flags byte says which start happened.</p>
+<p>None of this is a board fact. OTG_FS on PA11 / PA12 is the <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32F405</abbr>'s only full speed port, and RadioFoundry has set its
+pins up before the jump. Every STM32F4 radio runs it with VBUS sensing off and gives RadioFoundry's serial number from the UID, so the stub carries no USB settings per radio.</p>
+<p>Web Serial note: after a re-enumeration the page has to reopen the port. Chrome keeps the permission for the same
+USB IDs and serial number, so <code>navigator.serial.getPorts()</code> returns it without a new prompt.</p>
+<h2 id="5-protocol">5. Protocol</h2>
+<p>The <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr>'s framing, unchanged, so the host tools share it:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Direction</th>
+<th>Bytes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>request</td>
+<td><code>02</code> op, length u16, sum u8, <code>03</code>, payload</td>
+</tr>
+<tr>
+<td>reply</td>
+<td><code>02</code> status, length u16, sum u8, <code>03</code>, payload</td>
+</tr>
+</tbody>
+</table></div>
+<p>All numbers are big endian (as in the HR_C7000 stub; the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> is little endian). The sum is the low byte of the
+payload's byte sum. USB has its own <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> per packet; every flash block also carries a CRC-32. A request that stops
+arriving for 200 ms is dropped. The largest payload is 4104 bytes (<code>STUBENG_MAX_PAYLOAD</code>).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Op</th>
+<th>Name</th>
+<th>Request</th>
+<th>Reply</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>01</code></td>
+<td>HELLO</td>
+<td>none</td>
+<td><code>F4STUB</code>, version u8 (5), max payload u16, flash <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> u16, RDP byte u8, flags u8 (bit 0: USB adopted, bit 7: configured), application base u32 (from the board record; 0 before one), <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> flash size u32 (0: none configured or no chip answered), its JEDEC ID (3 bytes), board id u8 (0 before a record), record length u8, the record (the echo, section 5.2). Versions 2 and 3 stopped after the JEDEC ID and always reported 0x0800C000; version 1 stopped after the application base</td>
+</tr>
+<tr>
+<td><code>02</code></td>
+<td>PEEK</td>
+<td>addr u32, n u16 (1 to max)</td>
+<td>n bytes. Allowed: flash, 0x1FFF0000-0x1FFF7A2F (system memory, OTP, UID, flash size), option bytes 0x1FFFC000-0x1FFFC00F, <abbr class="gl" tabindex="0" title="Static RAM: the processor&#x27;s fast working memory." data-more="../dev/glossary.html#t-sram">SRAM</abbr>, CCM. Peripherals are refused</td>
+</tr>
+<tr>
+<td><code>07</code></td>
+<td>SUMS</td>
+<td>addr u32 (4 KB aligned), count u16 (1 to 820), memory u8 (optional: 0 internal flash, the default; 1 SPI flash, addresses from 0)</td>
+<td>count x (CRC-32 u32, blank u8)</td>
+</tr>
+<tr>
+<td><code>09</code></td>
+<td>READ</td>
+<td>addr u32 (4 KB aligned), count u8 (1 to 255), compress u8, memory u8 (optional, as SUMS)</td>
+<td>count frames, one per 4 KB block: CRC-32 u32, method u8 (0 raw, 2 blank), length u16, data. Compression is not offered; a compress request is answered raw</td>
+</tr>
+<tr>
+<td><code>0D</code></td>
+<td>RESET</td>
+<td>magic u32</td>
+<td>OK, then a system reset once the reply has left. It first writes RadioFoundry's restart-cause mark (<code>F4STUB_SOFT_MARK_ADDR</code>, <a href="crash-log.html">crash-log.md</a> 1.3), so RadioFoundry reports a software restart</td>
+</tr>
+<tr>
+<td><code>10</code></td>
+<td>ERASE</td>
+<td>sector u8, magic u32</td>
+<td>OK once erased</td>
+</tr>
+<tr>
+<td><code>11</code></td>
+<td>PROGRAM</td>
+<td>addr u32 (word aligned), 4 to 4096 bytes (whole words)</td>
+<td>OK once programmed and read back</td>
+</tr>
+<tr>
+<td><code>12</code></td>
+<td>XERASE</td>
+<td>addr u32 (a 4 KB SPI flash sector), magic u32</td>
+<td>OK once erased</td>
+</tr>
+<tr>
+<td><code>13</code></td>
+<td>XPROGRAM</td>
+<td>addr u32, 1 to 4096 bytes inside one 4 KB SPI flash sector</td>
+<td>OK once programmed and read back</td>
+</tr>
+<tr>
+<td><code>14</code></td>
+<td>CONFIG</td>
+<td>the board record (24 bytes, section 5.2)</td>
+<td>OK once checked and applied (SPI bus set up, chip woken). A refused record answers <code>0D</code> and leaves the stub unconfigured, even if an earlier record was in force</td>
+</tr>
+<tr>
+<td><code>15</code></td>
+<td>SREAD</td>
+<td>reg u8: 0 status register 2 only, 1-3 a security register</td>
+<td>status register 2 u8; for reg 1-3 then CRC-32 u32 of the register and its 256 bytes (section 6.2). Version 5</td>
+</tr>
+<tr>
+<td><code>16</code></td>
+<td>SWRITE</td>
+<td>reg u8 (1-3), magic u32, 256 bytes</td>
+<td>OK once the register is erased, programmed and read back equal; <code>0F</code> when its lock bit is set; <code>10</code> when it reads back different (section 6.2). Version 5</td>
+</tr>
+</tbody>
+</table></div>
+<p>The magic is <code>0x46345342</code> (&quot;F4SB&quot;).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>05</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>0A</code></td>
+<td>bad request sum: send again</td>
+</tr>
+<tr>
+<td><code>0B</code></td>
+<td>unknown op</td>
+</tr>
+<tr>
+<td><code>0D</code></td>
+<td>bad argument: length, alignment or range; SREAD / SWRITE with no SPI flash or one of another maker</td>
+</tr>
+<tr>
+<td><code>0E</code></td>
+<td>payload longer than the maximum</td>
+</tr>
+<tr>
+<td><code>0F</code></td>
+<td>refused by a safety rule (section 6)</td>
+</tr>
+<tr>
+<td><code>10</code></td>
+<td>flash error: the controller flagged one, the read-back differs, or the SPI flash stayed busy</td>
+</tr>
+<tr>
+<td><code>11</code></td>
+<td>not configured: ERASE, PROGRAM, XERASE, XPROGRAM and SWRITE before a board record was accepted</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="51-shared-with-the-hr_c7000-stub-and-what-differs">5.1 Shared with the HR_C7000 stub, and what differs</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Same</th>
+<th>Different</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Framing, status OK / BADSUM / BADOP / TOOLONG</td>
+<td>yes</td>
+<td></td>
+</tr>
+<tr>
+<td>HELLO</td>
+<td>the 6-byte magic, version, max payload at the same offsets</td>
+<td>magic <code>F4STUB</code> instead of <code>C7STUB</code>; bytes 9-16 hold flash size, RDP, flags and the application base</td>
+</tr>
+<tr>
+<td>PEEK</td>
+<td>layout</td>
+<td>refuses peripherals</td>
+</tr>
+<tr>
+<td>SUMS, READ</td>
+<td>the reply records, 4 KB units</td>
+<td>the request is a flash address, not an SPI controller, chip select and offset</td>
+</tr>
+<tr>
+<td>Writes</td>
+<td></td>
+<td>the HR_C7000 stub passes SPI commands through (write enable, sector erase, page program); this one has ERASE and PROGRAM for the internal flash, with the rules in section 6</td>
+</tr>
+<tr>
+<td>Baud rate, LED, CALL</td>
+<td></td>
+<td>not present (USB)</td>
+</tr>
+<tr>
+<td>The SPI flash</td>
+<td></td>
+<td>a memory byte on SUMS and READ, XERASE / XPROGRAM, and SREAD / SWRITE for its security registers, instead of the HR_C7000 stub's SPI pass-through. The stub drives the chip itself</td>
+</tr>
+<tr>
+<td>Entry</td>
+<td>the debug link STUB command and its magic <code>C7SB</code></td>
+<td>the platform copies the image to its run address; INFO reports the run address</td>
+</tr>
+<tr>
+<td>Board configuration</td>
+<td>a CONFIG after HELLO, echoed by the next HELLO; no writes before it</td>
+<td>op <code>14</code> (the HR_C7000's <code>0D</code> is RESET here), and the record holds the SPI flash wiring and the bootloader's end instead of clocks and power pins</td>
+</tr>
+<tr>
+<td>Transport</td>
+<td></td>
+<td>USB CDC-ACM instead of a <abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="../dev/glossary.html#t-uart">UART</abbr> at 115200</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="52-the-board-record">5.2 The board record</h3>
+<p>The stub image is the same for every radio; what differs goes in a 24-byte record the host sends with CONFIG (layout
+in <code>stub/stm32f4/f4stub.h</code>, the values from the board registry, read into <code>stub/f4stub.py</code> <code>BOARDS</code>). The host picks the profile from the running RadioFoundry's
+VERSION <code>board=</code> (or <code>--board</code>), sends it, reads HELLO again and checks that the echo is byte for byte what it sent and
+that the application base is 0x0800C000. Only then does it write.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Bytes</th>
+<th>Field</th>
+<th>Checked by the stub</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>board id (<code>[flash.stub]</code> <code>id</code>, unique among the <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32F4</abbr> boards)</td>
+<td>not 0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>layout, 1</td>
+<td>equal</td>
+</tr>
+<tr>
+<td>2</td>
+<td>SPI flash bus: 0 none, 1-3 SPI1-SPI3</td>
+<td>at most 3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>SPI mode, CPOL &lt;&lt; 1 | CPHA</td>
+<td>at most 3</td>
+</tr>
+<tr>
+<td>4-7</td>
+<td>crystal (HSE) Hz</td>
+<td>4 to 26 MHz</td>
+</tr>
+<tr>
+<td>8-11</td>
+<td>application base: the end of the bootloader, the commit word</td>
+<td>a sector start, not sector 0, at or above 0x08004000 (the engine)</td>
+</tr>
+<tr>
+<td>12-15</td>
+<td>fastest SPI clock, Hz</td>
+<td>at least 100 kHz</td>
+</tr>
+<tr>
+<td>16-18</td>
+<td>SCK, MISO, MOSI pins: port &lt;&lt; 4 | pin (port A = 0 to I = 8)</td>
+<td>ports A-I</td>
+</tr>
+<tr>
+<td>19</td>
+<td>their alternate function</td>
+<td>at most 15</td>
+</tr>
+<tr>
+<td>20</td>
+<td>flash chip select pin</td>
+<td>ports A-I, none of the other pins</td>
+</tr>
+<tr>
+<td>21-22</td>
+<td>other chip selects on the bus, held high (0xFF: none)</td>
+<td>ports A-I or 0xFF</td>
+</tr>
+<tr>
+<td>23</td>
+<td>0</td>
+<td>equal</td>
+</tr>
+</tbody>
+</table></div>
+<p>Where each field comes from:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>board id</td>
+<td><code>[flash.stub]</code> <code>id</code></td>
+</tr>
+<tr>
+<td>bus, mode, fastest clock</td>
+<td><code>[flash.stub]</code> <code>spi = { bus, mode, hz }</code></td>
+</tr>
+<tr>
+<td>SCK, MISO, MOSI, chip select</td>
+<td><code>pins.h</code> <code>PIN_FLASH_SCK</code>, <code>PIN_FLASH_MISO</code>, <code>PIN_FLASH_MOSI</code>, <code>PIN_FLASH_CS</code></td>
+</tr>
+<tr>
+<td>alternate function</td>
+<td>the bus: <code>platform/stm32f4/platform.toml</code> <code>board_stub.spi_af</code> (AF5 for SPI1 and SPI2, AF6 for SPI3)</td>
+</tr>
+<tr>
+<td>held high</td>
+<td><code>[flash.stub]</code> <code>idle_cs</code>: <code>pins.h</code> names, at most two</td>
+</tr>
+<tr>
+<td>crystal</td>
+<td><code>board.mk</code> <code>HSE_VALUE</code></td>
+</tr>
+<tr>
+<td>application base</td>
+<td><code>board.mk</code> <code>APP_BASE</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><code>tools/boards.py get &lt;board&gt; flash.stub</code> prints a board's values; the radio's hardware page says where they come
+from. The crystal only sets the stub's own timing (time-outs, the 200 ms idle rule): the stub reads the clock tree RadioFoundry
+left and needs the HSE to turn it into Hz. Until a record arrives it assumes 8 MHz.</p>
+<p>The record matters most on a radio whose flash is not on the SPI1 wiring a protocol 2 stub had built in
+(<code>stub/f4stub.py</code> <code>V2_WIRING</code>): there those pins may reach another chip, and a stub with that wiring built in would
+send flash commands to it. A stub before protocol 4 serves only a board whose record matches <code>V2_WIRING</code>.</p>
+<p><code>tools/boards.py check</code> holds each profile to the board's sources: every pin it names must be in <code>pins.h</code> in the
+<code>GPIOx, GPIO_PIN_n</code> form, the bus must have an alternate function, and the crystal must be set.</p>
+<h4 id="why-the-host-sends-the-record">Why the host sends the record</h4>
+<p>The other way considered: RadioFoundry passes a pointer to a board record in a register at the jump, as it passes the USB flag.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>Host CONFIG (chosen)</th>
+<th>Record from RadioFoundry at the hand-over</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Entry routes</td>
+<td>every one: RadioFoundry's hand-over, <code>--attach</code> to a running stub, any later route that has no RadioFoundry behind it (a bootloader or <abbr class="gl" tabindex="0" title="Read-only memory: code fixed in the chip." data-more="../dev/glossary.html#t-rom">ROM</abbr> loader, as the K22F radios may need)</td>
+<td>only RadioFoundry's hand-over</td>
+</tr>
+<tr>
+<td>Where the facts live</td>
+<td>one place on the host, next to the flash maps the host already keeps per radio (<code>BOARDS</code>), checked against the board sources by a host test</td>
+<td>in every board's firmware; a fix needs a new RadioFoundry build in the radio first</td>
+</tr>
+<tr>
+<td>Radios in the field</td>
+<td>a RadioFoundry build already running with <code>CONFIG_STUB_ENTRY</code> serves a new stub unchanged</td>
+<td>each needs a RadioFoundry update before the new stub can serve it</td>
+</tr>
+<tr>
+<td>Lifetime</td>
+<td>the record is in the stub's own <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr></td>
+<td>RadioFoundry's RAM and flash are what the stub overwrites and erases; the record would have to be copied before the first write</td>
+</tr>
+<tr>
+<td>Mistakes</td>
+<td>the host checks the echo before any write; a wrong or missing record means no writes, not a wrong write</td>
+<td>the stub would trust whatever the register held</td>
+</tr>
+</tbody>
+</table></div>
+<p>The HR_C7000 stub made the same choice.</p>
+<p><code>stubtool.Radio</code> holds the shared parts (frames, retries, the debug link loader, the READ record decoder) and
+<code>f4stub.F4Radio</code> subclasses it. The web flasher splits the same way: <code>f4stub.js</code> extends <code>stub.js</code>, and the flasher
+updates and backs up a radio running RadioFoundry with stub entry through it (<a href="../dev/website.html">website.md</a>). It sends the
+records <code>config_record()</code> makes, carried in the site's <code>data/flash-boards.json</code>, and builds none itself.</p>
+<h2 id="6-safety-rules">6. Safety rules</h2>
+<p>The <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr> enforces these, so a host bug can't break them:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nothing is erased or programmed before a board record is accepted (status <code>11</code>)</td>
+<td>a host that skipped CONFIG, or sent a record the stub refused, writes nothing</td>
+</tr>
+<tr>
+<td>Nothing below the record's application base is erased or programmed; no record can put that base in sector 0, below 0x08004000 or off a sector start</td>
+<td>sectors 0-2 (0x08000000-0x0800BFFF), the bootloader, always survive on every radio, whose <code>APP_BASE</code> is 0x0800C000</td>
+</tr>
+<tr>
+<td>Nothing writes FLASH_OPTCR or its key</td>
+<td>RDP and write protection never change</td>
+</tr>
+<tr>
+<td>The interlock: ERASE of any sector but the one holding the application base (sector 3), and PROGRAM of anything outside it, need the word at the application base (0x0800C000) to read 0xFFFFFFFF</td>
+<td>while any application sector is half written, the application looks invalid to the bootloader (section 7)</td>
+</tr>
+<tr>
+<td>PROGRAM only goes to words that read erased; nothing is written if one doesn't</td>
+<td>no silent AND with old data</td>
+</tr>
+<tr>
+<td>Every programmed word is read back</td>
+<td>a weak cell shows up as status <code>10</code></td>
+</tr>
+<tr>
+<td>ERASE and RESET carry the magic</td>
+<td>a stray frame can't erase or reset</td>
+</tr>
+<tr>
+<td>Caches and prefetch are off</td>
+<td>reads after an erase or program see the flash, not a stale cache line</td>
+</tr>
+<tr>
+<td>XERASE carries the magic; XPROGRAM only goes to bytes that read erased, inside one 4 KB sector, and every byte is read back</td>
+<td>the same rules as the internal flash. The <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> flash holds no code, so there is no interlock: what goes there (a backup put back, a <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>) is the host's choice</td>
+</tr>
+<tr>
+<td>Nothing writes an SPI flash status register (0x01, 0x31, 0x11 are never sent)</td>
+<td>the security register lock bits (LB1-LB3), which are one-time, can't be set</td>
+</tr>
+<tr>
+<td>SWRITE carries the magic, is refused while the register's lock bit reads set, and is read back; SREAD and SWRITE are sent only to a chip whose JEDEC manufacturer is Winbond (0xEF)</td>
+<td>a locked register is never erased; another maker's chip never sees these opcodes (section 6.2)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="61-the-spi-flash">6.1 The SPI flash</h3>
+<p>The wiring comes from the board record (section 5.2). At CONFIG the stub drives the chip select and the held-high
+pins high as outputs, puts SCK, MISO and MOSI on their alternate function, and sets the SPI block up from scratch
+(master, the record's mode, <abbr class="gl" tabindex="0" title="Direct memory access: moving data between memory and a peripheral without the processor." data-more="../dev/glossary.html#t-dma">DMA</abbr> requests off) at the slowest prescaler at or under the record's rate, from the APB
+clock of that block (APB2 for SPI1, APB1 for SPI2 and SPI3). It wakes the chip (0xAB), reads its JEDEC ID (0x9F),
+takes the size from the ID's capacity byte, up to 16 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">MB</abbr> (3 address bytes), and waits while the chip reports busy, in
+case RadioFoundry handed over during an erase. Reads use 0x03, erases 0x20 (4 KB), programs 0x02 in pages, each behind write enable (0x06) with
+the status register (0x05) polled. A chip that doesn't answer gives size 0, and every SPI request is then refused.</p>
+<p>On an <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> board on the bench (2026-10-16): JEDEC <code>ef4018</code>, the whole 16 MB read in 59 s (about 280 KB/s) and verified, and a
+pattern written to a blank sector, read back and erased again, after which the whole chip matched the first read.</p>
+<h3 id="62-the-security-registers">6.2 The security registers</h3>
+<p>The SPI <abbr class="gl" tabindex="0" title="The flash chip type that holds code and can run it in place." data-more="../dev/glossary.html#t-nor">NOR</abbr> flash has three 256-byte security registers outside its main array, at addresses 0x001000, 0x002000 and
+0x003000 of their own address space. Some radios keep their factory calibration and flags there (each radio's hardware
+page says which; <a href="../feature-matrix.html">feature-matrix.md</a>). The commands are the W25Q128 data sheet's:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x35</td>
+<td>read status register 2: LB1-LB3 at bits 3-5 (0x08, 0x10, 0x20)</td>
+</tr>
+<tr>
+<td>0x48</td>
+<td>read a register: 3 address bytes, 1 dummy byte, then the data</td>
+</tr>
+<tr>
+<td>0x44</td>
+<td>erase a register: 3 address bytes, behind write enable (0x06), busy polled (0x05)</td>
+</tr>
+<tr>
+<td>0x42</td>
+<td>program a register: 3 address bytes and 256 bytes (one page), behind write enable, busy polled</td>
+</tr>
+</tbody>
+</table></div>
+<p>LB1-LB3 are one-time: once set, the register is read only for good. The stub sends no status register write (0x01,
+0x31, 0x11), so it can't set them. SREAD reads status register 2 first and answers it with every reply, so the host can
+show the lock state. SWRITE reads it, refuses a register whose bit is set (status <code>0F</code>), then erases, programs and reads
+the register back. A chip that doesn't answer reads 0xFF, every lock bit set, and every SWRITE is refused.</p>
+<p>These opcodes are Winbond's (JEDEC manufacturer 0xEF, the CONFIG ID). Other makers use other commands for their OTP
+areas, and some give 0x35 another meaning (a mode switch), so for any other manufacturer SREAD and SWRITE answer <code>0D</code>
+before the chip sees anything.</p>
+<p>The host (<code>stubtool.py --secreg FILE</code>) reads all three into 768 bytes, each checked by its CRC-32, and prints the lock
+bits. <code>--write-secreg FILE --confirm-secreg</code> refuses a file that isn't 768 bytes, reads the registers, writes only the
+ones that differ, refuses before sending anything when one of those is locked, saves the old 768 bytes to
+<code>--backup-dir</code> (never inside a work tree), and reads all three again at the end. Power lost between a register's erase
+and its program leaves it erased: the saved file puts it back.</p>
+<h2 id="7-update-order-and-recovery">7. Update order and recovery</h2>
+<p>The bootloader stays in <abbr class="gl" tabindex="0" title="Device Firmware Upgrade: the USB protocol of the radio&#x27;s bootloader." data-more="../user/22-glossary.html#t-dfu">DFU</abbr> mode when the application's initial stack pointer at 0x0800C000 fails <code>(SP &amp; 0x2FFE0000) == 0x20000000</code>; an erased word does. The host uses that as the commit flag:</p>
+<ol>
+<li>HELLO; the board from the radio's VERSION reply before the entry.</li>
+<li>SUMS over every sector that holds firmware-owned flash; plan the new content (section 8). Stop if nothing changed.</li>
+<li>Save any sector that also holds bytes the firmware doesn't own (an HR_C5000 board's sector 6) to a file outside git.</li>
+<li>ERASE sector 3. From here on the bootloader stays in DFU at every power-on.</li>
+<li>ERASE and PROGRAM every other changed sector (4 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> pieces, blank pieces skipped).</li>
+<li>PROGRAM sector 3 from 0x0800C004.</li>
+<li>SUMS over everything written, with the first word expected erased.</li>
+<li>PROGRAM the first word (the commit). SUMS of its block.</li>
+<li>RESET, or leave it to a power cycle.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Interrupted at</th>
+<th>Next power-on</th>
+<th>Recovery</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>before step 4</td>
+<td>RadioFoundry as before</td>
+<td>none needed</td>
+</tr>
+<tr>
+<td>steps 4 to 8</td>
+<td>the bootloader in DFU, with no keys held</td>
+<td><code>rfoundry flash</code> (it needs the key: from the stock firmware file, since the radio can't run RadioFoundry to read it from the bootloader)</td>
+</tr>
+<tr>
+<td>after step 8</td>
+<td>the new RadioFoundry</td>
+<td>none needed</td>
+</tr>
+</tbody>
+</table></div>
+<p>The bootloader (sectors 0-2) is never touched, so the bootloader route always stays.</p>
+<p>On the bench, a host USB controller fault at step 5 dropped the link and the radio came back in DFU (the <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr> reset,
+nothing committed). The host reports any failure from step 4 on as one error (<code>UncommittedError</code> in <code>f4stub.py</code>): the
+step reached, the cause, that the radio now starts in DFU, and both ways to finish. A failure once the commit word was
+sent says instead that the word may already be written, so the radio may start either way. A write that stalled keeps
+its cable advice in the cause, and a stop by hand prints the same note before it ends. <code>rfoundry flash</code> then attaches
+once, in case the stub still runs on a link that came back, and otherwise ends with &quot;NOT INSTALLED&quot; and a rerun
+without <code>--route</code>, which takes the bootloader route. A script that drives <code>stubtool.py</code> must stop on its exit code:
+a reset, a version read or a cleanup after a failed write hides this state.</p>
+<p>A request in steps 5 and 6 that gets no clean reply (lost, cut or damaged, not a refusal) is not the end of the
+install. The stub may have done it, and a PROGRAM over bytes already written is refused (not blank), so the host
+waits 300 ms, drops what came late, checks the stub answers HELLO, and erases and programs that whole sector once more.
+For step 8 it reads the first word back: still erased, it programs it again; written, the block's SUMS decides. A
+second failure in the same sector ends the install as above. On the bench the first PROGRAM after an erase went
+unanswered on two runs in a row, and the third run went through.</p>
+<p>HR_C5000 boards: whether the bootloader checks the stack pointer the same way is <strong>unverified</strong>. If it does not, an
+interrupted update makes the radio jump to an erased vector. The power-on key combination still reaches DFU, so
+recovery is the same with the keys held.</p>
+<h2 id="8-the-codec-and-the-other-bytes-in-a-sector">8. The codec and the other bytes in a sector</h2>
+<p>The host knows which flash the firmware owns (<code>f4stub.BOARDS</code>, from the board registry: the linker script's application region):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Radio</th>
+<th>Owned</th>
+<th>Sectors touched by an update</th>
+<th>Codec</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HR_C6000 boards</td>
+<td>0x0800C000-0x080BFFFF (sectors 3-9)</td>
+<td>those of 3-9 the image covers</td>
+<td>sectors 10 and 11: written only from an image merged with the codec, otherwise never erased, so the installed codec stays (rfoundry's keep mode)</td>
+</tr>
+<tr>
+<td>HR_C5000 boards</td>
+<td>0x0800C000-0x080DFFFF (sectors 3-10)</td>
+<td>those of 3-10 the image covers</td>
+<td>sector 11: written only from an image merged with the codec, otherwise never erased</td>
+</tr>
+</tbody>
+</table></div>
+<p>Inside an owned range, bytes past the image end become 0xFF, so an older, longer build leaves nothing behind. An image
+merged with the codec (<code>rfoundry_&lt;board&gt;_codec.bin</code>) runs to the end of flash; the tool splits it into the application and
+the codec sectors and writes both whole (<a href="codec-placement.html">codec-placement.md</a>, &quot;<abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr> radios&quot;). Any other image
+that reaches outside the owned range (the wrong board) is refused before anything is erased.</p>
+<p>When a board's owned range grows into sectors an earlier layout gave the codec, a plain image would erase the codec.
+Before it erases anything for an image without the codec, the tool reads the descriptor at the end of flash: if a
+window it names lies in a sector the plan erases, it refuses and writes nothing. Since nothing was erased, the tool
+then resets the radio out of the <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr> (it starts its firmware as before) and prints the command that leaves the stub
+by hand, <code>stubtool.py PORT --attach --board &lt;id&gt; --boot reset</code>, for a reset that did not get through; the web
+flasher restarts the radio the same way. The image merged with the codec in the new layout is what moves it (<a href="codec-placement.html">codec-placement.md</a>, &quot;Moving to a new layout&quot;).</p>
+<p>No radio shares a sector between the firmware and the codec. The rule for one that would stays in the code: a sector
+that is rewritten and holds bytes the firmware doesn't own is read back and written again with those bytes unchanged.</p>
+<p>The stub only runs on a radio that already runs RadioFoundry. A first install, on a radio still on its original firmware, goes through
+the bootloader with rfoundry's merge mode.</p>
+<h2 id="9-backups-and-read-protection">9. Backups and read protection</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Case</th>
+<th>What the <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr> gives</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A radio running RadioFoundry with <code>CONFIG_STUB_ENTRY</code></td>
+<td>a full 1 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">MB</abbr> internal flash image (bootloader, RadioFoundry, codec) and the whole external <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> flash (16 MB: <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>, calibration), every block <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> checked, with no button press. The SPI flash can be written back the same way</td>
+</tr>
+<tr>
+<td>A radio on its original firmware</td>
+<td>nothing yet. It can't run our code without the bootloader, and the bootloader reads no flash. A first install still goes through the bootloader, blind</td>
+</tr>
+<tr>
+<td>After the first install</td>
+<td>everything above. The bootloader and the codec that came with the radio can be saved before any later update</td>
+</tr>
+</tbody>
+</table></div>
+<p>So the stub buys updates and post-install backups. It does not buy a pre-install backup of a radio on its original firmware. A dump
+holds the proprietary bootloader and codec: the tool refuses to write one inside a git work tree, and dumps are
+never committed.</p>
+<h2 id="10-size-and-cost">10. Size and cost</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stub image</td>
+<td>8,072 bytes (limit 8 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr>, RadioFoundry's staging buffer, asserted by <code>f4stub.ld</code>). Built with link-time optimization (<code>-flto</code>): without it, protocol 5 is about 8,500 bytes</td>
+</tr>
+<tr>
+<td>Stub RAM after the jump</td>
+<td>28.6 KB of <abbr class="gl" tabindex="0" title="Static RAM: the processor&#x27;s fast working memory." data-more="../dev/glossary.html#t-sram">SRAM</abbr> (image, engine buffers, 8 KB <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> ring), then the stack: at least 4 KB is left for it (asserted by <code>f4stub.ld</code>); the deepest call chain needs under 1 KB (<code>-fstack-usage</code>)</td>
+</tr>
+<tr>
+<td>RadioFoundry with <code>CONFIG_STUB_ENTRY=y</code>, HR_C6000 board</td>
+<td>the <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">STUB</abbr> state machine, the entry and the banner text, all in sectors 3-9 (720 KB); +8 KB of SRAM (the staging buffer): <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> 95.4 % used, the default build</td>
+</tr>
+<tr>
+<td>RadioFoundry with <code>CONFIG_STUB_ENTRY=y</code>, HR_C5000 board</td>
+<td>the same code, in an application area of 848 KB (the default image is 465,912 bytes). The switch fits with no other switch off</td>
+</tr>
+<tr>
+<td>RadioFoundry with the switch off</td>
+<td>no change: the same image, byte for byte in size</td>
+</tr>
+</tbody>
+</table></div>
+<p>The switch is on by default. The command hands the whole <abbr class="gl" tabindex="0" title="System on chip: the processor and its on-chip peripherals." data-more="../dev/glossary.html#t-soc">SoC</abbr> to whatever image the host sends, guarded by the magic,
+the length and the CRC-32; a signed or hash-pinned stub would close that (section 12).</p>
+<h2 id="11-first-hardware-test-hr_c6000-board">11. First hardware test (HR_C6000 board)</h2>
+<p>Nothing below <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmits</abbr>. Build, then flash once through the bootloader:</p>
+<pre><code>make BOARD=&lt;id&gt; CONFIG_STUB_ENTRY=y -j8
+make -C stub/stm32f4
+python3 tools/release.py --board &lt;id&gt; --version v0.0.0-stub --out build/dist
+(radio in the bootloader: PTT + side key 1 at power-on)
+cd tools/rfoundry &amp;&amp; python3 -m rfoundry flash ../../build/dist/rfoundry-&lt;id&gt;-v0.0.0-stub.bin --yes   (key or --stock as usual)
+</code></pre>
+<p>Then, with RadioFoundry running (PORT is its USB serial port, <code>/dev/cu.usbmodem…</code> on macOS):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Command</th>
+<th>Pass</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>python3 tools/rfoundry_debug.py version</code></td>
+<td><code>board=</code> the radio's name, <code>git=</code> the build just flashed</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>python3 stub/stubtool.py PORT --rfoundry-enter --peek 0x08000000:64</code></td>
+<td>&quot;<abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32F4</abbr> <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr> v4: 1024 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> flash, RDP byte 0x55, not configured yet, USB adopted from RadioFoundry&quot; (or &quot;enumerated again&quot;), &quot;stub configured for <radio name>: <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> flash 16384 KB (JEDEC ef4018)&quot;, then 64 bytes; the screen shows &quot;PC Loader Connected&quot;</td>
+</tr>
+<tr>
+<td>3</td>
+<td>the same output</td>
+<td>the bytes are the bootloader's vector table (not all 00 or FF): <abbr class="gl" tabindex="0" title="Central processing unit." data-more="../dev/glossary.html#t-cpu">CPU</abbr> reads from <abbr class="gl" tabindex="0" title="Static RAM: the processor&#x27;s fast working memory." data-more="../dev/glossary.html#t-sram">SRAM</abbr> work at RDP 1</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>python3 stub/stubtool.py PORT --attach --board &lt;id&gt; --progmem ~/flash.bin</code></td>
+<td>1 MB, sha256 printed</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>python3 stub/stubtool.py PORT --attach --board &lt;id&gt; --verify-progmem ~/flash.bin</code></td>
+<td>identical</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>python3 stub/stubtool.py PORT --attach --board &lt;id&gt; --write-app build/&lt;id&gt;/rfoundry_&lt;id&gt;.bin</code></td>
+<td>&quot;0 sector(s) written&quot;, every sector unchanged (the build already in the radio)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>rebuild with a visible change (another <code>RFOUNDRY_VERSION=</code>), then step 6 again</td>
+<td>sectors 3 and the changed ones written, verified</td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>python3 stub/stubtool.py PORT --attach --board &lt;id&gt; --boot reset</code></td>
+<td>RadioFoundry starts; <code>rfoundry_debug.py version</code> shows the new <code>git=</code></td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>python3 stub/stubtool.py PORT --rfoundry-enter --write-app ...</code> with yet another build, USB unplugged during the write, then a power cycle</td>
+<td>the radio comes up in the bootloader with no keys held; rfoundry restores it</td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>rfoundry_debug.py radio usb network</code>, then <code>python3 stub/stubtool.py udp:RADIO_IP --rfoundry-enter --peek 0x08000000:64</code></td>
+<td>the hand-over goes over <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr>; the stub comes up as a serial port (<code>--stub-port</code>, default the one 1FC9:0094 port) and answers</td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>python3 stub/stubtool.py PORT --rfoundry-enter --q128 ~/spi.bin</code>, then <code>--attach --board &lt;id&gt; --verify-q128 ~/spi.bin</code></td>
+<td>&quot;SPI flash 16384 KB (JEDEC …)&quot; in the &quot;configured&quot; line; 16 MB read, identical</td>
+</tr>
+<tr>
+<td>12</td>
+<td>write a pattern to a blank 4 KB sector with <code>--write-q128 pat.bin --q128-range ADDR:ADDR+0x1000</code>, read it back, write 0xFF back the same way, then <code>--verify-q128 ~/spi.bin</code></td>
+<td>1 sector written each time; the pattern reads back; the whole chip matches the first read; RadioFoundry starts with its <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr></td>
+</tr>
+</tbody>
+</table></div>
+<p>Steps 4 and 5 write the dump outside the repository. Step 9 needs rfoundry and the stock firmware file at hand. The <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> suite
+can gain a test for steps 2 and 3 (opt-in, reads only).</p>
+<p>Results on an <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> board (2026-10-16, RDP level 1): steps 1 to 8 and 10 to 12 pass. The stub reads the bootloader's
+vector table from SRAM (so code running from <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> reads flash at RDP 1), a 1 MB read takes 2 s and matches the image
+flashed through the bootloader, an unchanged image writes 0 sectors, a changed one writes 5 sectors in 8 s, and the
+codec sectors stay (the radio still finds its codec). Step 9 is still to do.</p>
+<h2 id="12-open-points">12. Open points</h2>
+<ul>
+<li>Step 9 of section 11 (an interrupted write and the recovery) on hardware.</li>
+<li>Protocol 4 (the board record) on hardware: section 11 again on an <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> board.</li>
+<li>HR_C5000 boards: the bootloader's stack pointer check, and the <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr> on a real radio.</li>
+<li>rfoundry: use the stub when the radio runs a <code>CONFIG_STUB_ENTRY</code> build, with the bootloader as the fallback.</li>
+<li>Release use: pin the stub image (the radio could refuse a stub whose SHA-256 is not built in), then turn the switch on
+by default.</li>
+</ul>
+<h2 id="13-the-shared-engine">13. The shared engine</h2>
+<p>The protocol engine (<code>stub/common/stubeng.h</code>, <code>stubeng.c</code>) knows no chip. It holds the framing, every op, the safety
+rules of section 6, CRC-32 SUMS and block READ, and the board record's copy for the HELLO echo. A target supplies a
+<code>stubeng_port_t</code> and its glue: the <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32F4</abbr> target is <code>stub/stm32f4</code> (USB, flash controller, <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr>, entry); a Kinetis K22F target would be another directory with the same shape. The wire protocol (section 5) is the
+same for every target; only the HELLO name, the op magic and the board record's layout are the target's.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th><code>stubeng_port_t</code> field</th>
+<th>What the target gives</th>
+<th>STM32F4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code>, <code>version</code>, <code>magic</code></td>
+<td>HELLO's first 6 bytes, the protocol version, the u32 ERASE / XERASE / SWRITE / RESET carry</td>
+<td><code>F4STUB</code>, 5, 0x46345342</td>
+</tr>
+<tr>
+<td><code>flash</code> (<code>stubeng_flash_t</code>)</td>
+<td>internal flash: <code>base</code>, <code>size</code> (sectors that don't fit wholly don't exist), <code>runs</code> (the sector map as runs of equal sectors), <code>prog_unit</code> (PROGRAM's alignment and length unit: 4 or 8 bytes), <code>min_app_base</code> (no record opens anything below it)</td>
+<td>0x08000000, the flash size register, 4 x 16 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> + 64 KB + 7 x 128 KB, 4, 0x08004000</td>
+</tr>
+<tr>
+<td><code>peek</code>, <code>npeek</code></td>
+<td>address ranges PEEK may read besides the internal flash; never peripherals</td>
+<td>system memory and OTP, option bytes, <abbr class="gl" tabindex="0" title="Static RAM: the processor&#x27;s fast working memory." data-more="../dev/glossary.html#t-sram">SRAM</abbr>, CCM</td>
+</tr>
+<tr>
+<td><code>security</code>, <code>flags</code></td>
+<td>HELLO bytes 11 and 12 (the target's bits below 0x80; the engine adds bit 7, configured)</td>
+<td>RDP byte; USB adopted</td>
+</tr>
+<tr>
+<td><code>write</code></td>
+<td>send one reply frame</td>
+<td>USB bulk IN</td>
+</tr>
+<tr>
+<td><code>read</code></td>
+<td>copy memory the engine has checked</td>
+<td><code>memcpy</code></td>
+</tr>
+<tr>
+<td><code>erase</code>, <code>program</code></td>
+<td>erase one sector by index; program words at an address the engine has checked erased (aligned to <code>prog_unit</code>)</td>
+<td>the flash controller, x32</td>
+</tr>
+<tr>
+<td><code>reset</code></td>
+<td>after the RESET reply</td>
+<td><code>NVIC_SystemReset</code></td>
+</tr>
+<tr>
+<td><code>xread</code>, <code>xerase</code>, <code>xprogram</code></td>
+<td>the external SPI flash, or NULL: read, erase one 4 KB sector, program inside one sector</td>
+<td><code>f4stub_spi.c</code></td>
+</tr>
+<tr>
+<td><code>xsreg</code></td>
+<td>the SPI flash's security registers, or NULL: reg 0 reads status register 2; reg 1-3 reads a register, or with a source erases and programs it. The engine has checked the maker, the magic and the lock bit</td>
+<td><code>f4spi_sreg</code></td>
+</tr>
+<tr>
+<td><code>configure</code></td>
+<td>check and apply the board record (1 to 32 bytes, first byte the nonzero board id); fill <code>stubeng_config_t</code>: <code>app_base</code>, and the SPI flash's <code>xsize</code> and <code>xid</code></td>
+<td><code>f4_board_parse</code>, then the clock and <code>f4spi_init</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>The flash size register can read less than the flash the chip has. On one field radio it read 512 KB on a part whose
+top sectors hold the codec (seen 2026-10). The <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr> then refuses READ, SUMS and writes past that size with status
+0x0D. INFO_CHIP's flash size over the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> is the same register, so the web flasher's backup compares it with
+the board's flash end before the hand-over. When it reads short, or INFO_CHIP goes unanswered twice, RadioFoundry reads
+the internal flash in place, up to the board's <code>rom_size</code>, and the loader reads only the SPI flash
+(<code>site/static/js/flasher/backup.js</code>). An install whose firmware flash (the board's <code>owned</code> ranges) reaches past the
+register's size needs the bootloader route: the flasher reads INFO_CHIP at its &quot;now&quot; step and then offers update mode
+only, with a notice (<code>registerShort</code> in <code>site/static/js/flasher/f4stub.js</code>). The page's own check refuses such a write
+before the first erase. A firmware flash that fits under the register is still written through the loader.</p>
+<p>The engine checks the application base <code>configure</code> returns: a sector start, not sector 0, at or above
+<code>min_app_base</code>. The commit word is at that base, and the commit sector (the interlock's) is the sector holding it. The
+engine keeps 2 x 4 KB frame buffers and a 4 KB word buffer (<code>stubeng_t</code>, about 12.3 KB of <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr>) and needs no heap. It
+calls nothing but the port, <code>memcpy</code>, <code>memmove</code>, <code>memset</code> and <code>memcmp</code>.</p>
+<p>A new target needs: the port, a <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> loop that feeds bytes with <code>stubeng_feed</code> and calls <code>stubeng_idle</code> after
+200 ms of silence, its board record layout and check (host tested, as <code>f4stub_board.c</code>), its host-side profiles, and
+the host tests: <code>tests/host/f4stubTest.c</code> already runs the engine with a uniform 2 KB sector map and 8-byte program
+units.</p>
+<p>Sources: STM32F405/407 reference manual (embedded flash interface: unlock, sector erase, programming parallelism,
+read protection levels; <abbr class="gl" tabindex="0" title="USB On-The-Go: the controller can act as the host or the device." data-more="../dev/glossary.html#t-otg">OTG_FS</abbr> device programming model), STM32F405 data sheet (flash erase and program times), USB 2.0
+chapter 9, USB CDC 1.2 and <abbr class="gl" tabindex="0" title="Public switched telephone network. Tier III can connect calls to it." data-more="../dev/glossary.html#t-pstn">PSTN</abbr> 1.2, the W25Q128 data sheet (security registers, status register 2, LB1-LB3).</p>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/stub-stm32f4.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#1-why">1. Why</a></li><li class="l2"><a href="#2-feasibility">2. Feasibility</a></li><li class="l3"><a href="#21-options-compared">2.1 Options compared</a></li><li class="l2"><a href="#3-entry">3. Entry</a></li><li class="l3"><a href="#31-image-header">3.1 Image header</a></li><li class="l2"><a href="#4-usb-in-the-stub">4. USB in the stub</a></li><li class="l2"><a href="#5-protocol">5. Protocol</a></li><li class="l3"><a href="#51-shared-with-the-hr_c7000-stub-and-what-differs">5.1 Shared with the HR_C7000 stub, and what differs</a></li><li class="l3"><a href="#52-the-board-record">5.2 The board record</a></li><li class="l2"><a href="#6-safety-rules">6. Safety rules</a></li><li class="l3"><a href="#61-the-spi-flash">6.1 The SPI flash</a></li><li class="l3"><a href="#62-the-security-registers">6.2 The security registers</a></li><li class="l2"><a href="#7-update-order-and-recovery">7. Update order and recovery</a></li><li class="l2"><a href="#8-the-codec-and-the-other-bytes-in-a-sector">8. The codec and the other bytes in a sector</a></li><li class="l2"><a href="#9-backups-and-read-protection">9. Backups and read protection</a></li><li class="l2"><a href="#10-size-and-cost">10. Size and cost</a></li><li class="l2"><a href="#11-first-hardware-test-hr_c6000-board">11. First hardware test (HR_C6000 board)</a></li><li class="l2"><a href="#12-open-points">12. Open points</a></li><li class="l2"><a href="#13-the-shared-engine">13. The shared engine</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

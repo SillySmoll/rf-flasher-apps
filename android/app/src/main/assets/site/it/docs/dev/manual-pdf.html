@@ -1,0 +1,203 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="it" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The User Manual PDF · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="The User Manual PDF · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:url" content="https://radiofoundry.org/it/docs/dev/manual-pdf.html">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Le radio su cui gira RadioFoundry, ognuna con una schermata diversa.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/dev/manual-pdf.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/dev/manual-pdf.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/dev/manual-pdf.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/dev/manual-pdf.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/dev/manual-pdf.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../it/" data-gl-more="Altro">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../it/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principale"><a href="../../../it/radios/index.html">Radio</a><a href="../../../it/features/index.html">Funzioni</a><a href="../../../it/flash/index.html">Installa</a><a href="../../../it/codeplug/index.html">Codeplug</a><a href="../../../it/docs/index.html" aria-current="page">Documenti</a><a href="../../../it/screenshots/index.html">Schermate</a><a href="../../../it/tools/index.html">Strumenti</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Lingua" title="Lingua">IT</summary><nav aria-label="Lingua"><a href="../../../docs/dev/manual-pdf.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/dev/manual-pdf.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/dev/manual-pdf.html" aria-current="true" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/dev/manual-pdf.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Passa da chiaro a scuro" title="Passa da chiaro a scuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Guida per sviluppatori">
+		<p class="eyebrow"><a href="../../../it/docs/index.html">Documentazione</a> / Guida per sviluppatori</p>
+		<ul><li><a href="index.html">Developer Documentation</a></li><li><a href="adding-a-mode.html">Adding a Mode</a></li><li><a href="adding-a-radio.html">Adding a Radio</a></li><li><a href="architecture.html">Architecture</a></li><li><a href="board-registry.html">The Board Registry</a></li><li><a href="building.html">Building</a></li><li><a href="ci-runners.html">CI Runners and Images</a></li><li><a href="ci.html">Continuous Integration</a></li><li><a href="codec.html">The Codec</a></li><li><a href="codeplug-editor.html">The Codeplug Editor</a></li><li><a href="contributing.html">Contributing</a></li><li><a href="cps-and-codeplug.html">CPS, Codeplug and Settings</a></li><li><a href="debug-link.html">Debug Link</a></li><li><a href="glossary.html">Developer glossary</a></li><li><a href="manual-pdf.html" aria-current="page">The User Manual PDF</a></li><li><a href="release.html">Releases</a></li><li><a href="stack-check.html">Stack Check</a></li><li><a href="testing.html">Testing</a></li><li><a href="translating.html">Translating</a></li><li><a href="web-flasher.html">The Web Flasher</a></li><li><a href="website.html">The Web Site</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Questa pagina non è ancora tradotta; è mostrata in inglese.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="the-user-manual-pdf">The User Manual PDF</h1>
+<p>How the user manual becomes the PDF a release carries. The manual is the Markdown in <a href="../user/index.html">docs/user/</a>;
+<code>tools/build_manual.sh</code> turns it into one PDF:</p>
+<pre><code>tools/build_manual.sh                         # build/manual/RadioFoundry-manual-&lt;git describe&gt;.pdf
+tools/build_manual.sh --version v26.11        # the version on the title page and in the file name
+tools/build_manual.sh --out manual.pdf
+tools/build_manual.sh --typ-only              # stop after the typst source, for debugging the template
+</code></pre>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tools/build_manual.sh</code></td>
+<td>Collects <code>docs/user/[0-9][0-9]-*.md</code> in order, runs pandoc, then typst</td>
+</tr>
+<tr>
+<td><code>tools/manual/manual.lua</code></td>
+<td>pandoc filter: turns <code>&lt;img width&gt;</code> into images, maps links between chapters to PDF links, turns links into the repository into web links (with <code>RFOUNDRY_REPO_URL</code>) or plain text</td>
+</tr>
+<tr>
+<td><code>tools/manual/manual.typ</code></td>
+<td>typst template: title page, contents, numbered chapters, page footer, tables</td>
+</tr>
+</tbody>
+</table></div>
+<p>Chapter files are numbered (<code>01-introduction.md</code>, ...); a new chapter is a new numbered file plus a line in
+<a href="../user/index.html">docs/user/README.md</a>. Images are <code>&lt;img src=&quot;../ux/screens/160x120i5/NAME.png&quot; width=&quot;200&quot; alt=&quot;...&quot;&gt;</code>,
+which GitHub and the PDF both show. A missing image is left out of the PDF with a warning. The PDF goes to <code>build/</code>,
+which git ignores: never commit it.</p>
+<p>Set <code>RFOUNDRY_REPO_URL</code> (for example <code>https://github.com/OWNER/RadioFoundry/blob/v26.11</code>) to make links to files
+outside the manual into web links. <code>$PANDOC</code> and <code>$TYPST</code> choose the binaries.</p>
+<h2 id="toolchain-pandoc-and-typst">Toolchain: pandoc and typst</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Why not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pandoc with LaTeX</td>
+<td>A TeX distribution is gigabytes to install in CI, slow, and its errors are hard to read</td>
+</tr>
+<tr>
+<td>A headless browser (wkhtmltopdf, Chromium)</td>
+<td>Heavy, poor page control (headers, page breaks, contents)</td>
+</tr>
+<tr>
+<td>mdBook, MkDocs</td>
+<td>Built for web sites; their PDF output goes through a browser anyway</td>
+</tr>
+<tr>
+<td>pandoc with typst</td>
+<td>Two single static binaries (about 30 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="glossary.html#t-kb">MB</abbr> each), seconds per build, page layout in one readable template, fonts bundled with typst</td>
+</tr>
+</tbody>
+</table></div>
+<p>pandoc reads GitHub Markdown, so the files stay readable on GitHub. typst lays out the pages. Versions in use:
+pandoc 3.6.4 and typst 0.13.1 in CI (<code>.github/workflows/manual.yml</code>); <code>tools/build_manual.sh</code> needs pandoc 3.1.12 and typst 0.12 or later. Install them:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>System</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>macOS</td>
+<td><code>brew install pandoc typst</code></td>
+</tr>
+<tr>
+<td>Debian, Ubuntu</td>
+<td><code>pandoc</code> from the <a href="https://github.com/jgm/pandoc/releases">release page</a> (the distribution's is often too old), <code>typst</code> from its <a href="https://github.com/typst/typst/releases">release page</a></td>
+</tr>
+<tr>
+<td>Any</td>
+<td>Download both release archives, unpack, and point <code>$PANDOC</code> and <code>$TYPST</code> at the binaries</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="the-manual-workflow">The manual workflow</h2>
+<p><code>.github/workflows/manual.yml</code>, independent of the firmware build:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Trigger</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Push of a <code>v*</code> tag</td>
+<td>Checks the doc links, builds the PDF with the tag as its version, uploads it as a workflow artifact, creates the GitHub release if it doesn't exist and attaches the PDF</td>
+</tr>
+<tr>
+<td>Pull request or push to main touching <code>docs/</code>, <code>README.md</code> or the manual tools</td>
+<td>Checks the doc links and builds the PDF as an artifact; nothing is published</td>
+</tr>
+<tr>
+<td>Manual run (<code>workflow_dispatch</code>)</td>
+<td>On a <code>v*</code> tag, the same as a tag push; on a branch, the same as a pull request</td>
+</tr>
+</tbody>
+</table></div>
+<p>It downloads fixed versions of pandoc and typst, so the PDF doesn't change with the runner image. To rebuild the PDF
+for an existing tag, run the workflow by hand on the tag (<code>gh workflow run manual.yml --ref v26.11</code>); the upload
+replaces the asset.</p>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/dev/manual-pdf.md">Vedi il sorgente di questa pagina</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="In questa pagina">
+		<p class="eyebrow">In questa pagina</p>
+		<ul><li class="l2"><a href="#toolchain-pandoc-and-typst">Toolchain: pandoc and typst</a></li><li class="l2"><a href="#the-manual-workflow">The manual workflow</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Unisciti alla comunità RadioFoundry</strong><span class="small muted">Domande, aiuto con la tua radio e novità, su Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Hai trovato un bug? Vuoi che la tua radio sia supportata?</strong><span class="small muted">Apri una segnalazione su GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry ha licenza MIT · <a href="https://github.com/radiofoundry/radiofoundry">Codice sorgente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunità</a> · <a href="../../../it/docs/index.html">Documenti</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Novità</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

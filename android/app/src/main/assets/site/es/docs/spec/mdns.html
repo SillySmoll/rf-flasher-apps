@@ -1,0 +1,322 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>mDNS and DNS-SD on the USB network link · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="mDNS and DNS-SD on the USB network link · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/docs/spec/mdns.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/mdns.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/mdns.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/mdns.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/mdns.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/mdns.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../es/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../../es/radios/index.html">Radios</a><a href="../../../es/features/index.html">Funciones</a><a href="../../../es/flash/index.html">Instalar</a><a href="../../../es/codeplug/index.html">Codeplug</a><a href="../../../es/docs/index.html" aria-current="page">Documentación</a><a href="../../../es/screenshots/index.html">Capturas</a><a href="../../../es/tools/index.html">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../../docs/spec/mdns.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/mdns.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/mdns.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/mdns.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Especificaciones">
+		<p class="eyebrow"><a href="../../../es/docs/index.html">Documentación</a> / Especificaciones</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html" aria-current="page">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Esta página aún no está traducida; se muestra en inglés.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="mdns-and-dns-sd-on-the-usb-network-link">mDNS and DNS-SD on the USB network link</h1>
+<p>In USB network mode (<code>usb-network.md</code>) the radio answers Multicast DNS for its own name and advertises its services,
+so a host finds it as <code>rfoundry-&lt;DMR ID&gt;.local</code> and browses its services (<abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>, <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="mmdvm-protocol.html">MMDVM</abbr> modem, <abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="tftp.html">TFTP</abbr>, <abbr class="gl" tabindex="0" title="Simple Network Management Protocol: reading a device&#x27;s state over the network." data-more="snmp.html">SNMP</abbr>, HTTP, <abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="../user/22-glossary.html#t-kiss">KISS</abbr>,
+<abbr class="gl" tabindex="0" title="Hamlib&#x27;s network rig control protocol, used by loggers and SDR programs." data-more="../user/22-glossary.html#t-rigctld">rigctld</abbr>: section 2) with Bonjour or Avahi. Switch: <code>CONFIG_MDNS</code> (= <code>CONFIG_DMR_IP_GATEWAY</code>, the IP stack it runs on). Code: <code>core/net/mdns.c</code> (the
+responder, no <abbr class="gl" tabindex="0" title="Real-time operating system: the scheduler that runs the firmware&#x27;s tasks." data-more="../dev/glossary.html#t-rtos">RTOS</abbr>), <code>core/net/net_services.c</code> (the glue to the gateway). Written from RFC 6762 and RFC 6763. IPv4
+only; there is no IPv6 on the link.</p>
+<h2 id="1-names-and-records">1. Names and records</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Host</td>
+<td><code>rfoundry-&lt;DMR ID&gt;.local</code>, e.g. <code>rfoundry-9991234.local</code>. The <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr> is the radio's own (the one the gateway's addresses come from)</td>
+</tr>
+<tr>
+<td>Instance</td>
+<td><code>&lt;callsign&gt; &lt;board&gt; (&lt;DMR ID&gt;)</code>, e.g. <code>Q0TST XR-100UV (9991234)</code>. <code>&lt;board&gt;</code> is <code>board.name</code>. The call sign is the settings' radio name, else the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>'s, first word only; left out when there is none</td>
+</tr>
+<tr>
+<td>After a conflict</td>
+<td>host <code>rfoundry-9991234-2</code>, instance <code>... (9991234) (2)</code>, counting up</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Owner</th>
+<th>Type</th>
+<th>Data</th>
+<th>TTL</th>
+<th>Kind</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>host</td>
+<td>A</td>
+<td>the radio's address (<code>ipGatewayRadioIP</code>)</td>
+<td>120 s</td>
+<td>unique</td>
+</tr>
+<tr>
+<td>host</td>
+<td>NSEC</td>
+<td>next name = host, types: A</td>
+<td>120 s</td>
+<td>unique</td>
+</tr>
+<tr>
+<td><code>&lt;type&gt;.local</code></td>
+<td>PTR</td>
+<td><code>&lt;instance&gt;.&lt;type&gt;.local</code></td>
+<td>4500 s</td>
+<td>shared</td>
+</tr>
+<tr>
+<td><code>&lt;instance&gt;.&lt;type&gt;.local</code></td>
+<td>SRV</td>
+<td>priority 0, weight 0, the port, target host</td>
+<td>120 s</td>
+<td>unique</td>
+</tr>
+<tr>
+<td><code>&lt;instance&gt;.&lt;type&gt;.local</code></td>
+<td>TXT</td>
+<td><code>board=&lt;board.name&gt;</code> <code>id=9991234</code> <code>call=Q0TST</code> <code>fw=&lt;git&gt;</code></td>
+<td>4500 s</td>
+<td>unique</td>
+</tr>
+<tr>
+<td><code>&lt;instance&gt;.&lt;type&gt;.local</code></td>
+<td>NSEC</td>
+<td>next name = itself, types: TXT, SRV</td>
+<td>120 s</td>
+<td>unique</td>
+</tr>
+<tr>
+<td><code>_services._dns-sd._udp.local</code></td>
+<td>PTR</td>
+<td><code>&lt;type&gt;.local</code></td>
+<td>4500 s</td>
+<td>shared</td>
+</tr>
+</tbody>
+</table></div>
+<p>Unique records go out with the cache-flush bit, except in legacy unicast answers and in probes. Names are compressed in
+owner names, PTR and SRV targets, not in NSEC (RFC 6762 18.14).</p>
+<h2 id="2-services">2. Services</h2>
+<p>One table in <code>core/net/net_services.c</code>, one line per service, built in when its feature is:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Port</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>_rfoundry-debug._udp</code></td>
+<td>3334</td>
+<td><code>CONFIG_DEBUGLINK</code> (the serial protocols over <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr>, <code>usb-network.md</code> 1)</td>
+</tr>
+<tr>
+<td><code>_mmdvm._udp</code></td>
+<td>3334</td>
+<td><code>CONFIG_HOTSPOT</code></td>
+</tr>
+<tr>
+<td><code>_tftp._udp</code></td>
+<td>69</td>
+<td><code>CONFIG_TFTP</code> (<code>tftp.md</code>)</td>
+</tr>
+<tr>
+<td><code>_snmp._udp</code></td>
+<td>161</td>
+<td><code>CONFIG_SNMP</code> (<code>snmp.md</code>)</td>
+</tr>
+<tr>
+<td><code>_http._tcp</code></td>
+<td>80</td>
+<td><code>CONFIG_NET_HTTP</code> (<code>tcp-services.md</code> 5)</td>
+</tr>
+<tr>
+<td><code>_kiss-tnc._tcp</code></td>
+<td>8001</td>
+<td><code>CONFIG_NET_KISS</code> (<code>tcp-services.md</code> 4)</td>
+</tr>
+<tr>
+<td><code>_rigctld._tcp</code></td>
+<td>4532</td>
+<td><code>CONFIG_NET_RIGCTL</code> (<code>tcp-services.md</code> 6)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Other services add their line there. At most <code>MDNS_SERVICES_MAX</code> (8; 7 in use with everything on). Every instance has the same
+TXT record.</p>
+<h2 id="3-behavior">3. Behavior</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>When</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Link up with an address (a DMR ID)</td>
+<td>Probe after 0-250 ms: three rounds 250 ms apart, one message per name (the host, each instance): question <code>ANY &lt;name&gt;</code> with the unicast-response bit, the proposed records (A; SRV and TXT) in the authority section</td>
+</tr>
+<tr>
+<td>No objection 250 ms after the third round</td>
+<td>Announce: every record, one message per name (the host's A and NSEC; a service's PTR, SRV, TXT, enumeration PTR and NSEC), twice, 1 s apart</td>
+</tr>
+<tr>
+<td>The first mDNS message from the host after the link came up</td>
+<td>Announce again (two rounds): the host's responder may have started after the first ones, typically before its <abbr class="gl" tabindex="0" title="Dynamic Host Configuration Protocol: how a device gets its IP address on a network." data-more="../dev/glossary.html#t-dhcp">DHCP</abbr> lease</td>
+</tr>
+<tr>
+<td>A query for one of our names</td>
+<td>Answer: A for the host; PTR, plus SRV, TXT and A as additional records, for a service type; SRV (plus A) and TXT for an instance; every service type for <code>_services._dns-sd._udp.local</code>. <code>ANY</code> gets all. A type we don't have (AAAA) gets no answer and the NSEC with the records there are as additional records</td>
+</tr>
+<tr>
+<td>Known answers in the query</td>
+<td>A PTR the querier holds with at least half its TTL left is left out (RFC 6762 7.1). With nothing left, no response</td>
+</tr>
+<tr>
+<td>Unicast-response bit, or a source port other than 5353</td>
+<td>Answer by unicast to the querier's address and port. Source port not 5353 is legacy unicast: the query ID and question echoed, TTLs at most 10 s, no cache-flush bit</td>
+</tr>
+<tr>
+<td>Otherwise</td>
+<td>Multicast to 224.0.0.251:5353, ID 0, no questions; each record at most once a second (250 ms when the query is a probe for one of our names)</td>
+</tr>
+<tr>
+<td>A response from someone else with one of our unique records and other data (A, SRV, TXT)</td>
+<td>Conflict: rename (section 1), probe again</td>
+</tr>
+<tr>
+<td>While probing, someone else's probe for one of our names</td>
+<td>Tie-break on the first record of each set (RFC 6762 8.2: class, type, data byte by byte): A for the host, TXT for an instance. Theirs greater: we wait 1 s and probe again. Ours greater or equal: we go on</td>
+</tr>
+<tr>
+<td>The identity changes (address, DMR ID, call sign)</td>
+<td>Goodbye (every record but the NSECs with TTL 0) for the old names, then probe the new ones</td>
+</tr>
+<tr>
+<td>Link down, or no address</td>
+<td>Silent; probe again when it comes back</td>
+</tr>
+</tbody>
+</table></div>
+<p>Not done: the 20-120 ms delay for shared records (RFC 6762 6: there is no other responder on a point-to-point USB link
+to collide with), the reverse-mapping PTR (<code>in-addr.arpa</code>), continuation of truncated known-answer lists, and the QU
+&quot;multicast if not sent recently&quot; refinement (QU answers always go unicast). Opcode or rcode not 0: ignored.</p>
+<p>Messages are at most <code>IPGW_UDP_PAYLOAD_MAX</code> (558 bytes, the gateway's 600-byte frames); a response that doesn't fit
+continues in another message. Replies wait in record sets and go out from <code>mdnsTick</code>, so a busy USB IN endpoint only
+delays them. The identity is read once a second (the call sign comes from storage).</p>
+<h2 id="4-the-gateway-and-the-usb-link">4. The gateway and the USB link</h2>
+<ul>
+<li><strong>Local ports</strong> (<code>ipGateway.h</code>): datagrams to the radio's address, or to 224.0.0.0/24, on a port in the gateway's
+table (<code>ipGatewayUdpBind</code>) go to that service's handler. <abbr class="gl" tabindex="0" title="Multicast DNS: finding a device on a local network by a `.local` name." data-more="mdns.html">mDNS</abbr> binds 5353. 224.0.0.0/24 is link-local
+(RFC 5771): never sent over the air, bound or not. Sources are not checked against the host's lease, so a host
+still on a link-local address is answered too.</li>
+<li><strong>Sending</strong> (<code>ipGatewayUdpSend</code>): from the radio's address with IP TTL 255 (RFC 6762 11), to the host's MAC for
+unicast and to 01:00:5E plus the low 23 bits of the group for multicast.</li>
+<li><strong>Multicast on the USB link</strong>: nothing filters in the device. The gateway takes every frame from the host whatever
+its destination MAC, so frames to 01:00:5E:00:00:FB reach it, and the <abbr class="gl" tabindex="0" title="Network control model: the USB class that makes the radio appear as a network adapter." data-more="../dev/glossary.html#t-ncm">NCM</abbr> function advertises no multicast filters
+(<code>wNumberMCFilters</code> 0) and no packet filter capability, so the host has nothing to program in it (TinyUSB accepts
+and ignores a SET_ETHERNET_PACKET_FILTER anyway). What reaches the host is up to its stack: mDNSResponder and Avahi
+join 224.0.0.251 on every multicast-capable interface. No change was needed in <code>usb_ncm.c</code>. Not checked on hardware
+yet: whether macOS runs mDNS on an NCM interface with a /32 address (the <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> test in section 5 answers that).</li>
+</ul>
+<h2 id="5-tests">5. Tests</h2>
+<ul>
+<li>Host: <code>tests/host/mdnsTest.c</code> with the real gateway: probing and announcing (counts, timing, flags, the records),
+queries (A, case-insensitive names, QU, legacy unicast, browse with additional records, known-answer suppression,
+enumeration, NSEC for AAAA, several questions, foreign names), the rate limit, a busy endpoint, a conflict and the
+rename, the tie-break both ways, goodbyes on an identity change, link down and no address, re-announcing when the
+host is first heard, malformed messages (short, pointer loop, label past the end, counts past the end), and the
+gateway's port table (any source, link-local never to the air, unbound ports still to the air, the table full,
+TTL 255 and checksums). <code>mdnsTest.pcap</code> is checked by tshark's DNS dissector.</li>
+<li><abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr>: <code>tests/hil/test_net_services.py</code> (<code>--allow-usb-switch</code>): <code>dns-sd -G v4 rfoundry-&lt;id&gt;.local</code> resolves to the radio's
+address, <code>dns-sd -B _rfoundry-debug._udp</code> finds the instance and <code>dns-sd -L</code> gives port 3334 and the TXT record; with
+python zeroconf instead of <code>dns-sd</code> where that is installed. <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">Debug link</abbr> view keys (section <code>net_svc</code>): <code>mdns.state</code>
+(0 off, 1 probing, 2 announcing, 3 running) <code>mdns.name mdns.queries mdns.answered mdns.sent mdns.busy mdns.conflicts mdns.bad</code>.</li>
+</ul>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/mdns.md">Ver el código fuente de esta página</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="En esta página">
+		<p class="eyebrow">En esta página</p>
+		<ul><li class="l2"><a href="#1-names-and-records">1. Names and records</a></li><li class="l2"><a href="#2-services">2. Services</a></li><li class="l2"><a href="#3-behavior">3. Behavior</a></li><li class="l2"><a href="#4-the-gateway-and-the-usb-link">4. The gateway and the USB link</a></li><li class="l2"><a href="#5-tests">5. Tests</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

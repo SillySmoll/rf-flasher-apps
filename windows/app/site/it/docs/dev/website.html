@@ -1,0 +1,736 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="it" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Web Site · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="The Web Site · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:url" content="https://radiofoundry.org/it/docs/dev/website.html">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Le radio su cui gira RadioFoundry, ognuna con una schermata diversa.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/dev/website.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/dev/website.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/dev/website.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/dev/website.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/dev/website.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../it/" data-gl-more="Altro">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../it/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principale"><a href="../../../it/radios/index.html">Radio</a><a href="../../../it/features/index.html">Funzioni</a><a href="../../../it/flash/index.html">Installa</a><a href="../../../it/codeplug/index.html">Codeplug</a><a href="../../../it/docs/index.html" aria-current="page">Documenti</a><a href="../../../it/screenshots/index.html">Schermate</a><a href="../../../it/tools/index.html">Strumenti</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Lingua" title="Lingua">IT</summary><nav aria-label="Lingua"><a href="../../../docs/dev/website.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/dev/website.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/dev/website.html" aria-current="true" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/dev/website.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Passa da chiaro a scuro" title="Passa da chiaro a scuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Guida per sviluppatori">
+		<p class="eyebrow"><a href="../../../it/docs/index.html">Documentazione</a> / Guida per sviluppatori</p>
+		<ul><li><a href="index.html">Developer Documentation</a></li><li><a href="adding-a-mode.html">Adding a Mode</a></li><li><a href="adding-a-radio.html">Adding a Radio</a></li><li><a href="architecture.html">Architecture</a></li><li><a href="board-registry.html">The Board Registry</a></li><li><a href="building.html">Building</a></li><li><a href="ci-runners.html">CI Runners and Images</a></li><li><a href="ci.html">Continuous Integration</a></li><li><a href="codec.html">The Codec</a></li><li><a href="codeplug-editor.html">The Codeplug Editor</a></li><li><a href="contributing.html">Contributing</a></li><li><a href="cps-and-codeplug.html">CPS, Codeplug and Settings</a></li><li><a href="debug-link.html">Debug Link</a></li><li><a href="glossary.html">Developer glossary</a></li><li><a href="manual-pdf.html">The User Manual PDF</a></li><li><a href="release.html">Releases</a></li><li><a href="stack-check.html">Stack Check</a></li><li><a href="testing.html">Testing</a></li><li><a href="translating.html">Translating</a></li><li><a href="web-flasher.html">The Web Flasher</a></li><li><a href="website.html" aria-current="page">The Web Site</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Questa pagina non è ancora tradotta; è mostrata in inglese.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="the-web-site">The Web Site</h1>
+<p>The site is generated from the repository, like the PDF manual. It lists the radios, their screens
+and features, holds the documentation, and carries two tools that run in the browser with nothing sent to a server:
+the web flasher (back up, install, restore; <a href="web-flasher.html">web-flasher.md</a>) and the Codeplug Editor
+(<a href="codeplug-editor.html">codeplug-editor.md</a>). The site is the recommended way for users to install RadioFoundry and edit
+a codeplug (<a href="../user/02-installing.html">Installing</a>); this page is for people who change it.</p>
+<pre><code>python3 site/build.py                       # build/site/
+python3 site/build.py --serve               # build, then http://localhost:8000 (WebUSB needs localhost or https)
+python3 site/build.py --firmware build/dist # with release images for the flasher (tools/release.py --out)
+python3 site/build.py --strict              # any warning fails (CI)
+site/tests/run.sh                           # the flasher's and the editor's tests (Node 20+)
+</code></pre>
+<p>The generator needs two Python packages, markdown-it-py and resvg_py (<code>pip install -r site/requirements.txt</code>, or prefix the
+command with <code>uv run --no-project --with-requirements site/requirements.txt</code>). The pages need no build step and no
+npm packages: plain HTML, CSS and ES modules. <code>tools/ci.sh</code> builds the site and runs the tests (Python step).</p>
+<p>Cloudflare Pages builds and deploys it (see <a href="#hosting">Hosting</a>):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Push to <code>main</code></td>
+<td>Builds the site with <code>site/cloudflare-build.sh</code> and deploys it to radiofoundry.org</td>
+</tr>
+<tr>
+<td>Push to another branch of this repository</td>
+<td>Builds a preview at its own <code>*.radiofoundry.pages.dev</code> address; a pull request shows the link. Pull requests from forks get no preview</td>
+</tr>
+<tr>
+<td>Release published</td>
+<td><code>.github/workflows/site.yml</code> calls the project's deploy hook, so <code>main</code> is built again with the new release's images for the flasher</td>
+</tr>
+<tr>
+<td>By hand</td>
+<td>Actions &gt; Web site &gt; Run workflow (the same deploy hook), or Retry deployment in the Pages project</td>
+</tr>
+</tbody>
+</table></div>
+<p>The pull request's unit tests job also builds the site (<code>--strict</code>) and runs the flasher's tests (<code>tools/ci.sh</code>'s
+Python step).</p>
+<h2 id="hosting">Hosting</h2>
+<p>The site is static files on Cloudflare Pages, project <code>radiofoundry</code>, connected to this repository through
+Cloudflare's GitHub app. Pages builds in its own build image (Python and Node.js preinstalled) and switches the site to
+a new deployment in one step, so a deployment has no downtime.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Setup</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Build</td>
+<td>Command <code>site/cloudflare-build.sh</code>, output directory <code>build/site</code>, root directory the repository root. The script installs <code>site/requirements.txt</code>, lists the releases through the GitHub API, fetches the <code>rfoundry-*</code> images of the newest one that is not a pre-release, passes the newest pre-release (a <code>bN</code> tag) when it is newer than that (<code>--beta</code>), and runs <code>site/build.py --strict</code>. A failed build leaves the last deployment up</td>
+</tr>
+<tr>
+<td>Branches</td>
+<td>Production branch <code>main</code>; every other branch of this repository builds a preview</td>
+</tr>
+<tr>
+<td>Variables</td>
+<td><code>PYTHON_VERSION</code> <code>3.12</code> (both environments). <code>RFOUNDRY_SENTRY_DSN</code> in production only, so previews send no error reports. <code>GITHUB_TOKEN</code> (encrypted, both environments): a fine-grained token with read-only access to public repositories. Without it the release lookup shares the builders' 60 requests an hour, and a build can fail with 403 &quot;rate limit exceeded&quot; after a minute of retries</td>
+</tr>
+<tr>
+<td>Custom domain</td>
+<td><code>radiofoundry.org</code> on the project (Custom domains). The <code>www</code> name redirects to it</td>
+</tr>
+<tr>
+<td>Release rebuild</td>
+<td>The project's deploy hook, as <code>CLOUDFLARE_DEPLOY_HOOK</code> in the <code>site</code> environment (main and release tags only), which <code>site.yml</code> calls</td>
+</tr>
+<tr>
+<td>Analytics</td>
+<td>Cloudflare Web Analytics, turned on in the project's Metrics tab. Pages adds the beacon to each deployment; it sets no cookies</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Pages serves the build's <code>404.html</code> for a missing page</td>
+</tr>
+<tr>
+<td>Roll back</td>
+<td>The project's Deployments list: Rollback on an earlier production deployment</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="sources">Sources</h2>
+<p>Nothing on the site is copied by hand. Each page reads its source at build time:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Shows</th>
+<th>Comes from</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Radios, their order and status</td>
+<td>The board registry, <code>boards/&lt;radio&gt;/board.toml</code> (<code>tools/boards.py json --for site</code>). <code>order</code> sorts them; the lowest is the home page's radio</td>
+</tr>
+<tr>
+<td>Planned radios</td>
+<td>The rows of the <a href="../spec/radios.html">radio survey</a> &quot;Summary table&quot; that name no board, by their Port cell (<code>tools/registry_docs.py</code>): <code>Planned</code>, <code>Planned, hardware needed</code>, <code>In progress, #N</code> (badge &quot;In progress&quot;, linked to the pull request) or <code>Not planned</code> (not listed), each with an optional <code>. note</code></td>
+</tr>
+<tr>
+<td>A radio's cards</td>
+<td>One card per board, then one per <code>looks</code> entry of its board.toml (another body the board ships in), each with its own drawing and the radios in that body; a look's card links to the board's page. The board's card lists the radios not moved to a look</td>
+</tr>
+<tr>
+<td>A radio's one-line note for visitors</td>
+<td>board.toml <code>[status] summary</code>, the same line the README and the user manual show; a catalog may translate it as <code>radio.note.&lt;radio&gt;</code>. A planned radio's: the note of its Port cell, which a catalog may translate as <code>planned.note.&lt;slug of the survey name&gt;</code></td>
+</tr>
+<tr>
+<td>A radio's name, bands, processor, screen, bootloader steps, flash backend, codeplug location</td>
+<td>board.toml, the CPU from <code>platform/&lt;p&gt;/platform.toml</code>, the backend from the <code>[flash] family</code>, the codeplug location from the board's <code>hal_flash_map_t</code></td>
+</tr>
+<tr>
+<td>A radio's status badge (Supported, In development)</td>
+<td>board.toml <code>[status] level</code>: <code>supported</code> reads Supported, <code>testing</code> and <code>bring-up</code> read In development</td>
+</tr>
+<tr>
+<td>Which features a radio has, per variant</td>
+<td><code>make BOARD=&lt;radio&gt; [VARIANT=&lt;v&gt;] print-config</code> and <code>print-required</code>; what it can't have is config.mk <code>BOARD_UNSUPPORTED</code> (shown ✕) and what isn't written for it yet <code>BOARD_NOT_WRITTEN</code> (shown …), with their reasons, through the registry</td>
+</tr>
+<tr>
+<td>Feature names, help, dependencies</td>
+<td><code>config/features.mk</code> (the comment above each switch, the <code>needs</code> checks)</td>
+</tr>
+<tr>
+<td>Feature groups, titles, flash cost, notes</td>
+<td>The tables in <a href="../feature-matrix.html">feature-matrix.md</a></td>
+</tr>
+<tr>
+<td>Variants and why each leaves a feature out</td>
+<td><code>config/variants/&lt;id&gt;.mk</code> (<a href="../build-config.html">build-config.md</a>)</td>
+</tr>
+<tr>
+<td>Screenshots</td>
+<td><code>docs/ux/screens/&lt;gallery&gt;/</code> (<code>make -C tests/host ui-gallery</code>), six per radio page in two rows of three: the first of <code>featured</code> in <code>site/data/screens.json</code> the radio has. The Screenshots page (<code>/screenshots/</code>) shows every screen each radio's build has, a section per board, under the <code>groups</code> headings of <code>screens.json</code>, in its order. The home page's carousel lists its screens in <code>site/templates/home.html</code>, from every gallery, one height. Every page shows the scaled copies (<a href="#screenshot-copies">Screenshot copies</a>)</td>
+</tr>
+<tr>
+<td>Flash layout, codec profiles, stock files, key hashes</td>
+<td>The board registry (<code>tools/rfoundry/rfoundry/registry.json</code>, read through <code>boards.py</code>) and <code>stockfw.py</code>, exported to <code>data/flash-boards.json</code></td>
+</tr>
+<tr>
+<td>Documentation</td>
+<td>Every Markdown file under <code>docs/</code></td>
+</tr>
+<tr>
+<td>Firmware images</td>
+<td>Release manifests and images (<code>--firmware</code>; the workflow downloads the newest release)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The build fails when a source doesn't parse, and warns (an error with <code>--strict</code>) when a feature has no row in the
+feature matrix, a screen isn't in <code>screens.json</code> or names a group it doesn't list, a string is missing from the English
+catalog (a screen's caption included), the Screenshots page lacks a board or a screen that board's build has, or a page
+links to a file the build didn't write.</p>
+<p><code>data/*.json</code> is what the pages read and doubles as a public API for other tools: <code>radios.json</code>, <code>features.json</code>,
+<code>variants.json</code>, <code>flash-boards.json</code>, <code>screens.json</code>, <code>releases.json</code>, <code>site.json</code>.</p>
+<h2 id="the-screenshots-page">The Screenshots page</h2>
+<p><code>/screenshots/</code> has a section per board, from the registry in its order, and a link per board at the top. Each section
+shows every shot in the board's gallery whose <code>screens.json</code> entry needs only switches the board's full build has (the
+radio page's six use the same test). A board's screens are one width: a gallery 160 pixels wide or less at twice its
+size, a wider one as it is. A color page's shots in other highlight colors and themes
+(<code>&lt;page&gt;__&lt;color&gt;</code>) follow the page, hidden until the visitor ticks &quot;Also show other highlight colors and themes&quot; (CSS
+<code>:has()</code>, no script). <code>site.js</code> switches sections without reloading and keeps the address <code>#&lt;radio&gt;</code>, so a link can
+name a radio (each radio page links to its own). Without the script, CSS shows the section the address names
+(<code>:target</code>), else the first.</p>
+<p>Nothing on the page names a screen, a group or a radio:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>To add</th>
+<th>Touch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A screen</td>
+<td><code>tests/host/uiSim.c</code> (<code>gallery[]</code>) and <code>make -C tests/host ui-gallery</code>; its entry in <code>site/data/screens.json</code> (group, needs); its caption <code>screen.&lt;name&gt;</code> in <code>site/i18n/en.json</code></td>
+</tr>
+<tr>
+<td>A group</td>
+<td><code>groups</code> in <code>screens.json</code> and its heading <code>screens.group.&lt;group&gt;</code> in <code>en.json</code></td>
+</tr>
+<tr>
+<td>A radio</td>
+<td><code>boards/&lt;radio&gt;/</code> as <a href="adding-a-radio.html">Adding a radio</a> says; <code>board.toml</code> <code>hardware.gallery</code> must name a display class the gallery has (<code>tools/boards.py check</code>)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="screenshot-copies">Screenshot copies</h2>
+<p>The gallery holds each screen at its panel's size. The pages draw screens larger, at sizes that are rarely a whole
+multiple of it, on displays whose device pixel ratio may be fractional (125 %, 150 %). Nearest-neighbor scaling
+(<code>image-rendering: pixelated</code>) then makes some pixel rows wider than others, and a browser that ignores the property
+blurs them. So <code>site/rfoundrysite/shots.py</code> writes a copy of every gallery screen, <code>static/img/screens/&lt;gallery&gt;/</code>,
+scaled up a whole number of times with hard pixel edges, and the browser scales it down smoothly: every pixel keeps
+one width, at any size.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>What sets it</th>
+<th>How</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The factor, per gallery</td>
+<td><code>ceil(2 × largest CSS width a page draws it at ÷ its width)</code>: enough for a device pixel ratio of 2</td>
+</tr>
+<tr>
+<td>The widths</td>
+<td>Each page reports where it draws a screen. The CSS sizes come from <code>site.css</code> (<code>--shot-h</code> of <code>.carousel</code>, <code>--shot-col</code> of <code>.shots</code>, the <code>max-width</code> of <code>.device-frame</code> and <code>.rt-pic</code>, the heights of <code>.hero-device img</code> and <code>.radio-card img</code>), the drawings' screen position from <code>frame_geometry</code></td>
+</tr>
+<tr>
+<td>The drawings</td>
+<td><code>&lt;radio&gt;.svg</code> and a look's drawing embed the boot screen's copy</td>
+</tr>
+</tbody>
+</table></div>
+<p>The build fails when one of those rules is gone from <code>site.css</code>. The copies carry no <code>image-rendering</code>. The docs
+pages still link the gallery's own files, shown with <code>image-rendering: pixelated</code>. A higher pixel ratio than 2 scales
+a copy up a little, smoothly. <code>site/tests/shots_test.py</code> checks the scaling.</p>
+<h2 id="layout">Layout</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Path</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>site/build.py</code></td>
+<td>Entry point</td>
+</tr>
+<tr>
+<td><code>site/rfoundrysite/repo.py</code></td>
+<td>Reads the sources above</td>
+</tr>
+<tr>
+<td><code>site/rfoundrysite/build.py</code></td>
+<td>Assembles the pages and data files</td>
+</tr>
+<tr>
+<td><code>site/rfoundrysite/docs.py</code></td>
+<td><code>docs/</code> to HTML: GitHub heading ids, <code>.md</code> links to <code>.html</code>, links out of <code>docs/</code> to the repository</td>
+</tr>
+<tr>
+<td><code>site/rfoundrysite/device.py</code></td>
+<td>Radio images: frame, overlay geometry, boot screen composite</td>
+</tr>
+<tr>
+<td><code>site/rfoundrysite/shots.py</code></td>
+<td>The gallery screens' scaled copies (<a href="#screenshot-copies">Screenshot copies</a>)</td>
+</tr>
+<tr>
+<td><code>site/rfoundrysite/toolzip.py</code></td>
+<td><code>downloads/rfoundry-tool.zip</code>: rfoundry from the site's commit for the flasher's manual install kit, with a launcher; <code>data/site.json</code> <code>tool</code> gives its path, size and SHA-256 (<a href="web-flasher.html#the-manual-install-kit">web-flasher.md</a>). <code>site/tests/toolzip_test.py</code> runs it unpacked</td>
+</tr>
+<tr>
+<td><code>site/rfoundrysite/social.py</code></td>
+<td>The link preview image (<code>static/img/social.png</code>, every page's <code>og:image</code>): each radio with a different screen, rasterized with resvg</td>
+</tr>
+<tr>
+<td><code>site/rfoundrysite/tmpl.py</code>, <code>site/templates/</code></td>
+<td>Page markup (below)</td>
+</tr>
+<tr>
+<td><code>site/i18n/</code></td>
+<td>String catalogs (below)</td>
+</tr>
+<tr>
+<td><code>site/static/css/tokens.css</code>, <code>site.css</code></td>
+<td>Design tokens, then layout and components</td>
+</tr>
+<tr>
+<td><code>site/static/js/site.js</code></td>
+<td>Theme toggle, menu, features filter, screen overlay on radio pages, the home page's screenshot carousel, the Screenshots page's radio links</td>
+</tr>
+<tr>
+<td><code>site/static/js/flasher/</code></td>
+<td>The web flasher (below)</td>
+</tr>
+<tr>
+<td><code>site/static/js/codeplug/</code></td>
+<td>Codeplug decoding and encoding, CSV, the radio transport, contacts sources (<a href="codeplug-editor.html">codeplug-editor.md</a>)</td>
+</tr>
+<tr>
+<td><code>site/static/js/editor/</code></td>
+<td>The Codeplug Editor page</td>
+</tr>
+<tr>
+<td><code>site/rfoundrysite/radioid_regions.py</code></td>
+<td>Writes <code>codeplug/sources/regions.js</code> from a RadioID.net <code>user.csv</code> (country and state names only)</td>
+</tr>
+<tr>
+<td><code>site/static/js/tools.js</code></td>
+<td>The Tools page (codeplug conversion)</td>
+</tr>
+<tr>
+<td><code>site/static/img/radios/src/&lt;radio&gt;.svg</code></td>
+<td>Radio illustrations (below)</td>
+</tr>
+<tr>
+<td><code>site/tests/</code></td>
+<td>Flasher and editor tests: <code>fixtures.py</code> makes inputs with rfoundry, the HR_C7000 tools and <code>tests/host/cpsSim</code>; the <code>*.test.mjs</code> files check the JavaScript</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="templates-and-design">Templates and design</h2>
+<p>Markup lives in <code>site/templates/*.html</code> and <code>partials/</code>, with four kinds of placeholder: <code>{{ value }}</code> (escaped),
+<code>{{{ html }}}</code> (as built), <code>{{t key}}</code> (a translated string) and <code>{{&gt; partial }}</code>. <code>../../../</code> is the path to the site
+root (static files, data) and <code>../../../it/</code> the path to the root of the page's language (links between pages). Loops
+stay in Python, which renders a partial per item.</p>
+<p>Every page's footer has two help cards: the community group (<code>COMMUNITY_URL</code> in <code>site/rfoundrysite/build.py</code>, also
+<code>community</code> in <code>data/site.json</code>) and the GitHub issues. The web tools' report line under an error (<code>reportLine()</code> in
+<code>static/js/report.js</code>) links the same two. Their icons are CSS masks (<code>.icon-*</code> in <code>site.css</code>), drawn in the text
+color.</p>
+<p>Every page's footer ends with a faint build stamp: the firmware release the flasher installs (linked to its GitHub
+release; left out before the first release), a Changelog link to the GitHub releases, the commit the site was built from
+(<code>-dirty</code> with uncommitted changes, linked to the commit) and the build time in UTC. <code>data/site.json</code> has the same
+commit and the date, the release (<code>release</code>) and the pre-release offered (<code>beta</code>, below).</p>
+<p>All visual decisions are variables in <code>tokens.css</code>: colors for light and dark, type sizes, spacing, radii.
+<code>site.css</code> only uses them. A redesign replaces <code>tokens.css</code>, then <code>site.css</code> and the templates; the generator doesn't
+change. Readability comes first (<a href="../ux/principles.html">principles</a>): 18 px base type, high contrast, nothing
+squeezed.</p>
+<h2 id="glossary">Glossary</h2>
+<p><code>docs/glossary.json</code> is the one source. <code>python3 tools/glossary.py --write</code> generates the two glossary pages from it:
+<a href="../user/22-glossary.html">user/22-glossary.md</a> (entries with scope <code>user</code>) and <a href="glossary.html">glossary.md</a> (scope <code>dev</code>).
+Never edit those pages by hand. <code>tools/ci.sh</code> fails when they are stale.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>term</code></td>
+<td>The name as the page shows it. A plain word (lowercase, or one capital) also matches in any case and with a plural <code>s</code>. An acronym or mixed-case name matches exactly.</td>
+</tr>
+<tr>
+<td><code>aliases</code></td>
+<td>Other spellings and plurals. Each follows the same matching rule.</td>
+</tr>
+<tr>
+<td><code>category</code></td>
+<td>One of <code>categories</code> in the file. It is the page's section.</td>
+</tr>
+<tr>
+<td><code>scope</code></td>
+<td><code>user</code>: listed in the user glossary, previewed in the whole site. <code>dev</code>: listed in the developer glossary, previewed outside the user guide.</td>
+</tr>
+<tr>
+<td><code>definition</code></td>
+<td>One or two short sentences. Say what the standard calls it when a vendor uses another name.</td>
+</tr>
+<tr>
+<td><code>link</code></td>
+<td>Optional path under <code>docs/</code> of the section that explains it. The preview's &quot;More&quot; link goes there, else to the glossary row.</td>
+</tr>
+<tr>
+<td><code>preview</code></td>
+<td><code>false</code> keeps a common word (Monitor, Zone) in the glossary but never marks it in the text.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The site build (<code>docs.py</code>) wraps a term in <code>&lt;abbr class=&quot;gl&quot; title=&quot;...&quot;&gt;</code> at build time. The Markdown stays unmarked, so GitHub
+shows plain text. Rules:</p>
+<ul>
+<li>Whole words only. Not inside code, headings, link text, a table's first column, hyphenated words or paths.</li>
+<li>The first use in each section (a section ends at the next <code>#</code> or <code>##</code> heading).</li>
+<li><code>&lt;!-- glossary: off --&gt;</code> in a page turns marking off for that page. <code>&lt;!-- glossary: off TG, SFR --&gt;</code> turns off those terms.</li>
+</ul>
+<p><code>site.js</code> turns each <code>&lt;abbr&gt;</code> into a popover on hover, keyboard focus and tap, with a &quot;More&quot; link (Enter follows it from the
+keyboard). Without JavaScript the <code>title</code> shows the definition. <code>site/tests/glossary_test.py</code> tests the rules.</p>
+<p>To add a term, add an entry to the file, run <code>python3 tools/glossary.py --write</code> and <code>python3 tools/glossary.py --check</code>.
+<code>python3 tools/glossary.py --unexplained</code> lists all-capital words the docs use that have no entry (pin names and
+identifiers with digits or underscores are skipped). Add an entry for each one that matters to a reader, or its name to <code>excluded</code>.</p>
+<h2 id="translating">Translating</h2>
+<p>How to add a language, radio and site: <a href="translating.html">translating.md</a>. <code>site/i18n/languages.json</code> lists the languages. The default (English) is at the site root, others under <code>/&lt;code&gt;/</code>.
+The header's language menu (<code>details.lang-switch</code>) links the page in every language. On a first visit, when the browser's first language the site has isn't the page's, a bar under the header offers it, in that language (<code>static/js/langhint.js</code>; the words come from each catalog's <code>nav.lang_*</code> keys). It never redirects. Picking a language or dismissing the bar is remembered (<code>localStorage</code> <code>rfoundry-lang</code>).
+Each language has a flat catalog <code>site/i18n/&lt;code&gt;.json</code>; a missing key falls back to English, key by key. The
+flasher, the Codeplug Editor and the Tools page get their strings from the same catalog, embedded in the page
+(<code>&lt;script id=&quot;i18n&quot;&gt;</code>, read by <code>static/js/i18n.js</code>). Text that comes from the repository (feature help, variant
+reasons) is English at its source; a catalog can override it with <code>feature.&lt;SWITCH&gt;.title</code>, <code>feature.&lt;SWITCH&gt;.help</code>,
+<code>variant.&lt;id&gt;.title</code>, <code>variant.&lt;id&gt;.summary</code> or <code>group.&lt;slug&gt;</code>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th><code>languages.json</code> field</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td>The URL prefix and <code>&lt;html lang&gt;</code>: <code>es</code>, <code>pt-BR</code></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>The language's name in itself (<code>Español</code>): the switcher's label</td>
+</tr>
+<tr>
+<td><code>dir</code></td>
+<td><code>ltr</code> or <code>rtl</code>: <code>&lt;html dir&gt;</code></td>
+</tr>
+<tr>
+<td><code>locale</code></td>
+<td><code>og:locale</code> for link previews (<code>es-ES</code>); the code when left out</td>
+</tr>
+</tbody>
+</table></div>
+<p>With more than one language, every page gets a language switcher in the header (a link to the same page in each
+language), <code>&lt;link rel=&quot;alternate&quot; hreflang&gt;</code> for each language plus <code>x-default</code>, and its own <code>404.html</code> in each
+language's tree. Links between pages use <code>../../../it/</code> (templates) or <code>HOME</code> (<code>flasher/dom.js</code>), so they stay in the
+visitor's language. With one language there is no switcher and no alternate links.</p>
+<p>A translated documentation page goes in <code>docs/i18n/&lt;code&gt;/&lt;path under docs&gt;</code>. Pages without one are shown in
+English with a notice, the text marked <code>lang=&quot;en&quot;</code>.</p>
+<h3 id="plurals-numbers-and-dates">Plurals, numbers and dates</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Need</th>
+<th>How</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A count in the text</td>
+<td>Plural forms: <code>key.one</code>, <code>key.other</code> (and <code>key.zero</code>, <code>key.two</code>, <code>key.few</code>, <code>key.many</code> where the language has them). Pass the count as the number <code>n</code>: <code>t(&quot;key&quot;, { n: 3 })</code>, <code>self.t(lang, &quot;key&quot;, n=3)</code></td>
+</tr>
+<tr>
+<td>Which form</td>
+<td>The scripts: <code>Intl.PluralRules</code> of the page's language. The generator: <code>PLURAL_RULES</code> in <code>site/rfoundrysite/i18n.py</code>; a language whose rule differs from English's gets an entry there</td>
+</tr>
+<tr>
+<td>A language's forms</td>
+<td>It uses its own forms when its catalog has the family (<code>key.other</code>), never a mix with English's</td>
+</tr>
+<tr>
+<td>Numbers</td>
+<td><code>n</code> is written in the page's language (<code>1,200</code>, <code>1.200</code>). Any other number: <code>num(x)</code> from <code>flasher/dom.js</code>, with <code>Intl.NumberFormat</code> options for decimals</td>
+</tr>
+<tr>
+<td>Dates</td>
+<td><code>date(d, options)</code> and <code>localTime(iso)</code> from <code>flasher/dom.js</code>: the page's language, the visitor's time zone</td>
+</tr>
+</tbody>
+</table></div>
+<p>To give an English string plural forms, replace its key with <code>key.one</code> and <code>key.other</code> in <code>en.json</code>, then the
+translations.</p>
+<h3 id="the-check">The check</h3>
+<p>Every build checks the catalogs (<code>i18n.check()</code> in <code>site/rfoundrysite/i18n.py</code>) and warns, an error with <code>--strict</code>:</p>
+<ul>
+<li>each file is valid JSON with no key twice;</li>
+<li><code>languages.json</code> names its default among the languages, each with a code, a name and <code>ltr</code> or <code>rtl</code>;</li>
+<li>a catalog other than English has only keys <code>en.json</code> has. A plural form counts when <code>en.json</code> has the family;</li>
+<li>each string keeps the English placeholders (<code>{name}</code>, <code>{{...}}</code>) and HTML tags. A plural form other than <code>other</code>
+may leave <code>{n}</code> out (&quot;one file&quot;).</li>
+</ul>
+<p><code>python3 -m rfoundrysite.i18n</code> (from <code>site/</code>) runs the check alone, and also fails on a key a language lacks
+(<code>i18n.missing()</code>): the site works without it, but a pull request leaves none (<a href="translating.html">translating.md</a>). <code>site/tests/i18n_test.py</code> tests the check and
+builds the site with a made-up second language: pages under <code>/es/</code>, the switcher, alternate links, English where the
+catalog has no string. <code>site/tests/i18n.test.mjs</code> tests the scripts' side. <code>tools/ci.sh</code> runs both.</p>
+<h3 id="adding-a-language">Adding a language</h3>
+<ol>
+<li>Copy <code>en.json</code> to <code>&lt;code&gt;.json</code> and translate. Leave a string out rather than copy it: English fills in.</li>
+<li>Add the language to <code>languages.json</code>.</li>
+<li>If its plural rule differs from English's, add it to <code>PLURAL_RULES</code> in <code>site/rfoundrysite/i18n.py</code>.</li>
+<li>Build and look: <code>python3 site/build.py --serve</code>, then <code>http://localhost:8000/&lt;code&gt;/</code>. <code>--strict</code> shows any
+catalog problem.</li>
+</ol>
+<h3 id="what-stays-english">What stays English</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Text</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Radio facts from <code>board.toml</code>: bootloader key steps, build options, notices, bands, variant checks</td>
+<td>Repository data, one per radio. A catalog can translate a radio's summary (<code>radio.note.&lt;radio&gt;</code>)</td>
+</tr>
+<tr>
+<td>A variant's reason for leaving a feature out (<code>config/variants/*.mk</code>)</td>
+<td>Repository data</td>
+</tr>
+<tr>
+<td>Error messages from the protocol modules (<code>stub.js</code>, <code>dfu.js</code>, <code>link.js</code>, ...) shown after a translated explanation</td>
+<td>The exact words for the technical details and the bug report. The page maps the common ones to catalog strings (<code>errorText</code> in <code>flasher/app.js</code>)</td>
+</tr>
+<tr>
+<td>The flasher's log box and diagnostic notes</td>
+<td>Technical log, read with a bug report</td>
+</tr>
+<tr>
+<td><code>README.txt</code> of the manual install kit and of a backup bundle</td>
+<td>Files that go with the tool, like the documentation</td>
+</tr>
+<tr>
+<td>Glossary definitions</td>
+<td><code>docs/glossary.json</code>, part of the documentation</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="radio-images">Radio images</h2>
+<p>Each radio has an original illustration, <code>site/static/img/radios/src/&lt;radio&gt;.svg</code>, drawn from straight-on reference
+photos (the photos stay outside the repository: product photos are not ours to publish). Rules:</p>
+<ul>
+<li>viewBox <code>0 Y W H</code>, transparent background, no external references or embedded images. The top edge cuts a handheld's
+antenna a little above its knobs (Y &gt; 0 when the drawing has the whole antenna), so every radio shows the same stub
+and its body fills the card;</li>
+<li>exactly one <code>&lt;rect id=&quot;screen&quot; x y width height/&gt;</code>, black, transform-free and not covered by anything, on the
+display's visible area, with the aspect ratio of the radio's gallery (5:4 for 160x128 and 160x120i5, 22:31 for
+240x320i10x5). A radio without a display (<code>board.toml</code> <code>display = &quot;none&quot;</code>) has none: its drawing is the radio as it
+is, and the site shows no screenshots for it;</li>
+<li>for the radio's web control page (<code>docs/spec/tcp-services.md</code> 5.1): each key it shows carries <code>id=&quot;key-&lt;name&gt;&quot;</code>, the
+name being the board's <code>KEY_*</code> in lower case without <code>KEY_</code> (<code>key-fn_left</code>); the channel knob <code>id=&quot;encoder&quot;</code> and a
+drawn LED <code>id=&quot;led&quot;</code>. Keys whose shape doesn't match a key (a d-pad drawn as one piece) get transparent hit rects
+(<code>fill=&quot;none&quot; pointer-events=&quot;all&quot;</code>) at the end. A key off the front face (side keys, top keys) also carries
+<code>data-edge=&quot;left|right|top|bottom&quot;</code>, the drawing's edge it is on: the page puts a labeled button for it outside
+that edge. Every key of the radio is tagged, or named in <code>data-undrawn=&quot;name ...&quot;</code> on the <code>&lt;svg&gt;</code> element when the
+drawing doesn't show it (a front view without the side keys); the page makes those buttons;</li>
+<li><code>tools/svg_keys.py check</code> checks the tags: each <code>key-</code> id names one of the radio's keys, once, and no key is
+missing. The site build runs the same check, so a drawing that lost its tags fails CI. After drawing or redrawing a
+radio, <code>tools/svg_keys.py tag &lt;radio&gt;</code> adds the tags: by the labels in the drawing (&quot;MENU&quot;, &quot;1&quot;, &quot;*&quot;), then by the
+last tagged version in git, mapped onto the new drawing (edges, the LED, the knob and hit rects come along). It
+prints each tag and what it couldn't place. Check the result on the web control page before committing. A key's
+shape has no transform, its own or a group's: the build reads its box from its attributes (below), and the check
+fails one it can't read;</li>
+<li>a radio with a keyed hand microphone may have <code>&lt;radio&gt;-mic.svg</code> beside its drawing, for the web control page only:
+the same <code>key-</code> rule, the ids counted once across both files, and gradient ids of its own (the page puts both
+drawings in one document).</li>
+</ul>
+<p>A look (board.toml <code>looks</code>) has its drawing in <code>&lt;radio&gt;-&lt;look id&gt;.svg</code> beside the board's, under the same rules and
+with the same keys. The build writes its frame and boot-screen files like the board's, and fails when the drawing is
+missing.</p>
+<p>The build writes <code>static/img/radios/&lt;radio&gt;-frame.svg</code> (screen black), <code>&lt;radio&gt;.svg</code> (with the boot screen) and the
+screen's position in <code>data/radios.json</code> (<code>frame_geometry</code>: viewBox units and percentages, <code>null</code> without a display),
+so any screenshot can be laid over the frame; the radio pages do that when a screenshot is clicked. <code>frame_geometry.keys</code> has each tagged key's
+box, as percentages of the picture. A radio without an illustration gets a generic drawing from board.toml <code>[frame]</code>;
+its handheld shapes tag their side PTT, and the caption names any other key.</p>
+<p>The web flasher shows the same frame (<code>frame_image</code>) beside every update mode step, for every radio
+(<code>flasher/radiotop.js</code>): the bootloader entry steps as the picture alone, the HR_C7000 steps with what the screen shows
+laid over it at <code>frame_geometry</code> and an LED swatch that blinks as the real LED does, with a caption in words. Nothing
+in the flasher names a radio: a new board's picture appears with no flasher change. <code>site/tests/radio_images_test.py</code>
+(run by <code>site/tests/run.sh</code>) renders every board's picture and fails a board without a usable one. The picture is at
+most 300 px high (<code>--rt-h</code> of <code>.rt-pic</code> in <code>site.css</code>), so a tall portable leaves the step's buttons on the screen; its
+width follows from the drawing's shape (<code>frame_geometry.aspect</code>, which <code>radiotop.js</code> hands the stylesheet as
+<code>--rt-aspect</code>).</p>
+<p>On the bootloader entry steps (the STM32 radios' and the HR_C7000 update mode's), the flasher rings the keys to hold
+on the picture and names them under it (&quot;Hold PTT and SK1&quot;). The keys are <code>[flash.bootloader] hold</code> in board.toml,
+by key name, carried to the flasher as <code>flash.bootloader_hold</code>; the rings sit at <code>frame_geometry.keys</code>, and the labels
+are <code>flash.key.&lt;name&gt;</code> in the string catalog (a key without one reads as its name in capitals). The rings are
+decoration: the steps stay the instructions, and a key the picture doesn't show (in <code>data-undrawn</code>) is named in the
+caption only. <code>radio_images_test.py</code> checks every board: each key to hold is a key of the radio, tagged in its drawing
+and each look's or listed undrawn, with a label; <code>site/tests/radiotop.test.mjs</code> checks the marks and the caption.</p>
+<h2 id="flasher-notices">Flasher notices</h2>
+<p>Two notices show on every step of the web flasher once a radio is picked, above the step:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Notice</th>
+<th>Shown when</th>
+<th>Text from</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pre-release</td>
+<td>The radio's <code>[status] level</code> is below <code>supported</code>. Says the build is in development, that not every feature may work or has been tried on a radio, and links to the project's GitHub issues to report a bug</td>
+<td>The <code>flash.prerelease.*</code> strings of <code>site/i18n/&lt;code&gt;.json</code></td>
+</tr>
+<tr>
+<td>Board</td>
+<td>The board sets <code>[flash] notice</code>: a warning for a choice the radio can't check itself</td>
+<td>board.toml (<a href="board-registry.html">board-registry.md</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>One more shows on the start page and the first install step: <strong>Beta</strong>, when <code>site.json</code> names a pre-release newer
+than the release (<code>--beta</code>, from <code>site/cloudflare-build.sh</code>). It links to the same page with <code>?version=&lt;beta&gt;</code>, so the
+user opts in through a version link and the build service builds the tag; the default install stays the release. It is
+hidden while a version link is in use. Text: the <code>flash.beta.*</code> strings.</p>
+<h2 id="error-logging-and-bug-reports">Error logging and bug reports</h2>
+<p>The flasher and the Codeplug Editor log what they do in memory (<code>static/js/diag.js</code>). Neither keeps the log after
+the page closes.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Entry</th>
+<th>Holds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Note</td>
+<td>A step: the radio found and its firmware, a write plan's size, a flasher step, each line of the flasher's log box</td>
+</tr>
+<tr>
+<td>Wire</td>
+<td>One line per debug link or CPS frame (<code>link.js</code>): command, address, length, result. Never the data</td>
+</tr>
+<tr>
+<td>Error</td>
+<td>Every error shown to the user, once, with the stage it happened in, its code and params, stack and causes</td>
+</tr>
+</tbody>
+</table></div>
+<p>Every error also goes to the browser console (<code>[rfoundry] &lt;stage&gt; failed:</code>). Failure messages carry <strong>Report a Problem</strong>
+(<code>static/js/report.js</code>). It downloads a zip with <code>report.json</code> (the log, the browser, the tool's state) and, if the
+user ticks them, the edited codeplug and the one last read from the radio.</p>
+<p>Automatic error reports go to Sentry when the build has <code>RFOUNDRY_SENTRY_DSN</code> set (a production variable of the
+Pages project; <code>site.json</code> <code>reports.sentry_dsn</code>). Without it nothing is sent and the privacy
+note is left off the pages. With it:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Sent</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The error, its stage, code and params, the tool's state (radio model, firmware version, task; no codeplug contents), the last 20 notes and errors of the log (<code>diag.trail()</code>, one line each cut to 300 characters; no wire lines, no shown messages, USB serial numbers masked), and an unknown file's type, size and first 8 bytes (never its name)</td>
+<td>Every error except ones the user caused (port chooser closed, Stop)</td>
+</tr>
+<tr>
+<td>The whole report and any codeplug the user checked</td>
+<td>Only when the user clicks Send Report</td>
+</tr>
+</tbody>
+</table></div>
+<p>Automatic reports go through <code>diag.scrub()</code>, which removes callsigns, DMR IDs and email addresses. The Sentry bundle
+is pinned with an SRI hash in <code>report.js</code>. It loads without breadcrumbs or other default integrations, so it sends only
+what <code>diag.error</code> hands it. <code>?reporting=0</code> turns sending off, as it does for the flash log. Ad blockers often block
+Sentry; the page then works the same and offers the download only.</p>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/dev/website.md">Vedi il sorgente di questa pagina</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="In questa pagina">
+		<p class="eyebrow">In questa pagina</p>
+		<ul><li class="l2"><a href="#hosting">Hosting</a></li><li class="l2"><a href="#sources">Sources</a></li><li class="l2"><a href="#the-screenshots-page">The Screenshots page</a></li><li class="l2"><a href="#screenshot-copies">Screenshot copies</a></li><li class="l2"><a href="#layout">Layout</a></li><li class="l2"><a href="#templates-and-design">Templates and design</a></li><li class="l2"><a href="#glossary">Glossary</a></li><li class="l2"><a href="#translating">Translating</a></li><li class="l3"><a href="#plurals-numbers-and-dates">Plurals, numbers and dates</a></li><li class="l3"><a href="#the-check">The check</a></li><li class="l3"><a href="#adding-a-language">Adding a language</a></li><li class="l3"><a href="#what-stays-english">What stays English</a></li><li class="l2"><a href="#radio-images">Radio images</a></li><li class="l2"><a href="#flasher-notices">Flasher notices</a></li><li class="l2"><a href="#error-logging-and-bug-reports">Error logging and bug reports</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Unisciti alla comunità RadioFoundry</strong><span class="small muted">Domande, aiuto con la tua radio e novità, su Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Hai trovato un bug? Vuoi che la tua radio sia supportata?</strong><span class="small muted">Apri una segnalazione su GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry ha licenza MIT · <a href="https://github.com/radiofoundry/radiofoundry">Codice sorgente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunità</a> · <a href="../../../it/docs/index.html">Documenti</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Novità</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

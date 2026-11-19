@@ -1,0 +1,140 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emergency · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Emergency · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/docs/user/11-emergency.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/user/11-emergency.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/user/11-emergency.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/user/11-emergency.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/user/11-emergency.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/user/11-emergency.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../es/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../../es/radios/index.html">Radios</a><a href="../../../es/features/index.html">Funciones</a><a href="../../../es/flash/index.html">Instalar</a><a href="../../../es/codeplug/index.html">Codeplug</a><a href="../../../es/docs/index.html" aria-current="page">Documentación</a><a href="../../../es/screenshots/index.html">Capturas</a><a href="../../../es/tools/index.html">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../../docs/user/11-emergency.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/user/11-emergency.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/user/11-emergency.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/user/11-emergency.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Manual del usuario">
+		<p class="eyebrow"><a href="../../../es/docs/index.html">Documentación</a> / Manual del usuario</p>
+		<ul><li><a href="index.html">RadioFoundry User Manual</a></li><li><a href="01-introduction.html">Introduction</a></li><li><a href="02-installing.html">Installing</a></li><li><a href="03-first-boot.html">First Boot</a></li><li><a href="04-programming.html">Programming the Radio</a></li><li><a href="05-keys-and-navigation.html">Keys and Navigation</a></li><li><a href="06-home-screen.html">The Home Screen</a></li><li><a href="07-channels-zones-vfo.html">Channels, Zones and the VFO</a></li><li><a href="08-fm.html">FM</a></li><li><a href="09-dmr.html">DMR</a></li><li><a href="10-messages-and-signaling.html">Messages, Call Alert and Radio Check</a></li><li><a href="11-emergency.html" aria-current="page">Emergency</a></li><li><a href="12-scan.html">Scan and Dual Watch</a></li><li><a href="13-aprs.html">APRS</a></li><li><a href="14-hotspot.html">Hotspot Mode</a></li><li><a href="15-usb-network.html">USB Network Mode</a></li><li><a href="16-battery-and-power.html">Battery and Power</a></li><li><a href="17-settings.html">Settings</a></li><li><a href="18-moving-from-stock-md380.html">Moving from Stock MD-380 Firmware</a></li><li><a href="19-moving-from-stock-dm32.html">Moving from Stock DM-32UV Firmware</a></li><li><a href="20-troubleshooting.html">Troubleshooting</a></li><li><a href="21-faq.html">FAQ</a></li><li><a href="22-glossary.html">Glossary</a></li><li><a href="23-radios.html">Radio Reference</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Esta página aún no está traducida; se muestra en inglés.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="emergency">Emergency</h1>
+<p>Don't rely on the alarm and emergency calls for safety. The <a href="23-radios.html">Radio reference</a> says what has been checked on each radio.</p>
+<h2 id="when-someone-else-declares-an-emergency">When someone else declares an emergency</h2>
+<p>When the radio hears an emergency alarm, or plays a call marked as an emergency, to you or to a <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="22-glossary.html#t-talkgroup">talkgroup</abbr> you listen
+to, it opens the emergency screen and plays an alert tone (a warble of about 1 s). A radio with a vibration motor also
+vibrates four times, unless <strong>Settings &gt; Sound &gt; Vibrate</strong> is off. The screen shows EMERGENCY and the station's name or
+ID.</p>
+<img src="../ux/screens/160x120i5/emergency.png" width="200" alt="An emergency received">
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OK</strong></td>
+<td>Acknowledge: closes the screen (&quot;Emergency acknowledged&quot;)</td>
+</tr>
+<tr>
+<td><strong>#</strong></td>
+<td>Closes the screen and opens the actions for that station: talk to them, call them privately, <abbr class="gl" tabindex="0" title="A DMR request another radio answers automatically, to show it is on and in range." data-more="22-glossary.html#t-radio-check">radio check</abbr></td>
+</tr>
+<tr>
+<td><strong>Back</strong></td>
+<td>Hides the screen</td>
+</tr>
+</tbody>
+</table></div>
+<p>The same radio's emergency again within 30 s of its last activity (repeated alarms, the call that follows) doesn't
+raise a second alert.</p>
+<h2 id="declaring-an-emergency">Declaring an emergency</h2>
+<p>The radio core can send an emergency alarm and start an emergency call with a hot microphone. By default it sends the
+alarm 3 times. Then it keys the transmitter for 10 s, so the people listening hear you without you pressing <strong>PTT</strong>. Every
+call you make until you cancel carries the emergency flag and goes to the channel's <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="22-glossary.html#t-talk-target">talk target</abbr>. Pressing <strong>PTT</strong>
+during the hot mic takes over the transmission.</p>
+<p>Hold the <strong>Power level</strong> key for 1.5 s. The screen says &quot;EMERGENCY sent: hold
+again to cancel&quot;. Hold it again for 1.5 s to cancel (&quot;Emergency canceled&quot;). A short press of the same key still
+changes the power level. Letting go before 1.5 s never starts an emergency. Where it can't start (see below) the
+radio says &quot;Emergency needs a <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> channel and ID&quot;.</p>
+<p>Only radios with a <strong>Power level</strong> key can declare an emergency from the keys. The <a href="23-radios.html#key-roles">Radio
+reference</a> says which radios have one.</p>
+<p>Developers can also start and cancel it over the debug link:</p>
+<pre><code>tools/rfoundry_debug.py data emergency start
+tools/rfoundry_debug.py data emergency cancel
+</code></pre>
+<p>The mode (alarm only, alarm then call, call only), the target, the number of alarms and the hot mic time are set the
+same way (<code>tools/rfoundry_debug.py data em-settings</code>). See <a href="../spec/dmr-emergency.html">docs/spec/dmr-emergency.md</a>.</p>
+<p>An emergency can't start on an FM channel or the FM <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr>, a receive-only channel, in <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="14-hotspot.html">hotspot</abbr> mode, or without a <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr>.
+The DMR VFO works as a DMR channel does.</p>
+</div>
+		<nav class="prev-next"><a class="prev" href="10-messages-and-signaling.html">Messages, Call Alert and Radio Check</a><a class="next" href="12-scan.html">Scan and Dual Watch</a></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/user/11-emergency.md">Ver el código fuente de esta página</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="En esta página">
+		<p class="eyebrow">En esta página</p>
+		<ul><li class="l2"><a href="#when-someone-else-declares-an-emergency">When someone else declares an emergency</a></li><li class="l2"><a href="#declaring-an-emergency">Declaring an emergency</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

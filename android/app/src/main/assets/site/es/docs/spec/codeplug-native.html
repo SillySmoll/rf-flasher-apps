@@ -1,0 +1,339 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Native codeplug (draft) · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Native codeplug (draft) · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/docs/spec/codeplug-native.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/codeplug-native.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/codeplug-native.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/codeplug-native.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/codeplug-native.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/codeplug-native.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../es/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../../es/radios/index.html">Radios</a><a href="../../../es/features/index.html">Funciones</a><a href="../../../es/flash/index.html">Instalar</a><a href="../../../es/codeplug/index.html">Codeplug</a><a href="../../../es/docs/index.html" aria-current="page">Documentación</a><a href="../../../es/screenshots/index.html">Capturas</a><a href="../../../es/tools/index.html">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../../docs/spec/codeplug-native.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/codeplug-native.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/codeplug-native.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/codeplug-native.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Especificaciones">
+		<p class="eyebrow"><a href="../../../es/docs/index.html">Documentación</a> / Especificaciones</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html" aria-current="page">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Esta página aún no está traducida; se muestra en inglés.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<!-- Copyright (c) 2026 The RadioFoundry Authors -->
+<h1 id="native-codeplug-draft">Native codeplug (draft)</h1>
+<p>Status: <strong>draft</strong>. Today the radio stores the open-firmware layout (<code>open-firmware-cps.md</code> 7), so <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr> and the open-firmware <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr>
+work unchanged. This page sets out the model the core already uses, which stays when the storage changes, and the
+plan for a native format. Nothing in section 4 is built yet.</p>
+<h2 id="1-goals">1. Goals</h2>
+<ul>
+<li>One editing model for the radio's own menus, the open-firmware <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> shim and a future native CPS protocol.</li>
+<li>Edits on the radio are safe against power cuts (<code>settings-store.md</code> 4) and cost one sector rewrite each, not a
+whole-image rewrite.</li>
+<li>The open-firmware layout keeps working for as long as <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr> and the open-firmware CPS are the tools people have.</li>
+<li>The native format carries what the open-firmware one can't: per-channel privacy key slot, more zones, longer names, and
+per-channel features without overloading vendor flag bits.</li>
+<li>Radio-wide state, keys included, lives in the settings store, not in the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>. A codeplug file can be shared
+without leaking keys or the owner's last channel.</li>
+</ul>
+<h2 id="2-the-editing-model-built">2. The editing model (built)</h2>
+<p><code>core/codeplug/codeplug.h</code> is the model. Callers see records and never touch addresses:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Record</th>
+<th>Read</th>
+<th>Edit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>channel 1..1024 (<code>channel_t</code>)</td>
+<td><code>codeplug_channel</code></td>
+<td><code>codeplug_set_channel</code>, <code>codeplug_delete_channel</code>, <code>codeplug_free_channel</code></td>
+</tr>
+<tr>
+<td>zone 0..67 (<code>zone_t</code>, up to 80 channels)</td>
+<td><code>codeplug_zone</code>, <code>codeplug_zone_count</code>, <code>codeplug_zones_stored</code></td>
+<td><code>codeplug_set_zone</code>, <code>codeplug_delete_zone</code></td>
+</tr>
+<tr>
+<td>contact 1..1024 (<code>contact_t</code>)</td>
+<td><code>codeplug_contact</code>, <code>codeplug_contact_find</code></td>
+<td><code>codeplug_set_contact</code>, <code>codeplug_delete_contact</code></td>
+</tr>
+<tr>
+<td>RX group list 1..76 (<code>listen_list_t</code>)</td>
+<td><code>codeplug_listen_list</code></td>
+<td><code>codeplug_set_listen_list</code>, <code>codeplug_delete_listen_list</code></td>
+</tr>
+<tr>
+<td>radio name, own DMR ID, hang times</td>
+<td><code>codeplug_radio_name</code>, <code>codeplug_dmr_id</code>, <code>codeplug_dmr_settings</code></td>
+<td><code>codeplug_set_radio_name</code>, <code>codeplug_set_dmr_id</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Rules:</p>
+<ul>
+<li>
+<p><strong>Every call takes <code>storage_lock</code></strong>, so any task may call. An edit costs one journaled sector rewrite (about
+100 ms on the W25Q128). A new record also rewrites its bitmap's sector: the record goes first, then its in-use bit.</p>
+</li>
+<li>
+<p><strong>Fields the model doesn't own are kept.</strong> An edit reads the stored record, changes the bytes the model knows and
+writes it back. Vendor bytes and flags that no field covers survive a radio-side edit.</p>
+</li>
+<li>
+<p><strong><code>codeplug_serial()</code></strong> goes up on every change. That covers edits and <code>codeplug_reload()</code> after the <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> shim
+wrote the image underneath. The radio core polls it and re-reads its zone and channel (<code>RREQ_RELOAD</code>). It falls
+back to the saved zone position when the saved channel number is gone. It also forgets the contact names it looked
+up for IDs (a &quot;no name&quot; answer is cached too), so a contact added after its ID was heard or called shows by name.</p>
+</li>
+<li>
+<p><strong>The built-in set.</strong> With no <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> stored (blank flash, <code>codeplug=builtin</code>), the radio has a small built-in
+list of channels. The first edit <em>materializes</em> it: the built-in channels are written as stored records, the
+bitmaps and list counts are cleared, and the edit applies on top. After that the source is <code>open-firmware</code>.</p>
+</li>
+<li>
+<p><strong>A failed read is not a free slot.</strong> The index (start-up and <code>codeplug_reload()</code>) reads each bank's in-use bitmap,
+then every record it marks. A marked record whose frequencies aren't valid <abbr class="gl" tabindex="0" title="Binary coded decimal: each decimal digit in 4 bits." data-more="../dev/glossary.html#t-bcd">BCD</abbr> is dropped (an erased bank marks
+every slot); the next save in its bank clears its bit in flash. A read that fails, of a bitmap or a record, hides
+what it covers and leaves the bank unknown until the next index. In an unknown bank <code>codeplug_free_channel</code> offers
+no slot, <code>codeplug_set_channel</code> rewrites only a channel shown, <code>codeplug_delete_channel</code> fails, and the built-in
+set isn't materialized. A zone save fails if it would store the virtual zone, or if the stored zone lists a channel
+of such a bank: both were read without the hidden channels. So no save writes a bitmap or a zone that drops
+channels it couldn't see. Start new (the answer to another firmware's codeplug, below) writes every bitmap anyway.</p>
+</li>
+<li>
+<p><strong>Another firmware's codeplug.</strong> A radio that ran another firmware may hold that firmware's own codeplug where the
+open-firmware one goes. Its bytes can pass the per-record checks by chance (an in-use bit set, frequencies that are
+valid BCD), so the radio decides for the whole codeplug at every index (start-up and <code>codeplug_reload()</code> after a
+CPS write). It counts good and bad records by the web editor's open-firmware evidence rule
+(<a href="codeplug-stock-tyt.html">codeplug-stock-tyt.md</a> 2, step 1; the same thresholds, and <code>site/static/js/codeplug/detect.js</code>
+is the reference implementation), on the channels, zones and <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> group lists only. It leaves out the contacts and the
+general settings: another firmware's contacts left beside a codeplug edited on the radio must not hide it, and the
+checks cost flash. With bad records and fewer than four good ones for each bad one,
+<code>codeplug_foreign()</code> is true. The radio then shows no codeplug: the built-in set, <code>codeplug=builtin</code>, no zones,
+contacts, RX group lists, <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr>, radio name or boot text. It never erases it on its own. A CPS write that leaves a
+valid codeplug flips it back on the reload. Editing refuses to write over it (<code>materialize()</code> fails); the UI asks
+first. A save on the radio (save to channel, channel or contact edit, zone edit, <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr>, <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> ID, radio name,
+quick keys) opens the &quot;Old codeplug&quot; screen (<code>codeplug-foreign</code>) and holds the write until it is answered. A
+setting kept as a key of the settings area isn't such a save: it is saved as the radio's own
+(<a href="codeplug-settings.html">codeplug-settings.md</a> 5.2):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Choice</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cancel (the default; also Back or leaving the screen)</td>
+<td>Nothing is written. Toast &quot;Not saved&quot;</td>
+</tr>
+<tr>
+<td>Start new</td>
+<td><code>codeplug_start_new()</code>: clears the general settings up to the <abbr class="gl" tabindex="0" title="How long after a call a repeater or radio keeps the call&#x27;s talkgroup ready for a reply." data-more="../user/22-glossary.html#t-hang-time">hang times</abbr> (radio name, DMR ID and hang times, 0x00E0-0x00F9: 0xFF), the boot text (0xFF), the quick-key slots (0), the 1024 contact records (0xFF, seven sector rewrites) and the codeplug settings area (0xFF, <a href="codeplug-settings.html">codeplug-settings.md</a> 5.2), then materializes as for a blank flash. The held write then goes on. The codeplug made is a clean one, which the next start-up finds ours</td>
+</tr>
+<tr>
+<td>Use anyway</td>
+<td><code>codeplug_accept(true)</code> and a reload: nothing is erased and the verdict is off, so the radio shows that codeplug's records. The held write is dropped (it was made against the built-in set); toast &quot;Old codeplug kept: edit again&quot;</td>
+</tr>
+</tbody>
+</table></div>
+<p>The acceptance belongs to the codeplug stored when it was given. It is kept in the settings (<code>cp_flags</code> bit 0,
+<a href="settings-store.html">settings-store.md</a>), loaded at start-up before the index. <code>codeplug_written()</code>, which the CPS
+shims and the <abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="tftp.html">TFTP</abbr> server call when a write commits, drops it, and so does a commit finished at start-up and a
+factory reset. A zone import from a zone share isn't asked about: it fails without writing. Use anyway on a codeplug
+with no channel that passes the checks shows the built-in set, and the first edit then materializes it, clearing the
+bitmaps, zones and lists. <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">Debug link</abbr> (<code>storage</code> view): <code>codeplug.foreign</code>, <code>codeplug.accepted</code> and
+<code>codeplug.evidence=good,bad</code> (the counts of the last index, with bad set to 0 by Start new).</p>
+</li>
+<li>
+<p><strong>A free channel slot.</strong> <code>codeplug_set_channel</code> on a channel number that isn't in use starts from a blank record,
+not from the bytes in the slot. Only an existing channel keeps the bytes the model doesn't own.</p>
+</li>
+<li>
+<p><strong>Zones.</strong> With no zone stored there is one virtual zone, &quot;All channels&quot;. The first <code>codeplug_set_zone(0, ...)</code>
+replaces it with a stored zone table, using the 80-channel zone layout.</p>
+</li>
+<li>
+<p><strong>Validation.</strong> A channel number out of range or a malformed frequency (0, 1 GHz or more), a zone naming a
+channel that isn't stored, or a list naming a contact index out of range is refused. The caller gets <code>false</code> and
+nothing is written. Band limits are checked when the radio tunes, not at storage.</p>
+</li>
+</ul>
+<p><code>codeplug_openfw_decode()</code> and <code>codeplug_openfw_encode()</code> expose the 56-byte channel record conversion for the CPS
+shim's <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> handling (<code>cps-protocol.md</code> 2.3).</p>
+<h2 id="3-the-native-channel-record-plan">3. The native channel record (plan)</h2>
+<p>The fields <code>channel_t</code> holds today, plus what the open-firmware record can't hold:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Size</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>16</td>
+<td>UTF-8, NUL padded (open-firmware: 16 <abbr class="gl" tabindex="0" title="The 7-bit character set of plain text." data-more="../dev/glossary.html#t-ascii">ASCII</abbr>, 0xFF padded)</td>
+</tr>
+<tr>
+<td>rx_hz, tx_hz</td>
+<td>4 + 4</td>
+<td>Hz, binary (open-firmware: <abbr class="gl" tabindex="0" title="Binary coded decimal: each decimal digit in 4 bits." data-more="../dev/glossary.html#t-bcd">BCD</abbr> of 10 Hz)</td>
+</tr>
+<tr>
+<td>mode, bw, power, flags</td>
+<td>4</td>
+<td>flags: rx_only, dmo, ...</td>
+</tr>
+<tr>
+<td>rx_tone, tx_tone</td>
+<td>2 + 2</td>
+<td>type in the top 2 bits, value</td>
+</tr>
+<tr>
+<td>color_code, timeslot</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>contact, listen_list</td>
+<td>2 + 2</td>
+<td>indices</td>
+</tr>
+<tr>
+<td>dmr_id</td>
+<td>4</td>
+<td>0 = the radio's</td>
+</tr>
+<tr>
+<td>tot_s</td>
+<td>2</td>
+<td>0 = the radio's</td>
+</tr>
+<tr>
+<td>alias_tx</td>
+<td>1</td>
+<td><code>CODEPLUG_ALIAS_*</code> bits</td>
+</tr>
+<tr>
+<td><strong>privacy_slot</strong></td>
+<td>1</td>
+<td>0 = the radio-wide choice (<code>settings.privacy_active</code>), 1..4 = that key slot of the settings store (<code>settings-store.md</code> 3.1), 0xFF = privacy off on this channel</td>
+</tr>
+<tr>
+<td>reserved</td>
+<td>to 64 bytes</td>
+<td>0, append only</td>
+</tr>
+</tbody>
+</table></div>
+<p>The privacy key itself is never in the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>. A channel names a slot. The open-firmware layout has no field for it, so
+until the native format exists every channel uses the radio-wide slot.</p>
+<h2 id="4-storage-plan-not-built">4. Storage plan (not built)</h2>
+<ul>
+<li><strong>Area.</strong> <code>hal_flash_map_t.native_addr</code> / <code>native_size</code>, set by the board: 1 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">MB</abbr> above anything an open-firmware tool
+writes (<code>openfw_end</code>). The <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> shim refuses writes there. Each radio's flash map is in its hardware spec.</li>
+<li><strong>Layout.</strong> A header sector (magic, format version, table offsets, <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr>) then fixed-size tables (channels, zones,
+contacts, lists) with a used bitmap each, sector-aligned so an edit rewrites one sector through the journal.
+The magic is the header's first word, <code>STORAGE_NATIVE_MAGIC</code> 0x4E52444F (bytes 4F 44 52 4E in memory order), already fixed
+because factory reset keys on it.</li>
+<li><strong>Factory reset (built).</strong> <code>storage_native_erase()</code> erases the native area only when it starts with the magic
+(non-blank sectors from the end, the header sector last, so a power cut leaves the magic in place and the next
+reset finishes the job), reports it blank when it is all 0xFF, and otherwise leaves it alone as
+foreign (another firmware's data). It never touches the open-firmware image, the calibration or a foreign-guarded region.</li>
+<li><strong>Switching.</strong> <code>codeplug_init()</code> prefers a valid native header and otherwise uses the open-firmware image. A one-way
+&quot;convert&quot; (UI or CPS) writes the native area from the open-firmware image. The open-firmware image is left as it was, so a
+firmware downgrade still finds it.</li>
+<li><strong>Open-firmware tools after conversion.</strong> Two options, open: (a) the open-firmware CPS shim keeps reading and writing the open-firmware
+image and a commit triggers a re-import into the native area, or (b) the shim serves an open-firmware view generated from
+the native records. (a) is simpler; (b) never lets the two drift apart.</li>
+<li><strong>Settings without a record.</strong> Radio-wide settings the open-firmware layout has no field for are keys in the
+<abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> settings area (<a href="codeplug-settings.html">codeplug-settings.md</a>), built now in the open-firmware image. The
+native format carries the same key space: one record in the same entry format, the same key numbers and value
+encodings, so a conversion copies the entries as they are and no key is ever translated (codeplug-settings.md 8).</li>
+<li><strong>Native protocol.</strong> <code>cps-protocol.md</code> 3 drafts the record-level protocol a native CPS (and <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr>, if it adds a
+driver) would use: read and write records by type and index, no addresses.</li>
+</ul>
+<h2 id="5-open-decisions">5. Open decisions</h2>
+<ol>
+<li>Where the native area goes on radios whose board has no flash map yet, and whether 1 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">MB</abbr> is the right size.</li>
+<li>Re-import (4a) or generated open-firmware view (4b).</li>
+<li>Whether the radio-side editor should be allowed while a <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> session is open. Today edits fail cleanly while the
+CPS holds a pending sector, and otherwise interleave with CPS commits at sector granularity.</li>
+<li>UTF-8 names: the font has to cover them first.</li>
+</ol>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/codeplug-native.md">Ver el código fuente de esta página</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="En esta página">
+		<p class="eyebrow">En esta página</p>
+		<ul><li class="l2"><a href="#1-goals">1. Goals</a></li><li class="l2"><a href="#2-the-editing-model-built">2. The editing model (built)</a></li><li class="l2"><a href="#3-the-native-channel-record-plan">3. The native channel record (plan)</a></li><li class="l2"><a href="#4-storage-plan-not-built">4. Storage plan (not built)</a></li><li class="l2"><a href="#5-open-decisions">5. Open decisions</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

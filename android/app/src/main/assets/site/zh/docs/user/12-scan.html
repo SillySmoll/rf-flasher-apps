@@ -1,0 +1,350 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>扫描与双守候 · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="扫描与双守候 · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/user/12-scan.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/user/12-scan.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/user/12-scan.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/user/12-scan.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/user/12-scan.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/user/12-scan.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/user/12-scan.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/user/12-scan.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/user/12-scan.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/user/12-scan.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="用户手册">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 用户手册</p>
+		<ul><li><a href="index.html">RadioFoundry 用户手册</a></li><li><a href="01-introduction.html">简介</a></li><li><a href="02-installing.html">安装</a></li><li><a href="03-first-boot.html">首次启动</a></li><li><a href="04-programming.html">为电台编程</a></li><li><a href="05-keys-and-navigation.html">按键与导航</a></li><li><a href="06-home-screen.html">主屏幕</a></li><li><a href="07-channels-zones-vfo.html">信道、区域与 VFO</a></li><li><a href="08-fm.html">FM</a></li><li><a href="09-dmr.html">DMR</a></li><li><a href="10-messages-and-signaling.html">消息、呼叫提示与电台检查</a></li><li><a href="11-emergency.html">紧急</a></li><li><a href="12-scan.html" aria-current="page">扫描与双守候</a></li><li><a href="13-aprs.html">APRS</a></li><li><a href="14-hotspot.html">热点模式</a></li><li><a href="15-usb-network.html">USB 网络模式</a></li><li><a href="16-battery-and-power.html">电池与供电</a></li><li><a href="17-settings.html">设置</a></li><li><a href="18-moving-from-stock-md380.html">从原厂 MD-380 固件迁移</a></li><li><a href="19-moving-from-stock-dm32.html">从原厂 DM-32UV 固件迁移</a></li><li><a href="20-troubleshooting.html">故障排查</a></li><li><a href="21-faq.html">常见问题</a></li><li><a href="22-glossary.html">术语表</a></li><li><a href="23-radios.html">电台参考</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<h1 id="scan-and-dual-watch">扫描与双守候</h1>
+<p>哪些电台的扫描和双守候已验证，见<a href="23-radios.html">电台参考</a>。</p>
+<h2 id="starting-and-stopping">启动与停止</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>启动</th>
+<th>停止</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OK</strong>、<strong>6</strong>（工具）、<strong>1</strong>（扫描）</td>
+<td>在主屏幕按 <strong>返回</strong></td>
+</tr>
+<tr>
+<td>设为<strong>扫描</strong>的侧键（设置 &gt; 按键）</td>
+<td>再按同一个键</td>
+</tr>
+</tbody>
+</table></div>
+<p>在信道上，电台扫描当前区域（“正在扫描本区域”）。在 <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr> 中，它扫过 VFO 频率所在的频段（“正在扫描频段”）。状态行显示 SCAN，信道名随扫描移动而改变。</p>
+<p>扫描至少需要另一个可切换的信道。热点模式中或你发射时不会运行。</p>
+<p>双守候正在运行时，启动扫描会停止它。电台停留在选中的信道上，并从那里开始扫描。</p>
+<h2 id="how-the-scan-moves">扫描如何移动</h2>
+<ul>
+<li>扫描从起始信道开始，按顺序访问区域中的信道。它会跳过空位置和电台频率中标记跳过的信道。FM 和 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> 信道可以混合。</li>
+<li>在每个信道上收听 150 ms。FM 信道在静噪打开时停止扫描（若需要亚音，则按其亚音）。DMR 信道在电台播放呼叫时停止。</li>
+<li>有信号时扫描会停留。信号结束 2 秒后继续，若信号回来则保持。</li>
+<li>按住<strong>监听</strong>会暂停扫描。</li>
+</ul>
+<h2 id="while-scanning">扫描期间</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>按键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PTT</strong></td>
+<td>停在最后使扫描停留的信道上并在那里通话。扫描仍在搜索时，它回到起始信道并在那里通话</td>
+</tr>
+<tr>
+<td><strong>#</strong></td>
+<td>打开使扫描停止的信道的扫描操作</td>
+</tr>
+<tr>
+<td><strong>返回</strong></td>
+<td>停止扫描</td>
+</tr>
+<tr>
+<td>自行切换信道、区域或 VFO</td>
+<td>在你切到的位置结束扫描</td>
+</tr>
+</tbody>
+</table></div>
+<img src="../ux/screens/160x120i5/scan_actions.png" width="200" alt="扫描操作">
+<p>扫描操作：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>操作</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>临时跳过信道</td>
+<td>跳过该信道直到扫描停止（“已跳过，直到扫描停止”）</td>
+</tr>
+<tr>
+<td>2</td>
+<td>留在此处</td>
+<td>在此信道上停止扫描</td>
+</tr>
+<tr>
+<td>3</td>
+<td>始终跳过</td>
+<td>尚未构建。请在 <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr> 中编辑扫描列表</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="dual-watch">双守候</h2>
+<p>双守候收听两个信道 A 和 B，你在其中一个上通话。每个可以是任意区域的任意信道，或 <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr>。它是两个频率，不是一个 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> 频率的两个时隙。</p>
+<ul>
+<li><strong>A</strong> 是你启动时所在的信道。<strong>B</strong> 是你添加的那个。第一次时，B 是区域中的下一个信道。</li>
+<li>其中一个是<strong>选中</strong>的。<strong>PTT</strong> 在它上面通话。上、下、旋钮、快速设置、通话目标和菜单都作用于它，就像在普通主屏幕上一样，即使电台正在收听另一个信道。发射后双守候继续。</li>
+<li>电台在两个信道间往返时，每个信道保留其临时更改（功率、静噪、亚音、通话目标等）。</li>
+<li>电台只有一个接收机，因此在 A 和 B 之间交替。电台在另一个信道上时可能错过一个信道上的呼叫。有两个接收机的电台能同时听到两者并在各自信道上显示呼叫。目前没有电台具备该能力（<a href="23-radios.html#dual-watch-on-each-radio">电台参考</a>）。</li>
+</ul>
+<h3 id="start-it">启动</h3>
+<ol>
+<li>转到你想作为 A 的信道。</li>
+<li>按 <strong>*</strong>，然后 <strong>7</strong>（<strong>双守候</strong>快速磁贴）。第一次时，B 是 A 所在区域的下一个信道（单信道区域中：下一区域的第一个信道，或 VFO）。之后从上次的 B 开始。按两次即可。长按 <strong>A/B</strong> 键效果相同。</li>
+</ol>
+<p>主屏幕上下显示两个信道（A 在上），状态条中显示“DUAL”。</p>
+<p>如果你关机时双守候正在运行，开机时它会再次启动。电台也会在关机时保留上次的 B。它按信道编号重新找到 B：先在 A 的区域，然后在第一个包含它的区域。若该信道已从电台频率中消失，B 重新为下一个信道。</p>
+<p>若你在选中 B 时停止双守候，电台停留在 B。下次启动仍守候相同的两个信道。</p>
+<h3 id="change-b">更改 B</h3>
+<p>选中 B（<strong>A/B</strong> 键，或 <strong>#</strong>、<strong>1</strong>），然后像在主屏幕上一样更改其信道：<strong>上</strong>、<strong>下</strong>、旋钮、数字、查找、区域或 <strong>VFO</strong> 键。A 同理。</p>
+<p>或按 <strong>#</strong>、<strong>3</strong>（改 B）打开选择器。列表显示你所在区域的信道及其频率和模式。按信道编号、输入名称的一部分，或移到它并按 <strong>OK</strong>。当前所在信道会变暗并标记“A”：它不能作为 B。</p>
+<img src="../ux/screens/160x120i5/dual_pick.png" width="200" alt="选择 B：某个区域的信道">
+<p>要选其他区域的信道或 VFO，请上移到<strong>区域</strong>行并按 <strong>OK</strong>。列表先显示 <strong>VFO</strong>，然后是各区域。选择区域查看其信道，或选 <strong>VFO</strong> 守候一个 VFO 频率。</p>
+<img src="../ux/screens/160x120i5/dual_zones.png" width="200" alt="B 的区域：VFO 或某个区域">
+<h3 id="read-home">读主屏幕</h3>
+<img src="../ux/screens/240x320/home_dual_rx_b.png" width="200" alt="双守候主屏幕，B 上有来电">
+<p>每个信道有字母、名称、<strong>PTT</strong> 的通话对象（通话组，FM 上为频率）、频率和所属区域。选中的信道在其字母下方有箭头。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>你看到</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PTT</strong>、实心字母和箭头</td>
+<td>这是选中的信道：<strong>PTT</strong> 在此通话</td>
+</tr>
+<tr>
+<td><strong>TX</strong>（红色）和“在 A 通话”</td>
+<td>你正在 A 上发射</td>
+</tr>
+<tr>
+<td><strong>RX</strong>（绿色）和“在 B 接收”</td>
+<td>B 上有来电。该信道显示呼叫者，行右侧为 <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">RX</abbr></td>
+</tr>
+<tr>
+<td>“B Joe Smith TG 91 10 秒前”</td>
+<td>最近的呼叫，最新的在前，并带其信道</td>
+</tr>
+<tr>
+<td>“7 秒前听到”（在信道上）</td>
+<td>该信道上一次呼叫结束的时间，位置合适时显示：最新呼叫为琥珀色，另一信道为暗色</td>
+</tr>
+<tr>
+<td><strong>忙</strong>（绿色，在信道上）</td>
+<td>电台正在等待另一信道的回复，并在此处发现了信号。尚未播放：等待结束后电台会转过去</td>
+</tr>
+<tr>
+<td>“# 1 在 B 通话”</td>
+<td>最近 10 秒内 B 上有来电。<strong>#</strong>、<strong>1</strong> 在那里回话</td>
+</tr>
+<tr>
+<td>“# 1 回到 A”</td>
+<td>回话已开启，且 <strong>PTT</strong> 在 B 上（见下文）</td>
+</tr>
+</tbody>
+</table></div>
+<p>默认情况下，另一信道上的呼叫绝不会移动 <strong>PTT</strong>。由你选择。</p>
+<h3 id="the-wait-after-a-call">呼叫后的等待</h3>
+<p>电台只有一个接收机，因此在 A 和 B 之间切换。呼叫结束后，它在该信道上停留 1 秒，以便听到回复。等待期间，它会短暂查看另一信道。那里的呼叫显示为<strong>忙</strong>但不打断：等待结束后电台会转过去。用<strong>设置 &gt; 通话 &gt; 双守候延时</strong>更改等待时间（0.5 秒到 5 秒）。更短能更早发现另一信道；更长能保留更多迟到的回复。</p>
+<h3 id="talk-back">回话</h3>
+<p>开启<strong>设置 &gt; 通话 &gt; 双守候回话</strong>（默认关闭）后，<strong>PTT</strong> 会跟随呼叫。另一信道上的呼叫结束时，该信道成为选中信道（“在 B 回话”），因此 <strong>PTT</strong> 在那里应答。每次回复和该处的每次呼叫都会重新开始 10 秒计时。计时结束后，选择切回（“在 A 通话”）。<strong>#</strong>、<strong>1</strong>、<strong>A/B</strong> 键或 <strong>左</strong> / <strong>右</strong> 会立即切回。开启时提示行显示“# 1 回到 A  返回 停止”。</p>
+<img src="../ux/screens/240x320/home_dual_talk_back.png" width="200" alt="在 B 回话">
+<h3 id="talk-on-b">在 B 通话</h3>
+<p>按 <strong>#</strong>、<strong>1</strong>（“在 B 通话”）。B 现在是选中信道。有左/右键对的电台上，<strong>右</strong> 选 B、<strong>左</strong> 选 A。按 <strong>A/B</strong> 键切换，设为 <strong>A/B</strong> 的侧键也一样（设置 &gt; 按键）。双守候关闭时，<strong>A/B</strong> 键只提示“请先开启双守候”。按住 <strong>PTT</strong> 通话。松开后守候继续。</p>
+<img src="../ux/screens/160x120i5/home_dual_on_b.png" width="200" alt="选中 B 时的双守候主屏幕">
+<h3 id="change-a-or-b">更改 A 或 B</h3>
+<p>在主屏幕按 <strong>#</strong>。操作为：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>操作</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>在 B（或 A）通话</td>
+<td>选中另一信道</td>
+</tr>
+<tr>
+<td>2</td>
+<td>改 A</td>
+<td>打开 A 的选择器</td>
+</tr>
+<tr>
+<td>3</td>
+<td>改 B</td>
+<td>打开 B 的选择器</td>
+</tr>
+<tr>
+<td>4</td>
+<td>呼叫者</td>
+<td>最近呼叫者的操作（听到呼叫前为暗色）</td>
+</tr>
+<tr>
+<td>5</td>
+<td>停止，留在 A（或 B）</td>
+<td>在选中信道上结束双守候</td>
+</tr>
+</tbody>
+</table></div>
+<img src="../ux/screens/160x120i5/dual_actions.png" width="200" alt="双守候操作">
+<p>一个信道不能同时是 A 和 B。更改 A 或 B 会清除为其列出的呼叫。</p>
+<p><strong>上</strong> / <strong>下</strong> 和旋钮让选中信道在其区域中移动，跳过另一信道。在 VFO 上它们步进频率。区域中没有其他信道可去时，电台会说明（“本区域仅一个信道”）。</p>
+<p>在查找、信道或区域中选择的信道会成为选中信道；选择另一信道则选中它。<strong>VFO</strong> 键把选中信道放到 VFO 上，再按一次回到其信道。复制到 VFO 会把选中信道复制到 VFO。A 和 B 各有自己的 VFO，因此两者都可以是不同频率的 VFO；电台会记住两者。热点模式和写入电台频率不会停止双守候。</p>
+<p>区域键（<strong>上一区域</strong> 和 <strong>下一区域</strong>）把选中信道移到上一或下一区域中不是另一信道的第一个信道上（“A 区域：Simplex”）。双守候继续。<strong>主区域</strong> 键把它移到第一个区域。若 <strong>上</strong> / <strong>下</strong> 设为<strong>区域</strong>（设置 &gt; 按键），它们作用相同，旋钮仍步进信道。</p>
+<h3 id="stop-it">停止</h3>
+<p>在主屏幕连按两次 <strong>返回</strong>。第一次提示“再按返回停止双守候”，因此误按不会停止。若你输入了频率或临时更改了设置，<strong>返回</strong> 会先清除这些。电台停留在选中信道上（“双守候关闭：在 B”）。以下也会停止它：<strong>*</strong>、<strong>7</strong>；长按 <strong>A/B</strong> 键；<strong>#</strong>、<strong>5</strong>；以及设为<strong>双守候</strong>的侧键。启动扫描（<strong>OK</strong>、<strong>6</strong>、<strong>1</strong>，或<strong>扫描</strong>键）会停止它并停留在选中信道上。其他操作都不会停止它。若电台无法继续使用某个信道（例如已被删除），主屏幕会说明电台所在位置：“双守候关闭：在 COUNTY DMR”。</p>
+<h3 id="keys">按键</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>按键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PTT</strong></td>
+<td>在选中信道上通话</td>
+</tr>
+<tr>
+<td><strong>#</strong></td>
+<td>双守候操作</td>
+</tr>
+<tr>
+<td><strong>*</strong></td>
+<td>选中信道的快速设置</td>
+</tr>
+<tr>
+<td><strong>上</strong> / <strong>下</strong>、旋钮</td>
+<td>选中信道在其区域中移动（VFO：步进）</td>
+</tr>
+<tr>
+<td><strong>A/B</strong> 键（短按，或设置 &gt; 按键）、<strong>左</strong> / <strong>右</strong></td>
+<td>另一信道 / A / B。双守候关闭时，<strong>A/B</strong> 键提示“请先开启双守候”</td>
+</tr>
+<tr>
+<td><strong>上一区域</strong>、<strong>下一区域</strong>、<strong>主区域</strong></td>
+<td>选中信道转到其他区域</td>
+</tr>
+<tr>
+<td><strong>监听</strong>（按住）</td>
+<td>在选中信道上打开静噪。双守候在此等待，直到你松开</td>
+</tr>
+<tr>
+<td><strong>双守候</strong>键（设置 &gt; 按键）、长按 <strong>A/B</strong> 键</td>
+<td>启动（使用上次的 B）和停止</td>
+</tr>
+<tr>
+<td><strong>VFO</strong></td>
+<td>选中信道到 VFO，以及返回</td>
+</tr>
+<tr>
+<td><strong>返回</strong>，两次</td>
+<td>停止，停留在选中信道上</td>
+</tr>
+</tbody>
+</table></div>
+<p>启动双守候会停止区域扫描。开启<strong>大字体</strong>（设置 &gt; 显示）时，主屏幕每个信道显示一行，选中项带箭头标记。</p>
+<p><a href="../ux/dual-watch.html">各种显示屏的设计与布局</a></p>
+<p>电台核心也可以扫描由两个频率设定的 VFO 范围。尚无对应菜单项。</p>
+
+		<nav class="prev-next"><a class="prev" href="11-emergency.html">紧急</a><a class="next" href="13-aprs.html">APRS</a></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/user/12-scan.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#starting-and-stopping">启动与停止</a></li><li class="l2"><a href="#how-the-scan-moves">扫描如何移动</a></li><li class="l2"><a href="#while-scanning">扫描期间</a></li><li class="l2"><a href="#dual-watch">双守候</a></li><li class="l3"><a href="#start-it">启动</a></li><li class="l3"><a href="#change-b">更改 B</a></li><li class="l3"><a href="#read-home">读主屏幕</a></li><li class="l3"><a href="#the-wait-after-a-call">呼叫后的等待</a></li><li class="l3"><a href="#talk-back">回话</a></li><li class="l3"><a href="#talk-on-b">在 B 通话</a></li><li class="l3"><a href="#change-a-or-b">更改 A 或 B</a></li><li class="l3"><a href="#stop-it">停止</a></li><li class="l3"><a href="#keys">按键</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

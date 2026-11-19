@@ -1,0 +1,2027 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DMR Tier III trunking (mobile station) · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="DMR Tier III trunking (mobile station) · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/docs/spec/dmr-trunking.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/dmr-trunking.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/dmr-trunking.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/dmr-trunking.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/dmr-trunking.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/dmr-trunking.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../es/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../../es/radios/index.html">Radios</a><a href="../../../es/features/index.html">Funciones</a><a href="../../../es/flash/index.html">Instalar</a><a href="../../../es/codeplug/index.html">Codeplug</a><a href="../../../es/docs/index.html" aria-current="page">Documentación</a><a href="../../../es/screenshots/index.html">Capturas</a><a href="../../../es/tools/index.html">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../../docs/spec/dmr-trunking.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/dmr-trunking.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/dmr-trunking.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/dmr-trunking.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Especificaciones">
+		<p class="eyebrow"><a href="../../../es/docs/index.html">Documentación</a> / Especificaciones</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html" aria-current="page">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Esta página aún no está traducida; se muestra en inglés.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="dmr-tier-iii-trunking-mobile-station">DMR Tier III trunking (mobile station)</h1>
+<p>A radio on a <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> Tier III trunked system (<abbr class="gl" tabindex="0" title="European Telecommunications Standards Institute, which publishes the DMR standard." data-more="../dev/glossary.html#t-etsi">ETSI</abbr> <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">TS</abbr> 102 361-4) finds the system's trunked site control channel (<abbr class="gl" tabindex="0" title="Trunked station control channel: the Tier III channel that carries control signaling." data-more="../dev/glossary.html#t-tscc">TSCC</abbr>),
+stays on it, and follows the channel grants for the calls it wants to hear. Switch: <code>CONFIG_DMR_TRUNK</code>, a child of
+<code>CONFIG_DMR</code> (<a href="../build-config.html">build-config.md</a>); the access side (section 7) is <code>CONFIG_DMR_TRUNK_TX</code>, a child of
+it. The radio core runs the engine on a system from the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> (section 12) or one set up over the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>
+(section 11).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Standards position</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Modules</td>
+</tr>
+<tr>
+<td>3</td>
+<td><abbr class="gl" tabindex="0" title="Protocol data unit: one packet or message of a protocol, as the standard defines its fields." data-more="../dev/glossary.html#t-pdu">PDUs</abbr></td>
+</tr>
+<tr>
+<td>4</td>
+<td>System identity and authorization</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Channel plans</td>
+</tr>
+<tr>
+<td>6</td>
+<td>The <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> engine</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Access (7.5 status, 7.6 short data)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Timers and constants</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Tests</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Not done yet</td>
+</tr>
+<tr>
+<td>11</td>
+<td>On the radio</td>
+</tr>
+<tr>
+<td>12</td>
+<td>In the codeplug</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="1-standards-position">1. Standards position</h2>
+<p>Everything here comes from <abbr class="gl" tabindex="0" title="European Telecommunications Standards Institute, which publishes the DMR standard." data-more="../dev/glossary.html#t-etsi">ETSI</abbr> <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">TS</abbr> 102 361-4 (the Tier III trunking protocol), TS 102 361-1 (the air interface) and
+TS 102 361-2 (voice and generic services). Section and table numbers below are TS 102 361-4's unless marked -1 or -2.</p>
+<ul>
+<li>Only the standard's <abbr class="gl" tabindex="0" title="Protocol data unit: one packet or message of a protocol, as the standard defines its fields." data-more="../dev/glossary.html#t-pdu">PDUs</abbr> and procedures, with the standard feature set ID (<abbr class="gl" tabindex="0" title="Feature set ID: the byte that says whether a message is standard or manufacturer specific." data-more="../dev/glossary.html#t-fid">FID</abbr> 0). A <abbr class="gl" tabindex="0" title="Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control." data-more="dmr-data.html">CSBK</abbr> with another FID is
+counted and ignored.</li>
+<li>Only the standard's trunking protocol, no proprietary one: FID 0 PDUs with the standard's <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> and framing. A system
+that sends its control channel with another CRC or framing fails the standard CRC checks and is never confirmed as
+a <abbr class="gl" tabindex="0" title="Trunked station control channel: the Tier III channel that carries control signaling." data-more="../dev/glossary.html#t-tscc">TSCC</abbr> (section 9.2 checks this on recordings).</li>
+<li>On a trunked system the radio <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmits</abbr> only the access side (section 7) and the calls it is granted.</li>
+<li>Authentication only as section 7.10 gives it: with a key K, the radio answers a challenge and checks the TSCC's
+answer to its own; without one, a challenge is answered &quot;not supported&quot;.</li>
+</ul>
+<h2 id="2-modules">2. Modules</h2>
+<p>All in <code>core/dmr/trunk/</code>. None includes a board, platform or <abbr class="gl" tabindex="0" title="Real-time operating system: the scheduler that runs the firmware&#x27;s tasks." data-more="../dev/glossary.html#t-rtos">RTOS</abbr> header; the host tests run them as they are.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>File</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>t3_pdu.{h,c}</code></td>
+<td><abbr class="gl" tabindex="0" title="Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control." data-more="dmr-data.html">CSBK</abbr> and <abbr class="gl" tabindex="0" title="Multi block control: a DMR signaling message that spans several bursts." data-more="../dev/glossary.html#t-mbc">MBC</abbr> codec (7.1), <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> masks, <abbr class="gl" tabindex="0" title="The Tier III system parameters a TSCC sends in its CACH (SLCO 0010): model, network, site, registration flag and slot counter." data-more="../dev/glossary.html#t-c-sys-parms">C_SYS_Parms</abbr> / <abbr class="gl" tabindex="0" title="The same system parameters a Tier III payload channel sends in its CACH (SLCO 0011)." data-more="../dev/glossary.html#t-p-sys-parms">P_SYS_Parms</abbr> short <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr> (7.1.2)</td>
+</tr>
+<tr>
+<td><code>t3_sys.{h,c}</code></td>
+<td><abbr class="gl" tabindex="0" title="The 16-bit system code of a Tier III system: MODEL, NET, SITE and PAR. C_ALOHA carries all of it, the CACH the top 14 bits." data-more="../dev/glossary.html#t-c-syscode">C_SYScode</abbr> partition, <abbr class="gl" tabindex="0" title="Trunked station control channel: the Tier III channel that carries control signaling." data-more="../dev/glossary.html#t-tscc">TSCC</abbr> authorization, SYS_AREA, the Mask rule, access delay tables (6.2-6.4)</td>
+</tr>
+<tr>
+<td><code>t3_plan.{h,c}</code></td>
+<td>Logical channel number to frequencies: learned, table, fixed formula (Annex C)</td>
+</tr>
+<tr>
+<td><code>t3_ms.{h,c}</code></td>
+<td>The <abbr class="gl" tabindex="0" title="Mobile station: the radio, as opposed to the base station (BS)." data-more="../dev/glossary.html#t-ms">mobile station</abbr> engine: hunt, confirm, camp, follow, return, access (6.2-6.6, Annex D)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="3-pdus">3. PDUs</h2>
+<p>A <abbr class="gl" tabindex="0" title="Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control." data-more="dmr-data.html">CSBK</abbr> is 12 octets once the <abbr class="gl" tabindex="0" title="Block product turbo code: the error correction on DMR headers and control blocks." data-more="../dev/glossary.html#t-bptc">BPTC</abbr> is decoded: octet 0 holds <abbr class="gl" tabindex="0" title="Last block: the flag that marks the final block of a CSBK or data message." data-more="../dev/glossary.html#t-lb">LB</abbr>, <abbr class="gl" tabindex="0" title="Protect flag: the bit in link control that marks a protected (encrypted) call." data-more="../dev/glossary.html#t-pf">PF</abbr> and the 6-bit opcode, octet 1 the <abbr class="gl" tabindex="0" title="Feature set ID: the byte that says whether a message is standard or manufacturer specific." data-more="../dev/glossary.html#t-fid">FID</abbr>, octets 2-9
+the fields, most significant bit first, octets 10-11 the CRC-CCITT.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Block</th>
+<th><abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> mask (-1 B.3.12)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CSBK</td>
+<td>0xA5A5</td>
+</tr>
+<tr>
+<td>MBC header</td>
+<td>0xAAAA</td>
+</tr>
+<tr>
+<td>MBC continuation (last block)</td>
+<td>none; the CRC covers the continuation only</td>
+</tr>
+</tbody>
+</table></div>
+<p>Decoded opcodes (<code>t3_csbk_parse</code>): <abbr class="gl" tabindex="0" title="The Tier III CSBK a trunked base station sends to announce the system and its slot timing." data-more="../dev/glossary.html#t-c-aloha">C_ALOHA</abbr>, C_BCAST, <abbr class="gl" tabindex="0" title="A Tier III CSBK that checks on a radio: an authentication challenge or the called party&#x27;s radio check." data-more="../dev/glossary.html#t-c-ahoy">C_AHOY</abbr>, C_ACKVIT, C_MOVE, <abbr class="gl" tabindex="0" title="The Tier III CSBK a radio sends to ask for something on the control channel: registration, a call." data-more="../dev/glossary.html#t-c-rand">C_RAND</abbr>, <abbr class="gl" tabindex="0" title="A Tier III CSBK in which the TSCC accepts a request." data-more="../dev/glossary.html#t-c-ackd">C_ACKD</abbr>, <abbr class="gl" tabindex="0" title="A Tier III CSBK in which a radio acknowledges or answers, for example the authentication response." data-more="../dev/glossary.html#t-c-acku">C_ACKU</abbr>, P_ACKD, P_ACKU,
+P_CLEAR, P_PROTECT, P_MAINT and the grants PV, TV, BTV, PD, TD (and the duplex and multi-item variants). <code>t3_csbk_parse</code>
+returns false for another opcode but still fills the opcode, FID and the raw fields. <code>t3_csbk_build</code> packs the same set;
+the engine's tests and the access side use it.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>PDU</th>
+<th>Fields kept</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C_ALOHA</td>
+<td><abbr class="gl" tabindex="0" title="TSCC alternate slot: a second control slot of a Tier III site." data-more="../dev/glossary.html#t-tsccas">TSCCAS</abbr>, site <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr> sync, version, offset, active connection, Mask, service function, NRand_Wait, Reg, Backoff, <abbr class="gl" tabindex="0" title="The 16-bit system code of a Tier III system: MODEL, NET, SITE and PAR. C_ALOHA carries all of it, the CACH the top 14 bits." data-more="../dev/glossary.html#t-c-syscode">C_SYScode</abbr>, <abbr class="gl" tabindex="0" title="Mobile station: the radio, as opposed to the base station (BS)." data-more="../dev/glossary.html#t-ms">MS</abbr> address</td>
+</tr>
+<tr>
+<td>Grants</td>
+<td><abbr class="gl" tabindex="0" title="Logical physical channel number: the number of a channel in a Tier III channel plan." data-more="../dev/glossary.html#t-lpcn">LPCN</abbr> (12 bits), slot, late entry (TV/BTV), high rate (PD/TD), emergency, offset, destination, source</td>
+</tr>
+<tr>
+<td>C_BCAST</td>
+<td>announcement type, parameters 1 (14 bits), Reg, Backoff, C_SYScode, parameters 2 (24 bits)</td>
+</tr>
+<tr>
+<td>C_MOVE</td>
+<td>Mask, Reg, Backoff, LPCN, MS address</td>
+</tr>
+<tr>
+<td>P_CLEAR</td>
+<td>LPCN to return to (0: the last <abbr class="gl" tabindex="0" title="Trunked station control channel: the Tier III channel that carries control signaling." data-more="../dev/glossary.html#t-tscc">TSCC</abbr>), group flag, destination, source</td>
+</tr>
+<tr>
+<td>P_PROTECT, P_MAINT</td>
+<td>kind, destination, source</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Appended block (CdefParms type 0, 7.1.1.1.2).</strong> A grant with LPCN 0xFFF (CG_AP) or a Chan_Freq broadcast (BC_AP)
+carries the channel number and the MS's <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> and <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> frequencies, each as MHz (10 bits) plus 125 Hz steps
+(13 bits) (Annex C.1.1.4). CG_AP adds the payload channel's <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr>.</p>
+<p><strong>Short <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr>.</strong> <abbr class="gl" tabindex="0" title="The Tier III system parameters a TSCC sends in its CACH (SLCO 0010): model, network, site, registration flag and slot counter." data-more="../dev/glossary.html#t-c-sys-parms">C_SYS_Parms</abbr> (<abbr class="gl" tabindex="0" title="Short link control opcode: the field of a short LC message that says its kind." data-more="../dev/glossary.html#t-slco">SLCO</abbr> 2) and <abbr class="gl" tabindex="0" title="The same system parameters a Tier III payload channel sends in its CACH (SLCO 0011)." data-more="../dev/glossary.html#t-p-sys-parms">P_SYS_Parms</abbr> (SLCO 3) carry MODEL, the 12 NET+SITE bits, Reg (C) or the
+composite flag (P), and the 9-bit common slot counter.</p>
+<h2 id="4-system-identity-and-authorization">4. System identity and authorization</h2>
+<p><abbr class="gl" tabindex="0" title="The 16-bit system code of a Tier III system: MODEL, NET, SITE and PAR. C_ALOHA carries all of it, the CACH the top 14 bits." data-more="../dev/glossary.html#t-c-syscode">C_SYScode</abbr> is 16 bits: MODEL (2), NET and SITE (14 together), PAR (2).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>MODEL</th>
+<th>NET bits</th>
+<th>SITE bits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 tiny</td>
+<td>9</td>
+<td>3</td>
+</tr>
+<tr>
+<td>1 small</td>
+<td>7</td>
+<td>5</td>
+</tr>
+<tr>
+<td>2 large</td>
+<td>4</td>
+<td>8</td>
+</tr>
+<tr>
+<td>3 huge</td>
+<td>2</td>
+<td>10</td>
+</tr>
+</tbody>
+</table></div>
+<p>PAR says which control categories may use the <abbr class="gl" tabindex="0" title="Trunked station control channel: the Tier III channel that carries control signaling." data-more="../dev/glossary.html#t-tscc">TSCC</abbr>: 1 A, 2 B, 3 both.</p>
+<p><code>t3_authorize</code> checks a TSCC in the order of 6.3.2.2.2: model, network, the radio's site list (empty: any site), PAR
+against the radio's category. SYS_AREA is the top <abbr class="gl" tabindex="0" title="DMR location area: how many of the most significant bits of SITE form SYS_AREA, the registration area." data-more="../dev/glossary.html#t-dmrla">DMRLA</abbr> bits of SITE. Response_Check is bits 7-2 of the code (bit 0 the
+least significant).</p>
+<p><strong>Mask rule (6.2.1.1.1).</strong> An Aloha's Mask (0-24) applies to a radio when the Mask low bits of the Aloha's address and
+the radio's own match. Mask 0 means every radio.</p>
+<p><strong>Access delays.</strong> NRand_Wait 0-13 is that many <abbr class="gl" tabindex="0" title="Time division multiple access. A DMR channel carries two conversations by alternating them in 30 ms slots." data-more="../dev/glossary.html#t-tdma">TDMA</abbr> frames, 14 is 15, 15 is 24 (table 6.2). Backoff 1-15 is
+1, 2, 3, 4, 5, 8, 11, 15, 20, 26, 33, 41, 50, 70, 100 frames (table 6.3); 0 is reserved and reads 1.</p>
+<h2 id="5-channel-plans">5. Channel plans</h2>
+<p>A grant names a logical physical channel number (<abbr class="gl" tabindex="0" title="Logical physical channel number: the number of a channel in a Tier III channel plan." data-more="../dev/glossary.html#t-lpcn">LPCN</abbr>, 1-4094). <code>t3_plan_lookup</code> resolves it, first match wins:</p>
+<ol>
+<li><strong>Learned</strong>, when the system's record allows it: channels heard in Chan_Freq broadcasts and CG_AP blocks on the
+selected system. <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> only, up to 64 entries; when full the oldest is replaced. Dropped when the radio confirms a
+<abbr class="gl" tabindex="0" title="Trunked station control channel: the Tier III channel that carries control signaling." data-more="../dev/glossary.html#t-tscc">TSCC</abbr> of another network (model or NET differs). A site change of the same network keeps them.</li>
+<li><strong>Table</strong>: the programmed per-channel list (Annex C.1.1.3).</li>
+<li><strong>Fixed formula</strong> (Annex C.1.1.2): <abbr class="gl" tabindex="0" title="Mobile station: the radio, as opposed to the base station (BS)." data-more="../dev/glossary.html#t-ms">MS</abbr> <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> = base + (LPCN - first) x separation; MS <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> = transmit minus
+the duplex split, or plus it when the plan says the MS transmits low. Separation codes 0-7: 5, 6.25, 10, 12.5, 15,
+20, 25, 30 kHz.</li>
+</ol>
+<p>A grant whose channel nothing resolves is not followed. The engine counts it (<code>unmapped</code>) and keeps the last such
+LPCN, so the user can see which channel is missing from the plan.</p>
+<h2 id="6-the-receive-engine">6. The receive engine</h2>
+<p><code>t3_ms</code> follows the roaming engine's pattern: the radio core feeds it events and polls it for actions. It never
+calls the <abbr class="gl" tabindex="0" title="Hardware abstraction layer: the interfaces the core uses instead of touching a chip." data-more="../dev/architecture.html">HAL</abbr>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Call</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>t3_ms_start</code></td>
+<td>the user selected a trunked system</td>
+</tr>
+<tr>
+<td><code>t3_ms_rx</code></td>
+<td>every <abbr class="gl" tabindex="0" title="Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control." data-more="dmr-data.html">CSBK</abbr>, <abbr class="gl" tabindex="0" title="Multi block control: a DMR signaling message that spans several bursts." data-more="../dev/glossary.html#t-mbc">MBC</abbr> header and MBC continuation heard, with its slot and <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr></td>
+</tr>
+<tr>
+<td><code>t3_ms_slc</code></td>
+<td>every short <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr> the <abbr class="gl" tabindex="0" title="Common announcement channel: 24 bits ahead of each burst a repeater sends. It carries the slot number and short link control." data-more="../dev/glossary.html#t-cach">CACH</abbr> carried (CRC-8 good)</td>
+</tr>
+<tr>
+<td><code>t3_ms_activity</code></td>
+<td>any sync (voice or data) on the followed slot</td>
+</tr>
+<tr>
+<td><code>t3_ms_slot</code></td>
+<td>at each CACH heard: the inbound slot it announces and its <abbr class="gl" tabindex="0" title="Access type: the TACT bit that tells a radio whether the slot is free to transmit in." data-more="../dev/glossary.html#t-at">AT</abbr> bit (section 7)</td>
+</tr>
+<tr>
+<td><code>t3_ms_poll</code></td>
+<td>every 10-30 ms, until it returns false. <code>T3_ACT_TUNE</code>: tune to the channel and listen to the slot (0: both). <code>T3_ACT_SEND</code>: send the CSBK in the inbound slot just announced</td>
+</tr>
+<tr>
+<td><code>t3_ms_stop</code></td>
+<td>another zone or channel selected</td>
+</tr>
+</tbody>
+</table></div>
+<p>Actions wait in a queue of three, oldest first. A SEND goes out before a retune queued after it; a new retune drops a
+retune not yet taken and what was queued after it.</p>
+<h3 id="61-states">6.1 States</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>State</th>
+<th>The radio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HUNT</td>
+<td>tunes through the candidates looking for the <abbr class="gl" tabindex="0" title="Trunked station control channel: the Tier III channel that carries control signaling." data-more="../dev/glossary.html#t-tscc">TSCC</abbr></td>
+</tr>
+<tr>
+<td>CAMPED</td>
+<td>listens to the TSCC, both slots; a <abbr class="gl" tabindex="0" title="A Tier III CSBK that checks on a radio: an authentication challenge or the called party&#x27;s radio check." data-more="../dev/glossary.html#t-c-ahoy">C_AHOY</abbr> counts only on a slot an Aloha has shown to carry the TSCC (the carrier's other slot is a payload channel, whose P_AHOY has C_AHOY's opcode)</td>
+</tr>
+<tr>
+<td>FOLLOW</td>
+<td>listens to one slot of a payload channel</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Hunt.</strong> The candidates are the adjacent sites' control channels (7.18), then the programmed control channels in
+order. Each gets a dwell (700 ms: at least 12 TSCC slots and two short
+LCs). After a loss, the lost TSCC is tried first.</p>
+<ul>
+<li>An authorized <abbr class="gl" tabindex="0" title="The Tier III CSBK a trunked base station sends to announce the system and its slot timing." data-more="../dev/glossary.html#t-c-aloha">C_ALOHA</abbr> confirms the channel: the radio camps, and keeps the color code it was heard with.</li>
+<li>An Aloha of another system moves the hunt to the next candidate at once.</li>
+<li>Two <abbr class="gl" tabindex="0" title="The Tier III system parameters a TSCC sends in its CACH (SLCO 0010): model, network, site, registration flag and slot counter." data-more="../dev/glossary.html#t-c-sys-parms">C_SYS_Parms</abbr> of another system in a row do the same. One alone is not trusted: the short LC <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> is 8 bits, and
+corrupt words pass now and then.</li>
+</ul>
+<p><strong>Camped.</strong> Every valid <abbr class="gl" tabindex="0" title="Protocol data unit: one packet or message of a protocol, as the standard defines its fields." data-more="../dev/glossary.html#t-pdu">PDU</abbr> from the TSCC (CRC good, our color code; Alohas and broadcasts also with our system code)
+restarts T_Nosig. When it runs out, the engine hunts again. Short LCs don't restart it: every channel of the site
+carries them. The registration state follows the latest Aloha or broadcast Reg flag:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Reg</th>
+<th>Listen-only</th>
+<th>State</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>either</td>
+<td>not needed</td>
+</tr>
+<tr>
+<td>1</td>
+<td>yes, or a build without access (<code>CONFIG_DMR_TRUNK_TX</code> off)</td>
+<td>listen</td>
+</tr>
+<tr>
+<td>1</td>
+<td>no</td>
+<td>needed; the access side registers (section 7.2)</td>
+</tr>
+</tbody>
+</table></div>
+<p>A registration record holds the area it was made in: MODEL, NET and SYS_AREA (the <abbr class="gl" tabindex="0" title="DMR location area: how many of the most significant bits of SITE form SYS_AREA, the registration area." data-more="../dev/glossary.html#t-dmrla">DMRLA</abbr> top bits of SITE, 6.4.4).
+DMRLA 0 is reserved (361-4 table 6.5), so a radio without one takes every site as an area of its own and registers
+on each site it moves to.
+A TSCC of another area needs a new registration. An area that denied registration stays denied until the engine
+restarts.</p>
+<p><strong>Composite TSCC.</strong> A site with few channels may lend the TSCC's slot to a call (5.3.2). Its grant names the TSCC's
+own channel and slot, and the radio follows it like any other; P_CLEAR to channel 0 brings it back to the TSCC. While
+the slot is lent, its carrier's CACH carries <abbr class="gl" tabindex="0" title="The same system parameters a Tier III payload channel sends in its CACH (SLCO 0011)." data-more="../dev/glossary.html#t-p-sys-parms">P_SYS_Parms</abbr> with Payload Channel Type 1 (table 7.34) and the TSCC sends
+nothing. An idle radio that hears that short LC with its own system's MODEL, NET and SITE stays: each one restarts
+T_Nosig, and no random access goes until the TSCC is back (an Aloha or C_SYS_Parms) or 360 ms pass without one. A
+modem that doesn't report the short LC can't hear that: on a TSCC with no short LC from the system since the radio
+came, a voice burst, voice header or terminator in the TSCC's color code on its slot counts the same
+(<code>t3_ms_call_burst</code>), since a TSCC's slot carries a call only while lent. Once a short LC is heard, only short LCs
+count.
+P_SYS_Parms with type 0, or another system's, changes nothing. A radio waiting there that missed a call's grant (it
+was in another call) follows a Late_Entry grant heard on the lent slot for one of its <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroups</abbr> (6.6.2.4.1), as on
+the TSCC. A radio switched on meanwhile camps only at the Aloha: a grant doesn't carry the system's identity.</p>
+<p><strong>Grants.</strong> While camped, a grant is followed when:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Grant</th>
+<th>Followed when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TV, BTV</td>
+<td>the radio is the source (its own call); otherwise, unless it is a late-entry grant for a talkgroup call the user left: the talkgroup is in the system's list with the listen flag, or it is an all-call (ALLMSID, ALLMSIDL, ALLMSIDZ) and all-calls are on, or the grant is an emergency and emergencies on any talkgroup are on, or monitor is on</td>
+</tr>
+<tr>
+<td>PV</td>
+<td>the radio is the source; or the destination is the radio's ID and <abbr class="gl" tabindex="0" title="A DMR call to one radio." data-more="../user/22-glossary.html#t-private-call">private calls</abbr> are on</td>
+</tr>
+<tr>
+<td>PD, TD (and the multi-item 55, 56)</td>
+<td>as data calls: PD with the radio as source or target; TD with the radio as source, or to a talkgroup it listens to (section 7.7)</td>
+</tr>
+</tbody>
+</table></div>
+<p>A gateway address (6.2, Annex A.4) is never followed as a talkgroup. While a request is in progress (section 7) only
+the radio's own call or an emergency takes it off the TSCC. The TSCC repeats a grant while its call lasts,
+for late entry. A Late_Entry grant for the call just left (same talkgroup, channel and slot) is not followed again for
+2 s; a grant with Late_Entry 0 is a new call set-up and is always followed (6.6.2.4.1).</p>
+<p><strong>Follow.</strong> The engine asks for the payload channel and slot. The payload color code is CG_AP's when the grant had
+one, else the TSCC's. On the payload channel:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Heard on the call's slot</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>any burst with voice or data sync, idle bursts in the hang included (6.6.2.3.2.9 a)</td>
+<td>the call stays alive</td>
+</tr>
+<tr>
+<td>P_CLEAR for the call, or to ALLMSI</td>
+<td>return; to the <abbr class="gl" tabindex="0" title="Logical physical channel number: the number of a channel in a Tier III channel plan." data-more="../dev/glossary.html#t-lpcn">LPCN</abbr> it names, or to the frequencies of its appended block (LPCN 0xFFF, an MBC), else to the last TSCC</td>
+</tr>
+<tr>
+<td>P_MAINT disconnect from the call's source (either party of a private call)</td>
+<td>return</td>
+</tr>
+<tr>
+<td>P_PROTECT DIS_PTT / EN_PTT to the radio, the talkgroup of its grant or ALLMSID (not to the other party of a private call)</td>
+<td>PTT off / on</td>
+</tr>
+<tr>
+<td>P_PROTECT EN_PTT_ONE_MS</td>
+<td>PTT on for the radio it names; off for every other while they come (1 s after the last)</td>
+</tr>
+<tr>
+<td>P_PROTECT ILLEGALLY_PARKED</td>
+<td>return, unless it names the call</td>
+</tr>
+<tr>
+<td>P_AHOY</td>
+<td>section 7.4</td>
+</tr>
+<tr>
+<td>a grant for the same call to another channel or slot</td>
+<td>move there</td>
+</tr>
+<tr>
+<td>a grant for another call</td>
+<td>ignored</td>
+</tr>
+</tbody>
+</table></div>
+<p>Bursts on the other slot are ignored: it carries another call, or the TSCC on a composite channel. Nothing on the
+call's slot for TV_Inactive, or a call longer than the ceiling, also returns. After a return the TSCC has T_Nosig to
+answer with valid PDUs.</p>
+<h3 id="62-counters">6.2 Counters</h3>
+<p><code>t3_ms_t.st</code>: CSBKs with a good CRC, CRC failures, grants heard while camped, calls followed, grants to unmapped
+channels (and the last such LPCN), returns, hunts, foreign Alohas and broadcasts, foreign short LCs, learned channels,
+CSBKs sent and random access tries.</p>
+<h2 id="7-access">7. Access</h2>
+<p>Built with <code>CONFIG_DMR_TRUNK_TX</code>. A system in listen-only mode never <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmits</abbr>, whatever the build. The engine builds
+every burst; the radio core only sends it in the slot it is told.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Call</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>t3_ms_request</code></td>
+<td>PTT while camped: a voice call to a <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr> or an individual. False (<code>ax.result</code> says why) when not allowed now</td>
+</tr>
+<tr>
+<td><code>t3_ms_cancel</code></td>
+<td>PTT released before the grant</td>
+</tr>
+<tr>
+<td><code>t3_ms_end_call</code></td>
+<td>the user ends the call being followed</td>
+</tr>
+<tr>
+<td><code>t3_ms_deregister</code></td>
+<td>the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>'s DEREG. Leaving a system or switching off sends nothing (section 12.4)</td>
+</tr>
+<tr>
+<td><code>t3_ms_can_talk</code></td>
+<td>may the user talk on the payload channel now</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>ax.result</code> holds the outcome: pending, granted, done, refused (<code>ax.reason</code> has the reason code), no answer, timeout,
+not allowed, lost (the <abbr class="gl" tabindex="0" title="Trunked station control channel: the Tier III channel that carries control signaling." data-more="../dev/glossary.html#t-tscc">TSCC</abbr> was lost meanwhile), canceled.</p>
+<h3 id="71-random-access-62">7.1 Random access (6.2)</h3>
+<p>One request at a time, on the TSCC's first slot (<abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">TS1</abbr> on a dedicated TSCC).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Before the first try</td>
+<td>an Aloha heard since the radio came to this TSCC</td>
+</tr>
+<tr>
+<td>Each inbound slot</td>
+<td>the <abbr class="gl" tabindex="0" title="Access type: the TACT bit that tells a radio whether the slot is free to transmit in." data-more="../dev/glossary.html#t-at">AT</abbr> bit for the slot's inbound decoded and free (below); the Aloha's Mask matches the radio's ID; the Service Function allows the service (table below). An emergency skips Mask and Service Function unless the Mask is 24</td>
+</tr>
+<tr>
+<td>A slot not permitted</td>
+<td>wait for the next permitted one</td>
+</tr>
+<tr>
+<td>After a try</td>
+<td>the answer may come in any of the NWait + 1 frames after the try's own (6.2.1.1.5, figure 6.7); no new try before the last of them has passed. The wait runs from the burst on air: the radio's stack reports it sent, and a burst it dropped goes to the backoff at once</td>
+</tr>
+<tr>
+<td>No answer</td>
+<td>try again 1 to Backoff frames later, at random (table 6.3); NRand_NR tries (NRand_NE for an emergency), then no answer</td>
+</tr>
+<tr>
+<td>Overall</td>
+<td>TRand_TC from the request, then timeout</td>
+</tr>
+<tr>
+<td>C_WACKD, C_QACKD</td>
+<td>stop retrying; TP_Timer for a call, TNP_Timer for the rest; a further one restarts it</td>
+</tr>
+</tbody>
+</table></div>
+<p>Which <abbr class="gl" tabindex="0" title="Common announcement channel: 24 bits ahead of each burst a repeater sends. It carries the slot number and short link control." data-more="../dev/glossary.html#t-cach">CACH</abbr>'s AT bit describes the TSCC's inbound depends on the Aloha's Offset bit. A CACH describes the inbound slot
+its <abbr class="gl" tabindex="0" title="TDMA channel: the TACT bit that names the timeslot, so a radio can tell TS1 from TS2." data-more="../dev/glossary.html#t-tc">TC</abbr> names (361-1 4.5). With aligned timing (Offset 0) logical channel 1 sends on inbound slot 2 (361-1 table 5.1), so
+the TSCC slot's AT is in the CACH naming the other slot: the one right after the TSCC's own burst, where a <abbr class="gl" tabindex="0" title="Protocol data unit: one packet or message of a protocol, as the standard defines its fields." data-more="../dev/glossary.html#t-pdu">PDU</abbr> wanting
+an answer is followed by AT busy (361-4 6.2.1.1.3). With offset timing it is the CACH naming the TSCC's slot
+(<code>t3_ms_at_tc</code>).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Service Function</th>
+<th>Allows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>everything</td>
+</tr>
+<tr>
+<td>1</td>
+<td>services with a payload channel (calls, packet data) and registration</td>
+</tr>
+<tr>
+<td>2</td>
+<td>services without one (status, short data, ...) and registration</td>
+</tr>
+<tr>
+<td>3</td>
+<td>registration only</td>
+</tr>
+</tbody>
+</table></div>
+<p>The C_BCAST Backoff replaces the Aloha's.</p>
+<h3 id="72-registration-6441">7.2 Registration (6.4.4.1)</h3>
+<p>The engine registers by itself when the state is &quot;needed&quot; and nothing else is in progress. Until registered it asks
+for nothing else. The <abbr class="gl" tabindex="0" title="The Tier III CSBK a radio sends to ask for something on the control channel: registration, a call." data-more="../dev/glossary.html#t-c-rand">C_RAND</abbr> (kind registration) targets the system code (Trg_Adr_Cnts 0), or with <code>T3_OPT_REG_TG</code>
+subscribes to talkgroups. Sending it drops the old record. On a system whose <abbr class="gl" tabindex="0" title="The Tier III CSBK a trunked base station sends to announce the system and its slot timing." data-more="../dev/glossary.html#t-c-aloha">C_ALOHA</abbr> has Reg 0 the radio never
+registers, and so subscribes to nothing: a subscription is part of a registration (6.4.4.1.13), and there the <abbr class="gl" tabindex="0" title="Mobile station: the radio, as opposed to the base station (BS)." data-more="../dev/glossary.html#t-ms">MS</abbr>
+creates no registration record (6.4.3 a).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th><code>T3_OPT_REG_TG</code>, talkgroups listened to</th>
+<th>C_RAND</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>off</td>
+<td>Trg_Adr_Cnts 00b, the system code</td>
+</tr>
+<tr>
+<td>on, none</td>
+<td>Trg_Adr_Cnts 01b, the talk group; the system code (00b) without one</td>
+</tr>
+<tr>
+<td>on, one</td>
+<td>Trg_Adr_Cnts 01b, the talk group, else the one listened to</td>
+</tr>
+<tr>
+<td>on, two or more</td>
+<td>Trg_Adr_Cnts 10b, TATTSI; the first seven as a list (6.4.4.1.13.2)</td>
+</tr>
+</tbody>
+</table></div>
+<p>A list goes in <abbr class="gl" tabindex="0" title="Unified data transport: DMR short data sent as a plain block of bytes." data-more="../dev/glossary.html#t-udt">UDT</abbr> blocks the C_RAND counts (Appended UDT Short Data: blocks less one; 1 block holds 3 addresses, 2
+hold 7). The TSCC asks for them with a <abbr class="gl" tabindex="0" title="A Tier III CSBK that checks on a radio: an authentication challenge or the called party&#x27;s radio check." data-more="../dev/glossary.html#t-c-ahoy">C_AHOY</abbr> from TATTSI, Service_Kind registration, Service_Kind_Flag 1. The radio
+sends C_UDTHU (UDT_Format 0001b address, to TATTSI, SF 1, A 0, Pad Nibble 0) and the blocks in the inbound slots
+that follow: octet 0 is 0 (no one-key talkgroup), then the 24-bit addresses, the unused ones ADRNULL (B.3.2). The
+final <abbr class="gl" tabindex="0" title="A Tier III CSBK in which the TSCC accepts a request." data-more="../dev/glossary.html#t-c-ackd">C_ACKD</abbr>'s Response_Info says which were accepted, bit 6 the first (table 6.10): <code>reg_tg_ok</code>. Only the bits of
+the addresses sent are kept: all accepted is 1111111b however many were sent, so the rest mean nothing. A C_AHOY for the
+list when none was sent, or for a list since changed, gets nothing.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Answer to the radio's ID</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C_ACKD Reg_Accepted, Reg_Subscription</td>
+<td>registered, for this area; a single talkgroup sent was taken with Reg_Accepted, refused with Reg_Subscription</td>
+</tr>
+<tr>
+<td>another ACK-class reason</td>
+<td>not a registration answer (table 7.41): ignored</td>
+</tr>
+<tr>
+<td>C_NACKD Reg_Refused</td>
+<td>hunt; registers again on returning, after 30 s at the earliest</td>
+</tr>
+<tr>
+<td>C_NACKD Reg_Denied</td>
+<td>the area is denied; hunt</td>
+</tr>
+<tr>
+<td>none (NRand_NR tries)</td>
+<td>the record stays as it was; tries again after 30 s</td>
+</tr>
+</tbody>
+</table></div>
+<p>C_NACKD MS_Not_Registered to any other request (6.4.4.1.12) means the TSCC has no record of the radio: it registers
+again before asking for anything else.</p>
+<p>De-registration is the same request with Reg_Dereg 0. After it the engine doesn't register again until restarted.</p>
+<h3 id="73-calls-661-6622">7.3 Calls (6.6.1, 6.6.2.2)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>request</td>
+<td>C_RAND kind talkgroup or individual voice, the target, the radio's ID; EMERG option for an emergency</td>
+</tr>
+<tr>
+<td>request to an all-call ID (ALLMSID, ALLMSIDL, ALLMSIDZ) or a talkgroup with <code>T3_TG_BROADCAST</code></td>
+<td>kind talkgroup voice with the broadcast option (6.6.1.7, table 7.52); the TSCC grants <abbr class="gl" tabindex="0" title="A Tier III grant: the TSCC tells radios which payload channel carries a call. PV is a private voice call, TV a talkgroup voice call, BTV a broadcast talkgroup voice call." data-more="../dev/glossary.html#t-pv-grant">BTV_GRANT</abbr> (or a TV_GRANT to the all-call ID, table 7.11); the voice <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr> then carries the broadcast service option (0x08, 361-2 5.3.2.1, 5.3.3.1)</td>
+</tr>
+<tr>
+<td>C_WACKD, C_QACKD, C_ACKD MS_Alerting</td>
+<td>waiting (TP_Timer)</td>
+</tr>
+<tr>
+<td>a grant with the radio as source</td>
+<td>follow; the call is the radio's own; result granted</td>
+</tr>
+<tr>
+<td>C_NACKD</td>
+<td>refused, with its reason</td>
+</tr>
+<tr>
+<td>C_ACKD Call_Back</td>
+<td>done</td>
+</tr>
+<tr>
+<td>cancel, nothing sent yet</td>
+<td>dropped</td>
+</tr>
+<tr>
+<td>cancel, sent</td>
+<td>a C_RAND kind cancel to the same target; the TSCC answers C_ACKD Message_Accepted</td>
+</tr>
+</tbody>
+</table></div>
+<p>PTT on the payload channel (<code>t3_ms_can_talk</code>): following, not disabled by P_PROTECT, and not a broadcast (BTV_GRANT) or
+all-call someone else made. At the end of a call the radio made, or of any <abbr class="gl" tabindex="0" title="A DMR call to one radio." data-more="../user/22-glossary.html#t-private-call">private call</abbr>, <code>t3_ms_end_call</code> sends N_Maint
+P_MAINT (DISCON, to TSI) in consecutive frames on the call's slot, then returns. A talkgroup call's recipient returns
+without sending, and the call's late-entry grants don't bring it back.</p>
+<h3 id="74-answers-648-66122-6623">7.4 Answers (6.4.8, 6.6.1.2.2, 6.6.2.3)</h3>
+<p>A C_AHOY or P_AHOY to the radio's ID (or to the followed talkgroup, on the payload channel; or a <abbr class="gl" tabindex="0" title="A DMR request another radio answers automatically, to show it is on and in range." data-more="../user/22-glossary.html#t-radio-check">radio check</abbr> of a
+talkgroup the radio follows, on the TSCC) is answered with <abbr class="gl" tabindex="0" title="A Tier III CSBK in which a radio acknowledges or answers, for example the authentication response." data-more="../dev/glossary.html#t-c-acku">C_ACKU</abbr> or P_ACKU on the inbound slot after the next CACH of
+the slot it came on, without random access. The answer's target is the AHOY's source, its additional address the
+radio's ID, also when a talkgroup was addressed (table 6.28).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>AHOY</th>
+<th>Answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>radio check (kind registration, from TSI; 6.4.12)</td>
+<td>MS_Accepted</td>
+</tr>
+<tr>
+<td>voice radio check (P_AHOY kind individual or talkgroup voice, from TSI; tables 6.42, 6.43)</td>
+<td>P_ACKU MS_Accepted (6.6.2.3.2.1)</td>
+</tr>
+<tr>
+<td>availability check (kind individual voice): OACSU</td>
+<td>MS_Accepted</td>
+</tr>
+<tr>
+<td>availability check (kind individual packet data)</td>
+<td>Message_Accepted (section 7.7); EquipBusy_Refused (0x13) while the data service sends; not supported in a build without it</td>
+</tr>
+<tr>
+<td>availability check (kind duplex voice or duplex packet data)</td>
+<td>MS_Duplex_Not_Supported (0x16): the radio is simplex (6.6.9.2.5, 6.6.10.2.5). It never follows a duplex grant (53, 54), whose bit 15 is Call Direction; their payload channel always uses offset timing (tables 7.10, 7.14)</td>
+</tr>
+<tr>
+<td>packet data radio check (P_AHOY kind packet data, from TSI)</td>
+<td>P_ACKU Message_Accepted (6.6.3.3.2.1)</td>
+</tr>
+<tr>
+<td>call cancel (kind cancel) on the TSCC</td>
+<td>MS_Accepted</td>
+</tr>
+<tr>
+<td>selective clear (P_AHOY kind cancel)</td>
+<td>MS_Accepted (6.6.2.3.2.7; tables 6.44 and 6.45 say Message_Accepted), then return</td>
+</tr>
+<tr>
+<td>status (kind status)</td>
+<td>MS_Accepted (section 7.5)</td>
+</tr>
+<tr>
+<td>status poll (kind status, status 127)</td>
+<td>Accepted for the Status Polling Service (0x47), Response_Info the radio's status</td>
+</tr>
+<tr>
+<td>stun or revive (kind supplementary, from STUNI)</td>
+<td>without <code>T3_OPT_STUN</code>: not supported; else without K: Message_Accepted; with K: C_ACKVIT, the radio's challenge (section 7.9)</td>
+</tr>
+<tr>
+<td>kill (kind supplementary, from KILLI)</td>
+<td>with K and <code>T3_OPT_KILL</code>: C_ACKVIT; else not supported (section 7.9)</td>
+</tr>
+<tr>
+<td>authentication challenge (kind 1110b, source a challenge 0-0xFFFCDF), with K</td>
+<td>Authentication_Response 0x48, the target the response (section 7.10)</td>
+</tr>
+<tr>
+<td>authentication challenge without K, anything else to the radio</td>
+<td>not supported (0x00); stunned, nothing</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="75-status-666">7.5 Status (6.6.6)</h3>
+<p>A status is a 7-bit value: 0-126, 126 the emergency alarm and 124 its cancel; 127 is a poll. <code>t3_ms_status</code> sends one
+to an MS or a talkgroup, or polls an MS, by random access (C_RAND, Service_Kind status, tables 6.57 and 6.58):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Holds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Service_Options</td>
+<td>G/I (bit 6), SUPED_SV 0, the status's 5 most significant bits</td>
+</tr>
+<tr>
+<td>the 4 service-dependent bits</td>
+<td>SUPED_VAL 0, then the status's 2 least significant bits</td>
+</tr>
+</tbody>
+</table></div>
+<p>The TSCC's C_AHOY to the called party with our status as the source is progress (TNP_Timer); C_WACKD and C_QACKD are
+too. C_ACKD ends it (<code>T3_RES_DONE</code>): MS_Accepted mirrored for an MS, Message_Accepted for a talkgroup, Accepted for
+the Status Polling Service for a poll, with the polled status in Response_Info (<code>ax.info</code>). C_NACKD refuses it. A poll
+to a talkgroup or a status past 127 isn't started (<code>T3_RES_NOT_ALLOWED</code>). The last status sent is the radio's own,
+the answer to a poll.</p>
+<p><strong>Radio check.</strong> A radio check from the data service (the menus' Radio check, <a href="dmr-data.html">dmr-data.md</a>) has no
+<abbr class="gl" tabindex="0" title="Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control." data-more="dmr-data.html">CSBK</abbr> of its own on a trunked system: the radio core sends it as a status poll to the MS. The poll's acknowledgement
+answers the check (<code>dmrDataServiceSignalResult</code>); a refusal or no answer fails it at once, without the conventional
+retries (the random access has its own).</p>
+<p>A status heard in a C_AHOY on the TSCC (Service_Options_Mirror the 5 most significant bits, Appended_Blocks the 2
+least) to the radio or to a talkgroup it listens to is kept in <code>status_rx</code>. To the radio it is answered (section 7.4);
+to a talkgroup it isn't. Listen only, it is kept and not answered. The TSCC sends one to a talkgroup more than once,
+and one to the radio again when the answer was lost: the same status from the same caller within <code>T3_REPEAT_MS</code>
+(4 s) of the last is answered again but not counted as another.</p>
+<h3 id="76-udt-short-data-65-664">7.6 UDT short data (6.5, 6.6.4)</h3>
+<p>A message is 1-46 octets in a UDT: a header (data type data header, <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> mask 0xCCCC) and 1-4 rate 1/2 blocks of 12
+octets in consecutive frames of one slot. The blocks hold the data, pad octets, and a CRC-CCITT over all the octets
+before it, unmasked (TS 102 361-1 8.2.2.5).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Header field</th>
+<th>Holds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G/I, A</td>
+<td>a talkgroup; a response demanded</td>
+</tr>
+<tr>
+<td>DPF, SAP</td>
+<td>0000b, 0000b</td>
+</tr>
+<tr>
+<td>UDT_Format</td>
+<td>table 7.88, as the caller gives it</td>
+</tr>
+<tr>
+<td>Pad Nibble</td>
+<td><abbr class="gl" tabindex="0" title="Binary coded decimal: each decimal digit in 4 bits." data-more="../dev/glossary.html#t-bcd">BCD</abbr>, ISO 7 bit, ISO 8 bit, UTF-16 and mixed: the 1111b pad nibbles, counted (B.3.3-B.3.5, B.3.8, B.3.9; a last BCD digit 1111b, DigitNULL, counts); ISO 7 bit counts the spare bits of its last octet too (table B.4); other formats: 0, pad octets 0</td>
+</tr>
+<tr>
+<td>UAB</td>
+<td>blocks less one</td>
+</tr>
+<tr>
+<td>SF, opcode</td>
+<td>0 (the user's data); C_UDTHD outbound, C_UDTHU inbound</td>
+</tr>
+</tbody>
+</table></div>
+<p>ISO 7-bit text is given one character an octet (1-52) and packed 7 bits each, first character first.</p>
+<p><code>t3_ms_sdata</code> sends one to an MS or a talkgroup:</p>
+<ol>
+<li>C_RAND, Service_Kind 0100b (an MS) or 0101b (a talkgroup), Service_Options 0, the 4 service-dependent bits
+SUPED_VAL 0 and the blocks less one (table 6.55).</li>
+<li>The TSCC's C_AHOY from SDMI to the radio, Service_Kind 0100b, asks for the upload: C_UDTHU and the blocks go in
+the inbound slots that follow, as one transmission. A second C_AHOY (a CRC failure at the TSCC) sends it again.
+With no message waiting, the radio sends nothing.</li>
+<li>C_WACKD and C_QACKD are progress (TNP_Timer). C_ACKD ends it: MS_Accepted mirrored for an MS, Message_Accepted for
+a talkgroup. C_NACKD refuses it.</li>
+</ol>
+<p>A C_UDTHD heard on the TSCC, its blocks whole and the CRC good, to the radio or to a talkgroup it listens to, is kept
+in <code>sd_rx</code> (the data without its pad octets). To the radio with A set it is answered C_ACKU MS_Accepted; to a
+talkgroup it isn't. A bad CRC or a missing block keeps nothing and answers nothing: the TSCC sends it again.
+Supplementary data (SF set) is taken apart (below). A repeat (the same caller, destination, format and octets within
+<code>T3_REPEAT_MS</code>) is answered again but not counted, as for a status.</p>
+<p>Text kept in <code>sd_rx</code> (UDT_Format ISO 7 bit, ISO 8 bit or UTF-16BE) also goes into the message inbox as a message
+from the caller, once per new one (<code>dmrDataServiceInboxAdd</code>), so the user reads it with the other messages. The
+other formats stay for the debug link.</p>
+<p><strong>Polling (6.6.5).</strong> <code>t3_ms_sdata_poll</code> asks an MS for its short data: a C_RAND kind UDT poll (0110b) with the
+format in POL_FMT (table 7.60) and the blocks less one in Appended_Short_Data (table 6.56). The size is prearranged
+between the two MSs.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>The radio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C_AHOY UDT poll from the radio to the polled MS</td>
+<td>progress (TNP_Timer)</td>
+</tr>
+<tr>
+<td>C_UDTHD from the polled MS to the radio</td>
+<td>kept in <code>sd_rx</code>, answered C_ACKU MS_Accepted (6.6.5.5); done</td>
+</tr>
+<tr>
+<td>C_NACKD</td>
+<td>refused</td>
+</tr>
+</tbody>
+</table></div>
+<p>Polled (6.6.5.7): a C_AHOY UDT poll to the radio, from the calling MS or SDMI, gets the reply in <code>t3_cfg_t.poll_data</code>
+as a C_UDTHU to that caller in the slots that follow, cut to the blocks asked for. With no reply set, or one in
+another format than POL_FMT, the radio answers C_NACKU MSNot_Supported.</p>
+<p><strong>Supplementary user data (6.4.13).</strong> Data whose format and size are prearranged with the system (a position, for
+example) can ride along with a call set-up. With <code>t3_cfg_t.supl_len</code> &gt; 0 every voice, packet data, short data and
+status request offers it: Service_Options SUPED_SV 1 and SUPED_VAL the blocks less one, above the service's two low
+bits (tables 6.40, 6.50, 6.55, 6.57). A status's SUPED_SV is bit 5, above the status's five most significant bits.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>The radio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C_AHOY from SUPLI to the radio, the request's Service_Kind</td>
+<td>a C_UDTHU with SF 1 to SUPLI and the data's blocks in the slots that follow (table 6.30); the request goes on (TNP_Timer)</td>
+</tr>
+<tr>
+<td>no C_AHOY from SUPLI</td>
+<td>nothing: the TSCC may go on without it (6.4.13.0 a)</td>
+</tr>
+<tr>
+<td>C_UDTHD from SUPLI, SF 1, to the radio</td>
+<td>kept in <code>supl_rx</code>, answered C_ACKU Message_Accepted to SUPLI when A is set (6.4.13.2)</td>
+</tr>
+<tr>
+<td>the same to a talkgroup the radio listens to</td>
+<td>kept, not answered</td>
+</tr>
+<tr>
+<td>the grant, user data or status that follows to the same destination, within <code>T3_SUPL_HOLD_MS</code> (10 s)</td>
+<td>names the sender: <code>supl_rx.src</code> (0 until then)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The download doesn't carry the sender (figures 6.38, 6.39), so the radio holds it until the call does. A repeat within
+<code>T3_REPEAT_MS</code> is answered again and keeps a sender already named. The data comes from the system's <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> record
+(12.8), or the debug link stages it (<code>SUPL</code>, <a href="debuglink.html">debuglink.md</a> 3.26); the view shows the last heard
+(<code>supl_*</code>).</p>
+<p>All of it is built with <code>CONFIG_DMR_TRUNK_SUPL</code> (<a href="../build-config.html">build-config.md</a>). Without it the radio offers
+none, and a download from SUPLI is taken off the air unanswered (it is never short data).</p>
+<p><strong>Calls through a dialing gateway (6.6.2.2.3, 6.6.4.2).</strong> A voice, short data or packet data request to PSTNI,
+PABXI, LINEI or DISPATI (or their offset-timing addresses, A.4) carries no called number: the TSCC asks for it.
+<code>t3_cfg_t.dial</code> holds the digits (<code>t3_dial_pack</code>: <code>0-9</code>, <code>*</code>, <code>#</code>, up to 44; table 7.46).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>The radio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>the request</td>
+<td>individual (a talkgroup is refused), destination the gateway, Proxy Flag 0 for 1-20 digits, 1 for 21-44 (6.6.2.1.2); refused without digits</td>
+</tr>
+<tr>
+<td>C_AHOY from that gateway to the radio</td>
+<td>a C_UDTHU to the gateway, SF 1, BCD (B.3.3: the first digit in the high nibble, Pad Nibble per table B.3), in the slots that follow (tables 6.35, 6.41, 6.54); the request goes on</td>
+</tr>
+<tr>
+<td>C_AHOY from SDMI or SUPLI</td>
+<td>as without a gateway: the message, the supplementary data</td>
+</tr>
+<tr>
+<td>C_UDTHD from a dialing gateway, SF 1, BCD, to the radio</td>
+<td>the caller's number (CLI, table 6.33): kept in <code>cli</code>, answered C_ACKU Message_Accepted to the gateway when A is set</td>
+</tr>
+<tr>
+<td>the same to a talkgroup the radio listens to</td>
+<td>kept, not answered</td>
+</tr>
+</tbody>
+</table></div>
+<p>Built with <code>CONFIG_DMR_TRUNK_GW</code>. Without it a request to a dialing gateway is refused and a caller's number is
+dropped unanswered. Two places set the digits of the system in use: the debug link (DIAL,
+<a href="debuglink.html">debuglink.md</a>) and Find (<code>radio_req_t3_dial</code>, up to 16 digits; a new start drops them).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>On screen</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Find, digits typed on a trunked system</td>
+<td>a last row &quot;Phone call 5551234&quot;: the digits go to the radio at once, PTT on the row calls PSTNI privately (one call), OK makes PSTNI the <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr> for now. No actions, never the channel's own target</td>
+</tr>
+<tr>
+<td>a call from a dialing gateway</td>
+<td>the caller's number in place of the gateway's ID, on the call screen and in the private call notice; &quot;Phone line&quot; when the gateway gave none</td>
+</tr>
+</tbody>
+</table></div>
+<p>The number belongs to a call when the grant from that gateway to the same destination comes within <code>T3_CLI_CALL_MS</code>
+(10 s) of it (<code>t3_call_t.cli</code>): the TSCC downloads it in the call set-up (figure 6.45).</p>
+<h3 id="77-packet-data-663">7.7 Packet data (6.6.3)</h3>
+<p>Packet data uses the conventional data stack (<a href="dmr-data.html">dmr-data.md</a>) on a payload channel the TSCC grants for
+each transmission. Single slot, single item only.</p>
+<p><code>t3_ms_pdata</code> asks for the channel:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>request</td>
+<td>C_RAND, Service_Kind 0010b (an MS) or 0011b (a talkgroup), Service_Options 0 (table 6.50)</td>
+</tr>
+<tr>
+<td>C_WACKD, C_QACKD</td>
+<td>waiting (TP_Timer)</td>
+</tr>
+<tr>
+<td>PD_GRANT or TD_GRANT with the radio as source</td>
+<td>follow it as a data call; result granted</td>
+</tr>
+<tr>
+<td>C_NACKD</td>
+<td>refused, with its reason</td>
+</tr>
+</tbody>
+</table></div>
+<p>Grants followed as data calls (6.6.3.2.7): PD_GRANT with the radio as source or target; TD_GRANT with the radio as
+source, or to a talkgroup it listens to; the multi-item grants (55, 56) the same. On a data call PTT is off
+(<code>t3_ms_can_talk</code>); <code>t3_ms_data_ready</code> is true once the radio has settled on the slot. P_CLEAR, P_MAINT from the other
+party, inactivity and <code>t3_ms_end_call</code> end it as they end a voice call.</p>
+<p>The radio's request is a single item (table 6.50), so it ends its own data call once the item is over (6.6.3.3.2.5),
+with N_Maint P_MAINT (DISCON). This doesn't wait for a P_CLEAR, which the radio misses while it transmits, and on a
+slot whose idles keep TD_Inactive from running out.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>The item</th>
+<th>The call ends (<code>t3_ms_data_done</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>failed: no channel to send on, or every confirmed try unacknowledged (6.6.3.3.2.5 e)</td>
+<td>at once</td>
+</tr>
+<tr>
+<td>sent unconfirmed, or acknowledged (6.6.3.3.2.5 a, c)</td>
+<td><code>T3_DATA_LINGER_MS</code> (3 s) after the last data heard on the slot (<code>t3_ms_data_heard</code>): a reply in the TS's hang still arrives</td>
+</tr>
+</tbody>
+</table></div>
+<p>The availability check for data to the radio (C_AHOY, Service_Kind 0010b) is answered C_ACKU Message_Accepted
+(6.6.3.2.6). From IPI the same C_AHOY asks for the IPv4 address while the radio's own call to IPI waits (7.7 above);
+with no such call it is the check, for the network's data to the radio (a reply to its datagram, sent once it is back
+on the TSCC).</p>
+<p><strong>To an IP gateway (multi-part, 6.6.3.2.3).</strong> <code>t3_ms_pdata_ip</code> asks for packet data to an IPv4 address outside the
+radio network: the C_RAND targets IPI (0xFFFEC3) with the Proxy Flag 0 (IPv4).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C_AHOY from IPI to the radio, Service_Kind 0010b (6.6.3.1.2 b) or 0100b (table 6.54)</td>
+<td>the address upload: C_UDTHU, UDT_Format 0110b IP, one block, SF 1, A 0, target IPI (table 6.35's gateway rows); the block is B.3.7's IPv4 format, the address then 48 reserved bits. Asked again, sent again</td>
+</tr>
+<tr>
+<td>C_WACKD, C_QACKD, C_NACKD, the grant</td>
+<td>as for an MS. A grant without the C_AHOY is taken too</td>
+</tr>
+</tbody>
+</table></div>
+<p>On the payload channel the data goes to IPI (6.6.3.3.0) with the full IP header (the off-net route, dmr-data.md),
+which carries the real destination. Data from the IP side comes from IPI and is delivered by its IP header.</p>
+<p>The radio uses it on a system with option 0x1000 (12.1): while that system runs, the IP gateway's off-net route goes
+to IPI instead of <code>ipGatewayId</code>, and the data service's packet to IPI asks with its own destination
+(<code>dmrDataServiceTxIpDst</code>). The debug link's <code>t3.ip_gw</code> shows it.</p>
+<p>On such a system the radio also gives the gateway its own address at registration (IP Connection Advice, 6.4.11),
+so IP from outside reaches it by address. The address is the <abbr class="gl" tabindex="0" title="Common air interface: Motorola&#x27;s name for the DMR air interface, also the name of its IP addressing on the air." data-more="../dev/glossary.html#t-cai">CAI</abbr> address of the ID it registers with
+(<code>dmrDataIdAddress</code>).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Request</td>
+<td>The registration (to the system code) sets IP_Inform (Service Options 0x10) beside Reg_Dereg 1 and PowerSave_RQ. Not with a talkgroup or a list, whose answers are their own</td>
+</tr>
+<tr>
+<td>C_AHOY from IPI, Service_Kind 0100b or 1110b</td>
+<td>The radio is registered (6.4.11.1 e). It uploads its address as above, then waits TNP_Timer for the final answer</td>
+</tr>
+<tr>
+<td>C_ACKD Reg_Accepted from IPI</td>
+<td>The address is taken (6.4.11.1.4). Response_Info is the PowerSave_Offset, as in any Reg_Accepted</td>
+</tr>
+<tr>
+<td>C_NACKD IP_Connection_failed (2Ch) from IPI, after the AHOY or at once</td>
+<td>Registered without the address (6.4.11.1 f): no IP bearer service, or the address is another's. The radio stays on the site, reached by its ID, without power save</td>
+</tr>
+<tr>
+<td>No final answer</td>
+<td>Registered; the address is not known to be taken</td>
+</tr>
+</tbody>
+</table></div>
+<p>The debug link's <code>t3.ip_advised</code> says the system took the address. Deleting an address (Reg_Dereg 0 with IP_Inform 1)
+isn't sent: the radio has one address and keeps it.</p>
+<h3 id="78-emergency-6663-661">7.8 Emergency (6.6.6.3, 6.6.1)</h3>
+<p>The emergency key (<a href="dmr-emergency.html">dmr-emergency.md</a>) works on a trunked system as follows:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>On a trunked system</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alarm</td>
+<td>Status 126 to the emergency target (section 7.5), instead of the alarm CSBK. Sent once: the TSCC acknowledges it, so the alarm tries don't repeat it. Refused or unanswered, the module goes on to the call as after its last try.</td>
+</tr>
+<tr>
+<td>Call</td>
+<td>PTT and the hot mic ask for a call to the emergency target with Service_Options EMERG set (N_Rand_NE tries). The hot mic lasts into the granted call.</td>
+</tr>
+<tr>
+<td>Target 0</td>
+<td>The system's talk target, not the channel's.</td>
+</tr>
+<tr>
+<td>Cancel</td>
+<td>The emergency over, status 124 to the alarm's target, once the radio is camped. Only after an alarm the TSCC acknowledged.</td>
+</tr>
+<tr>
+<td>Heard</td>
+<td>Status 126 to the radio or a talkgroup it listens to raises the alarm alert. A call whose voice LC has the emergency option raises the <abbr class="gl" tabindex="0" title="A DMR page that makes another radio ring." data-more="../user/22-glossary.html#t-call-alert">call alert</abbr>, as on a conventional channel; on a call followed from a grant with Emergency set, so does the grant.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="79-stun-revive-and-kill-649-6410">7.9 Stun, revive and kill (6.4.9, 6.4.10)</h3>
+<p>A C_AHOY to the radio from STUNI, Service_Kind supplementary (1101b), stuns it (Service_Kind_Flag 0) or revives it (1).
+The radio takes it only with <code>T3_OPT_STUN</code>; without, it answers C_ACKU MSNot_Supported. With the option and without K
+(section 7.10) the radio answers C_ACKU Message_Accepted and acts (6.4.9.1). An open system's radios leave the option
+off: anyone could send an unauthenticated stun.</p>
+<p>With K it authenticates the TSCC first (6.4.9.2.2, 6.4.10.2):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>PDU</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The radio's acknowledgement</td>
+<td>C_ACKVIT (tables 6.21, 6.25): Service_Kind supplementary, Service_Kind_Flag as the AHOY's, target a random challenge 0-0xFFFCDF, source the radio</td>
+</tr>
+<tr>
+<td>The TSCC's answer</td>
+<td>C_ACKD Authentication_Response (0x64), target the radio, source the response (tables 6.20, 6.24)</td>
+</tr>
+<tr>
+<td>Right answer (section 7.10's algorithm, the radio's K and PSN)</td>
+<td>the radio acts, then C_ACKU MS_Accepted (0x44) to STUNI or KILLI (tables 6.22, 6.26)</td>
+</tr>
+<tr>
+<td>Wrong answer</td>
+<td>C_ACKU Recipient_Refused (0x14) to STUNI or KILLI; nothing done</td>
+</tr>
+</tbody>
+</table></div>
+<p>The challenge holds for TNP_Timer: a repeated C_AHOY gets the same one, a repeated answer the same acknowledgement
+(acted on once). The figure text of 6.4.9.2.0 says Message_Accepted for the final acknowledgement; tables 6.22 and 6.26
+give MS_Accepted, which the radio sends.</p>
+<p>A kill (C_AHOY from KILLI) is accepted only with K and <code>T3_OPT_KILL</code>; otherwise the radio answers MSNot_Supported.
+Killed, the radio loses all <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> functionality (6.4.10.0). The DMR stack stops at once and never starts again: no
+trunked system, no conventional DMR channel (PTT there is denied, no DMR channel is heard), no <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr>. FM works. The
+kill is kept in the settings (<code>t3_kill</code>, <a href="settings-store.html">settings-store.md</a> 3), so it outlasts a restart and a
+firmware update; only a factory reset clears it. No air message revives a killed radio. The debug link's <code>dmr.killed</code>
+reads it.</p>
+<p>Stunned, the radio:</p>
+<ul>
+<li>keeps hunting, registration, de-registration, radio checks and stun/revive;</li>
+<li>asks for no call, status, short data or packet data (refused as not allowed; PTT is denied);</li>
+<li>follows no grant, keeps no status or short data heard, and answers no other AHOY.</li>
+</ul>
+<p>The stun outlasts leaving the system and starting it again, unless the new system is another network. On a codeplug
+system (section 12) it also outlasts a restart of the radio: the settings keep it (<code>t3_stun</code>,
+<a href="settings-store.html">settings-store.md</a>) as the system's slot and a 4-bit hash of its network ID and model, set when the
+stun is taken and cleared by the revive. Starting that slot's system with the same hash, the radio is stunned before
+it hunts. A kept stun for another hash (the slot now holds another system) doesn't apply and stays as it is. A factory
+reset clears it. The debug link's staged system keeps its stun in <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> only.</p>
+<h3 id="710-authentication-648">7.10 Authentication (6.4.8)</h3>
+<p>The system may hold a 128-bit key K and a 24-bit <abbr class="gl" tabindex="0" title="A 3-octet number XORed into the Tier III authentication response when a network uses it." data-more="../dev/glossary.html#t-psn">PSN</abbr> (<code>t3_cfg_t.auth_key</code>, <code>psn</code>; 0: no PSN). A C_AHOY to the radio,
+Service_Kind 1110b, whose source is below the gateway block (0-0xFFFCDF) is a challenge:</p>
+<ol>
+<li>RC4 is keyed with the challenge (3 octets, most significant first) followed by K.</li>
+<li>Of its keystream, octets 1-256 are dropped; octets 257-259 are the response, most significant first.</li>
+<li>The response is XORed with the PSN.</li>
+</ol>
+<p>The radio answers C_ACKU, Reason Authentication_Response (0x48, table 7.42), the target the response, the additional
+address its own ID; on the payload channel, P_ACKU (6.6.2.3.2.2). A challenge during an access (a registration or a call
+request) is progress: the access waits TNP_Timer for its final answer. Without K a challenge is answered not supported.
+A radio check (from TSI, above the range) is unchanged. <code>t3_auth_response</code> passes the test vectors of tables 6.15 and
+6.16.</p>
+<h3 id="711-mass-registration-645">7.11 Mass registration (6.4.5)</h3>
+<p>A C_BCAST MassReg (table 7.76) asks radios to register again. Broadcast_Parms1 holds Reg_Window and an Aloha-style
+mask; it applies when the mask's low bits of its address equal the radio's ID (mask 24 names one radio, 0 all).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Reg_Window</th>
+<th>What the radio does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1-15</td>
+<td>registers by random access at a random time inside the window (table 6.12: 0.5 s to 200 000 s); another MassReg before the window ends is ignored</td>
+</tr>
+<tr>
+<td>0</td>
+<td>cancels a pending one; a registration already sent completes</td>
+</tr>
+</tbody>
+</table></div>
+<p>Hunting for, or moving to, another TSCC cancels it too.</p>
+<h3 id="712-move-tscc-c_move-71113">7.12 Move TSCC (C_MOVE, 7.1.1.1.3)</h3>
+<p>An applicable C_MOVE (the same mask rule as MassReg) sends the radio to another control channel: the logical channel
+it names, or, in an <abbr class="gl" tabindex="0" title="Multi block control: a DMR signaling message that spans several bursts." data-more="../dev/glossary.html#t-mbc">MBC</abbr> (<abbr class="gl" tabindex="0" title="Logical physical channel number: the number of a channel in a Tier III channel plan." data-more="../dev/glossary.html#t-lpcn">LPCN</abbr> 0xFFF), the frequencies and <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr> of the appended block. An access under way ends
+(<code>lost</code>), a mass registration is dropped, and the radio sends nothing there until an Aloha confirms the channel;
+T_Nosig without one starts the hunt (D.1.2). A move to the channel it is on does nothing.</p>
+<h3 id="713-power-save-647">7.13 Power save (6.4.7)</h3>
+<p>With <code>t3_cfg_t.ps_rq</code> 1-7 (1:2 to 1:128, table 6.13) the registration request carries PowerSave_RQ in its Service
+Options (bits 3-1). A single-talkgroup registration doesn't ask (6.4.4.1.13.1 sets PS_RQ 000), nor does a list
+(TATTSI): its answer's Response_Info is the list's. Only Reg_Accepted's Response_Info, masked to PowerSave_RQ bits, is
+PowerSave_Offset, the wake frame (table 7.41); 0 means no power save.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wake frame</td>
+<td>480 ms. PS_Counter = Common_Slot_Counter / 4. The radio's frame: PS_Counter masked to PowerSave_RQ bits equals PowerSave_Offset</td>
+</tr>
+<tr>
+<td>Counter</td>
+<td>The CSC of the last <abbr class="gl" tabindex="0" title="The Tier III system parameters a TSCC sends in its CACH (SLCO 0010): model, network, site, registration flag and slot counter." data-more="../dev/glossary.html#t-c-sys-parms">C_SYS_Parms</abbr> short LC heard, carried on one step per 120 ms. The value belongs to the four slots whose CACHs carried it, so it is taken as begun 120 ms before its reception was complete. The short LC comes from the modem (<code>DMR_EV_SHORT_LC</code>, dmr-modem.md 6.2): with a modem that doesn't report it there is no CSC and the radio never sleeps</td>
+</tr>
+<tr>
+<td>Early</td>
+<td>The radio wakes two CSC steps (240 ms) before its frame, so the receiver has synchronized</td>
+</tr>
+<tr>
+<td>Asleep</td>
+<td>Camped, confirmed, registered, no access, nothing queued, outside the wake frame, past T_Awake</td>
+</tr>
+<tr>
+<td>T_Awake</td>
+<td>2 s (<code>awake_ms</code>): after registering, any access, traffic for the radio (AHOY, acknowledgement) and a call's end</td>
+</tr>
+<tr>
+<td>T_Nosig</td>
+<td>Counts only time awake. A PDU still heard in the first moments of a sleep (the receiver goes off after the engine sleeps) counts as heard now, never later</td>
+</tr>
+<tr>
+<td>Level</td>
+<td>Not taken asleep, nor for 60 ms after waking: with the receiver off or settling it reads no signal, which would roam the radio</td>
+</tr>
+<tr>
+<td>MassReg</td>
+<td>A due mass registration wakes the radio</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>t3_ms_asleep</code> is the engine's decision. While it holds, idle and not keyed, the radio core switches the receiver off
+with the board's <code>rx_sleep</code> where the board sets <code>rx_sleep_dmr</code> (the modem keeps running). Waking (the engine's
+decision, a tune, leaving the system) turns it on and restarts the modem's <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr>, which finds the TSCC's slot timing
+again inside the two early CSC steps. The debug link's <code>t3.rx_off</code>, <code>rx_offs</code> and <code>rx_off_ms</code> show it. A board
+without <code>rx_sleep_dmr</code> keeps the receiver on; the engine still keeps the wake frames.</p>
+<h3 id="714-dynamic-group-assignment-dgna-668">7.14 Dynamic group assignment (DGNA, 6.6.8)</h3>
+<p>A UDT download with the C_DGNAHD header (opcode 36) to the radio's own ID sets its dynamic talkgroups. One to a
+talkgroup is ignored. The radio answers MS_Accepted when the header asks (A flag).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>UDT_Format</th>
+<th>Content</th>
+<th>The radio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0001b (DGNA_Address)</td>
+<td>octet 0 bit 0 OK, then up to 15 24-bit addresses (B.3.2)</td>
+<td>replaces the list; ADRNULL entries are skipped, all ADRNULL deletes it. OK: ADDRESS1 is the One-key talkgroup</td>
+</tr>
+<tr>
+<td>1010b (DGNA_Alias)</td>
+<td>octet 0 bit 0 OK, a 24-bit address, up to 21 UTF-16BE characters (B.3.9)</td>
+<td>names a talkgroup of the list, or sets the 16th; ADRNULL deletes the 16th. OK: the address is the One-key talkgroup</td>
+</tr>
+</tbody>
+</table></div>
+<p><abbr class="gl" tabindex="0" title="Dynamic group number assignment: the Tier III system moves a radio into a talkgroup over the air." data-more="../dev/glossary.html#t-dgna">DGNA</abbr> talkgroups are heard like the configured ones and never attached (6.4.4.1.13.0). PTT talks to the One-key
+talkgroup when the system has no talk ID of its own. The list lives in RAM: a restart or another system clears it.
+The radio keeps one alias, the latest.</p>
+<h3 id="715-call-diversion-667">7.15 Call diversion (6.6.7)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Request</th>
+<th>C_RAND (Service_Kind 1000b)</th>
+<th>Then</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Set: the chosen services go to an MS or talkgroup</td>
+<td>DIVONOFF 1, the services (DIV_VD, DIV_PD, DIV_SD, DIV_S), target MSI or GPI</td>
+<td>a C_AHOY from DIVERTI: the radio uploads one UDT block, Address format, UDT_DIV set, to MSI or GPI, the address in ADDRESS1; C_ACK (0x60) or C_NACK (0x20 not supported, 0x23 not to there) ends it</td>
+</tr>
+<tr>
+<td>Clear the radio's own</td>
+<td>DIVONOFF 0, the services, target TSI</td>
+<td>the acknowledgement</td>
+</tr>
+<tr>
+<td>Clear every diversion to the radio</td>
+<td>DIVONOFF 0, the services, target DIVERTI</td>
+<td>the acknowledgement</td>
+</tr>
+</tbody>
+</table></div>
+<p>A call the radio asks for can be answered with a UDT download instead (6.6.1.3, table 6.65): supplementary, to the
+radio, from MSI, GPI or DIVERTI, Address format. The request ends <code>diverted</code> and the view shows the new destination
+(<code>divert_to</code>, <code>divert_group</code>). The radio doesn't call it by itself.</p>
+<h3 id="716-ambient-listening-als-6626">7.16 Ambient Listening (ALS, 6.6.2.6)</h3>
+<p>The radio answers <abbr class="gl" tabindex="0" title="Ambient listening service: a dispatcher turns on a radio&#x27;s microphone remotely." data-more="../dev/glossary.html#t-als">ALS</abbr> only with <code>T3_OPT_ALS</code>: it then transmits with no one at the PTT.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>The radio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C_AHOY, individual voice, ALS_SERV 1, to the radio</td>
+<td>C_ACKU Message_Accepted (0x60); without <code>T3_OPT_ALS</code>, C_NACKU MSNot_Supported (table 6.47). Starts T_ALS_REQUEST_LIFE_SPAN (5 s)</td>
+</tr>
+<tr>
+<td>PV_GRANT from the same caller to the radio before it runs out</td>
+<td>an ALS call: keys at once, for T_ALS (default 30 s), or T_ALS_E (60 s) when the grant has Emergency set</td>
+</tr>
+<tr>
+<td>T_ALS over</td>
+<td>unkeys (terminator with LC), then N_Maint P_MAINT (DISCON) and back to the TSCC</td>
+</tr>
+<tr>
+<td>A grant after the life span, or from another caller</td>
+<td>an ordinary private call</td>
+</tr>
+</tbody>
+</table></div>
+<p>Asking for one: a C_RAND for an individual voice call with ALS_SERV set (table 6.40). The radio listens on the grant.
+The view shows <code>call_als</code> and <code>als_calls</code>.</p>
+<h3 id="717-stopping-the-talker-641433-641434">7.17 Stopping the talker (6.4.14.3.3, 6.4.14.3.4)</h3>
+<p><code>t3_ms_interrupt</code> asks the TS to stop the MS talking in the voice call the radio follows. The radio leaves the payload
+channel and sends a status on the TSCC; the TS answers, then stops the talker with the reverse channel.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Case</th>
+<th>Status, to</th>
+<th>After the answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Payload interrupt, any voice call</td>
+<td>125, to the talkgroup or the other MS</td>
+<td>back to the call, accepted or not (6.4.14.3.3.2); <code>ax.result</code> done = accepted</td>
+</tr>
+<tr>
+<td>End an ALS call the radio asked for</td>
+<td>123, to the ALS MS</td>
+<td>stays on the TSCC (6.4.14.3.4.3)</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>C_ACKD Message_Accepted: accepted (<code>done</code>). C_NACKD Not_Supported or Perm_User_Refused: <code>refused</code>. No answer ends
+as for any request (<code>no-answer</code>, <code>timeout</code>), and a payload interrupt goes back to the call all the same.</li>
+<li>Other calls' grants don't take the radio while it asks. An emergency grant does, and the radio stays in that call.</li>
+<li>6.4.14.3.4.1 also says the ALS initiator goes back to the payload channel; the MS procedure (6.4.14.3.4.3) says it
+stays on the TSCC, and the radio follows that. The TS clears the call with P_CLEAR.</li>
+<li>The talker's side: the interrupted MS decodes the outbound reverse channel while it transmits, and on <abbr class="gl" tabindex="0" title="Reverse channel: signaling the receiver sends back to the transmitter during a call, in space the burst leaves free." data-more="../dev/glossary.html#t-rc">RC</abbr> Command
+0100 (cease) or 0101 (cease request) ends after voice burst F with a terminator (6.4.15.2). The radio does this on
+boards that receive between their bursts on a split channel (<a href="dmr-modem.html">dmr-modem.md</a>, reverse channel).</li>
+</ul>
+<h3 id="718-adjacent-sites-vote-now-and-signal-quality-6323-6331-a-6713-6717">7.18 Adjacent sites, Vote Now and signal quality (6.3.2.3, 6.3.3.1 a, 6.7.1.3, 6.7.1.7)</h3>
+<p>The standard leaves what a radio does with these to the manufacturer. The engine:</p>
+<p><strong>Adjacent sites.</strong> An Adjacent_Site or Vote_Now broadcast (tables 7.71, 7.79) names another TSCC: its logical
+channel, or (channel 4 095) the frequencies of the appended block, and the 14 high bits of its system code. One that
+belongs to the radio's network (authorized as an Aloha would be) is kept, up to 4, the oldest replaced. Hunting tries
+them first. Another network's Aloha confirmed drops them, with the learned channels.</p>
+<p><strong>Signal level.</strong> The radio reports the tuned channel's level once a <abbr class="gl" tabindex="0" title="Time division multiple access. A DMR channel carries two conversations by alternating them in 30 ms slots." data-more="../dev/glossary.html#t-tdma">TDMA</abbr> frame while it isn't following a call
+(<code>t3_ms_level</code>); the engine averages it (3/4 old, 1/4 new) and starts again on each retune. The threshold is the
+radio's roaming threshold (<code>roam_rssi_dbm</code>), unless the system's record sets one.</p>
+<p><strong>Vote Now.</strong> An idle radio, camped and confirmed, with nothing queued, samples the TSCC named for 360 ms: the frames
+the TSCC keeps quiet for it (VOTE_BLK). An access started meanwhile brings it back at once. It counts the sample only
+if it hears an Aloha or broadcast of that site's system code there, and then moves when the site is better:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Priorities radiated (table 6.81)</th>
+<th>Moves when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Adjacent higher than ours</td>
+<td>its level is at or above the threshold</td>
+</tr>
+<tr>
+<td>Adjacent lower than ours</td>
+<td>ours is below the threshold, and it is 6 dB stronger and above the threshold</td>
+</tr>
+<tr>
+<td>None, or equal</td>
+<td>it is 6 dB stronger and at or above the threshold</td>
+</tr>
+</tbody>
+</table></div>
+<p>A move keeps the radio there unconfirmed until its Aloha (which registers again in a new SYS_AREA, 7.2); the TSCC
+left becomes an adjacent site. Otherwise the radio returns, its level kept and the time away not counted in T_Nosig.
+A site sampled isn't sampled again for 30 s unless ours is weak. <code>T3_OPT_NO_ROAM</code> turns sampling and the next rule off.</p>
+<p><strong>Leaving a weak TSCC.</strong> Camped, idle, below the threshold for 5 s, and with another candidate: the radio hunts from
+the adjacent sites, and for one pass confirms only a TSCC at or above the threshold (the hunting threshold of
+6.3.2.3). After a pass it takes any. With nowhere else to look it stays.</p>
+<h2 id="8-timers-and-constants">8. Timers and constants</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+<th>Standard range (Annex A)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T_Nosig</td>
+<td>5 s</td>
+<td>1-15 s</td>
+</tr>
+<tr>
+<td>Hunt dwell</td>
+<td>700 ms</td>
+<td></td>
+</tr>
+<tr>
+<td>Settle after a retune</td>
+<td>60 ms: what is heard sooner belongs to the old channel</td>
+<td></td>
+</tr>
+<tr>
+<td>TV_Inactive</td>
+<td>2.5 s</td>
+<td>0-20 s</td>
+</tr>
+<tr>
+<td>Call ceiling</td>
+<td>300 s</td>
+<td></td>
+</tr>
+<tr>
+<td>Re-grant hold</td>
+<td>2 s</td>
+<td></td>
+</tr>
+<tr>
+<td>MBC continuation gap</td>
+<td>130 ms: one <abbr class="gl" tabindex="0" title="Time division multiple access. A DMR channel carries two conversations by alternating them in 30 ms slots." data-more="../dev/glossary.html#t-tdma">TDMA</abbr> frame, one lost</td>
+<td></td>
+</tr>
+<tr>
+<td>TRand_TC</td>
+<td>10 s</td>
+<td>2-60 s</td>
+</tr>
+<tr>
+<td>TP_Timer</td>
+<td>20 s</td>
+<td></td>
+</tr>
+<tr>
+<td>TNP_Timer</td>
+<td>10 s</td>
+<td></td>
+</tr>
+<tr>
+<td>NRand_NR, NRand_NE</td>
+<td>6, 10</td>
+<td></td>
+</tr>
+<tr>
+<td>N_Maint</td>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td>Registration retry</td>
+<td>30 s</td>
+<td></td>
+</tr>
+<tr>
+<td>Vote Now sample</td>
+<td>360 ms</td>
+<td>VOTE_BLK: 2-10 frames</td>
+</tr>
+<tr>
+<td>Vote margin</td>
+<td>6 dB</td>
+<td></td>
+</tr>
+<tr>
+<td>Sample again</td>
+<td>30 s</td>
+<td></td>
+</tr>
+<tr>
+<td>Weak before leaving</td>
+<td>5 s</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>These values are fixed, but for four the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> may set (section 11; 0 keeps the default): T_Awake (power
+save), T_ALS, T_ALS_E and the Vote Now sample time.</p>
+<h2 id="9-tests">9. Tests</h2>
+<h3 id="91-pdus-testshostt3pdutestc">9.1 PDUs (<code>tests/host/t3PduTest.c</code>)</h3>
+<p><code>tests/host/data/t3_vectors.jsonl</code> holds <abbr class="gl" tabindex="0" title="Protocol data unit: one packet or message of a protocol, as the standard defines its fields." data-more="../dev/glossary.html#t-pdu">PDUs</abbr> packed by a separate encoder written from the field tables of 7.1, 7.2
+and Annex C, with the field values beside each. The test parses each one, checks every field, rebuilds the exact
+octets, and checks the <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> (including corrupted copies and the wrong mask). The same file is meant for every codec of
+these PDUs. Then the rules: Mask, delay tables, acknowledgement classes, authorization order, SYS_AREA, plan order and
+the learned ring.</p>
+<h3 id="92-engine-testshostt3mstestc-t3accesstestc-t3sitetestc-t3replaytestc">9.2 Engine (<code>tests/host/t3MsTest.c</code>, <code>t3AccessTest.c</code>, <code>t3SiteTest.c</code>, <code>t3ReplayTest.c</code>)</h3>
+<p><code>t3MsTest</code> drives the engine with built PDUs: hunting over silent and foreign candidates, the settle time, CRC and
+<abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr> filters, every follow rule, every return, T_Nosig, short LCs, learning from Chan_Freq and CG_AP, late <abbr class="gl" tabindex="0" title="Multi block control: a DMR signaling message that spans several bursts." data-more="../dev/glossary.html#t-mbc">MBC</abbr>
+continuations, monitor and emergency options, adjacent sites and the hunt order, Vote Now (stronger, within the
+margin, silent, priorities, <code>T3_OPT_NO_ROAM</code>), leaving a weak <abbr class="gl" tabindex="0" title="Trunked station control channel: the Tier III channel that carries control signaling." data-more="../dev/glossary.html#t-tscc">TSCC</abbr> and the hunting threshold, stop.</p>
+<p><code>t3AccessTest</code> runs the access side against a TSCC simulated frame by frame (<abbr class="gl" tabindex="0" title="Common announcement channel: 24 bits ahead of each burst a repeater sends. It carries the slot number and short link control." data-more="../dev/glossary.html#t-cach">CACH</abbr>, <abbr class="gl" tabindex="0" title="Access type: the TACT bit that tells a radio whether the slot is free to transmit in." data-more="../dev/glossary.html#t-at">AT</abbr> bit, Aloha): registration and
+its answers, the retry spacing and count, denied and refused areas, the AT bit, Mask, Service Function and first-Aloha
+rules, group and <abbr class="gl" tabindex="0" title="A DMR call to one radio." data-more="../user/22-glossary.html#t-private-call">private calls</abbr> with their acknowledgements and timers, cancel, P_PROTECT, P_MAINT at the end, the
+answers to <abbr class="gl" tabindex="0" title="A Tier III CSBK that checks on a radio: an authentication challenge or the called party&#x27;s radio check." data-more="../dev/glossary.html#t-c-ahoy">C_AHOY</abbr> and P_AHOY, de-registration, and the follow rules for the radio's own calls.</p>
+<p><code>t3SiteTest</code> runs the radio's own <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> chain (CACH, short <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr>, slot type, <abbr class="gl" tabindex="0" title="Block product turbo code: the error correction on DMR headers and control blocks." data-more="../dev/glossary.html#t-bptc">BPTC</abbr>) and the engine on raw control
+channel bursts recorded off air on the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench (<code>tests/host/data/t3_site_tscc.jsonl</code>, about 30 s of a test site's
+TSCC, no voice): the engine camps, reads the system and learns the channel the site broadcasts.</p>
+<p><code>t3ReplayTest</code> feeds the engine off-air recordings decoded on the SDR bench, in time order; the engine hears a channel's
+records only while it is tuned there. Its recordings are not in the repository: <code>RFOUNDRY_T3_RECORDINGS</code> names a
+manifest (format in the test's header) with the files and what is known about the recorded system. Without it the test
+skips, so CI doesn't run it. It checks that the engine camps within 1.5 s, reads the system code and Aloha parameters,
+stays on the TSCC except across gaps in the recording, follows only planned channels and known <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroups</abbr>, keeps a call
+alive on its voice, and never camps on another system or on a control channel that isn't Tier III.</p>
+<h3 id="93-on-the-radios-side-testshostt3codeplugtestc-t3viewtestc-radiocoretestc">9.3 On the radio's side (<code>tests/host/t3CodeplugTest.c</code>, <code>t3ViewTest.c</code>, <code>radioCoreTest.c</code>)</h3>
+<p><code>t3CodeplugTest</code> reads systems and trunked channels from a simulated <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> (section 12) and writes them over the
+<abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> (<code>DL_CMD_CPKV</code>). <code>t3ViewTest</code> checks that each Tier III debug link view section fits one reply with every
+field at its widest. <code>radioCoreTest</code> runs the radio core with the engine: start, follow, PTT, fallback, the kill.</p>
+<h2 id="10-not-done-yet">10. Not done yet</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Needs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CACH short LC reception on modems that don't report it yet (<code>hrc_chip_t.slc_rx_addr</code> 0)</td>
+<td>the location of the chip's short <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr></td>
+</tr>
+<tr>
+<td>A late veto of a random access whose slot turned busy</td>
+<td>slot-timed <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> in the modem drivers</td>
+</tr>
+<tr>
+<td>Duplex calls (voice, packet data)</td>
+<td>not planned: the radios are simplex</td>
+</tr>
+<tr>
+<td>Power save: the receiver off while asleep on boards without <code>rx_sleep_dmr</code></td>
+<td>each board's <code>rx_sleep</code> on a <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> channel</td>
+</tr>
+<tr>
+<td>The interrupted talker's side on radios that can't receive between their bursts on a split channel (6.4.15.2)</td>
+<td>the modem's <code>tx_listen_split</code> on those boards</td>
+</tr>
+<tr>
+<td>A P_CLEAR sent while the radio is still talking on the payload channel is missed; on a slot whose carrier stays keyed (idle bursts count for TV_Inactive) the radio stays until the call ceiling</td>
+<td>a rule for leaving a slot that carries only idle bursts after the radio's own over</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="11-on-the-radio">11. On the radio</h2>
+<p><code>core/radio/radio_sm.c</code> runs one engine; <code>core/radio/radio_trunk.{h,c}</code> holds the system it runs.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>What the radio core does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Set-up</td>
+<td>A trunked channel selected (12.4) loads its system from the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> and starts it at the next tick. The <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> can instead stage a system in <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> (<code>radio_t3_staged</code>, <code>DL_CMD_T3</code>, <a href="debuglink.html">debuglink.md</a> 3.26): its ID, authorization, <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr>, control channels, channel table, <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroups</abbr>; <code>RADIO_T3_START</code> copies it and starts the engine on whatever channel the radio is on.</td>
+</tr>
+<tr>
+<td>Leave</td>
+<td><code>RADIO_T3_STOP</code>, a conventional channel or the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> stops the engine and goes back to the channel or VFO.</td>
+</tr>
+<tr>
+<td>Fallback</td>
+<td>12.5: <code>t3_tick</code> watches how long the engine has hunted.</td>
+</tr>
+<tr>
+<td>Tune</td>
+<td>A <code>T3_ACT_TUNE</code> sets the channel to <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr>, <abbr class="gl" tabindex="0" title="DMR through a repeater, which receives on one frequency and transmits on another. The standard calls it RMO." data-more="../dev/glossary.html#t-repeater-mode">repeater mode</abbr>, the action's frequencies and color code. Slot 0 (the <abbr class="gl" tabindex="0" title="Trunked station control channel: the Tier III channel that carries control signaling." data-more="../dev/glossary.html#t-tscc">TSCC</abbr>, hunting) listens to both slots; a payload channel listens to its slot only. A new carrier is a full tune; the same carrier is a reconfiguration of the stack.</td>
+</tr>
+<tr>
+<td>Slots</td>
+<td>Each slot tick from the modem goes to <code>t3_ms_slot</code> with its slot number and its <abbr class="gl" tabindex="0" title="Common announcement channel: 24 bits ahead of each burst a repeater sends. It carries the slot number and short link control." data-more="../dev/glossary.html#t-cach">CACH</abbr> <abbr class="gl" tabindex="0" title="Access type: the TACT bit that tells a radio whether the slot is free to transmit in." data-more="../dev/glossary.html#t-at">AT</abbr> bit (<code>DMR_TICK_AT_KNOWN</code>, <code>DMR_TICK_AT_BUSY</code>). A modem that doesn't number slots gets them alternating; one that doesn't read AT gets every slot free. The <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> and <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> drivers number them and read AT once locked to the CACH's <abbr class="gl" tabindex="0" title="TDMA channel: the TACT bit that names the timeslot, so a radio can tell TS1 from TS2." data-more="../dev/glossary.html#t-tc">TC</abbr> (<a href="modem-hrc7000.html">modem-hrc7000.md</a> 2.5).</td>
+</tr>
+<tr>
+<td>Receive</td>
+<td>The stack's <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> tap hands <abbr class="gl" tabindex="0" title="Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control." data-more="dmr-data.html">CSBKs</abbr> and <abbr class="gl" tabindex="0" title="Multi block control: a DMR signaling message that spans several bursts." data-more="../dev/glossary.html#t-mbc">MBC</abbr> blocks to <code>t3_ms_rx</code>. Any other burst on a known slot, idle ones excepted, is activity on that slot (<code>t3_ms_activity</code>).</td>
+</tr>
+<tr>
+<td>Send</td>
+<td>A <code>T3_ACT_SEND</code> keys one CSBK as a data list, on the action's slot only, and not while the radio is talking. A <code>T3_ACT_TUNE</code> that comes while the list is still with the stack waits until it has gone out (at most 500 ms): a new slot or channel would drop it, and an answer before leaving a payload channel (a selective clear's <abbr class="gl" tabindex="0" title="A Tier III CSBK in which a radio acknowledges or answers, for example the authentication response." data-more="../dev/glossary.html#t-c-acku">P_ACKU</abbr>) would never be sent.</td>
+</tr>
+<tr>
+<td>PTT</td>
+<td>Camped, PTT asks for a call to the system's <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr> (the first talkgroup with <code>T3_TG_TALK</code> when none is set) and waits with PTT held. The grant puts the radio on the payload slot and keys it. A refusal, no answer or timeout denies <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> (<code>TXDENY_NO_DMR</code>). Released before the grant, the request is canceled.</td>
+</tr>
+<tr>
+<td>Following</td>
+<td>The stack takes the system's ID as its own, hears every call on the slot, and talks to the call's group or to the other party. The radio's own transmission counts as the call's activity: it never hears its own slot, so TV_Inactive would otherwise end the call while it talks.</td>
+</tr>
+<tr>
+<td>Status</td>
+<td><code>RADIO_T3_STATUS</code> sends the staged status (section 7.5). The last status heard is in the view.</td>
+</tr>
+<tr>
+<td>Short data poll</td>
+<td><code>RADIO_T3_SDPOLL</code> polls the staged <abbr class="gl" tabindex="0" title="Mobile station: the radio, as opposed to the base station (BS)." data-more="../dev/glossary.html#t-ms">MS</abbr> (section 7.6). The reply to a poll is staged with the system (<code>DL_T3_POLL_REPLY</code>).</td>
+</tr>
+<tr>
+<td>Interrupt</td>
+<td><code>RADIO_T3_INTERRUPT</code> and <code>RADIO_T3_ALS_END</code> call <code>t3_ms_interrupt</code> (section 7.17), not while the radio's PTT is held.</td>
+</tr>
+<tr>
+<td>Short data</td>
+<td><code>RADIO_T3_SDATA</code> sends the staged message (section 7.6): the upload is a <abbr class="gl" tabindex="0" title="Unified data transport: DMR short data sent as a plain block of bytes." data-more="../dev/glossary.html#t-udt">UDT</abbr> header and its blocks, one data source on the TSCC's slot. Data headers and rate 1/2 blocks heard go to the engine. The last message heard is in the view.</td>
+</tr>
+<tr>
+<td>Packet data</td>
+<td>The data service's transmissions (text, IP packets, replies) start through <code>data_tx_start</code>. Camped, the radio keeps the burst list, drops its preambles, and asks for a data channel to the data header's destination (section 7.7). Once following the granted call and settled, it sends the list on the call's slot; a refusal, no answer, timeout or a call that ended first gives the list back failed. On a data call already, a list to the same party goes at once. While a data call is followed, its data headers and blocks go to the data service, not the engine. The data service can't send while hunting or in a voice call. Listen before talk is skipped: the TSCC gives the slot.</td>
+</tr>
+<tr>
+<td>Emergency</td>
+<td><code>data_t3_start</code> sends the data service's alarm as status 126; <code>t3_emergency_tick</code> sends the cancel and passes a status 126 heard to the emergency module (section 7.8).</td>
+</tr>
+<tr>
+<td>View</td>
+<td>The <code>t3</code> section (<a href="debuglink.html">debuglink.md</a> 3.26).</td>
+</tr>
+</tbody>
+</table></div>
+<p>Tests: <code>tests/host/radioCoreTest.c</code> (<code>test_t3_talk</code>) runs a simulated site through PTT, request, grant and a call with
+nothing heard; <code>test_t3_pdata</code> through a text message out on a granted channel and one in; <code>test_t3_emergency</code> through
+the alarm, the emergency call, the cancel and an alarm heard. <code>test_t3_channels</code> selects trunked channels from the
+codeplug (same system, another system, unavailable, scan); <code>test_t3_never_keys</code> checks that a receive-only channel, a
+listen-only system and a channel with no system send nothing; <code>test_t3_fallback</code> runs the fallback and its probes.
+<code>tests/hil/test_t3_site.py</code> runs camp, registration, group and <abbr class="gl" tabindex="0" title="A DMR call to one radio." data-more="../user/22-glossary.html#t-private-call">private calls</abbr> against a site on the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench.</p>
+<h2 id="12-in-the-codeplug">12. In the codeplug</h2>
+<p>A trunked system is a record of its own; a <strong>trunked channel</strong> is an ordinary <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> channel tagged with the system
+it uses. Zones hold trunked channels like any other, mixed with conventional ones. The records are system type 1 and
+channel kind 1 of the generic layer (<a href="channel-modes.html">channel-modes.md</a>); their layouts are in
+<a href="dmr-trunking-codeplug.html">dmr-trunking-codeplug.md</a>. This section is what the radio does with them.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Keys</th>
+<th>Records</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0100 + n</td>
+<td>System n; the radio runs n = 0 to <code>RADIO_T3_SYSTEMS</code> - 1 (12.1)</td>
+</tr>
+<tr>
+<td>0x0200 + i</td>
+<td>A system entry: a channel of a system, for the hunt list and the plan's table (12.2)</td>
+</tr>
+<tr>
+<td>0x0300 + n</td>
+<td>System n's authentication key (12.3)</td>
+</tr>
+<tr>
+<td>0x0400 + c - 1</td>
+<td>The tag of channel c (12.4)</td>
+</tr>
+<tr>
+<td>0x0800 + n</td>
+<td>System n's short data poll setting and reply (12.7)</td>
+</tr>
+<tr>
+<td>0x0900 + n</td>
+<td>The supplementary user data the radio offers on system n (12.8)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="121-system">12.1 System</h3>
+<p>The record: <a href="dmr-trunking-codeplug.html">dmr-trunking-codeplug.md</a> 1.</p>
+<p><strong>Usable:</strong> a system is usable when it has a control channel and, if its record says it needs its key, a key. A
+channel tagged with a system that isn't usable is <strong>unavailable</strong> (12.4).</p>
+<p><strong>Listen only.</strong> A system record without its <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> flag is listen only: the radio follows the control channel and
+the calls of its <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroups</abbr>, and never registers, affiliates or transmits there, whatever a channel's tag says. A
+zeroed or short record is listen only.</p>
+<p><strong>Authentication is the system's choice.</strong> A system that doesn't authenticate needs no key: the radio registers and
+answers a challenge &quot;not supported&quot;. An open system (an amateur one, say) leaves the needs-key flag off and no radio
+needs a key.</p>
+<p><strong>Stun.</strong> A stun is taken only with option 0x0400. With a key it is authenticated first (section 7.9); without one it
+is taken as sent, so an open system's radios leave 0x0400 off.</p>
+<h3 id="122-system-channels">12.2 System channels</h3>
+<p>The entries: <a href="dmr-trunking-codeplug.html">dmr-trunking-codeplug.md</a> 2. Control channels are hunted in entry order. A
+system takes its first <code>T3_CTRL_MAX</code> control channels and first <code>RADIO_T3_CHANS</code> channels; the rest are skipped.</p>
+<h3 id="123-authentication-key">12.3 Authentication key</h3>
+<p>The record: <a href="dmr-trunking-codeplug.html">dmr-trunking-codeplug.md</a> 3. The key is in the codeplug so the Codeplug Editor
+can set it; the editor's <abbr class="gl" tabindex="0" title="Comma separated values: a table as plain text, as programming software exports it." data-more="../user/22-glossary.html#t-csv">CSV</abbr> and other-format exports leave it out.</p>
+<h3 id="124-trunked-channels">12.4 Trunked channels</h3>
+<p>A trunked channel is a codeplug channel with a tag of kind 1 (<a href="channel-modes.html">channel-modes.md</a> 2,
+<a href="dmr-trunking-codeplug.html">dmr-trunking-codeplug.md</a> 4): the system it is on, whether it may transmit, and a fallback
+channel of its own.</p>
+<p><strong>Name check.</strong> A tag whose check doesn't match its channel's name is not live, and the channel is an ordinary one
+(<a href="channel-modes.html">channel-modes.md</a> 2.2, 2.3). The same check guards a fallback channel, so a fallback never lands
+on a renumbered conventional channel.</p>
+<p><strong>The channel record</strong> carries what the open-firmware format can say: <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr>, <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> only, RX and TX on the system's
+first control channel, the contact (the <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr>: a talkgroup, a private contact or the all-call contact) and the
+<abbr class="gl" tabindex="0" title="The talkgroups a channel listens to. The codeplug calls it the RX group list." data-more="../user/22-glossary.html#t-listen-list">RX group list</abbr> (the talkgroups followed). A firmware or tool that doesn't know the tags sees a receive-only DMR channel
+and never transmits on it. This firmware takes from the record the name, contact, RX group list, power, TX time-out
+and <abbr class="gl" tabindex="0" title="A short text, usually a callsign and name, sent along with DMR voice." data-more="../user/22-glossary.html#t-talker-alias">talker alias</abbr>; it ignores the frequencies, slot, <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr>, tones, <abbr class="gl" tabindex="0" title="DMR radio to radio on one frequency, with no repeater. The standard calls it DMO." data-more="../dev/glossary.html#t-direct-mode">direct mode</abbr> and <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="sfr.html">SFR</abbr>.</p>
+<p><strong>Transmit</strong> is the tag's flag, not the record's: a tag without it (a zeroed one too) makes a receive-only trunked
+channel. The radio follows the system on it as on a listen-only system (12.1) and refuses PTT.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>The user selects</th>
+<th>The radio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a trunked channel, its system not running</td>
+<td>starts the system (section 11), its talkgroups the channel's</td>
+</tr>
+<tr>
+<td>a trunked channel of the system running</td>
+<td>keeps the <abbr class="gl" tabindex="0" title="Trunked station control channel: the Tier III channel that carries control signaling." data-more="../dev/glossary.html#t-tscc">TSCC</abbr>; takes the channel's talk target and talkgroups, and registers again only when its talkgroups changed and the system registers with them (0x0040)</td>
+</tr>
+<tr>
+<td>a trunked channel of another system</td>
+<td>leaves the running one and starts the new one</td>
+</tr>
+<tr>
+<td>a conventional channel or the VFO</td>
+<td>leaves the system</td>
+</tr>
+<tr>
+<td>a receive-only trunked channel</td>
+<td>runs the system listen only: no registration, nothing sent, PTT refused</td>
+</tr>
+<tr>
+<td>an unavailable trunked channel (its tag names no system, or one that is absent, not a Tier III system, not usable or past the systems the radio runs)</td>
+<td>leaves any system and works the record receive only, so PTT is refused; the screen says &quot;System not set up&quot;</td>
+</tr>
+</tbody>
+</table></div>
+<p>Leaving sends nothing: a site drops a radio that has gone quiet. Zone scan passes trunked channels by:
+a frequency is not what the radio follows there. The talkgroups' re-registration waits until the user has rested on a
+channel for <code>T3_REG_TG_DELAY_MS</code> (1 s), so turning the knob through channels registers once.</p>
+<p><strong>On screen.</strong> A zone or channel list names a trunked channel's system after its name, in place of the frequency.
+An unavailable one is dimmed: OK on it says &quot;System not set up&quot; and stays, and channel stepping passes it. On a
+trunked channel Home's chips row shows the system's name and its state in place of slot and color code: Ready,
+Registering, Searching, In call, Refused, Fallback (12.5) or System not set up, then the power.</p>
+<p>At power-on the radio restores the channel it was on, so a trunked channel starts its system. Keys written while a
+system runs are taken at the next selection of a channel.</p>
+<h3 id="125-fallback">12.5 Fallback</h3>
+<p>A system or a trunked channel may name a conventional <strong>fallback channel</strong>. When the radio has found no TSCC for
+the hold time, it goes to the fallback channel and works there as on any conventional channel, RX and TX. The screen
+says &quot;Fallback&quot;.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Which</td>
+<td>the trunked channel's own fallback when its tag has one (which may say none), else the system's; none when the channel's tag sets &quot;no fallback&quot;</td>
+</tr>
+<tr>
+<td>Checked</td>
+<td>the fallback must be a conventional channel (no live tag) whose name check matches; else there is none</td>
+</tr>
+<tr>
+<td>When</td>
+<td>the radio has been hunting, with no TSCC confirmed, for the hold time (0 = 30 s)</td>
+</tr>
+<tr>
+<td>Looking back</td>
+<td>every <code>RADIO_T3_PROBE_MS</code> (10 s), once the fallback channel is idle (nothing heard or sent for <code>RADIO_T3_PROBE_QUIET_MS</code>, 2 s, PTT up), the radio hunts the system's control channels for up to <code>RADIO_T3_PROBE_HUNT_MS</code> (2 s)</td>
+</tr>
+<tr>
+<td>Returning</td>
+<td>a TSCC of the system confirmed: the radio stays on it, takes the trunked channel back, registers, plays the system-back tone (<a href="radio-features.html">radio-features.md</a> 4) and says &quot;Back on <system>&quot;</td>
+</tr>
+<tr>
+<td>Not found</td>
+<td>back to the fallback channel</td>
+</tr>
+<tr>
+<td>PTT while looking</td>
+<td>back to the fallback channel at once: PTT talks there</td>
+</tr>
+<tr>
+<td>Leaving</td>
+<td>the user selecting another channel ends the fallback as any change does</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="126-sharing">12.6 Sharing</h3>
+<p>A zone share carries a zone's trunked channels in its modes part (<a href="zone-share.html">zone-share.md</a> 4.2, 5.5), as the
+system's sharing level allows:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Sharing</th>
+<th>The share carries</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 off (the default)</td>
+<td>the channels with no system: they come in unavailable</td>
+</tr>
+<tr>
+<td>1 identity only</td>
+<td>the channels and the system's name, flags and identity (model, NET, category). Enough for a radio that already has the system</td>
+</tr>
+<tr>
+<td>2 the whole system</td>
+<td>the channels, the system's block (color code, options, plan, sites) and its channels</td>
+</tr>
+</tbody>
+</table></div>
+<p>Never carried: the radio's ID on the system, a system's or a channel's fallback channel, kill or stun state,
+registration, the short data poll setting (12.7), the supplementary data (12.8). The key goes only when the sender turns
+keys on for that share, which a radio can't yet (<a href="dmr-trunking-codeplug.html">dmr-trunking-codeplug.md</a> 6).</p>
+<p>A receiver matches a shared system to one of its own by type and identity. A match is used as it is: the share
+changes nothing in it. With no match, a share with the whole system adds it at the lowest free system number; one
+with the identity only, or none, brings its channels in with no system, receive only and <strong>unavailable</strong>. The offer
+says so before the import, and the banner after it: &quot;3 trunked: system not set up&quot;. They work once the Codeplug Editor
+sets the system up and names it in their tags.</p>
+<p>A shared channel keeps transmit only when the receiver has its system; the system's transmit flag then rules, as the
+sender set it. A system that needs its key comes in without one, so its channels are unavailable until the key is
+set.</p>
+<h3 id="127-short-data-poll">12.7 Short data poll</h3>
+<p>Key 0x0800 + n, system n's short data polling (6.6.5): the format and size the system's radios have agreed on, and
+this radio's own reply.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>UDT_Format (table 7.88): of the reply, and asked for when the radio polls</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>Blocks to ask for, 1-4 (0 or past 4: 4)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0-46</td>
+<td>The reply's octets, in that format (ISO 8 bit: the text itself)</td>
+</tr>
+</tbody>
+</table></div>
+<p>With no record the radio asks for ISO 8 bit in 4 blocks and answers a poll &quot;not supported&quot;. A reply is cut to the
+blocks a poll asks for.</p>
+<p><strong>From the menus.</strong> On a trunked system the actions on a person have Poll short data (<code>RREQ_T3_POLL</code>): the radio polls
+the <abbr class="gl" tabindex="0" title="Mobile station: the radio, as opposed to the base station (BS)." data-more="../dev/glossary.html#t-ms">MS</abbr> in this format and size. The answer comes as short data and goes into the message inbox (7.6). A poll that
+can't start, is refused, goes unanswered or is cut short by leaving the system counts in <code>t3.poll_fails</code>; the screen
+says &quot;Poll: no short data&quot;.</p>
+<h3 id="128-supplementary-data">12.8 Supplementary data</h3>
+<p>Key 0x0900 + n, the supplementary user data (6.4.13, section 7.6) the radio offers with each call on system n: data in a
+format and size prearranged with the system, a position or a unit number, say.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>UDT_Format (table 7.88)</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1-46</td>
+<td>The octets, in that format (ISO 8 bit: the text itself)</td>
+</tr>
+</tbody>
+</table></div>
+<p>With no record, or one without octets, the radio offers none. The <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>'s SUPL (11) replaces it for the staged
+system until the next load. Built with <code>CONFIG_DMR_TRUNK_SUPL</code>; a build without it ignores the record.</p>
+<h3 id="129-calls">12.9 Calls</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Call</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>codeplug_channel(c, &amp;ch)</code></td>
+<td>The channel with its live tag applied: <code>ch.kind</code> 1, <code>ch.system</code>, <code>ch.rx_only</code> from the tag's transmit flag</td>
+</tr>
+<tr>
+<td><code>radio_t3_load(n, &amp;setup)</code></td>
+<td>Fills a setup from system n's records; false when the system is absent or not usable</td>
+</tr>
+<tr>
+<td><code>radio_t3_talk(&amp;ch, &amp;setup)</code></td>
+<td>The channel's contact and RX group list as the setup's talk target and talkgroups</td>
+</tr>
+<tr>
+<td><code>radio_t3_fallback(c, &amp;setup, &amp;ch)</code></td>
+<td>Channel c's fallback channel: its number (0 none) and its record</td>
+</tr>
+<tr>
+<td><code>radio_t3_name(n, buf)</code></td>
+<td>The name only, for a list</td>
+</tr>
+<tr>
+<td><code>radio_t3_usable(n)</code></td>
+<td>Whether system n is usable</td>
+</tr>
+</tbody>
+</table></div>
+<p>The debug link's LOAD (section 11) stages system n with no channel's talkgroups, without starting it.</p>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/dmr-trunking.md">Ver el código fuente de esta página</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="En esta página">
+		<p class="eyebrow">En esta página</p>
+		<ul><li class="l2"><a href="#1-standards-position">1. Standards position</a></li><li class="l2"><a href="#2-modules">2. Modules</a></li><li class="l2"><a href="#3-pdus">3. PDUs</a></li><li class="l2"><a href="#4-system-identity-and-authorization">4. System identity and authorization</a></li><li class="l2"><a href="#5-channel-plans">5. Channel plans</a></li><li class="l2"><a href="#6-the-receive-engine">6. The receive engine</a></li><li class="l3"><a href="#61-states">6.1 States</a></li><li class="l3"><a href="#62-counters">6.2 Counters</a></li><li class="l2"><a href="#7-access">7. Access</a></li><li class="l3"><a href="#71-random-access-62">7.1 Random access (6.2)</a></li><li class="l3"><a href="#72-registration-6441">7.2 Registration (6.4.4.1)</a></li><li class="l3"><a href="#73-calls-661-6622">7.3 Calls (6.6.1, 6.6.2.2)</a></li><li class="l3"><a href="#74-answers-648-66122-6623">7.4 Answers (6.4.8, 6.6.1.2.2, 6.6.2.3)</a></li><li class="l3"><a href="#75-status-666">7.5 Status (6.6.6)</a></li><li class="l3"><a href="#76-udt-short-data-65-664">7.6 UDT short data (6.5, 6.6.4)</a></li><li class="l3"><a href="#77-packet-data-663">7.7 Packet data (6.6.3)</a></li><li class="l3"><a href="#78-emergency-6663-661">7.8 Emergency (6.6.6.3, 6.6.1)</a></li><li class="l3"><a href="#79-stun-revive-and-kill-649-6410">7.9 Stun, revive and kill (6.4.9, 6.4.10)</a></li><li class="l3"><a href="#710-authentication-648">7.10 Authentication (6.4.8)</a></li><li class="l3"><a href="#711-mass-registration-645">7.11 Mass registration (6.4.5)</a></li><li class="l3"><a href="#712-move-tscc-c_move-71113">7.12 Move TSCC (C_MOVE, 7.1.1.1.3)</a></li><li class="l3"><a href="#713-power-save-647">7.13 Power save (6.4.7)</a></li><li class="l3"><a href="#714-dynamic-group-assignment-dgna-668">7.14 Dynamic group assignment (DGNA, 6.6.8)</a></li><li class="l3"><a href="#715-call-diversion-667">7.15 Call diversion (6.6.7)</a></li><li class="l3"><a href="#716-ambient-listening-als-6626">7.16 Ambient Listening (ALS, 6.6.2.6)</a></li><li class="l3"><a href="#717-stopping-the-talker-641433-641434">7.17 Stopping the talker (6.4.14.3.3, 6.4.14.3.4)</a></li><li class="l3"><a href="#718-adjacent-sites-vote-now-and-signal-quality-6323-6331-a-6713-6717">7.18 Adjacent sites, Vote Now and signal quality (6.3.2.3, 6.3.3.1 a, 6.7.1.3, 6.7.1.7)</a></li><li class="l2"><a href="#8-timers-and-constants">8. Timers and constants</a></li><li class="l2"><a href="#9-tests">9. Tests</a></li><li class="l3"><a href="#91-pdus-testshostt3pdutestc">9.1 PDUs (tests/host/t3PduTest.c)</a></li><li class="l3"><a href="#92-engine-testshostt3mstestc-t3accesstestc-t3sitetestc-t3replaytestc">9.2 Engine (tests/host/t3MsTest.c, t3AccessTest.c, t3SiteTest.c, t3ReplayTest.c)</a></li><li class="l3"><a href="#93-on-the-radios-side-testshostt3codeplugtestc-t3viewtestc-radiocoretestc">9.3 On the radio&#x27;s side (tests/host/t3CodeplugTest.c, t3ViewTest.c, radioCoreTest.c)</a></li><li class="l2"><a href="#10-not-done-yet">10. Not done yet</a></li><li class="l2"><a href="#11-on-the-radio">11. On the radio</a></li><li class="l2"><a href="#12-in-the-codeplug">12. In the codeplug</a></li><li class="l3"><a href="#121-system">12.1 System</a></li><li class="l3"><a href="#122-system-channels">12.2 System channels</a></li><li class="l3"><a href="#123-authentication-key">12.3 Authentication key</a></li><li class="l3"><a href="#124-trunked-channels">12.4 Trunked channels</a></li><li class="l3"><a href="#125-fallback">12.5 Fallback</a></li><li class="l3"><a href="#126-sharing">12.6 Sharing</a></li><li class="l3"><a href="#127-short-data-poll">12.7 Short data poll</a></li><li class="l3"><a href="#128-supplementary-data">12.8 Supplementary data</a></li><li class="l3"><a href="#129-calls">12.9 Calls</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

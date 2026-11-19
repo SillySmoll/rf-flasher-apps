@@ -1,0 +1,994 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Board Registry · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="The Board Registry · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/docs/dev/board-registry.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/dev/board-registry.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/dev/board-registry.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/dev/board-registry.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/dev/board-registry.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/dev/board-registry.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../es/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../../es/radios/index.html">Radios</a><a href="../../../es/features/index.html">Funciones</a><a href="../../../es/flash/index.html">Instalar</a><a href="../../../es/codeplug/index.html">Codeplug</a><a href="../../../es/docs/index.html" aria-current="page">Documentación</a><a href="../../../es/screenshots/index.html">Capturas</a><a href="../../../es/tools/index.html">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../../docs/dev/board-registry.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/dev/board-registry.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/dev/board-registry.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/dev/board-registry.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Guía del desarrollador">
+		<p class="eyebrow"><a href="../../../es/docs/index.html">Documentación</a> / Guía del desarrollador</p>
+		<ul><li><a href="index.html">Developer Documentation</a></li><li><a href="adding-a-mode.html">Adding a Mode</a></li><li><a href="adding-a-radio.html">Adding a Radio</a></li><li><a href="architecture.html">Architecture</a></li><li><a href="board-registry.html" aria-current="page">The Board Registry</a></li><li><a href="building.html">Building</a></li><li><a href="ci-runners.html">CI Runners and Images</a></li><li><a href="ci.html">Continuous Integration</a></li><li><a href="codec.html">The Codec</a></li><li><a href="codeplug-editor.html">The Codeplug Editor</a></li><li><a href="contributing.html">Contributing</a></li><li><a href="cps-and-codeplug.html">CPS, Codeplug and Settings</a></li><li><a href="debug-link.html">Debug Link</a></li><li><a href="glossary.html">Developer glossary</a></li><li><a href="manual-pdf.html">The User Manual PDF</a></li><li><a href="release.html">Releases</a></li><li><a href="stack-check.html">Stack Check</a></li><li><a href="testing.html">Testing</a></li><li><a href="translating.html">Translating</a></li><li><a href="web-flasher.html">The Web Flasher</a></li><li><a href="website.html">The Web Site</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Esta página aún no está traducida; se muestra en inglés.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="the-board-registry">The Board Registry</h1>
+<p>The registry holds every fact about a radio that the build itself doesn't need: its identity, status, build options,
+flashing route, codec route and the web site's data. The tools, CI, the docs and the site read it. The build reads no
+TOML: make keeps its own facts in <code>board.mk</code>, <code>config.mk</code> and <code>memory.ld</code>, and the registry reads those through
+make.</p>
+<p><code>tools/boards.py</code> loads and checks the registry. It needs Python 3.11 or later (<code>tomllib</code>); scripts find one with
+<code>tools/rfoundry_python.sh</code>.</p>
+<h2 id="where-each-fact-lives">Where each fact lives</h2>
+<p>Each fact is in one file. A value another file already holds is derived from it, never typed twice.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>File</th>
+<th>Holds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>boards/&lt;id&gt;/board.toml</code></td>
+<td>Identity, status, build option text, CI extras, flashing family, bootloader and <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="glossary.html#t-stub">stub</abbr> data, codec route, the site's data</td>
+</tr>
+<tr>
+<td><code>platform/&lt;p&gt;/platform.toml</code></td>
+<td>ISA, <abbr class="gl" tabindex="0" title="Central processing unit." data-more="glossary.html#t-cpu">CPU</abbr>, toolchain, platform stubs, flash base, sector geometries, codec symbols</td>
+</tr>
+<tr>
+<td><code>boards/&lt;id&gt;/board.mk</code></td>
+<td><code>PLATFORM</code>, <code>APP_BASE</code> (the image address), <code>HSE_VALUE</code> (the crystal, for the <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="glossary.html#t-stm32">STM32F4</abbr> stub), <code>BOOT_*</code>, <code>BOARD_DIRS</code>, <code>BUILD_OPTIONS</code> and each option's <code>&lt;NAME&gt;_VALUES</code>, read with <code>make print-vars</code> so the board's and the platform's <code>config.mk</code> and their conditionals count. <code>LDSCRIPT</code> defaults to <code>memory.ld</code>. <code>BOARD_HWOPTS := y</code> on a board with hardware options (<code>board_t.hwopts</code>, <code>hal/hal_hwopt.h</code>: the others build none of that code) is for the build alone: the registry doesn't read it</td>
+</tr>
+<tr>
+<td><code>boards/&lt;id&gt;/memory.ld</code></td>
+<td>The application region (<code>MEMORY FLASH</code>, from <code>__app_start</code>) and the codec symbols (<code>__codec_*</code>). Every <code>*.ld</code> in the board directory is read for the codec symbols</td>
+</tr>
+<tr>
+<td><code>boards/&lt;id&gt;/*.c</code></td>
+<td>The <code>board_t</code> <code>.name</code> values: the names the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="debug-link.html">debug link</abbr> reports</td>
+</tr>
+<tr>
+<td><code>boards/&lt;id&gt;/pins.h</code></td>
+<td>The pins the stub uses: the power latch and key (<abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="glossary.html#t-hr-c7000">HR_C7000</abbr>), the <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="glossary.html#t-spi">SPI</abbr> flash's <code>PIN_FLASH_SCK</code>, <code>_MISO</code>, <code>_MOSI</code>, <code>_CS</code> and the <code>idle_cs</code> pins (STM32F4), each as <code>GPIOx, GPIO_PIN_n</code> on STM32F4</td>
+</tr>
+</tbody>
+</table></div>
+<p>Derived values:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Value</th>
+<th>From</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Flashing link (USB, serial cable)</td>
+<td>The family</td>
+</tr>
+<tr>
+<td>CPU</td>
+<td>The platform, unless <code>[hardware] cpu</code> names another</td>
+</tr>
+<tr>
+<td>Protected range</td>
+<td>The platform's <code>flash_base</code> up to the application base</td>
+</tr>
+<tr>
+<td>Erasable sectors</td>
+<td>The platform geometry from the application base up</td>
+</tr>
+<tr>
+<td>Stub NAND flag</td>
+<td><code>drivers/flash/spi_nand</code> in <code>BOARD_DIRS</code></td>
+</tr>
+<tr>
+<td>Stub power pins</td>
+<td><code>PIN_POWER_LATCH</code> and <code>PIN_POWER_KEY</code> in <code>pins.h</code>, when <code>hold_power</code> is set</td>
+</tr>
+<tr>
+<td>Stub LED pins (HR_C7000)</td>
+<td><code>PIN_LED_RED</code> and <code>PIN_LED_GREEN</code> in <code>pins.h</code>, else none</td>
+</tr>
+<tr>
+<td>Stub board record (STM32F4)</td>
+<td><code>spi</code> and <code>idle_cs</code>, the <code>PIN_FLASH_*</code> pins, the bus's alternate function from the platform's <code>board_stub.spi_af</code>, <code>HSE_VALUE</code> and <code>APP_BASE</code></td>
+</tr>
+<tr>
+<td>Debug link names</td>
+<td>The <code>board_t</code> names, each build option value's <code>board_name</code>, <code>debuglink_aliases</code>, the id</td>
+</tr>
+<tr>
+<td>Codec windows of a linker slot</td>
+<td>The <code>__codec_slot</code> symbols</td>
+</tr>
+<tr>
+<td>Codec windows of a stock file</td>
+<td>The stock file's profile in <code>tools/rfoundry/rfoundry/stockfw.py</code></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="boardtoml">board.toml</h2>
+<p>The schema in <code>tools/boards.py</code> (<code>BOARD_SCHEMA</code>) lists every key; <code>check</code> refuses an unknown or missing one. Copy a
+neighbor on the same platform.</p>
+<h3 id="identity">Identity</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>The directory name; <code>make BOARD=&lt;id&gt;</code></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Maker and model, as the site and the tools show it</td>
+</tr>
+<tr>
+<td><code>maker</code>, <code>model</code></td>
+<td>string</td>
+<td>The two parts of the name</td>
+</tr>
+<tr>
+<td><code>also</code></td>
+<td>list of strings</td>
+<td>The same radio sold under other names</td>
+</tr>
+<tr>
+<td><code>kind</code></td>
+<td><code>handheld</code> or <code>mobile</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>aprs_tocall</code></td>
+<td>one character, <code>1</code>-<code>9</code> or <code>A</code>-<code>Z</code></td>
+<td>The sixth character of the radio's <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> tocall <code>APRDF?</code> (<a href="../spec/aprs.html">aprs.md</a> 4.2). Unique; <code>0</code> is the host tests'. Never change or reuse one: it is meant to name the radio's model in the device identifier list</td>
+</tr>
+<tr>
+<td><code>part_of</code></td>
+<td>string, optional</td>
+<td>Another board this one is a build of</td>
+</tr>
+<tr>
+<td><code>debuglink_aliases</code></td>
+<td>list, optional</td>
+<td>Names older firmware reported on the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="debug-link.html">debug link</abbr></td>
+</tr>
+<tr>
+<td><code>looks</code></td>
+<td>list of tables, optional</td>
+<td>Other bodies the board ships in that look too different to share its picture: <code>{ id, name, also }</code>. Each is its own radio card on the site, drawn in <code>site/static/img/radios/src/&lt;id&gt;-&lt;look id&gt;.svg</code> (the site build refuses a missing drawing), and links to the board's page. <code>name</code> and every entry of <code>also</code> (the radios in that body) must be in the board's <code>also</code>; the board's own card lists the rest</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="docs">[docs]</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hardware</code></td>
+<td>The hardware spec, <code>docs/spec/hardware-&lt;id&gt;.md</code></td>
+</tr>
+<tr>
+<td><code>codec</code></td>
+<td>Optional: the codec spec</td>
+</tr>
+<tr>
+<td><code>install</code></td>
+<td>Optional: the user manual's page for moving from stock firmware</td>
+</tr>
+<tr>
+<td><code>bringup</code></td>
+<td>Optional: the bring-up checklist</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>check</code> fails when a page doesn't exist. The README's radio table links the board to its <code>bringup</code> page, else its
+<code>hardware</code> page.</p>
+<h3 id="hardware">[hardware]</h3>
+<p>One-line summaries for the site and the generated tables; the facts stay in <code>docs.hardware</code>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cpu</code></td>
+<td>Optional: overrides the platform's <abbr class="gl" tabindex="0" title="Central processing unit." data-more="glossary.html#t-cpu">CPU</abbr> in the tables</td>
+</tr>
+<tr>
+<td><code>bands</code>, <code>power</code>, <code>display</code></td>
+<td>Short text</td>
+</tr>
+<tr>
+<td><code>gallery</code></td>
+<td>The display class (<code>160x128</code>); <code>check</code> requires the UI gallery to have it, and the frame buffer in <code>board.mk</code> (<code>GFX_FB_BYTES</code>, <code>GFX_MAX_ROWS</code>, <code>GFX_INDEXED</code>) to hold it</td>
+</tr>
+<tr>
+<td><code>unconfirmed</code></td>
+<td>Optional: hardware switches (<code>hardware</code> in <code>tests/hil/features.toml</code>) the board neither builds nor lists in <code>BOARD_UNSUPPORTED</code> or <code>BOARD_NOT_WRITTEN</code> (<a href="../build-config.html#unsupported-not-written-unconfirmed">the rule</a>), because no source says yet whether the radio has the part: switch to what is unknown. <code>check</code> fails on any other hardware switch that is off by default, and on an entry for a switch the board builds or lists. The feature matrix shows it as ?</td>
+</tr>
+<tr>
+<td><code>clock</code></td>
+<td><code>{ rtc, note }</code>: the real-time clock. <code>rtc</code> is <code>backed</code> (keeps time through power-off), <code>unbacked</code> (only while on), <code>none</code> or <code>unknown</code>; <code>note</code> gives the source. The feature matrix and the site show it</td>
+</tr>
+<tr>
+<td><code>variants</code></td>
+<td>Optional: the hardware variants sold under the model, as <code>[[hardware.variants]]</code> tables (below)</td>
+</tr>
+<tr>
+<td><code>variant_pattern</code></td>
+<td>With <code>variants</code>: a regular expression over the stock firmware's version text whose first group is the variant code</td>
+</tr>
+<tr>
+<td><code>variant_check</code></td>
+<td>With <code>variants</code>: how a user reads the code on the radio, one or two sentences. The flasher and the radio page show it</td>
+</tr>
+</tbody>
+</table></div>
+<p>A variant is <code>{ code, name, level, notice, runs }</code>:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td>What <code>variant_pattern</code> captures; unique within the board</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Short text: what sets this hardware apart</td>
+</tr>
+<tr>
+<td><code>runs</code></td>
+<td><code>{ board, options }</code>: the image it runs. <code>board</code> is this board when variants share an image, another board id when the variant needs its own. <code>options</code> names build option values of that board (<code>[[build_options]]</code>) the image must be built with. No <code>runs</code>: not supported, and no <code>level</code> or <code>notice</code></td>
+</tr>
+<tr>
+<td><code>level</code></td>
+<td>With <code>runs</code>: <code>bring-up</code>, <code>testing</code> or <code>supported</code>, as in <code>[status]</code></td>
+</tr>
+<tr>
+<td><code>notice</code></td>
+<td>Required below <code>supported</code>: what doesn't work yet. The flasher shows it as a warning when it reads or the user picks the variant</td>
+</tr>
+</tbody>
+</table></div>
+<p>The web flasher reads the code before it writes (the stock console, the vendor identify reply) or asks the user, and
+refuses an image the variant doesn't run (<code>site/static/js/flasher/variant.js</code>). <code>check</code> requires a supported board
+to have a supported variant that runs its own image.</p>
+<h3 id="status">[status]</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Values</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>level</code></td>
+<td><code>bring-up</code>, <code>testing</code>, <code>supported</code></td>
+<td>How far the port is</td>
+</tr>
+<tr>
+<td><code>summary</code></td>
+<td>string</td>
+<td>What works, then what is open, in one sentence or two; Markdown links allowed. The README, the user manual and the web site show it</td>
+</tr>
+<tr>
+<td><code>release</code></td>
+<td><code>stable</code>, <code>testing</code></td>
+<td><code>stable</code>: release images are built and rfoundry fetches them</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="build_options">[[build_options]]</h3>
+<p>A hardware build option: one radio model sold in versions that need different images (one band per radio, for
+example). <code>board.mk</code> holds the build's side: <code>BUILD_OPTIONS := BAND</code> and <code>BAND_VALUES := uhf vhf</code>, the default first.
+<code>board.toml</code> holds the words. <code>check</code> requires the same names and values in the same order.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>The make variable (<code>BAND</code>)</td>
+</tr>
+<tr>
+<td><code>title</code>, <code>help</code></td>
+<td>The question the site and rfoundry ask, and how to tell the answer</td>
+</tr>
+<tr>
+<td><code>values</code></td>
+<td>A list of <code>{ id, title, text, board_name }</code>: the make value, its label and description, the name the radio reports on the debug link</td>
+</tr>
+</tbody>
+</table></div>
+<p>The Makefile defines <code>RFOUNDRY_&lt;NAME&gt;_&lt;VALUE&gt;</code> as 1 or 0 for every value. A value other than the default adds <code>-&lt;value&gt;</code>
+to the build directory and the image: <code>make BOARD=&lt;id&gt; BAND=vhf</code> writes <code>build/&lt;id&gt;-vhf/rfoundry_&lt;id&gt;-vhf.bin</code>.
+<a href="building.html#hardware-build-options">Building</a> has the user side.</p>
+<h3 id="ci">[ci]</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>extra</code></td>
+<td>A list of <code>{ name, make }</code>: more configurations ci.sh builds for this board, with their make arguments</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="flash">[flash]</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>family</code></td>
+<td>The flashing route, by protocol: <code>usb-dfu</code>, <code>serial-loader</code> or <code>serial-iap</code></td>
+</tr>
+<tr>
+<td><code>keep_codec</code></td>
+<td>True when an update leaves the codec in place</td>
+</tr>
+<tr>
+<td><code>sectors</code></td>
+<td>Optional: a geometry of the platform other than its <code>default_sectors</code></td>
+</tr>
+<tr>
+<td><code>stock_download</code></td>
+<td>Optional: where the stock firmware can be downloaded</td>
+</tr>
+<tr>
+<td><code>stock_versions</code></td>
+<td>The stock versions the tools know</td>
+</tr>
+<tr>
+<td><code>backup</code></td>
+<td><code>{ stock, rfoundry, spi_size }</code>: what a backup reads from stock firmware and from RadioFoundry (<code>none</code> or <code>full</code>), and the <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="glossary.html#t-spi">SPI</abbr> flash size</td>
+</tr>
+<tr>
+<td><code>notice</code></td>
+<td>Optional: a warning the web flasher shows on every step once the radio is picked, for a choice the radio can't check itself (two images that differ in hardware the radio can't report, for example)</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>[flash.bootloader]</code>:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>steps</code></td>
+<td>How to enter the bootloader, one step per item, for the web flasher and the manual</td>
+</tr>
+<tr>
+<td><code>keys</code></td>
+<td>Optional: the short form the tools print</td>
+</tr>
+<tr>
+<td><code>hold</code></td>
+<td>Optional: the keys held to enter it, by key name (the board's <code>KEY_*</code> in lower case, <code>[&quot;ptt&quot;, &quot;sk1&quot;]</code>). The web flasher marks them on the radio's picture and names them under it; <code>steps</code> stays the instructions. Each must be a key of the board (<code>tools/boards.py check</code>) and tagged in its drawing or listed in <code>data-undrawn</code> (<a href="website.html#radio-images">Radio images</a>)</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>Optional: the string the loader answers, also the magic of its files (<code>serial-loader</code>)</td>
+</tr>
+<tr>
+<td><code>sign</code></td>
+<td>Optional: what the radio shows in the bootloader</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>[flash.dfu]</code> (<code>usb-dfu</code>): <code>vid</code>, <code>pid</code>, <code>string1</code>, <code>product</code> (the USB identity) and <code>key_sha256</code>, <code>key_prefix</code> (the
+per-model <abbr class="gl" tabindex="0" title="Exclusive or: a bit operation that flips bits where the other operand has a 1." data-more="glossary.html#t-xor">XOR</abbr> key's hash and first bytes, never the key). Optional <code>layout</code>: the bootloader's alt 0 interface string,
+added only once it was read on a radio in its bootloader. The flashers then accept no other device. Without it they
+refuse a layout that shows only the bootloader's sectors (from 0x08000000, at most 48 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="glossary.html#t-kb">KB</abbr>): that is the radio's own
+firmware switched on normally, which has the bootloader's IDs and strings but whose erase can reach the bootloader.</p>
+<h4 id="original-firmware-version">Original firmware version</h4>
+<p><code>[flash.original_version]</code> (optional): a hardware option (<code>board_t.hwopts</code>, <a href="../spec/debuglink.html#325-hwopt">debuglink.md</a>)
+that RadioFoundry can't detect but that the version of the radio's original firmware settles, such as a board revision
+when the manufacturer ships one firmware line per revision. The installers read that version before they ask for the
+bootloader, and store the choice over the debug link once RadioFoundry runs (rfoundry's <code>origversion.py</code>, the web
+flasher's <code>origversion.js</code>; <a href="web-flasher.html#the-original-firmware-version">web-flasher.md</a>).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>read</code></td>
+<td>How the version is read. <code>dfu-info</code>: the original firmware, running normally, is a <abbr class="gl" tabindex="0" title="Device Firmware Upgrade: the USB protocol of the radio&#x27;s bootloader." data-more="../user/22-glossary.html#t-dfu">DFU</abbr> device with the bootloader's USB IDs (<code>[flash.dfu]</code> required); block 0 command <code>A2 02</code>, then UPLOAD, answers the version (first byte 0x56; the bootloader answers 0x54). The request sequence is in the radio's hardware page</td>
+</tr>
+<tr>
+<td><code>interface</code></td>
+<td>The DFU interface string the original firmware shows while it runs (spaces not counted). The installers send the read only to a device showing it, and refuse to write to one</td>
+</tr>
+<tr>
+<td><code>hwopt</code></td>
+<td>The option's name, as <code>hal_hwopt_t</code> names it</td>
+</tr>
+<tr>
+<td><code>major</code></td>
+<td>The choice for each major version: <code>{ &quot;06&quot; = &quot;&lt;choice&gt;&quot;, ... }</code>, two digits each, every choice one of the option's labels</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>tools/boards.py check</code> refuses a choice or option name that doesn't appear in the board's sources. A version whose
+major isn't listed settles nothing: the radio then uses its own fallback.</p>
+<h4 id="backup-before-the-install">Backup before the install</h4>
+<p><code>[flash.original_backup]</code> (optional, with <code>[flash.original_version]</code>): what the web flasher backs up through the
+original firmware's or the bootloader's DFU device before an install (<code>origbackup.js</code>,
+<a href="web-flasher.html#backup-before-the-install">web-flasher.md</a>). The commands are in the radio's hardware page.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>info</code></td>
+<td>The info block codes (<code>A2 ss</code>), two hex digits each, in the order read</td>
+</tr>
+<tr>
+<td><code>mirror</code></td>
+<td>The most to ask for in the one snapshot of the internal flash from the start of flash, before program mode (at most 0xFFFF)</td>
+</tr>
+<tr>
+<td><code>spi</code></td>
+<td>The SPI bytes the original firmware reads in program mode (at most <code>backup.spi_size</code>)</td>
+</tr>
+<tr>
+<td><code>quick</code></td>
+<td>The SPI bytes of the quick read (the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="cps-and-codeplug.html">codeplug</abbr> areas)</td>
+</tr>
+<tr>
+<td><code>loader_interface</code></td>
+<td>The bootloader's DFU interface string (spaces not counted), which tells it from the original firmware</td>
+</tr>
+<tr>
+<td><code>loader_spi</code></td>
+<td>The SPI bytes the bootloader reads</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>[flash.stub]</code> (a board on a platform with <code>board_stub</code>): <code>id</code> (the board id the <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="glossary.html#t-stub">stub</abbr> echoes, unique per stub; 0xFE is reserved for the stub tools' test profiles) and
+<code>tested</code> (flashed through the stub on a radio), then the keys the platform's <code>board_stub</code> names:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Platform stub</th>
+<th>Required</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>stubtool</code> (HR_C7000)</td>
+<td><code>hold_power</code> (the stub drives the power latch), <code>progmem</code> (program flash size), <code>calibration</code></td>
+<td><code>stock_console</code> (the original firmware answers a console the web flasher reads), <code>read_rate</code>, <code>write_test</code> (the data flash offset of the 16 KB <code>--write-test</code> erases and programs; the check refuses one that overlaps the flash map, a protected region or the chip's end, or a <abbr class="gl" tabindex="0" title="The flash chip type that holds large data, such as the codeplug and contacts, in some radios." data-more="glossary.html#t-nand">NAND</abbr>. Without it the tool writes no data flash), <code>rom_entry</code> (the boot <abbr class="gl" tabindex="0" title="Read-only memory: code fixed in the chip." data-more="glossary.html#t-rom">ROM</abbr> starts the application itself: the flag sector at program flash 0 names this entry)</td>
+</tr>
+<tr>
+<td><code>f4stub</code> (STM32F4)</td>
+<td><code>spi = { bus, mode, hz }</code> (the SPI flash's bus 1-3, SPI mode 0-3, fastest clock)</td>
+<td><code>idle_cs</code> (up to two <code>pins.h</code> names of other chip selects on that bus, held high)</td>
+</tr>
+</tbody>
+</table></div>
+<p>A key of another platform's stub fails the check.</p>
+<p>The <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="glossary.html#t-hr-c7000">HR_C7000</abbr> stub's <abbr class="gl" tabindex="0" title="Light-emitting diode: the radio&#x27;s status light." data-more="../user/22-glossary.html#t-led">LED</abbr> pins come from <code>pins.h</code>, not <code>[flash.stub]</code>. The stub drives its LED pins from its first
+instruction, so the tools write the board's pins into the stub image's parameter block before they send it, and send
+them again in CONFIG. The stub's built-in pins (PTB1 red, PTB0 green) can be other signals on another board. A board
+without <code>PIN_LED_RED</code> or <code>PIN_LED_GREEN</code> gets 255 (no LED) for it.</p>
+<h4 id="protected-regions">Protected regions</h4>
+<p><code>[[flash.protect]]</code> lists flash that no tool erases or writes: factory data that can't be made again, the calibration
+first. One table per region:</p>
+<pre><code class="language-toml">[[flash.protect]]
+mem = &quot;data&quot;
+start = 0x1000
+end = 0xC9000
+what = &quot;factory calibration: the page tagged 2 in the stock codeplug area (hardware-&lt;radio&gt;.md 6.4)&quot;
+</code></pre>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mem</code></td>
+<td>The memory: <code>progmem</code> (the <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="glossary.html#t-mcu">MCU</abbr>'s program flash), <code>data</code> (the SPI <abbr class="gl" tabindex="0" title="The flash chip type that holds code and can run it in place." data-more="glossary.html#t-nor">NOR</abbr> data flash), <code>nand</code> (the SPI NAND's main area, without spare bytes) or <code>secreg</code> (the SPI NOR flash's security registers)</td>
+</tr>
+<tr>
+<td><code>start</code>, <code>end</code></td>
+<td>The range, <code>end</code> exclusive, as offsets in that memory: <code>progmem</code> from the platform's <code>flash_base</code>, <code>data</code> and <code>nand</code> from 0, <code>secreg</code> 256 bytes per register from register 1 at 0</td>
+</tr>
+<tr>
+<td><code>what</code></td>
+<td>What lies there, with the spec section that establishes it in parentheses</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>tools/boards.py check</code> refuses an entry:</p>
+<ul>
+<li>whose memory the board doesn't have (<code>data</code> and <code>secreg</code> need <code>backup.spi_size</code> and no NAND; <code>nand</code> needs a
+<code>spi_nand_t</code> in the board's sources)</li>
+<li>that runs past the memory's end</li>
+<li>that isn't on the memory's erase boundaries: the platform's sectors (or 4 KB) for <code>progmem</code>, 4 KB for <code>data</code>, a
+block for <code>nand</code>, a register for <code>secreg</code></li>
+<li>that overlaps another entry, the application or the codec slot</li>
+<li>whose <code>what</code> cites no section</li>
+</ul>
+<p>A region whose place moves (remapped by a bad-block table, for example) is protected over every place it can be. The
+registry carries the list as <code>protect</code> (<code>registry.json</code>, <code>radios.json</code> <code>flash</code>, <code>flash-boards.json</code> <code>boards</code>, <code>c7000</code>
+and <code>f4stub</code>).</p>
+<p>What the tools do with it. <code>tools/rfoundry/rfoundry/protect.py</code> and <code>site/static/js/flasher/protect.js</code> hold the one
+check each language uses:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Write</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>An install, a test write, a single sector</td>
+<td>Refused before anything is erased</td>
+</tr>
+<tr>
+<td>A restore of a whole memory (program flash backup through the stub, internal flash through DFU, SPI flash through the STM32 stub, codeplug through the CPS)</td>
+<td>Carved: the protected sectors keep what the radio has, the rest is written</td>
+</tr>
+<tr>
+<td>A security register restore</td>
+<td>Refused when a protected register differs (a register is written whole)</td>
+</tr>
+<tr>
+<td>A loader that erases a fixed area (the vendor IAP and serial loaders, the DFU updater in <code>tools/stm32_dfu.py</code>)</td>
+<td>Refused when the area holds a protected region: those erases can't be carved</td>
+</tr>
+<tr>
+<td>A whole-chip erase</td>
+<td>Refused on a memory with any protected region. No tool sends one</td>
+</tr>
+</tbody>
+</table></div>
+<p>The stub tools check every erase and program command they send, not only the high-level writes. RadioFoundry's own
+firmware keeps its own rules for what it writes (the <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> shim refuses its areas,
+<a href="../spec/cps-protocol.html">cps-protocol.md</a> 2.3).</p>
+<h3 id="codec">[codec]</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tool</code></td>
+<td>The tool that extracts or merges it: <code>codec_extract</code> or <code>hrc7000_codec</code></td>
+</tr>
+<tr>
+<td><code>stock</code></td>
+<td>A list of SHA-256 digests: the stock files rfoundry merges the codec from (stock-file placement)</td>
+</tr>
+<tr>
+<td><code>profile</code></td>
+<td>The codec id the firmware reports, for a codec in a linker slot</td>
+</tr>
+<tr>
+<td><code>sources</code></td>
+<td>Where a slot codec comes from, for messages</td>
+</tr>
+<tr>
+<td><code>installed</code></td>
+<td>Stock versions that leave exactly this codec in place</td>
+</tr>
+</tbody>
+</table></div>
+<p>A board has either <code>stock</code>, or <code>profile</code> with a linker codec slot. With <code>stock</code>, the profile and sources come from the
+stock files' profiles. The files must hold the same codec; each may put its tables at other addresses. The board's
+codec windows are the union of every file's layout. The image must stay out of all of them, and keeping the codec keeps
+all of them. A merge writes and checks the layout of the file it merges
+(<a href="../spec/codec-placement.html">codec-placement.md</a>).</p>
+<h3 id="cps">[cps]</h3>
+<p><code>radio_types</code>: the radio types the open-firmware CPS radio info reports for this radio
+(<a href="../spec/open-firmware-cps.html">open-firmware-cps.md</a> 4). RadioFoundry's CPS shim reports them, and the web flasher
+checks them before it backs up a radio that runs another open firmware. The registry carries them as
+<code>cps_radio_types</code>, with <code>rom_base</code> (the platform's <code>flash_base</code>, where the CPS's area 5 offsets start).</p>
+<h3 id="frame">[frame]</h3>
+<p>How the site draws the radio: <code>shape</code>, <code>body</code> and <code>accent</code> colors, <code>lens</code> size.</p>
+<h2 id="platformtoml">platform.toml</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code>, <code>isa</code>, <code>cpu</code></td>
+<td>The platform directory, the ISA, the <abbr class="gl" tabindex="0" title="System on chip: the processor and its on-chip peripherals." data-more="glossary.html#t-soc">SoC</abbr></td>
+</tr>
+<tr>
+<td><code>stubs</code></td>
+<td>Platform <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="glossary.html#t-stub">stubs</abbr> ci.sh builds with the platform's compiler</td>
+</tr>
+<tr>
+<td><code>board_stub</code></td>
+<td>The stub its boards' <code>[flash.stub]</code> is for: <code>tool</code>, the required <code>keys</code>, the <code>optional</code> ones and, for <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="glossary.html#t-spi">SPI</abbr> wiring, <code>spi_af</code> (the alternate function per bus). Absent: no <code>[flash.stub]</code></td>
+</tr>
+<tr>
+<td><code>codec_symbols</code></td>
+<td>The linker symbols every board's scripts must define</td>
+</tr>
+<tr>
+<td><code>flash_base</code></td>
+<td>Where program flash starts; the factory loader holds it up to the image</td>
+</tr>
+<tr>
+<td><code>default_sectors</code>, <code>[sectors]</code></td>
+<td>The flash geometries, <code>[index, address, size]</code> in the bootloader's erase order</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>[toolchain]</code>:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code>, <code>name</code></td>
+<td>The toolchain (<code>arm</code>, <code>csky</code>) and its display name. CI has one firmware job per toolchain (<code>firmware (Arm)</code>), and <code>.github/actions/toolchain</code> sets it up by id. Platforms with the same id build in the same job and must have the same <code>[toolchain]</code> table</td>
+</tr>
+<tr>
+<td><code>cc</code></td>
+<td>The compiler <code>make print-cc</code> names</td>
+</tr>
+<tr>
+<td><code>build</code></td>
+<td>The script that installs or builds it</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>The release CI and releases build with</td>
+</tr>
+<tr>
+<td><code>sha256</code></td>
+<td>Optional: the SHA-256 of the archive the script downloads</td>
+</tr>
+<tr>
+<td><code>image</code></td>
+<td>Optional: the container image that holds the toolchain. C-SKY builds run in it (<code>RFOUNDRY_CSKY_IMAGE</code> overrides it); <code>tools/install-arm-toolchain.sh</code> copies the Arm toolchain out of it</td>
+</tr>
+</tbody>
+</table></div>
+<p>The toolchain scripts read these values with <code>tools/platform_toolchain.sh</code>, which needs no Python. <code>check</code> fails when
+a script, Dockerfile or workflow under <code>tools/</code> or <code>.github/</code> sets <code>&lt;ID&gt;_GCC_VERSION</code> or <code>&lt;ID&gt;_GCC_SHA256</code> (for
+example <code>ARM_GCC_VERSION</code>) to a literal other than the pin: take it from <code>platform.toml</code>.</p>
+<h2 id="commands">Commands</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tools/boards.py list [--platform P[,Q]] [--toolchain T[,U]] [--release R] [--comma]</code></td>
+<td>Board ids; an unknown platform or toolchain fails. <code>tools/ci.sh --toolchain</code> and the CI workflows select boards with it</td>
+</tr>
+<tr>
+<td><code>tools/boards.py get &lt;id&gt; [key.path]</code></td>
+<td>One value; a list prints one item per line</td>
+</tr>
+<tr>
+<td><code>tools/boards.py platform &lt;p&gt; [key.path]</code></td>
+<td>One platform value</td>
+</tr>
+<tr>
+<td><code>tools/boards.py builds &lt;id&gt; [--extra]</code></td>
+<td>The board's builds besides the default, or its <code>[ci]</code> extras</td>
+</tr>
+<tr>
+<td><code>tools/boards.py json [--for all|rfoundry|build]</code></td>
+<td>A merged view, below</td>
+</tr>
+<tr>
+<td><code>tools/boards.py check</code></td>
+<td>Every inconsistency, and every radio named outside its own places (<a href="#radio-names">Radio names</a>); ci.sh's registry step runs it</td>
+</tr>
+<tr>
+<td><code>tools/boards.py docs [--check] [--floor REF]</code></td>
+<td>Writes the generated blocks of the README, the user manual's radio pages, the feature matrix (its Built by default table, and its Checked on each radio table from the bring-up records in <code>docs/testing/results/</code>), the bug report form's and the pull request template's radio lists, and the survey's Port cells (<code>tools/registry_docs.py</code>). <code>--check</code> lists the stale ones instead; <code>--floor REF</code> fails when a radio's marks or status in the README read lower than at commit <code>REF</code>. ci.sh runs <code>--check --floor origin/main</code></td>
+</tr>
+<tr>
+<td><code>tools/boards.py self-test</code></td>
+<td>The loader's own tests</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>make registry</code> regenerates <code>tools/rfoundry/rfoundry/registry.json</code> when a source changed. <code>make</code> does too, before
+every build.</p>
+<h2 id="the-views">The views</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>View</th>
+<th>Format</th>
+<th>For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--for all</code></td>
+<td>none (the TOML with a <code>derived</code> table)</td>
+<td>Scripts in this tree</td>
+</tr>
+<tr>
+<td><code>--for rfoundry</code></td>
+<td><code>rfoundry-board-registry/2</code></td>
+<td>rfoundry, the release tool and the site. Committed as <code>registry.json</code>, so they run on any Python 3 and inside the rfoundry executable</td>
+</tr>
+<tr>
+<td><code>--for build</code></td>
+<td><code>rfoundry-build-matrix/1</code></td>
+<td>Tools that build from a checkout</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="the-build-view">The build view</h3>
+<p><code>tools/boards.py json --for build</code> gives a tool that builds images from a checkout everything it needs, with nothing
+from outside the tree. It is a stable interface: a change that breaks a reader changes <code>format</code>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>format</code></td>
+<td><code>rfoundry-build-matrix/1</code></td>
+</tr>
+<tr>
+<td><code>variants</code></td>
+<td>The release variants: <code>full</code>, then each <code>config/variants/&lt;name&gt;.mk</code></td>
+</tr>
+<tr>
+<td><code>platforms.&lt;p&gt;</code></td>
+<td><code>isa</code>, <code>cpu</code>, <code>toolchain</code> (the id), <code>cc</code>, <code>version</code>, <code>image</code> (null: no container), <code>install</code>, <code>sha256</code> (null when none)</td>
+</tr>
+<tr>
+<td><code>boards.&lt;id&gt;</code></td>
+<td><code>name</code>, <code>platform</code>, <code>release</code>, <code>released</code> (true for <code>stable</code>), <code>first_stage</code>, <code>build_options</code>, <code>builds</code></td>
+</tr>
+<tr>
+<td><code>boards.&lt;id&gt;.build_options</code></td>
+<td>A list of <code>{ name, default, values }</code></td>
+</tr>
+<tr>
+<td><code>boards.&lt;id&gt;.builds</code></td>
+<td>One entry per combination of option values, the all-default one first</td>
+</tr>
+</tbody>
+</table></div>
+<p>Each build:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Example (a board <code>&lt;id&gt;</code> with <code>BAND=vhf</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>options</code></td>
+<td><code>{&quot;BAND&quot;: &quot;vhf&quot;}</code></td>
+</tr>
+<tr>
+<td><code>make</code></td>
+<td><code>[&quot;BOARD=&lt;id&gt;&quot;, &quot;BAND=vhf&quot;]</code>: the make arguments; add <code>VARIANT=&lt;name&gt;</code> for a variant</td>
+</tr>
+<tr>
+<td><code>release</code></td>
+<td><code>[&quot;--board&quot;, &quot;&lt;id&gt;&quot;, &quot;--build-option&quot;, &quot;BAND=vhf&quot;]</code>: the <code>tools/release.py</code> arguments; add <code>--variant &lt;name&gt;</code></td>
+</tr>
+<tr>
+<td><code>image_id</code></td>
+<td><code>&lt;id&gt;-vhf</code></td>
+</tr>
+<tr>
+<td><code>build_dir</code></td>
+<td><code>build/&lt;id&gt;{variant}-vhf</code></td>
+</tr>
+<tr>
+<td><code>image</code></td>
+<td><code>build/&lt;id&gt;{variant}-vhf/rfoundry_&lt;id&gt;-vhf.bin</code>: what make writes and the release carries</td>
+</tr>
+<tr>
+<td><code>release_image</code>, <code>release_manifest</code></td>
+<td><code>rfoundry-&lt;id&gt;{variant}-vhf-{version}.bin</code> and <code>.json</code>: what <code>tools/release.py</code> writes</td>
+</tr>
+</tbody>
+</table></div>
+<p>In the names, <code>{variant}</code> is empty for the full build and <code>-&lt;name&gt;</code> for a variant; <code>{version}</code> is the release tag. One
+rule makes all of these names: <code>tools/rfoundry/rfoundry/names.py</code>. The Makefile follows it too, and <code>check</code> compares
+make's <code>BUILD</code> and <code>TARGET</code> with the view for every build.</p>
+<h2 id="radio-names">Radio names</h2>
+<p>AGENTS.md rule 4 says only a radio's own files carry its name. <code>tools/check_generic.py</code> (run by
+<code>tools/boards.py check</code>) enforces it. The names come from the registry: each board's id, <code>model</code> and <code>also</code>, matched
+without regard to case, hyphens or a letter suffix (<code>XR-100UV</code>, <code>XR100</code>, <code>xr100</code>). A maker's word in front is dropped.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Allowed place</th>
+<th>What it covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>boards/&lt;id&gt;/</code></td>
+<td>The radio's own code, tests and data</td>
+</tr>
+<tr>
+<td>The radio's pages</td>
+<td>A <code>docs/</code> path with the id in it (<code>hardware-&lt;id&gt;.md</code>, <code>&lt;id&gt;-bringup.md</code>, <code>results/&lt;id&gt;/</code>), a <code>[docs]</code> page no other board shares, and any directory named <code>&lt;id&gt;</code> (<code>codec_maps/&lt;id&gt;/</code>)</td>
+</tr>
+<tr>
+<td>List pages</td>
+<td><code>docs/spec/radios.md</code>, <code>docs/user/23-radios.md</code>, <code>docs/feature-matrix.md</code></td>
+</tr>
+<tr>
+<td>Generated blocks</td>
+<td>Between the markers <code>tools/boards.py docs</code> writes, in every marker style, and <code>registry.json</code></td>
+</tr>
+<tr>
+<td>File references</td>
+<td>A path or a file name in the text points to the radio's own page</td>
+</tr>
+<tr>
+<td><code>tools/generic_allow.txt</code></td>
+<td>A glob and its reason. An entry no file needs is an error</td>
+</tr>
+</tbody>
+</table></div>
+<p>Everything else fails, tests included, and so does a file whose own path names a radio. Fix it by naming the
+function, the chip or the platform, or by reading the value from the board. The allowlist holds the debt from before
+the check; don't add new code to it.</p>
+<h2 id="changing-the-registry">Changing the registry</h2>
+<ul>
+<li>A new key goes in the schema, in this page and in the reader that needs it. If the build already knows the value,
+derive it instead.</li>
+<li>Run <code>tools/boards.py check</code> and <code>make registry</code>, and commit the regenerated <code>registry.json</code> with the change.</li>
+<li>A new board: <a href="adding-a-radio.html">Adding a radio</a>.</li>
+</ul>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/dev/board-registry.md">Ver el código fuente de esta página</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="En esta página">
+		<p class="eyebrow">En esta página</p>
+		<ul><li class="l2"><a href="#where-each-fact-lives">Where each fact lives</a></li><li class="l2"><a href="#boardtoml">board.toml</a></li><li class="l3"><a href="#identity">Identity</a></li><li class="l3"><a href="#docs">[docs]</a></li><li class="l3"><a href="#hardware">[hardware]</a></li><li class="l3"><a href="#status">[status]</a></li><li class="l3"><a href="#build_options">[[build_options]]</a></li><li class="l3"><a href="#ci">[ci]</a></li><li class="l3"><a href="#flash">[flash]</a></li><li class="l3"><a href="#codec">[codec]</a></li><li class="l3"><a href="#cps">[cps]</a></li><li class="l3"><a href="#frame">[frame]</a></li><li class="l2"><a href="#platformtoml">platform.toml</a></li><li class="l2"><a href="#commands">Commands</a></li><li class="l2"><a href="#the-views">The views</a></li><li class="l3"><a href="#the-build-view">The build view</a></li><li class="l2"><a href="#radio-names">Radio names</a></li><li class="l2"><a href="#changing-the-registry">Changing the registry</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

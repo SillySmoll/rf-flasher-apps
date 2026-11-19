@@ -1,0 +1,229 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adding a Mode · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Adding a Mode · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/dev/adding-a-mode.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/dev/adding-a-mode.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/dev/adding-a-mode.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/dev/adding-a-mode.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/dev/adding-a-mode.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/dev/adding-a-mode.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/dev/adding-a-mode.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/dev/adding-a-mode.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/dev/adding-a-mode.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/dev/adding-a-mode.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="开发者指南">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 开发者指南</p>
+		<ul><li><a href="index.html">Developer Documentation</a></li><li><a href="adding-a-mode.html" aria-current="page">Adding a Mode</a></li><li><a href="adding-a-radio.html">Adding a Radio</a></li><li><a href="architecture.html">Architecture</a></li><li><a href="board-registry.html">The Board Registry</a></li><li><a href="building.html">Building</a></li><li><a href="ci-runners.html">CI Runners and Images</a></li><li><a href="ci.html">Continuous Integration</a></li><li><a href="codec.html">The Codec</a></li><li><a href="codeplug-editor.html">The Codeplug Editor</a></li><li><a href="contributing.html">Contributing</a></li><li><a href="cps-and-codeplug.html">CPS, Codeplug and Settings</a></li><li><a href="debug-link.html">Debug Link</a></li><li><a href="glossary.html">Developer glossary</a></li><li><a href="manual-pdf.html">The User Manual PDF</a></li><li><a href="release.html">Releases</a></li><li><a href="stack-check.html">Stack Check</a></li><li><a href="testing.html">Testing</a></li><li><a href="translating.html">Translating</a></li><li><a href="web-flasher.html">The Web Flasher</a></li><li><a href="website.html">The Web Site</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">本页尚未翻译，目前显示英文。</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<!-- Copyright (c) 2026 The RadioFoundry Authors -->
+<h1 id="adding-a-mode">Adding a Mode</h1>
+<p>How a digital mode beyond FM and <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> gets into the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="cps-and-codeplug.html">codeplug</abbr>, the firmware, the Codeplug Editor and zone sharing. The
+format is <a href="../spec/channel-modes.html">channel-modes.md</a>; this page is the order of work. A mode is a <strong>kind</strong> (what a
+channel is) and, when its channels share a network or an identity, a <strong>system type</strong>. The generic layer never reads a
+mode's bytes: the mode's own module does, in the firmware and in the editor.</p>
+<h2 id="1-plan-the-records">1. Plan the records</h2>
+<p>Write the mode's spec first, <code>docs/spec/&lt;mode&gt;-codeplug.md</code>, linked from the spec index. Answer each row from
+the table at the top of <a href="../spec/channel-modes.html">channel-modes.md</a>, &quot;What a mode needs&quot;:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Home</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What a channel holds beyond its base record (access code, options, a per-channel target)</td>
+<td>The tag's parameter block (2.1): the layout, its default when zeroed, grown only by appending</td>
+</tr>
+<tr>
+<td>Which base record fields the kind keeps using (contact, RX group list, color code...)</td>
+<td>The spec says; the editor shows only those (<code>recordFields</code>)</td>
+</tr>
+<tr>
+<td>Call targets</td>
+<td>The contact list when they fit a 24-bit ID with a call type; else targets (5.2), with the address format</td>
+</tr>
+<tr>
+<td>Radio-wide identity or options</td>
+<td>The kind's radio-wide record, key 0x0A00 + kind (5.5)</td>
+</tr>
+<tr>
+<td>A network, a system ID, sites, control channels, a channel plan</td>
+<td>A system type: its block (identity first), its entry classes and their bodies (7)</td>
+</tr>
+<tr>
+<td>An authentication secret, traffic keys</td>
+<td>The system secret (7.4), traffic keys (5.4) with algorithm ids</td>
+</tr>
+<tr>
+<td>Whether a new channel or system may transmit by default</td>
+<td>The tag's flag bit 0, the system's flag bit 1 (listen only)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Every value must read safely when zeroed or short, and unverified standard values stay out of the spec.</p>
+<h2 id="2-claim-the-ids">2. Claim the ids</h2>
+<p>Append one row to each of the three registries in the same change: the tables in
+<a href="../spec/channel-modes.html">channel-modes.md</a> 4, <code>CODEPLUG_KINDS</code> / <code>CODEPLUG_SYSTEM_TYPES</code> in
+<code>core/codeplug/codeplug_modes.h</code>, and <code>KINDS</code> / <code>SYSTEM_TYPES</code> in <code>site/static/js/codeplug/modes.js</code>. A kind and its
+system type share the id. <code>tools/check_modes.py</code> (in <code>tools/ci.sh</code>) fails when the three differ. Ids are never reused.</p>
+<h2 id="3-firmware">3. Firmware</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A switch</td>
+<td><code>CONFIG_&lt;MODE&gt;</code> in <code>config/features.mk</code> and <code>core/config.h</code>, off until the mode runs (<a href="../build-config.html">build-config.md</a>)</td>
+</tr>
+<tr>
+<td>The codec</td>
+<td><code>core/&lt;mode&gt;/&lt;mode&gt;_codeplug.c</code>: decodes the parameter block (<code>codeplug_tag_params</code>), the type's block and entries (<code>codeplug_records.h</code>) into the mode's own structs. Add the switch to <code>CODEPLUG_MODE_RECORDS</code> when it reads those families</td>
+</tr>
+<tr>
+<td>On air</td>
+<td>A mode whose frames the core builds describes its physical layer as an <code>air_profile_t</code> (symbol rate, levels, deviation, sync patterns; <a href="../spec/air-interface.html">air-interface.md</a> 2) and runs its engine on an air session (7). Every board's provider then reports how well it fits (4), with no board change; the mode's radio core checks that fit before it offers the mode. Its <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="glossary.html#t-ram">RAM</abbr> comes from memory an idle part lends (as P25 does, <a href="../spec/p25.html">p25.md</a> 7) where it can</td>
+</tr>
+<tr>
+<td>Built</td>
+<td>The registry row's <code>built</code> column becomes the switch once an engine runs the kind. Until then a channel of the kind is parked (6) on every build</td>
+</tr>
+<tr>
+<td>Host test</td>
+<td>The codec against the shared vectors (<code>tests/vectors/channel-modes.txt</code>), with the switch on and off</td>
+</tr>
+</tbody>
+</table></div>
+<p>Nothing outside the mode's module tests a kind id: the radio core asks the registry (<code>codeplug_kind_built</code>) and the
+mode module.</p>
+<h2 id="4-codeplug-editor">4. Codeplug Editor</h2>
+<p>Add <code>site/static/js/codeplug/mode_&lt;mode&gt;.js</code> and name it in the registry row, with the feature the radio's probe
+reports for the mode. A kind module gives:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code>, <code>systemType</code></td>
+<td>The kind, and the system type its channels need (null: none)</td>
+</tr>
+<tr>
+<td><code>contacts</code>, <code>recordFields</code></td>
+<td>Whether its targets are contacts; the base record fields it uses</td>
+</tr>
+<tr>
+<td><code>ownFreqs</code></td>
+<td>Whether the channel keeps its own frequencies (false: the system gives them)</td>
+</tr>
+<tr>
+<td><code>defaultTx</code>, <code>fallback</code>, <code>flags</code></td>
+<td><abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">Transmit</abbr> on a new channel; whether it has a fallback channel; its flag bits 4-7 by name</td>
+</tr>
+<tr>
+<td><code>newParams</code>, <code>decode</code>, <code>encode</code></td>
+<td>The parameter block. <code>encode(params, prev)</code> keeps the bytes past what it knows</td>
+</tr>
+<tr>
+<td><code>fields()</code></td>
+<td>The form's fields, declared (<code>editor/modefields.js</code>: int, hex, freq, bool, select, list, hexbytes, text)</td>
+</tr>
+<tr>
+<td><code>validate</code>, <code>settings</code></td>
+<td>Problems of a channel; the radio-wide record's fields, when it has one</td>
+</tr>
+</tbody>
+</table></div>
+<p>A system type module gives <code>id</code>, <code>idLen</code>, <code>defaultTx</code>, <code>newFields</code>, <code>decode</code>, <code>encode</code>, <code>identity</code> (the text the
+Systems tab shows), <code>fields()</code>, <code>classes</code> (each entry class: its fields, <code>decode</code> and <code>encode</code> of the body, whether
+its entries are control channels), <code>secret</code> (null or its fields and check), <code>ownedKeys</code> (records of the type's own
+family deleted with the system) and <code>validate</code>.</p>
+<p>Text a user reads goes in <code>site/i18n/*.json</code> under <code>editor.&lt;mode&gt;.*</code>. Add the module to <code>site/tests/modes.test.mjs</code>:
+the vectors, a round trip byte for byte, and its validation.</p>
+<h2 id="5-sharing">5. Sharing</h2>
+<p>Zone sharing carries a kind's tag and its system's bytes as they are (<a href="../spec/zone-share.html">zone-share.md</a> 4.2),
+within its limits (a parameter block of 64 octets, a type's block of 200, entry bodies of 64), so a mode that keeps
+within them needs nothing there. A mode whose channels refer to targets needs the target part of zone sharing first.</p>
+<h2 id="6-docs">6. Docs</h2>
+<p>Add the switch to <a href="../feature-matrix.html">feature-matrix.md</a>, and the mode to the user manual's
+<a href="../user/04-programming.html#digital-modes-and-systems">Programming the radio</a> when users see something new.</p>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/dev/adding-a-mode.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#1-plan-the-records">1. Plan the records</a></li><li class="l2"><a href="#2-claim-the-ids">2. Claim the ids</a></li><li class="l2"><a href="#3-firmware">3. Firmware</a></li><li class="l2"><a href="#4-codeplug-editor">4. Codeplug Editor</a></li><li class="l2"><a href="#5-sharing">5. Sharing</a></li><li class="l2"><a href="#6-docs">6. Docs</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

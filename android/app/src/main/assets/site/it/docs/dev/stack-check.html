@@ -1,0 +1,276 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="it" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stack Check · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Stack Check · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:url" content="https://radiofoundry.org/it/docs/dev/stack-check.html">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Le radio su cui gira RadioFoundry, ognuna con una schermata diversa.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/dev/stack-check.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/dev/stack-check.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/dev/stack-check.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/dev/stack-check.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/dev/stack-check.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../it/" data-gl-more="Altro">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../it/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principale"><a href="../../../it/radios/index.html">Radio</a><a href="../../../it/features/index.html">Funzioni</a><a href="../../../it/flash/index.html">Installa</a><a href="../../../it/codeplug/index.html">Codeplug</a><a href="../../../it/docs/index.html" aria-current="page">Documenti</a><a href="../../../it/screenshots/index.html">Schermate</a><a href="../../../it/tools/index.html">Strumenti</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Lingua" title="Lingua">IT</summary><nav aria-label="Lingua"><a href="../../../docs/dev/stack-check.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/dev/stack-check.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/dev/stack-check.html" aria-current="true" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/dev/stack-check.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Passa da chiaro a scuro" title="Passa da chiaro a scuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Guida per sviluppatori">
+		<p class="eyebrow"><a href="../../../it/docs/index.html">Documentazione</a> / Guida per sviluppatori</p>
+		<ul><li><a href="index.html">Developer Documentation</a></li><li><a href="adding-a-mode.html">Adding a Mode</a></li><li><a href="adding-a-radio.html">Adding a Radio</a></li><li><a href="architecture.html">Architecture</a></li><li><a href="board-registry.html">The Board Registry</a></li><li><a href="building.html">Building</a></li><li><a href="ci-runners.html">CI Runners and Images</a></li><li><a href="ci.html">Continuous Integration</a></li><li><a href="codec.html">The Codec</a></li><li><a href="codeplug-editor.html">The Codeplug Editor</a></li><li><a href="contributing.html">Contributing</a></li><li><a href="cps-and-codeplug.html">CPS, Codeplug and Settings</a></li><li><a href="debug-link.html">Debug Link</a></li><li><a href="glossary.html">Developer glossary</a></li><li><a href="manual-pdf.html">The User Manual PDF</a></li><li><a href="release.html">Releases</a></li><li><a href="stack-check.html" aria-current="page">Stack Check</a></li><li><a href="testing.html">Testing</a></li><li><a href="translating.html">Translating</a></li><li><a href="web-flasher.html">The Web Flasher</a></li><li><a href="website.html">The Web Site</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Questa pagina non è ancora tradotta; è mostrata in inglese.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="stack-check">Stack Check</h1>
+<p><code>make BOARD=&lt;b&gt; stack-check</code> computes the worst-case stack depth of every FreeRTOS task in a build and fails when a
+task's deepest call chain doesn't fit its stack. <code>tools/ci.sh</code> runs it on each board's default and maximal
+configuration, <code>--quick</code> too, so every pull request's firmware jobs check both. It exists because an overflow is
+invisible elsewhere: the host tests run the same code on large pthread stacks, and on the radio FreeRTOS' overflow
+hook spins without a word. A 768-byte buffer in <code>codeplug_contact_find</code> once overflowed the start task at boot; the
+check reported that chain 424 bytes over.</p>
+<p>On the radio, the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="debug-link.html">debug link</abbr>'s <code>tasks</code> view section shows what each task has really used: its least free stack since
+it started (<a href="../spec/debuglink.html">debuglink.md</a> 3.7, <code>CONFIG_TASK_STACKS</code>), and <code>tests/hil/test_task_stacks.py</code>
+checks every task keeps 64 bytes. The check here is the worst case over every path; the view is what the code that ran
+so far needed. A task low in the view but fine here points at a call the check doesn't see (a table line).</p>
+<h2 id="how-it-works">How it works</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Input</th>
+<th>From</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Frames and direct calls</td>
+<td>GCC's <code>-fcallgraph-info=su</code>, always on (<code>STACK_INFO</code> in the Makefile): a <code>.ci</code> file next to each object, or one per <abbr class="gl" tabindex="0" title="Link-time optimization: the compiler optimizes across files. It shrinks the firmware." data-more="glossary.html#t-lto">LTO</abbr> partition next to the <code>.elf</code>. It changes no code: the image is byte for byte the same without it</td>
+</tr>
+<tr>
+<td>Tasks</td>
+<td>Every <code>xTaskCreate(fn, &quot;name&quot;, STACK, ...)</code> in the compiled sources. <code>STACK</code> is evaluated with the build's own preprocessor and flags, so <code>#if</code> choices count. FreeRTOS' timer task is found the same way; its idle task is in the table</td>
+</tr>
+<tr>
+<td>Calls through pointers</td>
+<td>The sources, below, then the table</td>
+</tr>
+<tr>
+<td>Code without a call graph</td>
+<td>The disassembly of the <code>.elf</code> (<code>objdump</code>): the C library, the compiler's runtime, assembly. Every stack adjustment in a function is added up and direct calls are followed</td>
+</tr>
+</tbody>
+</table></div>
+<p>For each task the tool takes the deepest chain from the entry function:</p>
+<pre><code>free = stack - (deepest chain + port overhead + margin)
+</code></pre>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Port overhead</td>
+<td>What the <abbr class="gl" tabindex="0" title="Real-time operating system: the scheduler that runs the firmware&#x27;s tasks." data-more="glossary.html#t-rtos">RTOS</abbr> port keeps on a task's stack besides the chain (<code>STACK_OVERHEAD</code> in <code>platform.mk</code>). <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="glossary.html#t-stm32">STM32F4</abbr>: 208 bytes, the exception frame with the FPU's lazy space and alignment (27 words) plus the context switch's r4-r11, lr and s16-s31 (25 words); interrupts then run on the main stack. <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="glossary.html#t-hr-c7000">HR_C7000</abbr>: 68 bytes, the 17-word frame of an interrupt or a yield; handlers run on the interrupt stack and don't nest</td>
+</tr>
+<tr>
+<td>Margin</td>
+<td><code>STACK_MARGIN</code>, 128 bytes by default</td>
+</tr>
+</tbody>
+</table></div>
+<p>A task over its stack prints <code>OVER</code> and its whole chain with each frame.</p>
+<h3 id="pointer-calls">Pointer calls</h3>
+<p>A call through a function pointer has no target in GCC's graph. The tool reads the call site's source and works out
+what the pointer can hold:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Call</th>
+<th>Targets</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Through a struct field, <code>board.radio-&gt;tx(...)</code>, <code>s-&gt;cb(...)</code></td>
+<td>The struct's type is followed from the variable's declaration (a parameter, a local, a file-scope or <code>extern</code> variable) through the members. Every function stored into that field of that type: designated or positional initializers, assignments, compound literals</td>
+</tr>
+<tr>
+<td>Through a variable or parameter</td>
+<td>What is assigned to the variable; for a parameter, what callers pass in that position. A call through a struct field passes to the functions stored in that field, and two files' static functions of one name keep their own parameters. Stores of one pointer into another are followed</td>
+</tr>
+<tr>
+<td>Inside a macro, <code>LOCK()</code></td>
+<td>The macro is expanded first</td>
+</tr>
+<tr>
+<td>In an argument, <code>f(x, p-&gt;g())</code></td>
+<td>GCC files it at the outer call's position; the tool looks inside the arguments</td>
+</tr>
+</tbody>
+</table></div>
+<p>A pointer the sources store into but that never holds a function of this build is not called: an optional
+<code>board_t</code> operation the radio leaves NULL, a callback whose setter nothing in the build calls. <code>-v</code> lists these.
+A pointer with no store in sight is reported as unresolved. Unresolved calls don't fail the check, but each one could
+hide a deeper chain: add it to the table.</p>
+<h3 id="the-table">The table</h3>
+<p><code>tools/stack_check_edges.txt</code> holds what the sources and the graph can't show, for every board in one file:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>task FUNCTION STACK</code></td>
+<td>A task the scan can't find (FreeRTOS' idle task: its entry is a variable)</td>
+</tr>
+<tr>
+<td><code>ptr NAME TARGET...</code></td>
+<td>Calls through a field, variable or parameter called NAME</td>
+</tr>
+<tr>
+<td><code>call FUNCTION TARGET...</code></td>
+<td>Every pointer call FUNCTION makes</td>
+</tr>
+<tr>
+<td><code>file PATH TARGET...</code></td>
+<td>Pointer calls in PATH the sources don't resolve</td>
+</tr>
+<tr>
+<td><code>lib FUNCTION BYTES</code></td>
+<td>A fixed stack for a function without call graph; also cuts the disassembly walk there</td>
+</tr>
+<tr>
+<td><code>extern NAME BYTES</code></td>
+<td>Code outside the build, a target written <code>@NAME</code> (the codec)</td>
+</tr>
+<tr>
+<td><code>recursion FUNCTION...</code></td>
+<td>Recursion known to be bounded</td>
+</tr>
+</tbody>
+</table></div>
+<p>The <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="codec.html">AMBE+2</abbr> codec runs on the audio task's stack: 4046 bytes measured on an STM32F4 radio (<code>codec-&lt;id&gt;.md</code>), so
+<code>stm32_codec_call</code> counts 4104 with the veneer. The HR_C7000 builds call the same library by address with 4096 bytes
+assumed (not measured on C-SKY).</p>
+<p>A few C library paths need arguments RadioFoundry never passes and are cut with <code>lib</code> lines: newlib's <code>strstr</code> for needles of
+32 characters or more, and the floating point conversions of <code>printf</code>. Check the comment in the table before adding a
+call that breaks the assumption (a long <code>strstr</code> needle, <code>%f</code>).</p>
+<h2 id="reading-the-report">Reading the report</h2>
+<pre><code>stack check &lt;b&gt;: port overhead 68 bytes, margin 128 bytes, 10 tasks (bytes)
+  start    ok   stack  2560  deepest  1892  free   472  (startup_task, core/app/app.c:118)
+      startup_task &gt; radio_core_start &gt; radio_sm_init &gt; aprs_init &gt; reload_cfg &gt; load_identity &gt; codeplug_aprs &gt; flas...
+  ...
+  prvIdleTask ok   stack   512  deepest   140  free   176  (prvIdleTask, table)
+      prvIdleTask &gt; prvCheckTasksWaitingTermination &gt; vPortFree &gt; xTaskResumeAll &gt; xTaskIncrementTick &gt; vApplicationT...
+  recursion (each cycle counted once): materialize, n_macs, n_receive, n_select, n_selected, n_send, n_tick, n_up, room
+  21 functions without a call graph counted as 64 bytes each (-v lists them)
+stack check &lt;b&gt;: every task fits, the least free: prvIdleTask 176 bytes
+</code></pre>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Shows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>make ... stack-check STACK_CHECK_ARGS=-v</code></td>
+<td>Every task's chain with frames and files, the calls resolved by the field name alone (type unknown at the call site), the pointers never set, the library functions taken from the disassembly</td>
+</tr>
+<tr>
+<td><code>STACK_MARGIN=256</code></td>
+<td>A different margin</td>
+</tr>
+<tr>
+<td><code>STACK_CHECK_REPORT_ONLY=1</code></td>
+<td>Reports without failing (a board's <code>config.mk</code> may set it while its graph is incomplete; none does)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="limits">Limits</h2>
+<ul>
+<li>Recursion is counted once and listed. RadioFoundry has no deep recursion; the cycles found are mutual calls through callbacks
+(the network stack's <code>n_*</code>, the audio mixer).</li>
+<li>Interrupt handlers on the main stack (<abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="glossary.html#t-stm32">STM32</abbr>) aren't checked: they nest, and the stack has no size of its own (it may
+grow down to the end of <code>.bss</code>). Its canary and <code>tasks.irq_free</code> watch it on the radio instead. Where they have a stack of their own and run one at a
+time (<abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="glossary.html#t-hr-c7000">HR_C7000</abbr>), the platform's <code>STACK_IRQ</code> names that stack (its size, or the two linker symbols at its ends so the
+size is the one linked) and the function that installs a handler: every function passed to it is a root, and the
+deepest plus the margin must fit (the <code>irq</code> line). A handler installed any other way is missed. The interrupt stack's canary and <code>tasks.irq_free</code> catch what the check misses on the radio.</li>
+<li>The code before the scheduler starts (<code>main</code>) runs on the main stack and isn't checked.</li>
+<li>A pointer call whose target is computed at run time (an address from a table the sources don't spell) needs a table
+line.</li>
+<li>The disassembly walk adds every stack adjustment of a function, so a library function with several exit paths
+counts more than it uses. It doesn't see calls through registers in library code.</li>
+</ul>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/dev/stack-check.md">Vedi il sorgente di questa pagina</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="In questa pagina">
+		<p class="eyebrow">In questa pagina</p>
+		<ul><li class="l2"><a href="#how-it-works">How it works</a></li><li class="l3"><a href="#pointer-calls">Pointer calls</a></li><li class="l3"><a href="#the-table">The table</a></li><li class="l2"><a href="#reading-the-report">Reading the report</a></li><li class="l2"><a href="#limits">Limits</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Unisciti alla comunità RadioFoundry</strong><span class="small muted">Domande, aiuto con la tua radio e novità, su Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Hai trovato un bug? Vuoi che la tua radio sia supportata?</strong><span class="small muted">Apri una segnalazione su GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry ha licenza MIT · <a href="https://github.com/radiofoundry/radiofoundry">Codice sorgente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunità</a> · <a href="../../../it/docs/index.html">Documenti</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Novità</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

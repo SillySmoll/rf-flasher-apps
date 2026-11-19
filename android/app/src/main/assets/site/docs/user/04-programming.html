@@ -1,0 +1,562 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Programming the Radio · RadioFoundry</title>
+<meta name="description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Programming the Radio · RadioFoundry">
+<meta property="og:description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:url" content="https://radiofoundry.org/docs/user/04-programming.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="The radios RadioFoundry runs on, each showing a different screen.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/user/04-programming.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/user/04-programming.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/user/04-programming.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/user/04-programming.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/user/04-programming.html">
+<link rel="icon" href="../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../" data-home="../../" data-gl-more="More">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../index.html">
+			<img src="../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Main"><a href="../../radios/index.html">Radios</a><a href="../../features/index.html">Features</a><a href="../../flash/index.html">Install</a><a href="../../codeplug/index.html">Codeplug</a><a href="../../docs/index.html" aria-current="page">Docs</a><a href="../../screenshots/index.html">Screenshots</a><a href="../../tools/index.html">Tools</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Language" title="Language">EN</summary><nav aria-label="Language"><a href="../../docs/user/04-programming.html" aria-current="true" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../es/docs/user/04-programming.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../it/docs/user/04-programming.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../zh/docs/user/04-programming.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Switch light and dark" title="Switch light and dark">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="User Manual">
+		<p class="eyebrow"><a href="../../docs/index.html">Documentation</a> / User Manual</p>
+		<ul><li><a href="index.html">RadioFoundry User Manual</a></li><li><a href="01-introduction.html">Introduction</a></li><li><a href="02-installing.html">Installing</a></li><li><a href="03-first-boot.html">First Boot</a></li><li><a href="04-programming.html" aria-current="page">Programming the Radio</a></li><li><a href="05-keys-and-navigation.html">Keys and Navigation</a></li><li><a href="06-home-screen.html">The Home Screen</a></li><li><a href="07-channels-zones-vfo.html">Channels, Zones and the VFO</a></li><li><a href="08-fm.html">FM</a></li><li><a href="09-dmr.html">DMR</a></li><li><a href="10-messages-and-signaling.html">Messages, Call Alert and Radio Check</a></li><li><a href="11-emergency.html">Emergency</a></li><li><a href="12-scan.html">Scan and Dual Watch</a></li><li><a href="13-aprs.html">APRS</a></li><li><a href="14-hotspot.html">Hotspot Mode</a></li><li><a href="15-usb-network.html">USB Network Mode</a></li><li><a href="16-battery-and-power.html">Battery and Power</a></li><li><a href="17-settings.html">Settings</a></li><li><a href="18-moving-from-stock-md380.html">Moving from Stock MD-380 Firmware</a></li><li><a href="19-moving-from-stock-dm32.html">Moving from Stock DM-32UV Firmware</a></li><li><a href="20-troubleshooting.html">Troubleshooting</a></li><li><a href="21-faq.html">FAQ</a></li><li><a href="22-glossary.html">Glossary</a></li><li><a href="23-radios.html">Radio Reference</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<h1 id="programming-the-radio">Programming the Radio</h1>
+<p>The <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> holds the channels, zones, contacts, <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">RX</abbr> group lists, the <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr> database and your DMR ID. Edit it with the
+<strong>Codeplug Editor</strong> on the project's web site, <a href="https://radiofoundry.org/codeplug/index.html">radiofoundry.org</a>. It runs
+in a Chromium-based browser (Chrome, Edge, Opera), needs nothing installed, and works with every RadioFoundry radio,
+over USB or over the programming cable. <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr>, the free codeplug editor, is an alternative.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Program</th>
+<th>Runs</th>
+<th>Use it for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The Codeplug Editor</td>
+<td>In the browser</td>
+<td>Everything on this page. The recommended way</td>
+</tr>
+<tr>
+<td><a href="https://github.com/hmatuschek/qdmr">qdmr</a></td>
+<td>Windows, macOS, Linux</td>
+<td>Your existing qdmr codeplugs, and scripting. Needs a radio qdmr's driver can reach (<a href="#programming-with-qdmr">qdmr</a>)</td>
+</tr>
+<tr>
+<td><code>tools/cps_client.py</code> and TFTP</td>
+<td>A terminal</td>
+<td>Raw backups and scripts (<a href="#backups">Backups</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>All of them use the same codeplug format and the radio's own codeplug interface, so a codeplug written by one reads
+back in the others. How each radio is wired for this is in the <a href="23-radios.html#programming">Radio reference</a>.</p>
+<h2 id="the-codeplug-editor">The Codeplug Editor</h2>
+<p>Open <strong><abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">Codeplug</abbr> Editor</strong> in the site's menu. It reads and writes the radio from the browser. Nothing is sent to a
+server: files, the codeplug and your <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">RadioID</abbr> API key stay on your computer.</p>
+<h3 id="reading-and-writing-the-radio">Reading and writing the radio</h3>
+<ol>
+<li>Turn the radio on with RadioFoundry running and connect it: the USB cable on a radio with USB, otherwise the
+programming cable. The radio must be in USB serial mode, not USB network mode.</li>
+<li>Choose <strong>Read from Radio</strong>. The browser lists the radio's USB port and any programming cable; choose the radio's.
+The editor tells from the port which of the two it is.
+When the radio's <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> ID database would take 20 seconds or more to read (megabytes over the programming cable), the
+editor first says how long and asks whether to read it too. Skip it unless you want
+to edit the database or keep it in a saved file: a write then leaves the radio's database as it is. The
+<strong>DMR ID Database</strong> tab can read it later.</li>
+<li>Edit the codeplug.</li>
+<li>Choose <strong>Write to Radio</strong>. The editor compares the codeplug with the radio's and writes only the bytes that
+changed. It shows how many bytes and about how long it takes, then writes and verifies them. The radio loads the
+new codeplug without restarting.</li>
+</ol>
+<p>After a read, the editor says when a newer RadioFoundry release is out for the radio, and what it adds to reading and
+writing (faster transfers, the compact ID database). <strong>Update Firmware</strong> opens the <a href="02-installing.html#updating-radiofoundry">web installer's Update</a>
+in a new tab and lets go of the radio's port, so the installer can connect. The codeplug and settings stay on the radio
+through the update. If the update changes the radio's power levels, the power picked in Settings, for the VFOs and for
+<abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr> goes back to the radio's default: check it before you <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">transmit</abbr>. A channel's power in the codeplug maps to the
+nearest new level.</p>
+<h3 id="programming-several-radios">Programming several radios</h3>
+<p>To put one codeplug into several radios, write it to each in turn. Before each write the editor checks which radio is
+connected. A radio swapped on the programming cable is read again before anything is written, so the write is
+compared with that radio's codeplug, not the last one's.</p>
+<p>The write dialog offers <strong>Keep this radio's name, DMR ID and boot text</strong> when the radio's differ from the file's. With
+it on, each radio keeps its own and gets everything else from the file. The editor remembers the choice for the next
+radio.</p>
+<p>The first write to a radio that came straight from its original firmware may ask to <strong>Prepare Radio</strong>. The original
+firmware's data is still in the area where RadioFoundry keeps its settings, and until that area is erased the radio
+can't store a codeplug or keep its settings when turned off. The <a href="02-installing.html">web installer</a> does this by itself
+after the backup it takes when it installs RadioFoundry. The backup holds a copy of that data. The calibration isn't
+touched.</p>
+<p>A radio whose memory chip is too small for RadioFoundry's settings area can't store a codeplug at all. The editor
+says so instead of reading it (<a href="23-radios.html">radios</a> lists the models where this can happen).</p>
+<p>Write to Radio is blocked while the <strong>Problems</strong> tab lists errors, such as a name that is too long or a frequency that
+isn't valid. Warnings, such as a frequency outside the radio's bands or a DMR channel without a TX contact, don't
+block it.</p>
+<p>A browser can't reach a radio in USB network mode. There, choose <strong>Save &gt; For USB Network</strong> and send the file with
+<abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="../spec/tftp.html">TFTP</abbr> (<a href="15-usb-network.html#programming-over-the-network">USB network</a>).</p>
+<h3 id="editing">Editing</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Tab</th>
+<th>Holds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Radio</td>
+<td>DMR ID, radio name (callsign), boot text, group and <abbr class="gl" tabindex="0" title="A DMR call to one radio." data-more="22-glossary.html#t-private-call">private call</abbr> <abbr class="gl" tabindex="0" title="How long after a call a repeater or radio keeps the call&#x27;s talkgroup ready for a reply." data-more="22-glossary.html#t-hang-time">hang times</abbr>, <abbr class="gl" tabindex="0" title="Automatic Registration Service: a radio tells a presence server it is on the air." data-more="22-glossary.html#t-ars">ARS</abbr> server, IP gateway</td>
+</tr>
+<tr>
+<td>Channels</td>
+<td>Every channel. The pencil button opens the full form: FM, DMR, scan and power, location, single frequency repeater</td>
+</tr>
+<tr>
+<td>Zones</td>
+<td>Zones and their channels</td>
+</tr>
+<tr>
+<td>Contacts</td>
+<td><abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="22-glossary.html#t-talkgroup">Talkgroups</abbr> and private-call contacts</td>
+</tr>
+<tr>
+<td>RX Group Lists</td>
+<td>The talkgroups each channel listens to</td>
+</tr>
+<tr>
+<td>DTMF Contacts, APRS</td>
+<td><abbr class="gl" tabindex="0" title="Dual tone multi frequency: the touch tones a keypad sends, in the audio." data-more="22-glossary.html#t-dtmf">DTMF</abbr> contacts and APRS configurations</td>
+</tr>
+<tr>
+<td>Systems</td>
+<td>Trunked systems and the identity of other digital modes: sites, control channels, channel plans and keys. Shown when the radio reports such a mode, or the codeplug has one (<a href="#digital-modes-and-systems">below</a>)</td>
+</tr>
+<tr>
+<td>DMR ID Database</td>
+<td>Names for DMR IDs that aren't contacts, built from RadioID.net (<a href="#dmr-id-database-and-contacts-from-radioidnet">below</a>)</td>
+</tr>
+<tr>
+<td>Problems</td>
+<td>Errors and warnings, each with a link to the record</td>
+</tr>
+</tbody>
+</table></div>
+<p>In a table, double-click a cell or type on it to edit it in place. Click a column heading to sort, and type in the
+filter to narrow the rows. Check rows and choose <strong>Bulk Edit</strong> to set one field on all of them (not on Zones or <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">RX</abbr> Lists, whose members are
+edited in their own dialog). <strong>Undo</strong> and <strong>Redo</strong>
+cover every change, including an import.</p>
+<p><strong>ARS server</strong> is the DMR ID of the presence server the radio registers with
+(<a href="10-messages-and-signaling.html#registration-ars-and-location-lrrp">ARS</a>). <strong>IP gateway</strong> is the DMR ID of the radio
+that takes the computer's packets to other networks (<a href="15-usb-network.html#other-networks-through-a-gateway-radio">USB network</a>).
+Leave a field empty and the radio keeps its own setting; enter 0 to turn it off. <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr> doesn't have these settings and
+leaves them as they are on the radio. Other programming software that writes the radio's whole memory can't erase them
+either: the radio keeps its own unless the software writes them in RadioFoundry's format.</p>
+<p>The page keeps the working codeplug in the browser, so closing or reloading the page doesn't lose edits. <strong>New</strong> starts
+over.</p>
+<h3 id="digital-modes-and-systems">Digital modes and systems</h3>
+<p>Besides FM and DMR, a channel can be of another digital mode, such as a trunked system. The channel form's <strong>Mode</strong>
+lists the modes the connected radio's firmware reports, and any mode the codeplug already holds. A channel of such a
+mode shows that mode's fields under <strong>Mode settings</strong>; a trunked channel takes its frequencies from its system. A radio
+whose firmware doesn't run a channel's mode shows the mode's short name, receives nothing on it and doesn't transmit.
+The <a href="../feature-matrix.html">feature matrix</a> lists which builds run which mode.</p>
+<p>The <strong>Systems</strong> tab adds a system of a type. One form holds all of it, in sections: the system's identity, its
+control channels (a row per frequency, <strong>+</strong> to add one, <strong>−</strong> to remove it, tried top to bottom), this radio
+(<strong>Transmit</strong>, <strong>Radio ID on this system</strong>), calls, fallback, the key and wireless sharing. Sections few systems need (sites and
+roaming, remote commands, a fixed channel plan, sites, the channel plan) start closed: click the heading to open one.
+Per system:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transmit</td>
+<td>Never (listen only): the radio follows calls but never registers or transmits, whatever a channel says. Yes, after registering. P25 also has Yes, without registering: PTT asks for a voice channel at once</td>
+</tr>
+<tr>
+<td>Needs its key</td>
+<td>The system can't be used without its key. The key's fields are grayed out until this is ticked</td>
+</tr>
+<tr>
+<td>Wireless Zone/Channel Sharing</td>
+<td>What zone sharing sends of it: off, its identity only (the default; the receiver must have the system), or the whole system</td>
+</tr>
+<tr>
+<td>Radio ID on this system</td>
+<td>Your ID there; blank uses the mode's own. Never shared. Grayed out while Transmit is Never</td>
+</tr>
+</tbody>
+</table></div>
+<p>When the codeplug holds keys, <strong>Save</strong> as a codeplug file asks whether to include them;
+they are left out unless you tick <strong>Include the keys in this file</strong>. Anyone with a file that holds them can read them.
+<abbr class="gl" tabindex="0" title="Comma separated values: a table as plain text, as programming software exports it." data-more="22-glossary.html#t-csv">CSV</abbr> and qdmr files hold neither systems nor channel modes: a channel of another mode goes into them as a receive-only
+DMR channel, and comes back from one as that. Keep a codeplug file for them.</p>
+<h3 id="p25-and-nxdn">P25 and NXDN</h3>
+<p>Pick <strong>P25</strong>, <strong>P25 Trunking</strong> or <strong>NXDN</strong> in the channel form's <strong>Mode</strong>. Using them on the radio:
+<a href="07-channels-zones-vfo.html#p25-channels">Channels, zones and the VFO</a>. The talk group is the channel's <strong>TX contact</strong>
+(a group contact) and the <abbr class="gl" tabindex="0" title="The talkgroups a channel listens to. The codeplug calls it the RX group list." data-more="22-glossary.html#t-listen-list">RX group list</abbr> works as on DMR. <strong>Own ID</strong> on a channel overrides the radio's ID for that
+channel.</p>
+<p><strong>P25 channel:</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Squelch</td>
+<td>Normal: every call on the NAC. Selective: the talk group, calls to everyone and calls to this radio</td>
+</tr>
+<tr>
+<td>RX NAC</td>
+<td>Network access code heard, 3 hex digits. Blank: 293. F7E receives every NAC</td>
+</tr>
+<tr>
+<td>TX NAC</td>
+<td>Code sent. Blank: the RX NAC (293 when the RX NAC is F7E)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>NXDN channel:</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rate</td>
+<td>9600 bit/s (12.5 kHz) or 4800 bit/s (6.25 kHz)</td>
+</tr>
+<tr>
+<td>Squelch</td>
+<td>RAN: every call on the RAN. Selective: the group and calls to this radio</td>
+</tr>
+<tr>
+<td>RX RAN</td>
+<td>Radio access number heard, 0-63. 0 receives every RAN</td>
+</tr>
+<tr>
+<td>TX RAN</td>
+<td>RAN sent. Blank: the RX RAN (1 when the RX RAN is 0)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Radio tab</strong>, per mode:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P25 unit ID</td>
+<td>Your P25 ID. Blank: the DMR ID</td>
+</tr>
+<tr>
+<td>NXDN unit ID</td>
+<td>Your NXDN ID, 1-65519. Blank: the DMR ID if it is 65519 or less, else 1</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>P25 Trunking system</strong> (Systems tab, type P25 Trunking). A new system is listen only: set <strong>Transmit</strong> to register and
+transmit.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WACN, System ID</td>
+<td>The system's identity, hex. Blank: any</td>
+</tr>
+<tr>
+<td>Control channel NAC</td>
+<td>Blank: any</td>
+</tr>
+<tr>
+<td>Control channels</td>
+<td>RX in MHz, tried top to bottom. TX, identifier and channel number can stay 0 when the control channel announces them</td>
+</tr>
+<tr>
+<td>Skip encrypted calls</td>
+<td>Don't follow a grant for an encrypted call</td>
+</tr>
+<tr>
+<td>Hold after a call</td>
+<td>Seconds on the voice channel after a call ends. 0: back to the control channel at once</td>
+</tr>
+<tr>
+<td>Use only the channel plan entered here (sites and roaming)</td>
+<td>Ignore the plan the control channel sends</td>
+</tr>
+<tr>
+<td>Change site below (sites and roaming)</td>
+<td>Kept in the codeplug; the radio doesn't change site on signal level yet</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Sites</strong> and <strong>Channel plan</strong> (per identifier: base frequency, spacing, TX offset, bandwidth) are optional. Without a
+plan entry the radio uses the plan the control channel sends.</p>
+<p><strong>P25 trunked channel:</strong> pick the <strong>System</strong> and the talk group (<strong>TX contact</strong>). <strong>Follow every group of the system</strong>
+follows calls to every talk group, not just the channel's. <strong>Fallback channel</strong> is kept in the codeplug; the radio
+doesn't use it yet and keeps hunting for a control channel. A trunked channel has no frequencies of its own.</p>
+<h3 id="files">Files</h3>
+<p><strong>Open File</strong> takes:</p>
+<ul>
+<li>a codeplug file (<code>.bin</code>) saved by the editor, <code>tools/cps_client.py read</code> or a TFTP read;</li>
+<li>a backup from the web installer (<code>.zip</code>);</li>
+<li>a qdmr codeplug (<code>.yaml</code>);</li>
+<li>a channel list saved by CHIRP (<code>.csv</code>), or a CHIRP image (<code>.img</code>) of a radio the editor can read;</li>
+<li>CSV files, one table each, or a <code>.zip</code> of them;</li>
+<li>the original firmware's codeplug, where the editor reads that radio's format: in an installer backup, a dump of the
+radio's data flash, or the manufacturer's <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="04-programming.html">CPS</abbr> file. The <a href="23-radios.html#codeplug-files-from-the-original-firmware">Radio reference</a>
+lists them.</li>
+</ul>
+<p>A backup made when RadioFoundry was installed still holds the original firmware's codeplug, because RadioFoundry keeps
+its own codeplug in a different layout. The editor recognizes that codeplug and converts it: channels, zones,
+contacts, RX group lists, the DMR ID, the radio name and the boot text. Afterwards it lists what it left out, such as
+scan lists and names that were shortened. A zone with an A and a B list becomes two zones, &quot;Name A&quot; and &quot;Name B&quot;.
+Check the result before writing it to the radio. The radio's codeplug stays as it is until you write it. A CPS file
+the editor can't open yet can be converted with qdmr first (<code>dmrconf decode</code>), then opened as <abbr class="gl" tabindex="0" title="A text file format. qdmr stores its codeplug as YAML." data-more="22-glossary.html#t-yaml">YAML</abbr>.</p>
+<p><strong>Save</strong> writes a codeplug file, a qdmr codeplug (<code>.yaml</code>), a CHIRP channel list (<code>.csv</code>), the open table as CSV, every table as a <code>.zip</code> of CSV files,
+or <code>codeplug.bin</code> for USB network mode. Every save but <code>codeplug.bin</code> is named after the codeplug with the date and time
+added, such as <code>codeplug-2026-11-10-2215.yaml</code>, so saves never overwrite each other. Opening a dated file and
+saving it again replaces the date and time.</p>
+<p>CSV files have a header row with the column names, and refer to other records by name (a channel's TX contact, a
+zone's channels). Save a table first to see the columns. An import matches rows to existing records by number, then by
+name. A file can hold only some columns; the others keep their values. Records missing from the file are removed.
+Values the editor can't take are listed by row and column after the import.</p>
+<p>A qdmr file replaces the channels, zones, contacts, DTMF contacts, RX group lists, APRS configurations and the Radio
+tab's settings other than the ARS server and IP gateway in one change, so one <strong>Undo</strong> reverses it. The VFOs and the DMR ID database stay as they were.
+Afterwards the editor lists what it changed or left out, such as scan lists, encryption keys and names that were
+shortened. Saving as qdmr YAML lists what qdmr's format can't hold: <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="../spec/sfr.html">SFR</abbr> settings, power levels qdmr has no name for,
+and locations, which are rounded to 6-character grid locators (about 5 km). The Tools page converts between qdmr YAML
+and codeplug files too, and converts an original firmware codeplug to either.</p>
+<h3 id="dmr-id-database-and-contacts-from-radioidnet">DMR ID database and contacts from RadioID.net</h3>
+<p>The <strong>DMR ID Database</strong> tab builds the database, or private-call contacts, from the users registered at RadioID.net.
+It takes the users from either:</p>
+<ul>
+<li><strong>RadioID User File</strong>: download <code>user.csv</code> from RadioID.net and open it. Any region, any size.</li>
+<li><strong>Fetch from RadioID.net</strong>: fetch the users of a few states or a small country directly. RadioID.net returns 200
+users per request, so this suits up to a few thousand users. Your own RadioID API key is optional. The page keeps it
+in this browser and sends it only to RadioID.net. Until RadioID.net allows requests from the site, they pass through
+a public relay service; the key is never sent through it.</li>
+</ul>
+<p>Then choose:</p>
+<ul>
+<li>regions (countries, and states or provinces);</li>
+<li>call sign prefixes and a DMR ID range;</li>
+<li>the text each record shows, built from fields such as call sign, name, city and state;</li>
+<li>the text length (16 to 48 characters).</li>
+</ul>
+<p>The page previews the records, and shows the database size against the radio's room. <strong>Write ID Database</strong> puts it in
+the codeplug; <strong>Write to Radio</strong> then sends it. <strong>Add as Contacts</strong> adds the users as private-call contacts instead,
+skipping IDs that are already contacts. The editor remembers these choices in the browser.</p>
+<p>Keep contacts for what you call: your talkgroups and the few people you make private calls to. The codeplug holds at
+most 1024 contacts, and every one is a row in Contacts and the <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="22-glossary.html#t-talk-target">talk target</abbr> picker. Let the ID database name everyone
+else: a caller who isn't a contact is shown by the database's name for their ID.</p>
+<p>Current firmware reads a <strong>compact database</strong>, about half the size, so the same room holds about twice the names.
+After a refresh from RadioID.net, a write sends only the parts that changed. The editor picks the format when it
+writes:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Radio</th>
+<th>What the editor does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reads the compact format</td>
+<td>Writes it. A database in the older format (read from the radio or an old file) is offered for conversion: one full write, then smaller ones. Declined, the offer comes back after 12 hours</td>
+</tr>
+<tr>
+<td>Runs older firmware</td>
+<td>Writes the older format. If the names don't all fit, it says how many are left out. Updating the firmware makes room</td>
+</tr>
+<tr>
+<td>Older firmware flashed over a compact database</td>
+<td>The radio shows no names (never wrong ones). The editor writes the database again in the older format the next time it writes to the radio</td>
+</tr>
+</tbody>
+</table></div>
+<p>TFTP (USB network mode) and other CPS programs use the older format.</p>
+<h2 id="what-the-radio-uses-from-the-codeplug">What the radio uses from the codeplug</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Fields RadioFoundry uses</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>General settings</td>
+<td>Your <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr>. The callsign (radio name, 8 characters, sent as <abbr class="gl" tabindex="0" title="A short text, usually a callsign and name, sent along with DMR voice." data-more="22-glossary.html#t-talker-alias">talker alias</abbr>). The group and <abbr class="gl" tabindex="0" title="A DMR call to one radio." data-more="22-glossary.html#t-private-call">private call</abbr> <abbr class="gl" tabindex="0" title="How long after a call a repeater or radio keeps the call&#x27;s talkgroup ready for a reply." data-more="22-glossary.html#t-hang-time">hang times</abbr> (the <abbr class="gl" tabindex="0" title="The time after a call during which PTT answers it." data-more="22-glossary.html#t-reply-window">reply window</abbr>). The <abbr class="gl" tabindex="0" title="Automatic Registration Service: a radio tells a presence server it is on the air." data-more="22-glossary.html#t-ars">ARS</abbr> server and IP gateway, when set</td>
+</tr>
+<tr>
+<td>Channels (up to 1024)</td>
+<td>Name, <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">receive</abbr> and <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">transmit</abbr> frequency, mode (FM or <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr>), bandwidth, receive and transmit tones, power, receive only, <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="22-glossary.html#t-color-code">color code</abbr>, <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="22-glossary.html#t-timeslot">timeslot</abbr>, <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="22-glossary.html#t-talk-target">talk target</abbr> contact, <abbr class="gl" tabindex="0" title="The talkgroups a channel listens to. The codeplug calls it the RX group list." data-more="22-glossary.html#t-listen-list">RX group list</abbr> (listen list), a per-channel DMR ID, force direct mode, transmit timeout (Radio Default: the radio's own, <a href="08-fm.html#transmit-timeout">TX timeout</a>), talker alias, zone scan skip, <abbr class="gl" tabindex="0" title="Voice-operated transmit." data-more="22-glossary.html#t-vox">VOX</abbr> allowed, 1750 Hz tone burst, no beep, no battery saving</td>
+</tr>
+<tr>
+<td>Zones</td>
+<td>Name and channel list. Without zones, the radio shows one zone with all channels</td>
+</tr>
+<tr>
+<td>Contacts (up to 1024)</td>
+<td>Name, DMR ID or <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="22-glossary.html#t-talkgroup">talkgroup</abbr>, private or group, timeslot override</td>
+</tr>
+<tr>
+<td>RX group lists</td>
+<td>The talkgroups each channel listens to</td>
+</tr>
+<tr>
+<td>Trunked systems (up to 8)</td>
+<td>Every field of the <strong>Systems</strong> tab, and which channels are trunked</td>
+</tr>
+<tr>
+<td>DMR ID database</td>
+<td>Names for DMR IDs that aren't contacts, shown on the receive screen</td>
+</tr>
+<tr>
+<td>VFO A</td>
+<td>Frequency and settings of the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr>, read after the next restart</td>
+</tr>
+<tr>
+<td>Boot text</td>
+<td>The two lines on the boot screen</td>
+</tr>
+</tbody>
+</table></div>
+<p>The radio keeps every other part of the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> unchanged (boot image, <abbr class="gl" tabindex="0" title="Dual tone multi frequency: the touch tones a keypad sends, in the audio." data-more="22-glossary.html#t-dtmf">DTMF</abbr> contacts and so on), so the editor and
+<abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr> read back what they wrote, but RadioFoundry doesn't act on those parts.</p>
+<p>Changes made on the radio (a channel saved with hold <strong>OK</strong>, a permanent talk target) are written to the same
+codeplug, so the next read shows them.</p>
+<p>The codeplug can't set these yet:</p>
+<ul>
+<li>Privacy keys (<a href="09-dmr.html#privacy">DMR</a>).</li>
+<li>RadioFoundry's own settings (<a href="17-settings.html">Settings</a>): they are kept separately from the codeplug. The codeplug's
+quick key assignments are ignored.</li>
+<li>Emergency and text message format.</li>
+<li><abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="../spec/sfr.html">SFR</abbr> settings, in qdmr. The Codeplug Editor sets them on each channel.</li>
+</ul>
+<h2 id="programming-with-qdmr">Programming with qdmr</h2>
+<p>The radio speaks the protocol of <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr>'s open-firmware drivers through a compatibility layer, and stores the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>
+in the layout qdmr writes.</p>
+<ol>
+<li>Turn the radio on normally and connect the USB cable. The radio appears as a USB serial port.</li>
+<li>In qdmr, read the codeplug from the radio. qdmr identifies the radio by the radio type RadioFoundry reports. The
+<a href="23-radios.html#programming">Radio reference</a> lists the type and the qdmr driver for each radio.</li>
+<li>Edit the codeplug and write it to the radio.</li>
+<li>After a write, the radio restarts and uses the new codeplug.</li>
+</ol>
+<p>The radio keeps its own screen during the transfer. A radio whose codeplug sits where qdmr's driver can't write it, or
+that has no USB port, needs another route. The <a href="23-radios.html#programming">Radio reference</a> says which.</p>
+<h2 id="backups">Backups</h2>
+<p>Read the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> and save it before you change it: <strong>Save &gt; Codeplug File (.bin)</strong> in the editor, or a save in <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr>.
+A raw backup works too: <code>tools/cps_client.py read backup.bin</code> and <code>tools/cps_client.py write backup.bin</code> over the
+serial port, or <abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="../spec/tftp.html">TFTP</abbr> in USB network mode (<a href="15-usb-network.html#programming-over-the-network">USB network</a>).</p>
+<p>To get the codeplugs out of a web installer backup (the <code>.zip</code>) as qdmr <abbr class="gl" tabindex="0" title="A text file format. qdmr stores its codeplug as YAML." data-more="22-glossary.html#t-yaml">YAML</abbr>, run
+<code>tools/backup_codeplug.py BACKUP.zip -o DIR</code>. It writes RadioFoundry's codeplug and, where the backup holds it, the
+original (stock) one, each as a <code>.yaml</code> and a <code>.dfu</code>. Open the <code>.yaml</code> in the Codeplug Editor or in qdmr. It needs
+Python 3.11 or newer and qdmr's <code>dmrconf</code> (0.15 or newer), and it never touches the radio. This is how a stock
+codeplug the Codeplug Editor can't read, or only part of, gets into it (<a href="23-radios.html#codeplug-files-from-the-original-firmware">Radio reference</a> says which radios).</p>
+<p>To carry a stock codeplug over while you install, see <a href="index.html#moving-from-the-stock-firmware">Moving from the stock firmware</a>.</p>
+<h2 id="limits-and-notes">Limits and notes</h2>
+<ul>
+<li>Writes are refused while the radio's settings area holds another firmware's data. See &quot;Settings are not kept&quot; in
+<a href="20-troubleshooting.html#settings-are-not-kept">Troubleshooting</a>.</li>
+<li>The calibration area accepts writes only to its own bytes. Don't edit calibration with a <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="04-programming.html">CPS</abbr>.</li>
+</ul>
+<p>A CHIRP <abbr class="gl" tabindex="0" title="Comma separated values: a table as plain text, as programming software exports it." data-more="22-glossary.html#t-csv">CSV</abbr> file replaces the channels and zones in one change, so one <strong>Undo</strong> reverses it; contacts, settings and the
+<abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr> database stay as they were. The channels are the file's FM and NFM rows, numbered in file order and put in zones
+named after the file, 80 channels to a zone. Offsets (<code>+</code>, <code>-</code>, split), <abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="22-glossary.html#t-ctcss">CTCSS</abbr> and <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="22-glossary.html#t-dcs">DCS</abbr> tones (including cross modes),
+bandwidth, skip and power are carried over. The editor lists what it left out: rows in other modes (AM, DV, SSB),
+rows without a usable frequency, tones the radio can't hold, and names it shortened. Saving as CHIRP CSV writes the FM
+channels only, since CHIRP has no <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr>.</p>
+<p>A CHIRP image is one radio's memory, so each radio model needs its own reader and the editor reads only the models it
+lists (<a href="../spec/hardware-uv5r-chirp-image.html">CHIRP images the editor reads</a>). It imports those channels the same
+way as a CSV file. For any other radio the editor names the model it found
+and says to export the channels from CHIRP with File &gt; Export to CSV.</p>
+
+		<nav class="prev-next"><a class="prev" href="03-first-boot.html">First Boot</a><a class="next" href="05-keys-and-navigation.html">Keys and Navigation</a></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/user/04-programming.md">View the source of this page</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="On this page">
+		<p class="eyebrow">On this page</p>
+		<ul><li class="l2"><a href="#the-codeplug-editor">The Codeplug Editor</a></li><li class="l3"><a href="#reading-and-writing-the-radio">Reading and writing the radio</a></li><li class="l3"><a href="#programming-several-radios">Programming several radios</a></li><li class="l3"><a href="#editing">Editing</a></li><li class="l3"><a href="#digital-modes-and-systems">Digital modes and systems</a></li><li class="l3"><a href="#p25-and-nxdn">P25 and NXDN</a></li><li class="l3"><a href="#files">Files</a></li><li class="l3"><a href="#dmr-id-database-and-contacts-from-radioidnet">DMR ID database and contacts from RadioID.net</a></li><li class="l2"><a href="#what-the-radio-uses-from-the-codeplug">What the radio uses from the codeplug</a></li><li class="l2"><a href="#programming-with-qdmr">Programming with qdmr</a></li><li class="l2"><a href="#backups">Backups</a></li><li class="l2"><a href="#limits-and-notes">Limits and notes</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Join the RadioFoundry community</strong><span class="small muted">Questions, help with your radio and news, on Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Found a bug? Want your radio supported?</strong><span class="small muted">Open an issue on GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry is MIT licensed · <a href="https://github.com/radiofoundry/radiofoundry">Source Code</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Community</a> · <a href="../../docs/index.html">Docs</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Changelog</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

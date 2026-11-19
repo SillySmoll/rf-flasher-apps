@@ -1,0 +1,310 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Developer Documentation · RadioFoundry</title>
+<meta name="description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Developer Documentation · RadioFoundry">
+<meta property="og:description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:url" content="https://radiofoundry.org/docs/dev/">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="The radios RadioFoundry runs on, each showing a different screen.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/dev/">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/dev/">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/dev/">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/dev/">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/dev/">
+<link rel="icon" href="../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../" data-home="../../" data-gl-more="More">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../index.html">
+			<img src="../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Main"><a href="../../radios/index.html">Radios</a><a href="../../features/index.html">Features</a><a href="../../flash/index.html">Install</a><a href="../../codeplug/index.html">Codeplug</a><a href="../../docs/index.html" aria-current="page">Docs</a><a href="../../screenshots/index.html">Screenshots</a><a href="../../tools/index.html">Tools</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Language" title="Language">EN</summary><nav aria-label="Language"><a href="../../docs/dev/index.html" aria-current="true" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../es/docs/dev/index.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../it/docs/dev/index.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../zh/docs/dev/index.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Switch light and dark" title="Switch light and dark">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Developer Guide">
+		<p class="eyebrow"><a href="../../docs/index.html">Documentation</a> / Developer Guide</p>
+		<ul><li><a href="index.html" aria-current="page">Developer Documentation</a></li><li><a href="adding-a-mode.html">Adding a Mode</a></li><li><a href="adding-a-radio.html">Adding a Radio</a></li><li><a href="architecture.html">Architecture</a></li><li><a href="board-registry.html">The Board Registry</a></li><li><a href="building.html">Building</a></li><li><a href="ci-runners.html">CI Runners and Images</a></li><li><a href="ci.html">Continuous Integration</a></li><li><a href="codec.html">The Codec</a></li><li><a href="codeplug-editor.html">The Codeplug Editor</a></li><li><a href="contributing.html">Contributing</a></li><li><a href="cps-and-codeplug.html">CPS, Codeplug and Settings</a></li><li><a href="debug-link.html">Debug Link</a></li><li><a href="glossary.html">Developer glossary</a></li><li><a href="manual-pdf.html">The User Manual PDF</a></li><li><a href="release.html">Releases</a></li><li><a href="stack-check.html">Stack Check</a></li><li><a href="testing.html">Testing</a></li><li><a href="translating.html">Translating</a></li><li><a href="web-flasher.html">The Web Flasher</a></li><li><a href="website.html">The Web Site</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<h1 id="developer-documentation">Developer Documentation</h1>
+<p>The contributor guide: how RadioFoundry is built, tested, released and extended. These pages describe process and
+tooling and link the specs for behavior; they don't repeat them. Users read <a href="../user/index.html">docs/user</a>.</p>
+<h2 id="reading-order">Reading order</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Page</th>
+<th>What it covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Rules</td>
+<td><a href="contributing.html">Contributing</a></td>
+<td>Branches, pull requests, clean-room rules, code, tests and docs a change needs</td>
+</tr>
+<tr>
+<td>2. Layout</td>
+<td><a href="architecture.html">Architecture</a></td>
+<td>The layers (core, hal, drivers, platform, boards), the tasks, where each feature lives</td>
+</tr>
+<tr>
+<td>3. Build</td>
+<td><a href="building.html">Building</a></td>
+<td>Toolchains, make targets, <abbr class="gl" tabindex="0" title="A CONFIG_ option that turns a feature&#x27;s code in or out of the build." data-more="../build-config.html">feature switches</abbr>, build options, image size, flashing your own build</td>
+</tr>
+<tr>
+<td>4. Test</td>
+<td><a href="testing.html">Testing</a></td>
+<td>Host tests, the UI simulator and gallery, sanitizers, fuzzing, <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="testing.html">HIL</abbr> and the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="glossary.html#t-sdr">SDR</abbr> bench</td>
+</tr>
+<tr>
+<td>5. CI</td>
+<td><a href="ci.html">CI</a></td>
+<td>The workflows per push, per pull request and nightly; running each piece locally; coverage</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="ci-runners.html">CI runners and images</a></td>
+<td>The Gitea and GitHub runners, the csky-elf image, the HIL runner</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="stack-check.html">Stack check</a></td>
+<td>The static worst-case stack depth of every task</td>
+</tr>
+<tr>
+<td>6. Add a radio</td>
+<td><a href="adding-a-radio.html">Adding a radio</a></td>
+<td>The files a board needs, <code>board_t</code>, the key map, bring-up order and records</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="board-registry.html">The board registry</a></td>
+<td><code>board.toml</code> and <code>platform.toml</code> field by field, what is derived, <code>tools/boards.py</code></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="adding-a-mode.html">Adding a mode</a></td>
+<td>A digital mode in the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="cps-and-codeplug.html">codeplug</abbr>, the firmware, the Codeplug Editor and zone sharing</td>
+</tr>
+<tr>
+<td>7. Codec</td>
+<td><a href="codec.html">The codec</a></td>
+<td>How a radio's codec is merged and hosted, and what a merge tool must do</td>
+</tr>
+<tr>
+<td>8. Release</td>
+<td><a href="release.html">Releases</a></td>
+<td>The checklist, artifacts and manifests, sector maps, codec handling, the release workflow</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="manual-pdf.html">The user manual PDF</a></td>
+<td>Building the manual and its workflow</td>
+</tr>
+<tr>
+<td>9. Web site</td>
+<td><a href="website.html">The web site</a></td>
+<td>The generated site, data sources, templates, translating, radio images, error logging</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="web-flasher.html">The web flasher</a></td>
+<td>The browser installer: modules, backends, backups, restore, version links</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="codeplug-editor.html">The Codeplug Editor</a></td>
+<td>The browser codeplug editor</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="translating.html">Translating</a></td>
+<td>Adding a language to the radio and the site: catalogs, build switches, checks</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="reference">Reference</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Page</th>
+<th>What it covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="debug-link.html">Debug link</a></td>
+<td>The host-port debug protocol and <code>tools/rfoundry_debug.py</code></td>
+</tr>
+<tr>
+<td><a href="cps-and-codeplug.html">CPS, codeplug and settings</a></td>
+<td>Where the <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> shim, the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="cps-and-codeplug.html">codeplug</abbr> layout and the settings store are specified</td>
+</tr>
+<tr>
+<td><a href="https://github.com/radiofoundry/radiofoundry/blob/main/FORKING.md">Using RadioFoundry in your project</a></td>
+<td>What the MIT license asks of forks and other projects, and contributing a feature instead</td>
+</tr>
+<tr>
+<td><a href="glossary.html">Developer glossary</a></td>
+<td>Terms of the specs, generated from <code>docs/glossary.json</code></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="common-tasks">Common tasks</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>To</th>
+<th>See</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Build a radio</td>
+<td><a href="building.html">Building</a></td>
+</tr>
+<tr>
+<td>Run everything a pull request must pass</td>
+<td><code>JOBS=8 tools/ci.sh</code>, which ends with &quot;all checks passed&quot; (<a href="ci.html#running-the-pieces-locally">CI</a>)</td>
+</tr>
+<tr>
+<td>Add a feature switch</td>
+<td><a href="../build-config.html#adding-a-feature">build-config.md, &quot;Adding a feature&quot;</a>, then the matrix (<a href="../feature-matrix.html">feature-matrix.md</a>)</td>
+</tr>
+<tr>
+<td>Add a host test</td>
+<td><a href="testing.html#host-tests">Testing, &quot;Host tests&quot;</a></td>
+</tr>
+<tr>
+<td>Add a HIL test</td>
+<td><a href="https://github.com/radiofoundry/radiofoundry/blob/main/tests/hil/README.md">tests/hil/README.md</a>, &quot;Writing a test&quot;</td>
+</tr>
+<tr>
+<td>Change the UI</td>
+<td><a href="https://github.com/radiofoundry/radiofoundry/tree/main/docs/ux">docs/ux</a>, <a href="../spec/ui.html">ui.md</a>, then <code>make -C tests/host ui-gallery</code> (<a href="testing.html#the-ui-simulator-and-the-gallery">Testing</a>)</td>
+</tr>
+<tr>
+<td>Add a radio</td>
+<td><a href="adding-a-radio.html">Adding a radio</a></td>
+</tr>
+<tr>
+<td>Move a radio from stock firmware</td>
+<td>The migration tools and specs are listed in the <a href="../spec/index.html#migrating-from-stock">spec index</a></td>
+</tr>
+<tr>
+<td>Cut a release</td>
+<td><a href="release.html#checklist">Releases, &quot;Checklist&quot;</a></td>
+</tr>
+<tr>
+<td>Preview the web site</td>
+<td><code>python3 site/build.py --serve</code> (<a href="website.html">The web site</a>)</td>
+</tr>
+<tr>
+<td>Install RadioFoundry or edit a codeplug (as a user)</td>
+<td><a href="../user/02-installing.html">Installing</a></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="elsewhere">Elsewhere</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Directory</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../spec/index.html">docs/spec</a></td>
+<td>Behavior, protocols, the <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> modems, each radio's hardware</td>
+</tr>
+<tr>
+<td><a href="https://github.com/radiofoundry/radiofoundry/tree/main/docs/ux">docs/ux</a></td>
+<td>The UI design: principles, information architecture, task flows, wireframes, screens</td>
+</tr>
+<tr>
+<td><a href="../testing/index.html">docs/testing</a></td>
+<td>How to run every test tier, on-air coverage, bench procedures, bring-up records</td>
+</tr>
+<tr>
+<td><a href="../build-config.html">docs/build-config.md</a></td>
+<td>Every <abbr class="gl" tabindex="0" title="A CONFIG_ option that turns a feature&#x27;s code in or out of the build." data-more="../build-config.html">build switch</abbr> and value</td>
+</tr>
+<tr>
+<td><a href="../feature-matrix.html">docs/feature-matrix.md</a></td>
+<td>Every feature's flash cost and which radios build it</td>
+</tr>
+<tr>
+<td><a href="../CLEANROOM.html">docs/CLEANROOM.md</a></td>
+<td>The clean-room rules</td>
+</tr>
+<tr>
+<td><a href="https://github.com/radiofoundry/radiofoundry/blob/main/AGENTS.md">AGENTS.md</a></td>
+<td>The short version of the rules for coding agents</td>
+</tr>
+</tbody>
+</table></div>
+
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/dev/README.md">View the source of this page</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="On this page">
+		<p class="eyebrow">On this page</p>
+		<ul><li class="l2"><a href="#reading-order">Reading order</a></li><li class="l2"><a href="#reference">Reference</a></li><li class="l2"><a href="#common-tasks">Common tasks</a></li><li class="l2"><a href="#elsewhere">Elsewhere</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Join the RadioFoundry community</strong><span class="small muted">Questions, help with your radio and news, on Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Found a bug? Want your radio supported?</strong><span class="small muted">Open an issue on GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry is MIT licensed · <a href="https://github.com/radiofoundry/radiofoundry">Source Code</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Community</a> · <a href="../../docs/index.html">Docs</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Changelog</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

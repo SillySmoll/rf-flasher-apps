@@ -1,0 +1,8 @@
+{
+  "name": "radiofoundry-flasher",
+  "productName": "RadioFoundry Flasher",
+  "version": "0.1.0",
+  "description": "Desktop wrapper for the RadioFoundry web installer (built from github.com/radiofoundry/radiofoundry, MIT)",
+  "main": "main.js",
+  "license": "MIT"
+}

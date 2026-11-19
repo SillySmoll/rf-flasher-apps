@@ -1,0 +1,2957 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="it" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HR_C7000 as a DMR modem · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="HR_C7000 as a DMR modem · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:url" content="https://radiofoundry.org/it/docs/spec/modem-hrc7000.html">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Le radio su cui gira RadioFoundry, ognuna con una schermata diversa.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/modem-hrc7000.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/modem-hrc7000.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/modem-hrc7000.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/modem-hrc7000.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/modem-hrc7000.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../it/" data-gl-more="Altro">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../it/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principale"><a href="../../../it/radios/index.html">Radio</a><a href="../../../it/features/index.html">Funzioni</a><a href="../../../it/flash/index.html">Installa</a><a href="../../../it/codeplug/index.html">Codeplug</a><a href="../../../it/docs/index.html" aria-current="page">Documenti</a><a href="../../../it/screenshots/index.html">Schermate</a><a href="../../../it/tools/index.html">Strumenti</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Lingua" title="Lingua">IT</summary><nav aria-label="Lingua"><a href="../../../docs/spec/modem-hrc7000.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/modem-hrc7000.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/modem-hrc7000.html" aria-current="true" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/modem-hrc7000.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Passa da chiaro a scuro" title="Passa da chiaro a scuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Specifiche">
+		<p class="eyebrow"><a href="../../../it/docs/index.html">Documentazione</a> / Specifiche</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html" aria-current="page">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Questa pagina non è ancora tradotta; è mostrata in inglese.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="hr_c7000-as-a-dmr-modem">HR_C7000 as a DMR modem</h1>
+<p>How the baseband inside the <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> <abbr class="gl" tabindex="0" title="System on chip: the processor and its on-chip peripherals." data-more="../dev/glossary.html#t-soc">SoC</abbr> is driven as a <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> <abbr class="gl" tabindex="0" title="The conventional DMR tier of the standard (TS 102 361-2): repeaters and direct mode without trunking." data-more="../dev/glossary.html#t-tier-ii">Tier II</abbr> layer-2 modem and as an FM modem: registers,
+buffers, interrupts, what to write when, and what the chip does by itself. Board-level facts (pins, <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> chip, <abbr class="gl" tabindex="0" title="Power amplifier: the stage that boosts the transmit signal to the output power." data-more="../dev/glossary.html#t-pa">PA</abbr>
+timer, calibration source) are on the board's hardware page (<a href="../feature-matrix.html">feature-matrix.md</a> lists the
+boards); the stack-side contract is in <code>dmr-modem.md</code>; the <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> equivalent is in <code>modem-hrc6000.md</code>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Contents</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>System view: memory map, buffers</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Register map: mode, sync words, <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> masks, interrupts, layer 2, <abbr class="gl" tabindex="0" title="Base station: the repeater or modem side of a DMR link, as opposed to the radio (MS)." data-more="../dev/glossary.html#t-bs">BS</abbr> mode, physical layer <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Interrupts and TX timing</td>
+</tr>
+<tr>
+<td>4, 5</td>
+<td>Initialization, entering DMR, <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr></td>
+</tr>
+<tr>
+<td>6, 7</td>
+<td>Transmit sequences, CRC and <abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="../dev/glossary.html#t-fec">FEC</abbr></td>
+</tr>
+<tr>
+<td>8</td>
+<td>FM mode: registers, tones, <abbr class="gl" tabindex="0" title="Dual tone multi frequency: the touch tones a keypad sends, in the audio." data-more="../user/22-glossary.html#t-dtmf">DTMF</abbr>, prompt <abbr class="gl" tabindex="0" title="First in, first out: a queue of data between a producer and a consumer." data-more="../dev/glossary.html#t-fifo">FIFO</abbr>, receive audio</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Driver requirements</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Air interface provider and receive tap (<code>CONFIG_AIR</code>, derived from <code>CONFIG_P25</code>)</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Open questions</td>
+</tr>
+</tbody>
+</table></div>
+<p>Sources: the HR_C7000 chip user guide v2.7 (2016; &quot;the datasheet&quot; below) and measurements on a radio or the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench
+(marked &quot;measured&quot;). Values without a mark are the ones the driver writes and that work on air (simplex voice both
+ways and repeater wake are checked on the HR_C7000 radios, <code>docs/feature-matrix.md</code>). &quot;(unverified)&quot; marks what has
+not been confirmed on a radio.</p>
+<hr />
+<h2 id="1-the-modems-view-of-the-system">1. The modem's view of the system</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Register block</td>
+<td>0x11000000, 32-bit registers (names below are the datasheet's)</td>
+</tr>
+<tr>
+<td>TX RAM (layer-2 send RAM)</td>
+<td>0x16000000, 1200 bytes, byte wide</td>
+</tr>
+<tr>
+<td>RX RAM (layer-2 receive RAM)</td>
+<td>0x160004B0, 1200 bytes</td>
+</tr>
+<tr>
+<td>AMBE voice RAM</td>
+<td>0x16000960–0x1600097A, 27 bytes: one burst's three 72-bit <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE+2</abbr> frames, both <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> and <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr></td>
+</tr>
+<tr>
+<td>Prompt (beep) FIFO</td>
+<td>0x16000980</td>
+</tr>
+<tr>
+<td>Codec registers</td>
+<td>0x160009C0 (byte wide)</td>
+</tr>
+<tr>
+<td>PCM buffers (system SRAM)</td>
+<td>mic <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> 0x18000000–0x1800009F (hardware writes), speaker PCM 0x180000A0–0x1800013F (<abbr class="gl" tabindex="0" title="Central processing unit." data-more="../dev/glossary.html#t-cpu">CPU</abbr> writes)</td>
+</tr>
+<tr>
+<td>Vocoder</td>
+<td>none in hardware: the CPU runs the AMBE+2 codec on the PCM buffers and moves 27-byte bursts through the voice <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> (<code>codec-placement.md</code>)</td>
+</tr>
+<tr>
+<td>Symbol / sample clocks</td>
+<td>4800 baud 4FSK; 30 ms <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslots</abbr>; internal 38.4 kHz sampling (AK2401 note)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The modem runs <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> at layer 2: the CPU builds every burst's information bits (<abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr>, <abbr class="gl" tabindex="0" title="Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control." data-more="dmr-data.html">CSBK</abbr>, data blocks, AMBE) and the
+chip adds the <abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="../dev/glossary.html#t-fec">FEC</abbr> (<abbr class="gl" tabindex="0" title="Block product turbo code: the error correction on DMR headers and control blocks." data-more="../dev/glossary.html#t-bptc">BPTC</abbr>, Golay slot type, RS(12,9), QR <abbr class="gl" tabindex="0" title="Embedded signaling: the 32 bits in the middle of a voice burst that carry link control." data-more="../dev/glossary.html#t-emb">EMB</abbr>, <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> with masks), sync, <abbr class="gl" tabindex="0" title="Common announcement channel: 24 bits ahead of each burst a repeater sends. It carries the slot number and short link control." data-more="../dev/glossary.html#t-cach">CACH</abbr> handling and timeslot
+timing. Layer 3 (the chip's own call control, <abbr class="gl" tabindex="0" title="Short message service: text messages. On DMR, short data carries them." data-more="../user/22-glossary.html#t-sms">SMS</abbr>, <abbr class="gl" tabindex="0" title="Base station: the repeater or modem side of a DMR link, as opposed to the radio (MS)." data-more="../dev/glossary.html#t-bs">BS</abbr> activation) exists but is not used by any working firmware.</p>
+<hr />
+<h2 id="2-register-map-used-for-dmr">2. Register map used for DMR</h2>
+<p>Offsets from 0x11000000. Values are the ones the driver writes unless noted.</p>
+<h3 id="21-mode-and-rf-interface">2.1 Mode and RF interface</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Register</th>
+<th>Fields</th>
+<th>Value used</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x100</td>
+<td>WORK_MODE</td>
+<td>b8 digital_analog_en; b7 modulator_mode (0 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr>, 1 FM); b6 <abbr class="gl" tabindex="0" title="The conventional DMR tier of the standard (TS 102 361-2): repeaters and direct mode without trunking." data-more="../dev/glossary.html#t-tier-ii">Tier II</abbr>; b5 <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr> mode; b4:3 layer (0 PHY, 1 L2, 2 L3); b2 is_repeater; b1 is_aligned; b0 work_slot_sel</td>
+<td><strong>0x80</strong> FM, <strong>0x6E</strong> DMR (Tier II, timeslot, layer 2, repeater bit, aligned, slot 1)</td>
+<td>Only these two values are ever written. Timeslot choice is done in software with LAYER2_TXRX_CTRL, not with work_slot_sel</td>
+</tr>
+<tr>
+<td>0x104</td>
+<td>RF_MODE</td>
+<td>b25 phase_avg_en; b24 af_mode; b23:16 AF gain (n/16); b15 <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> IQ invert; b14:13 RX mode; b12 dynamic sync threshold; b11 use_dual_phy (second timeslot receive channel, 2.1a); b9 soft ramp; b7 <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> IQ invert / deviation mapping; b6:5 TX mode (3 = two-point)</td>
+<td><strong>0x03269860</strong>: AF receive on with averaging, gain 0x26 (2.375), RX IQ inverted, dynamic sync threshold, b11 set (2.1a), two-point modulation</td>
+<td>Written at init and left in both modes, but b12 is cleared while LOCAL_CC has cc_opt = 1 (no <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">CC</abbr> filter). Do not switch to 0x03269060 (b11 clear) in DMR</td>
+</tr>
+<tr>
+<td>0x108</td>
+<td>SIG_CENTER</td>
+<td>b31:24 TX I bias, b23:16 TX Q bias, b15:8 / b7:0 RX I/Q bias</td>
+<td>(cal &lt;&lt; 24) or (cal &lt;&lt; 16)</td>
+<td>TX center from factory calibration (board-specific)</td>
+</tr>
+<tr>
+<td>0x10C</td>
+<td>TX_IF_FREQ</td>
+<td>b23:0</td>
+<td>0x0BB800 (reset value)</td>
+<td></td>
+</tr>
+<tr>
+<td>0x110</td>
+<td>RF_CONTROL</td>
+<td>b20:16 tx_pre_on (100 us steps); b13:8 rf_pre_on_tx (<abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> TX interrupt advance, 100 us); b5:0 rf_pre_on_rx</td>
+<td><strong>0x00041F1A</strong>: tx_pre_on 0.4 ms, RF TX interrupt <strong>3.1 ms</strong> before the TX burst, RF RX interrupt 2.6 ms before RX</td>
+<td>0x00040A0A (1.0 ms) gave bad timeslots at low power. b13:8 is per board (<code>hrc7000_t.rf_tx_lead</code>): a board whose 3.1 ms clipped the inbound burst before ours uses a shorter lead: 0x14 (2.0 ms), 0x06 (0.6 ms) or 0x04 (0.4 ms), each from a sweep on that board (the boards' hardware pages). b20:16 is per board too (<code>hrc7000_t.tx_pre_on</code>, default 4): it advances the TX data to make up for the board's RF TX path delay, about 0.107 ms earlier on air per step. A board whose inbound burst runs late against the outbound sets a larger value from a measurement (the boards' hardware pages). The RF TX interrupt's lead moves only the carrier, not the burst</td>
+</tr>
+<tr>
+<td>0x114</td>
+<td>RF_MOD_BIAS_CTRL</td>
+<td>b25:16 two_point_bias; b15:8 sig_reduce (Mod2 amplitude); b7:0 phase_reduce (Mod1 amplitude)</td>
+<td>((cal + 384) &lt;&lt; 16) or modcal (0x4D4D before a frequency is set)</td>
+<td>Modulation balance from calibration</td>
+</tr>
+<tr>
+<td>0x118</td>
+<td>DEV_LIMITER</td>
+<td>b15:0</td>
+<td>0xFF00 (reset value)</td>
+<td></td>
+</tr>
+<tr>
+<td>0x11C</td>
+<td>RSSI_BIAS_VALUE</td>
+<td>read-only per the datasheet: rssi b31:16; b15:8 / b7:0 the measured DC bias of the <abbr class="gl" tabindex="0" title="Analog to digital converter." data-more="../dev/glossary.html#t-adc">ADC</abbr>'s I / Q inputs</td>
+<td>0x1381 is written (no effect expected)</td>
+<td></td>
+</tr>
+<tr>
+<td>0x128</td>
+<td>PHASE_OUT</td>
+<td>read-only: b29:16 / b13:0 the largest and smallest 14-bit AF phase in AF receive mode</td>
+<td>not written</td>
+<td>A live check that AF reaches the ADC: a board receiving DMR reads about +1216 / -1149 (the datasheet expects about ±1300 at -47 dBm); a value that stays within a few counts means no AF arrives. One board had this when its audio-select <abbr class="gl" tabindex="0" title="General purpose input/output: a pin the firmware can read or drive." data-more="../dev/glossary.html#t-gpio">GPIO</abbr> was left high, which takes the RF chip's audio off the ADC; another when the RF chip's digital set left its demodulator off the AF output (the boards' hardware pages)</td>
+</tr>
+<tr>
+<td>0x120</td>
+<td>THRESHOLD_VALUE</td>
+<td>b28:24 sync ratio; b23:16 sync low threshold; b15:8 sync high threshold; b7:0 signal detect</td>
+<td><strong>0x0978786F</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>0x164</td>
+<td>RECV_INFO_COUNT</td>
+<td>b31:24 sync errors; b8 select <abbr class="gl" tabindex="0" title="Frequency shift keying: data as frequency steps. DMR uses 4-level FSK." data-more="../dev/glossary.html#t-fsk">FSK</abbr> error/EVM; b7:0 FSK error</td>
+<td>read for <abbr class="gl" tabindex="0" title="Bit error rate: the share of received bits that were wrong. A measure of how clean a signal is." data-more="../dev/glossary.html#t-ber">BER</abbr>/EVM only</td>
+<td></td>
+</tr>
+<tr>
+<td>0x168</td>
+<td>(undocumented, &quot;REG_X06&quot;)</td>
+<td></td>
+<td>0x14</td>
+<td></td>
+</tr>
+<tr>
+<td>0x1B0</td>
+<td>RX_IF_FREQ</td>
+<td>b23:0</td>
+<td>0x0BB800</td>
+<td></td>
+</tr>
+<tr>
+<td>0x1B4</td>
+<td>RF_RECV_DELAY</td>
+<td>b18:0, 100 ns steps</td>
+<td><strong>0x36B0</strong> (1.4 ms). the datasheet says 2000 (0.2 ms) for AF mode; the working value is 0x36B0</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>AF receive input (datasheet, document 2).</strong> In AF mode the RF chip's demodulated audio goes to the AF ADC's
+P input, and a <abbr class="gl" tabindex="0" title="Digital to analog converter." data-more="../dev/glossary.html#t-dac">DAC</abbr> output biases its N input; on some boards that is a board DAC output.
+Document 1 says the AF bias is set through SIG_CENTER instead. A DC step on either input moves the PHASE_OUT center,
+which the DMR receiver reads as a frequency offset. AF mode has no frequency offset compensation: RX_IF_FREQ applies
+to IF mode only.</p>
+<p><strong>Reference oscillator control (MOD1, datasheet).</strong> In receive the MOD1 level is RF_MOD_BIAS_CTRL b25:16 over 0-3.3 V, which
+holds only while DAC_CONTROL keeps that DAC powered. In TX it is SIG_CENTER b31:24, ±422 mV around 1.65 V in 3.3 mV
+steps; RF_MODE b9 sets where the ramp starts (0 = 1.65 V). With cal + 384 in b25:16 both states give about the same
+voltage, within one step (measured).</p>
+<h3 id="21a-rf_mode-bit-11-the-dcdm-receive-switch">2.1a RF_MODE bit 11: the DCDM receive switch</h3>
+<p>The <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> datasheet names bit 11 <code>use_dual_phy</code>. It turns on a second receive channel, &quot;for repeater chip receive
+mode and <abbr class="gl" tabindex="0" title="Dual Capacity Direct Mode: Motorola&#x27;s direct mode that carries two calls on one frequency, one per timeslot." data-more="../dev/glossary.html#t-dcdm">DCDM</abbr> mode&quot; (<code>datasheets/C7000/HR_C7000_Document_2.pdf</code>, register table at p. 98; our translation from the
+Chinese). DCDM is dual-timeslot <abbr class="gl" tabindex="0" title="DMR radio to radio on one frequency, with no repeater. The standard calls it DMO." data-more="../dev/glossary.html#t-direct-mode">direct mode</abbr>: two conversations on the two DMR timeslots of one frequency, with no
+repeater to supply sync. The community name is &quot;dual-capacity direct mode&quot;; the datasheet doesn't expand it. Its DCDM
+set-up (section 18.3.5.1, p. 410) is three steps: turn off <abbr class="gl" tabindex="0" title="Mobile station: the radio, as opposed to the base station (BS)." data-more="../dev/glossary.html#t-ms">MS</abbr> and <abbr class="gl" tabindex="0" title="Base station: the repeater or modem side of a DMR link, as opposed to the radio (MS)." data-more="../dev/glossary.html#t-bs">BS</abbr> sync receive, enable TDMA1 and TDMA2 sync
+detection, and set RF_MODE[11]. Receive stays enabled all the time.</p>
+<ul>
+<li><strong>Channel mode.</strong> The bit can follow the channel mode: simplex channels (RX frequency equal to TX frequency) set it
+and enable TDMA1 and TDMA2 sync; repeater channels clear it and enable only MS and BS sync. That is the
+datasheet's DCDM set-up on simplex. The datasheet also lists &quot;repeater chip receive mode&quot; as a user of bit 11, which
+a repeater channel with the bit clear suggests is a different mode. Not resolved.</li>
+<li><strong>RadioFoundry:</strong> writes 0x03269860 (bit 11 set) and enables the TDMA1 and TDMA2 sync detection on every channel (<code>hrc7000.c</code>,
+the bench note of 2026-10-16), so RadioFoundry runs the DCDM receive set-up on repeater channels too. Whether that matters on a
+repeater is not measured.</li>
+<li><strong>Not a second RF chip.</strong> The RF chip is unchanged. The second channel is a second modem receive path. Multi-chip
+<abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="../user/22-glossary.html#t-dual-watch">dual watch</abbr> is a separate feature (RadioFoundry issue #96).</li>
+<li><strong>Not known:</strong> whether a simplex receiver with bit 11 on hears a second-timeslot call that it misses with the bit off.
+No on-air test has compared the two (section 10, item 7).</li>
+</ul>
+<h3 id="22-sync-words">2.2 Sync words</h3>
+<p>24-bit halves of the 48-bit <abbr class="gl" tabindex="0" title="European Telecommunications Standards Institute, which publishes the DMR standard." data-more="../dev/glossary.html#t-etsi">ETSI</abbr> sync patterns, high half first (all written once at init):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Register</th>
+<th>Value</th>
+<th>ETSI pattern</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x12C / 0x130</td>
+<td>SEND_DATA_SYNC_H / L</td>
+<td>0xD5D7F7 / 0x7FD757</td>
+<td>MS sourced data</td>
+</tr>
+<tr>
+<td>0x134 / 0x138</td>
+<td>SEND_RC_SYNC_H / L</td>
+<td>0x77D55F / 0x7DFD77</td>
+<td><abbr class="gl" tabindex="0" title="Reverse channel: signaling the receiver sends back to the transmitter during a call, in space the burst leaves free." data-more="../dev/glossary.html#t-rc">RC</abbr></td>
+</tr>
+<tr>
+<td>0x13C / 0x140</td>
+<td>RECV_MS_SYNC_H / L</td>
+<td>0xD5D7F7 / 0x7FD757, then set bit 31 of H</td>
+<td>MS data (receive)</td>
+</tr>
+<tr>
+<td>0x144 / 0x148</td>
+<td>RECV_BS_SYNC_H / L</td>
+<td>0xDFF57D / 0x75DF5D, then set bit 31 of H</td>
+<td>BS data (receive)</td>
+</tr>
+<tr>
+<td>0x14C / 0x150</td>
+<td>RECV_TDMA1_SYNC_H / L</td>
+<td>0xF7FDD5 / 0xDDFD55</td>
+<td><abbr class="gl" tabindex="0" title="Time division multiple access. A DMR channel carries two conversations by alternating them in 30 ms slots." data-more="../dev/glossary.html#t-tdma">TDMA</abbr> direct slot 1 data</td>
+</tr>
+<tr>
+<td>0x154 / 0x158</td>
+<td>RECV_TDMA2_SYNC_H / L</td>
+<td>0xD7557F / 0x5FF7F5</td>
+<td>TDMA direct slot 2 data</td>
+</tr>
+<tr>
+<td>0x15C / 0x160</td>
+<td>RECV_RC_SYNC_H / L</td>
+<td>0x77D55F / 0x7DFD77</td>
+<td>RC</td>
+</tr>
+</tbody>
+</table></div>
+<p>Voice syncs are not programmed; the chip derives them (they are the bitwise complements of the data syncs; unverified).
+Bit 31 of the RECV_MS / RECV_BS high halves is an undocumented enable. The RECV_TDMA1 / RECV_TDMA2 high halves
+need it too: without it the chip never detects the direct mode syncs (bench, 2026-10-16: an <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="sfr.html">SFR</abbr>'s TS1 inbound was not
+heard until it was set).</p>
+<p>SEND_DATA_SYNC is the only send pattern; a voice burst goes out with its complement. RadioFoundry rewrites it before a burst
+that asks for another sync family (<code>dmr_tx_burst_t.sync_override</code>: an SFR's TS2 direct mode outbound) and back to MS
+for the next burst without one. On air the burst then carries that family (bench, 2026-10-16: TS2 sync with the
+repeated <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr>).</p>
+<h3 id="23-crc-rs-and-color-code">2.3 CRC, RS and color code</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Register</th>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x350</td>
+<td>PI_CRC_MASK</td>
+<td>0x6969</td>
+<td><abbr class="gl" tabindex="0" title="A DMR header that announces encryption with a changing key. RadioFoundry never plays such calls." data-more="../user/22-glossary.html#t-pi-header">PI header</abbr> CRC-16 mask (init value 0 in b31:16)</td>
+</tr>
+<tr>
+<td>0x354 / 0x358</td>
+<td>RS_H_MASK / RS_H_INIT</td>
+<td>0x969696 / 0</td>
+<td>RS(12,9) mask for the voice LC header</td>
+</tr>
+<tr>
+<td>0x35C / 0x360</td>
+<td>RS_T_MASK / RS_T_INIT</td>
+<td>0x999999 / 0</td>
+<td>RS(12,9) mask for terminators (the datasheet's reset value 0x969696 is wrong for ETSI; write 0x999999)</td>
+</tr>
+<tr>
+<td>0x364</td>
+<td>CSBK_CRC_MASK</td>
+<td>0xA5A5</td>
+<td><abbr class="gl" tabindex="0" title="Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control." data-more="dmr-data.html">CSBK</abbr> CRC-16 mask</td>
+</tr>
+<tr>
+<td>0x368</td>
+<td>MBCH_CRC_MASK</td>
+<td>0xAAAA</td>
+<td><abbr class="gl" tabindex="0" title="Multi block control: a DMR signaling message that spans several bursts." data-more="../dev/glossary.html#t-mbc">MBC</abbr> header CRC-16 mask (the datasheet's reset 0xA5A5 is wrong for ETSI)</td>
+</tr>
+<tr>
+<td>0x36C</td>
+<td>DATAH_CRC_MASK</td>
+<td>0xCCCC</td>
+<td>data header CRC-16 mask (the datasheet's reset 0xA5A5 is wrong for ETSI)</td>
+</tr>
+<tr>
+<td>0x370–0x37C</td>
+<td>(undocumented)</td>
+<td>0xF0, 0x1FF, 0x10F, 0x00</td>
+<td></td>
+</tr>
+<tr>
+<td>0x380</td>
+<td>CRC8_INIT</td>
+<td>0</td>
+<td>short LC CRC-8 init</td>
+</tr>
+<tr>
+<td>0x384</td>
+<td>LOCAL_CC</td>
+<td>color code in b3:0; b9:8 cc_opt: 0 = deframe only on matching CC, 1 = deframe any CC; b16 encryption type</td>
+<td>cc_opt 0 and the filter's code with a CC filter; cc_opt 1 without one (RF_MODE b12 must then be 0). Channel TX code after slot lock, receive code restored after TX</td>
+</tr>
+<tr>
+<td>0x388</td>
+<td>VOICE_EMB_CTRL</td>
+<td>0 at init, <strong>2</strong> when entering DMR receive</td>
+<td>b1 = burst F <abbr class="gl" tabindex="0" title="Embedded signaling: the 32 bits in the middle of a voice burst that carry link control." data-more="../dev/glossary.html#t-emb">EMB</abbr> from the chip's own RC encoder; b0 = PI bit for bursts B–E</td>
+</tr>
+<tr>
+<td>0x38C</td>
+<td>SCRAMBLE_REG</td>
+<td>0</td>
+<td>built-in simple voice scrambler keys (RX in b31:16, TX in b15:0); unused</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="24-interrupt-control">2.4 Interrupt control</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Register</th>
+<th>Value / use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x398</td>
+<td>SYS_INTERP_LIST</td>
+<td>system interrupt causes (read)</td>
+</tr>
+<tr>
+<td>0x39C</td>
+<td>SYS_INTERP_MASK</td>
+<td><strong>1 = enabled</strong> (inverted sense). <strong>0x1187F</strong>: bits 0–6, 11, 12, 16</td>
+</tr>
+<tr>
+<td>0x3A0</td>
+<td>SYS_INTERP_CLEAR</td>
+<td>write the bits read from the list; repeat until the list reads 0</td>
+</tr>
+<tr>
+<td>0x3A4 / 0x3A8 / 0x3AC</td>
+<td>LAYER3_INTERP_LIST / MASK / CLEAR</td>
+<td>layer-3 causes; unused</td>
+</tr>
+<tr>
+<td>0x3B0</td>
+<td>INTERP_CLEAR</td>
+<td>write-1-to-clear: b0 TX timeslot, b1 RX timeslot, b2 RF TX, b3 RF RX, b4 <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> write (mic buffer full), b5 PCM read (speaker buffer consumed)</td>
+</tr>
+</tbody>
+</table></div>
+<p>SYS_INTERP_LIST bits:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Bit</th>
+<th>Name</th>
+<th>Meaning in DMR layer 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>dll_rdy_interp_tx</td>
+<td>layer-2 TX processing point (ahead of a TX slot)</td>
+</tr>
+<tr>
+<td>1</td>
+<td>dll_rdy_interp_rx</td>
+<td>layer-2 RX processing point</td>
+</tr>
+<tr>
+<td>2</td>
+<td>dll_latelc_rx_interp</td>
+<td><strong>voice late entry</strong>: embedded LC assembled from a superframe</td>
+</tr>
+<tr>
+<td>3</td>
+<td>dll_frame_rx_interp</td>
+<td><strong>a burst was deframed</strong>: read RX_TYPE_INFO and the RX <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr></td>
+</tr>
+<tr>
+<td>4</td>
+<td>dll_shortlc_rx_interp</td>
+<td>short LC (<abbr class="gl" tabindex="0" title="Common announcement channel: 24 bits ahead of each burst a repeater sends. It carries the slot number and short link control." data-more="../dev/glossary.html#t-cach">CACH</abbr>) received</td>
+</tr>
+<tr>
+<td>5 / 6</td>
+<td>dll_tx/rx_slot_abnormal</td>
+<td>layer-2 TX / RX timeslot boundary abnormal</td>
+</tr>
+<tr>
+<td>7 / 8</td>
+<td>gps_lost / gps_slot_abnormal</td>
+<td>simulcast only</td>
+</tr>
+<tr>
+<td>9 / 10</td>
+<td>ccl_tx / ccl_rx</td>
+<td>layer 3</td>
+</tr>
+<tr>
+<td>11</td>
+<td>phy_rx_interp</td>
+<td>PHY test reception</td>
+</tr>
+<tr>
+<td>12</td>
+<td>phy_rdy_interp</td>
+<td>PHY slot early interrupt</td>
+</tr>
+<tr>
+<td>13 / 14 / 15</td>
+<td>fm_sig_rx / fm_rx / fm_tx</td>
+<td>FM signaling detect (<abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-ctcss">CTCSS</abbr>/CDCSS/DTMF/selcall) / FM RX data / FM TX data</td>
+</tr>
+<tr>
+<td>16</td>
+<td>phy_recv_slot_abnormal</td>
+<td>PHY slot boundary abnormal</td>
+</tr>
+<tr>
+<td>17</td>
+<td>rdy_next_short_lc</td>
+<td>repeater CACH</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="25-layer-2-control">2.5 Layer-2 control</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Register</th>
+<th>Fields</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x400</td>
+<td>LAYER2_CONTROL</td>
+<td>b7 txen, b6 rxen, b5 layer2slot, b4 txtmp_master_mode, b3 rx_master_auto_update, b2 tx_slave_auto_mode, b1 tx_master_mode (active TX timing), b0 rx_master_mode</td>
+</tr>
+<tr>
+<td>0x404</td>
+<td>LAYER2_SLOTON</td>
+<td>write: b0 dll_tx_slot_on, b2 dll_rx_slot_on (establish TX / RX slot in active mode), plus self-clearing open/close strobes b5–b13 (b5 dll_rx_open_tx: build the TX slot from the receive slot, with tx_slave_auto_mode 0 and b0 set; datasheet 10.2.2.17); read: b31 TX slot on, b29 RX slot on</td>
+</tr>
+<tr>
+<td>0x408</td>
+<td>LAYER2_TXRX_CTRL</td>
+<td>b31 tx_complete_cpu (continuous mode only), b23 syncfail_layer2_rx (drop and re-acquire RX slot sync), b22 syncfail_layer2_tx, b15 begin_v_layer2 (voice access success), b7 txnextsloten (transmit in the next slot), b6 rxnextsloten (receive in the next slot), b0 autotest</td>
+</tr>
+<tr>
+<td>0x40C</td>
+<td>LAYER2_SLOT_CNT</td>
+<td>active timing presets: b31 / b30 RX / TX slot number, b29 + b28:20 TX temporary slot counter, b19 + b18:10 RX slot counter, b9 + b8:0 TX slot counter (each enable bit write-clear). In the physical layer mode a TX counter preset (in bits or in symbols) left the slot timing where it was (bench 2026-10-21, 2.10)</td>
+</tr>
+<tr>
+<td>0x410</td>
+<td>LAYER2_MAX_CNT</td>
+<td>slot length trim: b15 sign (1 shorter) and b11:8 RX, b7 sign and b3:0 TX, n × 100 us. No effect on the physical layer's slot timer (2.10 finding 13)</td>
+</tr>
+<tr>
+<td>0x414</td>
+<td>LAYER2_SLOT_UPDATE</td>
+<td>slot re-sync strobes (unused)</td>
+</tr>
+<tr>
+<td>0x418</td>
+<td>LAYER2_SEND_TYPE</td>
+<td>b31:22 codec type for custom data types 11–15; b12 RC in data sync; b11 data EMB RC source; b10 / b9 BS forwarding; b8 crc_calc_sel (0 = chip computes CRCs); <strong>b7:4 data type / voice burst index; b3 1 = voice (or RC) burst, 0 = data/control burst; b2 second data header; b1:0 <abbr class="gl" tabindex="0" title="Link control start/stop: the 2-bit field of a burst&#x27;s embedded signaling that says which fragment it carries." data-more="../dev/glossary.html#t-lcss">LCSS</abbr></strong></td>
+</tr>
+<tr>
+<td>0x41C</td>
+<td>LAYER2_STATUS</td>
+<td>b31 TX slot number, b30 RX slot number, b17:9 RX slot bit count, b8:0 TX slot bit count</td>
+</tr>
+<tr>
+<td>0x424</td>
+<td>LAYER2_SLOT_PRE</td>
+<td>b23:16 0x55 (do not change), b15:8 RX processing-interrupt advance, b7:0 TX advance. Value <strong>0x551010</strong></td>
+</tr>
+<tr>
+<td>0x428</td>
+<td>LAYER2_BS_MODE</td>
+<td>b11:8 bs_idle_type (reset 9 = Idle), b5:4 gps_update_rate, b3 gps_pps_en, <strong>b2 bs_tx_mode, b1 bs_rx_mode, b0 bs_single_freq</strong> (0 dual frequency, 1 single frequency). Reset type H: <strong>a chip reset does not clear it</strong>. Section 2.9</td>
+</tr>
+<tr>
+<td>0x430</td>
+<td>BS_SECOND_REG</td>
+<td>b5:0 GPS second, simulcast only</td>
+</tr>
+<tr>
+<td>0x434</td>
+<td>BS_STATUS</td>
+<td>read only: b29:28 CACH LCSS counter, b27:19 and b18:8 simulcast slot and frame counters, b5:0 locked second</td>
+</tr>
+<tr>
+<td>0x438</td>
+<td>BS_CACH</td>
+<td>b1 bs_cach_at, b0 bs_cach_tc. Does not control the CACH on air as a static value (2.9)</td>
+</tr>
+<tr>
+<td>0x12C, 0x130</td>
+<td>SEND_DATA_SYNC_H / _L</td>
+<td>TX data sync word, reset D5D7F7 7FD757 (MS data). Writing the BS data sync (DFF57D 75DF5D) makes the chip send BS-sourced data frames (2.9)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Values written to LAYER2_CONTROL: <strong>0xC0</strong> = TX and RX enabled, passive timing (receive, follow the other side's
+slots); <strong>0xC3</strong> = TX and RX enabled, active TX and RX timing (we set the slot clock); <strong>0xCB</strong> = 0xC3 plus b3
+rx_master_auto_update, for <code>tx_listen</code>. The datasheet (10.2.2.16) says b0 rx_master_mode should normally be 0, and that
+in active receive mode the receive slot edges move with the received sync only when b3 is set. With 0xC3 alone an SFR
+heard almost nothing in its listening slot while it sent (measured, 2026-10-16: <code>L18/1</code>), so <code>tx_listen</code> sets b3 for
+a transmission on our own timing.</p>
+<p>An aligned start (<code>DMR_TIMING_ALIGNED</code> with a burst received, an SFR's repeat) writes no LAYER2_CONTROL value: it stays
+0xC0 and LAYER2_SLOTON = <strong>0x25</strong> (0x05 plus b5 dll_rx_open_tx) builds the TX slot from the receive slot. Any
+LAYER2_CONTROL write at the start left the receiver without slot sync for about 1 s, deaf to the call being repeated:
+0xC3 (TX slots 37.7-41.6 ms after the caller's instead of 30), 0xC4 (b2, TX slots following the receiver: 28.6-30.1 ms),
+even 0xC4 written over 0xC4. With b0 rx_master_mode set (0xC5, 0xCD) the receiver kept its sync but no TX slot started.
+Without a CACH (an SFR's repeat, a direct-mode answer) the first slot after the start is the one the received bursts
+came in; the driver sends in the slot whose number (LAYER2_STATUS b31) is the received bursts' chip slot for the same
+TS, the other one for another TS. Measured on the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench, 2026-10-16: our bursts 30.1 ms after the caller's, the
+whole call heard and repeated.</p>
+<p>Through a repeater (BS-sourced bursts; two boards on the SDR bench, issue 72, 6 of 6 runs on the right
+slot and on the grid) the slot comes from the CACH <abbr class="gl" tabindex="0" title="TDMA channel: the TACT bit that names the timeslot, so a radio can tell TS1 from TS2." data-more="../dev/glossary.html#t-tc">TC</abbr> alone (5.3): the TC lock, then a TC estimate that
+toggles at every timeslot interrupt and gives the TC of the slot starting at that interrupt. The receiver runs in
+LAYER2_CONTROL 0xC4 (TX slots follow the receiver) from every receive restart on a repeater channel, and that restart
+releases <strong>both</strong> slot syncs (TXRX b23 and b22) and is also the end of every transmission. A start waits in receive for
+the lock, then writes only TXRX (no LAYER2_CONTROL or SLOTON write at the key-up); the first TX tick sends in the next
+slot when the estimate is the other TS's TC. A first TX-vector interrupt less than half a slot after the last receive
+one is the same slot and does not toggle the estimate. Without the lock in 1 s the start is refused (TX_REJECTED,
+nothing sent).</p>
+<p>The same lock numbers the slot ticks on a BS signal: once it holds, each <code>DMR_EV_SLOT_TICK</code> carries the TS that the
+estimate gives for the slot starting there, and the <abbr class="gl" tabindex="0" title="Access type: the TACT bit that tells a radio whether the slot is free to transmit in." data-more="../dev/glossary.html#t-at">AT</abbr> bit (RX_TYPE_INFO b23) of the last CACH that named that slot,
+when it was read in the last four ticks (<code>DMR_TICK_AT_KNOWN</code>, <code>DMR_TICK_AT_BUSY</code>). Before the lock, while
+transmitting and without a CACH, <code>ts</code> is 0 and AT unknown. On a BS signal on both slots nearly every tick after the
+lock carries AT.</p>
+<p>Bench findings behind this (two boards on the SDR bench, 2026-10-18):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Tried</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Slot from the last burst's chip slot (RX_TYPE_INFO b19 against LAYER2_STATUS b31)</td>
+<td>the other slot about half the time: b31 read 0 at every TX start, and the first burst after the receiver synced carried TC 0 whatever its slot, with b31 set</td>
+</tr>
+<tr>
+<td>SLOTON 0x25 (TX slot built from the receive slot) at the start</td>
+<td>on the repeater's slot grid only when strobed at one parity of receive interrupt, and then always TS2; a skipped first slot put the bursts 8-20 ms off the grid</td>
+</tr>
+<tr>
+<td>0xC4 written only at the receive restart, only b23 released</td>
+<td>TX slots at the phase they had then (the wake-up burst's, sent on our own timing): 0-30 ms off the grid from run to run</td>
+</tr>
+<tr>
+<td>0xC4 rewritten at the key-up</td>
+<td>the same phase problem on one radio, right on the other: the write is not what sets the phase</td>
+</tr>
+<tr>
+<td>First TX-vector interrupt counted as a new slot</td>
+<td>about 5 ms after the last receive one in some runs: the estimate one slot off</td>
+</tr>
+<tr>
+<td><strong>b22 released with b23 at every receive restart, full reset after every TX, nothing written at the key-up</strong></td>
+<td><strong>TS1 and on the grid, 6 of 6</strong>: the first TX tick comes 29.9-30.0 ms after the last receive tick</td>
+</tr>
+</tbody>
+</table></div>
+<p>Timing rules the chip follows (what the bench showed; the data sheet doesn't say):</p>
+<ul>
+<li><strong>The TX slot phase is latched, not derived.</strong> In 0xC4 the TX slots follow the receiver, but only from the moment the
+TX slot sync was last released and re-acquired. A TX sync left from an earlier transmission, including a burst sent
+on our own timing (the wake-up), keeps its phase and the next call goes out off the repeater's grid by whatever the
+difference was. Every receive restart must release b22 as well as b23.</li>
+<li><strong>Check the phase, not the slot.</strong> The measure of &quot;on the grid&quot; is the first TX-vector interrupt 30 ms (one slot)
+after the last receive one (<code>txh u</code> in the diagnostics: 299-300 in the passing runs, 90-180 in the failing ones). It
+is cheaper to read than the air capture and gives the same verdict.</li>
+<li><strong>LAYER2_STATUS b31 is not a usable slot number</strong> at the start of a transmission (always 0), and RX_TYPE_INFO b19 is
+one burst's chip slot, not a reference. Neither decides a TX slot on a repeater.</li>
+<li><strong>Writing LAYER2_CONTROL drops the receiver's slot sync for about 1 s</strong>, in every value tried. Set it at a receive
+restart and leave it.</li>
+<li><strong>A TX-vector tick right after an RX-vector one is the same slot.</strong> The two interrupts of one slot came about 5 ms
+apart in some runs; counting both as slots put the estimate one slot off.</li>
+<li><strong>A deframe near a tick belongs to the previous slot.</strong> A burst is deframed late in its slot, around the next
+timeslot interrupt: in the first half of a slot count it to the one before.</li>
+<li><strong>A slot estimate needs a lock first.</strong> The first bursts after the receiver syncs can carry a wrong TC; the driver waits
+for four alternating values.</li>
+</ul>
+<p>SFR (two boards on the SDR bench, 2026-10-18, each run after a key-up on our own timing): the repeat's
+TX slot comes 30.1 ms and 30.7 ms after the inbound one, with the TX slot sync released only
+on repeater channels (6 runs) and on every channel (10 runs) alike: the SLOTON b5 start takes the receiver's phase
+whatever the TX sync held, so the stale phase that broke the repeater path does not reach an SFR. Every receive
+restart releases both syncs. Read at an SFR's start, LAYER2_STATUS b31 picked the right slot
+in every run (<code>txh e1</code>: b31 set, the received chip slot next, ours after it). The first TX-vector interrupt comes two
+slots after the last receive one (<code>txh u</code> 599-600), not one as through a repeater: the slot right after the SLOTON
+strobe has no TX tick, so a tick count across an SFR's start is one short. The phase check is a whole number of
+slots. A direct mode start can take the slot from the TDMA1 / TDMA2 sync type in RX_TYPE_INFO b3:2 plus
+LAYER2_STATUS b29 against an offset captured at that moment, never from b31 or b19.</p>
+<p>Values written to
+LAYER2_TXRX_CTRL: 0x00 nothing next slot; 0x40 receive next slot; 0x80 transmit next slot; 0x8040 receive next slot
+with the voice-access flag; 0x800000 release RX slot sync.</p>
+<h3 id="26-layer2_send_type-codes">2.6 LAYER2_SEND_TYPE codes</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Burst</th>
+<th>Source of payload in TX RAM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x10</td>
+<td>Voice LC header (data type 1)</td>
+<td>LC bytes 0–8 at 0x16000000; bytes 9–11 may be left 0 (chip adds RS(12,9) with RS_H_MASK)</td>
+</tr>
+<tr>
+<td>0x20</td>
+<td>Terminator with LC (data type 2)</td>
+<td>LC bytes 0–8</td>
+</tr>
+<tr>
+<td>0x30</td>
+<td>CSBK (data type 3)</td>
+<td>10 bytes; chip adds <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> with CSBK_CRC_MASK</td>
+</tr>
+<tr>
+<td>0x40</td>
+<td>MBC header (4)</td>
+<td>10 bytes, chip CRC</td>
+</tr>
+<tr>
+<td>0x50</td>
+<td>MBC continuation (5)</td>
+<td>12 bytes</td>
+</tr>
+<tr>
+<td>0x60</td>
+<td>Data header (6)</td>
+<td>10 bytes, chip CRC with DATAH_CRC_MASK</td>
+</tr>
+<tr>
+<td>0x70</td>
+<td>Rate ½ data block (7)</td>
+<td>12 bytes (CRC-9 / CRC-32 by the <abbr class="gl" tabindex="0" title="Central processing unit." data-more="../dev/glossary.html#t-cpu">CPU</abbr>)</td>
+</tr>
+<tr>
+<td>0x80</td>
+<td>Rate ¾ data block (8)</td>
+<td>18 bytes</td>
+</tr>
+<tr>
+<td>0xA0</td>
+<td>Rate 1 data block (10)</td>
+<td>24 bytes</td>
+</tr>
+<tr>
+<td>0x08 + (n &lt;&lt; 4) + LCSS</td>
+<td>Voice burst n = 0..5 (A..F)</td>
+<td><abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE</abbr> 27 bytes to the voice RAM 0x16000960; for burst A also the call's LC (bytes 0–8) at 0x16000000 for the embedded LC</td>
+</tr>
+</tbody>
+</table></div>
+<p>Datasheet example for one superframe: A = 0x08, B = 0x19, C = 0x2B, D = 0x3B, E = 0x4A, F = 0x50, i.e. LCSS 0 on A,
+1 (first fragment) on B, 3 (continuation) on C and D, 2 (last) on E, 0 on F. <strong>The driver writes
+LCSS = 0 on every voice burst</strong> (0x08, 0x18, 0x28, 0x38, 0x48, 0x58). Whether the chip then still sends the
+embedded LC fragments correctly is unverified; follow the datasheet.</p>
+<h3 id="27-rx_type_info-0x390-read-after-a-deframe-interrupt">2.7 RX_TYPE_INFO (0x390, read after a deframe interrupt)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Bits</th>
+<th>Name</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30</td>
+<td>crc8_error_flag</td>
+<td>short LC CRC-8 bad</td>
+</tr>
+<tr>
+<td>29</td>
+<td>golay_check_flag</td>
+<td>slot type Golay bad</td>
+</tr>
+<tr>
+<td>28</td>
+<td>qr_check_flag</td>
+<td>voice EMB QR bad</td>
+</tr>
+<tr>
+<td>27</td>
+<td>cs_check_flag</td>
+<td>late-entry checksum bad</td>
+</tr>
+<tr>
+<td>26</td>
+<td>crc16_error_flag</td>
+<td>CRC-16 bad (CSBK, headers)</td>
+</tr>
+<tr>
+<td>25</td>
+<td>rs24_error_flag</td>
+<td>RS(12,9) bad (LC header, terminator)</td>
+</tr>
+<tr>
+<td>24</td>
+<td>data_block_error</td>
+<td>CRC-9 / CRC-32 result for data blocks</td>
+</tr>
+<tr>
+<td>23</td>
+<td>cach_at</td>
+<td>CACH AT bit</td>
+</tr>
+<tr>
+<td>22</td>
+<td>cach_tc</td>
+<td>CACH TC bit: the timeslot number of the received burst</td>
+</tr>
+<tr>
+<td>21:20</td>
+<td>cach_lcss</td>
+<td>CACH LCSS</td>
+</tr>
+<tr>
+<td>19</td>
+<td>current_rx_slot</td>
+<td>slot number</td>
+</tr>
+<tr>
+<td>18</td>
+<td>save_soft_finish</td>
+<td>soft information stored</td>
+</tr>
+<tr>
+<td>17</td>
+<td>pi</td>
+<td>privacy indicator of the received voice burst</td>
+</tr>
+<tr>
+<td>16:15</td>
+<td>lcss</td>
+<td>voice burst LCSS</td>
+</tr>
+<tr>
+<td>14:12</td>
+<td>current_voice_burst</td>
+<td>voice burst number, <strong>1–6 = A–F</strong> (0 when not voice)</td>
+</tr>
+<tr>
+<td>11:8</td>
+<td>data_type</td>
+<td>slot type data type</td>
+</tr>
+<tr>
+<td>7:4</td>
+<td>cc</td>
+<td>received color code</td>
+</tr>
+<tr>
+<td>3:2</td>
+<td>recv_sync_type</td>
+<td>0 MS, 1 BS, 2 TDMA slot 1, 3 TDMA slot 2</td>
+</tr>
+<tr>
+<td>1:0</td>
+<td>sync_type</td>
+<td>0 none (EMB-only burst), 1 voice, 2 data, 3 RC</td>
+</tr>
+</tbody>
+</table></div>
+<p>&quot;CRC good&quot; for a deframed burst = bits 30:24 all zero. Data blocks and MBC continuation blocks have no CRC-16, so do
+not drop them on these flags; check CRC-9/CRC-32 (the MBC's CRC-16 in its last block) in software. RX_INFO (0x394): b24:16 trunking multiframe number, b10:0 received RC.</p>
+<h3 id="28-buffer-layouts">2.8 Buffer layouts</h3>
+<p><strong>TX RAM (0x16000000)</strong>, datasheet table 52: 0x00–0x0B the current control burst (PI header 10 + 2 CRC, LC header / terminator
+9 + 3 RS, CSBK / MBC header / data header 10 + 2 CRC, MBC block 12, rate ½ 12, rate ¾ 18, rate 1 24); 0x00–0x09 also
+embedded LC (72 bits + 5-bit checksum in byte 9, &quot;prepared when voice burst A is about to be sent&quot;); 0x29–0x2C burst F
+EMB filler (or key ID / algorithm ID for privacy); 0x30–0x4A voice burst when voice comes from TX RAM (layer-2 BS
+mode, AUDIO_CONTROL b0 = 1); 0x4B–0x50 embedded RC; 0x495–0x4AF send voice key (27 bytes).</p>
+<p><strong>RX RAM (0x160004B0)</strong>, datasheet table 53: the deframed control burst at 0x00 (LC header / terminator 9 + 3, CSBK / headers
+10 + 2, data blocks 12 / 18 / 24, idle 12, C_RC 7 + 2). Embedded LC after late entry also appears at 0x00–0x08; the
+chip keeps the previous call's LC there until a new one is decoded (measured).
+0x2B–0x2F: the CACH short LC of a BS signal, 28 bits and the CRC-8 received, the low 4 bits of 0x2F unused; new
+at system interrupt bit 4. The interrupt only counts it, and only while a BS signal is heard (the RAM keeps the last
+one); the event task reads it (<code>hrc7000_dmr_short_lc</code>, in flash: a new one comes every 120 ms at most) and reports it
+when it changes (<code>DMR_EV_SHORT_LC</code>); the stack checks the CRC-8. The chip's own CRC-8 flag (RX_TYPE_INFO
+b30, in the burst report) isn't used.</p>
+<p>The driver saves each late-entry LC under the chip slot <code>hrc7000_dmr_decode</code> reads from <code>RX_TYPE_INFO</code> at the
+late-entry interrupt (<code>current_rx_slot</code>, b19) and attaches it only to a voice burst on that chip slot. A single
+pending LC can cross slots even when the voice burst filter works: an unselected slot's late-entry interrupt sets it,
+its deframe is dropped, and the next selected voice burst takes the wrong caller (#495, host reproduction). Separate
+pending buffers also preserve both LCs when both reports arrive before voice. A slot's pending LC is discarded by any
+non-voice burst on that slot (LC header, terminator, CSBK, MBC, data header, PI header, idle; a header with a bad CRC
+too), by a filtered burst, and when the slot's voice ages out (390 ms without a voice burst), so a call that fades
+before a voice burst takes its LC doesn't name the next headerless caller. Receiver resets and a slot filter change
+discard both. A failed late-entry checksum invalidates only the reporting slot's pending LC.</p>
+<p>Nothing here confirms that b19 at a late-entry interrupt with no deframe names the burst that completed the LC rather
+than the last burst deframed; that needs on-air confirmation with calls on both slots. It does not infer a DMR
+timeslot from the chip slot: BS bursts retain their CACH TC labels.</p>
+<p><strong>Voice RAM (0x16000960)</strong>: write 27 bytes before arming a voice burst; read 27 bytes after a voice deframe interrupt
+Burst numbering for privacy keystream purposes is RX_TYPE_INFO's 1–6.</p>
+<h3 id="29-bs-repeater-mode-bench-results-2026-10-20">2.9 BS (repeater) mode: bench results 2026-10-20</h3>
+<p>Datasheet source: the Chinese original (HR_C7000_Document_2, 10.2.2.17, 10.2.2.18, 10.2.2.22, 10.2.2.25-10.2.2.28).
+The registers, their bits and what the chip does with them were tried on one board (RadioFoundry build with a scratch memory
+poke command, SDR bench capture on the test frequency, lowest power, burst and CACH decode). (measured)</p>
+<p>Datasheet summary:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BS_MODE b2 / b1 / b0</td>
+<td>BS transmit mode, BS receive mode, dual (0) or single (1) frequency repeater</td>
+</tr>
+<tr>
+<td>LAYER2_SLOTON b3 / b4 (0x404)</td>
+<td>bs_tx_slot_on / bs_rx_slot_on: establish the BS TX / RX slot. Status: b28 o_bs_tx_slot_on, b27 o_bs_rx_slot_on</td>
+</tr>
+<tr>
+<td>LAYER2_TXRX_CTRL b4 (0x408)</td>
+<td>bs_tx_sync_rx_en: BS TX slot follows the BS RX slot</td>
+</tr>
+<tr>
+<td>LAYER2_SEND_TYPE b10 bs_tx_data_rdy (0x418)</td>
+<td>0: the chip frames and sends Idle (type from BS_MODE b11:8); 1: forwarded data is ready (self-clears at the slot edge)</td>
+</tr>
+<tr>
+<td>LAYER2_SEND_TYPE b9 bs_tx_data_source</td>
+<td>0: the chip encodes; 1: send 196 information bits without coding</td>
+</tr>
+<tr>
+<td>AUDIO tx_voice_source = 1 (4.6.5.3)</td>
+<td>voice comes from <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr> written RAM (the layer 2 BS TX path)</td>
+</tr>
+<tr>
+<td>BS_CACH b1:0</td>
+<td>AT and TC &quot;for BS transmit mode&quot;</td>
+</tr>
+<tr>
+<td>RDY_NEXT_SHORT_LC interrupt (bit 17)</td>
+<td>the chip asks for the next CACH short LC</td>
+</tr>
+<tr>
+<td>BS_INTER_IN / BS_INTER_OUT pins (P12 / R12)</td>
+<td>baseband BS interrupt in and out, apparently to link two chips</td>
+</tr>
+<tr>
+<td>BS_SECOND_REG, BS_STATUS, GPS bits</td>
+<td>same-frequency simulcast from a GPS pulse (2.9a). Not needed here</td>
+</tr>
+</tbody>
+</table></div>
+<p>Findings:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Finding</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>The BS registers exist and read the datasheet's reset values: BS_MODE 0x00000900, the others 0</td>
+<td>read at idle</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Writable bits match the datasheet: BS_MODE b11:8, b5:0; BS_CACH b1:0; BS_SECOND b5:0. Reserved bits read 0. BS_STATUS ignores writes. 0x42C is not implemented (reads 0, ignores writes)</td>
+<td>write and read back</td>
+</tr>
+<tr>
+<td>3</td>
+<td>BS_MODE survives a chip reset (<code>stubtool --attach --board &lt;id&gt; --boot reset</code>). A radio left in BS mode stays there until written back or hardware reset</td>
+<td>read after reset</td>
+</tr>
+<tr>
+<td>4</td>
+<td>With BS_MODE b2 set, RadioFoundry's normal call start fails: the TX path never arms (<code>dmr.tx_error=stalled</code>, TX denied <code>rejected</code>). BS TX needs its own start sequence</td>
+<td><code>ptt</code> with b2 set</td>
+</tr>
+<tr>
+<td>5</td>
+<td>With b2 set, then LAYER2_SLOTON b3 set and b0 cleared during a call, the chip reports o_bs_tx_slot_on (SLOTON reads 0x1000000C) and BS_STATUS b29:28 becomes non-zero (one read: 0x10000000, so the CACH LCSS counter runs)</td>
+<td>read back, 0x434 = 0x10000000</td>
+</tr>
+<tr>
+<td>6</td>
+<td>The chip then sends its own Idle frames (data type 9 from bs_idle_type, color code from LOCAL_CC) with no MCU data, every 60 ms in <strong>one</strong> slot, with the same 30 ms bursts keyed and unkeyed (the RF keying is still RadioFoundry's). The first frame comes about 0.8 s after the switch</td>
+<td>SDR: 54 IDLE bursts, 60.0 ms apart</td>
+</tr>
+<tr>
+<td>7</td>
+<td>The sync word on those frames comes from SEND_DATA_SYNC. At its reset value they carry MS data sync. Written with the BS data sync they decode as BS-sourced (<code>bs-d</code>)</td>
+<td>SDR family column</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Each BS frame is preceded by a CACH with valid <abbr class="gl" tabindex="0" title="The 7 bits at the start of a CACH: AT, TC, LCSS and Hamming parity." data-more="../dev/glossary.html#t-tact">TACT</abbr> parity</strong> (the analyzer counts it <code>tact ok</code>), but AT, TC, LCSS and the short LC payload are not controlled by BS_CACH: with BS_CACH held at 0, 2 and 3, AT and TC showed all four combinations about equally often and the short LC fragments were noise. TC did not alternate</td>
+<td>SDR: 54 CACHs per run, three runs</td>
+</tr>
+</tbody>
+</table></div>
+<p>Unresolved: where the chip takes the CACH bits from. The likely source is the same as on the <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr>, per slot values
+the MCU supplies at the RDY_NEXT_SHORT_LC interrupt (BS_CACH written every slot, short LC in a TX RAM window), which a
+static poke cannot reproduce. Not tried: the real start sequence (arming BS TX without RadioFoundry's call), <code>bs_tx_data_rdy</code> = 1
+with MCU data in both slots, <code>tx_voice_source</code>, <code>bs_rx_mode</code> (receive BS, label slots), <code>bs_single_freq</code>, the BS_INTER
+pins, and two chips. The test was a register switch in the middle of a RadioFoundry call, so the one-slot cadence in 6 may come
+from RadioFoundry's own TX loop and not the chip.</p>
+<h3 id="29a-gps_pps_en-the-simulcast-slot-lock-datasheet-only">2.9a gps_pps_en: the simulcast slot lock (datasheet only)</h3>
+<p>LAYER2_BS_MODE b3 <code>gps_pps_en</code> enables what the datasheet calls same-frequency simulcast (datasheet 10.2.2.25-10.2.2.27).
+It is a BS mode feature: the chip disciplines its BS slot timing to a GPS second pulse, so several repeaters on one
+frequency send each slot at the same instant. Datasheet only; nothing below has been tried.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BS_MODE b5:4 <code>gps_update_rate</code></td>
+<td>how often the slot timing is corrected from the pulse: every 6 s, 3 s or 1 s</td>
+</tr>
+<tr>
+<td>BS_SECOND_REG b5:0</td>
+<td>the GPS second (0-59), written by the MCU from the receiver's time messages</td>
+</tr>
+<tr>
+<td>BS_STATUS</td>
+<td><code>gps_lcss_cnt</code> (the CACH LCSS phase), <code>gps_bit_cnt</code> (a 30 ms slot counter run from the pulse), <code>bs_slot_num</code> (the 60 ms frame number in the 60 s cycle), <code>bs_second_lock</code></td>
+</tr>
+<tr>
+<td>System interrupt b8 <code>gps_slot_abnormal</code>, b7 <code>gps_lost_interp</code></td>
+<td>the pulse's slot timing jumped; the pulse was lost</td>
+</tr>
+</tbody>
+</table></div>
+<p>Answers for the <abbr class="gl" tabindex="0" title="Transmitting on one frequency and receiving on another at the same time. Repeaters do, and so does the duplex hotspot setup." data-more="split-duplex.html">split duplex</abbr> TX half (<code>split-duplex.md</code> 3.8, INFO capability bit 5):</p>
+<ol>
+<li>It needs a pulse on a chip pin. The datasheet names none for it; the only candidate is BS_INTER_IN (P12, &quot;BS sync
+interrupt input&quot;). Where an HR_C7000 radio in <code>boards/</code> has a GPS module, it is wired to an MCU <abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="../dev/glossary.html#t-uart">UART</abbr> only, and
+no pulse line to the chip or to the MCU is documented. So no radio here can use it.</li>
+<li>It locks the chip's BS mode slot timing, which the TX half doesn't use (it sends in the physical layer mode, 2.10).
+Whether it also moves the physical layer's slot timer is unknown.</li>
+<li>The host-side grid (ALIGN with the host's clock on NTP or a GPS-disciplined source) gives the same slot numbering
+without a pulse, to the clock sync's error bound. A PPS input report stays a follow-up for a board that wires one.</li>
+</ol>
+<h3 id="210-physical-layer-transmit-the-split-duplex-tx-half">2.10 Physical layer transmit: the split duplex TX half</h3>
+<p>The split duplex TX half (<code>split-duplex.md</code> 5.4) needs a CACH whose AT, TC and short LC it controls, which the BS mode
+of 2.9 doesn't give. It uses the physical layer mode instead (datasheet 9.5), as the HR_C6000 does (<code>modem-hrc6000.md</code> 9.1):
+the chip sends the CPU's bits without coding, and the core builds every slot (<code>bsOutboundRawSlot</code>: the CACH, then the
+burst with BS sync, slot type and coded payload). Driver: <code>drivers/modem/hrc7000/hrc7000_bs.c</code>. Datasheet only until the bench
+results below say otherwise.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Content (datasheet 9.2, 9.4.1, 9.5)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WORK_MODE</td>
+<td>0x22: physical layer, timeslot mode (b5 set, layermode 0, b1 aligned); 0x02: physical layer, continuous mode</td>
+</tr>
+<tr>
+<td>RF_MODE</td>
+<td>two-point TX (b6:5 = 3), as the 0x03269860 of 2.1</td>
+</tr>
+<tr>
+<td>LAYER2_CONTROL</td>
+<td>b7 txen, b6 rxen, b1 tx_master_mode, b0 rx_master_mode. 0x82: transmit with our own slot timing</td>
+</tr>
+<tr>
+<td>LAYER2_TXRX_CTRL</td>
+<td>b7 txnextsloten: send in the coming slot; b6 rxnextsloten; b0 autotest. The datasheet's set-up writes 0x81</td>
+</tr>
+<tr>
+<td>TX RAM 0x00-0x23 / 0x24-0x47</td>
+<td>SEND_DATA0 / SEND_DATA1: one 36-byte (288-bit) frame each, sent alternately. Two bits per symbol, 00 +1, 01 +3, 10 -1, 11 -3 (the ETSI dibit mapping), first bit in b7 of the first byte</td>
+</tr>
+<tr>
+<td>System interrupt b12</td>
+<td>phy_rdy_interp: the physical layer's slot interrupt</td>
+</tr>
+</tbody>
+</table></div>
+<p>The datasheet's example frame for a bit error test carries the MS data sync at bits 120-167. In a burst the sync starts at
+bit 108, so that frame is 12 bits of guard, the 264-bit burst and 12 bits of guard: an MS slot, aligned to the slot
+edge. A BS outbound has no guard: its slots follow each other without a gap, each CACH centered on the slot edge. The
+driver writes the core's slots (CACH first) back to back, so the bit stream on air is the continuous outbound, and the
+CACH half that falls before the chip's slot edge is only a constant 1.25 ms offset of the slot clock (the RX half's
+phase tracking absorbs it, <code>split-duplex.md</code> 6). Whether the chip ramps the <abbr class="gl" tabindex="0" title="Power amplifier: the stage that boosts the transmit signal to the output power." data-more="../dev/glossary.html#t-pa">PA</abbr> between two slots of the timeslot mode
+(it would cut into the CACH) is what the continuous mode variant is for.</p>
+<p>The driver, while the BS outbound runs (it takes the slot engine's place, as <code>hrc6000_bs.c</code> does):</p>
+<ol>
+<li>Start: TXRX 0, SLOTON 0, WORK_MODE 0x80 then 0x22 (or 0x02), LAYER2_CONTROL 0x82, codec buffers cleared. A new
+slot clock.</li>
+<li>Slot clock: a boundary at the first of the TX timeslot, RX timeslot or PHY_RDY interrupts in a slot (one more
+within 15 ms is the same slot). Unkeyed the clock runs and nothing is sent.</li>
+<li>Keyed: at each boundary a slot's 36 bytes go to TX RAM and TXRX = 0x80. The chip sends them in the slot that
+starts about 5 ms after the boundary's interrupt, not in the one after it (finding 11), so the slot clock names that
+slot. The key-up starts on an outbound TS1 slot. Each slot plays its own queue, an empty one an idle burst.</li>
+<li>The first RF TX interrupt keys the RF chip and the PA (the RF-burst task's continuous mode, 3.1a); the PA then stays up. Unkeyed: no more slots,
+the PA off one slot later. No boundary for 200 ms: PA off, unkeyed.</li>
+<li>Stop (and leaving DMR): TXRX 0, PA off, WORK_MODE 0x80 then 0x6E, LAYER2_CONTROL passive, both slot syncs released,
+then the normal receive restart (5.2). LAYER2_BS_MODE is never written; the power-on set-up writes its reset value
+0x900 (2.9: it survives a chip reset).</li>
+</ol>
+<p>Bench variants (<code>dmr_bs_config_t.variant</code>, the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>'s SPLIT op 1, <code>split-duplex.md</code> 10.1), a bit field: b0 the
+continuous mode, b1 the autotest bit with the send bit (0x81), b3:2 the TX RAM halves (0 the slot to both, 1 alternate
+starting with SEND_DATA0, 2 alternate starting with SEND_DATA1). The default 0 is timeslot mode, 0x80, both halves.</p>
+<p>Bench results, 2026-10-20 (TX half keyed 8 s per variant at the lowest power on the test frequency; no SDR
+capture: the RTL-SDR was in use elsewhere. A second radio on the same frequency was the receiver). (measured)</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Finding</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>PHY_RDY (system interrupt b12) comes first in every slot and makes the slot clock; the TX and RX timeslot interrupts follow in the same slot (two per slot)</td>
+<td><code>bs</code> lines: 366 PHY_RDY, 734 timeslot interrupts, 1 boundary from a timeslot vector; longest gap 30.0 ms, no late slot</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Variants 0, 1, 4 and 8 give one RF TX interrupt per key-up: the chip stays in TX from slot to slot. With the autotest bit (variant 2) it comes every 60 ms: the chip leaves TX between slots</td>
+<td><code>bs.rftx_ints</code> 1 against 141 in 8 s</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Every slot is set up while keyed (about 280 in 8.4 s), no underrun, no stall</td>
+<td><code>bs.bursts</code>, STATUS <code>idle</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>The outbound decodes: the second radio deframed one idle burst per 60 ms with BS sync and color code 2, no CRC errors, labeled TS1 from the CACH TC (variant 8: TS2)</td>
+<td>its <code>I</code>, <code>cc2 BS ts1</code> lines</td>
+</tr>
+<tr>
+<td>5</td>
+<td>After the role ends (also by lease expiry) a normal call goes out whole</td>
+<td><code>dmr.tx_error=ok</code>; the second radio heard 3 headers, 42 voice bursts, the terminator</td>
+</tr>
+</tbody>
+</table></div>
+<p>Second board on the SDR bench, 2026-10-21 (lowest power, the test frequency, <code>tests/hil/test_split_duplex.py</code>). (measured)</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Finding</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6</td>
+<td>Variant 0: the outbound is whole. BS data sync on both slots (189 / 188 idle bursts in 10 s), a burst every 30.0 ms (same slot 60.000 ms), one key-up edge, every CACH of valid TACT parity, TC alternating on every CACH, AT following SET_AT, the short LC decoding (93 ok, 0 bad), no underrun</td>
+<td><code>test_split_tx_half_off_air</code>: 377 BS bursts, tact ok 377, TC alternating 376/376</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Variant 1 (continuous mode) gives the same outbound: the timeslot mode keeps the carrier and every CACH between slots too</td>
+<td>358 BS bursts, tact ok 358, TC 357/357</td>
+</tr>
+<tr>
+<td>8</td>
+<td>A host-fed voice call goes out whole in its slot</td>
+<td><code>test_split_tx_half_voice</code></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Keyed 5 minutes: carrier offset +58 Hz at key-up, +56 Hz at the end, no underrun, no stall (10 015 slots)</td>
+<td>captures across the key-up and the unkey (the burst analysis needs carrier-free air in a capture to find its noise floor)</td>
+</tr>
+<tr>
+<td>10</td>
+<td>The RX half labels a bench call, residual 0-1 us after centering, and the label flips with the epoch</td>
+<td><code>test_split_rx_half_labels</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Variant 0 stays the default. Writing the slot to both TX RAM halves works, so which half the chip sends in each slot
+isn't needed. Not measured: PA temperature (no sensor on the diagnostics page), receiver desense with the RX half
+beside it.</p>
+<p>The first board gives the same results on the SDR bench (2026-10-21, variant 0): 352 BS bursts, 176 per slot, tact ok
+352, TC alternating 351/351, AT following SET_AT, short LC 87 ok and 0 bad, no underrun; the voice call whole. Its RX half's labels pass too (residual 1 us).</p>
+<p>The slot clock against the air, SDR bench, 2026-10-21 (TX half; each GET_EPOCH mapped to wall-clock time
+through the host's time sync, compared with the SDR's timestamps of the outbound's bursts, whose slot comes from
+their CACH TC). (measured)</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Finding</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11</td>
+<td>The slot set up at a boundary is on air from about 5 ms after the boundary's interrupt. The first driver took it to go out one slot later and named the boundary after the slot before: the epoch was one slot early, and a subscriber's TS2 call through a pair went up labeled TS1 and was repeated on TS1</td>
+<td>before the fix TS2 bursts started 5.0 ms after the epoch's &quot;TS1&quot; and TS1 bursts 25.0 ms before it; after it TS1 bursts start 4.6 ms after the epoch (six epochs each). Another board's TX half measures +2.2 ms the same way</td>
+</tr>
+<tr>
+<td>12</td>
+<td>The slot timer restarts when own TX timing is enabled: LAYER2_CONTROL 0xC0 (passive), then 0x82 at a chosen time. The first boundary then comes about 1.2 ms before a whole slot after the write; with that learned, the boundaries land 9-120 us from the host's grid (ALIGN, <code>split-duplex.md</code> 3.8; the host's clock sync bound was 3 ms). Passive timing keeps counting while the driver waits, so it takes no boundary then. Redoing WORK_MODE through FM with LAYER2_CONTROL left at 0x82, or a LAYER2_SLOT_CNT TX counter preset, doesn't move it</td>
+<td><code>test_split_align</code>: 15 ALIGNs in five runs, all aligned; the learned restart delay -1167 us</td>
+</tr>
+</tbody>
+</table></div>
+<p>Slewing (<code>split-duplex.md</code> 3.8, capability bit 2), 2026-10-22, no RF. (measured)</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Finding</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>13</td>
+<td>LAYER2_MAX_CNT (2.5, datasheet 10.2.2.20: b7 sign and b3:0 n × 100 µs for TX slots, b15 and b11:8 for RX) does not move the physical layer's slot timer. Tried: the TX trim for one slot (written at a boundary, cleared at the next), the TX and RX trims together, and both held set. The boundaries stayed where they were: the HR_C7000 driver offers no <code>bs_slew</code>, so a keyed TX half reports its drift and re-aligns at the next unkey, as the HR_C6000 does</td>
+<td><code>test_split_slew</code> with a scratch driver: 35 trims of +100 µs asked in 5 s, the phase unchanged (-1535, -1696, -1464 µs in the three runs)</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="3-interrupts">3. Interrupts</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Vector (PIC source)</th>
+<th>Name</th>
+<th>Fires</th>
+<th>What it means / what to do</th>
+<th>Clear</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>61 (29)</td>
+<td>System_inter</td>
+<td>after the chip deframes a burst (bit 3), on late entry (bit 2), slot abnormalities, FM signaling</td>
+<td>read SYS_INTERP_LIST, act, write it back to SYS_INTERP_CLEAR until 0</td>
+<td>SYS_INTERP_CLEAR</td>
+</tr>
+<tr>
+<td>62 (30)</td>
+<td>Time_slot_inter_tx</td>
+<td>every 30 ms on the <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> slot clock</td>
+<td><strong>decide the next slot</strong>: write TX <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> / voice RAM, SEND_TYPE, then TXRX_CTRL (0x80 = send in the coming slot, 0x00 / 0x40 otherwise). Start the <abbr class="gl" tabindex="0" title="Power amplifier: the stage that boosts the transmit signal to the output power." data-more="../dev/glossary.html#t-pa">PA</abbr> <abbr class="gl" tabindex="0" title="A talk target used for one call and its reply window." data-more="../user/22-glossary.html#t-one-shot">one-shot</abbr> whenever 0x80 is written</td>
+<td>INTERP_CLEAR b0 and b1</td>
+</tr>
+<tr>
+<td>63 (31)</td>
+<td>Time_slot_inter_rx</td>
+<td>every 30 ms on the <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> slot clock</td>
+<td>same decision while receiving (and for the last repeater-wake wait state)</td>
+<td>INTERP_CLEAR b0 and b1</td>
+</tr>
+<tr>
+<td>64 (32)</td>
+<td>Rf_tx_inter</td>
+<td>rf_pre_on_tx × 100 us (<strong>3.1 ms</strong> with RF_CONTROL 0x41F1A) before each TX burst</td>
+<td>put the <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> chip into TX (first burst: full TX set-up; later bursts: idle → TX); note the time</td>
+<td>INTERP_CLEAR b2 (first thing)</td>
+</tr>
+<tr>
+<td>65 (33)</td>
+<td>Rf_rx_inter</td>
+<td>rf_pre_on_rx before an RX slot</td>
+<td>not used; TX is turned off from the next <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr> interrupt once the burst has run ≥ 20 ms</td>
+<td>INTERP_CLEAR b3</td>
+</tr>
+<tr>
+<td>59 (27)</td>
+<td>PCM_rd_data_interp</td>
+<td>every 10 ms while AUDIO_CONTROL b5 is set</td>
+<td>speaker buffer consumed: write the next 160 bytes of <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> to 0x180000A0</td>
+<td>INTERP_CLEAR b5</td>
+</tr>
+<tr>
+<td>60 (28)</td>
+<td>PCM_wr_data_interp</td>
+<td>every 10 ms while AUDIO_CONTROL b4 is set</td>
+<td>160 bytes of mic PCM ready at 0x18000000</td>
+<td>INTERP_CLEAR b4</td>
+</tr>
+</tbody>
+</table></div>
+<p>Both timeslot interrupts are handled by one routine; it decides by the current activity
+(transmitting states on the TX vector, receiving states on the RX vector). <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> TX does not start unless vectors 62 and 64 are hooked.</p>
+<h3 id="31-tx-timing-within-a-burst-inferred-from-the-register-values">3.1 TX timing within a burst (inferred from the register values)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>t (ms) relative to the TX timeslot interrupt in which the burst is armed</th>
+<th>Event</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>TX timeslot interrupt: payload and SEND_TYPE written, TXRX_CTRL = 0x80, PA one-shot started</td>
+</tr>
+<tr>
+<td>≈ 26.9</td>
+<td>RF TX interrupt (3.1 ms ahead): RF chip idle → TX</td>
+</tr>
+<tr>
+<td>28 (default &quot;DMR PA&quot; setting, 1–35 ms)</td>
+<td>PA one-shot: band PA select on, PA drive <abbr class="gl" tabindex="0" title="Digital to analog converter." data-more="../dev/glossary.html#t-dac">DAC</abbr> to the calibrated value</td>
+</tr>
+<tr>
+<td>≈ 29.6</td>
+<td>tx_pre_on (0.4 ms by default; per board)</td>
+</tr>
+<tr>
+<td>30</td>
+<td>burst on air (27.5 ms of symbols plus guard)</td>
+</tr>
+<tr>
+<td>next timeslot interrupt with ≥ 20 ms of TX elapsed</td>
+<td>PA drive 0, PA selects off, RF chip back to RX</td>
+</tr>
+</tbody>
+</table></div>
+<p>RadioFoundry keys from the RF TX interrupt instead, on the per-burst RF task (3.1a): the PA a fixed time after it,
+and back to receive at the burst's last symbol.</p>
+<h3 id="31a-the-per-burst-rf-task">3.1a The per-burst RF task</h3>
+<p>Every <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> board keys its RF per burst: the RF chip to the TX frequency and its TX state, the paths and supplies,
+the PA, and back to receive after the burst, so the radio hears the other slot (and a <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> listens while keyed).
+Where the modem's MOD1 output modulates the reference oscillator instead of the RF chip, this is the analog
+transmitter's whole key-up, a few milliseconds with waits in it. The sequences run in a task of their own at the
+highest priority (<code>platform/hrc7000/dmr_rfburst.c</code>); the interrupts only wake it. The board gives the two sequences
+(<code>hrc_dmr_board_t.burst</code>, an <code>hrc_rfburst_board_t</code>) and arms and disarms the task from <code>tx()</code>, <code>tx_off()</code> and <code>rx()</code>;
+the glue starts the task and passes it every switch. A board's sequences are only its chip steps; the timing is the
+task's (<code>dmr_rfburst_timing.h</code>): a sequence's <code>at</code> waits count from the RF TX interrupt (a two-point key-up's RF switch
+and PA times are <code>hrc_rfburst_switch_at_us</code> and <code>hrc_rfburst_pa_at_us</code>), and the task holds the TX off until the
+burst's last symbol from the modem's <code>rf_tx_lead</code>. So a board whose switch must come late (to keep receiving the inbound burst before ours) sets a lead
+about 0.5 ms longer than that point and waits: the task can wake up to 0.42 ms after the interrupt.</p>
+<p>A <abbr class="gl" tabindex="0" title="Transmitting on one frequency and receiving on another at the same time. Repeaters do, and so does the duplex hotspot setup." data-more="split-duplex.html">split duplex</abbr> hotspot's base-station outbound (<code>hrc7000_bs.c</code>) is continuous: the task runs the TX-on sequence at its
+first RF TX interrupt and the TX-off sequence at once when it stops, with no hold and no RF RX interrupt ending it.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Source</th>
+<th>The task does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TX on</td>
+<td>the RF TX interrupt, rf_pre_on_tx before the burst</td>
+<td>the board's TX-on sequence</td>
+</tr>
+<tr>
+<td>TX off</td>
+<td>the next timeslot interrupt, or the RF RX interrupt once 20 ms have passed since the RF TX interrupt, whichever comes first</td>
+<td>waits until the burst's last symbol, then the board's TX-off sequence</td>
+</tr>
+<tr>
+<td>Abort</td>
+<td>disarm (the end of the transmission, a retune)</td>
+<td>the TX-off sequence at once; in a TX-off's hold, the hold's end (the disarm waits for it, up to 40 ms)</td>
+</tr>
+<tr>
+<td>End of an outbound</td>
+<td>the base-station outbound stops (split duplex)</td>
+<td>the TX-off sequence at once</td>
+</tr>
+</tbody>
+</table></div>
+<p>The burst's last symbol is rf_pre_on_tx × 100 µs + 0.85 ms + 27.5 ms after the RF TX interrupt
+(<code>platform/hrc7000/dmr_rfburst_timing.h</code>), so the lead a board sets is the time its TX-on sequence needs, less 0.85
+ms, rounded up to 100 µs. The board's key-up delay in its TX-on sequence counts from the RF TX interrupt, so the
+task's wake doesn't delay the PA. The interrupt itself can come a few hundred µs late, while the slot engine holds
+its lock with the modem's interrupts masked (3.2); the bursts keep the 60 ms frame grid, so a burst whose interrupt
+is more than 30 µs past one frame after the burst before is timed from that point instead.</p>
+<p>The first burst of a transmission has no burst before it. With a long lead the modem raises its RF TX interrupt late
+by the same amount at every key-up, while the burst itself is on the slot grid: 0.42 ms at lead 26, about 0.2 ms at
+24, none seen at 9 (<abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench). Timed from that stamp, the first burst's whole TX on and TX off came late by as
+much, and its first symbols went out on a rising carrier. The slot engine's tick is steady through the key-up, so
+the first burst is timed from it instead:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Learn</td>
+<td>Each burst on the frame grid (within 30 µs of one frame after the one before) gives its interrupt's time after the tick before it; the largest is kept. A tick held up by the masking makes the time shorter and a late interrupt is off the grid, so the largest is the true one. It is kept across transmissions and cleared when the lead changes</td>
+</tr>
+<tr>
+<td>First burst</td>
+<td>Its interrupt's time after its tick, against what was learned: later by more than 30 µs and no more than 1 ms, it is timed at the learned point after the tick; otherwise, or with nothing learned yet (the first transmission after a start, or after a lead change), from its interrupt</td>
+</tr>
+</tbody>
+</table></div>
+<p>The arithmetic is in <code>dmr_rfburst_timing.h</code> (<code>hrc_rfburst_tick_ref</code>, <code>hrc_rfburst_first_on</code>). The diagnostics
+count the sequences run, the RF RX interrupts and the TX-offs that started late, and, since the key-up, the largest
+wake, the PA-up time after the interrupt (smallest and largest), the largest grid error, the bursts timed from the
+grid and how much earlier than its interrupt the first burst was timed (<code>hrc_rfburst_stats_t</code>).</p>
+<h3 id="32-masking-the-modem-interrupts">3.2 Masking the modem interrupts</h3>
+<p>PIC_MASK bits 29, 30, 31 and PIC_MASK_1 bit 0 (vectors 61–64) (datasheet mapping). Mask them around multi-register updates
+from task level.</p>
+<h3 id="33-lost-requests">3.3 Lost requests</h3>
+<p>A modem request whose line stays high after the PIC took it leaves that source silent: the PIC interrupts on the line
+rising only (gotchas 2.9). TS and RF requests have no readable status, so the driver can't see one pending. What the engine does:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>When</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Every receiver restart (5.2: DMR entry, a color code or framing change, a stale or lost reception, the end of every transmission)</td>
+<td>writes INTERP_CLEAR b0-b2 and writes SYS_INTERP_LIST back to SYS_INTERP_CLEAR. Not b3 (RF RX) or the PCM pair: other drivers own them</td>
+</tr>
+<tr>
+<td>No timeslot interrupt for 200 ms while sending</td>
+<td>the transmission ends (<code>dmr.tx_error=stalled</code>), and its receiver restart clears as above. Counted (<code>dmr.modem_stalls</code>)</td>
+</tr>
+<tr>
+<td>A SYS_INTERP_LIST cause enabled in SYS_INTERP_MASK, pending at the 10 ms polls for 50 ms with no system interrupt taken</td>
+<td>written back to SYS_INTERP_CLEAR. Counted (<code>dmr.modem_stuck</code>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>For the first stall or stuck request, the glue keeps PIC_MASK, PIC_MASK_1, PIC_INT_ST and PIC_INT_ST_1 as read before
+that poll (<code>dmr.modem_lost_ms</code>, <code>dmr.modem_lost_regs</code>, <a href="debuglink.html">debuglink.md</a> 3.7). It then unmasks the modem
+sources again, unless a task holds the engine's lock.</p>
+<hr />
+<h2 id="4-initialization-power-on-once">4. Initialization (power-on, once)</h2>
+<p>Ordered; (register, value, why). The whole <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> block is written once here and not at every mode change.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Register</th>
+<th>Value</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><abbr class="gl" tabindex="0" title="Analog to digital converter." data-more="../dev/glossary.html#t-adc">ADC</abbr> controller</td>
+<td>reset and idle (board-specific)</td>
+<td>the baseband shares the analog front end</td>
+</tr>
+<tr>
+<td>2</td>
+<td>IO_DIPLEX2 (0x03C)</td>
+<td>clear bit 28</td>
+<td><abbr class="gl" tabindex="0" title="Digital to analog converter." data-more="../dev/glossary.html#t-dac">DAC</abbr> channel B pin to analog (<abbr class="gl" tabindex="0" title="Power amplifier: the stage that boosts the transmit signal to the output power." data-more="../dev/glossary.html#t-pa">PA</abbr> drive)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>DAC_PD_CTRL / PD_MODE_EN / DATA_A / B / C</td>
+<td>0x01 / 0x01 / 0 / 0 / 0x06E2</td>
+<td>DAC B (PA drive) and C on, A off; PA drive 0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>FM_BANDWIDTH (0x500)</td>
+<td>0x5F</td>
+<td>FM wideband defaults</td>
+</tr>
+<tr>
+<td>5</td>
+<td>FM_DEV_COEF (0x504)</td>
+<td>0x33500</td>
+<td>FM deviation defaults (overwritten per <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr>/RX)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>SYS_SOFT_RSTN (0x000)</td>
+<td>clear bit 4, wait 2 us</td>
+<td>codec reset pulse</td>
+</tr>
+<tr>
+<td>7</td>
+<td>codec AICR_DAC, AICR_ADC, CR_MIC1, CR_MIC2, CR_DAC, CR_ADC, CR_VIC, CR_CK, GCR_DACL, GCR_MIC1, GCR_ADCL, CR_DAC_AGC, CR_ADC_AGC, DR_ADC_AGC</td>
+<td>0xC0, 0xC0, 0x00, 0x70, 0x20, 0x20, 0x0C, 0x40, 0x80 (with the line out gain, 0 dB unless set), 0x00, 0x8B, 0, 0, 0x34</td>
+<td>audio codec on, mic input 2, gains (board-specific)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>LINEOUT_CTRL (0x088)</td>
+<td>0x01</td>
+<td>speaker line out on</td>
+</tr>
+<tr>
+<td>9</td>
+<td>SIG_CENTER</td>
+<td>(cal &lt;&lt; 24) or (cal &lt;&lt; 16)</td>
+<td>TX I/Q center</td>
+</tr>
+<tr>
+<td>10</td>
+<td>RF_MOD_BIAS_CTRL</td>
+<td>((cal + 384) &lt;&lt; 16) or 0x4D4D</td>
+<td>modulation balance until a TX frequency is known</td>
+</tr>
+<tr>
+<td>11</td>
+<td>RF_MODE</td>
+<td>0x03269860</td>
+<td>two-point TX, AF <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr>, b11 set (2.1a)</td>
+</tr>
+<tr>
+<td>12</td>
+<td>DEV_LIMITER</td>
+<td>0x0000FF00</td>
+<td></td>
+</tr>
+<tr>
+<td>13</td>
+<td>SYS_SOFT_RSTN</td>
+<td>0x190</td>
+<td>see the board's reset-bit notes</td>
+</tr>
+<tr>
+<td>14</td>
+<td>DAC_CONTROL (0x070)</td>
+<td>0x8000001B</td>
+<td>baseband DAC set-up: b31 offset code; b5 / b4 power down DAC A / B; b2 / b1 low power DAC A / B (1 = off or low power per the datasheet). So DAC A on at full power, DAC B powered down and low power</td>
+</tr>
+<tr>
+<td>15</td>
+<td>ADC_CONTROL (0x074)</td>
+<td></td>
+<td>= 0x41C3</td>
+</tr>
+<tr>
+<td>16</td>
+<td>AUDIO_CONTROL (0x080)</td>
+<td>0x02</td>
+<td><abbr class="gl" tabindex="0" title="Inter-IC sound: the bus audio samples travel on between chips." data-more="../dev/glossary.html#t-i2s">I2S</abbr> slave (reset default), all audio paths off</td>
+</tr>
+<tr>
+<td>17</td>
+<td>AUDIO_BUFFER_CLR (0x084)</td>
+<td>0x03</td>
+<td>clear <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">vocoder</abbr> encode and decode buffers</td>
+</tr>
+<tr>
+<td>18</td>
+<td>sync words (2.2)</td>
+<td>as listed</td>
+<td>DMR syncs</td>
+</tr>
+<tr>
+<td>19</td>
+<td>THRESHOLD_VALUE</td>
+<td>0x0978786F</td>
+<td>sync detection</td>
+</tr>
+<tr>
+<td>20</td>
+<td>PI_CRC_MASK, RS_H_MASK, RS_H_INIT, RS_T_MASK, RS_T_INIT, CSBK_CRC_MASK, MBCH_CRC_MASK, DATAH_CRC_MASK</td>
+<td>0x6969, 0x969696, 0, 0x999999, 0, 0xA5A5, 0xAAAA, 0xCCCC</td>
+<td><abbr class="gl" tabindex="0" title="European Telecommunications Standards Institute, which publishes the DMR standard." data-more="../dev/glossary.html#t-etsi">ETSI</abbr> masks; the chip then computes those CRCs/RS itself</td>
+</tr>
+<tr>
+<td>21</td>
+<td>0x370, 0x374, 0x378, 0x37C</td>
+<td>0xF0, 0x1FF, 0x10F, 0</td>
+<td>undocumented</td>
+</tr>
+<tr>
+<td>22</td>
+<td>CRC8_INIT, VOICE_EMB_CTRL, SCRAMBLE_REG</td>
+<td>0, 0, 0</td>
+<td></td>
+</tr>
+<tr>
+<td>23</td>
+<td>SYS_INTERP_MASK</td>
+<td>0x1187F</td>
+<td>enable layer-2 TX/RX processing, late entry, deframe, short <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr>, slot abnormal, PHY, PHY slot abnormal</td>
+</tr>
+<tr>
+<td>24</td>
+<td>LAYER2_SLOT_PRE</td>
+<td>0x551010</td>
+<td>processing-interrupt advance</td>
+</tr>
+<tr>
+<td>25</td>
+<td>0x168</td>
+<td>0x14</td>
+<td>undocumented</td>
+</tr>
+<tr>
+<td>26</td>
+<td>RF_RECV_DELAY</td>
+<td>0x36B0</td>
+<td>1.4 ms receive path delay</td>
+</tr>
+<tr>
+<td>27</td>
+<td>RX_IF_FREQ, TX_IF_FREQ</td>
+<td>0x0BB800 each</td>
+<td></td>
+</tr>
+<tr>
+<td>28</td>
+<td>RECV_MS_SYNC_H, RECV_BS_SYNC_H</td>
+<td>set bit 31</td>
+<td>undocumented enable</td>
+</tr>
+<tr>
+<td>29</td>
+<td>RF_CONTROL</td>
+<td>0x00041F1A</td>
+<td><abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> TX interrupt 3.1 ms early; b20:16 (<code>tx_pre_on</code>) and b13:8 (<code>rf_tx_lead</code>) are the board's (2.1)</td>
+</tr>
+<tr>
+<td>30</td>
+<td>WORK_MODE</td>
+<td>0x80</td>
+<td>start in FM (idle)</td>
+</tr>
+<tr>
+<td>31</td>
+<td>FM_TONE1..4</td>
+<td>0x05930629, 0x06D10787, 0x09AC0AB0, 0x0BD10D10</td>
+<td><abbr class="gl" tabindex="0" title="Dual tone multi frequency: the touch tones a keypad sends, in the audio." data-more="../user/22-glossary.html#t-dtmf">DTMF</abbr> tone steps (section 8)</td>
+</tr>
+<tr>
+<td>32</td>
+<td>GCR_ADCL</td>
+<td>mic gain or 0x80</td>
+<td>DMR mic gain setting</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="5-entering-dmr-and-starting-receive">5. Entering DMR and starting receive</h2>
+<h3 id="51-enter-dmr-from-fm-or-idle-also-at-every-dmr-tx-start">5.1 Enter DMR (from FM or idle; also at every DMR TX start)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Register</th>
+<th>Value</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>RF_MOD_BIAS_CTRL</td>
+<td>((cal + 384) &lt;&lt; 16) or modcal(f_TX)</td>
+<td>balance for this <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> frequency</td>
+</tr>
+<tr>
+<td>2</td>
+<td>GCR_ADCL</td>
+<td><abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> mic gain or 0x80</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>DAC_PD_CTRL</td>
+<td>clear bit 1</td>
+<td><strong><abbr class="gl" tabindex="0" title="Power amplifier: the stage that boosts the transmit signal to the output power." data-more="../dev/glossary.html#t-pa">PA</abbr> drive <abbr class="gl" tabindex="0" title="Digital to analog converter." data-more="../dev/glossary.html#t-dac">DAC</abbr> back on</strong> (FM <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> powers it down; without this, DMR after FM has no PA drive)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>WORK_MODE</td>
+<td>0x80</td>
+<td>pass through FM: resets the DMR state machine</td>
+</tr>
+<tr>
+<td>5</td>
+<td>WORK_MODE</td>
+<td>0x6E</td>
+<td>DMR, <abbr class="gl" tabindex="0" title="The conventional DMR tier of the standard (TS 102 361-2): repeaters and direct mode without trunking." data-more="../dev/glossary.html#t-tier-ii">Tier II</abbr>, <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr>, layer 2</td>
+</tr>
+</tbody>
+</table></div>
+<p>AUDIO_CONTROL is not rewritten here; after FM it ends up 0x00 once FM audio is switched off.</p>
+<h3 id="52-start--restart-receive">5.2 Start / restart receive</h3>
+<p>Used at DMR entry, after TX through a repeater (direct: 5.2a), after a stalled transmission, at a new DMR frequency (the radio core calls <code>rx_restart</code> then, <code>gotchas.md</code> 17.2) and wherever reception must be (re)acquired:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Register</th>
+<th>Value</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>(enter DMR, 5.1)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>VOICE_EMB_CTRL</td>
+<td>0x02</td>
+<td>burst F <abbr class="gl" tabindex="0" title="Embedded signaling: the 32 bits in the middle of a voice burst that carry link control." data-more="../dev/glossary.html#t-emb">EMB</abbr> from the chip's encoder</td>
+</tr>
+<tr>
+<td>3</td>
+<td>LAYER2_CONTROL</td>
+<td>0xC0</td>
+<td>TX/RX enabled, passive timing</td>
+</tr>
+<tr>
+<td>4</td>
+<td>LAYER2_SLOTON</td>
+<td>0x00</td>
+<td>drop slot establishment</td>
+</tr>
+<tr>
+<td>5</td>
+<td>LAYER2_TXRX_CTRL</td>
+<td>0x800000</td>
+<td>release RX slot sync</td>
+</tr>
+<tr>
+<td>6</td>
+<td>LAYER2_TXRX_CTRL</td>
+<td>0x40</td>
+<td>receive in the next slot</td>
+</tr>
+<tr>
+<td>7</td>
+<td>LAYER2_SLOTON</td>
+<td>0x05</td>
+<td>dll_rx_slot_on and dll_tx_slot_on</td>
+</tr>
+</tbody>
+</table></div>
+<p>A sequence of TXRX 0xC00000, 0, 0xC00000, 0x8040 with no SLOTON writes, or a busy wait in the <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr> probe, does not acquire sync reliably. Use this one everywhere.</p>
+<p>A restart also forgets what was heard: the polite-access busy window (<code>dmr-modem.md</code>) starts again with the next burst taken. Polite access ages the last decoded activity by <code>now_us</code>, with a 360 ms window, independently of timeslot interrupts. Every usable burst refreshes the window, including one later dropped by the slot or <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> filter; unusable deframes do not. The own-color-code and all-activity policies retain their existing color-code checks.</p>
+<p>Receive recovery uses wall time too, from both the timeslot handler and the task poll: more than 390 ms without another usable burst, 600 ms of stale activity without a usable burst, or 150 ms after a direct TX hold. A restart clears the pending recovery; subsequent slot interrupts, deframes or abnormal-slot reports schedule it again, and the 600 ms count starts with the first of them, not at the restart (after a long silence, a count from the restart would restart the receiver under the next call's first burst). A silent receiver is not restarted repeatedly. This permits recovery when timeslot interrupts stop but system interrupts continue. Host register-model tests cover stopped timeslot interrupts.</p>
+<h3 id="52a-end-of-a-direct-transmission-the-hold">5.2a End of a direct transmission: the hold</h3>
+<p>The end of a transmission comes on the TX tick a slot after our terminator, about 25 ms into the next slot. A direct
+answer in the other timeslot, right after our terminator (30 ms after its start), is then already being received, and a 5.2
+restart there makes the chip report it with <abbr class="gl" tabindex="0" title="Base station: the repeater or modem side of a DMR link, as opposed to the radio (MS)." data-more="../dev/glossary.html#t-bs">BS</abbr> sync and, on some radios, a header CRC error (<code>gotchas.md</code> 2.10). So
+a direct transmission ends without the restart:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Register</th>
+<th>Value</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>LAYER2_CONTROL</td>
+<td>0xC0</td>
+<td>passive timing from our active one; the slot syncs stay where our transmission left them</td>
+</tr>
+<tr>
+<td>2</td>
+<td>LAYER2_TXRX_CTRL</td>
+<td>0x40</td>
+<td>receive the next slot</td>
+</tr>
+</tbody>
+</table></div>
+<p>The software state is reset as at a restart (the polite busy window too). A burst taken holds the receiver as any
+reception does; with none, the 5.2 restart comes once 5 slots (150 ms) have passed with nothing taken, so a station
+on a timing of its own is taken after that. Through a repeater the restart stays at once: the next transmission
+needs a new <abbr class="gl" tabindex="0" title="TDMA channel: the TACT bit that names the timeslot, so a radio can tell TS1 from TS2." data-more="../dev/glossary.html#t-tc">TC</abbr> lock (issue 72). Diagnostics: <code>rs restarts/lost/stale h holds</code>.</p>
+<p>The <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> has the same window. An answer in our own timeslot comes one frame later, 60 ms after the start of our
+terminator (a <abbr class="gl" tabindex="0" title="Motorola&#x27;s DMR product line. Its extensions (ARS, TMS, LRRP, Capacity Plus) are not in the ETSI standard." data-more="../user/22-glossary.html#t-mototrbo">MOTOTRBO</abbr> portable's link <abbr class="gl" tabindex="0" title="Acknowledgment: the reply that says a message arrived." data-more="../dev/glossary.html#t-ack">ACK</abbr> to <abbr class="gl" tabindex="0" title="DMR packet data the receiving radio acknowledges. What didn&#x27;t arrive is sent again." data-more="../user/22-glossary.html#t-confirmed-data">confirmed data</abbr>), and a receive set-up by the board then (idle,
+synthesizer, receive) misses it. The radio core ends a DMR transmission through <code>hal_radio_t.dmr_tx_end</code>, which the
+glue implements (<code>hrc_dmr_tx_end</code>): when the last burst's switch put the RF back to receive, the board's <code>tx_end</code>
+(<code>hrc_dmr_board_t</code>) ends the transmission and leaves the RF as it is if it is on the last <code>rx()</code> settings (frequency,
+trim, awake). Otherwise, and on a board without <code>tx_end</code>, the core calls <code>tx_off()</code> (<code>gotchas.md</code> 3.14).</p>
+<p>On the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench (an <abbr class="gl" tabindex="0" title="Mobile station: the radio, as opposed to the base station (BS)." data-more="../dev/glossary.html#t-ms">MS</abbr> simulator answering a confirmed packet with MS sync, 4-6 sends per case):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Answer after the start of our terminator</th>
+<th>Restart at the end</th>
+<th>Hold</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30 ms</td>
+<td>3 of 6 sends, retries; the ACK reported with BS sync</td>
+<td>4 of 4 first try, MS sync</td>
+</tr>
+<tr>
+<td>60 ms</td>
+<td>4 of 4</td>
+<td>4 of 4</td>
+</tr>
+<tr>
+<td>90 ms</td>
+<td>4 of 4</td>
+<td>4 of 4</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="53-while-receiving">5.3 While receiving</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>System interrupt, bit 3 (deframe) while idle, good CRC, wanted CC</td>
+<td>start following: TXRX_CTRL = 0x40 for the next slot (0x8040 here does not work)</td>
+</tr>
+<tr>
+<td>Each TX/RX timeslot interrupt while following one slot</td>
+<td>alternate: our slot → TXRX = 0x8040 (receive, voice-access flag) for the next; other slot → 0x00</td>
+</tr>
+<tr>
+<td>RadioFoundry: each RX timeslot interrupt</td>
+<td>TXRX = 0x8040 for the coming chip slot when a voice header or voice burst came on it in the last 390 ms (no terminator since), else 0x40. Both slots can have it: an <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="sfr.html">SFR</abbr> user hears the talker and the repeat. Without the flag the chip leaves the voice <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> as it was, and the burst reads the last one decoded (gotchas 14.15)</td>
+</tr>
+<tr>
+<td>Voice deframe</td>
+<td>read RX_TYPE_INFO, 27 bytes from the voice RAM; burst number from bits 14:12; <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr> header / terminator / <abbr class="gl" tabindex="0" title="Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control." data-more="dmr-data.html">CSBK</abbr> / data from the RX RAM</td>
+</tr>
+<tr>
+<td>BS sync received (recv_sync_type 1)</td>
+<td>the other side is a repeater: track the TC bit (RX_TYPE_INFO b22) to find which slot is ours. Locked after 4 bursts in a row, one per slot, with TC alternating; held while a burst came in the last 390 ms. RX_TYPE_INFO b19 and LAYER2_STATUS b30/b31 are not usable for this</td>
+</tr>
+<tr>
+<td>Any color code</td>
+<td>no CC filter: LOCAL_CC cc_opt = 1 deframes every code, RX_TYPE_INFO b7:4 gives the code heard, and RF_MODE b12 is 0 (fixed sync threshold, as cc_opt 1 requires). The receiver restarts at the end of a reception as with a filter. A scan stepping LOCAL_CC through the codes heard nothing on the SDR bench: it stepped at timeslot interrupts, and they stop while the chip hears a code it doesn't deframe</td>
+</tr>
+<tr>
+<td>Late entry (bit 2)</td>
+<td>embedded LC is in the RX RAM; voice reception should start at the next burst A</td>
+</tr>
+<tr>
+<td>End</td>
+<td>terminator (data type 2) or loss of bursts; TXRX_CTRL = 0</td>
+</tr>
+<tr>
+<td>Reception over (nothing taken for 390 ms)</td>
+<td>the 5.2 restart: the chip drops the sender's slot timing and its timeslot interrupts stop</td>
+</tr>
+<tr>
+<td>Slot timing with nothing usable for 600 ms</td>
+<td>the 5.2 restart, again every 600 ms while it lasts. Without it the chip kept a departed sender's timing, reported only unusable and abnormal slots and took no later call (measured)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="54-the-receive-tap">5.4 The receive tap</h3>
+<p>In layer 2 mode the RX RAM also holds each burst received as bits, not documented (measured):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Where</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RX 0x30-0x53, RX 0x60-0x83</td>
+<td>one burst each, 288 hard bits in the <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> layout (<a href="hrc6000-registers.html">hrc6000-registers.md</a> 2.2): the <abbr class="gl" tabindex="0" title="Common announcement channel: 24 bits ahead of each burst a repeater sends. It carries the slot number and short link control." data-more="../dev/glossary.html#t-cach">CACH</abbr> (24), then the burst deframed, a voice-layout burst's 48-bit sync / EMB / <abbr class="gl" tabindex="0" title="Reverse channel: signaling the receiver sends back to the transmitter during a call, in space the burst leaves free." data-more="../dev/glossary.html#t-rc">RC</abbr> field first. Which area takes which slot follows RX_TYPE_INFO b19, not the CACH TC</td>
+</tr>
+<tr>
+<td>RX 0x48, RX 0x1C8</td>
+<td>the soft values of those two bursts without the CACH, one byte per bit, bits 5-0; the hard bit is 32 or more</td>
+</tr>
+</tbody>
+</table></div>
+<p>The first area's soft values overwrite the start of the second area, its CACH and field among them: that burst's
+field is read from its soft values at 0x1C8. The engine reads the tap after a slot it listened to while sending, for a
+BS's dedicated RC burst, which the chip doesn't report (<a href="dmr-modem.html">dmr-modem.md</a>, reverse channel).</p>
+<p>While we send through a repeater, the chip hears it in only some of the listen slots (measured, the RF back on the
+receive frequency after each burst). In some overs it gives the BS's bursts, typed or not, and the tap fills; in
+others it gives about one deframe a second and the tap areas don't change for seconds. So the modem says
+<code>tx_listen_gaps</code>: an RC is caught when heard, and silence is not a repeater drop. LAYER2_SLOTON stays 0 there (5.3).
+With b2 dll_rx_slot_on set while sending, the chip heard the BS in every listen slot (222 of 224), but the repeater
+decoded none of our voice bursts: set once, it took the header only; set for each listen slot and cleared before ours,
+nothing at all. 0x05, set once or per slot, changed nothing. While we send, the second area's
+soft values are 7-bit signed, a dibit's first bit in the sign (b6); a BS sync read that way matched in all 24 first
+bits.</p>
+<hr />
+<h2 id="6-transmit-sequences">6. Transmit sequences</h2>
+<p>LOCAL_CC keeps the <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> code during an aligned start's <abbr class="gl" tabindex="0" title="TDMA channel: the TACT bit that names the timeslot, so a radio can tell TS1 from TS2." data-more="../dev/glossary.html#t-tc">TC</abbr> lock wait. Once locked, or at an unaligned start,
+the driver writes the channel's <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> code in bits 3:0 and keeps it through the final burst. After TX it restores
+the receive filter or scan code. A receive filter changed during TX takes effect when TX finishes.</p>
+<p>All transmit actions happen in the <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr> interrupts: the <abbr class="gl" tabindex="0" title="Central processing unit." data-more="../dev/glossary.html#t-cpu">CPU</abbr> arms one slot at a time with TXRX_CTRL = 0x80 and
+leaves the other slot unused (0x00, or 0x40 / 0x8040 to listen: <code>tx_listen</code>, an <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="sfr.html">SFR</abbr>'s inbound slot), giving one burst per 60 ms in its timeslot (datasheet figures 99–100). Every arming also starts the <abbr class="gl" tabindex="0" title="Power amplifier: the stage that boosts the transmit signal to the output power." data-more="../dev/glossary.html#t-pa">PA</abbr> <abbr class="gl" tabindex="0" title="A talk target used for one call and its reply window." data-more="../user/22-glossary.html#t-one-shot">one-shot</abbr> of a board without burst sequences (3.1a). The <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> TX interrupt that follows keys the RF
+chip.</p>
+<h3 id="61-start-of-transmission">6.1 Start of transmission</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>When</th>
+<th>Register writes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>task level, PTT</td>
+<td>load the <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr> (9 bytes, then 3 zero bytes) into TX <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> 0x16000000; codec reset; LAYER2_CONTROL = <strong>0xC3</strong> (active timing, we own the slot clock); TXRX_CTRL = 0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>next timeslot interrupt</td>
+<td>TXRX_CTRL = 0x80, SEND_TYPE = 0x10 (LC header)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>next</td>
+<td>TXRX_CTRL = 0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>next</td>
+<td>TXRX_CTRL = 0x80, SEND_TYPE = 0x10 (second header)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>next</td>
+<td>TXRX_CTRL = 0</td>
+</tr>
+<tr>
+<td>6</td>
+<td>next</td>
+<td>TXRX_CTRL = 0x80, SEND_TYPE = 0x10 (third header)</td>
+</tr>
+</tbody>
+</table></div>
+<p>TXRX_CTRL bit 31 (tx_complete_cpu) belongs to continuous mode and must not be set at step 2. For a direct-mode start after receiving on a repeater channel the same LAYER2_CONTROL = 0xC3 applies.</p>
+<h3 id="62-voice">6.2 Voice</h3>
+<p>Alternating slots: in the inactive slot TXRX_CTRL = 0; in the active slot:</p>
+<ol>
+<li>For burst A (n = 0): rewrite the call LC (or <abbr class="gl" tabindex="0" title="A short text, usually a callsign and name, sent along with DMR voice." data-more="../user/22-glossary.html#t-talker-alias">talker alias</abbr> LC) into TX RAM bytes 0–8 for the embedded LC.</li>
+<li>Write 27 bytes of <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE</abbr> (three 9-byte frames) to the voice RAM 0x16000960, or the AMBE silence pattern when no
+encoded audio is ready.</li>
+<li>TXRX_CTRL = 0x80, SEND_TYPE = 0x08 + (n &lt;&lt; 4) (+ <abbr class="gl" tabindex="0" title="Link control start/stop: the 2-bit field of a burst&#x27;s embedded signaling that says which fragment it carries." data-more="../dev/glossary.html#t-lcss">LCSS</abbr>, see 2.6); n = n + 1 modulo 6.</li>
+</ol>
+<p>Encoded audio must be produced continuously during TX: encode one 20 ms block per tick whenever two <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> buffers are waiting.</p>
+<h3 id="63-terminator-and-back-to-receive">6.3 Terminator and back to receive</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Slot</th>
+<th>Writes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>active</td>
+<td>voice RAM = silence; TX RAM = LC; TXRX_CTRL = 0x80; SEND_TYPE = 0x20</td>
+</tr>
+<tr>
+<td>2</td>
+<td>next</td>
+<td><abbr class="gl" tabindex="0" title="DMR radio to radio on one frequency, with no repeater. The standard calls it DMO." data-more="../dev/glossary.html#t-direct-mode">direct mode</abbr>: done → idle (RadioFoundry: the 5.2a hold). <abbr class="gl" tabindex="0" title="DMR through a repeater, which receives on one frequency and transmits on another. The standard calls it RMO." data-more="../dev/glossary.html#t-repeater-mode">Repeater mode</abbr>: LAYER2_CONTROL = 0xC0, TXRX_CTRL = 0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>next (repeater mode)</td>
+<td>TXRX_CTRL = <strong>0x40</strong> (receive next slot) → receiving</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="64-data-and-csbk">6.4 Data and CSBK</h3>
+<p>Per burst, in an active slot: write the payload to TX RAM (10 bytes for <abbr class="gl" tabindex="0" title="Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control." data-more="dmr-data.html">CSBK</abbr> / <abbr class="gl" tabindex="0" title="Multi block control: a DMR signaling message that spans several bursts." data-more="../dev/glossary.html#t-mbc">MBC</abbr> header / data header: the chip
+appends the CRC-16 with the programmed mask because SEND_TYPE b8 = 0; 12 / 18 / 24 bytes for rate ½ / ¾ / 1 blocks,
+CRC-9 and CRC-32 computed by the CPU), SEND_TYPE = data type &lt;&lt; 4, TXRX_CTRL = 0x80, start the PA one-shot. Inactive
+slot: TXRX_CTRL = 0 (or 0x40 to listen for a response). Sequence for a packet: data header (0x60), blocks
+(0x70/0x80/0xA0), optional terminator. CSBK signaling: optional preamble CSBKs then the function CSBK, all 0x30
+(datasheet appendices B, C). Open RX afterwards to catch the response.</p>
+<p><strong>Rate 3/4 blocks don't decode.</strong> The chip's trellis encoder doesn't start each rate 3/4 block in state 0
+(TS 102 361-1 B.2.2). A block re-encodes bit for bit from the CPU's 18 octets with start state 4 or 7, varying
+between blocks and tries, and sometimes one more info bit differs in the second constellation point. A receiver that
+starts its decoder in state 0, as the standard has it, takes the wrong path through the first tribits: octets 0-1 (a
+confirmed block's DBSN and CRC-9) come out wrong, and the packet fails. Rate 1/2 blocks, headers and CSBKs are
+sent exactly. SEND_TYPE b8 makes no difference, and the register map has no encoder reset. The glue sets
+<code>hal_dmr_modem_t.tx_rate34_bad</code>, so the core sends no rate 3/4 of its own: confirmed IP goes at rate 1/2
+(<a href="dmr-data.html">dmr-data.md</a> 12.9). Rate 3/4 blocks the radio relays (<abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr>, repeater) keep their rate and
+have the same fault.</p>
+<h3 id="65-bs-activation-repeater-wake">6.5 BS activation (repeater wake)</h3>
+<p>No layer-3 <abbr class="gl" tabindex="0" title="Base station: the repeater or modem side of a DMR link, as opposed to the radio (MS)." data-more="../dev/glossary.html#t-bs">BS</abbr> activation: LAYER2_BS_MODE, BS_* registers and WORK_MODE values 0x73/0x76/0x77 are not used. What they do when written is in 2.9 (measured).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>When</th>
+<th>Writes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>PTT on a repeater channel with no repeater heard</td>
+<td>codec reset; LAYER2_CONTROL = 0xC3</td>
+</tr>
+<tr>
+<td>2</td>
+<td>timeslot interrupt</td>
+<td>TX RAM bytes 0–11: 0xB8 (last block, <abbr class="gl" tabindex="0" title="CSBK opcode: the field of a CSBK that says its kind." data-more="../dev/glossary.html#t-csbko">CSBKO</abbr> 0x38 <abbr class="gl" tabindex="0" title="The CSBK that tells a repeater to start transmitting. It wakes a repeater." data-more="../dev/glossary.html#t-bs-dwn-act">BS_Dwn_Act</abbr>), <abbr class="gl" tabindex="0" title="Feature set ID: the byte that says whether a message is standard or manufacturer specific." data-more="../dev/glossary.html#t-fid">FID</abbr> 0, bytes 2–6 = 0 (BS address 0), bytes 7–9 = own ID big endian, bytes 10–11 = 0; SEND_TYPE = 0x30; TXRX_CTRL = 0x80; <strong>start the PA one-shot</strong>; red <abbr class="gl" tabindex="0" title="Light-emitting diode: the radio&#x27;s status light." data-more="../user/22-glossary.html#t-led">LED</abbr></td>
+</tr>
+<tr>
+<td>3</td>
+<td>next timeslot interrupt</td>
+<td><strong>SEND_TYPE = 0x30, TXRX_CTRL = 0x80 again</strong>: the same CSBK in the immediately following slot; wake response timeout 600 ms</td>
+</tr>
+<tr>
+<td>4</td>
+<td>next</td>
+<td>go to receive (5.2), count TC toggles</td>
+</tr>
+<tr>
+<td>5</td>
+<td>while waiting</td>
+<td>when the received TC has toggled correctly 4 times → repeater awake, start 6.1; otherwise retry from step 2 after 600 ms, give up after a few tries</td>
+</tr>
+</tbody>
+</table></div>
+<p>One CSBK without keying the PA gives only an unmodulated carrier. The PA one-shot and the second consecutive CSBK
+make repeater wake work (which of the two matters is not known).</p>
+<hr />
+<h2 id="7-crc-and-fec-the-chip-does">7. CRC and FEC the chip does</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Burst</th>
+<th>Chip adds</th>
+<th><abbr class="gl" tabindex="0" title="Central processing unit." data-more="../dev/glossary.html#t-cpu">CPU</abbr> supplies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LC header, terminator</td>
+<td>RS(12,9) with RS_H_MASK / RS_T_MASK, <abbr class="gl" tabindex="0" title="Block product turbo code: the error correction on DMR headers and control blocks." data-more="../dev/glossary.html#t-bptc">BPTC</abbr>(196,96), slot type Golay</td>
+<td>9 <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr> bytes</td>
+</tr>
+<tr>
+<td>CSBK, MBC header, data header, PI header</td>
+<td>CRC-16 with the programmed mask (when SEND_TYPE b8 = 0), BPTC, slot type</td>
+<td>10 bytes</td>
+</tr>
+<tr>
+<td>Rate ½ / ¾ / 1 data</td>
+<td>BPTC / trellis ¾ / none, slot type</td>
+<td>12 / 18 / 24 bytes including CRC-9 and the final CRC-32</td>
+</tr>
+<tr>
+<td>Voice</td>
+<td>sync / <abbr class="gl" tabindex="0" title="Embedded signaling: the 32 bits in the middle of a voice burst that carry link control." data-more="../dev/glossary.html#t-emb">EMB</abbr> (QR), embedded LC fragments (5-bit checksum from <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> byte 9 or computed), burst F EMB from the <abbr class="gl" tabindex="0" title="Reverse channel: signaling the receiver sends back to the transmitter during a call, in space the burst leaves free." data-more="../dev/glossary.html#t-rc">RC</abbr> encoder when VOICE_EMB_CTRL b1 = 1</td>
+<td>27 <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE</abbr> bytes; LC for burst A</td>
+</tr>
+<tr>
+<td>Short LC (CACH)</td>
+<td>CRC-8 (CRC8_INIT)</td>
+<td><abbr class="gl" tabindex="0" title="DMR through a repeater, which receives on one frequency and transmits on another. The standard calls it RMO." data-more="../dev/glossary.html#t-repeater-mode">repeater mode</abbr> only</td>
+</tr>
+</tbody>
+</table></div>
+<p>On <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> the chip checks the same codes and reports them in RX_TYPE_INFO b30:24; it decodes <abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="../dev/glossary.html#t-fec">FEC</abbr> and leaves only
+information bits in the RX RAM.</p>
+<hr />
+<h2 id="8-fm-mode">8. FM mode</h2>
+<h3 id="81-registers">8.1 Registers</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Register</th>
+<th>Fields</th>
+<th>Values used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x500</td>
+<td>FM_BANDWIDTH</td>
+<td>b6 band-pass on; b4 pre-emphasis; b3 <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> 25 kHz; b2 adjacent-channel filter 25 kHz; b1 <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> 25 kHz; b0 <abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-ctcss">CTCSS</abbr> RX 25 kHz</td>
+<td>TX: 0x5F (25 kHz), 0x50 (12.5 kHz). RX: 0x4F (25 kHz), 0x40 (12.5 kHz)</td>
+</tr>
+<tr>
+<td>0x504</td>
+<td>FM_DEV_COEF</td>
+<td>b23:16 TX limiter (<code>tr_sig_lim</code>, reset 0x0F), b15:8 RX deviation coefficient, b7:0 TX deviation coefficient</td>
+<td>0x40A20 (25 kHz), 0x40A25 (12.5 kHz); the limiter is the board's (<code>hrc7000_t.fm_tx_limit</code>, 0 = 4)</td>
+</tr>
+<tr>
+<td>0x508</td>
+<td>FM_SQL</td>
+<td>b15:0 noise measure: higher = less signal</td>
+<td>squelch threshold in software</td>
+</tr>
+<tr>
+<td>0x50C</td>
+<td>SUBVOICE_COEF</td>
+<td>b27:16 detector sample depth (default 0x7D0), b15:8 sub-audio / <abbr class="gl" tabindex="0" title="Dual tone multi frequency: the touch tones a keypad sends, in the audio." data-more="../user/22-glossary.html#t-dtmf">DTMF</abbr> deviation, b7:0 detection threshold</td>
+<td>DTMF deviation (8.3)</td>
+</tr>
+<tr>
+<td>0x510</td>
+<td>FM_MOD</td>
+<td>b23:16 repeat-symbol threshold; b15:14 XTCSS length; b13:12 CTCSS reverse-burst mode (01 = 240°, 10 = 180°); b11 CDCSS TX invert; b10 CDCSS RX invert; b9 CDCSS turn-off code; b8 XTCSS EOM; b4 selcall; <strong>b3 CTCSS; b2 CDCSS; b1 DTMF</strong>; b0 XTCSS</td>
+<td></td>
+</tr>
+<tr>
+<td>0x518</td>
+<td>CTCSS_ADDR</td>
+<td>b15:8 RX tone address, b7:0 TX tone address (table 8.2)</td>
+<td></td>
+</tr>
+<tr>
+<td>0x51C</td>
+<td>USER_DEFINE_CTC</td>
+<td>b31 enable, b20:0 step = round(f × 65.536)</td>
+<td>non-standard tones</td>
+</tr>
+<tr>
+<td>0x520</td>
+<td>CDCSS_ADDR</td>
+<td>b24:16 RX code, b8:0 TX code (the 9-bit <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-dcs">DCS</abbr> code as binary, e.g. 114 octal = 001 001 100). The TX code is taken when FM_PTT goes on; later writes don't change the code on air (measured: written after FM_PTT, the radio sent the previous code)</td>
+<td></td>
+</tr>
+<tr>
+<td>0x524</td>
+<td>SELCALL_TONE</td>
+<td>2/5-tone frequency</td>
+<td></td>
+</tr>
+<tr>
+<td>0x528</td>
+<td>TONE_SEND_CTRL</td>
+<td>b9 selcall send; b8 selcall finish; <strong>b7 dtmf_send; b6 dtmf_finish (0 mutes voice during signaling); b3:0 DTMF digit</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>0x550–0x55C</td>
+<td>FM_TONE1..4</td>
+<td>two 16-bit DTMF tone steps each</td>
+<td>8.3</td>
+</tr>
+<tr>
+<td>0x560</td>
+<td>FM_PTT</td>
+<td>b0 FM transmit</td>
+<td>1 in FM TX, 0 in FM RX</td>
+</tr>
+<tr>
+<td>0x564 / 0x568</td>
+<td>FM_DECODE_FLAG1 / 2</td>
+<td>FLAG2: b11:8 DTMF digit received; <strong>b1 CDCSS detected; b0 CTCSS detected</strong>; XTCSS flags</td>
+<td>sub-audio squelch</td>
+</tr>
+<tr>
+<td>0x530–0x54C</td>
+<td>FM_FUNCTION_COEF1..8</td>
+<td>detector coefficients, 2·cos(2πf / fs)·2^22 (fs 32 kHz for DTMF, 8 kHz for custom CTCSS)</td>
+<td></td>
+</tr>
+<tr>
+<td>0x080</td>
+<td>AUDIO_CONTROL</td>
+<td>b31 prompt <abbr class="gl" tabindex="0" title="First in, first out: a queue of data between a producer and a consumer." data-more="../dev/glossary.html#t-fifo">FIFO</abbr> full; b7 prompt path; <strong>b6 FM audio to speaker</strong>; b5 CPU-fed speaker <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr>; b4 mic PCM to <abbr class="gl" tabindex="0" title="Central processing unit." data-more="../dev/glossary.html#t-cpu">CPU</abbr>; b3 sidetone; b2 <abbr class="gl" tabindex="0" title="Inter-IC sound: the bus audio samples travel on between chips." data-more="../dev/glossary.html#t-i2s">I2S</abbr> select; b1 I2S slave (reset 1); b0 voice source (0 codec, 1 TX <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr>), FM transmit included (8.4)</td>
+<td></td>
+</tr>
+<tr>
+<td>0x56C</td>
+<td>FM_ADDR_SW</td>
+<td>1 = low half, 2 = high half of the TX / RX RAM audio buffer in use (8.4)</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="82-fm-entry-sequences">8.2 FM entry sequences</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Writes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FM receive</td>
+<td>FM_BANDWIDTH and FM_DEV_COEF for the bandwidth; FM_PTT = 0; AUDIO_CONTROL = 0x40; GCR_DACL = 0x80 with the board's line out gain (<code>hrc7000_set_dac_gain</code>, 0 dB unless a soft volume set it); DAC_PD_CTRL bit 1 set (<abbr class="gl" tabindex="0" title="Power amplifier: the stage that boosts the transmit signal to the output power." data-more="../dev/glossary.html#t-pa">PA</abbr> drive <abbr class="gl" tabindex="0" title="Digital to analog converter." data-more="../dev/glossary.html#t-dac">DAC</abbr> off); WORK_MODE = 0x80</td>
+</tr>
+<tr>
+<td>FM transmit</td>
+<td>FM_BANDWIDTH and FM_DEV_COEF for the bandwidth; DAC_PD_CTRL bit 1 cleared; WORK_MODE = 0x80; FM_PTT = 1. Board: mic switch to analog, <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> chip to TX, PA select, DAC B drive</td>
+</tr>
+<tr>
+<td>FM audio on / off in DMR context</td>
+<td>AUDIO_CONTROL b6 set and WORK_MODE = 0x80 / b6 cleared and WORK_MODE = 0x6E</td>
+</tr>
+<tr>
+<td>Mute mic / line out</td>
+<td>codec CR_ADC b7 / CR_DAC b7 = 1</td>
+</tr>
+</tbody>
+</table></div>
+<p>Standard CTCSS addresses (datasheet table 59; RX uses the same addresses in CTCSS_ADDR b15:8):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Addr</th>
+<th>Hz</th>
+<th>Addr</th>
+<th>Hz</th>
+<th>Addr</th>
+<th>Hz</th>
+<th>Addr</th>
+<th>Hz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x01</td>
+<td>67.0</td>
+<td>0x0E</td>
+<td>107.2</td>
+<td>0x1B</td>
+<td>167.9</td>
+<td>0x28</td>
+<td>62.5</td>
+</tr>
+<tr>
+<td>0x02</td>
+<td>71.9</td>
+<td>0x0F</td>
+<td>110.9</td>
+<td>0x1C</td>
+<td>173.8</td>
+<td>0x29</td>
+<td>159.8</td>
+</tr>
+<tr>
+<td>0x03</td>
+<td>74.4</td>
+<td>0x10</td>
+<td>114.8</td>
+<td>0x1D</td>
+<td>179.9</td>
+<td>0x2A</td>
+<td>165.5</td>
+</tr>
+<tr>
+<td>0x04</td>
+<td>77.0</td>
+<td>0x11</td>
+<td>118.8</td>
+<td>0x1E</td>
+<td>186.2</td>
+<td>0x2B</td>
+<td>171.3</td>
+</tr>
+<tr>
+<td>0x05</td>
+<td>79.7</td>
+<td>0x12</td>
+<td>123.0</td>
+<td>0x1F</td>
+<td>192.8</td>
+<td>0x2C</td>
+<td>177.3</td>
+</tr>
+<tr>
+<td>0x06</td>
+<td>82.5</td>
+<td>0x13</td>
+<td>127.3</td>
+<td>0x20</td>
+<td>203.5</td>
+<td>0x2D</td>
+<td>183.5</td>
+</tr>
+<tr>
+<td>0x07</td>
+<td>85.4</td>
+<td>0x14</td>
+<td>131.8</td>
+<td>0x21</td>
+<td>210.7</td>
+<td>0x2E</td>
+<td>189.9</td>
+</tr>
+<tr>
+<td>0x08</td>
+<td>88.5</td>
+<td>0x15</td>
+<td>136.5</td>
+<td>0x22</td>
+<td>218.1</td>
+<td>0x2F</td>
+<td>196.6</td>
+</tr>
+<tr>
+<td>0x09</td>
+<td>91.5</td>
+<td>0x16</td>
+<td>141.3</td>
+<td>0x23</td>
+<td>225.7</td>
+<td>0x30</td>
+<td>199.5</td>
+</tr>
+<tr>
+<td>0x0A</td>
+<td>94.8</td>
+<td>0x17</td>
+<td>146.2</td>
+<td>0x24</td>
+<td>233.6</td>
+<td>0x31</td>
+<td>206.5</td>
+</tr>
+<tr>
+<td>0x0B</td>
+<td>97.4</td>
+<td>0x18</td>
+<td>151.4</td>
+<td>0x25</td>
+<td>241.8</td>
+<td>0x32</td>
+<td>229.1</td>
+</tr>
+<tr>
+<td>0x0C</td>
+<td>100.0</td>
+<td>0x19</td>
+<td>156.7</td>
+<td>0x26</td>
+<td>250.3</td>
+<td>0x33</td>
+<td>254.1</td>
+</tr>
+<tr>
+<td>0x0D</td>
+<td>103.5</td>
+<td>0x1A</td>
+<td>162.2</td>
+<td>0x27</td>
+<td>69.3</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>The address order is not ascending; map from frequency, not from a list index. Other tones: USER_DEFINE_CTC. TX
+sub-audio deviation via SUBVOICE_COEF b15:8 (typical 350 Hz narrow, 600 Hz wide). The FM_BANDWIDTH bits don't scale
+it: the reset value 0x28 gives 300 Hz CTCSS at both bandwidths, and RadioFoundry writes 0x50 at 25 kHz (600 Hz) (measured, <abbr class="gl" tabindex="0" title="Ultra high frequency: 300 MHz to 3 GHz. The amateur 70 cm band is UHF." data-more="../user/22-glossary.html#t-uhf">UHF</abbr>). DCS gets a third of the deviation from the same value (0x28: 100 Hz), and reads the field as signed:
+0xF0 sent the code inverted at about 40 Hz. RadioFoundry writes three times the CTCSS value for DCS, capped at 0x7F: 0x78 at
+12.5 kHz (305 Hz) and 0x7F at 25 kHz (323 Hz) (measured, UHF). The <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">boot stub</abbr>'s restart doesn't reset the modem, so the field
+keeps the last transmission's value; RadioFoundry's init writes 0x28 rather than reading it back (one board read 0xFF there
+after a 25 kHz transmission and sent CTCSS at 1.9 kHz deviation, measured). When FM_PTT drops, the chip sends
+the reverse burst / turn-off code before stopping. FM_MOD b9 (reset 1) enables the CDCSS turn-off: a 134.4 Hz
+tone. RadioFoundry sets b9 with DCS and, for the core's tail (<code>radio-features.md</code> 3.3a), drops FM_PTT while the RF stays
+keyed; FM_PTT on again resumes the code. On the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench: 134.4 Hz for 0.20 s, then the carrier without
+modulation until the core unkeys (measured). Unkeying together with FM_PTT, as before, put none of it on air. On a detected tone the FM signaling system interrupt fires
+(SYS_INTERP_LIST b13) and FM_DECODE_FLAG2 b0 (CTCSS) or b1 (CDCSS) goes 1, back to 0 at the end. CDCSS tail
+detection uses FM_FUNCTION_COEF1 = 0x7F499D (134.4 Hz).</p>
+<h3 id="83-dtmf-and-single-tones">8.3 DTMF and single tones</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tone step</td>
+<td>round(f × 2.048) (= f × 65536 / 32000)</td>
+</tr>
+<tr>
+<td>Default tone registers</td>
+<td>FM_TONE1 = 697 / 770 Hz (0x0593 / 0x0629), FM_TONE2 = 852 / 941 (0x06D1 / 0x0787), FM_TONE3 = 1209 / 1336 (0x09AC / 0x0AB0), FM_TONE4 = 1477 / 1633 (0x0BD1 / 0x0D10); high half = first tone</td>
+</tr>
+<tr>
+<td>DTMF deviation (SUBVOICE_COEF b15:8)</td>
+<td>Measured (UHF, 1750 Hz single tone): about 5.8 Hz per step, 0x60 = 559 Hz, 0xC0 = 1117 Hz; a value of 0x12 gives about 100 Hz. RadioFoundry uses 0xC0 at 12.5 kHz and 0xFF (the most, about 1.5 kHz) at 25 kHz, on both bands. <abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="../user/22-glossary.html#t-vhf">VHF</abbr> is unmeasured (a VHF value about 3.25 times the UHF one would match the ratio of the VHF to the UHF modulation calibration bytes, unverified; RadioFoundry applies those bytes per band and keeps the UHF values)</td>
+</tr>
+<tr>
+<td>Send sequence</td>
+<td>FM_MOD b1 = 1; FM_PTT = 1; TONE_SEND_CTRL b6 = 0 (mute voice); AUDIO_CONTROL b3 = 1 for sidetone; TONE_SEND_CTRL b3:0 = digit; b7 = 1 to start the digit, b7 = 0 to end it; repeat per digit; finally b6 = 1 to restore voice</td>
+</tr>
+<tr>
+<td>Sidetone (<code>hrc7000_tx_tone_side</code>)</td>
+<td>AUDIO_CONTROL b3 set while a tone is sent: the codec plays the tone the generator sends, so the speaker (amplifier on, source = codec) hears the start tone on air without the prompt path, which would reach the modulator. Used for the FM start tone set to speaker + air. Untested on the radio</td>
+</tr>
+<tr>
+<td>Arbitrary single tone</td>
+<td>write the tone step into the high halves of FM_TONE1 and FM_TONE3 and send DTMF digit &quot;1&quot; (697 + 1209 pair), restore the defaults after. On air at 1750 Hz (measured): TONE_SEND_CTRL = 0x81 (digit 1 on, voice muted) with FM_MOD b1 set, 0 afterwards (the reset value)</td>
+</tr>
+<tr>
+<td>RadioFoundry's DTMF (<code>hrc7000_tx_dtmf</code>, <code>radio-features.md</code> 3.7)</td>
+<td>the arbitrary-tone sequence with the low tone's step in FM_TONE1's high half and the high tone's in FM_TONE3's, digit &quot;1&quot; sent: one sequence for every digit and for single tones, without the digit codes of figure 95. The deviation is the single tone's (SUBVOICE_COEF b15:8, <code>hrc7000_dtmf_dev</code>); the chip attenuates the low tone 2.5 dB; on air the high tone is 5.0 dB over the low one for every digit on two boards (measured), so the datasheet's figure is likely 10 log of the amplitude ratio. That forward twist is the chip's design and isn't corrected: after a receiver's de-emphasis it is +0.4 to +2.1 dB (<code>radio-features.md</code> 3.7)</td>
+</tr>
+<tr>
+<td>Receive</td>
+<td>FM_MOD b1 = 1; SUBVOICE_COEF b27:16 = 1056 (33 ms at 32 kHz), b7:0 threshold; FM_FUNCTION_COEF1..8 = 0x7ECD9D, 0x7E8A34, 0x7E368C, 0x7DD245, 0x7C690D, 0x7B9F03, 0x7AA7A8, 0x7979F5; read FM_DECODE_FLAG2 b11:8 on each signaling interrupt; FM_MOD b23:16 sets the repeat-symbol window</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="84-prompt--beep-fifo">8.4 Prompt / beep FIFO</h3>
+<p>Set AUDIO_CONTROL b7, then while AUDIO_CONTROL b31 is 0 write 64 bytes (32 × 16-bit samples, low byte first, 8 kHz)
+to 0x16000980..0x160009BF; clear b7 when done (measured). High byte first (16 samples per push) sounds distorted. Flushing stale audio: fill with 0x7F bytes.</p>
+<p>RadioFoundry plays all speaker PCM through this FIFO (<code>platform/hrc7000/audio_pcm.c</code>). The CPU-fed speaker buffer at
+0x180000A0 (AUDIO_CONTROL b5, section 3) gave rough, choppy beeps on one board with every sample layout tried,
+with no queue underruns (measured).</p>
+<p>The FIFO takes two pushes from empty (64 samples, 8 ms) before b31 sets (measured), less than one 20 ms PCM block.
+The blocks come at the rate the FIFO plays them, so a queue that pushes each block as it arrives has the FIFO nearly
+empty at every block edge. It ran dry there: the queue emptied with the FIFO taking more 151 times in about 120 blocks
+of beeps, and every tone broke up at 20 ms intervals, its pitch jumping and its level dipping by up to 40 dB at the
+microphone (measured). <code>audio_pcm.c</code> therefore pushes nothing after the queue is emptied (route on, gate edges) until
+two blocks are queued, so the queue stays a block ahead of the FIFO for one block (20 ms) of latency. With that hold
+the queue never ran out in the same beeps. A dedicated timer checks the FIFO every 2 ms independently of the audio task:
+a voice decoder can occupy that task longer than the FIFO's 8 ms capacity. On seeing room, the timer schedules a
+write at least 200 µs later; the interrupt does not busy-wait during that interval. Each write interrupt pushes at most
+one chunk after checking the queue generation, speaker route, TX gate, FIFO ownership and available space again.
+Stop/start, queue resets and FIFO ownership changes cancel a pending write. Three queue entries can be published,
+with a fourth reserved for the producer: variable decode time can finish a third block before either primed entry
+has drained. The occupancy check occurs after decoding, so space freed during decoding can be used. The <code>un</code> field
+of the <code>pg</code> diagnostics line (below) counts run-outs and stays 0.</p>
+<p>The FIFO is two halves of one push (32 samples, 4 ms) each. b31 clears exactly every 4.00 ms, as the modem moves on to
+play the other half, and the next push sets it again at once (measured). Write the 64 bytes as byte writes: with
+halfword or word writes the FIFO counts one entry per bus access and plays nothing usable (measured).</p>
+<p>A push in the first microseconds after b31 clears can land in the half being played. From then on every chunk plays
+one chunk early or late: the audio jumps at every 4 ms boundary, a phase step of 360° × f × 4 ms (none at multiples of
+250 Hz, the most near 125 Hz plus multiples of 250 Hz), heard as a buzz of broadband clicks at 250 Hz under the tone,
+limited to the 4 kHz band. It lasts until a later push happens to line the halves up again. Whether a push fell there
+depended on how the audio task's 2 ms poll lined up with the modem's 4 ms, so the fault came and went for seconds at a
+time and between beeps. The <code>un</code> field stayed 0 and the chunks went in at exactly 8 kHz: nothing was lost, only
+reordered. On a swept tone, broken stretches had the energy just above the tone's frequency 5-25 dB below the
+tone; whole ones 39-55 dB below it (measured, <code>test_speaker_sweep</code>). Traces of the broken stretches showed pushes that found
+b31 set on entry and clear microseconds later, then wrote at once; in clean ones, almost none.</p>
+<p>Every push therefore waits 200 µs after it sees b31 clear before writing (twice the shortest wait
+that was clean; pushes 0.1-3 ms after the edge played in order in 12 of 12 sweeps). Only a push that saw the bit
+clear writes, so the bit can only have cleared before that look. Speaker PCM (<code>audio_pcm.c</code>) uses the deferred timer
+write above. <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> (<code>hrc_afsk.c</code>) uses the blocking wrapper in <code>platform/hrc7000/prompt_fifo.h</code>; at 250 pushes a second
+that wait costs about 5 % of the CPU while <abbr class="gl" tabindex="0" title="Audio frequency shift keying: data as two audio tones on an FM carrier. APRS at 1200 baud uses it." data-more="../dev/glossary.html#t-afsk">AFSK</abbr> is active. Every sweep recorded with the settling delay played
+whole, 8 of them; one more recording had half its energy above 4.3 kHz, which an 8 kHz stream can't make, and was
+the capture's fault (measured).</p>
+<p>The prompt path also feeds the TX modulator: with AUDIO_CONTROL b7 set during a <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> transmission, the beep's audio
+rides on the 4FSK. On one board the talk permit tone overlapped the second and third voice <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr> headers, which then
+carried no decodable sync on the SDR bench and the bench modem took the call by late entry; with b7 held clear while
+transmitting, all three headers decoded in five runs (measured). Keep b7 clear during any transmission.</p>
+<p><code>audio_pcm.c</code> keeps it clear for every board on the platform with one gate. The DMR glue closes it as the engine starts
+to transmit (<code>tx_begin</code>, and the <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr>'s <code>bs_key</code>); while it is closed, b7 stays clear and nothing is pushed to the
+FIFO. It opens at least 50 ms later, once <code>hrc_dmr_tx_active()</code> is false: checked by the audio task (at each PCM block,
+or every 10 ms while gated), on each speaker route change and on each <code>hrc_audio_pcm_ring()</code> call
+(the audio task only exists once a stream has run, and APRS sets b7 without one). On both edges the speaker queue is
+emptied, a block the audio task was filling at that moment included, so a beep queued during the transmission is
+dropped, not played late. Boards set b7 only through <code>hrc_audio_pcm_ring()</code>, which applies the gate. The last of the
+DMR glue's diagnostics lines, <code>pg g&lt;closings&gt; l&lt;closings that found speaker audio still pending&gt; ra&lt;checks that found b7 set while closed&gt; un&lt;speaker queue run-outs&gt;</code>, checks it: <code>l</code>, <code>ra</code> and <code>un</code> stay 0. Its counters reset with the DMR counters.</p>
+<p>So the talk permit can't sound during DMR TX, and the boards set <code>CAP_BEEP_NOT_ON_AIR</code>: the radio core plays it in a
+short receive-only hold before the first burst (<code>radio-features.md</code> 4). On air with a hotspot parrot, the beep was
+heard before each call and the echoed calls carried no trace of it, with <code>l0 ra0</code> (measured). On the SDR bench, in six
+overs with the permit played before keying, each over started with three voice LC headers that decoded and every burst
+was within 0.2 dB of the over's level (measured; <code>test_dmr_tx_permit_before_key</code>).</p>
+<p>The FIFO itself is not flushed at the gate. Filling it with 0x7F bytes would (above); the permit hold leaves only
+silence in it at key-up.</p>
+<p>APRS transmit uses the same path on purpose (<code>platform/hrc7000/hrc_afsk.c</code>): during an FM transmission, with b7 set
+and the microphone muted by the board, the FIFO's samples are the modulation. A timer tops the FIFO up every 2 ms;
+speaker PCM is held off the FIFO meanwhile (<code>hrc_audio_pcm_hold</code>), since its chunks would land between the tones.
+Bell 202 decoded off air from this path with a valid FCS (measured, <code>aprs.md</code> 13). The DTMF tone
+generator (8.3) needs no PCM, but its deviation field tops out near 1.5 kHz, short of the 3 kHz APRS wants.</p>
+<p>The datasheet doesn't document this route. It names two FM transmit audio sources, selected by AUDIO_CONTROL b0 (datasheet 7.2.2.1):
+the codec <abbr class="gl" tabindex="0" title="Analog to digital converter." data-more="../dev/glossary.html#t-adc">ADC</abbr> (0) or the TX RAM (1). As a source, the TX RAM is 0x16000030-0x1600042F, two 512-byte halves of 256
+samples (32 ms at 8 kHz), and FM_ADDR_SW (0x56C) names the half in use (1 low, 2 high); SYS_INTERP b15 is the FM TX
+interrupt. The prompt FIFO is documented only as playback to the codec DAC (datasheet 7.3). LINEOUT_CTRL (0x088) b1 is line
+out 1 and b0 line out 2, the same <abbr class="gl" tabindex="0" title="Pulse width modulation: a pin switched on and off to give an average level, as for backlight or tone." data-more="../dev/glossary.html#t-pwm">PWM</abbr> waveform on both (RadioFoundry sets 0x01). Two-point modulation: SIG_CENTER b31:24
+biases MOD1 (the VC-TCXO) and b23:16 MOD2 (the <abbr class="gl" tabindex="0" title="Voltage controlled oscillator: the oscillator in a synthesizer, tuned by a voltage." data-more="../dev/glossary.html#t-vco">VCO</abbr>), 3.3 mV a step; RF_MOD_BIAS b7:0 and b15:8 are the MOD1 and MOD2
+amplitudes; RF_MODE b10 sends a 40 Hz test square. The prompt FIFO path decodes on some boards but not on others,
+which take the mixer route below.</p>
+<p>The FM transmit limiter (FM_DEV_COEF b23:16) caps the deviation of audio that enters through the codec ADC, the
+microphone and the mixer route below. The prompt FIFO's ring play is not capped by it: AFSK through
+ring play reached 5.1 kHz peak with the limiter at 4. Through the ADC path the ceiling scales with limiter x TX
+coefficient (measured, 25 kHz, Bell 202 tones):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Limiter</th>
+<th>TX coefficient</th>
+<th>Peak deviation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>0x20</td>
+<td>1.65 kHz (clipped at every level tried)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0x30</td>
+<td>2.48 kHz (clipped)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>0x20</td>
+<td>3.18 kHz (clipped)</td>
+</tr>
+<tr>
+<td>0x0F</td>
+<td>0x40</td>
+<td>4.18 kHz</td>
+</tr>
+<tr>
+<td>0x0F</td>
+<td>0x20</td>
+<td>4.57 kHz, max 4.84 kHz (not clipped)</td>
+</tr>
+</tbody>
+</table></div>
+<p>So a limiter of 4 holds speech to about 1.65 kHz at 25 kHz. A board sets <code>fm_tx_limit</code> for each bandwidth.</p>
+<p>Where ring play doesn't reach the modulator on its own, the codec's digital mixer (datasheet 6.5.2.10-11) carries the DAC's
+audio into the ADC's record path, which is the FM transmit input. CR_MIX (codec 0x10: b7 mix_en, b6 load, b5:0 the
+MIX_n address) and DR_MIX (0x11) reach MIX_0..3. MIX_2 b0 (mix_rec) makes the ADC's output ADC + DAC, and MIX_3 b7:4
+= 0xF zeroes the ADC's own input in that sum. <code>hrc7000_codec_dac_to_tx</code> sets MIX_3 and then MIX_2, clears them in the
+reverse order and ends with CR_MIX = 0. The codec mic mute (CR_ADC b7) must stay off on this route: it mutes the mix
+too. Through this route Bell 202 decoded off air with a valid FCS (measured, a board where ring play alone sent a bare
+carrier).</p>
+<h3 id="85-fm-receive-audio-to-the-cpu">8.5 FM receive audio to the CPU</h3>
+<p>In FM (WORK_MODE 0x80) the modem copies its demodulated receive audio into the RX RAM as well as to the codec (the
+datasheet's &quot;analog receive recording&quot;, on by default in FM):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Buffer</td>
+<td>RX RAM 0x160004E0..0x160008DF: two halves of 512 bytes (256 samples), used in turn</td>
+</tr>
+<tr>
+<td>Sample format</td>
+<td>16-bit, high byte at the lower address</td>
+</tr>
+<tr>
+<td>Rate</td>
+<td>8 kHz: the halves alternate every 32.0 ms (measured over 95 changes)</td>
+</tr>
+<tr>
+<td>Half to read</td>
+<td>FM_ADDR_SW (0x56C) b1:0: 1 = the first half, 2 = the second</td>
+</tr>
+<tr>
+<td>Interrupt</td>
+<td>SYS_INTERP bit 14 (<code>fm_rx_interp</code>) as each half fills; its mask bit (SYS_INTERP_MASK b14) is off in the power-on mask</td>
+</tr>
+<tr>
+<td>Input</td>
+<td>the modem's AF input. On a board with a separate FM RF chip that is its audio output, routed by a board <abbr class="gl" tabindex="0" title="General purpose input/output: a pin the firmware can read or drive." data-more="../dev/glossary.html#t-gpio">GPIO</abbr></td>
+</tr>
+</tbody>
+</table></div>
+<p>The audio is not squelched: it carries noise while no signal is present, so a demodulator can work below the squelch.
+Receiver noise reaches full scale (peak 32767) with the reset AF gain (measured).</p>
+<p>RadioFoundry reads it in the system interrupt (<code>platform/hrc7000/fm_rx_audio.c</code>): the DMR glue owns that interrupt and calls
+an FM hook for bit 14, in FM too, and the hook copies each half into a 128 ms ring for the APRS demodulator.</p>
+<hr />
+<h2 id="9-driver-requirements">9. Driver requirements</h2>
+<p>What a working <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> driver does that a first attempt tends to miss. Details are in the sections named.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Area</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Vectors</td>
+<td>hook the <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr> (62) and <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> TX (64) vectors as well as 61 and 63; TX states run on 62, 64 keys the RF chip (3)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Register set-up</td>
+<td>write the DMR block once at init, not at every DMR entry (4)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>RF_MODE</td>
+<td>0x03269860 always, b11 set (2.1a)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>RF_CONTROL</td>
+<td>0x00041F1A, RF TX interrupt 3.1 ms early; 0x00040A0A gives bad timeslots at low power</td>
+</tr>
+<tr>
+<td>5</td>
+<td>DMR entry</td>
+<td>calibration, mic gain, DAC_PD_CTRL bit 1 cleared, WORK_MODE 0x80 then 0x6E (5.1)</td>
+</tr>
+<tr>
+<td>6</td>
+<td><abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> restart</td>
+<td>SLOTON 0, TXRX 0x800000, 0x40, SLOTON 5, VOICE_EMB_CTRL 2 (5.2)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>RX start and after TX</td>
+<td>TXRX 0x40; 0x8040 only in the steady receive alternation</td>
+</tr>
+<tr>
+<td>8</td>
+<td><abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">CC</abbr> probe</td>
+<td>no busy wait</td>
+</tr>
+<tr>
+<td>9</td>
+<td>TX start</td>
+<td>LAYER2_CONTROL 0xC3, TXRX bit 31 not set (6.1)</td>
+</tr>
+<tr>
+<td>10</td>
+<td><abbr class="gl" tabindex="0" title="Power amplifier: the stage that boosts the transmit signal to the output power." data-more="../dev/glossary.html#t-pa">PA</abbr> keying</td>
+<td><abbr class="gl" tabindex="0" title="A talk target used for one call and its reply window." data-more="../user/22-glossary.html#t-one-shot">one-shot</abbr> timer from each arming, &quot;DMR PA&quot; delay default 28 ms</td>
+</tr>
+<tr>
+<td>11</td>
+<td>RF chip</td>
+<td>idle to TX at TX start and at every RF TX interrupt</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Mic switch</td>
+<td>set the board's mic switch to analog at each TX start so DMR audio reaches the codec</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Repeater wake</td>
+<td><abbr class="gl" tabindex="0" title="Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control." data-more="dmr-data.html">CSBK</abbr> in two consecutive slots, PA keyed, extra wait state (6.5)</td>
+</tr>
+<tr>
+<td>14</td>
+<td>TX audio</td>
+<td>encode in the tick when 2 or more <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> buffers wait (6.2)</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Timeslot handler</td>
+<td>run it from <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> so flash busy time adds no jitter</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Calibration</td>
+<td>SIG_CENTER and RF_MOD_BIAS_CTRL from factory data</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Interrupt masking</td>
+<td>PIC_MASK bits 29-31 and PIC_MASK_1 bit 0 (3.2)</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Lost requests</td>
+<td>clear every pending modem request at each receiver restart; drop a system request pending with no handler run (3.3)</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="10-air-interface-provider">10. Air interface provider</h2>
+<p><code>drivers/modem/hrc7000/hrc7000_air.c</code> makes the modem a <code>hal_air_t</code> provider (<code>hal/hal_air.h</code>) and a <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> tap
+(<code>hal/hal_baseband.h</code>) under <code>CONFIG_AIR</code>; the glue (<code>platform/hrc7000/dmr_glue.c</code>) exports them as <code>hrc_air</code> and
+<code>hrc_baseband</code> for a board's <code>board.air</code> and <code>board.baseband</code>. It receives through the soft modem on the FM receive copy and <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmits</abbr> through the physical layer. Fit:
+continuous profiles at 4800 symbols/s (2400 as <code>AIR_FIT_RATE_DOUBLED</code>), 2 or 4 levels; every fit carries
+<code>AIR_FIT_UNTESTED</code> unless the board sets <code>hrc_dmr_board_t.air_verified</code>, once its receive and transmit were checked on
+air (10.4; <a href="../feature-matrix.html">feature-matrix.md</a> has which radios).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>How</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ownership</td>
+<td>A tap or a session opens only in <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> with no DMR transmission and no FM receive hook (<abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr>) running. The glue halts the slot engine, and the session lives in the engine's event and TX queues (<code>_Static_assert</code>): no <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> of its own. The interrupts go to the session; the modem task polls it instead of the engine. At close the queues are emptied and the engine runs again</td>
+</tr>
+<tr>
+<td>Interrupts</td>
+<td>System (bit 14 copy half, bit 12 PHY_RDY), both <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr> vectors, <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> TX. Their handlers run from RAM (9 #15)</td>
+</tr>
+<tr>
+<td>Mode changes</td>
+<td>Leaving DMR under a session ends any transmission (<abbr class="gl" tabindex="0" title="Power amplifier: the stage that boosts the transmit signal to the output power." data-more="../dev/glossary.html#t-pa">PA</abbr> off, <code>AIR_EV_TX_DONE</code>) and stops receive; the next DMR entry sets the copy up again</td>
+</tr>
+<tr>
+<td>Events</td>
+<td>From the interrupts through an 8-entry queue to the modem task, which calls the session's callback. TX_SPACE events in a row merge into one; the last entry is kept for TX_DONE</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="101-receive-the-fm-receive-copy">10.1 Receive: the FM receive copy</h3>
+<p>The copy of 8.5 with the RF chip left in its DMR set-up, the band-pass off, so the copy carries the discriminator's
+output. Whether 4FSK reaches it whole (de-emphasis, the band's edges, the level) is not measured yet (10.4).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Write</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Save</td>
+<td>SYS_INTERP_MASK, FM_BANDWIDTH, FM_DEV_COEF</td>
+</tr>
+<tr>
+<td>Copy set-up</td>
+<td>TXRX 0, SLOTON 0, LAYER2_CONTROL 0xC0, FM_PTT 0, AUDIO_CONTROL FM playback (b6) off, FM_BANDWIDTH 0x00 (band-pass off, 12.5 kHz), FM_DEV_COEF 0x40A25, WORK_MODE 0x80, SYS_INTERP_CLEAR and MASK = bit 14 + bit 12</td>
+</tr>
+<tr>
+<td>Each half</td>
+<td>Bit 14: the half FM_ADDR_SW names into a 512-sample ring (two halves), stamped with the interrupt's time less 255 samples. A half that finds the ring full is dropped and the next one is flagged as a gap</td>
+</tr>
+<tr>
+<td>Session</td>
+<td>The modem task feeds each half to the soft modem (<code>core/air/air_softmodem.h</code>), resetting it at a flagged half; its chunks go out as <code>AIR_EV_RX</code></td>
+</tr>
+<tr>
+<td>Undo</td>
+<td>Mask, band and coefficient back; TXRX 0, WORK_MODE 0x80 then 0x6E, LAYER2_CONTROL 0xC0, TXRX 0xC00000 then 0. A mode change before the undo leaves the band and coefficient to the next FM entry and puts back only the mask (only power-on writes it otherwise)</td>
+</tr>
+</tbody>
+</table></div>
+<p>FM playback off keeps the copy off the speaker (hal_air.h rule 1); in DMR the speaker carries the codec's <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr>.
+<code>hrc_baseband</code> reports 8000 Hz, one channel, 0-3000 Hz, counts per kHz unknown (10.4).</p>
+<h3 id="102-transmit-the-physical-layer">10.2 Transmit: the physical layer</h3>
+<p>The timeslot mode of 2.10 with every slot sent, so the carrier runs from the first slot to the last without a ramp
+between slots. One 36-byte TX RAM half is one 144-symbol chunk (30 ms at 4800 symbols/s).</p>
+<ol>
+<li><code>tx_begin</code> (at least one chunk queued, the core has called the board's TX on): save RF_MOD_BIAS and write it scaled
+(10.3); TXRX 0, SLOTON 0, WORK_MODE 0x80 then 0x22; both halves idle (the profile's idle byte); LAYER2_CONTROL
+0x82 (own TX timing); AUDIO_BUFFER_CLR 3. The copy stops for the transmission.</li>
+<li>The first RF TX interrupt keys the RF (the board's <code>rf</code> and <code>pa_arm</code> ops), once, held to the end. Until then, and
+for <code>HRC7000_AIR_TX_LEAD_SLOTS</code> (2) boundaries after it, each boundary sends an idle slot and the queue waits (no
+underrun counted): the carrier is up about 45 ms before it carries modulation, and a first chunk sent in that time
+was lost.</li>
+<li>Each slot boundary (the first of the timeslot or PHY_RDY interrupts in a slot; one more within 15 ms is the same
+slot) writes only the half the next slot reads, alternating, then TXRX 0x80. A half takes the oldest queued chunk,
+idle after a short last chunk; with none queued, idle and one <code>AIR_EV_TX_UNDERRUN</code>. The half's last byte (symbols
+140-143) is written at the next boundary, first thing: the chip reads it after the boundary that rewrites its half,
+so written with the rest it went out with the chunk two slots later. The slot set up at a boundary is on air about
+5 ms later: <code>AIR_EV_TX_STARTED</code> carries that time plus half a symbol.</li>
+<li>After the <code>AIR_TX_LAST</code> chunk (or <code>tx_end</code> with nothing queued) one idle slot, then at the next boundary: TXRX 0,
+RF off, RF_MOD_BIAS back, the copy set up again (or WORK_MODE 0x80 without a receiver), <code>AIR_EV_TX_DONE</code>.</li>
+<li>Watchdog (modem task): no slot boundary for 200 ms, or no RF TX interrupt 200 ms after <code>tx_begin</code>, ends the
+transmission as <code>tx_abort</code> does.</li>
+</ol>
+<p>Writing both halves at each boundary corrupted the end of the slot on air; writing only the next one gave no errors
+(measured). WORK_MODE 0x02 (continuous) never keyed on the bench.</p>
+<p>A P25 call from one <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> radio (lowest power, 4.5 s keyed, 26388 symbols), recorded on the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench and compared
+with the symbols the radio queued (measured):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Driver</th>
+<th>Units decoded</th>
+<th>Symbol errors</th>
+<th>Errors at symbols 140-142 of a slot</th>
+<th>Soft EVM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Last byte with the rest, no idle lead</td>
+<td>31 of 32: the header lost</td>
+<td>1.60 %</td>
+<td>50-75 %</td>
+<td>16.2 %</td>
+</tr>
+<tr>
+<td>Last byte one boundary late, two idle slots</td>
+<td>32 of 32</td>
+<td>0.34 %, no position in the slot above 10 %</td>
+<td>0-10 %</td>
+<td>10.0 %</td>
+</tr>
+</tbody>
+</table></div>
+<p>The wrong symbols at 140-142 matched the chunk written into the same half two slots later. Outer deviation measured
+1610-1685 Hz against 1800 Hz asked (89-94 %) while the scaling took the bytes for 1944 Hz (10.3).</p>
+<h3 id="103-deviation">10.3 Deviation</h3>
+<p>The modulation bytes of RF_MOD_BIAS (b15:8, b7:0), which the board writes for DMR at its TX on, are scaled by
+dev_outer_hz / 1820 and clamped to 1..255; b31:16 stay. 1820 Hz is the outer deviation the calibrated DMR bytes give,
+not DMR's nominal 1944 Hz: scaled by 1800 / 1944 they gave 1685 Hz (93.6 % of P25's 1800 Hz) measured from the SDR
+bench's I/Q, which leaves an <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="mmdvm-protocol.html">MMDVM</abbr> <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> little room for its own offset. Deviation is linear in them, about
+25 Hz per step through zero, and 0x118 and FM_DEV_COEF don't move it (measured on one HR_C7000 radio).
+Outside 100-6000 Hz the fit says <code>AIR_FIT_DEV_APPROX</code>. The pulse filter is the chip's own (raised cosine for DMR), so
+every shape but RRC 0.2 is <code>AIR_FIT_SHAPE_APPROX</code>.</p>
+<h3 id="104-checked-on-a-radio-and-open">10.4 Checked on a radio, and open</h3>
+<p>Checked on one HR_C7000 radio against the SDR bench (<a href="../feature-matrix.html">feature-matrix.md</a> has which): P25
+conventional receive and transmit, P25 trunked receive and transmit, NXDN receive and transmit at both rates. The copy
+in DMR carries 4FSK well enough for every voice frame of a bench call, and a trunked radio transmits on its grant after
+receiving the control channel, so the copy set-up doesn't keep the RF TX interrupt away.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Open</th>
+<th>Check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The copy's calibration</td>
+<td>4FSK at a known deviation through the tap: counts per kHz, the band's edges, clipping at the reset AF gain</td>
+</tr>
+<tr>
+<td>Timing</td>
+<td>t_us of a received symbol against the bench's</td>
+</tr>
+<tr>
+<td>FM and DMR after close</td>
+<td>A DMR call and an FM call after a session, without a restart</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="11-open-questions">11. Open questions</h2>
+<ol>
+<li><abbr class="gl" tabindex="0" title="Link control start/stop: the 2-bit field of a burst&#x27;s embedded signaling that says which fragment it carries." data-more="../dev/glossary.html#t-lcss">LCSS</abbr> bits on voice bursts B–E (2.6): the datasheet sets them, the driver does not. Does late entry work on other
+radios receiving this modem's transmissions?</li>
+<li>Whether the 0x370–0x37C, 0x168 and bit-31 sync-enable writes matter.</li>
+<li>RF_RECV_DELAY 0x36B0 vs the datasheet's 2000 for AF mode.</li>
+<li>The real timing of the <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr> interrupt relative to the slot boundary (section 3.1 is inferred).</li>
+<li>Data and <abbr class="gl" tabindex="0" title="Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control." data-more="dmr-data.html">CSBK</abbr> transmission on the <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">C7000</abbr> have only been checked against the datasheet and shared host tests, not on air.</li>
+<li>FM sub-audio: the C7000's own <abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-ctcss">CTCSS</abbr>/CDCSS engine (section 8) is not used on a board with a separate FM <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> chip; the driver routes
+TX CTCSS to that chip instead.</li>
+<li>RF_MODE b11 (2.1a) on simplex <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr>: does a radio with the bit set hear a call on the second timeslot that it misses
+with the bit clear? No on-air test has compared the two. A test: a call on one timeslot while the radio receives the
+other, with b11 on and then off. Also: RadioFoundry sets b11 on repeater channels. Does that change repeater
+reception?</li>
+<li><abbr class="gl" tabindex="0" title="Base station: the repeater or modem side of a DMR link, as opposed to the radio (MS)." data-more="../dev/glossary.html#t-bs">BS</abbr> mode (2.9): where the chip's <abbr class="gl" tabindex="0" title="Common announcement channel: 24 bits ahead of each burst a repeater sends. It carries the slot number and short link control." data-more="../dev/glossary.html#t-cach">CACH</abbr> <abbr class="gl" tabindex="0" title="Access type: the TACT bit that tells a radio whether the slot is free to transmit in." data-more="../dev/glossary.html#t-at">AT</abbr>, <abbr class="gl" tabindex="0" title="TDMA channel: the TACT bit that names the timeslot, so a radio can tell TS1 from TS2." data-more="../dev/glossary.html#t-tc">TC</abbr> and short <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr> come from (likely BS_CACH and a short LC written at every
+RDY_NEXT_SHORT_LC). The <abbr class="gl" tabindex="0" title="Transmitting on one frequency and receiving on another at the same time. Repeaters do, and so does the duplex hotspot setup." data-more="split-duplex.html">split duplex</abbr> TX half doesn't need it: it uses the physical layer (2.10).</li>
+<li>A slot length trim for the physical layer mode (2.10 finding 13): LAYER2_MAX_CNT has none. Whether the trim works
+in the layer 2 timing (LAYER2_CONTROL b5 layer2slot), and any other register that does, is untested.</li>
+</ol>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/modem-hrc7000.md">Vedi il sorgente di questa pagina</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="In questa pagina">
+		<p class="eyebrow">In questa pagina</p>
+		<ul><li class="l2"><a href="#1-the-modems-view-of-the-system">1. The modem&#x27;s view of the system</a></li><li class="l2"><a href="#2-register-map-used-for-dmr">2. Register map used for DMR</a></li><li class="l3"><a href="#21-mode-and-rf-interface">2.1 Mode and RF interface</a></li><li class="l3"><a href="#21a-rf_mode-bit-11-the-dcdm-receive-switch">2.1a RF_MODE bit 11: the DCDM receive switch</a></li><li class="l3"><a href="#22-sync-words">2.2 Sync words</a></li><li class="l3"><a href="#23-crc-rs-and-color-code">2.3 CRC, RS and color code</a></li><li class="l3"><a href="#24-interrupt-control">2.4 Interrupt control</a></li><li class="l3"><a href="#25-layer-2-control">2.5 Layer-2 control</a></li><li class="l3"><a href="#26-layer2_send_type-codes">2.6 LAYER2_SEND_TYPE codes</a></li><li class="l3"><a href="#27-rx_type_info-0x390-read-after-a-deframe-interrupt">2.7 RX_TYPE_INFO (0x390, read after a deframe interrupt)</a></li><li class="l3"><a href="#28-buffer-layouts">2.8 Buffer layouts</a></li><li class="l3"><a href="#29-bs-repeater-mode-bench-results-2026-10-20">2.9 BS (repeater) mode: bench results 2026-10-20</a></li><li class="l3"><a href="#29a-gps_pps_en-the-simulcast-slot-lock-datasheet-only">2.9a gps_pps_en: the simulcast slot lock (datasheet only)</a></li><li class="l3"><a href="#210-physical-layer-transmit-the-split-duplex-tx-half">2.10 Physical layer transmit: the split duplex TX half</a></li><li class="l2"><a href="#3-interrupts">3. Interrupts</a></li><li class="l3"><a href="#31-tx-timing-within-a-burst-inferred-from-the-register-values">3.1 TX timing within a burst (inferred from the register values)</a></li><li class="l3"><a href="#31a-the-per-burst-rf-task">3.1a The per-burst RF task</a></li><li class="l3"><a href="#32-masking-the-modem-interrupts">3.2 Masking the modem interrupts</a></li><li class="l3"><a href="#33-lost-requests">3.3 Lost requests</a></li><li class="l2"><a href="#4-initialization-power-on-once">4. Initialization (power-on, once)</a></li><li class="l2"><a href="#5-entering-dmr-and-starting-receive">5. Entering DMR and starting receive</a></li><li class="l3"><a href="#51-enter-dmr-from-fm-or-idle-also-at-every-dmr-tx-start">5.1 Enter DMR (from FM or idle; also at every DMR TX start)</a></li><li class="l3"><a href="#52-start--restart-receive">5.2 Start / restart receive</a></li><li class="l3"><a href="#52a-end-of-a-direct-transmission-the-hold">5.2a End of a direct transmission: the hold</a></li><li class="l3"><a href="#53-while-receiving">5.3 While receiving</a></li><li class="l3"><a href="#54-the-receive-tap">5.4 The receive tap</a></li><li class="l2"><a href="#6-transmit-sequences">6. Transmit sequences</a></li><li class="l3"><a href="#61-start-of-transmission">6.1 Start of transmission</a></li><li class="l3"><a href="#62-voice">6.2 Voice</a></li><li class="l3"><a href="#63-terminator-and-back-to-receive">6.3 Terminator and back to receive</a></li><li class="l3"><a href="#64-data-and-csbk">6.4 Data and CSBK</a></li><li class="l3"><a href="#65-bs-activation-repeater-wake">6.5 BS activation (repeater wake)</a></li><li class="l2"><a href="#7-crc-and-fec-the-chip-does">7. CRC and FEC the chip does</a></li><li class="l2"><a href="#8-fm-mode">8. FM mode</a></li><li class="l3"><a href="#81-registers">8.1 Registers</a></li><li class="l3"><a href="#82-fm-entry-sequences">8.2 FM entry sequences</a></li><li class="l3"><a href="#83-dtmf-and-single-tones">8.3 DTMF and single tones</a></li><li class="l3"><a href="#84-prompt--beep-fifo">8.4 Prompt / beep FIFO</a></li><li class="l3"><a href="#85-fm-receive-audio-to-the-cpu">8.5 FM receive audio to the CPU</a></li><li class="l2"><a href="#9-driver-requirements">9. Driver requirements</a></li><li class="l2"><a href="#10-air-interface-provider">10. Air interface provider</a></li><li class="l3"><a href="#101-receive-the-fm-receive-copy">10.1 Receive: the FM receive copy</a></li><li class="l3"><a href="#102-transmit-the-physical-layer">10.2 Transmit: the physical layer</a></li><li class="l3"><a href="#103-deviation">10.3 Deviation</a></li><li class="l3"><a href="#104-checked-on-a-radio-and-open">10.4 Checked on a radio, and open</a></li><li class="l2"><a href="#11-open-questions">11. Open questions</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Unisciti alla comunità RadioFoundry</strong><span class="small muted">Domande, aiuto con la tua radio e novità, su Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Hai trovato un bug? Vuoi che la tua radio sia supportata?</strong><span class="small muted">Apri una segnalazione su GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry ha licenza MIT · <a href="https://github.com/radiofoundry/radiofoundry">Codice sorgente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunità</a> · <a href="../../../it/docs/index.html">Documenti</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Novità</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

@@ -1,0 +1,520 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="it" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dual watch · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Dual watch · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:url" content="https://radiofoundry.org/it/docs/ux/dual-watch.html">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Le radio su cui gira RadioFoundry, ognuna con una schermata diversa.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/ux/dual-watch.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/ux/dual-watch.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/ux/dual-watch.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/ux/dual-watch.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/ux/dual-watch.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../it/" data-gl-more="Altro">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../it/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principale"><a href="../../../it/radios/index.html">Radio</a><a href="../../../it/features/index.html">Funzioni</a><a href="../../../it/flash/index.html">Installa</a><a href="../../../it/codeplug/index.html">Codeplug</a><a href="../../../it/docs/index.html" aria-current="page">Documenti</a><a href="../../../it/screenshots/index.html">Schermate</a><a href="../../../it/tools/index.html">Strumenti</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Lingua" title="Lingua">IT</summary><nav aria-label="Lingua"><a href="../../../docs/ux/dual-watch.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/ux/dual-watch.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/ux/dual-watch.html" aria-current="true" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/ux/dual-watch.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Passa da chiaro a scuro" title="Passa da chiaro a scuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Esperienza utente">
+		<p class="eyebrow"><a href="../../../it/docs/index.html">Documentazione</a> / Esperienza utente</p>
+		<ul><li><a href="wireframes/index.html">Wireframes</a></li><li><a href="dual-watch.html" aria-current="page">Dual watch</a></li><li><a href="information-architecture.html">Information architecture</a></li><li><a href="principles.html">UI design principles</a></li><li><a href="survey.html">UI survey: what good radio and device interfaces do</a></li><li><a href="task-flows.html">Task flows</a></li><li><a href="usability-tests.html">Usability test protocol</a></li><li><a href="wireframes/128x64.html">128x64 monochrome</a></li><li><a href="wireframes/160x128.html">160x128 color</a></li><li><a href="wireframes/240x320.html">240x320 color (portrait)</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Questa pagina non è ancora tradotta; è mostrata in inglese.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="dual-watch">Dual watch</h1>
+<p>Design for <abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="../user/22-glossary.html#t-dual-watch">dual watch</abbr> on Home (<a href="https://github.com/radiofoundry/radiofoundry/issues/96">#96</a>). Built with
+<code>CONFIG_DUAL_WATCH</code> (on with <code>CONFIG_SCAN</code>; <a href="../build-config.html">build-config.md</a>). Code: <code>core/ui/ui_dual.c</code> (behavior and
+its screens), <code>ui_draw_home_dual</code> in <code>core/ui/ui_screens.c</code> (Home), <code>ui_svc_dual</code> (the radio).</p>
+<h2 id="1-what-it-is">1. What it is</h2>
+<p>The radio listens on two channels, <strong>A</strong> and <strong>B</strong>, and you talk on one of them. Each can be any channel of any zone,
+or the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr>: <abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="../user/22-glossary.html#t-dual-watch">dual watch</abbr> is two frequencies, not the two <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslots</abbr> of one <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> frequency.</p>
+<ul>
+<li><strong>A</strong> is the channel you were on when dual watch started. <strong>B</strong> starts as the next channel of A's zone (else the
+first channel of a later zone, else the VFO). Change either the way you change the channel on Home: select it, then
+Up / Down, digits, Find, Zones or the VFO key; or <strong>#</strong> <strong>2</strong> / <strong>3</strong>.</li>
+<li>One of them is <strong>selected</strong>. PTT <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmits</abbr> on it, and the dual watch keeps going after the transmission. Up / Down,
+the knob, digits, Quick settings, the <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr> and the menus act on it, as they act on the one channel of the
+normal Home, even while the receiver is on the other channel. A quick setting changed on the selected channel keeps
+the watch on.</li>
+<li>Each channel keeps its changes for now (power, squelch, width, tones, timeslot, <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr>, talk target, hear all)
+while the receiver goes back and forth. A changed channel loses its changes when it is replaced or the watch stops.</li>
+<li><strong>Only the user stops it</strong> (section 5).</li>
+<li>A radio with one receiver (every radio today) alternates between A and B, so a call on one can be missed while it
+is on the other. Home doesn't say so: the mode in the strip implies it, and the user guide has the caveat. A radio
+with two receivers (<code>ui_svc_receivers()</code> &gt; 1, <code>ui_svc_dual_rx(pane)</code>) hears both at once (section 3.1). No radio
+reports two yet. The AT-D578UV, which has two receiver chips (<a href="../spec/hardware-anytone.html">hardware-anytone.md</a>),
+would be the first.</li>
+<li>What the radio core does with the pair (any zone or the VFO, PTT, retunes) is in
+<a href="../spec/radio-features.html#21-dual-watch">radio-features.md 2.1</a>. The UI refuses only a channel the radio can't
+read, or the same channel twice: &quot;Can't watch that channel: pick another&quot;.</li>
+</ul>
+<h2 id="2-turning-it-on-and-off">2. Turning it on and off</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>How</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>*</strong>, <strong>7</strong> (Quick tile <strong>Dual watch</strong>)</td>
+<td>On with the last B (2 presses), the first time with the default B (section 1); off while it runs. The tile says On or Off</td>
+</tr>
+<tr>
+<td>Hold <strong>SK2</strong> (every radio with an SK2; the DB25-D PRO's tone key)</td>
+<td>The same: on with the last B / off</td>
+</tr>
+<tr>
+<td><strong>A/B</strong> key (DM-1801 Pro's A/B key and the DM-1701's SK2 on a press; a side key function elsewhere)</td>
+<td>On: selects the other channel. Off: &quot;Turn on <abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="../user/22-glossary.html#t-dual-watch">dual watch</abbr> first&quot; (&quot;Dual watch is off&quot; where that doesn't fit); it never starts it</td>
+</tr>
+<tr>
+<td><strong>Dual watch</strong> key (DM-1801 Pro's A/B key held; a side key function elsewhere)</td>
+<td>On (last B, or the default B) / off</td>
+</tr>
+<tr>
+<td><strong>Back</strong> twice on Home (within 2 s)</td>
+<td>Off, staying on the selected channel. Back first clears what it clears on the normal Home (<abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> entry, a banner, the reply target, hear all, changes for now); then the first press says &quot;Press Back again to stop dual watch&quot;</td>
+</tr>
+<tr>
+<td>Tools › Scan, the <strong>Scan</strong> key function</td>
+<td>A zone scan (the band in the VFO) in its place: dual watch stops on the selected channel, then the scan starts</td>
+</tr>
+<tr>
+<td><strong>#</strong> <strong>3</strong> while it runs</td>
+<td>Another B (<strong>Change B</strong>, the picker)</td>
+</tr>
+</tbody>
+</table></div>
+<p>A zone scan is in Tools › Scan only (and on a side key set to Scan): tile 7 and SK2 hold are dual watch.</p>
+<img src="screens/160x120i5/dual_pick.png" width="200" alt="B picker">
+<img src="screens/160x120i5/dual_zones.png" width="200" alt="Zone for B">
+<p>The <strong>B picker</strong> (<strong>#</strong> <strong>3</strong>; <strong>#</strong> <strong>2</strong> for A) lists the channels of a zone, with their frequency and mode. The first row is the zone: OK on it
+lists the VFO (with its frequency) and the zones; a zone goes back to the picker on that zone. The other pane's channel is shown dimmed with its letter (&quot;A&quot; when you pick B) and can't be picked. When the pane has a channel in this zone, it is focused and marked as the current one. Digits find a channel by number
+or name, as in the zone's channel list.</p>
+<h2 id="3-home">3. Home</h2>
+<img src="screens/240x320/home_dual.png" width="200" alt="Dual watch Home, 240x320">
+<img src="screens/240x320/home_dual_rx_b.png" width="200" alt="A call on B">
+<img src="screens/240x320/home_dual_tx.png" width="200" alt="Talking on A">
+<img src="screens/240x320/home_dual_other_zone.png" width="200" alt="B in another zone">
+<p>Two panes of the same size, A over B: neither channel is second class. Each pane:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Row</th>
+<th>Shows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tag</td>
+<td>The letter in a box as tall as the pane; under the letter, an arrow (▶) on the selected pane only</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Channel number and name (the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr>: its frequency); at the right, the PTT pill (selected pane) or <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr></td>
+</tr>
+<tr>
+<td>2</td>
+<td>What PTT talks to (<abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr>: &quot;<abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">TG</abbr> 3100 USA&quot;), or the frequency (FM); the VFO: &quot;VFO&quot; and its mode (&quot;VFO FM&quot;, &quot;VFO P25&quot;). While a call comes in, the caller (without one: &quot;FM signal&quot;, &quot;AM signal&quot;, &quot;P25 call&quot;, &quot;NXDN call&quot;), and the <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> pill at the right</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Frequency, <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr> and <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr>, or tone and width; in AM &quot;Air Band AM&quot; (where there is room)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The zone (where there is room: B may be in another zone than A). Where row 3 has room, the zone sits at its right instead</td>
+</tr>
+</tbody>
+</table></div>
+<p>While a frequency is typed for the selected VFO pane, row 1 shows the digits so far and blanks for the remaining places
+in amber. The other pane keeps its frequency. Large text shows the same entry on the selected line. Back removes a
+digit; OK or # tunes it.</p>
+<img src="screens/160x120i5/home_dual_vfo_entry.png" width="200" alt="Frequency entry on the selected B VFO pane">
+<p><strong>Which channel PTT uses</strong> (asked for: &quot;easy to tell which one transmits&quot;): the selected pane's tag is filled and has
+the arrow, and its row 1 always has the <strong>PTT</strong> pill. The other pane has neither. While transmitting, the tag and pill
+turn red and say <strong>TX</strong>, and the line under the panes says &quot;TALKING on A&quot; with the time.</p>
+<p><strong>Where a call is coming in</strong>: that pane's tag and text turn green, row 2 names the caller with an <strong>RX</strong> pill at its
+right, and the line under the panes says &quot;Receiving on B&quot; with the meter. On the selected pane the pane shows both
+PTT (row 1) and RX (row 2). The other pane dims.</p>
+<p><strong>Under the panes</strong>: the state line (TALKING or Receiving) when there is one, then the last calls, newest first, each with its pane's letter: &quot;B Joe
+Smith TG 91 10s ago&quot;. Each pane says how long ago its own last call ended, &quot;Heard 7s ago&quot; (or &quot;7s ago&quot;) at the right
+of its first row where it fits whole: amber on the pane of the newest call, dim on the other. On displays without room
+for the list (128x64) and no room in the first row, the newest call's pane says &quot;7s ago&quot; at the right of its second
+row instead. A pane's age clears when its channel changes. For 10 s
+after a call on the other channel, the hint row says &quot;# 1 talk on B  Back stop&quot;; during talk back (section 4.2) &quot;# 1
+back to A  Back stop&quot;; otherwise &quot;# options  Back stop&quot;.</p>
+<p><strong>The wait after a call</strong> (one receiver): when a call or signal ends, the receiver stays on that channel for the
+reply, 1 s by default (<strong>Settings › Talk › <abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="../user/22-glossary.html#t-dual-watch">Dual watch</abbr> delay</strong>, 0.5-5 s). During the wait it takes short looks at the
+other channel. A signal found there is not played and doesn't take the receiver away from the reply: that pane says
+<strong>Busy</strong> in green at the right of its second row (its tag outline turns green where it isn't the selected one). When
+the wait ends the watch goes on and the busy channel is heard. Without this, the other channel went unheard for the
+whole wait, and with a conversation on one channel it was seldom checked at all.</p>
+<img src="screens/240x320/home_dual_busy.png" width="200" alt="Busy on A during the wait after a call on B">
+<p>The status strip shows <strong>DUAL</strong> (amber) and the selected channel's mode (the radio's own mode alternates). The mode is the one the pane's channel is received in: AM for an FM channel or VFO in the air band on a radio that receives AM there (<a href="../spec/airband-and-broadcast.html">airband-and-broadcast.md</a> 3), on the pane, in the strip and in the picker. It says RX while a call comes in on either pane. Every color comes with a word (P5).</p>
+<p><strong>Large text</strong> (Settings › Display): one line per channel, &quot;A COUNTY DMR&quot; / &quot;B Metro DMR&quot;, as large as fits, the
+selected one marked with an arrow at its left, green while a call comes in on it. The line receiving a call has its letter in a filled box.</p>
+<h3 id="31-two-receivers">3.1 Two receivers</h3>
+<p>With <code>ui_svc_receivers()</code> &gt; 1, both panes can receive at once, each with its caller and RX pill. Under the panes there is
+a line per receiving pane: &quot;Receiving on A&quot; with its meter, and &quot;Receiving on B, muted&quot; for the one that is not
+heard; where there is room for one line only, &quot;Receiving on A and B&quot;. The strip says RX. Gallery: <code>home_dual_two_rx</code>,
+<code>home_dual_two_rx_large_text</code>. The simulator has <code>receivers:2</code>, <code>rxa:</code> / <code>rxb:</code> and the <code>rxaend</code> / <code>rxbend</code> tokens; uiFlowTest
+checks a call on each, one ending (the other is then the one heard, and the ended call is listed), and talking on B.</p>
+<img src="screens/240x320/home_dual_two_rx.png" width="200" alt="Two receivers: a call on each">
+<h3 id="32-per-display-class">3.2 Per display class</h3>
+<p>The layout picks the richest set of rows that fits, never a smaller font for a row than the normal Home uses for it,
+and both names in one font (the largest both fit, never smaller than row 2; a longer name is shortened):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Rows per pane</th>
+<th>Under the panes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>240x320, 240x320i10x5 (DM-32UV)</td>
+<td>name (medium or large), target (medium), details, zone</td>
+<td>state and the last calls, as many as fit</td>
+</tr>
+<tr>
+<td>160x128</td>
+<td>name, target (medium)</td>
+<td>one line: the state, or the last call</td>
+</tr>
+<tr>
+<td>160x120i5 (DM-1701)</td>
+<td>name, target (small)</td>
+<td>one line</td>
+</tr>
+<tr>
+<td>128x64 (GD-77)</td>
+<td>name, target (small)</td>
+<td>none: the last call's age is in its pane</td>
+</tr>
+</tbody>
+</table></div>
+<p>Every screen in every class is in the gallery (<code>docs/ux/screens/*/home_dual*.png</code>, <code>dual_*.png</code>).</p>
+<h2 id="4-keys-while-it-runs">4. Keys while it runs</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PTT</strong></td>
+<td><abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">Transmits</abbr> on the selected channel; <abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="../user/22-glossary.html#t-dual-watch">dual watch</abbr> goes on after</td>
+</tr>
+<tr>
+<td><strong>Up / Down</strong>, the knob</td>
+<td>The selected channel moves through its zone (skipping the other one); on the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr>, a step. Nowhere to go: &quot;Only one channel in this zone&quot;, or &quot;No other channel here: A has it&quot;</td>
+</tr>
+<tr>
+<td><strong>Left / Right</strong> (DM-1801 Pro, DM-32UV)</td>
+<td>Selects A / B (a press; hold is the radio's user function)</td>
+</tr>
+<tr>
+<td><strong>A/B</strong> key</td>
+<td>Selects the other channel</td>
+</tr>
+<tr>
+<td>Zone keys (Next / Previous zone, the DM-1701's P1 / P2; Up / Down set to Zone in Settings › Keys)</td>
+<td>The selected channel goes to the next / previous zone, on its first channel that isn't the other one (&quot;A zone: Simplex&quot;). A zone with no such channel is passed over. From the VFO: the zone the radio was last on. The knob still steps the channel</td>
+</tr>
+<tr>
+<td>Home zone key</td>
+<td>The selected channel goes to the first zone, the same way</td>
+</tr>
+<tr>
+<td><strong>Monitor</strong> (held)</td>
+<td>Opens the squelch on the selected channel: the receiver goes there and the watch waits while the key is held. On a <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> channel a press is <abbr class="gl" tabindex="0" title="Playing every talkgroup on the timeslot (promiscuous mode; &quot;hear all&quot; in older RadioFoundry builds)." data-more="../user/22-glossary.html#t-digital-monitor">digital monitor</abbr>, as without dual watch</td>
+</tr>
+<tr>
+<td><strong>#</strong></td>
+<td>Dual watch actions: <strong>1</strong> Talk on B (or A), <strong>2</strong> Change A, <strong>3</strong> Change B, <strong>4</strong> Caller (the last caller and how long ago; OK opens their actions; dim until a call was heard), <strong>5</strong> Stop, stay on A (or B). Change A and B open the picker</td>
+</tr>
+<tr>
+<td><strong>*</strong></td>
+<td>Quick settings of the selected channel</td>
+</tr>
+<tr>
+<td><strong>VFO</strong> key</td>
+<td>The selected channel becomes its own VFO (&quot;A: VFO&quot;); again, back to the channel it was (&quot;Back to channels&quot;). Each channel has its own VFO: with the other channel on one, this one gets the second</td>
+</tr>
+<tr>
+<td>Copy to VFO</td>
+<td>The selected channel is copied into its own VFO, which becomes the selected channel. With the other channel on a VFO, the copy goes to the second; the other's frequency doesn't change</td>
+</tr>
+<tr>
+<td>Find, Channels, Zones</td>
+<td>A channel picked there becomes the selected channel; the other channel picked selects it</td>
+</tr>
+<tr>
+<td><strong>Back</strong>, twice</td>
+<td>Stops, staying on the selected channel (section 2)</td>
+</tr>
+</tbody>
+</table></div>
+<img src="screens/160x120i5/dual_actions.png" width="200" alt="Dual watch actions">
+<h3 id="42-talk-back">4.2 Talk back</h3>
+<p><strong>Settings › Talk › Dual watch talk back</strong> (off by default). Off, a call on the other channel never moves PTT: &quot;# 1
+talk on B&quot; is one press away. On, when a call ends on the other channel, that channel is selected (&quot;Talk back on B&quot;)
+so PTT answers there. The time starts over with each reply and each call there; 10 s after the last, the selection goes
+back (&quot;Talking on A&quot;). <strong>#</strong> <strong>1</strong>, the A/B key or Left / Right go back at once and end it.</p>
+<img src="screens/240x320/home_dual_talk_back.png" width="200" alt="Talk back on B">
+<h3 id="41-per-radio">4.1 Per radio</h3>
+<p>SK2 held is Dual watch on every radio, and the DM-1801 Pro's A/B key is A/B (press) and Dual watch (hold). A press of SK2
+is A/B on every radio (the DB25-D PRO's tone key too), so the pair is on one key; the <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr> picker stays on
+hold #. Every side key can take A/B or Dual watch in Settings › Keys (press or hold).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Radio</th>
+<th>Switch A / B</th>
+<th>Start / stop</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DM-1701</td>
+<td><strong>SK2</strong> (a press), <code>#</code> <strong>1</strong></td>
+<td><code>*</code> <code>7</code>, or hold SK2</td>
+</tr>
+<tr>
+<td>DM-1801 Pro</td>
+<td>The <strong>A/B</strong> key, <strong>Left</strong> / <strong>Right</strong></td>
+<td>Hold <strong>A/B</strong>, <code>*</code> <code>7</code>, or hold SK2 (zones: hold Left / Right, or Zones)</td>
+</tr>
+<tr>
+<td>DM-32UV</td>
+<td><strong>Left</strong> / <strong>Right</strong></td>
+<td><code>*</code> <code>7</code>, or hold SK2</td>
+</tr>
+<tr>
+<td>MD-380</td>
+<td><code>#</code> <strong>1</strong>, or a side key set to A/B</td>
+<td><code>*</code> <code>7</code>, or hold SK2</td>
+</tr>
+<tr>
+<td>DB25-D PRO (no number keys)</td>
+<td>A side key set to A/B</td>
+<td>Hold the tone key, or a side key set to Dual watch</td>
+</tr>
+<tr>
+<td>Radios planned (GD-77 family, MD-UV380, MD-9600)</td>
+<td>Not decided: A/B on a side key or mic key</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="5-rules">5. Rules</h2>
+<ul>
+<li>
+<p><abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="../user/22-glossary.html#t-dual-watch">Dual watch</abbr> is a kind of scan to the radio: starting it stops a zone scan, and a zone scan (Tools › Scan, the Scan
+key) stops it.</p>
+</li>
+<li>
+<p>Only the user stops it: Back twice, <code>*</code> <code>7</code>, hold SK2, the Dual watch key, # 5, a zone scan, or a scan stop over the
+<abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> (<code>rfoundry_debug.py radio scan stop</code>). Everything else keeps it going:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Dual watch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A channel picked in Find, Channels or Zones, or set over the debug link</td>
+<td>That channel becomes the selected one; the other channel picked selects it</td>
+</tr>
+<tr>
+<td>Dual watch started over the debug link (<code>radio scan dual POS</code>)</td>
+<td>Home shows it and the same rules apply, as if started with <code>*</code> <code>7</code> (&quot;Dual watch on&quot;), also right after a scan stop over the debug link</td>
+</tr>
+<tr>
+<td>A or B selected over the debug link (<code>radio scan select a|b</code>)</td>
+<td>That one becomes the selected one (&quot;Talking on B&quot;), as with the A/B key: the debug link's channel, zone and frequency requests then change it</td>
+</tr>
+<tr>
+<td>Hotspot mode</td>
+<td>Paused while it runs, then goes on</td>
+</tr>
+<tr>
+<td>A codeplug write</td>
+<td>Goes on with the same channels, found again by number; a channel gone is replaced by the one the radio is on</td>
+</tr>
+<tr>
+<td>Power off and on</td>
+<td>Starts again with the same A, B and selection</td>
+</tr>
+<tr>
+<td>A zone or band scan started over the debug link</td>
+<td>Stops: &quot;Dual watch off: scanning&quot;</td>
+</tr>
+<tr>
+<td>A channel the radio can't watch any more</td>
+<td>Stops and says where the radio is: &quot;Dual watch off: on COUNTY <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr>&quot;</td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<p>Quick settings, the <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr>, hear all and Clear changes on the selected channel retune the receiver to it
+first, so they act on the right channel. Each channel's changes for now stay with it over each hop
+(<a href="../spec/radio-features.html#21-dual-watch">radio-features.md 2.1</a>).</p>
+</li>
+<li>
+<p>A channel picked for A or B can't be the other one's.</p>
+</li>
+<li>
+<p>Stopped with B selected, the radio stays on B, which becomes A: the next start watches the same two channels, with
+the old A as B. A start on the last B's channel does the same.</p>
+</li>
+<li>
+<p>Changing A or B clears the calls listed for it (they were on the old channel).</p>
+</li>
+<li>
+<p>The last B is kept across power off (its channel number, or which <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr>; settings-store.md 3), so <code>*</code> <code>7</code> starts with it
+at once. With the watch on at power off, the radio starts it again at power on, with the same selection. If its zone isn't known any more, the first zone holding that channel is used (A's zone first); a channel
+gone from the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> means the default B. The radio powers up on the selected channel, even when it was listening to
+the other one at the time.</p>
+</li>
+<li>
+<p>PTT is moved to the other channel by a call there only with talk back on (section 4.2), and only for its 10 s.</p>
+</li>
+</ul>
+<h2 id="6-press-budgets-uiflowtest">6. Press budgets (uiFlowTest)</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Presses</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start with the last B (also after power off)</td>
+<td>2 (<code>* 7</code>), 1 (hold SK2)</td>
+</tr>
+<tr>
+<td>Start, B the next channel (the first time)</td>
+<td>2 (<code>* 7</code>)</td>
+</tr>
+<tr>
+<td>Start, then B by number</td>
+<td>6 (<code>* 7 # 3 5 OK</code>)</td>
+</tr>
+<tr>
+<td>Start, B on the VFO</td>
+<td>5 (<code>* 7</code>, select B, <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> key)</td>
+</tr>
+<tr>
+<td>Start, B in another zone</td>
+<td>5 (<code>* 7</code>, select B, next zone)</td>
+</tr>
+<tr>
+<td>Talk on B</td>
+<td>1 (A/B key, Right) or 2 (<code># 1</code>)</td>
+</tr>
+<tr>
+<td>Stop</td>
+<td>1 (hold SK2), 2 (Back Back, <code>* 7</code>)</td>
+</tr>
+<tr>
+<td>Zone scan</td>
+<td>3 (Tools › Scan: <code>OK 6 1</code>; was 2 with <code>* 7</code>)</td>
+</tr>
+<tr>
+<td>Talk back on</td>
+<td>11 (Settings › Talk)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="7-decisions">7. Decisions</h2>
+<p>Asked in this design's first round and decided by the owner (2026-10-21):</p>
+<ol>
+<li>Tile 7 is <abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="../user/22-glossary.html#t-dual-watch">Dual watch</abbr>; a zone scan is in Tools › Scan only.</li>
+<li>SK2 held is Dual watch (it was Scan).</li>
+<li>A call on B keeps PTT on A by default; talk back (section 4.2) is a setting.</li>
+<li>The last B is kept across power off.</li>
+<li>The DM-1801 Pro's A/B key is A/B on a press and Dual watch on a hold (it was Next zone).</li>
+<li>The SK2 press is A/B on every radio (it was <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">Talk target</abbr>, which is also hold #; owner, 2026-10-23). The A/B key with the watch off says
+&quot;Turn on dual watch first&quot; instead of starting it (owner, 2026-10-22).</li>
+<li>The zone keys move the selected channel to another zone; they no longer end the watch (owner, 2026-10-22).</li>
+<li>Nothing ends the watch but a deliberate stop, and power on resumes it (owner, 2026-10-22).</li>
+<li>One Back doesn't stop it: two presses within 2 s do. A hold isn't used, since a long Back is Home from anywhere
+(owner, 2026-10-22).</li>
+</ol>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/ux/dual-watch.md">Vedi il sorgente di questa pagina</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="In questa pagina">
+		<p class="eyebrow">In questa pagina</p>
+		<ul><li class="l2"><a href="#1-what-it-is">1. What it is</a></li><li class="l2"><a href="#2-turning-it-on-and-off">2. Turning it on and off</a></li><li class="l2"><a href="#3-home">3. Home</a></li><li class="l3"><a href="#31-two-receivers">3.1 Two receivers</a></li><li class="l3"><a href="#32-per-display-class">3.2 Per display class</a></li><li class="l2"><a href="#4-keys-while-it-runs">4. Keys while it runs</a></li><li class="l3"><a href="#42-talk-back">4.2 Talk back</a></li><li class="l3"><a href="#41-per-radio">4.1 Per radio</a></li><li class="l2"><a href="#5-rules">5. Rules</a></li><li class="l2"><a href="#6-press-budgets-uiflowtest">6. Press budgets (uiFlowTest)</a></li><li class="l2"><a href="#7-decisions">7. Decisions</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Unisciti alla comunità RadioFoundry</strong><span class="small muted">Domande, aiuto con la tua radio e novità, su Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Hai trovato un bug? Vuoi che la tua radio sia supportata?</strong><span class="small muted">Apri una segnalazione su GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry ha licenza MIT · <a href="https://github.com/radiofoundry/radiofoundry">Codice sorgente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunità</a> · <a href="../../../it/docs/index.html">Documenti</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Novità</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

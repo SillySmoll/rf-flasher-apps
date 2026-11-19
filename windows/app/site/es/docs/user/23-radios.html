@@ -1,0 +1,1621 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radio Reference · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Radio Reference · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/docs/user/23-radios.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/user/23-radios.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/user/23-radios.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/user/23-radios.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/user/23-radios.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/user/23-radios.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../es/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../../es/radios/index.html">Radios</a><a href="../../../es/features/index.html">Funciones</a><a href="../../../es/flash/index.html">Instalar</a><a href="../../../es/codeplug/index.html">Codeplug</a><a href="../../../es/docs/index.html" aria-current="page">Documentación</a><a href="../../../es/screenshots/index.html">Capturas</a><a href="../../../es/tools/index.html">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../../docs/user/23-radios.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/user/23-radios.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/user/23-radios.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/user/23-radios.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Manual del usuario">
+		<p class="eyebrow"><a href="../../../es/docs/index.html">Documentación</a> / Manual del usuario</p>
+		<ul><li><a href="index.html">RadioFoundry User Manual</a></li><li><a href="01-introduction.html">Introduction</a></li><li><a href="02-installing.html">Installing</a></li><li><a href="03-first-boot.html">First Boot</a></li><li><a href="04-programming.html">Programming the Radio</a></li><li><a href="05-keys-and-navigation.html">Keys and Navigation</a></li><li><a href="06-home-screen.html">The Home Screen</a></li><li><a href="07-channels-zones-vfo.html">Channels, Zones and the VFO</a></li><li><a href="08-fm.html">FM</a></li><li><a href="09-dmr.html">DMR</a></li><li><a href="10-messages-and-signaling.html">Messages, Call Alert and Radio Check</a></li><li><a href="11-emergency.html">Emergency</a></li><li><a href="12-scan.html">Scan and Dual Watch</a></li><li><a href="13-aprs.html">APRS</a></li><li><a href="14-hotspot.html">Hotspot Mode</a></li><li><a href="15-usb-network.html">USB Network Mode</a></li><li><a href="16-battery-and-power.html">Battery and Power</a></li><li><a href="17-settings.html">Settings</a></li><li><a href="18-moving-from-stock-md380.html">Moving from Stock MD-380 Firmware</a></li><li><a href="19-moving-from-stock-dm32.html">Moving from Stock DM-32UV Firmware</a></li><li><a href="20-troubleshooting.html">Troubleshooting</a></li><li><a href="21-faq.html">FAQ</a></li><li><a href="22-glossary.html">Glossary</a></li><li><a href="23-radios.html" aria-current="page">Radio Reference</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Esta página aún no está traducida; se muestra en inglés.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="radio-reference">Radio Reference</h1>
+<p>The rest of this manual describes what RadioFoundry does on every radio. This chapter lists what differs from radio to radio:
+which physical key does each job, the power levels, the battery, the power switch, the display, what a radio lacks,
+and what has been checked on it.</p>
+<!-- generated: tools/boards.py docs radios; edit boards/*/board.toml [status] -->
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Radio</th>
+<th>Also sold as</th>
+<th>What works</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#baofeng-dm-32uv">Baofeng DM-32UV</a></td>
+<td></td>
+<td>FM and <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> voice both ways, <abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="22-glossary.html#t-ctcss">CTCSS</abbr>/DCS, <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr> both ways, GPS data, the <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="14-hotspot.html">hotspot</abbr> and each <abbr class="gl" tabindex="0" title="Transmitting on one frequency and receiving on another at the same time. Repeaters do, and so does the duplex hotspot setup." data-more="../spec/split-duplex.html">split duplex</abbr> half work on air. Open: FM deviation at 12.5 kHz and an outdoor GPS fix.</td>
+</tr>
+<tr>
+<td><a href="#baofeng-dm-1701">Baofeng DM-1701</a></td>
+<td>Retevis RT84</td>
+<td>FM, DMR voice and data, text messages, alerts, emergency, scan, the hotspot, single frequency repeating, each split duplex half and the USB network services work on air. Open: standalone <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="../spec/sfr.html">SFR</abbr> and a two-radio split duplex pair.</td>
+</tr>
+<tr>
+<td><a href="#baofeng-dm-1801-pro">Baofeng DM-1801 Pro</a></td>
+<td>Baofeng DM-1801</td>
+<td>FM with CTCSS/DCS, DMR voice with the radio's own codec, DMR data and text, the hotspot, single frequency repeating, the PPP network services and each split duplex half work on air. Open: <abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="22-glossary.html#t-vhf">VHF</abbr> <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">transmit</abbr> and <abbr class="gl" tabindex="0" title="Voice-operated transmit." data-more="22-glossary.html#t-vox">VOX</abbr>.</td>
+</tr>
+<tr>
+<td><a href="#radioddity-db25-d-pro">Radioddity DB25-D PRO</a></td>
+<td>Kydera CDR-300UV</td>
+<td>FM and DMR voice both ways, the hotspot, the DMR <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr>, the PPP network services, cable programming and settings storage work on the radio. The older FD6818 batches run the same image, untested on a radio. Open: the Retevis RT73.</td>
+</tr>
+<tr>
+<td><a href="#tyt-md-380">TYT MD-380</a></td>
+<td><abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="22-glossary.html#t-tyt">TYT</abbr> MD-390, Retevis RT3</td>
+<td>FM with CTCSS both ways, DMR voice and <abbr class="gl" tabindex="0" title="Short message service: text messages. On DMR, short data carries them." data-more="22-glossary.html#t-sms">SMS</abbr> in simplex and through a repeater or hotspot on either slot, and <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> and ID database programming work on a <abbr class="gl" tabindex="0" title="Ultra high frequency: 300 MHz to 3 GHz. The amateur 70 cm band is UHF." data-more="22-glossary.html#t-uhf">UHF</abbr> radio. Open: <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="22-glossary.html#t-dcs">DCS</abbr>, the tone deviation and the untested VHF image.</td>
+</tr>
+<tr>
+<td><a href="#tyt-md-uv380">TYT MD-UV380</a></td>
+<td>TYT MD-UV390, Retevis RT3S, TYT MD-UV390 Plus 10 W</td>
+<td>Built on the UV380 family code, with the MD-UV380's keys, display, power tables and GPS. Run on radios by community testers.</td>
+</tr>
+<tr>
+<td><a href="#tyt-md-9600">TYT MD-9600</a></td>
+<td>Retevis RT90</td>
+<td>One image serves every board revision. On a V1-V3 radio, FM and DMR on both bands, DMR voice and data, text messages, roaming, scan, <abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="22-glossary.html#t-dual-watch">dual watch</abbr>, APRS, the hotspot, each split duplex half and the USB network services work on air, with every power level checked on a wattmeter on both bands. V4A/V5 boards are detected; on older boards the radio asks for the revision once. Open: V4 and V4A/V5 boards have not run on a radio, and SFR loses inbound voice frames.</td>
+</tr>
+<tr>
+<td><a href="#retevis-rt10">Retevis RT10</a></td>
+<td></td>
+<td>Boots from the boot ROM with the host link, stub entry, the watchdog and the crash log. FM <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">receive</abbr> with CTCSS/DCS decode, FM transmit, DMR transmit and receive with the radio's own codec, P25 (conventional, and trunked transmit) and NXDN at 4800 bit/s on stored channels, and APRS transmit work on the radio.</td>
+</tr>
+</tbody>
+</table></div>
+<!-- end generated -->
+<p><a href="#planned-radios">Planned radios</a> lists the radios that aren't built yet.</p>
+<h2 id="key-roles">Key roles</h2>
+<p>The manual names keys by the job they do. Each radio puts those jobs on its own keys:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Name in this manual</th>
+<th>Job (press / hold)</th>
+<th>DM-1701</th>
+<th>MD-380</th>
+<th>MD-UV380</th>
+<th>DM-32UV</th>
+<th>DB25-D PRO</th>
+<th>DM-1801 Pro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OK</strong></td>
+<td>Open or choose / save, make permanent</td>
+<td>Green Menu key</td>
+<td>Green Menu key</td>
+<td>Green Menu key</td>
+<td>Green Menu / OK key</td>
+<td>Menu / OK key, or push the knob</td>
+<td>Menu key</td>
+</tr>
+<tr>
+<td><strong>Back</strong></td>
+<td>Back one level / Home</td>
+<td>Red Back key</td>
+<td>Red Back key</td>
+<td>Red Back key</td>
+<td>Red Back key</td>
+<td>B/E key</td>
+<td>Back key</td>
+</tr>
+<tr>
+<td><strong>Up</strong>, <strong>Down</strong></td>
+<td>Move the focus / repeat</td>
+<td>Arrow keys</td>
+<td>Arrow keys</td>
+<td>Arrow keys</td>
+<td>Up and Down keys</td>
+<td>None: turn the knob</td>
+<td>Up and Down keys</td>
+</tr>
+<tr>
+<td><strong>*</strong></td>
+<td>Quick settings / lock or unlock the keys</td>
+<td><strong>*</strong></td>
+<td><strong>*</strong></td>
+<td><strong>*</strong></td>
+<td><strong>*</strong></td>
+<td>P1</td>
+<td><strong>*</strong></td>
+</tr>
+<tr>
+<td><strong>#</strong></td>
+<td>Actions / Recent</td>
+<td><strong>#</strong></td>
+<td><strong>#</strong></td>
+<td><strong>#</strong></td>
+<td><strong>#</strong></td>
+<td>P2</td>
+<td><strong>#</strong></td>
+</tr>
+<tr>
+<td><strong>0</strong> to <strong>9</strong></td>
+<td>Number keys</td>
+<td>Number keys</td>
+<td>Number keys</td>
+<td>Number keys</td>
+<td>Number keys</td>
+<td>None</td>
+<td>Number keys</td>
+</tr>
+<tr>
+<td><strong>Monitor</strong></td>
+<td>FM: squelch open while held. <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr>: <abbr class="gl" tabindex="0" title="Playing every talkgroup on the timeslot (promiscuous mode; &quot;hear all&quot; in older RadioFoundry builds)." data-more="22-glossary.html#t-digital-monitor">digital monitor</abbr> on / off</td>
+<td>SK1</td>
+<td>SK1</td>
+<td>SK1</td>
+<td>SK1</td>
+<td>P3</td>
+<td>SK1</td>
+</tr>
+<tr>
+<td><strong>Talk target</strong></td>
+<td><abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="22-glossary.html#t-talk-target">Talk target</abbr> picker</td>
+<td>Hold <strong>#</strong></td>
+<td>Hold <strong>#</strong></td>
+<td>Hold <strong>#</strong></td>
+<td>Hold <strong>#</strong></td>
+<td>Hold <strong>P2</strong></td>
+<td>Hold <strong>#</strong></td>
+</tr>
+<tr>
+<td><strong>A/B</strong></td>
+<td><abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="22-glossary.html#t-dual-watch">Dual watch</abbr>: the other channel / dual watch on or off</td>
+<td>SK2</td>
+<td>SK2</td>
+<td>SK2</td>
+<td>SK2</td>
+<td>TONE/T.SEL</td>
+<td>A/B key, SK2</td>
+</tr>
+<tr>
+<td><strong>Power level</strong></td>
+<td>Next power level / emergency (held 1.5 s)</td>
+<td>SK3</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+</tr>
+<tr>
+<td><strong>Previous zone</strong>, <strong>Next zone</strong></td>
+<td>Step the zone on Home</td>
+<td>P1, P2</td>
+<td>None</td>
+<td>None</td>
+<td>P1, P2</td>
+<td>None</td>
+<td>Left, Right</td>
+</tr>
+<tr>
+<td><strong>VFO</strong></td>
+<td>Between the channel and the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr> / copy the channel to the VFO</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+<td>VFO/MR key</td>
+</tr>
+<tr>
+<td><strong>Volume</strong></td>
+<td>Open the volume editor. Radios without a volume knob only</td>
+<td>None: the knob</td>
+<td>None: the knob</td>
+<td>None: the knob</td>
+<td>None: the knob</td>
+<td>VOL/SQL</td>
+<td>None: the knob</td>
+</tr>
+<tr>
+<td><strong>PTT</strong></td>
+<td><abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">Transmit</abbr></td>
+<td>PTT</td>
+<td>PTT</td>
+<td>PTT</td>
+<td>PTT</td>
+<td>PTT on the microphone</td>
+<td>PTT</td>
+</tr>
+<tr>
+<td>Channel knob</td>
+<td>One step per click</td>
+<td>Channel knob</td>
+<td>Channel switch (16 positions)</td>
+<td>Channel knob</td>
+<td>Channel knob</td>
+<td>Front knob</td>
+<td>None: Up and Down</td>
+</tr>
+</tbody>
+</table></div>
+<p>These are the defaults. <strong>Settings &gt; Keys</strong> can give other jobs to every key the menus don't need
+(<a href="17-settings.html#keys-key-8">Settings</a>):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Radio</th>
+<th>Keys you can set</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DM-1701</td>
+<td>SK1, SK2, SK3, P1, P2</td>
+</tr>
+<tr>
+<td>MD-380</td>
+<td>SK1, SK2</td>
+</tr>
+<tr>
+<td>MD-UV380</td>
+<td>SK1, SK2</td>
+</tr>
+<tr>
+<td>DM-32UV</td>
+<td>SK1, SK2, and P1, P2 on Home</td>
+</tr>
+<tr>
+<td>DB25-D PRO</td>
+<td>P3, TONE/T.SEL, the microphone's P4 and P5</td>
+</tr>
+<tr>
+<td>DM-1801 Pro</td>
+<td>SK1, SK2, SOS, A/B, VFO/MR</td>
+</tr>
+</tbody>
+</table></div>
+<p>OK, Back, the arrows, the number keys, <strong>*</strong>, <strong>#</strong>, PTT and the volume stay as they are. Where the arrows are
+printed P1 and P2 (DM-32UV), what you set for them works on Home only: in the menus they stay left and right. On the DB25-D PRO that
+includes P1, P2 and the microphone's P6 and P7, which are <strong>*</strong> and <strong>#</strong> there.</p>
+<p>The hints at the bottom of the screen use these names. A radio that knows its own name for a key shows that instead
+(the MD-9600 shows &quot;P1 Quick&quot;, not &quot;* Quick&quot;), and a radio without number keys leaves out hints that need them.</p>
+<p>On a radio without a key for a job, the menus reach it:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Job</th>
+<th>Without the key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Power level</td>
+<td><strong>*</strong>, <strong>1</strong> (quick settings, Power)</td>
+</tr>
+<tr>
+<td>Change the zone</td>
+<td><strong>OK</strong>, <strong>4</strong> (Zones), pick a zone</td>
+</tr>
+<tr>
+<td>Talk target</td>
+<td><strong>*</strong>, <strong>8</strong></td>
+</tr>
+<tr>
+<td>Monitor</td>
+<td><strong>*</strong>, <strong>5</strong> latches it</td>
+</tr>
+<tr>
+<td>Emergency</td>
+<td>No other way on the radio yet</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="dual-watch-on-each-radio">Dual watch on each radio</h2>
+<p><a href="12-scan.html#dual-watch">Dual watch</a> listens on two channels, A and B. Every radio built today has one receiver, so
+on every radio it is pseudo <abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="22-glossary.html#t-dual-watch">dual watch</abbr>: the radio alternates between A and B. A call on one channel can be missed
+while the radio is on the other. A radio with two receivers would hear both and show a call on each at once. The UI is ready for that (<code>ui_svc_receivers()</code> above 1), but no radio reports two receivers
+yet, and the core doesn't use them.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Radio</th>
+<th>Dual watch</th>
+<th>Start</th>
+<th>Switch A / B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DM-1701</td>
+<td>Pseudo, one receiver. The core's alternation between two channels of one zone is checked on air; the new dual watch (any zone, the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr>, the screens) is not yet</td>
+<td><strong>*</strong>, <strong>7</strong>, or hold <strong>SK2</strong></td>
+<td><strong>SK2</strong> (a press), <strong>#</strong>, <strong>1</strong></td>
+</tr>
+<tr>
+<td>MD-380</td>
+<td>Pseudo, one receiver. Not checked on air</td>
+<td><strong>*</strong>, <strong>7</strong>, or hold <strong>SK2</strong></td>
+<td><strong>SK2</strong> (a press), <strong>#</strong>, <strong>1</strong></td>
+</tr>
+<tr>
+<td>MD-UV380</td>
+<td>Pseudo, one receiver (one AT1846S for both bands). Not checked on air</td>
+<td><strong>*</strong>, <strong>7</strong>, or hold <strong>SK2</strong></td>
+<td><strong>SK2</strong> (a press), <strong>#</strong>, <strong>1</strong></td>
+</tr>
+<tr>
+<td>DM-32UV</td>
+<td>Pseudo, one receiver. Not checked on air (scan isn't checked on this radio yet)</td>
+<td><strong>*</strong>, <strong>7</strong>, or hold <strong>SK2</strong></td>
+<td><strong>SK2</strong> (a press), <strong>Left</strong> / <strong>Right</strong></td>
+</tr>
+<tr>
+<td>DB25-D PRO</td>
+<td>Pseudo, one receiver. Not checked on air. Its second BK4819 chip is a local oscillator for the <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">receive</abbr> chain, not a second receiver</td>
+<td>Hold the <strong>TONE/T.SEL</strong> key</td>
+<td>A press of <strong>TONE/T.SEL</strong></td>
+</tr>
+<tr>
+<td>DM-1801 Pro</td>
+<td>Pseudo, one receiver. Not checked on air</td>
+<td>Hold the <strong>A/B</strong> key, <strong>*</strong>, <strong>7</strong>, or hold <strong>SK2</strong></td>
+<td>The <strong>A/B</strong> key or <strong>SK2</strong> (a press), <strong>Left</strong> / <strong>Right</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Holding <strong>SK2</strong> is dual watch on every radio that has an SK2, and on the DB25-D PRO holding the tone key is. A press of
+<strong>SK2</strong> (the tone key on the DB25-D PRO) switches A / B, and with dual watch off says &quot;Turn on dual watch first&quot;. The
+DM-1801 Pro's A/B key does both: a press switches A / B, a hold starts and stops dual watch. On it the zones are on <strong>Left</strong> / <strong>Right</strong>, or in the Zones menu.</p>
+<p>A and B can be any channel of any zone, or the VFO (<a href="../spec/radio-features.html#21-dual-watch">how the core does it</a>).
+Nothing about this dual watch has been checked on the air on any radio.</p>
+<p>The Anytone AT-D578UV is the radio the two-receiver case is for: its hardware has two receiver chips
+(<a href="../spec/hardware-anytone.html">Anytone hardware notes</a>). RadioFoundry has no board for it, so there is no support.</p>
+<h2 id="the-volume-bar">The volume bar</h2>
+<p>On a radio whose volume knob RadioFoundry reads, turning the knob shows the volume at the bottom of the screen (at the
+top on a screen that uses its bottom row, such as Quick settings): a bar of 16 steps and the step number. It goes away 3 s after you stop turning, and the screen under it carries on (a call,
+a menu). It also turns the backlight on. On a radio without a knob, the <strong>Volume</strong> key opens the volume screen
+instead. A radio whose volume control works after the radio chip (<code>volume.src</code> none) can't know the level, and shows
+nothing.</p>
+<img src="../ux/screens/160x128/volume_bar.png" width="200" alt="The volume bar at the bottom of Home after turning the knob">
+<h2 id="setting-the-volume-from-a-pc">Setting the volume from a PC</h2>
+<p><code>rfoundry_debug.py volume</code> prints the volume the radio uses and where it comes from. <code>rfoundry_debug.py volume 12</code> sets step 12
+of 16 (0 is mute), and <code>rfoundry_debug.py volume knob</code> gives the knob back (over the serial cable of the DM-32UV, add
+<code>--port /dev/ttyUSB1</code> or the port of your cable). What this does depends on the radio:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Radio</th>
+<th>Volume from a PC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DM-1701</td>
+<td>Yes. The radio reads the knob and sets the audio gain itself, so the PC's level replaces the knob's until you send <code>knob</code> or restart the radio. It is not saved</td>
+</tr>
+<tr>
+<td>MD-380</td>
+<td>No. The knob works on the audio path directly; the radio answers &quot;not supported&quot;</td>
+</tr>
+<tr>
+<td>MD-UV380</td>
+<td>Yes, as on the DM-1701 (the same audio path). Not checked on a radio</td>
+</tr>
+<tr>
+<td>DM-32UV</td>
+<td>No. The knob works on the audio amplifier directly; the radio answers &quot;not supported&quot;</td>
+</tr>
+<tr>
+<td>DB25-D PRO</td>
+<td>Yes. There is no knob: the level is the radio's own volume setting, so the PC changes that setting and it is saved, as if you had set it on the radio. <code>knob</code> puts it back to the default (step 8)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="programming">Programming</h2>
+<p>The <a href="04-programming.html#the-codeplug-editor">Codeplug Editor</a> programs every radio below. <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr> needs a radio on the
+port and addresses its driver knows.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Radio</th>
+<th>Cable</th>
+<th>qdmr</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DM-1701</td>
+<td>USB</td>
+<td>Radio type 8 (10 on the other screen variant). qdmr's driver for the UV380 family</td>
+</tr>
+<tr>
+<td>MD-380</td>
+<td>USB</td>
+<td>Radio type 7</td>
+</tr>
+<tr>
+<td>DM-32UV</td>
+<td>Programming cable (no USB)</td>
+<td>Can't program it directly. RadioFoundry keeps the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> 7 MB into the radio's data flash, so the addresses qdmr's driver uses land in the stock area, where RadioFoundry refuses writes. Edit the codeplug in qdmr, save it as <abbr class="gl" tabindex="0" title="A text file format. qdmr stores its codeplug as YAML." data-more="22-glossary.html#t-yaml">YAML</abbr>, and write it with <code>dm32_migrate.py restore --yaml FILE</code> (<a href="19-moving-from-stock-dm32.html">Moving from stock DM-32UV firmware</a>), which adds the offset. The radio reports radio type 6 (MD-UV380) for now</td>
+</tr>
+<tr>
+<td>DB25-D PRO</td>
+<td>Programming cable, K1 jack (<a href="#programming-the-db25-d-pro-over-the-cable">below</a>)</td>
+<td>Reports type 6. The codeplug sits at the DM-1701's addresses, so qdmr's MD-UV380 driver should work. Not tried</td>
+</tr>
+<tr>
+<td>DM-1801 Pro</td>
+<td>Programming cable</td>
+<td>Not listed</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="codeplug-files-from-the-original-firmware">Codeplug files from the original firmware</h3>
+<p>The Codeplug Editor converts these when you open them (<a href="04-programming.html#files">Files</a>).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Radio</th>
+<th>Files it opens</th>
+<th>Convert first</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DM-1701, RT84</td>
+<td>The web installer's backup, a dump of the radio's data flash</td>
+<td>The manufacturer's MD-UV380 family <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="04-programming.html">CPS</abbr> file (<code>.rdt</code>): <code>dmrconf decode --manufacturer --radio dm1701 FILE.rdt FILE.yaml</code>, then open the YAML</td>
+</tr>
+<tr>
+<td>MD-380, MD-390, RT3</td>
+<td>The web installer's backup, a dump of the radio's data flash, the manufacturer's CPS file (<code>.rdt</code>)</td>
+<td></td>
+</tr>
+<tr>
+<td>DM-32UV</td>
+<td>The web installer's backup taken on the stock firmware, its <code>data-memory.bin</code> or <code>original-channels.bin</code> (the first 84 channels)</td>
+<td>Past 84 channels, or offline: <code>tools/backup_codeplug.py BACKUP.zip -o DIR</code>, then open <code>DIR/&lt;name&gt;-ported.yaml</code> (<a href="19-moving-from-stock-dm32.html#from-a-web-installer-backup">From a web installer backup</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="baofeng-dm-1701">Baofeng DM-1701</h2>
+<p>Also sold as the Retevis RT84. A handheld for 136-174 and 400-480 MHz with a keypad, a channel knob, a volume knob
+with the power switch, three side keys and a color screen.</p>
+<h3 id="installing-on-the-dm-1701">Installing on the DM-1701</h3>
+<p>Follow <a href="02-installing.html">Installing</a> with these values:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>DM-1701</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stock firmware file</td>
+<td>Baofeng's <code>DM-1701(CSV)-V02.06.bin</code> or <code>DM-1701(noCSV)-V02.06.bin</code> (V02.06), or Radioddity's V02.01, V02.02 or V02.03 file (<code>Firmware-DM-1701(CSV)-V02.01.bin</code>, <code>DM-1701(CSV)-V02.02.bin</code>, <code>DM-1701(CSV)-V02.03 Only for Radioddity.bin</code>, <code>DM-1701-V02.03 Only for Radioddity.bin</code>). Each gives the bootloader key and the voice codec. An archive of V02.06 is at github.com/daniel5600/BAOFENG-DM1701-Original-Firmware (<a href="../spec/codec-dm1701.html#firmware-files">the list</a>)</td>
+</tr>
+<tr>
+<td>MD-9600 files</td>
+<td>Any <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="22-glossary.html#t-tyt">TYT</abbr> MD-9600 V16.45 or V06.09 file (<code>MD9600-CSV(V4)-V16.45.bin</code> and the rest) gives the voice codec, the one an OpenGD77-family install leaves on the radio. It does not give the bootloader key and is never written back as the radio's firmware: also select a DM-1701 file, or read the radio first (<strong>Another open firmware</strong>, which finds this codec in the radio). <a href="../spec/codec-dm1701.html#md-9600-files">Details</a></td>
+</tr>
+<tr>
+<td><code>--stock-installed</code></td>
+<td>The version the radio runs, e.g. <code>&quot;V02.06 CSV&quot;</code></td>
+</tr>
+<tr>
+<td>Bootloader keys</td>
+<td>Hold <strong>PTT</strong> and <strong>SK1</strong> together while you turn the radio on with the volume knob</td>
+</tr>
+<tr>
+<td>Bootloader USB device (Zadig)</td>
+<td>&quot;Digital Radio in USB mode&quot; (0483:DF11), <a href="02-installing.html#windows-the-bootloader-driver">driver steps</a></td>
+</tr>
+<tr>
+<td>Board name</td>
+<td><code>dm1701</code></td>
+</tr>
+<tr>
+<td>Going back to stock</td>
+<td>Baofeng's firmware upgrade tool, in the stock firmware archive. It writes the application and the resource area the stock firmware keeps in the SPI flash</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="dm-1701-keys">DM-1701 keys</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Where</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Green Menu key</td>
+<td>Keypad</td>
+<td><strong>OK</strong></td>
+</tr>
+<tr>
+<td>Red Back key</td>
+<td>Keypad</td>
+<td><strong>Back</strong></td>
+</tr>
+<tr>
+<td>Arrow keys</td>
+<td>Keypad</td>
+<td><strong>Up</strong>, <strong>Down</strong></td>
+</tr>
+<tr>
+<td>P1, P2</td>
+<td>The two front function keys</td>
+<td><strong>Previous zone</strong>, <strong>Next zone</strong></td>
+</tr>
+<tr>
+<td>SK1</td>
+<td>The top side key, above <strong>PTT</strong></td>
+<td><strong>Monitor</strong>. Held with <strong>PTT</strong> at power-on, it starts the bootloader</td>
+</tr>
+<tr>
+<td>SK2</td>
+<td>The side key below <strong>PTT</strong></td>
+<td><strong>A/B</strong>: press to switch A / B in <abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="22-glossary.html#t-dual-watch">dual watch</abbr>, hold for dual watch on or off. The <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="22-glossary.html#t-talk-target">talk target</abbr> picker is on hold <strong>#</strong></td>
+</tr>
+<tr>
+<td>SK3</td>
+<td>The lowest side key</td>
+<td><strong>Power level</strong>. Press: the next power level. Hold 1.5 s: emergency. A build without emergency says &quot;Voice prompts: not in this build&quot; on a hold</td>
+</tr>
+<tr>
+<td><strong>PTT</strong></td>
+<td></td>
+<td><strong>PTT</strong></td>
+</tr>
+<tr>
+<td>Channel knob</td>
+<td></td>
+<td>Channel knob</td>
+</tr>
+</tbody>
+</table></div>
+<p>The side keys are, top to bottom, SK1, <strong>PTT</strong>, SK2 and SK3.</p>
+<h3 id="dm-1701-power-levels">DM-1701 power levels</h3>
+<p>Five levels: 100 mW, 500 mW, 1 W, 2.5 W, 5 W. The values are nominal and use the radio's factory calibration. They
+haven't been measured with a wattmeter.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Way to change it</th>
+<th>Levels</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A channel without a power in the codeplug</td>
+<td>1 W</td>
+</tr>
+<tr>
+<td><strong>*</strong>, <strong>1</strong></td>
+<td>100 mW, 1 W, 5 W</td>
+</tr>
+<tr>
+<td>SK3 on Home</td>
+<td>All five, one per press</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="dm-1701-battery">DM-1701 battery</h3>
+<p>A 2-cell Li-ion pack. The percentage follows the resting voltage, 4.10 V a cell for full and 3.20 V for empty. It
+hasn't been checked against a meter yet.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Below</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Low</td>
+<td>6.2 V</td>
+</tr>
+<tr>
+<td>Critical</td>
+<td>6.0 V</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="dm-1701-power-switch">DM-1701 power switch</h3>
+<p>The power switch is on the volume knob. Turn it clockwise past the click to switch on, counterclockwise to the click
+to switch off. The switch cuts the battery sense line, so the radio sees &quot;off&quot; as a reading below 5.5 V, finishes
+what it is doing, saves and drops its own power. A deeply discharged battery reads the same way and the radio shuts
+down.</p>
+<p>Whether the radio can cut its own power while the knob is still on (auto power off) hasn't been checked. If it
+can't, the radio comes back after 2 s and shows &quot;Couldn't switch off / Turn the knob off&quot;.</p>
+<h3 id="dm-1701-display">DM-1701 display</h3>
+<p>A 160 x 128 color screen with the top 8 rows hidden: 160 x 120 visible. The screenshots in this
+manual are this size.</p>
+<h3 id="what-the-dm-1701-lacks">What the DM-1701 lacks</h3>
+<ul>
+<li>No GPS from the factory. <abbr class="gl" tabindex="0" title="Location Request and Response Protocol: a dispatcher asks a radio for its position. Motorola&#x27;s position format; the standard has LIP." data-more="22-glossary.html#t-lrrp">LRRP</abbr> location requests get &quot;no fix&quot;. <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr> positions come from a computer or a fixed
+position. If you fit a GPS module yourself, wire its <abbr class="gl" tabindex="0" title="The text format GPS receivers use to report position and time." data-more="22-glossary.html#t-nmea">NMEA</abbr> output to PA10 (STM32 pin 69) and its power enable, if it
+has one, to PA9. The radio finds it at start-up (<a href="../spec/hardware-dm1701.html#142-gps-module">hardware-dm1701.md 14.2</a>)
+and powers it only while <strong>Settings &gt; Location &gt; GPS</strong> is on.</li>
+<li>APRS <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">receive</abbr> needs the squelch open: the radio hears packets strong enough to open the squelch, not weaker ones.</li>
+<li>No APRS <abbr class="gl" tabindex="0" title="A station that passes APRS packets between the air and the APRS-IS internet network." data-more="22-glossary.html#t-igate">iGate</abbr> (passing heard packets to APRS-IS): it doesn't fit in the flash yet.</li>
+<li>No vibration motor: <strong>Settings &gt; Sound &gt; Vibrate</strong> isn't in the image.</li>
+</ul>
+<h3 id="verified-on-the-dm-1701">Verified on the DM-1701</h3>
+<p>Tested on one DM-1701, on air against the SDR bench where <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="22-glossary.html#t-rf">RF</abbr> is involved:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Verified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Basics</td>
+<td>Boot, display, keys, calibration</td>
+</tr>
+<tr>
+<td>FM</td>
+<td>Receive and <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">transmit</abbr> at 12.5 and 25 kHz, <abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="22-glossary.html#t-ctcss">CTCSS</abbr> and <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="22-glossary.html#t-dcs">DCS</abbr> tones, 1750 Hz burst, roger beep</td>
+</tr>
+<tr>
+<td>DMR voice</td>
+<td>Group and <abbr class="gl" tabindex="0" title="A DMR call to one radio." data-more="22-glossary.html#t-private-call">private calls</abbr> both ways, late entry, <abbr class="gl" tabindex="0" title="A short text, usually a callsign and name, sent along with DMR voice." data-more="22-glossary.html#t-talker-alias">talker alias</abbr>, positions in calls, the <abbr class="gl" tabindex="0" title="A fixed voice scrambling from Motorola and Anytone radios. Not encryption." data-more="22-glossary.html#t-basic-privacy">basic privacy</abbr> signaling (the scrambling itself hasn't been checked against another radio)</td>
+</tr>
+<tr>
+<td>DMR data</td>
+<td>Text messages, <abbr class="gl" tabindex="0" title="A DMR page that makes another radio ring." data-more="22-glossary.html#t-call-alert">call alert</abbr>, <abbr class="gl" tabindex="0" title="A DMR request another radio answers automatically, to show it is on and in range." data-more="22-glossary.html#t-radio-check">radio check</abbr>, emergency, all both ways</td>
+</tr>
+<tr>
+<td>Scan</td>
+<td>Zone scan (including stopping for <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> calls), <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr> band scan, dual watch (the core alternating two channels of one zone; <a href="12-scan.html#dual-watch">dual watch</a> with any zone and the VFO is not yet)</td>
+</tr>
+<tr>
+<td>Hotspot</td>
+<td>Voice and data calls both ways. <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="../spec/mmdvm-protocol.html">MMDVM</abbr> <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="../spec/sfr.html">SFR</abbr> repeats a whole call, about 210 ms after the original instead of the intended 90 ms</td>
+</tr>
+<tr>
+<td>Standalone SFR</td>
+<td>As a user: talks through a DM-32UV repeater and plays its calls whole. It hears one copy of a call at a time, so <strong>SFR receive</strong> &quot;First copy&quot; and &quot;Dual-path RX&quot; only switch to the other copy between calls, never mix them</td>
+</tr>
+<tr>
+<td>APRS</td>
+<td>Packets sent on FM and over DMR decode off air</td>
+</tr>
+<tr>
+<td>Power</td>
+<td>Battery saver: it cycles when idle, and monitor and an incoming call wake it</td>
+</tr>
+<tr>
+<td>Programming</td>
+<td><abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">Codeplug</abbr> reads and writes with <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr>'s protocol (<code>tools/cps_client.py</code>)</td>
+</tr>
+<tr>
+<td>USB network</td>
+<td>The switch to network mode, the address from the computer (macOS) and ping</td>
+</tr>
+</tbody>
+</table></div>
+<p>Partly checked: <abbr class="gl" tabindex="0" title="Voice-operated transmit." data-more="22-glossary.html#t-vox">VOX</abbr>. Silence and the radio's own beeps don't key it. Keying on a voice hasn't been checked.
+Each half of the <abbr class="gl" tabindex="0" title="Transmitting on one frequency and receiving on another at the same time. Repeaters do, and so does the duplex hotspot setup." data-more="../spec/split-duplex.html">split duplex</abbr> repeater passes on air with one radio; a real pair of radios hasn't been tested.
+Host-tested only: IP over DMR to another radio and the services in USB network mode, <abbr class="gl" tabindex="0" title="A radio a dispatch program on a computer uses to reach the fleet over the air." data-more="22-glossary.html#t-control-station">control station</abbr> mode, roaming,
+<abbr class="gl" tabindex="0" title="Automatic Registration Service: a radio tells a presence server it is on the air." data-more="22-glossary.html#t-ars">ARS</abbr> and LRRP.</p>
+<h2 id="tyt-md-380">TYT MD-380</h2>
+<p>Covers the <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="22-glossary.html#t-tyt">TYT</abbr> MD-380, the MD-390 and the Retevis RT3. <strong>Fully operational on a <abbr class="gl" tabindex="0" title="Ultra high frequency: 300 MHz to 3 GHz. The amateur 70 cm band is UHF." data-more="22-glossary.html#t-uhf">UHF</abbr> radio</strong>: FM, <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> in simplex and through a
+repeater or duplex <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="14-hotspot.html">hotspot</abbr>, and programming. The <abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="22-glossary.html#t-vhf">VHF</abbr> image is untested. Installing: <a href="18-moving-from-stock-md380.html">Moving from stock MD-380 firmware</a>.</p>
+<blockquote>
+<p><strong>Check your frequency.</strong> Two MD-380s measured 2 to 2.5 kHz high on <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">receive</abbr> and <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">transmit</abbr>, enough that an <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="../spec/mmdvm-protocol.html">MMDVM</abbr>
+hotspot never decoded them. Confirm yours against an external reference (a frequency counter, a service monitor, or a
+hotspot's MMDVMCal BER test), then correct it with <strong>Settings &gt; Advanced &gt; Freq trim</strong>: enter the error with the
+sign reversed (2 kHz high at 448.7 MHz: -4.5 ppm). With that the first radio decodes on the hotspot at BER under 0.1 %.</p>
+</blockquote>
+<h3 id="installing-on-the-md-380">Installing on the MD-380</h3>
+<p>Follow <a href="02-installing.html">Installing</a> with these values. To keep the stock <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> while you move, see
+<a href="18-moving-from-stock-md380.html">Moving from stock MD-380 firmware</a>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>MD-380</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stock firmware file</td>
+<td>The manufacturer's <code>MD-380-D2.32(AD).bin</code> (D002.032), or TYT's <code>TYT-72310-11-MD380-D35.14.bin</code> (D35.14) or <code>TYT-72310-11-MD390-S35.14.bin</code> (S35.14). It gives the bootloader key and the voice codec. The archive at md380.org/firmware/orig/ has every release</td>
+</tr>
+<tr>
+<td>Bootloader keys</td>
+<td>Hold <strong>PTT</strong> and the side key just above it while you turn the radio on</td>
+</tr>
+<tr>
+<td>Images</td>
+<td>One per band: UHF and VHF. rfoundry takes <code>--option BAND=vhf</code></td>
+</tr>
+<tr>
+<td>Bootloader USB device (Zadig)</td>
+<td>&quot;Digital Radio in USB mode&quot; (0483:DF11), <a href="02-installing.html#windows-the-bootloader-driver">driver steps</a></td>
+</tr>
+<tr>
+<td>Board name</td>
+<td><code>md380</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="md-380-keys">MD-380 keys</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Green Menu key</td>
+<td><strong>OK</strong></td>
+</tr>
+<tr>
+<td>Red Back key</td>
+<td><strong>Back</strong></td>
+</tr>
+<tr>
+<td>Arrow keys</td>
+<td><strong>Up</strong>, <strong>Down</strong></td>
+</tr>
+<tr>
+<td>SK1</td>
+<td><strong>Monitor</strong></td>
+</tr>
+<tr>
+<td>SK2</td>
+<td><strong>A/B</strong></td>
+</tr>
+<tr>
+<td><strong>PTT</strong></td>
+<td><strong>PTT</strong></td>
+</tr>
+<tr>
+<td>Channel switch</td>
+<td>Channel knob. A 16-position switch, not an endless knob: RadioFoundry turns each change of position into steps</td>
+</tr>
+</tbody>
+</table></div>
+<p>No <strong>P1</strong>, <strong>P2</strong> or <strong>SK3</strong>, so no <strong>Power level</strong> or zone keys and no emergency key. Change the zone with <strong>OK</strong>,
+<strong>4</strong>, the power with <strong>*</strong>, <strong>1</strong>. Where each key sits in the key matrix hasn't been confirmed on a radio. The
+bootloader starts when you hold <strong>PTT</strong> and the side key just above it at power-on.</p>
+<h3 id="md-380-bands-and-power-levels">MD-380 bands and power levels</h3>
+<p>One band per radio: UHF (400-480 MHz) or VHF (136-174 MHz). There is one image for each band, and an image refuses
+the other band.</p>
+<p>Five power levels: 100 mW, 500 mW, 1 W, 2.5 W, 5 W. 1 W and 5 W are the factory calibration's; the others are set from
+them and haven't been measured with a wattmeter. A channel without a power in the codeplug uses 1 W. <strong>*</strong>, <strong>1</strong>
+steps through 100 mW, 1 W and 5 W. The radio refuses to transmit without a valid factory calibration.</p>
+<h3 id="md-380-battery">MD-380 battery</h3>
+<p>A 2-cell Li-ion pack, with the same percentage curve and the same thresholds as the DM-1701: low below 6.2 V,
+critical below 6.0 V. The voltage scale is assumed, not measured.</p>
+<h3 id="md-380-power-switch">MD-380 power switch</h3>
+<p>The power switch is on the volume knob. It is believed to switch the supply directly, so RadioFoundry doesn't see the knob
+turn off. When RadioFoundry switches itself off (auto power off), it drops its power latch. Unchecked on a radio.</p>
+<h3 id="md-380-display">MD-380 display</h3>
+<p>A 160 x 128 color screen, every row visible. The controller type is unconfirmed.</p>
+<h3 id="what-the-md-380-lacks">What the MD-380 lacks</h3>
+<ul>
+<li><abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="22-glossary.html#t-ctcss">CTCSS</abbr> works on air both ways. <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="22-glossary.html#t-dcs">DCS</abbr> isn't checked on a radio yet. A build with <code>CONFIG_SUBTONE=n</code> (<a href="../build-config.html">build switches</a>) opens a channel with a tone on any carrier and sends no tone.</li>
+<li>No roger beep, 1750 Hz burst or <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr> on FM (the transmit tone path isn't written). APRS positions over DMR work.</li>
+<li>No APRS receive.</li>
+<li>MMDVM <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="../spec/sfr.html">SFR</abbr> and the <abbr class="gl" tabindex="0" title="Transmitting on one frequency and receiving on another at the same time. Repeaters do, and so does the duplex hotspot setup." data-more="../spec/split-duplex.html">split duplex</abbr> repeater need the DMR chip of the DM-1701 (HR_C6000) and aren't built for the
+MD-380 (HR_C5000). Hotspot mode is in.</li>
+<li>USB network mode and its services are in.</li>
+<li>Audio linking (USRP, <a href="15-usb-network.html#linking-audio-allstarlink-and-dvswitch">USB network</a>) carries DMR only: the
+FM transmit path from the processor isn't written.</li>
+<li>GPS only on the &quot;G&quot; models. The radio listens for the GPS module for 5 s at start-up and hides the GPS features if
+it hears nothing. Once heard, the module is powered only while <strong>Settings &gt; Location &gt; GPS</strong> is on, which takes
+effect at once.</li>
+<li>No vibration motor: <strong>Settings &gt; Sound &gt; Vibrate</strong> isn't in the image.</li>
+<li>Some early VHF radios have a 1 MB memory chip instead of 16 MB. RadioFoundry keeps settings and the codeplug on it
+as on other radios; the <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr> database is limited to what fits.</li>
+</ul>
+<h2 id="tyt-md-uv380">TYT MD-UV380</h2>
+<p>Covers the <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="22-glossary.html#t-tyt">TYT</abbr> MD-UV380, the MD-UV390, the Retevis RT3S and the MD-UV390 Plus 10 W, with or without GPS. <strong>In
+bring-up: nothing has run on a radio yet.</strong> It is the DM-1701's board design, and the image is built from the
+DM-1701's code with this radio's keys, display, power tables and GPS (<a href="../testing/mduv380-bringup.html">bring-up checklist</a>).</p>
+<h3 id="installing-on-the-md-uv380">Installing on the MD-UV380</h3>
+<p>Follow <a href="02-installing.html">Installing</a> with these values.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>MD-UV380</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stock firmware file</td>
+<td>Any supported TYT or Retevis file: 18.11, 18.16, 19.06, 19.26, 19.74, 219.60 or 219.74 (<a href="../spec/codec-mduv380.html#stock-files">the list</a>). It gives the bootloader key and the voice codec; the codec is the same in all of them, so any of them works on any of these radios</td>
+</tr>
+<tr>
+<td>Bootloader keys</td>
+<td>Hold <strong>PTT</strong> and the side key just above it (SK1) while you turn the radio on</td>
+</tr>
+<tr>
+<td>Images</td>
+<td>Two: 5 W (the MD-UV380, MD-UV390 and RT3S) and 10 W (the MD-UV390 Plus). rfoundry takes <code>--option POWER=10w</code>. <strong>Pick by the label on the radio or its box</strong>: the two versions swap the transmitter's band select and the backlight pins, and the radio can't yet tell them apart, so a wrong image isn't caught</td>
+</tr>
+<tr>
+<td>Bootloader USB device (Zadig)</td>
+<td>&quot;Digital Radio in USB mode&quot; (0483:DF11), <a href="02-installing.html#windows-the-bootloader-driver">driver steps</a> (assumed the same as the DM-1701's)</td>
+</tr>
+<tr>
+<td>Board name</td>
+<td><code>mduv380</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="md-uv380-keys">MD-UV380 keys</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Green Menu key</td>
+<td><strong>OK</strong></td>
+</tr>
+<tr>
+<td>Red Back key</td>
+<td><strong>Back</strong></td>
+</tr>
+<tr>
+<td>Arrow keys</td>
+<td><strong>Up</strong>, <strong>Down</strong></td>
+</tr>
+<tr>
+<td>SK1 (upper side key)</td>
+<td><strong>Monitor</strong></td>
+</tr>
+<tr>
+<td>SK2 (lower side key)</td>
+<td><strong>A/B</strong></td>
+</tr>
+<tr>
+<td><strong>PTT</strong></td>
+<td><strong>PTT</strong></td>
+</tr>
+<tr>
+<td>Channel knob</td>
+<td>Channel knob</td>
+</tr>
+</tbody>
+</table></div>
+<p>No <strong>P1</strong>, <strong>P2</strong>, <strong>SK3</strong> or top key, so no <strong>Power level</strong> or zone keys and no emergency key. Change the zone with
+<strong>OK</strong>, <strong>4</strong>, the power with <strong>*</strong>, <strong>1</strong>.</p>
+<h3 id="md-uv380-power-levels">MD-UV380 power levels</h3>
+<p>Nine levels: 50 mW, 250 mW, 500 mW, 750 mW, 1 W, 2 W, 3 W, 4 W, 5 W. On the MD-UV390 Plus 10 W image the top four are
+2, 3, 5 and 10 W. A channel without a power in the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> uses 1 W. The radio refuses to <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">transmit</abbr> without a valid factory calibration.</p>
+<h3 id="md-uv380-battery">MD-UV380 battery</h3>
+<p>A 2-cell Li-ion pack, with the DM-1701's percentage curve and thresholds: low below 6.2 V, critical below 6.0 V. The
+voltage scale is the MD-UV380's, unchecked on a radio.</p>
+<h3 id="md-uv380-power-switch">MD-UV380 power switch</h3>
+<p>As on the DM-1701: the switch is on the volume knob, and RadioFoundry sees it turn off through the battery line.</p>
+<h3 id="md-uv380-display">MD-UV380 display</h3>
+<p>A 160 x 128 color screen, every row visible.</p>
+<h3 id="what-the-md-uv380-lacks">What the MD-UV380 lacks</h3>
+<ul>
+<li>No vibration motor: <strong>Settings &gt; Sound &gt; Vibrate</strong> isn't in the image.</li>
+<li>GPS only on the G models. The radio powers the module for 5 s at start-up and hides the GPS features if it hears
+nothing; then the module is switched off again. Once heard, the module is powered only while <strong>Settings &gt; Location &gt;
+GPS</strong> is on, which takes effect at once.</li>
+<li>Nothing is checked on a radio yet: treat every function as untested.</li>
+</ul>
+<h2 id="baofeng-dm-32uv">Baofeng DM-32UV</h2>
+<p>A handheld for 136-174 and 400-480 MHz with a keypad, left and right arrow keys, a channel knob and a color screen.
+FM and <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> voice both ways, <abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="22-glossary.html#t-ctcss">CTCSS</abbr> and <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="22-glossary.html#t-dcs">DCS</abbr>, <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr>, GPS data, the <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="14-hotspot.html">hotspot</abbr> and the battery saver work on the radio.
+As a <a href="14-hotspot.html#standalone-sfr">standalone SFR</a> repeater it repeats calls on air 90 ms later and sends its <abbr class="gl" tabindex="0" title="A station&#x27;s callsign sent in Morse code. A standalone SFR repeater channel sends one in FM every few minutes after traffic (Settings &gt; Talk &amp; listen &gt; SFR CW ID)." data-more="14-hotspot.html">CW ID</abbr>; its repeated voice carries more bit errors than the original, though it plays.
+Installing: <a href="19-moving-from-stock-dm32.html">Moving from stock DM-32UV firmware</a>.</p>
+<h3 id="installing-on-the-dm-32uv">Installing on the DM-32UV</h3>
+<p>Follow <a href="02-installing.html">Installing</a> with these values. To keep the stock <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> while you move, see
+<a href="19-moving-from-stock-dm32.html">Moving from stock DM-32UV firmware</a>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>DM-32UV</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stock firmware file</td>
+<td>The manufacturer's <code>DM32.01.01.049.bin</code></td>
+</tr>
+<tr>
+<td>Cable</td>
+<td>The USB-serial programming cable. The radio has no USB of its own</td>
+</tr>
+<tr>
+<td>Update mode</td>
+<td>Hold <strong>PTT</strong> and <strong>SK1</strong> while you switch the radio on. The green <abbr class="gl" tabindex="0" title="Light-emitting diode: the radio&#x27;s status light." data-more="22-glossary.html#t-led">LED</abbr> lights</td>
+</tr>
+<tr>
+<td>If the cable can't prepare the radio</td>
+<td><strong>Use Factory Update Mode</strong>: the update mode above, with the stock firmware file for the codec. It takes about 2.5 minutes, and the radio restarts by itself. The install itself worked on a DM-32UV (2026-10-26); the web installer's own steps are still untested on a radio</td>
+</tr>
+<tr>
+<td>Board name</td>
+<td><code>dm32</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="dm-32uv-keys">DM-32UV keys</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Green Menu / OK key</td>
+<td><strong>OK</strong></td>
+</tr>
+<tr>
+<td>Red Back key</td>
+<td><strong>Back</strong></td>
+</tr>
+<tr>
+<td>Up, Down</td>
+<td><strong>Up</strong>, <strong>Down</strong></td>
+</tr>
+<tr>
+<td>P1, P2 (left and right on the 4-way key)</td>
+<td>On Home, press or hold: <strong>Previous zone</strong>, <strong>Next zone</strong>, or what Settings &gt; Keys sets for them. Left and right in the menus</td>
+</tr>
+<tr>
+<td>SK1 (the side key below <strong>PTT</strong>)</td>
+<td><strong>Monitor</strong>. Held with <strong>PTT</strong> at power-on, it starts the bootloader</td>
+</tr>
+<tr>
+<td>SK2</td>
+<td><strong>A/B</strong></td>
+</tr>
+<tr>
+<td><strong>PTT</strong></td>
+<td><strong>PTT</strong></td>
+</tr>
+<tr>
+<td>Channel knob</td>
+<td>Channel knob</td>
+</tr>
+</tbody>
+</table></div>
+<p>No <strong>Power level</strong> key and no emergency key by default. Give them to P1 or P2 in Settings &gt; Keys (emergency on a
+hold), or change the power with <strong>*</strong>, <strong>1</strong>.</p>
+<h3 id="dm-32uv-power-levels">DM-32UV power levels</h3>
+<p>Five levels, L-, L, M, M+, H, from the radio's factory calibration. The radio is rated 5 W (<abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="22-glossary.html#t-vhf">VHF</abbr>) and
+4 W (<abbr class="gl" tabindex="0" title="Ultra high frequency: 300 MHz to 3 GHz. The amateur 70 cm band is UHF." data-more="22-glossary.html#t-uhf">UHF</abbr>) at high power. The levels haven't been measured. A channel without a power in the codeplug uses L.
+<strong>*</strong>, <strong>1</strong> steps through L-, L and H.</p>
+<h3 id="dm-32uv-battery">DM-32UV battery</h3>
+<p>The percentage is linear from 6.4 V (0 %) to 8.2 V (100 %). There are no voltage thresholds: only the percentage
+warning (<strong>Settings &gt; Power saving &gt; Low battery warning</strong>) applies, and a low battery never stops a transmission.</p>
+<h3 id="dm-32uv-power-switch">DM-32UV power switch</h3>
+<p>The power switch is on the knob. The radio sees it turn off (three readings in a row), saves and drops its own power.
+The volume control works on the audio amplifier directly. RadioFoundry doesn't read it and can't set it from a PC either.</p>
+<h3 id="dm-32uv-display">DM-32UV display</h3>
+<p>A 240 x 320 color screen. RadioFoundry uses its full resolution, with smooth (anti-aliased) bold text one size larger than on other 240 x 320 radios.</p>
+<h3 id="what-the-dm-32uv-lacks">What the DM-32UV lacks</h3>
+<ul>
+<li>On the newer <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="22-glossary.html#t-rf">RF</abbr> section (the diagnostics line ends in <code>rf B</code>), no air band AM <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">receive</abbr> yet: an AM channel plays as FM.</li>
+<li><abbr class="gl" tabindex="0" title="Transmitting on one frequency and receiving on another at the same time. Repeaters do, and so does the duplex hotspot setup." data-more="../spec/split-duplex.html">Split duplex</abbr> repeater: each half passes on air with one radio (the <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">transmit</abbr> half's outbound with its CACH, a
+host-fed voice call, 5 minutes keyed within 60 Hz; the receive half's slot labels). As the receive half of a pair
+with a DM-1801 Pro transmitting, it labeled a subscriber's calls with the right slot in 29 of 31 sessions; the other
+two aren't explained yet. Not tried as the transmit half of a pair.</li>
+<li>Not checked on this radio yet: emergency, <abbr class="gl" tabindex="0" title="A fixed voice scrambling from Motorola and Anytone radios. Not encryption." data-more="22-glossary.html#t-basic-privacy">basic privacy</abbr>, <abbr class="gl" tabindex="0" title="A short text, usually a callsign and name, sent along with DMR voice." data-more="22-glossary.html#t-talker-alias">talker alias</abbr>, text and data messages, roaming, scan,
+<abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="../spec/mmdvm-protocol.html">MMDVM</abbr> <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="../spec/sfr.html">SFR</abbr>, the network services over PPP and <abbr class="gl" tabindex="0" title="A radio a dispatch program on a computer uses to reach the fleet over the air." data-more="22-glossary.html#t-control-station">control station</abbr> mode. They are built in and host tested.</li>
+<li>No USB. The serial port is on the programming cable: hotspot mode, the debug link and the network (PPP,
+<a href="15-usb-network.html#network-over-the-programming-cable-ppp">USB network</a>) all run there. USB network mode isn't
+available.</li>
+<li>The GPS module is checked at start-up (it must answer within 5 s) and is then powered only while <strong>Settings &gt;
+Location &gt; GPS</strong> is on, which takes effect at once. A fix outdoors hasn't been checked yet.</li>
+<li>While APRS listens, FM on the APRS frequency plays through a different audio path, which may sound different.</li>
+<li>Air band and FM broadcast receive
+(<a href="07-channels-zones-vfo.html#air-band-and-fm-broadcast">Air band and FM broadcast</a>) are built in but not checked on
+the radio yet. Broadcast covers 65 to 108 MHz.</li>
+<li>No <abbr class="gl" tabindex="0" title="Voice-operated transmit." data-more="22-glossary.html#t-vox">VOX</abbr> yet: the board code that reads the microphone level isn't written.</li>
+<li>Audio linking (USRP) carries DMR only: the FM transmit path from the processor isn't written.</li>
+<li>No beeps while transmitting: the radio's beep path would put them on the air. A beep still playing when the
+transmission ends is heard from then on. The DMR talk permit tone is a single short beep played just before the
+radio transmits, while the screen shows ADMITTED (<a href="09-dmr.html#the-talk-permit-tone">DMR</a>).</li>
+<li>The signal strength in dBm is uncalibrated: strong signals read high.</li>
+<li>No vibration alerts: RadioFoundry doesn't drive a vibration motor on it, and <strong>Settings &gt; Sound &gt; Vibrate</strong> isn't in the
+image.</li>
+</ul>
+<h2 id="radioddity-db25-d-pro">Radioddity DB25-D PRO</h2>
+<p>A mobile radio for 136-174 and 400-480 MHz with a front knob, a few front keys and a hand microphone. FM and <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr>
+voice both ways, the <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="14-hotspot.html">hotspot</abbr>, the DMR <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr> and the network services work on the radio. It is installed with the
+<a href="#installing-the-db25-d-pro">radio programming utility</a> only.</p>
+<p><strong>Which DB25-D.</strong> Open the radio's <strong>Version</strong> screen. The version reads like <code>909E.DBB.EARSAB.020</code>; the letters
+after <code>909E.</code> name the hardware.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Hardware</th>
+<th>RadioFoundry</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DBB</td>
+<td>DB25-D PRO: two BK4819 (2024 on)</td>
+<td>Supported</td>
+</tr>
+<tr>
+<td>D64</td>
+<td>FD6818 transceiver, 0x7813 LO (2021 to 2023)</td>
+<td>Testing: the same image, untested on this hardware</td>
+</tr>
+<tr>
+<td>D66</td>
+<td>FD6818 transceiver and LO (2021 to 2023)</td>
+<td>Testing: the same image, untested on this hardware</td>
+</tr>
+<tr>
+<td>D6T</td>
+<td>FD6818 transceiver, AT1141 LO (2021 to 2023)</td>
+<td>Testing: the same image, untested on this hardware</td>
+</tr>
+</tbody>
+</table></div>
+<p>One image runs on every batch: it reads which <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="22-glossary.html#t-rf">RF</abbr> chips the radio has when it starts. Tools &gt; Diagnostics shows them
+(<code>rf</code> line). If you install it on a D64, D66 or D6T, a report of what works and what doesn't helps the project.</p>
+<p>The radio programming utility reads the code from the radio before it writes, and asks for it when only the factory
+update mode answers. On vendor firmware older than the 2025-01-21 build a backup is not proven: the utility offers to
+try it anyway (nothing is written to the radio's flash; if it fails, switch the radio off and on), to update the vendor
+firmware first, or to install without a backup. The same try runs from <strong>Back Up</strong>. A backup made that way can be sent
+to the project with a report, so the next version knows that firmware. <strong>Back Up</strong> works on every hardware version,
+including one RadioFoundry doesn't run on yet: it only reads the radio.</p>
+<h3 id="installing-the-db25-d-pro">Installing the DB25-D PRO</h3>
+<p>The radio programming utility on the web site installs and updates this radio over the programming cable (K1 jack).
+There is no rfoundry route.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>The radio runs</th>
+<th>What the radio programming utility does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The original firmware (909E.DBB.EARSAB.018 or .020)</td>
+<td>Switches the radio to update mode through the original firmware's diagnostic console: about 4 minutes, with no keys and nothing written to the radio's memory. Then it backs up the whole 2 MB program memory (about a minute), installs, and restarts the radio, as for a radio that runs RadioFoundry. The voice codec is taken from the backup when the version is 020 or one of the 018 builds (2024-05-09 or later). For any other version the backup is still complete; the utility says so and asks for a stock 018 file from the manufacturer, whose codec works on every version</td>
+</tr>
+<tr>
+<td>Another version of the original firmware, or a radio that does not start</td>
+<td>Installs through the factory update mode of the original loader: turn the radio off, hold P1 and press power. The red <abbr class="gl" tabindex="0" title="Light-emitting diode: the radio&#x27;s status light." data-more="22-glossary.html#t-led">LED</abbr> lights and the display stays blank. No backup is taken this way. The loader itself is never written</td>
+</tr>
+<tr>
+<td>RadioFoundry</td>
+<td>Hands over to a loader in RAM over the debug link (no keys, no power cycle), writes only the changed sectors and restarts the radio. The backup of the program memory is optional</td>
+</tr>
+<tr>
+<td>RadioFoundry that does not answer</td>
+<td>&quot;Recover at Power-On&quot;: the first stage answers for half a second at every power-on, and the radio programming utility loads the loader then</td>
+</tr>
+</tbody>
+</table></div>
+<p>A radio that shows a white, backlit screen and a solid red LED at every power-on, without P1 held, is stuck in the
+factory update mode because its application is missing or incomplete. It needs no keys: the utility asks the loader a
+read-only question, says that the radio is in update mode and installs. Nothing is written to find this out.</p>
+<p>When nothing answers on the cable, Troubleshooting offers &quot;Reinstall in Factory Update Mode&quot;, and Restore puts a backup
+back through the factory update mode the same way. Restore through the console or RadioFoundry is the normal route;
+the factory update mode is the way back when neither answers.</p>
+<p>The channels and contacts in the radio's NAND memory are not part of the radio programming utility's
+backup; back them up with the manufacturer's programming software or <code>tools/cps_client.py</code> (below).</p>
+<h3 id="db25-d-pro-keys">DB25-D PRO keys</h3>
+<p>The front keys' positions in the key matrix are provisional until checked on a radio. The hand microphone's keys
+aren't decoded yet, so there are no number keys.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Menu / OK, or push the knob</td>
+<td><strong>OK</strong></td>
+</tr>
+<tr>
+<td>B/E</td>
+<td><strong>Back</strong></td>
+</tr>
+<tr>
+<td>P1</td>
+<td><strong>*</strong></td>
+</tr>
+<tr>
+<td>P2</td>
+<td><strong>#</strong></td>
+</tr>
+<tr>
+<td>P3</td>
+<td><strong>Monitor</strong></td>
+</tr>
+<tr>
+<td>TONE/T.SEL</td>
+<td><strong>A/B</strong></td>
+</tr>
+<tr>
+<td>VOL/SQL</td>
+<td><strong>Volume</strong></td>
+</tr>
+<tr>
+<td><strong>PTT</strong> on the microphone</td>
+<td><strong>PTT</strong></td>
+</tr>
+<tr>
+<td>Front knob</td>
+<td>Channel knob, and <strong>Up</strong> / <strong>Down</strong> in lists</td>
+</tr>
+<tr>
+<td>Power key</td>
+<td>Press to switch on. Hold 2 s to switch off. Hold P1 while you press it to start the bootloader (the red LED lights and the screen stays blank)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The microphone's PTT counts once the radio has seen a microphone in the front jack. The radio can run without one and
+doesn't <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">transmit</abbr>, and a microphone plugged in later works from then on. Unplugging the microphone while the radio is
+on reads as a held PTT: the radio transmits until the <a href="08-fm.html#transmit-timeout">transmit timeout</a>, or with TX
+timeout Off until it is switched off. Switch the radio off before unplugging the microphone.</p>
+<h3 id="db25-d-pro-power-and-supply">DB25-D PRO power and supply</h3>
+<p>Five levels: L--, L-, L, M, H. L and H (nominal 20 W) are the factory calibration's; the others are set from them and
+haven't been measured. A channel without a power in the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> uses L. The radio refuses to transmit until
+RadioFoundry can read its power calibration.</p>
+<p>The radio runs from a 13.8 V supply and has no battery. The status line shows no battery icon or percentage, Tools has
+no Battery page, and Settings &gt; Power saving has no Battery saver or Low battery warning. RadioFoundry doesn't read the supply
+voltage, so nothing warns about it.</p>
+<h3 id="db25-d-pro-display">DB25-D PRO display</h3>
+<p>A 1.77&quot; color screen, 160 x 128.</p>
+<p>There is no volume knob. Press <strong>VOL/SQL</strong>, turn the front knob (or press Up and Down) to set the volume from 0 (mute)
+to 16, and press OK or Back, or wait 3 seconds, to close it. The screen shows the step as a large number over a bar of
+16 segments. The level is also in Settings &gt; Sound &gt; Volume. RadioFoundry sets it at the receiver chip's audio output and
+keeps it. A value saved by an earlier build that had 10 steps is carried over (step 5 becomes 8, step 10 becomes 16).
+The steps are not calibrated yet: how loud each one is has not been measured, so expect to tune it.</p>
+<h3 id="programming-the-db25-d-pro-over-the-cable">Programming the DB25-D PRO over the cable</h3>
+<p>The codeplug (channels, zones, contacts, the radio's name and <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr>) is read and written over the programming cable
+in the side K1 jack, through a USB-serial adapter (115200 baud). The radio has no USB port. The codeplug is kept
+at the same addresses as on the DM-1701, so <code>tools/cps_client.py</code> needs no offset and <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr>'s MD-UV380 driver should
+work with it (the radio reports type 6; not tried yet). The tool needs <code>pyserial</code>. The examples use <code>/dev/ttyUSB1</code>:</p>
+<pre><code>python3 tools/cps_client.py --port /dev/ttyUSB1 info                  # type 6, build date, flash size
+python3 tools/cps_client.py --port /dev/ttyUSB1 read backup.bin       # about 20 s
+python3 tools/cps_client.py --port /dev/ttyUSB1 write backup.bin      # then the radio restarts
+python3 tools/cps_client.py --port /dev/ttyUSB1 verify backup.bin     # &quot;match&quot;
+</code></pre>
+<p>Take a backup first. A radio with nothing stored shows the built-in simplex FM channels, and a read returns blank
+(0xFF) bytes. To get test channels onto it, read the codeplug, add them to the file, write it back:</p>
+<pre><code>python3 tools/cps_client.py --port /dev/ttyUSB1 read cp.bin
+python3 tools/cps_client.py test-channels cp.bin --rx 438.2500 --tg 91 --cc 1 --ts 1 --id 9991234 --call Q0TST
+python3 tools/cps_client.py --port /dev/ttyUSB1 write cp.bin
+python3 tools/cps_client.py --port /dev/ttyUSB1 verify cp.bin
+</code></pre>
+<p><code>test-channels</code> makes channel 1 an FM channel (12.5 kHz, simplex, no tones), channel 2 a DMR channel on the same
+frequency (<abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="22-glossary.html#t-color-code">color code</abbr> 1, <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="22-glossary.html#t-timeslot">timeslot</abbr> 1, <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="22-glossary.html#t-talk-target">talk target</abbr> group 91), and zone 1 holding both. It replaces those channels,
+the first contact and the first zone and leaves everything else in the file. A DMR channel needs a build with
+<code>CONFIG_DMR=y</code> (the default); without it the radio lists only its FM channels. <code>verify</code> compares the regions the tool
+transfers. The write replaces whole 4 KB sectors, each in one step: a
+power cut or a pulled cable leaves every sector as it was or as the file has it, never half and half. The radio's own
+settings and the factory calibration are never written by the programming tool. A write is refused while the radio's
+storage holds another firmware's data (<code>nst foreign</code> on the diagnostics page, below).</p>
+<h3 id="what-the-db25-d-pro-lacks-today">What the DB25-D PRO lacks today</h3>
+<p>The GPS module is checked at start-up: if it answers within 5 s the radio has GPS (the <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr> position source and the Location settings), if not the GPS features are hidden. It stays powered only while <strong>Settings &gt; Location &gt; GPS</strong> is on. The module is heard on the radio (valid <abbr class="gl" tabindex="0" title="The text format GPS receivers use to report position and time." data-more="22-glossary.html#t-nmea">NMEA</abbr> sentences); a fix outdoors hasn't been checked yet.</p>
+<p>The build has the <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="../spec/mmdvm-protocol.html">MMDVM</abbr> hotspot (simplex, over the programming cable) and the IP network over PPP with its services, as the DM-32UV does, both checked on this radio. The DMR VFO works on this radio too (<abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">receive</abbr> and transmit checked). There is no single frequency repeater and no split-duplex hotspot role, and no APRS receive or <abbr class="gl" tabindex="0" title="A station that passes APRS packets between the air and the APRS-IS internet network." data-more="22-glossary.html#t-igate">iGate</abbr> (the radio gives the core no FM receive audio). There is no <abbr class="gl" tabindex="0" title="Voice-operated transmit." data-more="22-glossary.html#t-vox">VOX</abbr> yet: the board code that reads the microphone level isn't written. DMR voice needs the codec from a supported stock file (8 in the hardware notes), and DMR
+audio from the speaker hasn't been listened to yet. Programming over the cable has been run on one radio. Settings are kept across power off, in a part of the radio's memory that is otherwise unused.
+If RadioFoundry finds data there it didn't write, it leaves it alone and keeps no settings (the diagnostics page shows <code>nst foreign</code>). Only the PRO (two BK4819 receiver chips) is supported, not the
+earlier batches.</p>
+<h2 id="baofeng-dm-1801-pro">Baofeng DM-1801 Pro</h2>
+<p>A handheld for 136-174 and 400-470 MHz with a keypad, direction keys and a 128 x 64 monochrome screen. FM and <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr>
+work on air: voice calls both ways, <abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="22-glossary.html#t-ctcss">CTCSS</abbr> and <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="22-glossary.html#t-dcs">DCS</abbr>, text messages and the other DMR data, and <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="14-hotspot.html">hotspot</abbr> mode.</p>
+<p>Builds go in through the radio's own update mode, so the stock loader stays and the stock firmware can go back
+the same way: switch off, hold <strong>PTT</strong> and <strong>SK1</strong>, switch on, then <code>tools/serial_loader.py --model dm1801pro IMAGE</code> over
+the programming cable. The cable's plug switches the internal speaker and the microphone off; unplug it to hear the
+radio or to talk.</p>
+<p>Settings &gt; Talk &amp; listen &gt; Mic gain sets the microphone level for FM and DMR on this radio.</p>
+<p><code>rfoundry flash IMAGE --board dm1801pro</code> does the same over the cable, and picks the way in by itself:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>The radio runs</th>
+<th>rfoundry</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RadioFoundry built with <code>CONFIG_STUB_ENTRY=y</code></td>
+<td>Enters the loader from RadioFoundry (the screen shows &quot;PC Loader Connected&quot;), writes only what changed and restarts the radio. No keys to hold. The codec in the radio stays</td>
+</tr>
+<tr>
+<td>Anything else</td>
+<td>Asks you to put the radio in update mode (PTT and SK1 at power-on). Update mode erases the codec, so the image must carry it (the build's <code>rfoundry_dm1801pro_codec.bin</code>), or give <code>--stock</code> with a program flash read of this radio (<code>stub/stubtool.py PORT --progmem FILE</code>)</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>--route stub</code> or <code>--route bootloader</code> chooses by hand, and <code>--dry-run</code> shows the plan without writing. Neither route of
+rfoundry has flashed a radio yet; <code>tools/serial_loader.py</code> and <code>stub/stubtool.py</code> have.</p>
+<p>In the web installer, when the cable can't prepare the radio, <strong>Use Factory Update Mode</strong> installs through the same
+update mode (PTT and SK1 at power-on). There is no stock firmware file for this radio, so the codec comes from a
+program memory backup of it (<code>program-memory.bin</code>, or the backup .zip the installer saved before the first
+installation) or from a codec the browser kept. Untested on a DM-1801 Pro from the web installer.</p>
+<h3 id="dm-1801-pro-keys">DM-1801 Pro keys</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Menu</td>
+<td><strong>OK</strong></td>
+</tr>
+<tr>
+<td>Back</td>
+<td><strong>Back</strong></td>
+</tr>
+<tr>
+<td>Up, Down</td>
+<td><strong>Up</strong>, <strong>Down</strong></td>
+</tr>
+<tr>
+<td>Left, Right</td>
+<td>Left and right in editors; hold: <strong>Previous zone</strong>, <strong>Next zone</strong></td>
+</tr>
+<tr>
+<td>VFO/MR</td>
+<td>Channel or <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr>; hold: copy the channel to the VFO</td>
+</tr>
+<tr>
+<td>A/B</td>
+<td>Press: A / B (<abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="22-glossary.html#t-dual-watch">dual watch</abbr>). Hold: dual watch on or off</td>
+</tr>
+<tr>
+<td><strong>*</strong></td>
+<td><strong>*</strong></td>
+</tr>
+<tr>
+<td><strong>#</strong></td>
+<td><strong>#</strong></td>
+</tr>
+<tr>
+<td>SK1</td>
+<td><strong>Monitor</strong></td>
+</tr>
+<tr>
+<td>SK2</td>
+<td><strong>A/B</strong></td>
+</tr>
+<tr>
+<td>SOS (top)</td>
+<td>Hold: emergency, where it is built</td>
+</tr>
+<tr>
+<td><strong>PTT</strong></td>
+<td><strong>PTT</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="dm-1801-pro-power-and-display">DM-1801 Pro power and display</h3>
+<p>Five power levels: L--, L-, L, M, H. L, M and H are the factory calibration's Low, Middle and High; the two under L are
+set from L and haven't been measured. A channel without a power in the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> uses L. The radio refuses to <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">transmit</abbr>
+until RadioFoundry can read its factory calibration. The battery
+reading is scaled from a measurement on one radio. The screen is monochrome; the backlight is on or off.
+The radio vibrates for messages, <abbr class="gl" tabindex="0" title="A DMR page that makes another radio ring." data-more="22-glossary.html#t-call-alert">call alerts</abbr> and emergencies (<strong>Settings &gt; Sound &gt; Vibrate</strong>).</p>
+<h3 id="what-the-dm-1801-pro-lacks-today">What the DM-1801 Pro lacks today</h3>
+<ul>
+<li><abbr class="gl" tabindex="0" title="Transmitting on one frequency and receiving on another at the same time. Repeaters do, and so does the duplex hotspot setup." data-more="../spec/split-duplex.html">Split duplex</abbr> repeater: each half passes on air with one radio (the transmit half's outbound with its CACH and a
+host-fed voice call, the <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">receive</abbr> half's slot labels). A real pair of radios hasn't been tested.</li>
+<li><abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr> receive is unchecked. APRS sending works on FM and over DMR.</li>
+<li><abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="22-glossary.html#t-vhf">VHF</abbr> transmit is unchecked on air. <abbr class="gl" tabindex="0" title="Ultra high frequency: 300 MHz to 3 GHz. The amateur 70 cm band is UHF." data-more="22-glossary.html#t-uhf">UHF</abbr> transmit and receive on both bands work.</li>
+<li><abbr class="gl" tabindex="0" title="Voice-operated transmit." data-more="22-glossary.html#t-vox">VOX</abbr> is unchecked. RadioFoundry now reads the microphone level from the microphone's digital audio, but that hasn't been
+tried on the radio yet.</li>
+<li>Air band and FM broadcast receive
+(<a href="07-channels-zones-vfo.html#air-band-and-fm-broadcast">Air band and FM broadcast</a>) are built in but not checked on
+the radio yet. Broadcast covers 65 to 108 MHz.</li>
+</ul>
+<h2 id="retevis-rt10">Retevis RT10</h2>
+<p>A handheld for 902-928 MHz with a 16-position channel knob, two side keys and no display. FM <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">receive</abbr> with <abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="22-glossary.html#t-ctcss">CTCSS</abbr>
+and <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="22-glossary.html#t-dcs">DCS</abbr> decode, FM <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">transmit</abbr>, <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> transmit and receive with the radio's own codec, and <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr> transmit work on the radio.
+DMR speech to the speaker isn't checked yet (<a href="../spec/hardware-rt10.html#9-bring-up-state">hardware and bring-up state</a>).</p>
+<h3 id="installing-on-the-rt10">Installing on the RT10</h3>
+<p>The radio has no bootloader of its own: the chip's boot window on the programming cable is the way in, at every power-on.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>RT10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cable</td>
+<td>the radio's programming cable on the accessory jack, with an FTDI chip. A CH340 cable that works with other radios got no answer from the RT10 (<a href="../spec/hardware-rt10.html#31-the-cable-line">cables tried</a>)</td>
+</tr>
+<tr>
+<td>Keys</td>
+<td>none: turn the radio on when the tool asks</td>
+</tr>
+<tr>
+<td>Backup</td>
+<td>installing replaces the whole original image. Only a full program flash backup taken first puts it back</td>
+</tr>
+<tr>
+<td>Board name</td>
+<td><code>rt10</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="the-rt10s-channel-knob">The RT10's channel knob</h3>
+<p>The knob picks the channel by where it points: positions 1 to 16 are the first 16 channels of the zone, in the
+zone's order, also when the radio is switched on and when the zone changes. A position past the end of a shorter zone
+changes nothing.</p>
+<h3 id="rt10-power-levels">RT10 power levels</h3>
+<p>Two, <strong>L</strong> and <strong>H</strong>: the radio's own factory calibration for each 10 MHz step. Without a valid calibration the
+radio refuses to transmit.</p>
+<h3 id="if-the-rt10s-leds-flash-red-and-green-fast">If the RT10's LEDs flash red and green fast</h3>
+<p>The cable line is stuck low. The radio won't transmit until the line is released: switch the radio off and on again. Holding PTT for more than 2 s while the radio starts shows the same flash until the key is let go.</p>
+<p>A programming cable can hold the line low by itself. Then the flash starts whenever that cable is in and stops when it is pulled out, and the radio receives nothing from the computer: use another cable (<a href="02-installing.html#if-something-goes-wrong">Installing</a>).</p>
+<h3 id="what-the-rt10-lacks-today">What the RT10 lacks today</h3>
+<ul>
+<li>The network over the programming cable (PPP) and the services on it. The cable's line latches when the computer
+and the radio send at the same time, and only switching the radio off frees it, so PPP is off by default in the
+RT10 build. A custom build can turn it on, at that risk.</li>
+<li><abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="14-hotspot.html">Hotspot</abbr> mode. The hotspot software on the computer also sends at any time, so it may latch the line the same way.
+The hotspot is off by default in the RT10 build until that is resolved. A custom build can turn it on, at that risk.</li>
+<li>GPS. The radio has no receiver, so DMR position reports and <abbr class="gl" tabindex="0" title="Location Request and Response Protocol: a dispatcher asks a radio for its position. Motorola&#x27;s position format; the standard has LIP." data-more="22-glossary.html#t-lrrp">LRRP</abbr> location replies are off by default in the RT10
+build.</li>
+<li>The battery scale.</li>
+</ul>
+<h2 id="tyt-md-9600">TYT MD-9600</h2>
+<p>Covers the <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="22-glossary.html#t-tyt">TYT</abbr> MD-9600 and the Retevis RT90, a mobile radio. <strong>In testing.</strong> One image serves every board revision. V1-V3 boards
+(original firmware V06.xx) have been tested on a radio: FM and <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">receive</abbr> and <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">transmit</abbr> on both bands. V4 (V16.xx) and
+V4A/V5 (V26.xx) boards have not, so receive or transmit may not work on them. <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="../spec/sfr.html">SFR</abbr> is not supported yet.</p>
+<p>The radio detects a V4A/V5 board by itself. It can't tell a V1-V3 board from a V4, so on those it asks once: the home
+screen says &quot;Set: Board revision&quot; and the radio won't transmit until you set it under Settings &gt; Advanced &gt; Hardware &gt;
+Board revision. Receiving works meanwhile. The installers do it for you when they can read the original firmware's
+version (V06.xx is V1-V3, V16.xx is V4), and otherwise ask for it right after the installation. Not sure? Pick V1-V3:
+if the radio then hears nothing on a channel it should hear, pick V4. A revision other than the one the radio runs
+applies from the next start (&quot;Restart to apply&quot;). Only install this if you can go back to the original firmware. The hardware facts are in <a href="../spec/hardware-md9600.html">hardware-md9600.md</a>.</p>
+<h3 id="md-9600-voice-codec">MD-9600 voice codec</h3>
+<p>DMR voice needs the radio's own codec, which neither the repository nor the release images contain. The installer
+takes it from an original firmware file for the radio, and the board's own <code>codecs/</code> folder works the same way
+(<a href="https://github.com/radiofoundry/radiofoundry/blob/main/codecs/README.md">codecs/README.md</a>). It recognizes the file by its SHA-256, so any file name works. These are
+accepted:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Radio</th>
+<th>Original firmware files</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MD-9600 V1-V3 boards</td>
+<td>TYT <code>MD9600-CSV-V06.09.bin</code> and the rest of the 06.09, 06.24 and 06.03 files; the older <code>MD9600-REC-D03.28.bin</code>, <code>-D03.29.bin</code> and <code>-D04.03.bin</code></td>
+</tr>
+<tr>
+<td>MD-9600 V4</td>
+<td>TYT <code>MD9600-CSV(V4)-V16.45.bin</code> and the 16.24 and 16.45 files</td>
+</tr>
+<tr>
+<td>MD-9600 V5 and Retevis RT90</td>
+<td>the file the radio came with: TYT <code>MD9600-CSV(2571V5)-V26.45.bin</code> and the other 26.45 files, <code>MD9600-REC(2571V4)-D26.57.bin</code>, or Retevis <code>RT90-CSV(2571V5)-V26.41.bin</code>, <code>RT90-REC(2571V5)-D26.38.bin</code>, <code>RT90-CSV-GPS(2571V5)-P26.41.bin</code> and <code>RT90-GPS-REC(2571V5)-S26.42.bin</code>, or TYT <code>MD9600-AES-GPS-REC(2571V5)-S126.61.bin</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>The <abbr class="gl" tabindex="0" title="Comma separated values: a table as plain text, as programming software exports it." data-more="22-glossary.html#t-csv">CSV</abbr>, CSV-GPS, REC and GPS-REC variants of one version all work. The full list with hashes is in
+<a href="../spec/codec-md9600.html#stock-files">codec-md9600.md</a>. No V5 radio has run these files yet: the checks so far ran their
+codec in an emulator on a computer.</p>
+<h3 id="md-9600-keys">MD-9600 keys</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enter</td>
+<td><strong>OK</strong></td>
+</tr>
+<tr>
+<td>Back</td>
+<td><strong>Back</strong></td>
+</tr>
+<tr>
+<td>Up, Down</td>
+<td><strong>Up</strong>, <strong>Down</strong></td>
+</tr>
+<tr>
+<td>P1</td>
+<td><strong>Quick</strong></td>
+</tr>
+<tr>
+<td>P2</td>
+<td><strong>Context</strong></td>
+</tr>
+<tr>
+<td>P3</td>
+<td><strong>Monitor</strong></td>
+</tr>
+<tr>
+<td>P4</td>
+<td><strong><abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="22-glossary.html#t-talk-target">Talk target</abbr></strong></td>
+</tr>
+<tr>
+<td>Orange key</td>
+<td>User key 3</td>
+</tr>
+<tr>
+<td>Channel knob</td>
+<td>Channel knob</td>
+</tr>
+<tr>
+<td><strong>PTT</strong></td>
+<td><strong>PTT</strong> (on the hand microphone)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The hand microphone's keypad gives digits, <strong>*</strong> (<strong>Quick</strong>) and <strong>#</strong> (<strong>Context</strong>). Its A/B key switches between
+the channel and the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr>, and holding it copies the channel to the VFO. The roles of A-D and A/B are a proposal, and
+the keypad's levels haven't been measured on a radio.</p>
+<h3 id="md-9600-bands-and-power-levels">MD-9600 bands and power levels</h3>
+<p>Both bands on every radio: <abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="22-glossary.html#t-vhf">VHF</abbr> (136-174 MHz) and <abbr class="gl" tabindex="0" title="Ultra high frequency: 300 MHz to 3 GHz. The amateur 70 cm band is UHF." data-more="22-glossary.html#t-uhf">UHF</abbr> (400-480 MHz). Five power levels, measured into a dummy load: UHF
+100 mW, 1 W, 5 W, 25 W and 45 W; VHF 250 mW, 1 W, 5 W, 25 W and 50 W. The top level differs by band, and the screen
+shows the level for the channel's band. The radio runs from a vehicle's 13.8 V supply, so it shows the supply voltage
+instead of a battery level and never warns about a low battery. The voltage's scale isn't checked on a radio yet.</p>
+<h3 id="md-9600-display">MD-9600 display</h3>
+<p>A 128 x 64 monochrome screen.</p>
+<h3 id="what-the-md-9600-lacks-today">What the MD-9600 lacks today</h3>
+<ul>
+<li>No transmit, FM or DMR: it stays refused until a radio confirms the transmit sequence.</li>
+<li>No <abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="22-glossary.html#t-ctcss">CTCSS</abbr> or <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="22-glossary.html#t-dcs">DCS</abbr>: the sub-audio path isn't written.</li>
+<li>No <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="14-hotspot.html">hotspot</abbr>, <abbr class="gl" tabindex="0" title="Dual tone multi frequency: the touch tones a keypad sends, in the audio." data-more="22-glossary.html#t-dtmf">DTMF</abbr>, USB network or IP services: they all need the transmitter.</li>
+<li>No <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr>: the radio doesn't pass its received audio to the decoder yet.</li>
+<li>No air band or broadcast receiver, and no vibration motor.</li>
+</ul>
+<h2 id="planned-radios">Planned radios</h2>
+<p>These radios aren't built in a release yet. An in-progress port is on its own branch. <a href="../spec/radios.html">The radio survey</a> lists what is known about each and the rebadged
+models it covers.</p>
+<!-- generated: tools/boards.py docs planned; edit the Port cells of docs/spec/radios.md -->
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Radio</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anytone AT-D868UV / AT-D878UV / AT-D878UVII Plus, BTECH DMR-6X2, Alinco DJ-MD5, Radioddity GD-AT10G</td>
+<td>In progress (<a href="https://github.com/radiofoundry/radiofoundry/pull/291">#291</a>). A new platform (GD32F30x) and a new <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> chip (SCT3258, which runs the <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">vocoder</abbr> itself), so it starts the Anytone family (<a href="../spec/hardware-anytone.html">hardware-anytone.md</a>).</td>
+</tr>
+<tr>
+<td>Radioddity GD-77, TYT MD-760, GD-77S, Baofeng DM-1801 v1 / DM-860, RD-5R</td>
+<td>In progress (<a href="https://github.com/radiofoundry/radiofoundry/pull/111">#111</a>). A new platform: a different MCU (NXP MK22FN512), the same HR_C6000 and AT1846S, a 128x64 mono <abbr class="gl" tabindex="0" title="Liquid crystal display: the radio&#x27;s screen." data-more="22-glossary.html#t-lcd">LCD</abbr>. A DM-1801 bought new today is not v1, and the look-alike DR-1801 is unrelated.</td>
+</tr>
+<tr>
+<td>Radioddity GD-88</td>
+<td>In progress (<a href="https://github.com/radiofoundry/radiofoundry/pull/132">#132</a>). Dual receiver on the HR_C7000 platform (chip count not confirmed yet); should reuse much of the DM-32UV port.</td>
+</tr>
+<tr>
+<td>Baofeng DM-36</td>
+<td>In progress (<a href="https://github.com/radiofoundry/radiofoundry/pull/607">#607</a>). Built on the DM-32UV's platform: FM, the display, keys and programming run; DMR voice on air and power levels open.</td>
+</tr>
+<tr>
+<td>Anytone AT-D578UV (mobile)</td>
+<td>In progress (<a href="https://github.com/radiofoundry/radiofoundry/pull/291">#291</a>). The 878's chips in a mobile, with a mid-run MCU change: two platforms (<a href="../spec/hardware-anytone.html">hardware-anytone.md</a>).</td>
+</tr>
+<tr>
+<td>Radioddity DB40-D, Kydera CDR-700UV (mobile)</td>
+<td>Planned. Hardware needed. Two HR_C7000-class processors (A and B), like the GD-88, so it follows the GD-88 port.</td>
+</tr>
+<tr>
+<td>TYT MD-2017 / Retevis RT82</td>
+<td>Planned. The DM-1701's STM32 and HR_C6000 pair with two receivers, so it should reuse the STM32F4 platform. The hardware can <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">receive</abbr> two channels at once.</td>
+</tr>
+<tr>
+<td>BTECH DMR-6X2 PRO</td>
+<td>Planned. Built on the AT-D878UVII Plus, so it should follow the Anytone port.</td>
+</tr>
+<tr>
+<td>BridgeCom Maverick</td>
+<td>Planned. Sold as an upgraded AT-D878UV, so it likely follows the Anytone port.</td>
+</tr>
+</tbody>
+</table></div>
+<!-- end generated -->
+</div>
+		<nav class="prev-next"><a class="prev" href="22-glossary.html">Glossary</a></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/user/23-radios.md">Ver el código fuente de esta página</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="En esta página">
+		<p class="eyebrow">En esta página</p>
+		<ul><li class="l2"><a href="#key-roles">Key roles</a></li><li class="l2"><a href="#dual-watch-on-each-radio">Dual watch on each radio</a></li><li class="l2"><a href="#the-volume-bar">The volume bar</a></li><li class="l2"><a href="#setting-the-volume-from-a-pc">Setting the volume from a PC</a></li><li class="l2"><a href="#programming">Programming</a></li><li class="l3"><a href="#codeplug-files-from-the-original-firmware">Codeplug files from the original firmware</a></li><li class="l2"><a href="#baofeng-dm-1701">Baofeng DM-1701</a></li><li class="l3"><a href="#installing-on-the-dm-1701">Installing on the DM-1701</a></li><li class="l3"><a href="#dm-1701-keys">DM-1701 keys</a></li><li class="l3"><a href="#dm-1701-power-levels">DM-1701 power levels</a></li><li class="l3"><a href="#dm-1701-battery">DM-1701 battery</a></li><li class="l3"><a href="#dm-1701-power-switch">DM-1701 power switch</a></li><li class="l3"><a href="#dm-1701-display">DM-1701 display</a></li><li class="l3"><a href="#what-the-dm-1701-lacks">What the DM-1701 lacks</a></li><li class="l3"><a href="#verified-on-the-dm-1701">Verified on the DM-1701</a></li><li class="l2"><a href="#tyt-md-380">TYT MD-380</a></li><li class="l3"><a href="#installing-on-the-md-380">Installing on the MD-380</a></li><li class="l3"><a href="#md-380-keys">MD-380 keys</a></li><li class="l3"><a href="#md-380-bands-and-power-levels">MD-380 bands and power levels</a></li><li class="l3"><a href="#md-380-battery">MD-380 battery</a></li><li class="l3"><a href="#md-380-power-switch">MD-380 power switch</a></li><li class="l3"><a href="#md-380-display">MD-380 display</a></li><li class="l3"><a href="#what-the-md-380-lacks">What the MD-380 lacks</a></li><li class="l2"><a href="#tyt-md-uv380">TYT MD-UV380</a></li><li class="l3"><a href="#installing-on-the-md-uv380">Installing on the MD-UV380</a></li><li class="l3"><a href="#md-uv380-keys">MD-UV380 keys</a></li><li class="l3"><a href="#md-uv380-power-levels">MD-UV380 power levels</a></li><li class="l3"><a href="#md-uv380-battery">MD-UV380 battery</a></li><li class="l3"><a href="#md-uv380-power-switch">MD-UV380 power switch</a></li><li class="l3"><a href="#md-uv380-display">MD-UV380 display</a></li><li class="l3"><a href="#what-the-md-uv380-lacks">What the MD-UV380 lacks</a></li><li class="l2"><a href="#baofeng-dm-32uv">Baofeng DM-32UV</a></li><li class="l3"><a href="#installing-on-the-dm-32uv">Installing on the DM-32UV</a></li><li class="l3"><a href="#dm-32uv-keys">DM-32UV keys</a></li><li class="l3"><a href="#dm-32uv-power-levels">DM-32UV power levels</a></li><li class="l3"><a href="#dm-32uv-battery">DM-32UV battery</a></li><li class="l3"><a href="#dm-32uv-power-switch">DM-32UV power switch</a></li><li class="l3"><a href="#dm-32uv-display">DM-32UV display</a></li><li class="l3"><a href="#what-the-dm-32uv-lacks">What the DM-32UV lacks</a></li><li class="l2"><a href="#radioddity-db25-d-pro">Radioddity DB25-D PRO</a></li><li class="l3"><a href="#installing-the-db25-d-pro">Installing the DB25-D PRO</a></li><li class="l3"><a href="#db25-d-pro-keys">DB25-D PRO keys</a></li><li class="l3"><a href="#db25-d-pro-power-and-supply">DB25-D PRO power and supply</a></li><li class="l3"><a href="#db25-d-pro-display">DB25-D PRO display</a></li><li class="l3"><a href="#programming-the-db25-d-pro-over-the-cable">Programming the DB25-D PRO over the cable</a></li><li class="l3"><a href="#what-the-db25-d-pro-lacks-today">What the DB25-D PRO lacks today</a></li><li class="l2"><a href="#baofeng-dm-1801-pro">Baofeng DM-1801 Pro</a></li><li class="l3"><a href="#dm-1801-pro-keys">DM-1801 Pro keys</a></li><li class="l3"><a href="#dm-1801-pro-power-and-display">DM-1801 Pro power and display</a></li><li class="l3"><a href="#what-the-dm-1801-pro-lacks-today">What the DM-1801 Pro lacks today</a></li><li class="l2"><a href="#retevis-rt10">Retevis RT10</a></li><li class="l3"><a href="#installing-on-the-rt10">Installing on the RT10</a></li><li class="l3"><a href="#the-rt10s-channel-knob">The RT10&#x27;s channel knob</a></li><li class="l3"><a href="#rt10-power-levels">RT10 power levels</a></li><li class="l3"><a href="#if-the-rt10s-leds-flash-red-and-green-fast">If the RT10&#x27;s LEDs flash red and green fast</a></li><li class="l3"><a href="#what-the-rt10-lacks-today">What the RT10 lacks today</a></li><li class="l2"><a href="#tyt-md-9600">TYT MD-9600</a></li><li class="l3"><a href="#md-9600-voice-codec">MD-9600 voice codec</a></li><li class="l3"><a href="#md-9600-keys">MD-9600 keys</a></li><li class="l3"><a href="#md-9600-bands-and-power-levels">MD-9600 bands and power levels</a></li><li class="l3"><a href="#md-9600-display">MD-9600 display</a></li><li class="l3"><a href="#what-the-md-9600-lacks-today">What the MD-9600 lacks today</a></li><li class="l2"><a href="#planned-radios">Planned radios</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

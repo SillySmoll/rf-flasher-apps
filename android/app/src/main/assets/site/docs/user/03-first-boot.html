@@ -1,0 +1,193 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>First Boot · RadioFoundry</title>
+<meta name="description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="First Boot · RadioFoundry">
+<meta property="og:description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:url" content="https://radiofoundry.org/docs/user/03-first-boot.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="The radios RadioFoundry runs on, each showing a different screen.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/user/03-first-boot.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/user/03-first-boot.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/user/03-first-boot.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/user/03-first-boot.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/user/03-first-boot.html">
+<link rel="icon" href="../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../" data-home="../../" data-gl-more="More">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../index.html">
+			<img src="../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Main"><a href="../../radios/index.html">Radios</a><a href="../../features/index.html">Features</a><a href="../../flash/index.html">Install</a><a href="../../codeplug/index.html">Codeplug</a><a href="../../docs/index.html" aria-current="page">Docs</a><a href="../../screenshots/index.html">Screenshots</a><a href="../../tools/index.html">Tools</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Language" title="Language">EN</summary><nav aria-label="Language"><a href="../../docs/user/03-first-boot.html" aria-current="true" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../es/docs/user/03-first-boot.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../it/docs/user/03-first-boot.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../zh/docs/user/03-first-boot.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Switch light and dark" title="Switch light and dark">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="User Manual">
+		<p class="eyebrow"><a href="../../docs/index.html">Documentation</a> / User Manual</p>
+		<ul><li><a href="index.html">RadioFoundry User Manual</a></li><li><a href="01-introduction.html">Introduction</a></li><li><a href="02-installing.html">Installing</a></li><li><a href="03-first-boot.html" aria-current="page">First Boot</a></li><li><a href="04-programming.html">Programming the Radio</a></li><li><a href="05-keys-and-navigation.html">Keys and Navigation</a></li><li><a href="06-home-screen.html">The Home Screen</a></li><li><a href="07-channels-zones-vfo.html">Channels, Zones and the VFO</a></li><li><a href="08-fm.html">FM</a></li><li><a href="09-dmr.html">DMR</a></li><li><a href="10-messages-and-signaling.html">Messages, Call Alert and Radio Check</a></li><li><a href="11-emergency.html">Emergency</a></li><li><a href="12-scan.html">Scan and Dual Watch</a></li><li><a href="13-aprs.html">APRS</a></li><li><a href="14-hotspot.html">Hotspot Mode</a></li><li><a href="15-usb-network.html">USB Network Mode</a></li><li><a href="16-battery-and-power.html">Battery and Power</a></li><li><a href="17-settings.html">Settings</a></li><li><a href="18-moving-from-stock-md380.html">Moving from Stock MD-380 Firmware</a></li><li><a href="19-moving-from-stock-dm32.html">Moving from Stock DM-32UV Firmware</a></li><li><a href="20-troubleshooting.html">Troubleshooting</a></li><li><a href="21-faq.html">FAQ</a></li><li><a href="22-glossary.html">Glossary</a></li><li><a href="23-radios.html">Radio Reference</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<h1 id="first-boot">First Boot</h1>
+<h2 id="turning-the-radio-on">Turning the radio on</h2>
+<p>Switch the radio on with its power switch. On the handhelds this is the volume knob, turned clockwise past its
+click. The <a href="23-radios.html">Radio reference</a> says where the switch is on each radio. The boot screen shows for about a
+second, then the radio opens the Home screen. Keys pressed during the boot screen are ignored.</p>
+<p>The boot screen shows the RadioFoundry logo and the two boot text lines from the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>. Along the bottom it shows the radio
+model and the firmware version: the release name, such as v26.11 (the year and month it came out), or for a
+build between releases the commit it was built from. The boot text lines are 16 characters each, set in the codeplug, for example your callsign and name.</p>
+<img src="../ux/screens/160x120i5/boot.png" width="200" alt="Boot screen">
+<p>To turn the radio off, use the power switch again. On the handhelds, turn the volume knob counterclockwise until it
+clicks. See <a href="16-battery-and-power.html#turning-off">Turning off</a>.</p>
+<h2 id="channels-on-a-new-installation">Channels on a new installation</h2>
+<p>RadioFoundry reads the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> from the radio's SPI flash, in the layout the Codeplug Editor and <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr> write. The codeplug holds the channels, zones,
+contacts and your <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr>. When RadioFoundry finds no channels there, it uses six built-in FM simplex channels:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Channel</th>
+<th>Frequency</th>
+<th>Bandwidth</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Simplex 145.500</td>
+<td>145.500 MHz</td>
+<td>25 kHz</td>
+</tr>
+<tr>
+<td>Simplex 146.520</td>
+<td>146.520 MHz</td>
+<td>25 kHz</td>
+</tr>
+<tr>
+<td>Simplex 146.550</td>
+<td>146.550 MHz</td>
+<td>25 kHz</td>
+</tr>
+<tr>
+<td>Simplex 433.500</td>
+<td>433.500 MHz</td>
+<td>12.5 kHz</td>
+</tr>
+<tr>
+<td>Simplex 446.000</td>
+<td>446.000 MHz</td>
+<td>12.5 kHz</td>
+</tr>
+<tr>
+<td>Simplex 446.500</td>
+<td>446.500 MHz</td>
+<td>12.5 kHz</td>
+</tr>
+</tbody>
+</table></div>
+<p>Check that these frequencies are legal for you before you <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">transmit</abbr> on them. <strong>Settings &gt; Advanced &gt; Codeplug</strong> shows
+which channels the radio uses: &quot;built-in channels&quot; or &quot;from the <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="04-programming.html">CPS</abbr>&quot;.</p>
+<p>A radio that ran its original firmware still holds that firmware's codeplug. RadioFoundry checks the codeplug when it
+starts. When it isn't a RadioFoundry (open-firmware) codeplug, the radio ignores it and uses the built-in channels.
+<strong>Settings &gt; Advanced &gt; Codeplug</strong> then also shows &quot;Other firmware's codeplug: ignored&quot;. Nothing is erased: the
+Codeplug Editor can still read and convert it. Write a codeplug to replace it.</p>
+<p>The first time you save something on the radio (a channel, a contact, a zone, your <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> ID), it asks first, on the
+<strong>Old codeplug</strong> screen:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Choice</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cancel</td>
+<td>Saves nothing. This is the default, and Back does the same</td>
+</tr>
+<tr>
+<td>Start new</td>
+<td>Starts a new, empty RadioFoundry codeplug and saves your change. The old codeplug's channels, contacts, DMR ID and radio name are erased. Back it up first</td>
+</tr>
+<tr>
+<td>Use anyway</td>
+<td>Erases nothing and uses the old codeplug as it is. Your change isn't saved: make it again</td>
+</tr>
+</tbody>
+</table></div>
+<p>Use anyway is remembered until a codeplug is written to the radio or you do a factory reset.</p>
+<h2 id="programming-the-radio">Programming the radio</h2>
+<p>Program channels, zones, contacts, <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="22-glossary.html#t-talkgroup">talkgroup</abbr> lists and your <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr> with the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">Codeplug</abbr> Editor on the project's web site
+(<a href="04-programming.html">Programming the radio</a>). <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr> is an alternative. Most settings can also be changed on the radio
+(<a href="17-settings.html">Settings</a>). Channels, contacts and the <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> ID come from the codeplug.</p>
+<p>DMR needs your DMR ID. Without one, the radio refuses to <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">transmit</abbr> on DMR channels and shows &quot;No DMR ID in codeplug&quot;.
+<strong>Settings &gt; My radio &gt; DMR ID and name</strong> shows the ID the radio has, and sets one on the radio: it is written into
+the codeplug.</p>
+<h2 id="checks-after-installing">Checks after installing</h2>
+<ol>
+<li><strong>Settings &gt; My radio &gt; About</strong> (also under <strong>Advanced</strong>) shows &quot;RadioFoundry&quot; with the version you flashed and the radio model. Below
+them it lists the authors and the licenses of everything in the firmware.</li>
+<li>On an FM channel, hold <strong>Monitor</strong> to open the squelch. You hear noise. This shows that the
+receiver and the audio path work.</li>
+<li>On a <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> channel, the Home screen shows &quot;No codec: voice off&quot; in its bottom line if the codec isn't merged. See
+<a href="02-installing.html#no-codec-no-codec-voice-off">Installing, no codec</a>.</li>
+<li>Change a setting, for example <strong>Settings &gt; Display &gt; Brightness</strong>. Turn the radio off and on again. Check that
+the setting stayed. If it didn't, see &quot;Settings are not kept&quot; in <a href="20-troubleshooting.html">Troubleshooting</a>.</li>
+</ol>
+
+		<nav class="prev-next"><a class="prev" href="02-installing.html">Installing</a><a class="next" href="04-programming.html">Programming the Radio</a></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/user/03-first-boot.md">View the source of this page</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="On this page">
+		<p class="eyebrow">On this page</p>
+		<ul><li class="l2"><a href="#turning-the-radio-on">Turning the radio on</a></li><li class="l2"><a href="#channels-on-a-new-installation">Channels on a new installation</a></li><li class="l2"><a href="#programming-the-radio">Programming the radio</a></li><li class="l2"><a href="#checks-after-installing">Checks after installing</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Join the RadioFoundry community</strong><span class="small muted">Questions, help with your radio and news, on Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Found a bug? Want your radio supported?</strong><span class="small muted">Open an issue on GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry is MIT licensed · <a href="https://github.com/radiofoundry/radiofoundry">Source Code</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Community</a> · <a href="../../docs/index.html">Docs</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Changelog</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

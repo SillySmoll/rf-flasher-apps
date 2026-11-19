@@ -1,0 +1,439 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Air band AM receive and broadcast FM receive · RadioFoundry</title>
+<meta name="description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Air band AM receive and broadcast FM receive · RadioFoundry">
+<meta property="og:description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:url" content="https://radiofoundry.org/docs/spec/airband-and-broadcast.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="The radios RadioFoundry runs on, each showing a different screen.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/airband-and-broadcast.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/airband-and-broadcast.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/airband-and-broadcast.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/airband-and-broadcast.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/airband-and-broadcast.html">
+<link rel="icon" href="../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../" data-home="../../" data-gl-more="More">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../index.html">
+			<img src="../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Main"><a href="../../radios/index.html">Radios</a><a href="../../features/index.html">Features</a><a href="../../flash/index.html">Install</a><a href="../../codeplug/index.html">Codeplug</a><a href="../../docs/index.html" aria-current="page">Docs</a><a href="../../screenshots/index.html">Screenshots</a><a href="../../tools/index.html">Tools</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Language" title="Language">EN</summary><nav aria-label="Language"><a href="../../docs/spec/airband-and-broadcast.html" aria-current="true" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../es/docs/spec/airband-and-broadcast.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../it/docs/spec/airband-and-broadcast.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../zh/docs/spec/airband-and-broadcast.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Switch light and dark" title="Switch light and dark">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Specifications">
+		<p class="eyebrow"><a href="../../docs/index.html">Documentation</a> / Specifications</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html" aria-current="page">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<h1 id="air-band-am-receive-and-broadcast-fm-receive">Air band AM receive and broadcast FM receive</h1>
+<p>Status: written, not yet tested on a radio (2026-10-22). What the radios RadioFoundry supports can do on the aeronautical
+<abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="../user/22-glossary.html#t-vhf">VHF</abbr> band (AM, 108-137 MHz) and FM broadcast (65-108 MHz), and how RadioFoundry does it on any radio that has the hardware.
+Both are <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> only and need no menu: the frequency decides. An FM channel or the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> in the air band is received
+in AM; one in the broadcast band plays on the broadcast receiver.</p>
+<h2 id="1-which-radios">1. Which radios</h2>
+<p>A radio has air band <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> when its build has <code>CONFIG_AM_RX</code> and its board sets <code>CAP_AM_RX</code> and <code>rx_am</code>, and
+broadcast receive when it has <code>CONFIG_BCAST_FM</code> and sets <code>CAP_BCAST_FM</code> and <code>board.bcast</code>. Which radios do is in
+<a href="../feature-matrix.html">feature-matrix.md</a> (<code>am_rx</code>, <code>bcast_fm</code>), generated from the boards. A radio's own facts (pins,
+audio path, open questions, bring-up checks) are on its hardware and bring-up pages.</p>
+<h2 id="2-chips">2. Chips</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Chip</th>
+<th>Air band AM</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FD6818</td>
+<td>yes (inferred)</td>
+<td>BK4819 class: the AF output type in 0x47 bits 11:8, type 7 = AM on the BK4819 (Apache-2.0 UV-K5 firmware). Unconfirmed on the FD6818 until a radio's bring-up</td>
+</tr>
+<tr>
+<td>BK4819</td>
+<td>yes</td>
+<td>the same register, documented</td>
+</tr>
+<tr>
+<td>AT1846S</td>
+<td>no</td>
+<td>FM and the <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> baseband modes only (datasheet, our driver)</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Broadcast tuner</th>
+<th>Driver</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RDA5807M</td>
+<td><code>drivers/bcast/rda5807m</code> (4.2)</td>
+</tr>
+<tr>
+<td>RDA5802N</td>
+<td>none checked yet; the RDA5807M driver may serve it after a bring-up check</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="3-air-band-am">3. Air band AM</h2>
+<h3 id="31-representation-derived-from-the-frequency-codeplug-unchanged">3.1 Representation: derived from the frequency, codeplug unchanged</h3>
+<p>The open-firmware <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> has no AM modulation, and RadioFoundry keeps the standard format as long as possible. So AM is not
+stored: <strong>an FM channel or the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> tuned inside 108-137 MHz is received in AM</strong> on a radio that can. This is how
+most radios with an air band behave, it needs no CPS change, and <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr> can program air channels today (as FM
+channels in that range). The band is an ITU allocation, the same everywhere, so the range is a core constant
+(<code>RADIO_AM_LO_HZ</code> / <code>RADIO_AM_HI_HZ</code> in <code>core/radio/radio_am.h</code>), not a board value. A <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> channel in the range is
+received in AM too: <code>tune()</code> sets <code>view.ch.mode</code> to FM in the air band and the broadcast range (<code>radio_listen_band()</code> in
+<code>core/radio/radio_bands.h</code>), the VFO's own mode with it, and RREQ_MODE refuses DMR there. The codeplug keeps the stored mode. Against a stored AM flag: it would need the native codeplug first, and an AM
+channel outside the air band has no use on these radios.</p>
+<p>The Codeplug Editor follows the same rule (<code>listenBand()</code> in <code>site/static/js/codeplug/model.js</code>, with the air band and
+65-108 MHz for broadcast): an <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> frequency typed in either band turns on RX Only, the channel list shows the mode the
+radio uses, and the Problems list warns about a DMR channel there or a <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> frequency there without RX Only.</p>
+<h3 id="32-behavior">3.2 Behavior</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>When</td>
+<td><code>CONFIG_AM_RX</code>, the board has <code>CAP_AM_RX</code> and <code>board.radio-&gt;rx_am</code>, and the channel's or the VFO's RX frequency is in [108, 137) MHz, whatever its stored mode (3.1)</td>
+</tr>
+<tr>
+<td>Tuning</td>
+<td><code>tune()</code> calls <code>rx_am(hz, bw)</code> instead of <code>rx()</code>; if the board refuses, FM as before. <code>view.am</code> says AM is on</td>
+</tr>
+<tr>
+<td>Transmit</td>
+<td>refused with <code>TXDENY_AM</code> whenever <code>view.am</code>, and for any TX frequency in the air band on an AM radio (split channels, DMR channels, the VFO, the data service, the <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr>'s frequencies)</td>
+</tr>
+<tr>
+<td>Squelch</td>
+<td>in AM the board's <code>status()</code> gives <code>noise</code> on the FM noise scale (larger = weaker) from the reading that tells a carrier from an empty channel in AM, so the levels and hysteresis are the FM ones (3.3). <code>view.noise</code> holds that value in AM. Scan uses the same value</td>
+</tr>
+<tr>
+<td>Sub-audio</td>
+<td>ignored in AM (<code>tone_needed()</code> is false, the tone counts as heard)</td>
+</tr>
+<tr>
+<td>Steps</td>
+<td><code>radio_req_vfo_step_size()</code> (RREQ_VFO_STEP_SIZE, stored in <code>settings_t.vfo_step_hz</code>; 0 is auto, the default: 25 kHz at width 25K or in AM, else <code>RADIO_VFO_STEP_HZ</code>, recomputed on every view change, with <code>view.vfo_step_auto</code> set; Settings › Talk › VFO step); 8333 means the exact 8.33 kHz grid (n x 25/3 kHz, <code>radio_am_step()</code> snaps and steps without drift); 25 kHz is a plain step</td>
+</tr>
+<tr>
+<td>Band table</td>
+<td>the board lists the air band as an RX-only band ({108000000, 136000000, false} after the <abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="../user/22-glossary.html#t-vhf">VHF</abbr> TX band)</td>
+</tr>
+<tr>
+<td>Saving</td>
+<td>the channel editor makes a copy whose RX lands in an RX-only band of the table (New from current, a typed RX) RX only, and FM in a listen band (the air band on a radio with AM receive, the broadcast receiver's range), so it saves as is; a DMR copy in a listen band is refused (&quot;Receive only band: set FM&quot;). In another receive-only band a DMR copy stays DMR, RX only (<a href="ui.html">ui.md</a> 2.1). The codeplug stores a listen band's channel as an FM channel</td>
+</tr>
+<tr>
+<td>Mode tile</td>
+<td>DMR is refused: &quot;AM only in the air band&quot;</td>
+</tr>
+<tr>
+<td>Screen</td>
+<td>&quot;AM&quot; in place of &quot;FM&quot; for the mode on Home, in the strip, on the mode tile and in the channel list, and in <abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="../user/22-glossary.html#t-dual-watch">dual watch</abbr> for each pane on its own (the pane, the strip for the selected one, &quot;AM signal&quot;, the picker). Home's chips are &quot;Air Band AM&quot; and the squelch level (no tone, width or power). PTT shows &quot;Air band: receive only&quot;</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="33-board-contract-hal_radioh">3.3 Board contract (hal_radio.h)</h3>
+<p><code>rx_am(hz, bw)</code> tunes and receives AM; the board leaves AM at the next <code>rx()</code> or <code>set_mode()</code>. <code>tx()</code> is never called
+while AM is on. NULL = no AM. In AM <code>status()</code> gives:</p>
+<ul>
+<li><code>noise</code> on the squelch's scale (larger = weaker; the core opens below 64 at level 1 down to 40 at level 9), from
+whichever reading of its receiver tells a carrier from an empty channel in AM. Only the board knows its receiver's
+readings, their scale and the gain it runs at, so the board makes the value.</li>
+<li><code>rssi_dbm</code>, the signal level with any gain the receiver took off added back.</li>
+<li><code>tone_ok</code>: anything (the core takes it as true).</li>
+</ul>
+<p>On an FD6818 (<code>fd6818_set_am</code>, <code>fd6818_am_status</code>, <code>fd6818_am_noise</code>):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>AM</th>
+<th>FM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x43 receive filter</td>
+<td><code>FD6818_BW_AM</code> = 0x0048, the narrowest (about 1.7 kHz)</td>
+<td>0x3028 / 0x4008 or the board's</td>
+</tr>
+<tr>
+<td>0x47 AF output</td>
+<td>0x6740, type 7 (AM)</td>
+<td>0x0140, type 1 (FM)</td>
+</tr>
+<tr>
+<td>0x13 receiver gain</td>
+<td>a gain loop: 0x03FF (full gain) at each tune, then stepped through a 42-entry table to keep a signal's 0x67 reading just under 142 (down one step at 1-9 dB over, down at once by the excess less 8 dB at 10 dB or more; up one step per reading after 30 readings without a cut or a reading within 6 dB)</td>
+<td>the board's FM word, written back when AM ends</td>
+</tr>
+<tr>
+<td>0x4A</td>
+<td>0x5450</td>
+<td>its value before AM, written back</td>
+</tr>
+<tr>
+<td>Squelch value</td>
+<td>0x65 bits 7:0 (noise_sq, 1 dB/step) + an offset that puts level 1 at the chip's own noise_sq_th_in, 0x4F bits 6:0 as the board's tables set it (<code>fd6818_am_noise_offset</code>: 64 - th_in; 17 with 0x4F = 0x302F); each level 3 dB lower</td>
+<td>0x65 bits 7:0 + 25</td>
+</tr>
+</tbody>
+</table></div>
+<p>The gain loop runs at the core's status poll (<code>RADIO_POLL_MS</code>). These are the air band settings an FD6818 radio's own
+firmware uses (its hardware page has them); the loop's tick there isn't known. <code>rx()</code> and <code>set_mode()</code> end AM.</p>
+<p>Why the squelch stays on noise_sq: the chip's own squelch (programming guide, squelch section) needs both <abbr class="gl" tabindex="0" title="Received signal strength indicator: how strong the received signal is, in dBm." data-more="../user/22-glossary.html#t-rssi">RSSI</abbr> 0x67 over
+0x78 and noise_sq under 0x4F. In AM the gain loop holds 0x67 near its target whether or not a signal is there, so only
+noise_sq tells them apart: on the bench it read 59 to 72 on empty channels and fell as a carrier rose (about 61, 53,
+45 and 31 for carriers 5 dB apart, 14 to 19 for a strong one). Level 1 opens where the chip's own squelch does
+(under 0x4F's noise_sq_th_in).</p>
+<h2 id="4-broadcast-fm">4. Broadcast FM</h2>
+<h3 id="41-a-second-receiver-chosen-by-the-frequency">4.1 A second receiver, chosen by the frequency</h3>
+<p>Broadcast FM is wideband FM (about 200 kHz) on a separate chip, so it is a separate receiver (<code>hal_bcast.h</code>,
+<code>board.bcast</code>, <code>CAP_BCAST_FM</code>), not a channel mode. As with the air band, nothing is stored: <strong>an FM channel or the
+<abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> tuned inside the broadcast receiver's range</strong> (<code>board.bcast-&gt;lo_khz</code> to <code>hi_khz</code>, 65-108 MHz on the RDA5807M) plays
+on it. The helpers are in <code>core/radio/radio_bcast.h</code>. The channel receiver stays on its last frequency, muted.</p>
+<h3 id="42-rda5807m-driversbcastrda5807m">4.2 RDA5807M (drivers/bcast/rda5807m)</h3>
+<p>From the public datasheet (RDA Microelectronics, rev 1.1; register summary checked against
+<a href="https://done.land/components/data/datatransmission/wireless/fmpublicbroadcast/receiver/rda5807m/">done.land</a>).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bus</td>
+<td><abbr class="gl" tabindex="0" title="Inter-integrated circuit: a 2-wire bus for small chips such as the RF transceiver." data-more="../dev/glossary.html#t-i2c">I2C</abbr>, random access at 0x11: write reg, hi, lo; read reg, repeated START, hi, lo. Chip ID 0x58 in 0x00 bits 15:8</td>
+</tr>
+<tr>
+<td>0x02</td>
+<td>DHIZ b15, DMUTE b14 (1 = audio), MONO, BASS, RCLK non-calibrate b11, RCLK direct b10, SEEKUP b9, SEEK b8, SKMODE b7 (0 = wrap), CLK_MODE b6:4, RDS_EN b3, NEW_METHOD b2, SOFT_RESET b1, ENABLE b0</td>
+</tr>
+<tr>
+<td>0x03</td>
+<td>CHAN b15:6, TUNE b4, BAND b3:2 (2 = 76-108, 3 = 65-76 with 0x07 b9), SPACE b1:0 (2 = 50 kHz)</td>
+</tr>
+<tr>
+<td>0x04 / 0x05 / 0x07</td>
+<td>de-emphasis 50 us b11 / INT_MODE, SEEKTH b11:8, LNA port b7:6, VOLUME b3:0 / soft blend threshold, 65M mode b9, soft blend b1</td>
+</tr>
+<tr>
+<td>0x0A / 0x0B</td>
+<td>STC b14, SF b13, ST b10, READCHAN b9:0 / <abbr class="gl" tabindex="0" title="Received signal strength indicator: how strong the received signal is, in dBm." data-more="../user/22-glossary.html#t-rssi">RSSI</abbr> b15:9, FM_TRUE b8, FM_READY b7</td>
+</tr>
+</tbody>
+</table></div>
+<p>The driver tunes 65-76 and 76-108 MHz on a 50 kHz grid, keeps shadows so TUNE and SEEK are never written twice, and
+follows the chip's STC. The board supplies the bus; <code>drivers/bus/i2c_gpio</code> is a bit-banged master (open-drain SDA,
+push-pull SCL, no clock stretching).</p>
+<h3 id="43-behavior">4.3 Behavior</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>When</td>
+<td><code>CONFIG_BCAST_FM</code>, the board has <code>CAP_BCAST_FM</code> and <code>board.bcast</code>, and the channel's or the VFO's <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> frequency is in the receiver's range, whatever its stored mode (3.1). <code>view.bcast</code> says the broadcast receiver plays</td>
+</tr>
+<tr>
+<td>Tuning</td>
+<td>the receiver is powered and tuned to the nearest point of its grid (<code>radio_bcast_khz</code>). Leaving the range powers it off. If the chip doesn't answer, <code>view.bcast_fault</code> is set and the radio stays idle</td>
+</tr>
+<tr>
+<td>Transmit</td>
+<td>refused with <code>TXDENY_BCAST</code> whenever <code>view.bcast</code>, and for any <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> frequency in the range on a radio with the receiver (split channels, <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> channels, the VFO, the <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr>'s frequencies)</td>
+</tr>
+<tr>
+<td>Squelch</td>
+<td>on the receiver's RSSI (about dBuV): noise = 97 - RSSI on the FM noise scale, so level 5 opens above 45 dBuV, 1 above 33, 9 above 57. Set from a receiver without an antenna (2026-10-22): empty frequencies read 22 to 37, stations 50 and up. The signal meter shows RSSI - 107 dBm. Only a scan uses it (to stop on stations): otherwise the state stays RX, the <abbr class="gl" tabindex="0" title="Light-emitting diode: the radio&#x27;s status light." data-more="../user/22-glossary.html#t-led">LED</abbr> stays off (a station isn't a call), the screen shows the level and the audio plays whatever the signal (<code>bcast_listening()</code>)</td>
+</tr>
+<tr>
+<td>Sub-audio</td>
+<td>ignored (<code>tone_needed()</code> is false)</td>
+</tr>
+<tr>
+<td>Volume</td>
+<td>the radio's own volume where it has one (<code>radio_volume_soft</code>), mapped onto the receiver's 0-15; a fixed 12 where a knob after the amplifier sets the level</td>
+</tr>
+<tr>
+<td>Steps</td>
+<td>the VFO's step is always the broadcast step setting (4.4), whatever Settings › Talk › VFO step says: a fixed step for the other bands doesn't apply here</td>
+</tr>
+<tr>
+<td>Power</td>
+<td>battery save is off while the receiver plays; hotspot mode powers it off</td>
+</tr>
+<tr>
+<td>Saving, mode tile</td>
+<td>as the air band (3.2): the board lists the range as an RX-only band; the mode tile says &quot;FM only in the broadcast band&quot;</td>
+</tr>
+<tr>
+<td>Screen</td>
+<td>Home's chips are &quot;Broadcast FM&quot; alone (no tone, width, power or squelch level). The mode word stays &quot;FM&quot;. PTT shows &quot;Broadcast: receive only&quot;</td>
+</tr>
+<tr>
+<td>APRS</td>
+<td>a beacon's carrier sense reads the channel receiver on the <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> frequency, as on any channel</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="44-broadcast-step">4.4 Broadcast step</h3>
+<p>Settings › Talk &amp; listen › FM broadcast step, <code>radio_settings_t.bcast_step</code>, stored in <code>settings_t.rs_bcast_step</code>
+(page 1; <code>bcast_step + 1</code>, 0 = the default). The row shows only on a radio with the receiver (<code>UI_FEAT_BCAST</code>).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>VFO knob and Up / Down</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200 kHz (default)</td>
+<td>to the next odd tenth of a MHz: 88.1, 88.3 ... 107.9, the broadcast channels of the Americas. From an even tenth or a point between, the first step lands on the next odd tenth in that direction (90.2 up is 90.3, down is 90.1)</td>
+</tr>
+<tr>
+<td>100 kHz</td>
+<td>every 100 kHz, from wherever the VFO is</td>
+</tr>
+</tbody>
+</table></div>
+<p>Either way any frequency can be typed in: 90.2 is tuned and heard as entered.</p>
+<h3 id="45-board-glue">4.5 Board glue</h3>
+<p>The <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> boards share one composition, <code>platform/hrc7000/bcast_hrc.c</code> (<code>hrc_bcast_init</code>): the RDA5807M driver on
+a bit-banged I2C bus (open-drain SDA) on the board's two pins, an optional enable pin and level, and the board's
+audio path callback. A board fills in <code>hrc_bcast_cfg_t</code> and sets <code>board.bcast = &amp;rda5807m_hal</code>; its pins and audio path
+are on its hardware page.</p>
+<p>The board decides how the broadcast reaches the speaker. The core keeps the channel receiver's audio off while the
+broadcast plays, so the two never ask for the speaker at once (hal_bcast.h <code>audio</code>).</p>
+<h2 id="5-build-switches">5. Build switches</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Switch</th>
+<th>Default</th>
+<th>Covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CONFIG_AM_RX</code></td>
+<td>on with FM; off where the receiver has no AM</td>
+<td><code>radio_am.c</code> in the radio core, RREQ_VFO_STEP_SIZE; needs FM</td>
+</tr>
+<tr>
+<td><code>CONFIG_BCAST_FM</code></td>
+<td>on; off where there is no broadcast receiver</td>
+<td><code>radio_bcast.c</code> in the radio core, the board's tuner glue, the step setting</td>
+</tr>
+</tbody>
+</table></div>
+<p>The board must also set the capability bits; without them the code does nothing at run time. Per-board defaults:
+<a href="../feature-matrix.html">feature-matrix.md</a>.</p>
+<h2 id="6-tests">6. Tests</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tests/host/radioListenBandsTest.c</code></td>
+<td>AM and broadcast channels and <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr>, <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> refusal, squelch, the steps, a dead receiver</td>
+</tr>
+<tr>
+<td><code>tests/host/fd6818Test.c</code></td>
+<td>the AF output word for AM and back to FM</td>
+</tr>
+<tr>
+<td><code>tests/host/uiFlowTest.c</code></td>
+<td>the FM broadcast step row on a radio with the receiver; AM in <abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="../user/22-glossary.html#t-dual-watch">dual watch</abbr> (a VFO and a channel pane, the signal line)</td>
+</tr>
+<tr>
+<td><code>tests/hil/test_listen_bands.py</code></td>
+<td>the VFO at 118.0 MHz gives <code>am=1</code>; at 100.1 MHz <code>bcast=1</code> and <code>bcast_fault=0</code>. Nothing keys</td>
+</tr>
+</tbody>
+</table></div>
+
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/airband-and-broadcast.md">View the source of this page</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="On this page">
+		<p class="eyebrow">On this page</p>
+		<ul><li class="l2"><a href="#1-which-radios">1. Which radios</a></li><li class="l2"><a href="#2-chips">2. Chips</a></li><li class="l2"><a href="#3-air-band-am">3. Air band AM</a></li><li class="l3"><a href="#31-representation-derived-from-the-frequency-codeplug-unchanged">3.1 Representation: derived from the frequency, codeplug unchanged</a></li><li class="l3"><a href="#32-behavior">3.2 Behavior</a></li><li class="l3"><a href="#33-board-contract-hal_radioh">3.3 Board contract (hal_radio.h)</a></li><li class="l2"><a href="#4-broadcast-fm">4. Broadcast FM</a></li><li class="l3"><a href="#41-a-second-receiver-chosen-by-the-frequency">4.1 A second receiver, chosen by the frequency</a></li><li class="l3"><a href="#42-rda5807m-driversbcastrda5807m">4.2 RDA5807M (drivers/bcast/rda5807m)</a></li><li class="l3"><a href="#43-behavior">4.3 Behavior</a></li><li class="l3"><a href="#44-broadcast-step">4.4 Broadcast step</a></li><li class="l3"><a href="#45-board-glue">4.5 Board glue</a></li><li class="l2"><a href="#5-build-switches">5. Build switches</a></li><li class="l2"><a href="#6-tests">6. Tests</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Join the RadioFoundry community</strong><span class="small muted">Questions, help with your radio and news, on Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Found a bug? Want your radio supported?</strong><span class="small muted">Open an issue on GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry is MIT licensed · <a href="https://github.com/radiofoundry/radiofoundry">Source Code</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Community</a> · <a href="../../docs/index.html">Docs</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Changelog</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

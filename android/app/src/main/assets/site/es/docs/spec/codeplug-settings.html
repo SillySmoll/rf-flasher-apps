@@ -1,0 +1,801 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Codeplug settings area · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Codeplug settings area · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/docs/spec/codeplug-settings.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/codeplug-settings.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/codeplug-settings.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/codeplug-settings.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/codeplug-settings.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/codeplug-settings.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../es/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../../es/radios/index.html">Radios</a><a href="../../../es/features/index.html">Funciones</a><a href="../../../es/flash/index.html">Instalar</a><a href="../../../es/codeplug/index.html">Codeplug</a><a href="../../../es/docs/index.html" aria-current="page">Documentación</a><a href="../../../es/screenshots/index.html">Capturas</a><a href="../../../es/tools/index.html">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../../docs/spec/codeplug-settings.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/codeplug-settings.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/codeplug-settings.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/codeplug-settings.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Especificaciones">
+		<p class="eyebrow"><a href="../../../es/docs/index.html">Documentación</a> / Especificaciones</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html" aria-current="page">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Esta página aún no está traducida; se muestra en inglés.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<!-- Copyright (c) 2026 The RadioFoundry Authors -->
+<h1 id="codeplug-settings-area">Codeplug settings area</h1>
+<p>A key-value area inside the open-firmware <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> image (<a href="open-firmware-cps.html">open-firmware-cps.md</a> 7) for settings
+the open-firmware layout has no field for. A new setting gets a key, not a place in the layout. Firmware and tools
+that don't know a key keep it. Firmware and tools that don't know the area don't see it.</p>
+<p>Code: <code>core/codeplug/codeplug_kv.c</code> (the area), <code>core/codeplug/codeplug_keys.c</code> (tables of keyed settings),
+<code>site/static/js/codeplug/kv.js</code> (Codeplug Editor).</p>
+<h2 id="1-where">1. Where</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EEPROM image</td>
+<td>0xE000-0xEFFF: one 4 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> sector, the erase unit (<code>STORAGE_SECTOR</code>)</td>
+</tr>
+<tr>
+<td>On the wire</td>
+<td>as the <abbr class="gl" tabindex="0" title="Electrically erasable programmable read-only memory: a small chip that keeps settings." data-more="../dev/glossary.html#t-eeprom">EEPROM</abbr> image (<a href="open-firmware-cps.html">open-firmware-cps.md</a> 7.1): the same address on the <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr> mapping</td>
+</tr>
+</tbody>
+</table></div>
+<p>Why there:</p>
+<ul>
+<li>The firmware reads nothing in the EEPROM image past the zone table (it ends at 0xAEF0).</li>
+<li><abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr> and the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">Codeplug</abbr> Editor transfer the EEPROM image up to 0xB000 and keep the bytes they don't decode. qdmr never
+reads or writes the area.</li>
+<li>Room on both sides. The open-firmware layout, if it grows, grows up from the zone table: 0xB000-0xDFFF (12 KB) is
+left for that, so the area isn't the first thing a longer zone table meets. 0xF000-0xFFFF is left for the area's
+first continuation (2.4).</li>
+<li>The settings store, the journal, the calibration and the native area are elsewhere on every board.</li>
+<li>Factory reset doesn't touch the open-firmware image, so it keeps the area too.</li>
+<li>One sector: an edit is one journaled sector rewrite (<a href="settings-store.html">settings-store.md</a> 4). A power cut leaves
+the old area or the new one, never a mix.</li>
+</ul>
+<p>The area sits at a fixed address and starts with a magic. Nothing else points to it. A pointer would be a second
+thing a foreign write can wipe apart from the data.</p>
+<h2 id="2-format">2. Format</h2>
+<p>All values are little endian.</p>
+<h3 id="21-header-16-bytes">2.1 Header (16 bytes)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>4</td>
+<td>Magic: the bytes <code>52 46 4B 56</code> (&quot;RFKV&quot;)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1</td>
+<td>Version: 1</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1</td>
+<td>Header length: 16. Entries start here, so a later version can add header fields that older readers skip</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2</td>
+<td>Data length: the bytes of entries after the header, at most 4096 minus the header length</td>
+</tr>
+<tr>
+<td>8</td>
+<td>4</td>
+<td>CRC-32 of the entries (IEEE 802.3, reflected, as <code>storage_crc32</code>)</td>
+</tr>
+<tr>
+<td>12</td>
+<td>4</td>
+<td>Reserved for the continuation (2.4): 0 in a new area, kept as found by a rewrite, not checked by version 1</td>
+</tr>
+</tbody>
+</table></div>
+<p>The version changes only if the entry framing changes so that a version 1 reader would misread it. A reader that
+finds a later version reads the area as empty and refuses to write it, so it never destroys a newer area. Version 0
+was never written: it is an invalid area (2.3), not a newer one. The
+cost falls on older firmware: it loses every key at once and runs on its own settings. So a version change is the last
+resort. Everything else grows without one: the header through its length field, a value by appending fields (4),
+the area by its continuation (2.4).</p>
+<h3 id="22-entries">2.2 Entries</h3>
+<p>Packed one after another, from the header's end to the data length:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Size</th>
+<th>Field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>Key: 0x0001-0x7FFF are assigned in section 3, 0x8000-0xFFFE are for development and never in a release. 0x0000 and 0xFFFF are not keys</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Value length in bytes</td>
+</tr>
+<tr>
+<td>n</td>
+<td>Value</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="23-validity">2.3 Validity</h3>
+<p>The area is valid when the magic matches, the version is 1, the header length is at least 16, the header and data
+fit in the sector, every entry fits inside the data length and the <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> matches. Anything else (erased flash, another
+tool's bytes, a write cut short outside the journal) reads as an empty area. No key is present then.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>State</th>
+<th>What is there</th>
+<th>Read</th>
+<th>Written</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>valid</td>
+<td>as above</td>
+<td>its keys</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>empty</td>
+<td>an erased sector</td>
+<td>no key</td>
+<td>yes: a new area</td>
+</tr>
+<tr>
+<td>bad</td>
+<td>anything else, version 0 included</td>
+<td>no key</td>
+<td>yes: a new area, the old bytes dropped</td>
+</tr>
+<tr>
+<td>newer</td>
+<td>our magic and a version above 1</td>
+<td>no key</td>
+<td>never, by the radio or a tool (6)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="24-continuation-reserved-not-built">2.4 Continuation (reserved, not built)</h3>
+<p>When 4 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> isn't enough, the reserved header bytes 12-15 will name a continuation: another sector with the same
+header and entry format, holding more entries. The bytes give the continuation's offset in the <abbr class="gl" tabindex="0" title="Electrically erasable programmable read-only memory: a small chip that keeps settings." data-more="../dev/glossary.html#t-eeprom">EEPROM</abbr> image (u32, a
+multiple of 4096; 0 = none), not a fixed address. The first continuation is meant for 0xF000. A continuation's own
+bytes 12-15 name the next one, so later sectors can go wherever the image map has room, with no version change.</p>
+<p>A reader takes a key from the first sector before any continuation, and from a continuation before the one it
+names. A version 1 reader of today ignores the reserved bytes, so it sees only the first sector: keys that live only
+in a continuation read as absent, and the radio keeps its own values (4). A writer that doesn't know the
+continuation keeps the reserved bytes and the header length as it found them.</p>
+<h2 id="3-keys">3. Keys</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Name</th>
+<th>Type</th>
+<th>Value</th>
+<th>Radio's own copy</th>
+<th>Requires</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0001</td>
+<td><abbr class="gl" tabindex="0" title="Automatic Registration Service: a radio tells a presence server it is on the air." data-more="../user/22-glossary.html#t-ars">ARS</abbr> server</td>
+<td>id</td>
+<td>The presence server's <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr> for ARS registration (<a href="dmr-data.html">dmr-data.md</a> 6); 0 = ARS off</td>
+<td><code>ds_ars_server</code></td>
+<td>ARS in the build (<code>CONFIG_DMR_ARS</code>)</td>
+</tr>
+<tr>
+<td>0x0002</td>
+<td>IP gateway</td>
+<td>id</td>
+<td>The <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> ID of the radio that takes the host's off-net IP packets (<a href="usb-network.html">usb-network.md</a> 3.1); 0 = none</td>
+<td><code>ds_ip_gateway</code></td>
+<td>IP gateway in the build (<code>CONFIG_DMR_IP_GATEWAY</code>)</td>
+</tr>
+<tr>
+<td>0x0003</td>
+<td>Call end tone</td>
+<td>bool</td>
+<td>Off silences the tone when a DMR call heard ends (Settings &gt; Sound)</td>
+<td><code>sound_flags</code> bit 4</td>
+<td>DMR and tones in the build (<code>CONFIG_DMR</code>, <code>CONFIG_BEEP</code>)</td>
+</tr>
+<tr>
+<td>0x0004</td>
+<td><abbr class="gl" tabindex="0" title="Transmit timeout: the longest transmission the radio allows." data-more="../user/22-glossary.html#t-tot">TOT</abbr> warning tone</td>
+<td>bool</td>
+<td>Off silences the tone before the <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> time-out</td>
+<td><code>sound_flags</code> bit 5</td>
+<td>Tones in the build (<code>CONFIG_BEEP</code>)</td>
+</tr>
+<tr>
+<td>0x0005</td>
+<td>Battery tone</td>
+<td>bool</td>
+<td>Off silences the low and critical battery tones</td>
+<td><code>sound_flags</code> bit 6</td>
+<td>Tones in the build (<code>CONFIG_BEEP</code>)</td>
+</tr>
+<tr>
+<td>0x0006</td>
+<td>TX denied tone</td>
+<td>bool</td>
+<td>Off silences the tone when PTT is refused or the time-out cuts a transmission</td>
+<td><code>sound_flags</code> bit 7</td>
+<td>Tones in the build (<code>CONFIG_BEEP</code>)</td>
+</tr>
+<tr>
+<td>0x0007</td>
+<td>Start tone</td>
+<td>record</td>
+<td>The signaling tone of a transmission's start: outputs and chain (3.3)</td>
+<td><code>sig_dmr[0]</code>, <code>sig_fm[0]</code>, <code>sig_hz[0]</code>, <code>sig_ms[0]</code></td>
+<td>Signaling tones in the build (<code>CONFIG_SIG_TONES</code>)</td>
+</tr>
+<tr>
+<td>0x0008</td>
+<td>End tone</td>
+<td>record</td>
+<td>The same for a transmission's end</td>
+<td><code>sig_dmr[1]</code>, <code>sig_fm[1]</code>, <code>sig_hz[1]</code>, <code>sig_ms[1]</code></td>
+<td><code>CONFIG_SIG_TONES</code></td>
+</tr>
+<tr>
+<td>0x0009</td>
+<td>Idle tone</td>
+<td>record</td>
+<td>The same for a reception's end (no on-air output)</td>
+<td><code>sig_dmr[2]</code>, <code>sig_fm[2]</code>, <code>sig_hz[2]</code>, <code>sig_ms[2]</code></td>
+<td><code>CONFIG_SIG_TONES</code></td>
+</tr>
+<tr>
+<td>0x0100</td>
+<td>Systems</td>
+<td>record list</td>
+<td>0x0100-0x01FF: system n's record (<a href="channel-modes.html">channel-modes.md</a> 7.1)</td>
+<td>none (<abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> data)</td>
+<td>the system's type built</td>
+</tr>
+<tr>
+<td>0x0200</td>
+<td>System entries</td>
+<td>record list</td>
+<td>0x0200-0x02FF: a system's sites, channels and plan rows (<a href="channel-modes.html">channel-modes.md</a> 7.2)</td>
+<td>none</td>
+<td>the system's type built</td>
+</tr>
+<tr>
+<td>0x0300</td>
+<td>System secrets</td>
+<td>record list</td>
+<td>0x0300-0x03FF: system n's own secret (<a href="channel-modes.html">channel-modes.md</a> 7.4)</td>
+<td>none</td>
+<td>the system's type built</td>
+</tr>
+<tr>
+<td>0x0400</td>
+<td>Channel tags</td>
+<td>record list</td>
+<td>0x0400-0x07FF: channel n + 1's kind and parameters (<a href="channel-modes.html">channel-modes.md</a> 2)</td>
+<td>none</td>
+<td>read in every build</td>
+</tr>
+<tr>
+<td>0x0800</td>
+<td>Short data poll</td>
+<td>record list</td>
+<td>0x0800-0x08FF: DMR Tier III system n's short data poll format, size and the radio's reply (<a href="dmr-trunking-codeplug.html">dmr-trunking-codeplug.md</a> 5)</td>
+<td>none: ISO 8 bit, 4 blocks, no reply</td>
+<td>Tier III trunking in the build (<code>CONFIG_DMR_TRUNK</code>)</td>
+</tr>
+<tr>
+<td>0x0900</td>
+<td>Supplementary data</td>
+<td>record list</td>
+<td>0x0900-0x09FF: the supplementary user data format and octets the radio offers with each call on DMR Tier III system n (<a href="dmr-trunking-codeplug.html">dmr-trunking-codeplug.md</a> 5)</td>
+<td>none: no data offered</td>
+<td>Tier III supplementary data in the build (<code>CONFIG_DMR_TRUNK_SUPL</code>)</td>
+</tr>
+<tr>
+<td>0x0A00</td>
+<td>Mode settings</td>
+<td>record list</td>
+<td>0x0A00-0x0AFF: kind n's radio-wide record (<a href="channel-modes.html">channel-modes.md</a> 5.5)</td>
+<td>none</td>
+<td>the kind built</td>
+</tr>
+<tr>
+<td>0x1000</td>
+<td>Targets</td>
+<td>record list</td>
+<td>0x1000-0x17FF: call targets the contact record can't hold (<a href="channel-modes.html">channel-modes.md</a> 5.2)</td>
+<td>none</td>
+<td>a kind that uses them built</td>
+</tr>
+<tr>
+<td>0x1800</td>
+<td>Target lists</td>
+<td>record list</td>
+<td>0x1800-0x18FF: <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> lists of targets (<a href="channel-modes.html">channel-modes.md</a> 5.3)</td>
+<td>none</td>
+<td>a kind that uses them built</td>
+</tr>
+<tr>
+<td>0x1900</td>
+<td>Traffic keys</td>
+<td>record list</td>
+<td>0x1900-0x1CFF: keys that encrypt traffic, each a system's (<a href="channel-modes.html">channel-modes.md</a> 5.4)</td>
+<td>none</td>
+<td>a type that uses them built</td>
+</tr>
+<tr>
+<td>0x1D00</td>
+<td>Zone tags</td>
+<td>record list</td>
+<td>0x1D00-0x1DFF: reserved for per-zone mode records (<a href="channel-modes.html">channel-modes.md</a> 5.6)</td>
+<td>none</td>
+<td>none yet</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Radio's own copy</strong> is the setting's field in the settings store (<a href="settings-store.html">settings-store.md</a> 3). Every
+scalar key has one (3.2).</p>
+<p><strong>Requires</strong> is what a radio needs for the key to do anything: build switches (<code>CONFIG_*</code>) and board capabilities
+(<code>CAP_*</code>), generic wording, no radio names. It is the seed of a per-radio support registry: a tool will derive from it
+which keys a radio supports, so a row's requires is written for that, not for a reader's guess. A key a radio doesn't
+support is still kept and carried (4).</p>
+<p>A key is listed in four places: this table, <code>CODEPLUG_KEY_*</code> in <code>core/codeplug/codeplug_kv.h</code>, a row of a firmware
+table (5.1) and a row of the Codeplug Editor's <code>KEYS</code> (7). <code>tools/check_keys.py</code> checks that they agree: the same
+keys, each once, of the same type.</p>
+<h3 id="31-types">3.1 Types</h3>
+<p>A type names how a value is encoded, never how wide it is. A value's length (2.2) is the width.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Encoding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uint</td>
+<td>Unsigned, little endian, 1 to 8 bytes. A shorter value zero-extends when read, so a setting that outgrows its width (u8 to u16 to u32) is stored in more bytes under the same key, and an older reader still reads a value that fits its width</td>
+</tr>
+<tr>
+<td>int</td>
+<td>Signed, little endian, 1 to 8 bytes. A shorter value sign-extends from its stored length</td>
+</tr>
+<tr>
+<td>bool</td>
+<td>A uint: 0 = off, anything else on; a writer stores 0 or 1</td>
+</tr>
+<tr>
+<td>enum</td>
+<td>A uint. Values are only appended: a value never changes meaning</td>
+</tr>
+<tr>
+<td>id</td>
+<td>A uint DMR ID, at most 16776415 (<code>CODEPLUG_DMR_ID_MAX</code>). 0 is a value (the setting off), not absent</td>
+</tr>
+<tr>
+<td>string</td>
+<td>The bytes of the value, no terminator, length from the entry</td>
+</tr>
+<tr>
+<td>record</td>
+<td>Fixed fields in a fixed order, each of a stated size, for settings that are only valid together (3.2). It grows by appending fields (4)</td>
+</tr>
+<tr>
+<td>record list</td>
+<td>A key family (below): one key per record, each record's value is of the type its row names</td>
+</tr>
+</tbody>
+</table></div>
+<p>uint, int, bool, enum and id are the <strong>scalars</strong>. A scalar is one number, so it grows only in width, never by
+appended fields.</p>
+<p><strong>A value the reader can't take reads as if the key were absent.</strong> That is an empty scalar, one longer than 8
+bytes, a number wider than the reader's field, a number outside the range its row gives, an enum value the reader
+doesn't know, and an ID above 16776415. The radio then keeps its own setting (5). Nothing is clamped: a tool that
+writes 200 where a radio takes 1 to 10 hasn't set 10.</p>
+<p>A type is never redefined, and a new meaning gets a new key.</p>
+<p>A new key is added to this table in the same change that first writes it.</p>
+<h3 id="32-giving-a-setting-a-key">3.2 Giving a setting a key</h3>
+<ul>
+<li><strong>One key per setting.</strong> Settings that are independent get a key each, so a codeplug can carry one without the
+others, absent works per setting, and the Codeplug Editor shows each as a field.</li>
+<li><strong>A record for settings that are only valid together.</strong> If taking one from the codeplug and the other from the
+radio's own copy could give a combination nobody set (a target ID with the other's &quot;is a radio&quot; flag), they are one
+key of type record, present or absent as a whole.</li>
+<li><strong>Every scalar and record key has the radio's own copy</strong> in the settings store, and the key holds over it (5). A
+setting never lives only in the area: with another firmware's codeplug the area reads empty and can't be written,
+and the setting must still work and still be set from the menu. A key family (below) is the exception: a list is
+codeplug data and has no second copy.</li>
+<li><strong>Numbers are taken in order.</strong> A scalar or record key gets the next free number from 0x0001 up. Related keys
+need no block of their own: a reader walks every entry whatever the numbers (5), so neighbors save nothing. The
+number is settled when the change merges; two open changes that took the same number renumber the later one.</li>
+</ul>
+<p><strong>Key families.</strong> A feature with many instances of one record (a list of records, one per entry) owns a contiguous
+key range: one key per instance, record n at base + n. The range is assigned here as one row (base, size, value
+format) in the same change that first writes it. Each instance is then an ordinary key: absent, present, grown and
+kept by the rules in 4, and a reader walks the range (<code>codeplug_kv_next</code>, 5) rather than looking up each key.</p>
+<p>A list that belongs to a radio's controls is a family too: the keypad buttons, one key per button, each value the
+button's action. Ranges are assigned in blocks of 256 from 0x0100 up (0x0100-0x01FF the first), so a family can grow
+to its block and no further without a new row. A list that may outgrow a block is split into two families by the
+change that needs it, never by moving the first.</p>
+<h3 id="33-the-signaling-tone-records">3.3 The signaling tone records</h3>
+<p>One record per event, because a chain's steps are only valid together and the outputs go with the event they sound
+for. 32 bytes, little endian (the first version's record had five steps and 17 bytes: the first five steps are laid out as
+it had them, and the other five follow):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>Output in DMR: 0 the radio's own sound, 1 off, 2 speaker, 3 on air, 4 speaker and on air</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>Output in FM, the same values</td>
+</tr>
+<tr>
+<td>2</td>
+<td>10</td>
+<td>Frequencies of steps 1 to 5 in Hz, u16 each; 0 is a pause. Multiples of 10, at most 3400</td>
+</tr>
+<tr>
+<td>12</td>
+<td>5</td>
+<td>Lengths of steps 1 to 5 in units of 10 ms. A step of length 0 ends the chain, and a chain with no step is the event's own sound. At most 90 (900 ms)</td>
+</tr>
+<tr>
+<td>17</td>
+<td>10</td>
+<td>Frequencies of steps 6 to 10, as above</td>
+</tr>
+<tr>
+<td>27</td>
+<td>5</td>
+<td>Lengths of steps 6 to 10, as above</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>A record shorter than 32 bytes (the first version's 17, say) reads with the missing fields zero. A longer one (a later version) is read from the
+front.</li>
+<li>The record is absent for the reader when a field is outside what the setting takes: an output of 3 or 4 for the end
+of a reception, a frequency over 3400 Hz or not a multiple of 10, or a length over 900 ms. Nothing is
+clamped (3.1).</li>
+<li>A record whose key is present holds over the radio's own copy (5.2). The radio writes the whole record when one of
+its fields changes from the menu, and keeps the bytes after the 32nd (4).</li>
+</ul>
+<h2 id="4-rules-for-readers-and-writers">4. Rules for readers and writers</h2>
+<ul>
+<li><strong>Absent means &quot;the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> says nothing&quot;.</strong> The firmware then keeps what it already has (5). It is not the same
+as 0 or off. A tool that wants a setting off writes the key with the off value.</li>
+<li><strong>Unknown keys are kept.</strong> A writer copies every entry it doesn't know, in order, byte for byte.</li>
+<li><strong>Values only grow.</strong> A scalar grows in width (3.1). A record grows by appended fields: a reader takes the fields
+it knows from the front and ignores the rest, and a record shorter than a reader expects gives the default for the
+missing fields. A field's meaning never changes. A new meaning gets a new key.</li>
+<li><strong>A scalar is written whole</strong>, in the width the writer stores. <strong>A record is written from the front</strong>: a writer
+that knows fewer fields than the stored value holds sets its fields and keeps the bytes after them
+(<code>CODEPLUG_KV_HEAD</code>), so an older tool doesn't cut off a later version's fields.</li>
+<li><strong>One entry per key.</strong> A reader takes the first. A writer drops later ones.</li>
+<li><strong>Order.</strong> A writer replaces a value in place, appends a new key at the end and closes the gap when it removes one.</li>
+<li><strong>Removing</strong> takes out every entry of the key. Removing a key that is absent changes nothing and writes nothing. A
+set to the value the key already has writes nothing either.</li>
+<li><strong>Several changes, one rewrite.</strong> A writer applies all the sets and removes it has in one rewrite of the sector, all
+or none: if one doesn't fit, nothing changes.</li>
+<li><strong>Writing over an invalid area</strong> starts a new one: the header, then the entries being written. Unknown bytes in an
+invalid area aren't kept, because nothing in them could be read.</li>
+<li><strong>Erased bytes after the data</strong> are written 0xFF, as the erased sector. The <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> covers only the data length.</li>
+</ul>
+<h2 id="5-firmware">5. Firmware</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Call</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>codeplug_kv_get(key, buf, max)</code></td>
+<td>The value's length (copies at most <code>max</code> bytes), or -1 when the key is absent or the area invalid. Checks the whole area (its <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr>) each call</td>
+</tr>
+<tr>
+<td><code>codeplug_kv_begin(&amp;c, lo, hi)</code>, <code>codeplug_kv_next(&amp;c, &amp;key, buf, max)</code></td>
+<td>A walk over the keys <code>lo</code>..<code>hi</code> in the area's order, a later entry of a key skipped. The area is checked once, at the first <code>next</code>; each later one reads the header again and ends the walk if the area changed. The cursor is on the caller's stack</td>
+</tr>
+<tr>
+<td><code>codeplug_kv_uint</code>, <code>codeplug_kv_int</code>, <code>codeplug_kv_id</code></td>
+<td>A scalar from a value already read (3.1); false for one the reader can't take</td>
+</tr>
+<tr>
+<td><code>codeplug_kv_write(ops, n)</code></td>
+<td>Applies <code>n</code> sets and removes (<code>len</code> = <code>CODEPLUG_KV_REMOVE</code>) in order, then one journaled rewrite through the shared sector buffer. <code>len | CODEPLUG_KV_HEAD</code> sets a record from the front (4). All or nothing. Moves <code>codeplug_kv_serial()</code> when a byte changed, not <code>codeplug_serial()</code>, so a key written doesn't reload the whole <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>; a batch that changes nothing writes nothing</td>
+</tr>
+<tr>
+<td><code>codeplug_kv_set(key, value, len)</code>, <code>codeplug_kv_remove(key)</code></td>
+<td>One op through <code>codeplug_kv_write</code></td>
+</tr>
+<tr>
+<td><code>codeplug_kv_commit(addr, sector)</code></td>
+<td>A raw sector write at flash address <code>addr</code> under the transfer rule (6): the sector is written unless the radio's must stay (<code>codeplug_kv_keep</code>), which counts as written</td>
+</tr>
+<tr>
+<td><code>codeplug_kv_serial()</code></td>
+<td>Moves whenever the keys may read differently: a key written, and every change of <code>codeplug_serial()</code> (a <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> commit, a <abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="tftp.html">TFTP</abbr> write, another firmware's codeplug found, accepted or replaced). The one thing an owner of keyed settings watches</td>
+</tr>
+</tbody>
+</table></div>
+<p>Reads keep nothing of the area in <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr>. A cache of the checked state was left out: it would cost RAM on every radio,
+every path that writes the sector raw (CPS shim, fast protocol, TFTP) and every change of the foreign-codeplug state
+would have to drop it, and a write made outside the running firmware (the <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr>, the bootloader) can't. A walk gives
+the same saving for keys read together.</p>
+<p>The writes need no built-in codeplug to be stored first. The area is apart from the channel records, so it
+doesn't materialize the built-in set (<a href="codeplug-native.html">codeplug-native.md</a> 2). It fails while a CPS session holds
+the shared sector buffer, or when the storage region isn't ours (<a href="settings-store.html">settings-store.md</a> 5).</p>
+<h3 id="51-tables-of-keyed-settings">5.1 Tables of keyed settings</h3>
+<p>Scalar keys are applied through tables (<code>core/codeplug/codeplug_keys.c</code>). An owner of settings has one table, a row
+per key: the key, its type, the setting's range, whether the build has it, and the offset and size of a field in the
+owner's settings struct, so a struct has one table. The owner is whatever holds that struct: the radio core holds
+the data service's settings (<code>radio_keys</code> in <code>core/radio/radio_keys.h</code>) and the Settings &gt; Sound tones
+(<code>radio_tone_rows</code>, next to it), and a block of UI settings would be the UI's, in <code>core/ui/</code>. There is no table of all
+keys: the radio core doesn't reach into the UI's settings, nor the other way.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Call</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>codeplug_keys_apply(rows, n, &amp;settings)</code></td>
+<td>One walk: every key that is present and holds a value the setting takes (3.1) goes into its field. True when a field changed</td>
+</tr>
+<tr>
+<td><code>codeplug_keys_store(rows, n, &amp;was, &amp;now)</code></td>
+<td>Writes the key of every field that differs, in one batch. The rule below</td>
+</tr>
+<tr>
+<td><code>codeplug_keys_find</code>, <code>_field</code>, <code>_set_field</code>, <code>_valid</code></td>
+<td>One row: for a menu row or a <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> field</td>
+</tr>
+</tbody>
+</table></div>
+<p>An owner uses them the same way everywhere: read its settings, apply the table, and set the settings once if
+anything changed. A new scalar key is a row there, a row in section 3 and a row in the Codeplug Editor (7), and no
+code.</p>
+<p>A setting that isn't a plain field (bits packed into a byte) is unpacked by its owner into a plain struct first. The
+tones are: <code>radio_settings_t.tones_off</code> holds a bit per tone, set when it is off, and <code>radio_tones_unpack</code> /
+<code>radio_tones_pack</code> turn it into the four bools of <code>radio_tones_t</code> and back. A record key is read and written by its
+owner with <code>codeplug_kv_get</code> and a <code>CODEPLUG_KV_HEAD</code> set.</p>
+<h3 id="52-a-key-and-the-radios-own-copy">5.2 A key and the radio's own copy</h3>
+<ul>
+<li><strong>A key that is present holds the setting.</strong> The owner applies its table at start and whenever
+<code>codeplug_kv_serial()</code> moves, and again when the setting changes another way, before it is saved: such a change is
+put back.</li>
+<li><strong>A key that is absent leaves the setting as the radio has it.</strong> So a codeplug written by a tool that doesn't carry
+the area doesn't change how the radio behaves.</li>
+<li><strong>The radio's own copy follows the key.</strong> The setting in force is what the settings store saves, so after a key
+is removed the radio keeps the key's last value.</li>
+<li><strong>Setting a keyed setting on the radio</strong> (the menu, the debug link) is one rule, <code>codeplug_keys_store</code>:
+<ol>
+<li>The key is written if the area can be written, whether or not it was present. A CPS read then shows the radio's
+setting.</li>
+<li>If the area can't be written and the codeplug holds no such key, the setting is saved as the radio's own.</li>
+<li>If the area can't be written and the key is present, the change is refused: the key would put the old value back.</li>
+</ol>
+</li>
+<li><strong>Another firmware's codeplug</strong> (<code>codeplug_foreign</code>, <a href="codeplug-native.html">codeplug-native.md</a> 2): the area reads
+empty and can't be written. By the rule above every keyed setting still works and can still be set, as the radio's
+own, and the &quot;Old codeplug&quot; question isn't asked for it. Start new erases the area with the rest: keys from before
+the other firmware don't come back in the clean codeplug. Use anyway makes the area live again as it is stored.</li>
+<li><strong>A factory reset</strong> resets the radio's own copies and leaves the codeplug, so a key that is present still holds.</li>
+</ul>
+<p>The <abbr class="gl" tabindex="0" title="Automatic Registration Service: a radio tells a presence server it is on the air." data-more="../user/22-glossary.html#t-ars">ARS</abbr> server and the IP gateway are set from the menu (Settings &gt; Connections &gt; Data services, <a href="ui.html">ui.md</a>) and
+the debug link's DMR_DATA SETTINGS and IP_SETTINGS (<a href="debuglink.html">debuglink.md</a> 3.12). The tones are set from
+Settings &gt; Sound.</p>
+<p>Debug link view <code>cps</code>: <code>cpkv.state</code> (<code>valid</code>, <code>empty</code>: no area, <code>bad</code>: invalid, <code>newer</code>: a later version),
+<code>cpkv.length</code> (data length) and <code>cpkv.keys</code> (entries).</p>
+<h2 id="6-transfers">6. Transfers</h2>
+<p>Every path that reads the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> reads the area. When a path writes the area's sector, the radio keeps its own
+sector if</p>
+<ul>
+<li>its area is valid (2.3) and the sector written isn't, or</li>
+<li>its area is of a newer version (never written, 2.1).</li>
+</ul>
+<p>Otherwise the sector goes in as sent. A file from a tool or a firmware that doesn't carry the area holds 0xFF there,
+so writing it back never erases the radio's keys. A tool that wants every key gone writes a valid area with no
+entries: that is taken.</p>
+<p>The radio applies the rule itself (<code>codeplug_kv_commit</code>) where the sector is committed, so it holds for any tool,
+including <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> software that knows nothing of the area:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Read</th>
+<th>Where the radio applies the rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Open-firmware CPS shim (<code>X</code> 3, <a href="open-firmware-cps.html">open-firmware-cps.md</a> 2.2)</td>
+<td>yes</td>
+<td>at the sector's commit. The data writes may come in pieces of any size: the pending sector holds the stored bytes with the data over them, and that whole sector is judged. A write of part of a valid area leaves it invalid, so it is kept</td>
+</tr>
+<tr>
+<td>Fast protocol (<a href="cps-fast.html">cps-fast.md</a> 3.4)</td>
+<td>yes</td>
+<td>at END (direct), at the slot's copy (staged, and the boot's resume)</td>
+</tr>
+<tr>
+<td>TFTP <code>codeplug.bin</code> (<a href="tftp.html">tftp.md</a> 3)</td>
+<td>yes</td>
+<td>at the sector's copy in the commit</td>
+</tr>
+<tr>
+<td>qdmr</td>
+<td>no</td>
+<td>never writes it</td>
+</tr>
+<tr>
+<td>A whole data flash backup and restore</td>
+<td>yes</td>
+<td>not applied: raw flash</td>
+</tr>
+</tbody>
+</table></div>
+<p>A kept sector is acknowledged as written, so the CPS doesn't fail. A CPS that reads the sector back to verify it
+sees the radio's bytes.</p>
+<p>The host tools apply the rule as well, before they send: the Codeplug Editor writes the area only when one of its
+fields changed (7), and <code>tools/cps_client.py</code> (default regions <code>radio</code>) and <code>tools/cps_fast.py</code> send it only when the
+file's is valid and the radio's isn't of a newer version. That covers radios on firmware from before the radio-side
+rule. Their <code>verify</code> leaves the area out by the same rule, so a kept area isn't reported as a difference.</p>
+<h2 id="7-codeplug-editor">7. Codeplug Editor</h2>
+<p>The editor's keys are one table, <code>KEYS</code> in <code>kv.js</code>: the model's field, the key, the type, the bytes it stores and
+the range. Decoding, encoding and validation follow the row. The Radio tab shows each key as a field. A field left
+empty is an absent key. Typing a value writes the key; for an ID, 0 turns the setting off.</p>
+<p>The editor reads and writes the sector with the other <abbr class="gl" tabindex="0" title="Electrically erasable programmable read-only memory: a small chip that keeps settings." data-more="../dev/glossary.html#t-eeprom">EEPROM</abbr> regions and keeps entries it doesn't know. On a write
+to a radio it sends (<code>areaForWrite</code>):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Case</th>
+<th>What goes to the radio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The radio's area is of a newer version</td>
+<td>The radio's own, untouched</td>
+</tr>
+<tr>
+<td>The edit changed no key</td>
+<td>The radio's own. A file opened before the radio's menu changed a key doesn't put the old value back</td>
+</tr>
+<tr>
+<td>The edit changed keys and the radio has a valid area</td>
+<td>The radio's area with only those keys set or removed. Every other key keeps the radio's value</td>
+</tr>
+<tr>
+<td>The edit changed keys and the radio has no valid area</td>
+<td>The file's area</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="8-the-native-codeplug">8. The native codeplug</h2>
+<p>The native <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> (<a href="codeplug-native.html">codeplug-native.md</a> 4) carries these keys, with the same numbers, value
+encodings and rules, as one record in this entry format. A key defined here is never renumbered or translated: a
+conversion copies the entries as they are. There is one key space for both formats.</p>
+<h2 id="9-open">9. Open</h2>
+<ul>
+<li>Whether the open-firmware <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> and <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">Codeplug</abbr> Studio write this range is not known. If they write erased bytes
+there, the radio keeps its sector (6). A CPS that verifies its write by reading back would then report a mismatch
+there.</li>
+<li>An area of a newer version can't be replaced by an older firmware or tool (2.3, 6), by design. A radio taken
+back to older firmware then runs on its own copies and can still set every setting (5.2), but no tool can push keys
+to it. A way to replace the area on purpose (a tool's &quot;Replace the settings area&quot;, after a confirmation, which the
+radio accepts) is not built.</li>
+<li>The header is outside the <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr>. A damaged version byte reads as an invalid area (version 0) or as a newer one.</li>
+<li>Per-channel settings: a key whose value starts with a channel number, or a table key. Not needed yet.</li>
+<li>The signaling tone records (3.3) are the first record keys: the firmware sets them from the front
+(<code>CODEPLUG_KV_HEAD</code>, <code>codeplug_keys_store_record</code>) and so does the Codeplug Editor (<code>putKeys</code>).</li>
+</ul>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/codeplug-settings.md">Ver el código fuente de esta página</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="En esta página">
+		<p class="eyebrow">En esta página</p>
+		<ul><li class="l2"><a href="#1-where">1. Where</a></li><li class="l2"><a href="#2-format">2. Format</a></li><li class="l3"><a href="#21-header-16-bytes">2.1 Header (16 bytes)</a></li><li class="l3"><a href="#22-entries">2.2 Entries</a></li><li class="l3"><a href="#23-validity">2.3 Validity</a></li><li class="l3"><a href="#24-continuation-reserved-not-built">2.4 Continuation (reserved, not built)</a></li><li class="l2"><a href="#3-keys">3. Keys</a></li><li class="l3"><a href="#31-types">3.1 Types</a></li><li class="l3"><a href="#32-giving-a-setting-a-key">3.2 Giving a setting a key</a></li><li class="l3"><a href="#33-the-signaling-tone-records">3.3 The signaling tone records</a></li><li class="l2"><a href="#4-rules-for-readers-and-writers">4. Rules for readers and writers</a></li><li class="l2"><a href="#5-firmware">5. Firmware</a></li><li class="l3"><a href="#51-tables-of-keyed-settings">5.1 Tables of keyed settings</a></li><li class="l3"><a href="#52-a-key-and-the-radios-own-copy">5.2 A key and the radio&#x27;s own copy</a></li><li class="l2"><a href="#6-transfers">6. Transfers</a></li><li class="l2"><a href="#7-codeplug-editor">7. Codeplug Editor</a></li><li class="l2"><a href="#8-the-native-codeplug">8. The native codeplug</a></li><li class="l2"><a href="#9-open">9. Open</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

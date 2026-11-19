@@ -1,0 +1,433 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="it" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Specifications · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Specifications · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:url" content="https://radiofoundry.org/it/docs/spec/">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Le radio su cui gira RadioFoundry, ognuna con una schermata diversa.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../it/" data-gl-more="Altro">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../it/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principale"><a href="../../../it/radios/index.html">Radio</a><a href="../../../it/features/index.html">Funzioni</a><a href="../../../it/flash/index.html">Installa</a><a href="../../../it/codeplug/index.html">Codeplug</a><a href="../../../it/docs/index.html" aria-current="page">Documenti</a><a href="../../../it/screenshots/index.html">Schermate</a><a href="../../../it/tools/index.html">Strumenti</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Lingua" title="Lingua">IT</summary><nav aria-label="Lingua"><a href="../../../docs/spec/index.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/index.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/index.html" aria-current="true" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/index.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Passa da chiaro a scuro" title="Passa da chiaro a scuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Specifiche">
+		<p class="eyebrow"><a href="../../../it/docs/index.html">Documentazione</a> / Specifiche</p>
+		<ul><li><a href="index.html" aria-current="page">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Questa pagina non è ancora tradotta; è mostrata in inglese.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="specifications">Specifications</h1>
+<p>What the firmware does and what the hardware needs: one page per subsystem, written before the code and kept true to
+it. Behavior specs are radio-independent. A radio's own facts (pins, chips, quirks, measurements) are on its pages,
+named by the board id: <code>hardware-&lt;id&gt;.md</code>, <code>codec-&lt;id&gt;.md</code> and, for some, <code>&lt;id&gt;-migration.md</code>. The radios and their
+chips are in <a href="radios.html">radios.md</a>; which radio has which feature is in <a href="../feature-matrix.html">feature-matrix.md</a>.
+Past bugs, by subsystem: <a href="gotchas.html">gotchas.md</a>. Contributors read <a href="../dev/index.html">docs/dev</a> for process.</p>
+<h2 id="radio-features-and-the-user-interface">Radio features and the user interface</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Spec</th>
+<th>Covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="capabilities.html">capabilities.md</a></td>
+<td>What a radio can do, by area, with the switch and spec behind each</td>
+</tr>
+<tr>
+<td><a href="radio-features.html">radio-features.md</a></td>
+<td>Scan, the FM <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> extras (tones, burst, roger beep), beeps, battery and power management</td>
+</tr>
+<tr>
+<td><a href="airband-and-broadcast.html">airband-and-broadcast.md</a></td>
+<td>Air band AM <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> and broadcast FM receive, chosen by the frequency</td>
+</tr>
+<tr>
+<td><a href="aprs.html">aprs.md</a></td>
+<td><abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> on FM and over <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr></td>
+</tr>
+<tr>
+<td><a href="position.html">position.md</a></td>
+<td>The radio's position: sources, settings, who reads it</td>
+</tr>
+<tr>
+<td><a href="ui.html">ui.md</a></td>
+<td>The user interface as built: screens, keys, the drawing layer (<a href="https://github.com/radiofoundry/radiofoundry/tree/main/docs/ux">docs/ux</a> has the design)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="dmr">DMR</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Spec</th>
+<th>Covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="dmr-voice.html">dmr-voice.md</a></td>
+<td><abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> voice calls</td>
+</tr>
+<tr>
+<td><a href="dmr-data.html">dmr-data.md</a></td>
+<td>DMR data services: text messages, <abbr class="gl" tabindex="0" title="Automatic Registration Service: a radio tells a presence server it is on the air." data-more="../user/22-glossary.html#t-ars">ARS</abbr>, <abbr class="gl" tabindex="0" title="Location Request and Response Protocol: a dispatcher asks a radio for its position. Motorola&#x27;s position format; the standard has LIP." data-more="../user/22-glossary.html#t-lrrp">LRRP</abbr>, <abbr class="gl" tabindex="0" title="A DMR page that makes another radio ring." data-more="../user/22-glossary.html#t-call-alert">call alert</abbr>, <abbr class="gl" tabindex="0" title="A DMR request another radio answers automatically, to show it is on and in range." data-more="../user/22-glossary.html#t-radio-check">radio check</abbr></td>
+</tr>
+<tr>
+<td><a href="zone-share.html">zone-share.md</a></td>
+<td>Zone and channel sharing over DMR data: the record, fragments, offers, the import</td>
+</tr>
+<tr>
+<td><a href="dmr-emergency.html">dmr-emergency.md</a></td>
+<td>DMR emergency</td>
+</tr>
+<tr>
+<td><a href="dmr-roaming.html">dmr-roaming.md</a></td>
+<td>DMR repeater roaming</td>
+</tr>
+<tr>
+<td><a href="dmr-trunking.html">dmr-trunking.md</a></td>
+<td>DMR Tier III trunking, <abbr class="gl" tabindex="0" title="Mobile station: the radio, as opposed to the base station (BS)." data-more="../dev/glossary.html#t-ms">mobile station</abbr></td>
+</tr>
+<tr>
+<td><a href="sfr.html">sfr.md</a></td>
+<td>Single frequency repeater</td>
+</tr>
+<tr>
+<td><a href="split-duplex.html">split-duplex.md</a></td>
+<td>Two radios as one duplex <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="mmdvm-protocol.html">MMDVM</abbr> modem</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="dmr-modem-chips">DMR modem chips</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Spec</th>
+<th>Covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="dmr-modem.html">dmr-modem.md</a></td>
+<td>What any modem driver must do; the <code>hal_dmr_modem.h</code> contract; the chips compared</td>
+</tr>
+<tr>
+<td><a href="modem-hrc6000.html">modem-hrc6000.md</a></td>
+<td><abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> as a <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> modem (also the HR_C5000's base)</td>
+</tr>
+<tr>
+<td><a href="hrc6000-registers.html">hrc6000-registers.md</a></td>
+<td>HR_C6000 register reference</td>
+</tr>
+<tr>
+<td><a href="modem-hrc7000.html">modem-hrc7000.md</a></td>
+<td><abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> as a DMR modem</td>
+</tr>
+<tr>
+<td><a href="pa-keyup.html">pa-keyup.md</a></td>
+<td>DMR <abbr class="gl" tabindex="0" title="Power amplifier: the stage that boosts the transmit signal to the output power." data-more="../dev/glossary.html#t-pa">PA</abbr> key-up per burst from the power cal table</td>
+</tr>
+<tr>
+<td><a href="rx2-link.html">rx2-link.md</a></td>
+<td>The link to a second receiver on another <abbr class="gl" tabindex="0" title="System on chip: the processor and its on-chip peripherals." data-more="../dev/glossary.html#t-soc">SoC</abbr>: frames, messages, timing</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="host-link-and-network">Host link and network</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Spec</th>
+<th>Covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="debuglink.html">debuglink.md</a></td>
+<td>The <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>: commands, the view, key injection</td>
+</tr>
+<tr>
+<td><a href="cps-protocol.html">cps-protocol.md</a></td>
+<td>The host port's protocols and how they share it; the <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> protocol</td>
+</tr>
+<tr>
+<td><a href="cps-fast.html">cps-fast.md</a></td>
+<td>The fast <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> protocol: block sums, LZ4, staged commit</td>
+</tr>
+<tr>
+<td><a href="iddb-compact.html">iddb-compact.md</a></td>
+<td>The compact <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr> database (format C): dictionary, pages, compatibility</td>
+</tr>
+<tr>
+<td><a href="mmdvm-protocol.html">mmdvm-protocol.md</a></td>
+<td>The <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="mmdvm-protocol.html">MMDVM</abbr> modem protocol (<abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> mode)</td>
+</tr>
+<tr>
+<td><a href="usb-network.html">usb-network.md</a></td>
+<td>USB network personality, the IP gateway, <abbr class="gl" tabindex="0" title="A radio a dispatch program on a computer uses to reach the fleet over the air." data-more="../user/22-glossary.html#t-control-station">control station</abbr> mode</td>
+</tr>
+<tr>
+<td><a href="ppp.html">ppp.md</a></td>
+<td><abbr class="gl" tabindex="0" title="Point-to-point protocol: IP over a serial link." data-more="ppp.html">PPP</abbr> on the serial host link</td>
+</tr>
+<tr>
+<td><a href="tcp-services.html">tcp-services.md</a></td>
+<td><abbr class="gl" tabindex="0" title="Transmission Control Protocol: IP connections with ordered, guaranteed delivery." data-more="../dev/glossary.html#t-tcp">TCP</abbr>, HTTP, <abbr class="gl" tabindex="0" title="Hamlib&#x27;s network rig control protocol, used by loggers and SDR programs." data-more="../user/22-glossary.html#t-rigctld">rigctld</abbr>, <abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="../user/22-glossary.html#t-kiss">KISS</abbr> over TCP, APRS-IS</td>
+</tr>
+<tr>
+<td><a href="tftp.html">tftp.md</a></td>
+<td><abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="tftp.html">TFTP</abbr> codeplug access</td>
+</tr>
+<tr>
+<td><a href="mdns.html">mdns.md</a></td>
+<td><abbr class="gl" tabindex="0" title="Multicast DNS: finding a device on a local network by a `.local` name." data-more="mdns.html">mDNS</abbr> and DNS-SD</td>
+</tr>
+<tr>
+<td><a href="snmp.html">snmp.md</a></td>
+<td><abbr class="gl" tabindex="0" title="Simple Network Management Protocol: reading a device&#x27;s state over the network." data-more="snmp.html">SNMP</abbr> agent (<a href="RFOUNDRY-MIB.txt">RFOUNDRY-MIB.txt</a>)</td>
+</tr>
+<tr>
+<td><a href="usb-audio.html">usb-audio.md</a></td>
+<td>Analog and <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> voice over USB: design</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="codeplug-and-storage">Codeplug and storage</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Spec</th>
+<th>Covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="open-firmware-cps.html">open-firmware-cps.md</a></td>
+<td>The open-firmware <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> format <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr> writes</td>
+</tr>
+<tr>
+<td><a href="qdmr-yaml.html">qdmr-yaml.md</a></td>
+<td>qdmr's <abbr class="gl" tabindex="0" title="A text file format. qdmr stores its codeplug as YAML." data-more="../user/22-glossary.html#t-yaml">YAML</abbr> codeplug file and how the Codeplug Editor maps it</td>
+</tr>
+<tr>
+<td><a href="codeplug-native.html">codeplug-native.md</a></td>
+<td>The editing model and the native codeplug (draft)</td>
+</tr>
+<tr>
+<td><a href="codeplug-settings.html">codeplug-settings.md</a></td>
+<td>The codeplug settings area: keyed settings the open-firmware layout has no field for (<abbr class="gl" tabindex="0" title="Automatic Registration Service: a radio tells a presence server it is on the air." data-more="../user/22-glossary.html#t-ars">ARS</abbr> server, IP gateway)</td>
+</tr>
+<tr>
+<td><a href="channel-modes.html">channel-modes.md</a></td>
+<td>Channel modes: how a channel, system, target or key of any digital mode is stored beside the open-firmware record</td>
+</tr>
+<tr>
+<td><a href="dmr-trunking-codeplug.html">dmr-trunking-codeplug.md</a></td>
+<td><abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> Tier III systems and trunked channels in the codeplug</td>
+</tr>
+<tr>
+<td><a href="p25-codeplug.html">p25-codeplug.md</a></td>
+<td>P25 conventional and trunked channels and systems in the codeplug</td>
+</tr>
+<tr>
+<td><a href="nxdn-codeplug.html">nxdn-codeplug.md</a></td>
+<td>NXDN conventional channels in the codeplug</td>
+</tr>
+<tr>
+<td><a href="settings-store.html">settings-store.md</a></td>
+<td>Settings store and safe flash writes</td>
+</tr>
+<tr>
+<td><a href="nand-sectors.html">nand-sectors.md</a></td>
+<td>NOR-like 4 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> sectors over <abbr class="gl" tabindex="0" title="The flash chip type that holds large data, such as the codeplug and contacts, in some radios." data-more="../dev/glossary.html#t-nand">NAND</abbr>, for the settings store on NAND radios</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="codecs">Codecs</h2>
+<p><abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> voice needs each radio's own codec; the process is in <a href="../dev/codec.html">docs/dev</a>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Spec</th>
+<th>Covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="codec-placement.html">codec-placement.md</a></td>
+<td>Where RadioFoundry places the codec on each <abbr class="gl" tabindex="0" title="System on chip: the processor and its on-chip peripherals." data-more="../dev/glossary.html#t-soc">SoC</abbr> family, descriptors, slots, codec maps</td>
+</tr>
+<tr>
+<td><code>codec-&lt;id&gt;.md</code></td>
+<td>One radio's codec: the stock files accepted, their format, the code and table windows, entry points</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="migrating-from-stock">Migrating from stock</h2>
+<p>Reading a vendor <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> and moving a radio from the vendor firmware. User steps are in
+<a href="../user/index.html">docs/user</a>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Spec</th>
+<th>Covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="codeplug-stock-tyt.html">codeplug-stock-tyt.md</a></td>
+<td>The vendor codeplug layout of the TYT-family radios in <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> flash: detection and conversion</td>
+</tr>
+<tr>
+<td><a href="codeplug-port.html">codeplug-port.md</a></td>
+<td>Stock codeplug to RadioFoundry: the clean-up, contacts, <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> write shared by the migration tools</td>
+</tr>
+<tr>
+<td><code>&lt;id&gt;-migration.md</code></td>
+<td>One radio's flashing and migration procedure, where a migration tool exists</td>
+</tr>
+<tr>
+<td><code>&lt;id&gt;-stock-cps.md</code></td>
+<td>One radio's vendor programming protocol, for interoperability</td>
+</tr>
+<tr>
+<td><code>&lt;id&gt;-stock-codeplug.md</code></td>
+<td>One radio's vendor codeplug layout, where it isn't a family's: records and conversion</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="flashing-and-updates">Flashing and updates</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Spec</th>
+<th>Covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="stub-entry.html">stub-entry.md</a></td>
+<td>The <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr> entry: loading the flashing tools' <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> monitor at run time, with or without the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr></td>
+</tr>
+<tr>
+<td><a href="stub-stm32f4.html">stub-stm32f4.md</a></td>
+<td>The <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32F4</abbr> flash stub: entry from RadioFoundry, USB, protocol, safety rules, update order</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="reliability">Reliability</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Spec</th>
+<th>Covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="crash-log.html">crash-log.md</a></td>
+<td>The crash log: fault capture on each platform, the record kept across the restart, the fault trace, the packed report</td>
+</tr>
+<tr>
+<td><a href="watchdog.html">watchdog.md</a></td>
+<td>The hardware watchdog: the idle task's feed, timeouts, long operations, leaving the application, bench tests</td>
+</tr>
+<tr>
+<td><a href="gotchas.html">gotchas.md</a></td>
+<td>Past bugs and traps, by subsystem</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="radios">Radios</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Spec</th>
+<th>Covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="radios.html">radios.md</a></td>
+<td>The hardware survey: every radio's chips and the port order</td>
+</tr>
+<tr>
+<td><code>hardware-&lt;id&gt;.md</code></td>
+<td>One radio: <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr> and memory map, pins, chips, keys, display, power, bootloader and image format, calibration</td>
+</tr>
+</tbody>
+</table></div>
+<p>The bring-up records for each radio are in <a href="../testing/index.html">docs/testing</a>.</p>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/README.md">Vedi il sorgente di questa pagina</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="In questa pagina">
+		<p class="eyebrow">In questa pagina</p>
+		<ul><li class="l2"><a href="#radio-features-and-the-user-interface">Radio features and the user interface</a></li><li class="l2"><a href="#dmr">DMR</a></li><li class="l2"><a href="#dmr-modem-chips">DMR modem chips</a></li><li class="l2"><a href="#host-link-and-network">Host link and network</a></li><li class="l2"><a href="#codeplug-and-storage">Codeplug and storage</a></li><li class="l2"><a href="#codecs">Codecs</a></li><li class="l2"><a href="#migrating-from-stock">Migrating from stock</a></li><li class="l2"><a href="#flashing-and-updates">Flashing and updates</a></li><li class="l2"><a href="#reliability">Reliability</a></li><li class="l2"><a href="#radios">Radios</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Unisciti alla comunità RadioFoundry</strong><span class="small muted">Domande, aiuto con la tua radio e novità, su Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Hai trovato un bug? Vuoi che la tua radio sia supportata?</strong><span class="small muted">Apri una segnalazione su GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry ha licenza MIT · <a href="https://github.com/radiofoundry/radiofoundry">Codice sorgente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunità</a> · <a href="../../../it/docs/index.html">Documenti</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Novità</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

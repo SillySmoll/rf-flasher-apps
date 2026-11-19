@@ -1,0 +1,36 @@
+name: Build apps
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      update_site:
+        description: "Rebuild the bundled site from upstream RadioFoundry main first"
+        type: boolean
+        default: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Update bundled site from upstream
+        if: ${{ inputs.update_site }}
+        run: tools/update-site.sh
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: "17" }
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Android APK (debug-signed, ready to sideload)
+        working-directory: android
+        run: ./gradlew --no-daemon assembleDebug
+      - name: Windows portable app
+        run: tools/package-windows.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: RadioFoundryFlasher-android
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: RadioFoundryFlasher-windows
+          path: dist/RadioFoundryFlasher-win-x64.zip

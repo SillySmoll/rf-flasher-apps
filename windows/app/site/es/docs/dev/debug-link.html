@@ -1,0 +1,217 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Debug Link · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Debug Link · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/docs/dev/debug-link.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/dev/debug-link.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/dev/debug-link.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/dev/debug-link.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/dev/debug-link.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/dev/debug-link.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../es/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../../es/radios/index.html">Radios</a><a href="../../../es/features/index.html">Funciones</a><a href="../../../es/flash/index.html">Instalar</a><a href="../../../es/codeplug/index.html">Codeplug</a><a href="../../../es/docs/index.html" aria-current="page">Documentación</a><a href="../../../es/screenshots/index.html">Capturas</a><a href="../../../es/tools/index.html">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../../docs/dev/debug-link.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/dev/debug-link.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/dev/debug-link.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/dev/debug-link.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Guía del desarrollador">
+		<p class="eyebrow"><a href="../../../es/docs/index.html">Documentación</a> / Guía del desarrollador</p>
+		<ul><li><a href="index.html">Developer Documentation</a></li><li><a href="adding-a-mode.html">Adding a Mode</a></li><li><a href="adding-a-radio.html">Adding a Radio</a></li><li><a href="architecture.html">Architecture</a></li><li><a href="board-registry.html">The Board Registry</a></li><li><a href="building.html">Building</a></li><li><a href="ci-runners.html">CI Runners and Images</a></li><li><a href="ci.html">Continuous Integration</a></li><li><a href="codec.html">The Codec</a></li><li><a href="codeplug-editor.html">The Codeplug Editor</a></li><li><a href="contributing.html">Contributing</a></li><li><a href="cps-and-codeplug.html">CPS, Codeplug and Settings</a></li><li><a href="debug-link.html" aria-current="page">Debug Link</a></li><li><a href="glossary.html">Developer glossary</a></li><li><a href="manual-pdf.html">The User Manual PDF</a></li><li><a href="release.html">Releases</a></li><li><a href="stack-check.html">Stack Check</a></li><li><a href="testing.html">Testing</a></li><li><a href="translating.html">Translating</a></li><li><a href="web-flasher.html">The Web Flasher</a></li><li><a href="website.html">The Web Site</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Esta página aún no está traducida; se muestra en inglés.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="debug-link">Debug Link</h1>
+<p>A small framed protocol on the radio's host port for bench automation and debugging. The full spec, with every
+command's payload, is <a href="../spec/debuglink.html">docs/spec/debuglink.md</a>.</p>
+<h2 id="what-it-does">What it does</h2>
+<p>Read the version, the diagnostics counters, the radio's state and a log ring; reset counters; take screenshots; press
+keys; key PTT with a firmware time-out; send radio requests (channel, zone, <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr>, frequency, power, privacy key, USB
+mode and network settings); send <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> data and emergencies; <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> and <abbr class="gl" tabindex="0" title="Simple Network Management Protocol: reading a device&#x27;s state over the network." data-more="../spec/snmp.html">SNMP</abbr> settings and tests; the <abbr class="gl" tabindex="0" title="Transmitting on one frequency and receiving on another at the same time. Repeaters do, and so does the duplex hotspot setup." data-more="../spec/split-duplex.html">split duplex</abbr> view;
+read the chip's identity and read-only memories; inspect the settings region; reboot.</p>
+<p>It shares the port with the <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="../spec/mmdvm-protocol.html">MMDVM</abbr> <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> and the <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> shim (<code>core/hostlink</code> dispatches on the first byte) and never
+changes the port's mode. A debug frame starts with <code>A5 5A</code>, then command, sequence number, a 16-bit length, the
+payload and a CRC-16/CCITT-FALSE. Requests carry at most 64 bytes, replies at most 1024.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Protocol and commands</td>
+<td><code>core/debuglink/debuglink.c</code>, one <code>debuglink_&lt;area&gt;.c</code> per command family, view sections in <code>debuglink_view*.c</code> (switch <code>CONFIG_DEBUGLINK</code>, on wherever the host link is)</td>
+</tr>
+<tr>
+<td>Key injection</td>
+<td><code>core/input/input_task.c</code></td>
+</tr>
+<tr>
+<td>Hook into the host port</td>
+<td><code>core/hostlink/hostlink.c</code></td>
+</tr>
+<tr>
+<td>Chip commands</td>
+<td><code>core/debuglink/dl_chip.c</code>, <code>hal/hal_system.h</code>, <code>platform/stm32f4/sysboot.c</code></td>
+</tr>
+<tr>
+<td>Host tool and Python module</td>
+<td><code>tools/rfoundry_debug.py</code></td>
+</tr>
+<tr>
+<td>Host tests</td>
+<td><code>tests/host/debuglinkTest.c</code>; <code>debuglinkDmrDataTest.c</code> for the DMR data IP operations</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="toolsrfoundry_debugpy">tools/rfoundry_debug.py</h2>
+<p>Needs Python 3 and pyserial. It finds the radio by its USB ID (1FC9:0094); <code>--port</code> or <code>$RFOUNDRY_PORT</code> picks one when
+there are several. <code>rfoundry_debug.py --help</code> and the module docstring list everything. The commands used most:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rfoundry_debug.py version</code></td>
+<td>Firmware version, board, <abbr class="gl" tabindex="0" title="A CONFIG_ option that turns a feature&#x27;s code in or out of the build." data-more="../build-config.html">feature switches</abbr></td>
+</tr>
+<tr>
+<td><code>rfoundry_debug.py diag --watch 1</code></td>
+<td>Radio summary, voice path and board counters, with rates, once a second</td>
+</tr>
+<tr>
+<td><code>rfoundry_debug.py view --section radio</code></td>
+<td>The radio state as key=value (<code>--json</code> for scripts)</td>
+</tr>
+<tr>
+<td><code>rfoundry_debug.py screenshot -o shot.png --scale 3</code></td>
+<td>The display as PNG</td>
+</tr>
+<tr>
+<td><code>rfoundry_debug.py key ok</code>, <code>key quick --long</code>, <code>key enc --steps 2</code></td>
+<td>Inject a key press, a hold, encoder steps</td>
+</tr>
+<tr>
+<td><code>rfoundry_debug.py ptt --seconds 3</code></td>
+<td>Key PTT for at most 10 s (the firmware times out too)</td>
+</tr>
+<tr>
+<td><code>rfoundry_debug.py radio channel +1</code>, <code>radio freq 438.250</code></td>
+<td>Radio requests</td>
+</tr>
+<tr>
+<td><code>rfoundry_debug.py radio privacy moto KEY</code></td>
+<td>Load a <abbr class="gl" tabindex="0" title="A fixed voice scrambling from Motorola and Anytone radios. Not encryption." data-more="../user/22-glossary.html#t-basic-privacy">basic privacy</abbr> key (settings slot 1, kept across restarts)</td>
+</tr>
+<tr>
+<td><code>rfoundry_debug.py data sms ID TEXT</code></td>
+<td>Send <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> data: text, <abbr class="gl" tabindex="0" title="A DMR page that makes another radio ring." data-more="../user/22-glossary.html#t-call-alert">call alert</abbr>, <abbr class="gl" tabindex="0" title="A DMR request another radio answers automatically, to show it is on and in range." data-more="../user/22-glossary.html#t-radio-check">radio check</abbr>, emergency; read the inbox</td>
+</tr>
+<tr>
+<td><code>rfoundry_debug.py aprs ...</code>, <code>snmp ...</code>, <code>split view</code></td>
+<td><abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr>, the <abbr class="gl" tabindex="0" title="Simple Network Management Protocol: reading a device&#x27;s state over the network." data-more="../spec/snmp.html">SNMP</abbr> agent, the <abbr class="gl" tabindex="0" title="Transmitting on one frequency and receiving on another at the same time. Repeaters do, and so does the duplex hotspot setup." data-more="../spec/split-duplex.html">split duplex</abbr> repeater</td>
+</tr>
+<tr>
+<td><code>rfoundry_debug.py log --follow</code></td>
+<td>The firmware's <code>dlog()</code> ring</td>
+</tr>
+<tr>
+<td><code>rfoundry_debug.py storage info</code></td>
+<td>Whether the settings region is ours or foreign</td>
+</tr>
+<tr>
+<td><code>rfoundry_debug.py reboot</code></td>
+<td>Restart (needs the chip's UID as a token; refused while transmitting)</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>chip</code> and <code>dump</code> read the chip's identity, option bytes and read-only memories. Dumps are written outside any git
+tree: the stock bootloader is proprietary.</p>
+<p>The <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="testing.html">HIL</abbr> tests use the <code>DebugLink</code> class from the same module.</p>
+<h2 id="safety-limits">Safety limits</h2>
+<p>Injected PTT ends after 10 s at most, and the radio's own <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> checks still apply. One injected key at a time,
+each held at most 10 s, 40 ms apart. Radio requests are rate limited. Nothing in the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="debug-link.html">debug link</abbr> writes internal flash
+or option bytes. See <a href="../spec/debuglink.html">debuglink.md</a> section 4.</p>
+<h2 id="adding-a-command">Adding a command</h2>
+<ol>
+<li>Add the number to <code>core/debuglink/debuglink_proto.h</code>.</li>
+<li>Add a handler in <code>core/debuglink/debuglink.c</code>, or a <code>debuglink_&lt;area&gt;.c</code> for a family of operations: short,
+non-blocking, reply at most 1024 bytes.</li>
+<li>Add a row to the command table in <a href="../spec/debuglink.html">debuglink.md</a> section 3, and a section for it.</li>
+<li>Add a method and a subcommand to <code>tools/rfoundry_debug.py</code>.</li>
+<li>Add a case to <code>tests/host/debuglinkTest.c</code>.</li>
+</ol>
+<p>A new key in a view section needs only the renderer (<code>core/debuglink/debuglink_view*.c</code>) and the table in
+debuglink.md 3.7.</p>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/dev/debug-link.md">Ver el código fuente de esta página</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="En esta página">
+		<p class="eyebrow">En esta página</p>
+		<ul><li class="l2"><a href="#what-it-does">What it does</a></li><li class="l2"><a href="#toolsrfoundry_debugpy">tools/rfoundry_debug.py</a></li><li class="l2"><a href="#safety-limits">Safety limits</a></li><li class="l2"><a href="#adding-a-command">Adding a command</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

@@ -1,0 +1,570 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="it" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DM-32UV bring-up checklist · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="DM-32UV bring-up checklist · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:url" content="https://radiofoundry.org/it/docs/testing/dm32-bringup.html">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Le radio su cui gira RadioFoundry, ognuna con una schermata diversa.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/testing/dm32-bringup.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/testing/dm32-bringup.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/testing/dm32-bringup.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/testing/dm32-bringup.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/testing/dm32-bringup.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../it/" data-gl-more="Altro">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../it/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principale"><a href="../../../it/radios/index.html">Radio</a><a href="../../../it/features/index.html">Funzioni</a><a href="../../../it/flash/index.html">Installa</a><a href="../../../it/codeplug/index.html">Codeplug</a><a href="../../../it/docs/index.html" aria-current="page">Documenti</a><a href="../../../it/screenshots/index.html">Schermate</a><a href="../../../it/tools/index.html">Strumenti</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Lingua" title="Lingua">IT</summary><nav aria-label="Lingua"><a href="../../../docs/testing/dm32-bringup.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/testing/dm32-bringup.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/testing/dm32-bringup.html" aria-current="true" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/testing/dm32-bringup.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Passa da chiaro a scuro" title="Passa da chiaro a scuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Test">
+		<p class="eyebrow"><a href="../../../it/docs/index.html">Documentazione</a> / Test</p>
+		<ul><li><a href="index.html">Testing</a></li><li><a href="results/index.html">Bring-up results</a></li><li><a href="backlight-curve.html">Backlight curve</a></li><li><a href="dm1801pro-bringup.html">DM-1801 Pro bring-up checklist</a></li><li><a href="dm32-bringup.html" aria-current="page">DM-32UV bring-up checklist</a></li><li><a href="dmr-bench.html">DMR bench testing on the SDR bench</a></li><li><a href="md380-bringup.html">MD-380 bring-up checklist</a></li><li><a href="md9600-bringup.html">MD-9600 bring-up checklist</a></li><li><a href="mduv380-bringup.html">MD-UV380 bring-up checklist</a></li><li><a href="mmdvm-audit.html">MMDVM implementation audit (2d45a21)</a></li><li><a href="on-air-coverage.html">On-air test coverage</a></li><li><a href="power-calibration.html">Transmit power calibration with a wattmeter</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Questa pagina non è ancora tradotta; è mostrata in inglese.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="dm-32uv-bring-up-checklist">DM-32UV bring-up checklist</h1>
+<p>The DM-32UV port (<code>make BOARD=dm32</code>) runs on a radio. This is the order the bring-up follows, what each step proves,
+and what to change when it doesn't work; the open items at the end are what is still to settle. Every step names the
+knob in the source that the likely failure points at.</p>
+<p>Hardware facts: <code>docs/spec/hardware-dm32.md</code>, <code>docs/spec/modem-hrc7000.md</code>, <code>docs/spec/codec-dm32.md</code>.</p>
+<p>The feature checklist, with every feature's required <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> tests and the last recorded result, is
+<code>tools/bringup.py list --radio dm32</code>. <code>tools/bringup.py run --radio dm32</code> records a run
+(<a href="https://github.com/radiofoundry/radiofoundry/blob/main/tests/hil/README.md#bring-up-mode">tests/hil/README.md</a>). This page keeps the hardware steps and what to
+change when one fails.</p>
+<h2 id="0-before-anything">0. Before anything</h2>
+<ol>
+<li>
+<p><strong>Back up both flashes</strong> with the stock tools (hardware-dm32.md 13.4): the 1 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">MB</abbr> program flash and the 16 MB data
+flash. The port never writes the data flash below 0x700000 (the stock <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> and the factory calibration live
+there), and it never touches the bootloader, but a backup is the only way back from a mistake.</p>
+</li>
+<li>
+<p>Check that update mode works with the stock firmware: hold <strong>PTT + SK1</strong> while turning the radio on; the green <abbr class="gl" tabindex="0" title="Light-emitting diode: the radio&#x27;s status light." data-more="../user/22-glossary.html#t-led">LED</abbr>
+lights (13.2). This is the recovery path for every step below: if an image doesn't boot, take the battery off,
+enter update mode and load the stock file again.</p>
+</li>
+<li>
+<p>Build and pack:</p>
+<pre><code>make BOARD=dm32                                   # csky-elf GCC: tools/build-csky-toolchain.sh
+tools/serial_loader.py --model dm32 build/dm32/rfoundry_dm32.bin --wrap build/dm32/rfoundry_dm32_BFUV32.bin
+</code></pre>
+<p>For <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> voice, merge your own stock codec first (never commit or share the result):</p>
+<pre><code>tools/hrc7000_codec.py --stock DM32.01.01.049.bin    # writes build/dm32/rfoundry_dm32_codec.bin
+tools/serial_loader.py --model dm32 build/dm32/rfoundry_dm32_codec.bin --wrap build/dm32/rfoundry_dm32_codec_BFUV32.bin
+</code></pre>
+</li>
+<li>
+<p>Load the image in update mode: <code>tools/serial_loader.py --model dm32 build/dm32/rfoundry_dm32_codec.bin</code> (a raw
+image, or the <code>_BFUV32.bin</code> file without <code>--model</code>, over the programming cable; <code>--stock DM32.01.01.049.bin</code> goes back), or the Baofeng updater
+with the <code>_BFUV32.bin</code> file. To keep the stock codeplug and get it onto RadioFoundry, run <code>tools/dm32_migrate.py all --image build/dm32/rfoundry_dm32_codec.bin</code> instead: it backs the codeplug up with <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr>, flashes, and writes it back
+once RadioFoundry runs (<a href="../spec/dm32-migration.html">dm32-migration.md</a>, users:
+<a href="../user/19-moving-from-stock-dm32.html">the manual</a>). Both tools are untested on a radio: run them with <code>--dry-run</code>
+first, and the codeplug part only after step 2 works.</p>
+</li>
+</ol>
+<p>Run the first boots with the antenna on and <strong>no PTT</strong>. <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">Transmit</abbr> only into a dummy load, from step 7 on.</p>
+<h2 id="1-it-boots">1. It boots</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Look for</th>
+<th>Proves</th>
+<th>If not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Radio stays on after you let go of the knob (power latch)</td>
+<td>crt0 ran, clocks, <code>board_early_init</code> (latch first)</td>
+<td>Nothing ran at all: check the image starts with <code>psrclr ie</code> at 0x0300C000 (`csky-elf-objdump -d build/dm32/rfoundry_dm32.elf</td>
+</tr>
+<tr>
+<td>Backlight on, then the Home screen</td>
+<td><abbr class="gl" tabindex="0" title="Real-time operating system: the scheduler that runs the firmware&#x27;s tasks." data-more="../dev/glossary.html#t-rtos">RTOS</abbr> tick (Timer 1), <abbr class="gl" tabindex="0" title="Liquid crystal display: the radio&#x27;s screen." data-more="../user/22-glossary.html#t-lcd">LCD</abbr> controller, ST7789 init</td>
+<td>Backlight but no picture: <code>display_dm32.c</code> (LCDC_CFG 0x303, IO_DIPLEX2 hand-over). Picture upside down or mirrored: MADCTL in <code>display_dm32.c</code> (0xC0 now; try 0x00, 0x40, 0x80)</td>
+</tr>
+<tr>
+<td>Colors right (black background, not white)</td>
+<td>inversion on</td>
+<td><code>st7789_t.invert</code></td>
+</tr>
+<tr>
+<td>Picture fills the panel, no tearing seams</td>
+<td>2x scaling, window</td>
+<td><code>st7789_write_rows</code></td>
+</tr>
+<tr>
+<td>Hangs before the screen</td>
+<td>interrupts or the scheduler</td>
+<td><code>platform/hrc7000/irq.c</code>: the PIC may deliver all sources on autovector 10 instead of vectors 32+n (open item); the irq entry then reads the wrong source. <code>freertos/port.c</code> / <code>portasm.S</code> for a hang after the first task switch</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="2-the-debug-link-on-the-programming-cable">2. The debug link on the programming cable</h2>
+<p>The DM-32 has no USB: the host link (<abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>, <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr>, <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="../spec/mmdvm-protocol.html">MMDVM</abbr> <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr>) runs on UART0, 115200 8N1, through the
+programming cable (CH340 or FTDI).</p>
+<pre><code>tools/rfoundry_debug.py --port /dev/cu.usbserial-XXXX version
+tools/rfoundry_debug.py --port /dev/cu.usbserial-XXXX diag
+tools/rfoundry_debug.py --port /dev/cu.usbserial-XXXX screenshot -o /tmp/dm32.png
+python3 -m pytest tests/hil -v -rs --radio-port /dev/cu.usbserial-XXXX -k &quot;health or boot or ui&quot;
+</code></pre>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Look for</th>
+<th>Proves</th>
+<th>If not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>board=DM-32UV</code>, <code>display=240x320x4</code>, features with <code>HOSTLINK,DEBUGLINK</code> and no <code>USB</code></td>
+<td><abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="../dev/glossary.html#t-uart">UART</abbr> <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> interrupt, ring buffer, <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr></td>
+<td>Garbage: baud divisor (<code>uart.c</code>, 46 for 115200 at APB 84 MHz; 45 is the old port's) or APB not 84 MHz (clock.c skipped the <abbr class="gl" tabindex="0" title="Phase locked loop: the circuit that holds the radio&#x27;s synthesizer on its frequency." data-more="../dev/glossary.html#t-pll">PLL</abbr> because the bootloader left it on: check <code>CLK_MGR_CTRL</code>)</td>
+</tr>
+<tr>
+<td><code>diag</code> lines ticking (<code>uo 0</code> = no UART overruns)</td>
+<td>the debug link task</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="3-keys-encoder-ptt-leds-power">3. Keys, encoder, PTT, LEDs, power</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Check</th>
+<th>If not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Every keypad key moves the UI as its label says (6.1 table); <code>rfoundry_debug.py view --section input</code> shows the physical key bits</td>
+<td>Rows / columns or the matrix map in <code>input_dm32.c</code>; phantom keys: raise the 5 us settle delay</td>
+</tr>
+<tr>
+<td>SK1 (below PTT) = monitor, SK2 = talk target; holding SK1 doesn't kill the column 3 keys' neighbors</td>
+<td><code>direct[]</code> in <code>input_dm32.c</code></td>
+</tr>
+<tr>
+<td>Encoder: one step per detent, right direction</td>
+<td><code>keymatrix_encoder_step</code> sign; one count per edge of B (6.3): if a detent gives two, count one edge only (<code>hrc_pin_irq</code> in <code>input_dm32.c</code>)</td>
+</tr>
+<tr>
+<td>PTT shows as key bit 20</td>
+<td><abbr class="gl" tabindex="0" title="General purpose input/output: a pin the firmware can read or drive." data-more="../dev/glossary.html#t-gpio">GPIO</abbr> 0x2B</td>
+</tr>
+<tr>
+<td>Red LED on transmit, green on receive</td>
+<td><code>PIN_LED_RED</code> / <code>PIN_LED_GREEN</code> in <code>pins.h</code> (settled on the radio: 0x20 green, 0x21 red)</td>
+</tr>
+<tr>
+<td>Turning the knob off saves and powers down</td>
+<td>GPIO 0x10 sense in <code>power_dm32.c</code></td>
+</tr>
+<tr>
+<td><code>bat</code> line: raw about 600-690 and 7000-8400 mV on a charged pack</td>
+<td><abbr class="gl" tabindex="0" title="Analog to digital converter." data-more="../dev/glossary.html#t-adc">ADC</abbr> channel C set-up in <code>power_dm32.c</code>; the scale raw / 8.2 = V x 10</td>
+</tr>
+<tr>
+<td>Backlight dimming levels look even</td>
+<td><code>set_backlight</code> assumes FP counts against PER (duty = percent x 2); if half brightness is already full, use the percentage</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="4-data-flash-and-calibration">4. Data flash and calibration</h2>
+<p><code>diag</code>: <code>flash C84018 cal factory</code> (or <code>852018</code> on Puya-flash radios), <code>txc</code> not 128, <code>pa</code> values not 1408.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>If</th>
+<th>Then</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>flash 000000</code> or <code>FFFFFF</code></td>
+<td>SPI0 set-up in <code>flash_dm32.c</code> (BAUDR 4 = 21 MHz; try 8), CS pin 0x12</td>
+</tr>
+<tr>
+<td><code>cal none</code></td>
+<td>The factory page (block ID 2 in the last byte of a 4 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> page in 0x1000..0xC8000) wasn't found: dump the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> area through the stock <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> and compare (<code>drivers/cal/baofeng/baofeng_cal.c</code>)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="5-fm-receive">5. FM receive</h2>
+<p>Tune the FM <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> to a known signal (a NOAA weather station, a local repeater output) and to a quiet channel.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Check</th>
+<th>If not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Audio from the speaker with the squelch open</td>
+<td>Works (checked on the radio). FM audio comes from the FD6818's output: <abbr class="gl" tabindex="0" title="General purpose input/output: a pin the firmware can read or drive." data-more="../dev/glossary.html#t-gpio">GPIO</abbr> 0x2F high, 0x35 high (<code>radio_dm32.c speaker_source()</code>), FD6818 0x47 = 0x0140. The <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">C7000</abbr> <code>fm_play</code> bit stays off</td>
+</tr>
+<tr>
+<td><code>rssi</code> / <code>nz</code> move with the signal; the squelch closes on a quiet channel</td>
+<td>FD6818 reads (<code>fd6818_read</code> timing). The squelch uses the FD6818 noise byte (0x65): if its scale isn't dB-like, map it in <code>radio_dm32.c status()</code></td>
+</tr>
+<tr>
+<td>RSSI in dBm roughly right against a signal generator</td>
+<td>the offset in <code>status()</code> (raw - 135 now, a guess)</td>
+</tr>
+<tr>
+<td>CTCSS / DCS RX opens only on the right tone</td>
+<td>With GPIO 0x2F high the C7000 gets no audio, so its sub-audio decoder can't work in FM <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr>. The FD6818's own detector does the job (0x07 / 0x08 / 0x51 / 0x52, result in 0x0C)</td>
+</tr>
+<tr>
+<td>Both bands: 145 MHz and 435 MHz</td>
+<td>LNA selects 0x22 / 0x24, band words</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="6-hotspot--cps-on-the-cable-optional">6. Hotspot / CPS on the cable (optional)</h2>
+<p>MMDVMHost or a <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> on the same serial port: the host link switches by what it <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receives</abbr> (<code>core/hostlink</code>).</p>
+<h2 id="7-fm-transmit-dummy-load-power-meter-sdr-or-service-monitor">7. FM transmit (dummy load, power meter, SDR or service monitor)</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Check</th>
+<th>If not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Carrier on frequency within a few hundred Hz</td>
+<td><abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> center / SIG_CENTER (factory TX center byte)</td>
+</tr>
+<tr>
+<td>Power levels 0-8 rise monotonically; level 8 near 5 W VHF / 4 W UHF</td>
+<td><code>bf_cal_power_level</code> and the 11.3 fractions; <abbr class="gl" tabindex="0" title="Digital to analog converter." data-more="../dev/glossary.html#t-dac">DAC</abbr> B must be powered (PD_CTRL bit 1 clear)</td>
+</tr>
+<tr>
+<td>Deviation about 2.5 kHz (12.5 kHz channel) with normal speech; no distortion</td>
+<td><code>hrc7000_fm_tx</code> deviation, mic gain (GCR_ADCL 11 dB)</td>
+</tr>
+<tr>
+<td>CTCSS on the air at the right frequency</td>
+<td><abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">C7000</abbr> TX sub-audio; or switch to the FD6818's (<code>fd6818_set_tx_ctcss</code>)</td>
+</tr>
+<tr>
+<td>PA off and receiver back on PTT release</td>
+<td><code>tx_off()</code></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="8-dmr-receive">8. DMR receive</h2>
+<p>Select a <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> channel with traffic (or let the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench send a call), then <code>diag</code>.</p>
+<p>DMR <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> needs <abbr class="gl" tabindex="0" title="General purpose input/output: a pin the firmware can read or drive." data-more="../dev/glossary.html#t-gpio">GPIO</abbr> 0x2F low: that feeds the FD6818's audio into the <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">C7000</abbr>'s <abbr class="gl" tabindex="0" title="Analog to digital converter." data-more="../dev/glossary.html#t-adc">ADC</abbr>. With it high the modem sees
+no signal and <code>tk</code> stays at 0. The C7000's PHASE_OUT register (0x128) is a quick check that audio arrives
+(modem-hrc7000.md). Checked on the radio with an SDR bench call: sync ticks, slot interrupts, voice frames, headers,
+late entry and the test channel's <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr> all counted.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Diag line</th>
+<th>Healthy</th>
+<th>If not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DMR on+cb tk N</code></td>
+<td>ticks climb by about 33 per second once a signal gives the chip timing</td>
+<td>No ticks: modem interrupts 30 / 31 not arriving (PIC vectors, <code>irq.c</code>), or the modem not in DMR (<code>hrc7000_dmr_enter</code>)</td>
+</tr>
+<tr>
+<td><code>ts a/b si c</code></td>
+<td>RX <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr> (b) and system (c) interrupts counting</td>
+<td></td>
+</tr>
+<tr>
+<td><code>V H T I</code></td>
+<td>voice, headers, terminators counted in a call</td>
+<td>Bursts deframed but dropped: color code (<code>cc</code> line) or <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> flags</td>
+</tr>
+<tr>
+<td><code>cc 1 ts 1 &lt;RX_TYPE_INFO&gt;</code></td>
+<td>the call's color code and slot</td>
+<td></td>
+</tr>
+<tr>
+<td>Voice heard from both slots of a repeater, and a simplex call</td>
+<td><code>HRC7000_RX_NEXT_SLOT_XOR</code>, 0 on the DM-32 (the driver's default since 2026-10-22; it was 1, set to 0 in <code>boards/dm32/config.mk</code> before). With 1 every call decodes to silence: <code>voice.rx_peak</code> about 6, every frame exactly 3 bit errors, all other counters clean (#73)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>codec 049</code> (or 046) and clean audio</td>
+<td>without a merged codec DMR is silent; garbled audio: <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> byte order (<code>platform/hrc7000/audio_pcm.c</code>), the codec call parameters (<code>platform/hrc7000/vocoder.c</code>: flags 0x1840 / 0x800, E[0x1736] / D[0x1166])</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="9-dmr-transmit-dummy-load-and-an-sdr-or-a-second-dmr-radio">9. DMR transmit (dummy load and an SDR or a second DMR radio)</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Check</th>
+<th>If not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A second radio decodes our call (ID, talkgroup, voice)</td>
+<td>send types (<abbr class="gl" tabindex="0" title="Link control start/stop: the 2-bit field of a burst&#x27;s embedded signaling that says which fragment it carries." data-more="../dev/glossary.html#t-lcss">LCSS</abbr> on B-E per the user guide; F is 0x58 by the formula, the user guide's example says 0x50: try <code>e-&gt;lcss = false</code> if the <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">embedded LC</abbr> isn't decoded)</td>
+</tr>
+<tr>
+<td>Bursts stay inside their 30 ms slot at every power level (SDR waterfall or <code>tools/bench</code>)</td>
+<td>the <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> <abbr class="gl" tabindex="0" title="Power amplifier: the stage that boosts the transmit signal to the output power." data-more="../dev/glossary.html#t-pa">PA</abbr> delay (<code>DMR_PA_DELAY_US</code>, 28 ms, Timer 3)</td>
+</tr>
+<tr>
+<td><code>pa</code> on the <code>tx</code> line about 30 ms; <code>rf</code> counts one per burst</td>
+<td>PA off rule (20 ms after the <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> interrupt)</td>
+</tr>
+<tr>
+<td>Through a repeater: the repeater keys up and relays both directions</td>
+<td>repeater timing after TX (<code>tx_finish</code>)</td>
+</tr>
+<tr>
+<td>The mic on DMR transmit, no person: <code>pytest tests/hil -k mic_uart_inject --allow-rf --mic-inject</code> on the host the cable is plugged into (its device path, not a network bridge). The tone bursts sent on the cable's line show at the vocoder: <code>voice.tx_mic_spread_db</code> 12 or more, <code>tx_mic_level_db</code> 9 dB over a quiet over (measured 2026-10-22: quiet 3 dB, spread 0; injected 21 dB, spread 18)</td>
+<td>both overs at the <abbr class="gl" tabindex="0" title="Analog to digital converter." data-more="../dev/glossary.html#t-adc">ADC</abbr>'s floor: the mic doesn't reach the codec ADC on DMR</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="10-long-run">10. Long run</h2>
+<p>An hour on a busy <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> channel and an hour of FM scanning: <code>uo</code>, <code>ov</code> (event overflow), <code>aud ov / un</code> stay near 0,
+no stalls (<code>st</code>), no resets.</p>
+<h2 id="11-air-band-am-and-broadcast-fm">11. Air band AM and broadcast FM</h2>
+<p>The design is <a href="../spec/airband-and-broadcast.html">airband-and-broadcast.md</a>; the open questions are
+<a href="../spec/hardware-dm32.html">hardware-dm32.md</a> 8.7. <code>tests/hil/test_listen_bands.py</code> checks the view keys without
+keying.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Settles</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The stock radio (or a scanner) on the local ATIS; RadioFoundry on the same frequency: AM audio, <code>am=1</code> in the view, read back FD6818 0x47 / 0x30</td>
+<td>which chip demodulates AM, the 0x47 AF type (A1)</td>
+</tr>
+<tr>
+<td>No audio: FD6818 0x47 (0x0140 gives FM audio), then the speaker source switch (GPIO 0x2F high)</td>
+<td>AM audio route (A2)</td>
+</tr>
+<tr>
+<td>A strong and a weak station; a generator at -100 dBm with <code>rssi</code> on the link</td>
+<td>AM <abbr class="gl" tabindex="0" title="Automatic gain control: the receiver adjusting itself to the signal level." data-more="../dev/glossary.html#t-agc">AGC</abbr> and filter (A3), the AM squelch offset (A4)</td>
+</tr>
+<tr>
+<td>PTT on an air channel and on a split channel with TX in 108-137 MHz</td>
+<td>deny screen, red <abbr class="gl" tabindex="0" title="Light-emitting diode: the radio&#x27;s status light." data-more="../user/22-glossary.html#t-led">LED</abbr> off, nothing on the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr></td>
+</tr>
+<tr>
+<td>The RDA5807M chip ID (0x58xx at 0x11) on PTA25 / PTA26</td>
+<td>it is there, the SDA pull-up (B1, B3)</td>
+</tr>
+<tr>
+<td>A strong local station with each reference clock setting; with and without the headset</td>
+<td>reference clock (B2), audio path (B4), antenna (B5)</td>
+</tr>
+<tr>
+<td>The VFO on 100.1 MHz, then a local station: <code>bcast=1</code>, <code>bcast_fault=0</code>, the signal meter moves; the knob steps 200 kHz on the odd tenths</td>
+<td>the tuner glue, the squelch threshold</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="12-gps">12. GPS</h2>
+<p>No fix needed: the module talks from about 1 s after power-up, indoors too.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Expected</th>
+<th>If not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The diagnostics line <code>gps ...</code> (Settings &gt; Diagnostics, or the debug link's diag lines) 10 s after start-up</td>
+<td><code>gps yes</code>, the good count rising by a few a second, bad near 0, <code>b</code> rising by about 300-600 a second</td>
+<td><code>gps no</code> with <code>b0</code>: no bytes on UART1: PTA9's mux (IO_DIPLEX0 bit 9 = 0), the power pin (0x2C low), the module. <code>gps no</code> with bytes but no good sentences: the baud rate (try 115200; stock may have reconfigured the module)</td>
+</tr>
+<tr>
+<td>Outdoors, a few minutes</td>
+<td>Info &gt; Position shows a fix and the satellite count</td>
+<td>the <abbr class="gl" tabindex="0" title="The text format GPS receivers use to report position and time." data-more="../user/22-glossary.html#t-nmea">NMEA</abbr> talker or sentence set (<code>position_nmea</code>)</td>
+</tr>
+<tr>
+<td>Outdoors: restart, or GPS off then on in Settings &gt; Location</td>
+<td>a fix (<code>pos.gps_fix=1</code> in the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>'s <code>view</code>) in under 1 minute (17 to 51 s measured, one run each; 45 s after 5 minutes powered off)</td>
+<td>a view of the sky; if the satellite count stays 0 with NMEA clean, the antenna</td>
+</tr>
+<tr>
+<td>Indoors</td>
+<td>a fix is possible but not reliable: one run had a fix within about 1 minute, another none for more than 5 minutes</td>
+<td>move outdoors before suspecting the firmware</td>
+</tr>
+<tr>
+<td>Bad count rising steadily</td>
+<td>near 0</td>
+<td><abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="../dev/glossary.html#t-uart">UART</abbr> errors: the divisor (547 at 84 MHz APB) or noise on the line</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="13-aprs">13. APRS</h2>
+<p>The <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> copies its FM <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> audio to the <abbr class="gl" tabindex="0" title="Central processing unit." data-more="../dev/glossary.html#t-cpu">CPU</abbr> (<code>modem-hrc7000.md</code> 8.5). <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> listens on the APRS frequency
+(144.390 in North America) with the receive setting on.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Expected</th>
+<th>If not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The debug link's <code>aprs</code> view on 144.390</td>
+<td><code>aprs.rx_listening=1</code>, <code>rx_bits</code> rising by about 1200 a second on noise, <code>rx_peak</code> above 0</td>
+<td><code>rx_listening=0</code>: the receive setting (<code>rfoundry_debug.py aprs set rx 1</code>) or the frequency. Bits not rising: SYS_INTERP_MASK bit 14 (0x1100039C) clear, or <abbr class="gl" tabindex="0" title="General purpose input/output: a pin the firmware can read or drive." data-more="../dev/glossary.html#t-gpio">GPIO</abbr> 0x2F high</td>
+</tr>
+<tr>
+<td>A packet on the air</td>
+<td><code>rx_hdlc_frames</code> and <code>stations</code> go up</td>
+<td><code>rx_fcs_errors</code> rising with packets present: the half read (FM_ADDR_SW), the level (noise reaches full scale), audio under the tones (below)</td>
+</tr>
+<tr>
+<td>An FM signal on 144.390 with the squelch open</td>
+<td>heard on the speaker, through the C7000's FM playback</td>
+<td>AUDIO_CONTROL bit 6, the codec line out</td>
+</tr>
+<tr>
+<td>A packet sent at level 50, recorded by the SDR bench (<code>aprs.md</code> 13)</td>
+<td>decodes with a valid FCS, about 3 kHz peak deviation, twist within 2 dB</td>
+<td>no tones: AUDIO_CONTROL bit 7 during the transmission, Timer 4 (vector 36) not firing. Deviation: <code>amp_per_level</code> in <code>radio_dm32.c</code></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="open-items-to-settle-on-the-bench">Open items to settle on the bench</h2>
+<ul>
+<li>PIC: vectored (32 + source) works: the <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> slot, <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> and <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> interrupts all arrive (settled on the radio).</li>
+<li>L2_STATUS slot polarity (<code>HRC7000_RX_NEXT_SLOT_XOR</code>): 0, settled for simplex on the radio (2026-10-19: AT-D878UV
+speech, 234 frames with 23 bit errors, <code>voice.rx_peak</code> 4288, clean audio). Both slots through a duplex <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> are
+still to check.</li>
+<li><abbr class="gl" tabindex="0" title="Light-emitting diode: the radio&#x27;s status light." data-more="../user/22-glossary.html#t-led">LED</abbr> colors: 0x20 green, 0x21 red (settled on the radio). Panel orientation, backlight <abbr class="gl" tabindex="0" title="Pulse width modulation: a pin switched on and off to give an average level, as for backlight or tone." data-more="../dev/glossary.html#t-pwm">PWM</abbr> scale.</li>
+<li>Sub-audio: the <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">C7000</abbr> makes the TX tones, the FD6818 detects the <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> tones (settled on the radio and the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench).</li>
+<li>Codec 049: DMR voice encodes and decodes (the SDR bench modem decodes our <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE</abbr> with few <abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="../dev/glossary.html#t-fec">FEC</abbr> corrections); 046 untried.</li>
+<li><abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="../dev/glossary.html#t-uart">UART</abbr> divisor 46 (0.9 % slow) or 45 (1.3 % fast).</li>
+<li><abbr class="gl" tabindex="0" title="Received signal strength indicator: how strong the received signal is, in dBm." data-more="../user/22-glossary.html#t-rssi">RSSI</abbr> dBm offset and the noise scale for the squelch.</li>
+<li>GPS: <abbr class="gl" tabindex="0" title="The text format GPS receivers use to report position and time." data-more="../user/22-glossary.html#t-nmea">NMEA</abbr> arrives on UART1 at 9600 (section 12): <code>gps yes</code>, 291 good sentences and 0 bad 26 s after start-up (on the
+radio, indoors, no fix). Later (2026-11-18, a local build): outdoors, a 3D fix with 6 to 13 satellites, and NMEA
+stayed clean (about 200,000 sentences, 1 bad). Time to the first fix outdoors, one run each: 17 s after a software
+restart, 51 s after Settings &gt; Location &gt; GPS off for 30 s and on, 45 s after the radio first answered following
+5 minutes powered off. Indoors the result varied: a fix within about 1 minute of a restart in one run, and no fix for
+more than 5 minutes after the <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> <code>test_gps_power_switch</code> cycled the module in another; the fix came back once the
+radio was outdoors. HIL <code>test_gps_nmea</code>, <code>test_position_view</code>, <code>test_position_fixed_settings</code> and
+<code>test_gps_power_switch</code> pass; <code>test_gps_fix</code> (needs a person) and the restart test were not run.</li>
+<li><abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> receive (section 13): decodes off air, 12 of 12 frames from another radio at lowest power a few feet away
+(2026-10-16). The receive audio had peaks about 19000 of 32767 and dropped no halves. Its space tone was 6-8 dB
+under the mark tone (the FD6818's de-emphasis; the sender was flat within 1.3 dB on the SDR bench), and it carried
+320-400 Hz 1-10 dB under the tones. With one demodulator path that cost half the frames; the high passed second
+path (<code>aprs.md</code> 5.3) fixed it. Still open: where the 320-400 Hz comes from (the FD6818's receive audio filters,
+REG 0x9B, sub-audio residue, the sender), and whether a hardware setting removes it. REG 0x9B (the receive
+de-emphasis and filter bypasses) is on the FD6818's page 1: writing 0x7F = 1 over the 3-wire bus didn't select it
+(page 1 reads matched page 0), so the page switch is still to find. Weak packets below the squelch are untested.</li>
+<li>FM transmit voice deviation (section 7): the TX limiter (<code>hrc7000_t.fm_tx_limit</code>) is 5 at 12.5 kHz and 0x0F at
+25 kHz, the DM-1801 Pro's values. At 12.5 kHz a loud whistle and voice peaked at 1.3 kHz (99.9 %, rms 167 Hz) on the
+SDR bench (2026-10-16), under the 2.5 kHz target. Still to try: a higher limiter, or more mic gain (GCR_ADCL 11 dB),
+and a measurement at 25 kHz. The K-plug cable cuts the mic, so the owner keys by hand with the cable out.</li>
+<li>APRS transmit (section 13): decodes off air at 3.1 kHz peak (settled on the SDR bench). <code>test_aprs.py</code> on air
+is still to run.</li>
+<li>Host link lost with the UI running (2026-10-16, after a day of transmit tests): the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> stopped answering,
+and the diagnostics page showed <code>ur 0 ut 0</code> (not one byte received) with the host link task alive (<code>hb</code> climbing)
+and the receive interrupt enabled (<code>ie 05</code>). The <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">boot stub</abbr> still worked on the same cable, and an image that had
+answered that morning failed the same way, so the build wasn't the cause. Power-key cycles didn't help. A battery
+pull left the radio dead (flat battery); after charging and a cold start the link answered. Cause unknown: the
+battery or the full power cut. If it happens again, read <code>bat</code> on the diagnostics page first.</li>
+<li>Boot stub, <code>stubtool.py --attach --boot reset</code> (warm reset into the new image): RadioFoundry came up but its host link never
+answered, every time on the DM-32 (2026-10-16; 3 of 4 times on the DM-1801 Pro). A power cycle after the write
+works. Until the reset path is fixed, power-cycle instead.</li>
+<li>Boot stub LED: after a write finished and was verified by <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr>, with no tool on the port, the LED kept blinking fast
+(the &quot;data moving, don't power off&quot; pattern) for minutes (2026-10-16). The pattern should follow the stub's state.</li>
+<li>DMR receive degraded after hours of uptime (2026-10-16): one, later two, of the three AMBE frames in every voice
+burst failed C0 at -68 dBm, and the zone scan, <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> scan and battery-save wake never saw the bench carrier. The
+errors were the same with the receiver retuned -1.5 to +0.6 kHz, so not RF; the bench's bursts decode clean
+offline. A power cycle cleared it, and the full radio-only HIL file set plus an <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="../spec/sfr.html">SFR</abbr> run didn't bring it back.
+If it returns, read <code>voice.rx_bad_at</code> (which frame of the burst fails) and the FD6818 and HR_C7000 registers
+before power-cycling.</li>
+</ul>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/testing/dm32-bringup.md">Vedi il sorgente di questa pagina</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="In questa pagina">
+		<p class="eyebrow">In questa pagina</p>
+		<ul><li class="l2"><a href="#0-before-anything">0. Before anything</a></li><li class="l2"><a href="#1-it-boots">1. It boots</a></li><li class="l2"><a href="#2-the-debug-link-on-the-programming-cable">2. The debug link on the programming cable</a></li><li class="l2"><a href="#3-keys-encoder-ptt-leds-power">3. Keys, encoder, PTT, LEDs, power</a></li><li class="l2"><a href="#4-data-flash-and-calibration">4. Data flash and calibration</a></li><li class="l2"><a href="#5-fm-receive">5. FM receive</a></li><li class="l2"><a href="#6-hotspot--cps-on-the-cable-optional">6. Hotspot / CPS on the cable (optional)</a></li><li class="l2"><a href="#7-fm-transmit-dummy-load-power-meter-sdr-or-service-monitor">7. FM transmit (dummy load, power meter, SDR or service monitor)</a></li><li class="l2"><a href="#8-dmr-receive">8. DMR receive</a></li><li class="l2"><a href="#9-dmr-transmit-dummy-load-and-an-sdr-or-a-second-dmr-radio">9. DMR transmit (dummy load and an SDR or a second DMR radio)</a></li><li class="l2"><a href="#10-long-run">10. Long run</a></li><li class="l2"><a href="#11-air-band-am-and-broadcast-fm">11. Air band AM and broadcast FM</a></li><li class="l2"><a href="#12-gps">12. GPS</a></li><li class="l2"><a href="#13-aprs">13. APRS</a></li><li class="l2"><a href="#open-items-to-settle-on-the-bench">Open items to settle on the bench</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Unisciti alla comunità RadioFoundry</strong><span class="small muted">Domande, aiuto con la tua radio e novità, su Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Hai trovato un bug? Vuoi che la tua radio sia supportata?</strong><span class="small muted">Apri una segnalazione su GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry ha licenza MIT · <a href="https://github.com/radiofoundry/radiofoundry">Codice sorgente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunità</a> · <a href="../../../it/docs/index.html">Documenti</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Novità</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

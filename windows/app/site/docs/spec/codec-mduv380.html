@@ -1,0 +1,1478 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MD-UV380 / MD-UV390: hosting the AMBE+2 codec · RadioFoundry</title>
+<meta name="description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="MD-UV380 / MD-UV390: hosting the AMBE+2 codec · RadioFoundry">
+<meta property="og:description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:url" content="https://radiofoundry.org/docs/spec/codec-mduv380.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="The radios RadioFoundry runs on, each showing a different screen.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/codec-mduv380.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/codec-mduv380.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/codec-mduv380.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/codec-mduv380.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/codec-mduv380.html">
+<link rel="icon" href="../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../" data-home="../../" data-gl-more="More">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../index.html">
+			<img src="../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Main"><a href="../../radios/index.html">Radios</a><a href="../../features/index.html">Features</a><a href="../../flash/index.html">Install</a><a href="../../codeplug/index.html">Codeplug</a><a href="../../docs/index.html" aria-current="page">Docs</a><a href="../../screenshots/index.html">Screenshots</a><a href="../../tools/index.html">Tools</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Language" title="Language">EN</summary><nav aria-label="Language"><a href="../../docs/spec/codec-mduv380.html" aria-current="true" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../es/docs/spec/codec-mduv380.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../it/docs/spec/codec-mduv380.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../zh/docs/spec/codec-mduv380.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Switch light and dark" title="Switch light and dark">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Specifications">
+		<p class="eyebrow"><a href="../../docs/index.html">Documentation</a> / Specifications</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html" aria-current="page">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<h1 id="md-uv380--md-uv390-hosting-the-ambe2-codec">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</h1>
+<p>Status: format description, against the reference build (<a href="codec-placement.html">codec-placement.md</a>). The codec of
+every build below was run in a host instruction set emulator (measured); nothing has run on a radio.</p>
+<p>Rule: the radio runs exactly the codec its own <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="../user/22-glossary.html#t-tyt">TYT</abbr> firmware shipped. The user's machine extracts it from a firmware
+file the user supplies. No codec bytes go in this repository or in released binaries.</p>
+<h2 id="stock-files">Stock files</h2>
+<p>Published by <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="../user/22-glossary.html#t-tyt">TYT</abbr> and Retevis and mirrored by dealers. The 19.26 builds are the first supported and the ones described
+in detail below; every other build has the same shape at its own addresses. Retevis ships TYT's 18.11 and 18.16 files
+under its own names (<code>RT3S(CSV)-V18.11.bin</code> and so on), byte for byte, and builds of its own for 19.06 and 219.60. Every
+file, TYT's and Retevis's, is encrypted with the same key (below).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>version</th>
+<th>file</th>
+<th>size</th>
+<th>sha256</th>
+<th>radios</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>V19.26 CSV</strong></td>
+<td><code>MD-UV380(CSV)-V19.26.bin</code></td>
+<td>1303040</td>
+<td><code>75e4d470b451cb5d191a647c0836c71801433b826cc4a7fe2c48d750036bd98e</code></td>
+<td>non-GPS, large contact list</td>
+</tr>
+<tr>
+<td>D19.26 REC</td>
+<td><code>MD-UV380(REC)-D19.26.bin</code></td>
+<td>1315328</td>
+<td><code>7dec4b751e8a0f44cf7d54d0ebc3b439a9f49899eadd7c8ff14d2804edbe8ac2</code></td>
+<td>non-GPS, recording build</td>
+</tr>
+<tr>
+<td>P19.26 CSV-GPS</td>
+<td><code>MD-UV390(CSV-GPS)-P19.26.bin</code></td>
+<td>1312256</td>
+<td><code>84331dbc9bccf5021122b715dcb77d7589dba0745694bf3a249aae6e7c383ef1</code></td>
+<td>GPS, large contact list</td>
+</tr>
+<tr>
+<td>S19.26 GPS-REC</td>
+<td><code>MD-UV390(GPS-REC)-S19.26.bin</code></td>
+<td>1324544</td>
+<td><code>77923d67aa75a07f7601a1c53ae1d5f5af37bd4367d52a50c8aeff89b834eceb</code></td>
+<td>GPS, recording build</td>
+</tr>
+<tr>
+<td>V18.11 CSV</td>
+<td><code>MD-UV380(CSV)-V18.11.bin</code></td>
+<td>1289728</td>
+<td><code>fb1897b7123dc6a039a5266972c5bb6f563f574d3769bd1cbdc7bb02b5039cc7</code></td>
+<td>non-GPS, large contact list, also Retevis's <code>RT3S(CSV)-V18.11.bin</code></td>
+</tr>
+<tr>
+<td>D18.11 REC</td>
+<td><code>MD-UV380(REC)-D18.11.bin</code></td>
+<td>1300992</td>
+<td><code>78650258f65fef33d78fad65678bedd74e44b75e924466829c9a360ce8915f39</code></td>
+<td>non-GPS, recording build, also Retevis's <code>RT3S(REC)-D18.11.bin</code></td>
+</tr>
+<tr>
+<td>P18.11 CSV-GPS</td>
+<td><code>MD-UV390(CSV-GPS)-P18.11.bin</code></td>
+<td>1296896</td>
+<td><code>e31ecd122f77ccd34e563193b004e8621ff5422676521503521f64f1045f73a9</code></td>
+<td>GPS, large contact list</td>
+</tr>
+<tr>
+<td>S18.11 GPS-REC</td>
+<td><code>MD-UV390(GPS-REC)-S18.11.bin</code></td>
+<td>1308160</td>
+<td><code>fbb307fd14577e48e1fb6edb3395d4d684baf12dd9fed66280ad76d12e0e04c2</code></td>
+<td>GPS, recording build</td>
+</tr>
+<tr>
+<td>P18.16 CSV-GPS</td>
+<td><code>MD-UV390(CSV-GPS)-P18.16.bin</code></td>
+<td>1300992</td>
+<td><code>6c2e43558290076e86671cb2d25bd18c90cbeb08e02a1b68e534c0ab4fe808bb</code></td>
+<td>GPS, large contact list, also Retevis's <code>RT3S(CSV-GPS)-P18.16.bin</code></td>
+</tr>
+<tr>
+<td>S18.16 GPS-REC</td>
+<td><code>MD-UV390(GPS-REC)-S18.16.bin</code></td>
+<td>1313280</td>
+<td><code>23c14a9c30b2b626021c39159a8bb68a2403f4eda28fd8101a0264d022fb06da</code></td>
+<td>GPS, recording build, also Retevis's <code>RT3S(GPS-REC)-S18.16.bin</code></td>
+</tr>
+<tr>
+<td>V18.03 CSV</td>
+<td><code>MD-UV380(CSV)-V18.03.bin</code></td>
+<td>1284608</td>
+<td><code>195847c34a037f1c7ca8cc1c69bc9bfd12c2fada22fb1f74a86189281096129d</code></td>
+<td>non-GPS, large contact list</td>
+</tr>
+<tr>
+<td>D18.03 REC</td>
+<td><code>MD-UV380(REC)-D18.03.bin</code></td>
+<td>1296896</td>
+<td><code>6f103808b733260903e03b24de375b7f5c046b8cb3f50551e3b665573221f0cd</code></td>
+<td>non-GPS, recording build</td>
+</tr>
+<tr>
+<td>P18.03 CSV-GPS</td>
+<td><code>MD-UV390(CSV-GPS)-P18.03.bin</code></td>
+<td>1291776</td>
+<td><code>7b17e39185a89ada84e5f5e46389c8d9af62a54a4ed0b6096b7e5a6e0df9f9ea</code></td>
+<td>GPS</td>
+</tr>
+<tr>
+<td>S18.03 GPS-REC</td>
+<td><code>MD-UV390(GPS-REC)-S18.03.bin</code></td>
+<td>1304064</td>
+<td><code>f816ee4092a0b9e77d6a23bec49508ba5f190c2dc255ac6cc869dfdb67dfb2d3</code></td>
+<td>GPS, recording build</td>
+</tr>
+<tr>
+<td>V19.06 CSV</td>
+<td><code>RT3S(CSV)-V19.06.bin</code></td>
+<td>1295872</td>
+<td><code>657cd4e6c86aa63428f1bc081ce0614b35db0607d34ba6b6065357a58a045c89</code></td>
+<td>non-GPS, large contact list, Retevis RT3S file</td>
+</tr>
+<tr>
+<td>P19.06 CSV-GPS</td>
+<td><code>RT3S(CSV-GPS)-P19.06.bin</code></td>
+<td>1305088</td>
+<td><code>9c58aca48de3d42b897852e424b0da1392f6e983d51ca69b1425b72a0a836ca1</code></td>
+<td>GPS, large contact list, Retevis RT3S file</td>
+</tr>
+<tr>
+<td>P19.33 CSV-GPS</td>
+<td><code>MD-UV390(CSV-GPS)-P19.33.bin</code></td>
+<td>1315328</td>
+<td><code>a2f38eaf4b98379fee6dfc00cae916bbc550e26ba0dd04c5fb56199a9e62b7f8</code></td>
+<td>GPS, user-supplied</td>
+</tr>
+<tr>
+<td>D19.62 REC</td>
+<td><code>MD-UV380(REC)-D19.62.bin</code></td>
+<td>1320448</td>
+<td><code>8f580928ad418bce413bba9973809a71708094a917c943b7beb8fb5b24c4eab3</code></td>
+<td>non-GPS, recording build, user-supplied</td>
+</tr>
+<tr>
+<td>V19.74 CSV</td>
+<td><code>MD-UV380(CSV)-V19.74.bin</code></td>
+<td>1309184</td>
+<td><code>1e6a74b8cc62ffabd06dd83912f1bf0a7a7ef12d4bda63b961544c7e1393655a</code></td>
+<td>non-GPS, large contact list</td>
+</tr>
+<tr>
+<td>D19.74 REC</td>
+<td><code>MD-UV380(REC)-D19.74.bin</code></td>
+<td>1321472</td>
+<td><code>d3996d672d6878ca823880320e240883ea64208f121923cd2bb6fe51d2e50784</code></td>
+<td>non-GPS, recording build</td>
+</tr>
+<tr>
+<td>P19.74 CSV-GPS</td>
+<td><code>MD-UV390(CSV-GPS)-P19.74.bin</code></td>
+<td>1319424</td>
+<td><code>14e5634eeffa5f99f85fd762df4dc141432762d75b933031000d1f398fc4d2e4</code></td>
+<td>GPS, large contact list</td>
+</tr>
+<tr>
+<td>S19.74 GPS-REC</td>
+<td><code>MD-UV390(GPS-REC)-S19.74.bin</code></td>
+<td>1331712</td>
+<td><code>3ebe806da0bbda993220cca9a97411225c1bf9e29097db3224ff722b00c6d023</code></td>
+<td>GPS, recording build</td>
+</tr>
+<tr>
+<td>10 W V19.74 CSV</td>
+<td><code>MD-UV380-10W(CSV)-V19.74.bin</code></td>
+<td>1309184</td>
+<td><code>4acf6d48baca843d7e1220de8c0486670ee7f43953ebbb53d910ef1d94bfbe52</code></td>
+<td>non-GPS, large contact list, 10 W</td>
+</tr>
+<tr>
+<td>10 W D19.74 REC</td>
+<td><code>MD-UV380-10W(REC)-D19.74.bin</code></td>
+<td>1321472</td>
+<td><code>2768ece93ddd4f1fd4ffc4e58ee073bd145b865f4ea6d256315f6e0019e93995</code></td>
+<td>non-GPS, recording build, 10 W</td>
+</tr>
+<tr>
+<td>10 W P19.74 CSV-GPS</td>
+<td><code>MD-UV390-10W(CSV-GPS)-P19.74.bin</code></td>
+<td>1319424</td>
+<td><code>ebc5e34f4a00679a9200df8233c4b42b89dbd440a7487bbac2796223b796b392</code></td>
+<td>GPS, large contact list, 10 W</td>
+</tr>
+<tr>
+<td>10 W S19.74 GPS-REC</td>
+<td><code>MD-UV390-10W(GPS-REC)-S19.74.bin</code></td>
+<td>1331712</td>
+<td><code>b0345e8c9e28b353954f3b6aa66599b5ac682c2037e212052af16e2c888572cd</code></td>
+<td>GPS, recording build, 10 W</td>
+</tr>
+<tr>
+<td>V119.33 CSV AES 256</td>
+<td><code>MD-UV380-AES(CSV)-V119.33.bin</code></td>
+<td>1344000</td>
+<td><code>16c168ba18fccf3b05f810251f8a5e73b7b3bed0ca03ebd79294a97fd484e044</code></td>
+<td>non-GPS, large contact list, AES, 16 groups, user-supplied</td>
+</tr>
+<tr>
+<td>10 W D219.43 REC AES 255</td>
+<td><code>MD-UV380-10W-AES256(REC)-D219.43.bin</code></td>
+<td>1357312</td>
+<td><code>11a1195b14f586239d8532b74545bd67b1ab977fef6ee89bfc3eb08fd15d0ec8</code></td>
+<td>non-GPS, recording build, 10 W, AES, 255 groups, user-supplied</td>
+</tr>
+<tr>
+<td>V219.60 CSV AES 255</td>
+<td><code>RT3S-Firmware-AES255(CSV)-V219.60.bin</code></td>
+<td>1346048</td>
+<td><code>447ed4e09482c45661cd6e4c83d1e9f777463993ab7dd48b0e0597bb14f519ee</code></td>
+<td>non-GPS, large contact list, AES, 255 groups, Retevis RT3S file</td>
+</tr>
+<tr>
+<td>P219.60 CSV-GPS AES 255</td>
+<td><code>RT3S-Firmware-AES255(CSV-GPS)-P219.60.bin</code></td>
+<td>1356288</td>
+<td><code>a7b277137c32ac3583083d8a650488415f62360b7f38a6d903fc732b858dd502</code></td>
+<td>GPS, large contact list, AES, 255 groups, Retevis RT3S file</td>
+</tr>
+<tr>
+<td>10 W S219.43 GPS-REC AES 255</td>
+<td><code>MD-UV390-10W-AES256(GPS-REC)-S219.43.bin</code></td>
+<td>1366528</td>
+<td><code>6825fc129cc4720a1f493dae388cc4a50b5f40b876e02235044a5e28df6fcdb9</code></td>
+<td>GPS, recording build, 10 W, AES, 255 groups, user-supplied</td>
+</tr>
+<tr>
+<td>S219.62 GPS-REC AES 255</td>
+<td><code>MD-UV390-AES255(GPS-REC)-S219.62.bin</code></td>
+<td>1368576</td>
+<td><code>13e2fd862a0ca5dd505c9bbedee17393afb676e11923bacec487be6bbe0b4a0f</code></td>
+<td>GPS, recording build, AES, 255 groups, user-supplied</td>
+</tr>
+<tr>
+<td>10 W D219.71 REC AES 255</td>
+<td><code>MD-UV390 (10W)-AES255(REC)-D219.71.bin</code></td>
+<td>916992</td>
+<td><code>bae53921628926460c6225c9d48074de9b81f3078f5df413650f2d3cd61c7c1f</code></td>
+<td>non-GPS, recording build, 10 W, AES, 255 groups, user-supplied</td>
+</tr>
+<tr>
+<td>V219.74 CSV AES 255</td>
+<td><code>MD-UV380-AES255(CSV)-V219.74.bin</code></td>
+<td>1348096</td>
+<td><code>a8a5265d29f8f69ee050a0a47052a8925a3c403ac270d8e5fda324a4a697b220</code></td>
+<td>non-GPS, large contact list, AES, 255 groups</td>
+</tr>
+<tr>
+<td>D219.74 REC AES 255</td>
+<td><code>MD-UV380-AES255(REC)-D219.74.bin</code></td>
+<td>1360384</td>
+<td><code>3d1b9ed4a2293981d0915d0655172e7a4d9bc702fe493328be37901427d51108</code></td>
+<td>non-GPS, recording build, AES, 255 groups</td>
+</tr>
+<tr>
+<td>P219.74 CSV-GPS AES 255</td>
+<td><code>MD-UV390-AES255(CSV-GPS)-P219.74.bin</code></td>
+<td>1358336</td>
+<td><code>70a44a4a77d6ffb4b0b6b9b4a8f26afb9607d65875d2ba1094baf6c8e6a46c9a</code></td>
+<td>GPS, large contact list, AES, 255 groups</td>
+</tr>
+<tr>
+<td>S219.74 GPS-REC AES 255</td>
+<td><code>MD-UV390-AES255(GPS-REC)-S219.74.bin</code></td>
+<td>1369600</td>
+<td><code>bf58116bcd695d8b14634fbffab7cd33ba9bcd1325b92179ef6bf94d380d2151</code></td>
+<td>GPS, recording build, AES, 255 groups</td>
+</tr>
+<tr>
+<td>10 W V219.74 CSV AES 255</td>
+<td><code>MD-UV380-10W-AES255(CSV)-V219.74.bin</code></td>
+<td>1348096</td>
+<td><code>531947c0d4d7d3ae0c5a3f94d81fbf3a04259488a9af09f9a3a8b57cabf135ed</code></td>
+<td>non-GPS, large contact list, 10 W, AES, 255 groups</td>
+</tr>
+<tr>
+<td>10 W D219.74 REC AES 255</td>
+<td><code>MD-UV380-10W-AES255(REC)-D219.74.bin</code></td>
+<td>1359360</td>
+<td><code>7b7ed3075a7735cde969402eda163f96bf2931ae55cbcc4fbf62625bdaf04855</code></td>
+<td>non-GPS, recording build, 10 W, AES, 255 groups</td>
+</tr>
+<tr>
+<td>10 W P219.74 CSV-GPS AES 255</td>
+<td><code>MD-UV390-10W-AES255(CSV-GPS)-P219.74.bin</code></td>
+<td>1358336</td>
+<td><code>bf98dc6ca9d888712924af75dd5eff7495de4ab82848f0701616e29eb9d5e5a2</code></td>
+<td>GPS, large contact list, 10 W, AES, 255 groups</td>
+</tr>
+<tr>
+<td>10 W S219.74 GPS-REC AES 255</td>
+<td><code>MD-UV390-10W-AES255(GPS-REC)-S219.74.bin</code></td>
+<td>1369600</td>
+<td><code>e6c696a3f1a6ac3d622559d7422efc97399b748aac8923a7440239b28c03a5c1</code></td>
+<td>GPS, recording build, 10 W, AES, 255 groups</td>
+</tr>
+</tbody>
+</table></div>
+<p>TYT's 19.74 and 219.74 come in 5 W and 10 W (&quot;Plus&quot;) builds; the 219.xx line is the AES build with 255 groups. The
+header carries no model string, so a user must pick the file for their radio; for RadioFoundry any of them is only a
+codec donor and works on any MD-UV380 family radio, because the codec behaves identically in every build (below).</p>
+<h2 id="container-and-encryption">Container and encryption</h2>
+<p>The &quot;OutSecurityBin&quot; two-segment form, as for the reference build:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>offset</th>
+<th>contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00</td>
+<td><code>OutSecurityBin</code>, two zero bytes</td>
+</tr>
+<tr>
+<td>0x10</td>
+<td>model field, blank (0xFF); <code>MD-9600</code> in the 18.xx files</td>
+</tr>
+<tr>
+<td>0x30</td>
+<td><code>02 17 0C 03 ...</code> in the non-GPS 19.xx files, <code>02 16 0C 03 ...</code> in the GPS ones, <code>01 06</code> / <code>01 07</code> in the 219.xx files (meaning unknown, ?)</td>
+</tr>
+<tr>
+<td>0x7C</td>
+<td>u32 segment count, 2</td>
+</tr>
+<tr>
+<td>0x80</td>
+<td>(0x00060000, 0x5D400): <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> flash resources; (0x0800C000, length): the application</td>
+</tr>
+<tr>
+<td>0x100</td>
+<td>payload</td>
+</tr>
+</tbody>
+</table></div>
+<p>Application lengths: V19.26 0xE0C00, D19.26 0xE3C00, P19.26 0xE3000, S19.26 0xE6000 (every build's:
+<code>stockfw.py</code> PROFILES, &quot;segments&quot;). The application starts at file
+offset 0x5D500. The payload is XORed with the MD-UV380 bootloader key (SHA-256
+<code>739ce35cc8db6e72f95598effac1a01ae71dbe2a5792c1a69acaee5dbf634991</code>, first bytes 00 AA 89 89, the <code>mduv380</code> model of
+<code>tools/stm32_dfu.py</code>):</p>
+<pre><code>plain[i] = file[0x100 + i] ^ key[i % 1024]
+</code></pre>
+<p>For an application address A: file offset = A - 0x0800C000 + 0x5D500, key index = (file offset - 0x100) % 1024.</p>
+<p><strong>Key recovery (measured).</strong> <code>rfoundry/stockfw.derive_key(stock, &lt;the hash above&gt;)</code> recovers the key from each of
+every file and checks it by that hash: in 0.1 to 5 s per file. No key file is needed.</p>
+<p>Decrypted application vector tables of the 19.26 builds: SP 0x20002848 in all four; reset 0x080E8A09 (V19.26), 0x080EB999 (D19.26),
+0x080EAE69 (P19.26), 0x080EDE39 (S19.26).</p>
+<h2 id="codec-in-the-vendor-images">Codec in the vendor images</h2>
+<p>Code windows (decrypted):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>build</th>
+<th>flash</th>
+<th>length</th>
+<th>sha256</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V19.26 CSV</td>
+<td>0x0807B830..0x0808ACEA</td>
+<td>0xF4BA</td>
+<td><code>5de390664c831412f37ae9ec1f8aadaf77d93112bded424e5bfc9d6b77a64aa1</code></td>
+</tr>
+<tr>
+<td>D19.26 REC</td>
+<td>0x0807E3C0..0x0808D86A</td>
+<td>0xF4AA</td>
+<td><code>7e885b7f6f96bd433a310c7b1bea4ae9db55a71d74bcc102e8684bf0b1e88e96</code></td>
+</tr>
+<tr>
+<td>P19.26 CSV-GPS</td>
+<td>0x0807DBF0..0x0808D0AA</td>
+<td>0xF4BA</td>
+<td><code>bb8035df0a200c827b65128a3f24358fafd1c10601626bd54888595173bb6ae8</code></td>
+</tr>
+<tr>
+<td>S19.26 GPS-REC</td>
+<td>0x080807B4..0x0808FC6A</td>
+<td>0xF4B6</td>
+<td><code>96c018bc0956b86a7ac4a90713eb53fb457cebb9f2584b927d785fefa2085613</code></td>
+</tr>
+<tr>
+<td>V18.11 CSV</td>
+<td>0x0807884C..0x08087F2A</td>
+<td>0xF6DE</td>
+<td><code>bc9af04eec52ab3b8f222e81d63e52c106f98d60f66d7010ea2e6c807894c46f</code></td>
+</tr>
+<tr>
+<td>D18.11 REC</td>
+<td>0x0807B2D8..0x0808A9AA</td>
+<td>0xF6D2</td>
+<td><code>42ab9d8090c3f630ccd38658bd4e7ee4b22a981cb2fb77f1980aff9a068af5b9</code></td>
+</tr>
+<tr>
+<td>P18.11 CSV-GPS</td>
+<td>0x0807A388..0x08089A6A</td>
+<td>0xF6E2</td>
+<td><code>2ed2ea20323649a8463c76e03a42772e490ead803c854f73541626fe7f2b03f0</code></td>
+</tr>
+<tr>
+<td>S18.11 GPS-REC</td>
+<td>0x0807CE28..0x0808C4EA</td>
+<td>0xF6C2</td>
+<td><code>cc51722f43551ab7dd1dd7e8815ac27a8a0dff586cb3efda9b3ccd276f38abd9</code></td>
+</tr>
+<tr>
+<td>P18.16 CSV-GPS</td>
+<td>0x0807B4F4..0x0808ABEA</td>
+<td>0xF6F6</td>
+<td><code>0862316ff1dfbc3ae12143796379edafa1b8c8c4131b4842de05dd29bcacbc77</code></td>
+</tr>
+<tr>
+<td>S18.16 GPS-REC</td>
+<td>0x0807DF58..0x0808D62A</td>
+<td>0xF6D2</td>
+<td><code>5b3e6520620a97c45e648a9707c147417f29063902e54aff2a90787e074507ed</code></td>
+</tr>
+<tr>
+<td>V18.03 CSV</td>
+<td>0x0807770C..0x08086DEA</td>
+<td>0xF6DE</td>
+<td><code>072275d43680ff3455c57dec0c0a5f7f3c76c703546389de58cb60600fc7a5f0</code></td>
+</tr>
+<tr>
+<td>D18.03 REC</td>
+<td>0x0807A1AC..0x0808986A</td>
+<td>0xF6BE</td>
+<td><code>990f7d92bd79c1d6224b2998f12d72d2827683d75f6c2244fce433d5e429532b</code></td>
+</tr>
+<tr>
+<td>P18.03 CSV-GPS</td>
+<td>0x08079220..0x0808892A</td>
+<td>0xF70A</td>
+<td><code>ec90d35c59d697f4ad1c220a25566b50ff8be70e794a3eeb62b869b1abb9fe36</code></td>
+</tr>
+<tr>
+<td>S18.03 GPS-REC</td>
+<td>0x0807BCDC..0x0808B3AA</td>
+<td>0xF6CE</td>
+<td><code>1fd15cee5af9a21496e5f7383bf544e7a10497d5e6bf73487677d9368b1ff0b0</code></td>
+</tr>
+<tr>
+<td>V19.06 CSV</td>
+<td>0x08079E14..0x080894EA</td>
+<td>0xF6D6</td>
+<td><code>21a64c6e0b9b99507765e409f3c26ed28cfdaca4499a7d452c241b4fb88efe5f</code></td>
+</tr>
+<tr>
+<td>P19.06 CSV-GPS</td>
+<td>0x0807C1CC..0x0808B8AA</td>
+<td>0xF6DE</td>
+<td><code>713e2ba7003f5229c78f0b04707ca4ec597ba8aca6953472a66247ec61905870</code></td>
+</tr>
+<tr>
+<td>P19.33 CSV-GPS</td>
+<td>0x0807E608..0x0808DAAA</td>
+<td>0xF4A2</td>
+<td><code>5f17438d44f7cc0ef4a9a731a7f0d87893fcd96c096258debe87197f4aae18e1</code></td>
+</tr>
+<tr>
+<td>D19.62 REC</td>
+<td>0x0807F754..0x0808EBEA</td>
+<td>0xF496</td>
+<td><code>da7a9d54a4070ab4b1c53fdba7b1d39cea020705e6be32584f40beeee7177958</code></td>
+</tr>
+<tr>
+<td>V19.74 CSV</td>
+<td>0x0807CEC4..0x0808C36A</td>
+<td>0xF4A6</td>
+<td><code>b2ef9546969f9c529ecc5ab06b31a9529a1af78939594e81e255c49f0dcf085d</code></td>
+</tr>
+<tr>
+<td>D19.74 REC</td>
+<td>0x0807FA70..0x0808EF2A</td>
+<td>0xF4BA</td>
+<td><code>0d9b2aad9150af6f3a583d123d69d0ee5c1074bf0282be4fc351a87344581256</code></td>
+</tr>
+<tr>
+<td>P19.74 CSV-GPS</td>
+<td>0x0807F450..0x0808E8EA</td>
+<td>0xF49A</td>
+<td><code>ea58eb79ee38e1b558bf09cbb6428cbc6d45fd3a3ef1cc62430e010b9c7ab85a</code></td>
+</tr>
+<tr>
+<td>S19.74 GPS-REC</td>
+<td>0x0808201C..0x080914AA</td>
+<td>0xF48E</td>
+<td><code>052bd89a644cc0556aa85fc9924f02cf44156e5903d23ebc49081f83999aaa88</code></td>
+</tr>
+<tr>
+<td>10 W V19.74 CSV</td>
+<td>0x0807CE18..0x0808C2AA</td>
+<td>0xF492</td>
+<td><code>d64a510fec7f77f0fe607fe798351ce1880edd7defbb66b858f0d6a694de2a4a</code></td>
+</tr>
+<tr>
+<td>10 W D19.74 REC</td>
+<td>0x0807F9B0..0x0808EE6A</td>
+<td>0xF4BA</td>
+<td><code>20878b67953dbf4a39f9c72f8adb2d58516eebe96bcb2e539c029bb7deeb7ebf</code></td>
+</tr>
+<tr>
+<td>10 W P19.74 CSV-GPS</td>
+<td>0x0807F3BC..0x0808E86A</td>
+<td>0xF4AE</td>
+<td><code>65aa7a28321218eaa127506ae36b87f66fa64a3b193053dc9474562e5ffa0255</code></td>
+</tr>
+<tr>
+<td>10 W S19.74 GPS-REC</td>
+<td>0x08081FA8..0x0809146A</td>
+<td>0xF4C2</td>
+<td><code>2068803aa297e67aaf39bb17a0f49ddfb55b7c35e66f328923e28f0594ffdc7f</code></td>
+</tr>
+<tr>
+<td>V119.33 CSV AES 256</td>
+<td>0x080854AC..0x0809486A</td>
+<td>0xF3BE</td>
+<td><code>b5a8e88de4f03b7b0aeb87ab45abd0091c4e49f3a59befb209a12fda6595c0a9</code></td>
+</tr>
+<tr>
+<td>10 W D219.43 REC AES 255</td>
+<td>0x0808831C..0x080976AA</td>
+<td>0xF38E</td>
+<td><code>e5fb80c302356cc8ee5049cf8beaa87facbedcb954a2b8fad9fb63a177244112</code></td>
+</tr>
+<tr>
+<td>V219.60 CSV AES 255</td>
+<td>0x08085BAC..0x08094F6A</td>
+<td>0xF3BE</td>
+<td><code>1b9c8dd355cdc6ab18b8aa4579cfe382ce49ec1f493d6048c8ccf5150cdee286</code></td>
+</tr>
+<tr>
+<td>P219.60 CSV-GPS AES 255</td>
+<td>0x08088150..0x080974EA</td>
+<td>0xF39A</td>
+<td><code>0f374a92964736efd8cc2b4ea7a8cb83a190542b3ae1acd3696fa3d22f1bf375</code></td>
+</tr>
+<tr>
+<td>10 W S219.43 GPS-REC AES 255</td>
+<td>0x0808A8C4..0x08099C6A</td>
+<td>0xF3A6</td>
+<td><code>6c4320bd3dbfbf0525112e970d8f30a9c3d287c2448311234868353bd29a142f</code></td>
+</tr>
+<tr>
+<td>S219.62 GPS-REC AES 255</td>
+<td>0x0808B09C..0x0809A42A</td>
+<td>0xF38E</td>
+<td><code>be32fdf3449b194598d44dcf361d247a5a519b14f22d84a0f9acf695aa8a78fd</code></td>
+</tr>
+<tr>
+<td>10 W D219.71 REC AES 255</td>
+<td>0x08088AF0..0x08097EAA</td>
+<td>0xF3BA</td>
+<td><code>a935bc5abf48c28ee017245645ae1fc405da6f6ba4ded3ff2091ae95a08e4204</code></td>
+</tr>
+<tr>
+<td>V219.74 CSV AES 255</td>
+<td>0x080862F8..0x080956AA</td>
+<td>0xF3B2</td>
+<td><code>c69b5bdc350aaccf87abf547e02f50ff6e28ac27036290ad297f9ce847fb65b3</code></td>
+</tr>
+<tr>
+<td>D219.74 REC AES 255</td>
+<td>0x08088D84..0x0809812A</td>
+<td>0xF3A6</td>
+<td><code>ddfb1872e8c3439b95b7b4ddbd476f4cd014b74c67cada6209803a001bbeb98b</code></td>
+</tr>
+<tr>
+<td>P219.74 CSV-GPS AES 255</td>
+<td>0x08088878..0x08097C2A</td>
+<td>0xF3B2</td>
+<td><code>f5b4998b80deb227262b0a7f5e3dc61c37fdbd64f24819bc8bda0802a00d35cb</code></td>
+</tr>
+<tr>
+<td>S219.74 GPS-REC AES 255</td>
+<td>0x0808B358..0x0809A6EA</td>
+<td>0xF392</td>
+<td><code>1db9a37d905da1f6b586ad29d2ba2fe9fe51b930e1abf338ade32f104062713f</code></td>
+</tr>
+<tr>
+<td>10 W V219.74 CSV AES 255</td>
+<td>0x08086244..0x080955EA</td>
+<td>0xF3A6</td>
+<td><code>a71970c3d1699ad74fc9474798a4acb032fb7f8c9c7d1fb4dc337ffbce2fe146</code></td>
+</tr>
+<tr>
+<td>10 W D219.74 REC AES 255</td>
+<td>0x08088CC0..0x0809806A</td>
+<td>0xF3AA</td>
+<td><code>002d8a76707d5c65a5b2988b2c1356528677986ca5e0143bb65ae8b7ee060047</code></td>
+</tr>
+<tr>
+<td>10 W P219.74 CSV-GPS AES 255</td>
+<td>0x080887F0..0x08097BAA</td>
+<td>0xF3BA</td>
+<td><code>a55a811d85a5d23e3d599b312245b32ebdd70b2a75384772be12422025a4ee7e</code></td>
+</tr>
+<tr>
+<td>10 W S219.74 GPS-REC AES 255</td>
+<td>0x0808B2DC..0x0809A66A</td>
+<td>0xF38E</td>
+<td><code>fc272e75d71dcac08215794f5d153bac86a0787423f7b187c24b08caa3717eaa</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Table windows (decrypted). Every file's is 0x12850 bytes, except 10 W D219.71 REC AES 255, whose file ends at 0x080EBC00 (0x12024 bytes of window). The codec's own data ends earlier; the merge cuts to it:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>build</th>
+<th>flash</th>
+<th>codec data ends</th>
+<th>data length</th>
+<th>sha256 of the window</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V19.26 CSV</td>
+<td>0x080D8C94..0x080EB4E4</td>
+<td>0x080EB2FE</td>
+<td>0x1266A</td>
+<td><code>6ea640d8da93215d6b3c9d7ce8db3663c32743a83c9478b1e9997e0905edc53c</code></td>
+</tr>
+<tr>
+<td>D19.26 REC</td>
+<td>0x080DBC1C..0x080EE46C</td>
+<td>0x080EE28E</td>
+<td>0x12672</td>
+<td><code>96331ad1617b965e2b59a633767bfcc505c4840f3924e8fb82d5e522ff699599</code></td>
+</tr>
+<tr>
+<td>P19.26 CSV-GPS</td>
+<td>0x080DB054..0x080ED8A4</td>
+<td>0x080ED75E</td>
+<td>0x1270A</td>
+<td><code>1f19c01eb5c0e9bcf10f2aeb7bfaee68580b19f4933448d3742d5aef2e6aadea</code></td>
+</tr>
+<tr>
+<td>S19.26 GPS-REC</td>
+<td>0x080DE01C..0x080F086C</td>
+<td>0x080F072E</td>
+<td>0x12712</td>
+<td><code>08adbdac3d3c95e2b5e2e895e77e045aee15a7839933d328727310b517a854f1</code></td>
+</tr>
+<tr>
+<td>V18.11 CSV</td>
+<td>0x080D5B34..0x080E8384</td>
+<td>0x080E7D22</td>
+<td>0x121EE</td>
+<td><code>f4547d849bb694b8e86fb3a55c4320a6945e458f1b3a133b1111bd6dc34684e5</code></td>
+</tr>
+<tr>
+<td>D18.11 REC</td>
+<td>0x080D8998..0x080EB1E8</td>
+<td>0x080EAB8E</td>
+<td>0x121F6</td>
+<td><code>029aecd4f281be17f56362aa570935da57e5868a43deca1d6b3c33d8c0270b29</code></td>
+</tr>
+<tr>
+<td>P18.11 CSV-GPS</td>
+<td>0x080D7674..0x080E9EC4</td>
+<td>0x080E9902</td>
+<td>0x1228E</td>
+<td><code>c586fe9ab586eb2cf92d0f65064fc9d83bcc690b58846ad9824246cdd99b359a</code></td>
+</tr>
+<tr>
+<td>S18.11 GPS-REC</td>
+<td>0x080DA4D8..0x080ECD28</td>
+<td>0x080EC76E</td>
+<td>0x12296</td>
+<td><code>adf44ada74eed62ef90de73a702775b62dd8e97fce17b06ffb80e4a57a66b01a</code></td>
+</tr>
+<tr>
+<td>P18.16 CSV-GPS</td>
+<td>0x080D87F4..0x080EB044</td>
+<td>0x080EAA82</td>
+<td>0x1228E</td>
+<td><code>801d435cb5cb1a0a18b5468f7d2b58e3e1efd4fe11cc99811bf08b8fc9a314ff</code></td>
+</tr>
+<tr>
+<td>S18.16 GPS-REC</td>
+<td>0x080DB618..0x080EDE68</td>
+<td>0x080ED8AE</td>
+<td>0x12296</td>
+<td><code>be4549cded7e7acf2d522ef208a69e70fd372dbf1494592c618ddb4d519861d6</code></td>
+</tr>
+<tr>
+<td>V18.03 CSV</td>
+<td>0x080D49F4..0x080E7244</td>
+<td>0x080E6B26</td>
+<td>0x12132</td>
+<td><code>83be3c3ee0a31334ffb18ca67052b3bcc81db93858885a2c94fac610b91b43a7</code></td>
+</tr>
+<tr>
+<td>D18.03 REC</td>
+<td>0x080D7858..0x080EA0A8</td>
+<td>0x080E9992</td>
+<td>0x1213A</td>
+<td><code>0c5765312fa2a2c5b37e3e36848c7548836d814cbcac901d36afecf531efe971</code></td>
+</tr>
+<tr>
+<td>P18.03 CSV-GPS</td>
+<td>0x080D6534..0x080E8D84</td>
+<td>0x080E8706</td>
+<td>0x121D2</td>
+<td><code>cba61d1bae859e193e655f8e21ae3e97e0b572584701a832b3d7da9e9b6137d1</code></td>
+</tr>
+<tr>
+<td>S18.03 GPS-REC</td>
+<td>0x080D9398..0x080EBBE8</td>
+<td>0x080EB582</td>
+<td>0x121EA</td>
+<td><code>27724f1f0053eb235881ead5062fc988855bf5e9e3b9c465ebda62121677c54b</code></td>
+</tr>
+<tr>
+<td>V19.06 CSV</td>
+<td>0x080D70F4..0x080E9944</td>
+<td>0x080E946A</td>
+<td>0x12376</td>
+<td><code>3a77386ecd001053ea661bea94fd6fe6d024f9482a999bcd8f131da8cb818b92</code></td>
+</tr>
+<tr>
+<td>P19.06 CSV-GPS</td>
+<td>0x080D94B4..0x080EBD04</td>
+<td>0x080EB8CA</td>
+<td>0x12416</td>
+<td><code>c71415bda534d4872c595e8372554c2f9d83f64fbc385cc140e19797f321abfb</code></td>
+</tr>
+<tr>
+<td>P19.33 CSV-GPS</td>
+<td>0x080DBA54..0x080EE2A4</td>
+<td>0x080EE17A</td>
+<td>0x12726</td>
+<td><code>287764a8693d7a08383e15b7ecbf27150cb822fee8ec767b1b38ad597e7c219a</code></td>
+</tr>
+<tr>
+<td>D19.62 REC</td>
+<td>0x080DCFF0..0x080EF840</td>
+<td>0x080EF6D6</td>
+<td>0x126E6</td>
+<td><code>931bf2bc92cbc5d2fdfc507c052c0ce7f26ea5fe80489746df7da0d13bc00ef1</code></td>
+</tr>
+<tr>
+<td>V19.74 CSV</td>
+<td>0x080DA36C..0x080ECBBC</td>
+<td>0x080ECA9A</td>
+<td>0x1272E</td>
+<td><code>b05685290b253f9438d2b9ad39c95fae104019b3a59d36290e5e96191defb469</code></td>
+</tr>
+<tr>
+<td>D19.74 REC</td>
+<td>0x080DD330..0x080EFB80</td>
+<td>0x080EFA76</td>
+<td>0x12746</td>
+<td><code>41cb1a328ce46105dd61716a26ab935fefd2e1193edcce076eb7ec998c0fe487</code></td>
+</tr>
+<tr>
+<td>P19.74 CSV-GPS</td>
+<td>0x080DC8EC..0x080EF13C</td>
+<td>0x080EF0BA</td>
+<td>0x127CE</td>
+<td><code>a93493fd52dde407f0182e0740bfa000604ad0fb061ba671239cd93f16a67fff</code></td>
+</tr>
+<tr>
+<td>S19.74 GPS-REC</td>
+<td>0x080DF8B0..0x080F2100</td>
+<td>0x080F2086</td>
+<td>0x127D6</td>
+<td><code>a67ca31a57b8c69bda716197d0170eda0631b0e2bccc2df91d465a0df6e31cf1</code></td>
+</tr>
+<tr>
+<td>10 W V19.74 CSV</td>
+<td>0x080DA2AC..0x080ECAFC</td>
+<td>0x080EC9DA</td>
+<td>0x1272E</td>
+<td><code>419e2ef2012298ba8aca092bc74d9ad6b0fd63514d7f1539458a7003ba6a16b7</code></td>
+</tr>
+<tr>
+<td>10 W D19.74 REC</td>
+<td>0x080DD270..0x080EFAC0</td>
+<td>0x080EF9B6</td>
+<td>0x12746</td>
+<td><code>2a7118e72744f890430d48b3d5f4a9ae6263c62eecfa8e9dbd89703b51fa75b6</code></td>
+</tr>
+<tr>
+<td>10 W P19.74 CSV-GPS</td>
+<td>0x080DC86C..0x080EF0BC</td>
+<td>0x080EF03A</td>
+<td>0x127CE</td>
+<td><code>15a8f3154fde2f2ca035f563ea9fcc7e447f3b7ad0b2397b72ff3da7fd3f972e</code></td>
+</tr>
+<tr>
+<td>10 W S19.74 GPS-REC</td>
+<td>0x080DF870..0x080F20C0</td>
+<td>0x080F2046</td>
+<td>0x127D6</td>
+<td><code>62d99c50bc1863230892b74b690b43af73822e5951b7879dfcda788923d61f9e</code></td>
+</tr>
+<tr>
+<td>V119.33 CSV AES 256</td>
+<td>0x080E2814..0x080F5064</td>
+<td>0x080F4EC6</td>
+<td>0x126B2</td>
+<td><code>4d095644a33ca7e0b0a6f5528203434978fafc395c9423e6e3efe61b4f58de4b</code></td>
+</tr>
+<tr>
+<td>10 W D219.43 REC AES 255</td>
+<td>0x080E5CE8..0x080F8538</td>
+<td>0x080F83C2</td>
+<td>0x126DA</td>
+<td><code>772fdc4c50be99734e35b7c37db825c7282c33236574b1c57752eba039abd0ba</code></td>
+</tr>
+<tr>
+<td>V219.60 CSV AES 255</td>
+<td>0x080E322C..0x080F5A7C</td>
+<td>0x080F5956</td>
+<td>0x1272A</td>
+<td><code>8a0201819744a522727826dc91332c156c990e7e56244250ba76df9523ad5985</code></td>
+</tr>
+<tr>
+<td>P219.60 CSV-GPS AES 255</td>
+<td>0x080E57AC..0x080F7FFC</td>
+<td>0x080F7F76</td>
+<td>0x127CA</td>
+<td><code>c86623e08780f10351696add74e202056d6732435faccdb226ba8b60d059923b</code></td>
+</tr>
+<tr>
+<td>10 W S219.43 GPS-REC AES 255</td>
+<td>0x080E82A8..0x080FAAF8</td>
+<td>0x080FAA22</td>
+<td>0x1277A</td>
+<td><code>c022775d1114ed5fce12bddb3a2de1844197fa6a85868b85114afdbbb9b2c54e</code></td>
+</tr>
+<tr>
+<td>S219.62 GPS-REC AES 255</td>
+<td>0x080E8A74..0x080FB2C4</td>
+<td>0x080FB256</td>
+<td>0x127E2</td>
+<td><code>8d45c17ef3a0474cec17c9ff7210cfba492d78fa9e92fc6e0e8ffcaa01977254</code></td>
+</tr>
+<tr>
+<td>10 W D219.71 REC AES 255</td>
+<td>0x080D9BDC..0x080EBC00</td>
+<td>0x080EA9A0</td>
+<td>0x10DC4</td>
+<td><code>e30d45045c638924799e2ce7eab6c7f09077d97893b6ce44dab6ca982c0b347e</code></td>
+</tr>
+<tr>
+<td>V219.74 CSV AES 255</td>
+<td>0x080E396C..0x080F61BC</td>
+<td>0x080F60F6</td>
+<td>0x1278A</td>
+<td><code>6598089807521a5edc15cbe2d9812eed3b0d61b7103aeb4ae4a66645873ab36f</code></td>
+</tr>
+<tr>
+<td>D219.74 REC AES 255</td>
+<td>0x080E6774..0x080F8FC4</td>
+<td>0x080F8F16</td>
+<td>0x127A2</td>
+<td><code>65a1dbe29be0db5cc46b3784c571607aff241110a7470ce312e55dab96817534</code></td>
+</tr>
+<tr>
+<td>P219.74 CSV-GPS AES 255</td>
+<td>0x080E5EEC..0x080F873C</td>
+<td>0x080F8716</td>
+<td>0x1282A</td>
+<td><code>47e73474789188eaae78dd8ce8d9624e4a108ba53831c0b87aaad183fa23c6fc</code></td>
+</tr>
+<tr>
+<td>S219.74 GPS-REC AES 255</td>
+<td>0x080E8D34..0x080FB584</td>
+<td>0x080FB566</td>
+<td>0x12832</td>
+<td><code>b5ed5a9cbbb64214f8d02d6e21cfdaecba4697e6bf965efbf087b058ef951687</code></td>
+</tr>
+<tr>
+<td>10 W V219.74 CSV AES 255</td>
+<td>0x080E38AC..0x080F60FC</td>
+<td>0x080F6036</td>
+<td>0x1278A</td>
+<td><code>e6efe93e0e0193477a08595c738bff7cd794cf90692c55b3cc0ae9af08754025</code></td>
+</tr>
+<tr>
+<td>10 W D219.74 REC AES 255</td>
+<td>0x080E66B4..0x080F8F04</td>
+<td>0x080F8E56</td>
+<td>0x127A2</td>
+<td><code>8a8952a64c0821b99ed89d394486e37af3b36689833f77a21534c06d9ce90d78</code></td>
+</tr>
+<tr>
+<td>10 W P219.74 CSV-GPS AES 255</td>
+<td>0x080E5E6C..0x080F86BC</td>
+<td>0x080F8696</td>
+<td>0x1282A</td>
+<td><code>76a96e79d10f71834d94a914ce359c6492cab2a037b23a472a5ed13b446d36b4</code></td>
+</tr>
+<tr>
+<td>10 W S219.74 GPS-REC AES 255</td>
+<td>0x080E8CB4..0x080FB504</td>
+<td>0x080FB4E6</td>
+<td>0x12832</td>
+<td><code>934bbea39629c875be4c1aeab52c2e54605f7a74538435ff84b60eb400405c58</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>First word of every code window: 0x4FF0E92D, as in the reference build. The code-window SHA-256 alone tells the
+builds apart: no two builds share one.</p>
+<ul>
+<li><strong>Code window (V19.26).</strong> Execution covers 0x0807B830..0x0807C872 and 0x0807DD4C..0x0808ACEA; the gap between holds
+other code that the codec never executes, carried to keep the window contiguous. The window end is the last executed
+byte.</li>
+<li><strong>Table window (V19.26).</strong> The constant tables at the reference table window's layout shifted by +0x72A4 (start) to
++0x7340 (most tables), plus one codec code island at 0x080DFF3C..0x080E0024 (the reference build's is at
+0x080D8BFC). Starting the window at 0x080D8C98 changes the output. The other three builds have the same shape at the
+same offsets from their window start.</li>
+</ul>
+<h2 id="entry-points-and-calling-convention">Entry points and calling convention</h2>
+<p>All AAPCS, Thumb, the reference build's argument lists and semantics (&quot;Per-frame calls&quot; in its codec page). The offsets
+from the code start are <strong>the reference build's</strong> (another hosted family has different ones):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>call</th>
+<th>offset</th>
+<th>V19.26 <abbr class="gl" tabindex="0" title="Comma separated values: a table as plain text, as programming software exports it." data-more="../user/22-glossary.html#t-csv">CSV</abbr></th>
+<th>D19.26</th>
+<th>P19.26</th>
+<th>S19.26</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>encode</td>
+<td>+0x130</td>
+<td>0x0807B960</td>
+<td>0x0807E4F0</td>
+<td>0x0807DD20</td>
+<td>0x080808E4</td>
+</tr>
+<tr>
+<td>encoder set</td>
+<td>+0x1C0</td>
+<td>0x0807B9F0</td>
+<td>0x0807E580</td>
+<td>0x0807DDB0</td>
+<td>0x08080974</td>
+</tr>
+<tr>
+<td>encoder init</td>
+<td>+0x284</td>
+<td>0x0807BAB4</td>
+<td>0x0807E644</td>
+<td>0x0807DE74</td>
+<td>0x08080A38</td>
+</tr>
+<tr>
+<td>FEC init</td>
+<td>+0x4CC</td>
+<td>0x0807BCFC</td>
+<td>0x0807E88C</td>
+<td>0x0807E0BC</td>
+<td>0x08080C80</td>
+</tr>
+<tr>
+<td>encode ECC</td>
+<td>+0x4E8</td>
+<td>0x0807BD18</td>
+<td>0x0807E8A8</td>
+<td>0x0807E0D8</td>
+<td>0x08080C9C</td>
+</tr>
+<tr>
+<td>decode</td>
+<td>+0x5D8</td>
+<td>0x0807BE08</td>
+<td>0x0807E998</td>
+<td>0x0807E1C8</td>
+<td>0x08080D8C</td>
+</tr>
+<tr>
+<td>decoder set</td>
+<td>+0x688</td>
+<td>0x0807BEB8</td>
+<td>0x0807EA48</td>
+<td>0x0807E278</td>
+<td>0x08080E3C</td>
+</tr>
+<tr>
+<td>decoder init</td>
+<td>+0x6D0</td>
+<td>0x0807BF00</td>
+<td>0x0807EA90</td>
+<td>0x0807E2C0</td>
+<td>0x08080E84</td>
+</tr>
+<tr>
+<td>encoder parameters</td>
+<td>+0x848</td>
+<td>0x0807C078</td>
+<td>0x0807EC08</td>
+<td>0x0807E438</td>
+<td>0x08080FFC</td>
+</tr>
+<tr>
+<td>FEC decode</td>
+<td>+0xB54</td>
+<td>0x0807C384</td>
+<td>0x0807EF14</td>
+<td>0x0807E744</td>
+<td>0x08081308</td>
+</tr>
+</tbody>
+</table></div>
+<p>Every other build has the same offsets, except <abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="../dev/glossary.html#t-fec">FEC</abbr> decode: +0xB78 in the CSV and CSV-GPS builds of 18.11, 18.16 and
+19.06, +0xB68 in their REC and GPS-REC builds. RadioFoundry never calls FEC decode (the air frame FEC is its own), so
+one offset table serves every build.</p>
+<p>All four columns have been executed (and the other builds' entries, at the same offsets). The init sequence is the hosted builds': encoder init (E, 1, 1),
+FEC init (each FEC block, 1), decoder init (D, 1), encoder parameters (E, -22, 20, -10, stack: -40, 0x4000, 3276, 3276,
+1310, 10, 20), encoder set (E, 128, -20), decoder set (D, 128, -20), one decode of an all-zero frame with flags 8. The
+sequence is the reference build's, and the output matches it.</p>
+<h3 id="state-sizes">State sizes</h3>
+<p>With every block ending at an unmapped page: encoder state 0x16E0, decoder state 0x7EC, FEC state 0x44 each run without
+a fault (the sizes of the hosted builds; smaller sizes were not tried). Stack peak 3822 bytes from the entry.
+No fixed <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> address is touched.</p>
+<h2 id="checks-measured">Checks (measured)</h2>
+<p>In a host emulator (Thumb, Cortex-M4) with only the two windows (or the codec as the merge places it), the state blocks, the I/O buffers and a stack mapped. For a 1 kHz tone
+(30 frames) and a 300 frame stress run (noise, silence, full scale sweeps, injected bit errors, random frames, flags 8),
+the codec's air bits and decoded <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> are <strong>bit-identical</strong> to the reference codec's and to the DM-1701 V02.06 codec's,
+for every build listed: run from the whole image, from the windows only and from the placed layout (same 300 frame
+hash). The <abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="../dev/glossary.html#t-fec">FEC</abbr> decode results agree (0 and 4).</p>
+<h2 id="hosting">Hosting</h2>
+<p>The merge places the codec like the DM-1701's (<a href="codec-placement.html">codec-placement.md</a>): the tables at their stock
+address, cut to the codec's own data, the code right after them (word aligned) and the descriptor at 0x080FFF80, the
+end of sector 11. Where the code doesn't fit between the codec's data and the descriptor (the 219.xx builds, S19.74 and
+10 W S19.74, whose tables sit higher), it goes to the start of sector 10 instead, below the tables. The code reaches its tables through absolute addresses, which don't move; the merge rewrites one
+pointer into the code and the 12 calls from the code kept in the table window back into the code (the codec map,
+<code>tools/rfoundry/rfoundry/codec_maps/mduv380/</code>).</p>
+<ul>
+<li>The codec lives in sectors 10 and 11 (0x080C0000..0x080FFFFF). The application has sectors 3-9
+(0x0800C000..0x080BFFFF), and an update that writes only those keeps the codec (&quot;keep codec&quot; works).</li>
+<li>One codec id for every build, <code>mduv380-1926-s11</code> (named after the first build supported); the descriptor's tag tells
+the builds apart: the build letter and version in <abbr class="gl" tabindex="0" title="Binary coded decimal: each decimal digit in 4 bits." data-more="../dev/glossary.html#t-bcd">BCD</abbr>, 0x40000000 for a 10 W build, 0x80000000 for the AES 255
+line, 0x20000000 for the AES 256 line (119.xx). Each build has its own placed addresses, in <code>boards/mduv380/vocoder_mduv380.c</code>:</li>
+</ul>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>build</th>
+<th>tag</th>
+<th>tables (address, length, CRC-32)</th>
+<th>code (address, length, CRC-32)</th>
+<th>free</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V19.26 CSV</td>
+<td>0x00561926</td>
+<td>0x080D8C94, 0x1266A, 0xCE661968</td>
+<td>0x080EB300, 0xF4BA, 0x10AC40E0</td>
+<td>22470 B below the descriptor</td>
+</tr>
+<tr>
+<td>D19.26 REC</td>
+<td>0x00441926</td>
+<td>0x080DBC1C, 0x12672, 0x7E080ADE</td>
+<td>0x080EE290, 0xF4AA, 0x3367A6D0</td>
+<td>10310 B below the descriptor</td>
+</tr>
+<tr>
+<td>P19.26 CSV-GPS</td>
+<td>0x00501926</td>
+<td>0x080DB054, 0x1270A, 0x06DB6E3C</td>
+<td>0x080ED760, 0xF4BA, 0x0AEE6C4A</td>
+<td>13158 B below the descriptor</td>
+</tr>
+<tr>
+<td>S19.26 GPS-REC</td>
+<td>0x00531926</td>
+<td>0x080DE01C, 0x12712, 0xDED111EF</td>
+<td>0x080F0730, 0xF4B6, 0x11E43041</td>
+<td>922 B below the descriptor</td>
+</tr>
+<tr>
+<td>V18.11 CSV</td>
+<td>0x00561811</td>
+<td>0x080D5B34, 0x121EE, 0x28A30A27</td>
+<td>0x080E7D24, 0xF6DE, 0x0B1FFBD7</td>
+<td>35710 B below the descriptor</td>
+</tr>
+<tr>
+<td>D18.11 REC</td>
+<td>0x00441811</td>
+<td>0x080D8998, 0x121F6, 0x6249AF48</td>
+<td>0x080EAB90, 0xF6D2, 0x8DB9F023</td>
+<td>23838 B below the descriptor</td>
+</tr>
+<tr>
+<td>P18.11 CSV-GPS</td>
+<td>0x00501811</td>
+<td>0x080D7674, 0x1228E, 0x1AC8D7F3</td>
+<td>0x080E9904, 0xF6E2, 0x229BC3B4</td>
+<td>28570 B below the descriptor</td>
+</tr>
+<tr>
+<td>S18.11 GPS-REC</td>
+<td>0x00531811</td>
+<td>0x080DA4D8, 0x12296, 0x87CA8BC7</td>
+<td>0x080EC770, 0xF6C2, 0x21EBA180</td>
+<td>16718 B below the descriptor</td>
+</tr>
+<tr>
+<td>P18.16 CSV-GPS</td>
+<td>0x00501816</td>
+<td>0x080D87F4, 0x1228E, 0xD772CFAD</td>
+<td>0x080EAA84, 0xF6F6, 0x9C51AF50</td>
+<td>24070 B below the descriptor</td>
+</tr>
+<tr>
+<td>S18.16 GPS-REC</td>
+<td>0x00531816</td>
+<td>0x080DB618, 0x12296, 0x3D1F111C</td>
+<td>0x080ED8B0, 0xF6D2, 0x1986B8FF</td>
+<td>12286 B below the descriptor</td>
+</tr>
+<tr>
+<td>V18.03 CSV</td>
+<td>0x00561803</td>
+<td>0x080D49F4, 0x12132, 0xB84C8BA8</td>
+<td>0x080E6B28, 0xF6DE, 0xFB39A876</td>
+<td>40314 B below the descriptor</td>
+</tr>
+<tr>
+<td>D18.03 REC</td>
+<td>0x00441803</td>
+<td>0x080D7858, 0x1213A, 0x901D342F</td>
+<td>0x080E9994, 0xF6BE, 0xAB2D790F</td>
+<td>28462 B below the descriptor</td>
+</tr>
+<tr>
+<td>P18.03 CSV-GPS</td>
+<td>0x00501803</td>
+<td>0x080D6534, 0x121D2, 0x15D2D1B0</td>
+<td>0x080E8708, 0xF70A, 0xBF2AB13E</td>
+<td>33134 B below the descriptor</td>
+</tr>
+<tr>
+<td>S18.03 GPS-REC</td>
+<td>0x00531803</td>
+<td>0x080D9398, 0x121EA, 0x7D1A9F28</td>
+<td>0x080EB584, 0xF6CE, 0x46C1D218</td>
+<td>21294 B below the descriptor</td>
+</tr>
+<tr>
+<td>V19.06 CSV</td>
+<td>0x00561906</td>
+<td>0x080D70F4, 0x12376, 0x22393F1B</td>
+<td>0x080E946C, 0xF6D6, 0x25117C5E</td>
+<td>29758 B below the descriptor</td>
+</tr>
+<tr>
+<td>P19.06 CSV-GPS</td>
+<td>0x00501906</td>
+<td>0x080D94B4, 0x12416, 0x02CB0AB8</td>
+<td>0x080EB8CC, 0xF6DE, 0xB18F0F57</td>
+<td>20438 B below the descriptor</td>
+</tr>
+<tr>
+<td>P19.33 CSV-GPS</td>
+<td>0x00501933</td>
+<td>0x080DBA54, 0x12726, 0x7B71694C</td>
+<td>0x080EE17C, 0xF4A2, 0xB2440AD5</td>
+<td>10594 B below the descriptor</td>
+</tr>
+<tr>
+<td>D19.62 REC</td>
+<td>0x00441962</td>
+<td>0x080DCFF0, 0x126E6, 0x78609264</td>
+<td>0x080EF6D8, 0xF496, 0xC84F626A</td>
+<td>5138 B below the descriptor</td>
+</tr>
+<tr>
+<td>V19.74 CSV</td>
+<td>0x00561974</td>
+<td>0x080DA36C, 0x1272E, 0x605799E9</td>
+<td>0x080ECA9C, 0xF4A6, 0x54149419</td>
+<td>16446 B below the descriptor</td>
+</tr>
+<tr>
+<td>D19.74 REC</td>
+<td>0x00441974</td>
+<td>0x080DD330, 0x12746, 0xAC72D37E</td>
+<td>0x080EFA78, 0xF4BA, 0x1924F763</td>
+<td>4174 B below the descriptor</td>
+</tr>
+<tr>
+<td>P19.74 CSV-GPS</td>
+<td>0x00501974</td>
+<td>0x080DC8EC, 0x127CE, 0x6E6FD4E0</td>
+<td>0x080EF0BC, 0xF49A, 0x97C6E76B</td>
+<td>6698 B below the descriptor</td>
+</tr>
+<tr>
+<td>S19.74 GPS-REC</td>
+<td>0x00531974</td>
+<td>0x080DF8B0, 0x127D6, 0x8414A4A9</td>
+<td>0x080C0000, 0xF48E, 0x808DD9EE</td>
+<td>66594 B below the tables</td>
+</tr>
+<tr>
+<td>10 W V19.74 CSV</td>
+<td>0x40561974</td>
+<td>0x080DA2AC, 0x1272E, 0xAC3B0A5A</td>
+<td>0x080EC9DC, 0xF492, 0xE86E3C65</td>
+<td>16658 B below the descriptor</td>
+</tr>
+<tr>
+<td>10 W D19.74 REC</td>
+<td>0x40441974</td>
+<td>0x080DD270, 0x12746, 0x3F3E347B</td>
+<td>0x080EF9B8, 0xF4BA, 0xAA99FD17</td>
+<td>4366 B below the descriptor</td>
+</tr>
+<tr>
+<td>10 W P19.74 CSV-GPS</td>
+<td>0x40501974</td>
+<td>0x080DC86C, 0x127CE, 0x3CA2A02D</td>
+<td>0x080EF03C, 0xF4AE, 0x1B9C0A2B</td>
+<td>6806 B below the descriptor</td>
+</tr>
+<tr>
+<td>10 W S19.74 GPS-REC</td>
+<td>0x40531974</td>
+<td>0x080DF870, 0x127D6, 0xC39C3679</td>
+<td>0x080C0000, 0xF4C2, 0x92924D87</td>
+<td>66478 B below the tables</td>
+</tr>
+<tr>
+<td>V119.33 CSV AES 256</td>
+<td>0x20561933</td>
+<td>0x080E2814, 0x126B2, 0xD846D18D</td>
+<td>0x080C0000, 0xF3BE, 0xDF78448F</td>
+<td>78934 B below the tables</td>
+</tr>
+<tr>
+<td>10 W D219.43 REC AES 255</td>
+<td>0xC0441943</td>
+<td>0x080E5CE8, 0x126DA, 0xE58708BB</td>
+<td>0x080C0000, 0xF38E, 0xDBEFEBD5</td>
+<td>92506 B below the tables</td>
+</tr>
+<tr>
+<td>V219.60 CSV AES 255</td>
+<td>0x80561960</td>
+<td>0x080E322C, 0x1272A, 0xE880FF1B</td>
+<td>0x080C0000, 0xF3BE, 0x620F4AC5</td>
+<td>81518 B below the tables</td>
+</tr>
+<tr>
+<td>P219.60 CSV-GPS AES 255</td>
+<td>0x80501960</td>
+<td>0x080E57AC, 0x127CA, 0xC76CFEB9</td>
+<td>0x080C0000, 0xF39A, 0x307BE6B5</td>
+<td>91154 B below the tables</td>
+</tr>
+<tr>
+<td>10 W S219.43 GPS-REC AES 255</td>
+<td>0xC0531943</td>
+<td>0x080E82A8, 0x1277A, 0xE49417AC</td>
+<td>0x080C0000, 0xF3A6, 0x92171707</td>
+<td>102146 B below the tables</td>
+</tr>
+<tr>
+<td>S219.62 GPS-REC AES 255</td>
+<td>0x80531962</td>
+<td>0x080E8A74, 0x127E2, 0x890727F1</td>
+<td>0x080C0000, 0xF38E, 0x5914E57B</td>
+<td>104166 B below the tables</td>
+</tr>
+<tr>
+<td>10 W D219.71 REC AES 255</td>
+<td>0xC0441971</td>
+<td>0x080D9BDC, 0x10DC4, 0x4E11B6BD</td>
+<td>0x080EA9A0, 0xF3BA, 0xBA95EC5F</td>
+<td>25126 B below the descriptor</td>
+</tr>
+<tr>
+<td>V219.74 CSV AES 255</td>
+<td>0x80561974</td>
+<td>0x080E396C, 0x1278A, 0xEF3C7105</td>
+<td>0x080C0000, 0xF3B2, 0x254A2827</td>
+<td>83386 B below the tables</td>
+</tr>
+<tr>
+<td>D219.74 REC AES 255</td>
+<td>0x80441974</td>
+<td>0x080E6774, 0x127A2, 0xE588E20F</td>
+<td>0x080C0000, 0xF3A6, 0x3E5C5BC2</td>
+<td>95182 B below the tables</td>
+</tr>
+<tr>
+<td>P219.74 CSV-GPS AES 255</td>
+<td>0x80501974</td>
+<td>0x080E5EEC, 0x1282A, 0x9418379D</td>
+<td>0x080C0000, 0xF3B2, 0xBA895AC5</td>
+<td>92986 B below the tables</td>
+</tr>
+<tr>
+<td>S219.74 GPS-REC AES 255</td>
+<td>0x80531974</td>
+<td>0x080E8D34, 0x12832, 0x0B8910A3</td>
+<td>0x080C0000, 0xF392, 0x87BCEDF2</td>
+<td>104866 B below the tables</td>
+</tr>
+<tr>
+<td>10 W V219.74 CSV AES 255</td>
+<td>0xC0561974</td>
+<td>0x080E38AC, 0x1278A, 0x5C092FDD</td>
+<td>0x080C0000, 0xF3A6, 0x6A67A328</td>
+<td>83206 B below the tables</td>
+</tr>
+<tr>
+<td>10 W D219.74 REC AES 255</td>
+<td>0xC0441974</td>
+<td>0x080E66B4, 0x127A2, 0x60ACDF51</td>
+<td>0x080C0000, 0xF3AA, 0xD68C85D5</td>
+<td>94986 B below the tables</td>
+</tr>
+<tr>
+<td>10 W P219.74 CSV-GPS AES 255</td>
+<td>0xC0501974</td>
+<td>0x080E5E6C, 0x1282A, 0xE429F823</td>
+<td>0x080C0000, 0xF3BA, 0x84C3921C</td>
+<td>92850 B below the tables</td>
+</tr>
+<tr>
+<td>10 W S219.74 GPS-REC AES 255</td>
+<td>0xC0531974</td>
+<td>0x080E8CB4, 0x12832, 0x64B8EF5C</td>
+<td>0x080C0000, 0xF38E, 0x4703BB9F</td>
+<td>104742 B below the tables</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>The CRCs are CRC-32 (IEEE 802.3) of each part after the rewrites. The descriptor must carry exactly these.</li>
+<li>Every build holds the same codec, bit-identical in behavior to the DM-1701 V02.06's (above).</li>
+<li>Boot check: the descriptor, then the <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> of both parts; otherwise FM only.</li>
+<li>Older releases: the id is the same for every build, but a release accepts only the tags it was built with.
+Releases before the one that added the other builds' maps accept the four 19.26 tags only. A radio whose codec came
+from any other build and is flashed with such a release, keeping the codec, finds no codec and is FM only. Going
+back to it needs the codec merged again from a 19.26 file (<a href="codec-placement.html">codec-placement.md</a>, &quot;One id, many
+builds&quot;).</li>
+<li>Identifying a radio still on <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="../user/22-glossary.html#t-tyt">TYT</abbr> firmware: a program flash readout (rfoundry, <code>codec_extract</code>, the web flasher
+library) hashes the code window with SHA-256 and so knows the build. The application is plain in flash from
+0x0800C000, so a readout equals the decrypted application by address.</li>
+<li>Maps exist for every build in the tables above.</li>
+</ul>
+<h2 id="extraction-recipe">Extraction recipe</h2>
+<ol>
+<li>Check the file's SHA-256 against the table above and the two-segment header (10 W D219.71 REC AES 255 has the application segment only: its file offset is address - 0x0800C000 + 0x100).</li>
+<li>Get the key: derive it from the file (above) or a key file checked by its SHA-256.</li>
+<li>Decrypt the code and table windows (file offset = address - 0x0800C000 + 0x5D500). Check the first word and both
+SHA-256 values.</li>
+<li>Place them as the table in Hosting says. The merge happens on the user's machine, never in a release.</li>
+</ol>
+<h2 id="open-items">Open items</h2>
+<ul>
+<li>19.03 and 19.06 from <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="../user/22-glossary.html#t-tyt">TYT</abbr>, the other 119.xx builds (only V119.33 <abbr class="gl" tabindex="0" title="Comma separated values: a table as plain text, as programming software exports it." data-more="../user/22-glossary.html#t-csv">CSV</abbr> has a file), and REC / GPS-REC builds of Retevis 19.06 and 219.60: named in release
+notes or expected, no file found.</li>
+<li>On a radio: <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> and <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> voice through the codec as placed.</li>
+</ul>
+
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/codec-mduv380.md">View the source of this page</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="On this page">
+		<p class="eyebrow">On this page</p>
+		<ul><li class="l2"><a href="#stock-files">Stock files</a></li><li class="l2"><a href="#container-and-encryption">Container and encryption</a></li><li class="l2"><a href="#codec-in-the-vendor-images">Codec in the vendor images</a></li><li class="l2"><a href="#entry-points-and-calling-convention">Entry points and calling convention</a></li><li class="l3"><a href="#state-sizes">State sizes</a></li><li class="l2"><a href="#checks-measured">Checks (measured)</a></li><li class="l2"><a href="#hosting">Hosting</a></li><li class="l2"><a href="#extraction-recipe">Extraction recipe</a></li><li class="l2"><a href="#open-items">Open items</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Join the RadioFoundry community</strong><span class="small muted">Questions, help with your radio and news, on Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Found a bug? Want your radio supported?</strong><span class="small muted">Open an issue on GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry is MIT licensed · <a href="https://github.com/radiofoundry/radiofoundry">Source Code</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Community</a> · <a href="../../docs/index.html">Docs</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Changelog</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

@@ -1,0 +1,1739 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The MMDVM modem protocol, as a DMR-only radio must speak it · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="The MMDVM modem protocol, as a DMR-only radio must speak it · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/docs/spec/mmdvm-protocol.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/mmdvm-protocol.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/mmdvm-protocol.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/mmdvm-protocol.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/mmdvm-protocol.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/mmdvm-protocol.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../es/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../../es/radios/index.html">Radios</a><a href="../../../es/features/index.html">Funciones</a><a href="../../../es/flash/index.html">Instalar</a><a href="../../../es/codeplug/index.html">Codeplug</a><a href="../../../es/docs/index.html" aria-current="page">Documentación</a><a href="../../../es/screenshots/index.html">Capturas</a><a href="../../../es/tools/index.html">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../../docs/spec/mmdvm-protocol.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/mmdvm-protocol.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/mmdvm-protocol.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/mmdvm-protocol.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Especificaciones">
+		<p class="eyebrow"><a href="../../../es/docs/index.html">Documentación</a> / Especificaciones</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html" aria-current="page">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Esta página aún no está traducida; se muestra en inglés.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="the-mmdvm-modem-protocol-as-a-dmr-only-radio-must-speak-it">The MMDVM modem protocol, as a DMR-only radio must speak it</h1>
+<p>What a radio acting as an <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="mmdvm-protocol.html">MMDVM</abbr> modem (a &quot;<abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr>&quot;) must send and accept so that every host that will talk to it
+works: standard MMDVM hosts (MMDVMHost, Pi-Star, WPSD) and our bench tools
+(<code>tools/bench/</code>). Written from the public protocol and from what those hosts send and expect.
+Section 6 lists our own additions (the <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="sfr.html">SFR</abbr> debug command 0xD5 and the extra status bytes, and the <abbr class="gl" tabindex="0" title="Transmitting on one frequency and receiving on another at the same time. Repeaters do, and so does the duplex hotspot setup." data-more="split-duplex.html">split duplex</abbr> command
+0xD6). Section 7 is the test list for the host tests and <code>tools/mmdvm_probe.py</code>.</p>
+<p>Conventions: byte values are hex. &quot;Frame offset&quot; counts from the 0xE0 start byte (offset 0). &quot;Payload offset&quot; counts
+from the first byte after the command byte (payload offset 0 = frame offset 3). Frequencies are in Hz, little endian.
+&quot;Host&quot; is the PC side, &quot;modem&quot; is the radio.</p>
+<p>Related specs: <code>gotchas.md</code> section 8 (hotspot pitfalls), <code>open-firmware-cps.md</code> section 6 (how the
+programming port switches to hotspot mode), <code>dmr-modem.md</code> (the burst layer under all of this), <code>capabilities.md</code>
+(&quot;Hotspot and repeater&quot;).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1, 2</td>
+<td>Framing, commands and replies</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Handshake and timing</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Client compatibility matrix</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Transport details</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Our extensions</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Conformance checklist and test list</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="1-framing">1. Framing</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start byte</td>
+<td>0xE0. Anything that is not 0xE0 where a frame should start is skipped, one byte at a time, until 0xE0.</td>
+</tr>
+<tr>
+<td>Length</td>
+<td>One byte at frame offset 1: the length of the whole frame, start byte included. The shortest frame is 3 bytes (E0 03 cmd).</td>
+</tr>
+<tr>
+<td>Command</td>
+<td>Frame offset 2.</td>
+</tr>
+<tr>
+<td>Payload</td>
+<td>Frame offset 3 up to the length.</td>
+</tr>
+<tr>
+<td>Long frames</td>
+<td>Length byte 0 means a long frame: the real length is (frame offset 2) + 255, and the command moves to frame offset 3, the payload to offset 4. Total lengths 256 to 510. A DMR-only modem never sends one, but its parser must skip a whole long frame (consume LL + 255 bytes) and stay in sync. A frame of exactly 255 bytes uses the short form (length FF).</td>
+</tr>
+<tr>
+<td>Checksum</td>
+<td>None. No escaping, no byte stuffing. 0xE0 can appear inside a payload; resynchronizing on 0xE0 is only for after a bad length.</td>
+</tr>
+<tr>
+<td>Byte order</td>
+<td>Multi-byte numbers are little endian (frequencies), except the <abbr class="gl" tabindex="0" title="Received signal strength indicator: how strong the received signal is, in dBm." data-more="../user/22-glossary.html#t-rssi">RSSI</abbr> and DEBUG values, which are big endian.</td>
+</tr>
+<tr>
+<td>Transport</td>
+<td>A byte stream: USB CDC ACM (baud rate ignored; hosts open it at 115200 8N1), a <abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="../dev/glossary.html#t-uart">UART</abbr> at 115200 8N1, or <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr> (section 5.3). Frames can be split across USB packets or arrive several to a packet; never assume one frame per packet.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Frames the modem sends must be complete and in order; two frames must never interleave (a status reply written in
+the middle of a <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> frame corrupts both). The host parses one frame at a time and drops nothing it can't parse except
+up to the next 0xE0.</p>
+<h2 id="2-commands-and-replies-for-a-dmr-only-modem">2. Commands and replies for a DMR-only modem</h2>
+<h3 id="21-summary">2.1 Summary</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Cmd</th>
+<th>Name</th>
+<th>Direction</th>
+<th>Reply from the modem</th>
+<th>A standard host needs it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00</td>
+<td>GET_VERSION</td>
+<td>host to modem; modem's reply has the same command</td>
+<td>the version frame</td>
+<td>yes (startup fails without it)</td>
+</tr>
+<tr>
+<td>01</td>
+<td>GET_STATUS</td>
+<td>host to modem; reply same command</td>
+<td>the status frame</td>
+<td>yes (2 s without a reply resets the modem)</td>
+</tr>
+<tr>
+<td>02</td>
+<td>SET_CONFIG</td>
+<td>host to modem</td>
+<td><abbr class="gl" tabindex="0" title="Acknowledgment: the reply that says a message arrived." data-more="../dev/glossary.html#t-ack">ACK</abbr> or NAK</td>
+<td>yes (a NAK at startup can stop the host)</td>
+</tr>
+<tr>
+<td>03</td>
+<td>SET_MODE</td>
+<td>host to modem</td>
+<td>ACK or NAK (a standard host doesn't wait)</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>04</td>
+<td>SET_FREQ</td>
+<td>host to modem</td>
+<td>ACK or NAK</td>
+<td>yes (a NAK at startup can stop the host)</td>
+</tr>
+<tr>
+<td>08</td>
+<td>CAL_DATA</td>
+<td>host to modem (calibration tools)</td>
+<td>NAK (not supported)</td>
+<td>no</td>
+</tr>
+<tr>
+<td>09</td>
+<td>RSSI_DATA</td>
+<td>(calibration)</td>
+<td>NAK</td>
+<td>no</td>
+</tr>
+<tr>
+<td>0A</td>
+<td>SEND_CWID</td>
+<td>host to modem</td>
+<td>ACK when accepted, NAK 5 when not idle</td>
+<td>only with <abbr class="gl" tabindex="0" title="A station&#x27;s callsign sent in Morse code. A standalone SFR repeater channel sends one in FM every few minutes after traffic (Settings &gt; Talk &amp; listen &gt; SFR CW ID)." data-more="../user/14-hotspot.html">CW ID</abbr> enabled</td>
+</tr>
+<tr>
+<td>17</td>
+<td>DMR_ALOHA</td>
+<td>host to modem, trunking only</td>
+<td>NAK 2 or silence</td>
+<td>no</td>
+</tr>
+<tr>
+<td>18</td>
+<td>DMR_DATA1</td>
+<td>both</td>
+<td>none on success, NAK on refusal</td>
+<td>duplex / <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="sfr.html">SFR</abbr> only</td>
+</tr>
+<tr>
+<td>19</td>
+<td>DMR_LOST1</td>
+<td>modem to host</td>
+<td>(none)</td>
+<td>duplex / SFR only</td>
+</tr>
+<tr>
+<td>1A</td>
+<td>DMR_DATA2</td>
+<td>both</td>
+<td>none or ACK on success, NAK on refusal</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>1B</td>
+<td>DMR_LOST2</td>
+<td>modem to host</td>
+<td>(none)</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>1C</td>
+<td>DMR_SHORTLC</td>
+<td>host to modem</td>
+<td>none, or ACK; never NAK in simplex</td>
+<td>sent on every call, simplex too</td>
+</tr>
+<tr>
+<td>1D</td>
+<td>DMR_START</td>
+<td>host to modem, duplex only</td>
+<td>none or ACK</td>
+<td>no (simplex)</td>
+</tr>
+<tr>
+<td>1E</td>
+<td>DMR_ABORT</td>
+<td>host to modem, duplex / SFR</td>
+<td>none or ACK</td>
+<td>no (simplex)</td>
+</tr>
+<tr>
+<td>10-13, 20-21, 30-32, 40-41, 45-49, 50</td>
+<td>other modes' data</td>
+<td>host to modem</td>
+<td>NAK 2 (not enabled)</td>
+<td>no</td>
+</tr>
+<tr>
+<td>60-63</td>
+<td>FM_PARAMS1-4</td>
+<td>host to modem, only if FM is configured</td>
+<td>ACK (ignored)</td>
+<td>only if FM is configured</td>
+</tr>
+<tr>
+<td>70</td>
+<td>ACK</td>
+<td>modem to host</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7F</td>
+<td>NAK</td>
+<td>modem to host</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>80</td>
+<td>SERIAL</td>
+<td>both (passthrough)</td>
+<td>silently dropped</td>
+<td>no</td>
+</tr>
+<tr>
+<td>90</td>
+<td>TRANSPARENT</td>
+<td>both</td>
+<td>silently dropped</td>
+<td>no</td>
+</tr>
+<tr>
+<td>91</td>
+<td>QSO_INFO</td>
+<td>host to modem</td>
+<td>silently dropped, or ACK</td>
+<td>no</td>
+</tr>
+<tr>
+<td>D5</td>
+<td>our SFR debug command</td>
+<td>host to modem</td>
+<td>ACK / NAK 4 (section 6)</td>
+<td>no (ours)</td>
+</tr>
+<tr>
+<td>D6</td>
+<td>our <abbr class="gl" tabindex="0" title="Transmitting on one frequency and receiving on another at the same time. Repeaters do, and so does the duplex hotspot setup." data-more="split-duplex.html">split duplex</abbr> command (CONFIG_HOTSPOT_SPLIT builds only)</td>
+<td>host to modem</td>
+<td>one D6 reply with a result byte (section 6.5)</td>
+<td>no (ours)</td>
+</tr>
+<tr>
+<td>F1-F5, FA</td>
+<td>DEBUG1-5, DEBUG_DUMP</td>
+<td>modem to host</td>
+<td></td>
+<td>no (host logs them)</td>
+</tr>
+<tr>
+<td>anything else</td>
+<td></td>
+<td></td>
+<td>NAK 1</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>&quot;None on success&quot; for DMR_DATA: a modem may stay silent and only NAK a refused frame; a modem may also ACK every
+DMR_DATA2. Every host here accepts both (an ACK of <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> data is ignored;
+the bench tools drop ACKs). Pick one and keep it; ACKing costs 4 bytes per 60 ms.</p>
+<h3 id="22-ack-and-nak">2.2 ACK and NAK</h3>
+<ul>
+<li>ACK: <code>E0 04 70 &lt;cmd&gt;</code>.</li>
+<li>NAK: <code>E0 05 7F &lt;cmd&gt; &lt;reason&gt;</code>.</li>
+</ul>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Reason</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>unknown command</td>
+</tr>
+<tr>
+<td>2</td>
+<td>wrong mode: the mode isn't enabled, or the command doesn't apply now (other digital modes, DMR_DATA1 in plain simplex, SFR not on)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>(unused by the hosts; &quot;too long&quot; in our numbering)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>invalid: bad length, bad value (<abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr> above 15, unknown state, <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> delay out of range), a burst type the radio can't send, a frequency the radio can't tune</td>
+</tr>
+<tr>
+<td>5</td>
+<td>no space (TX buffer full); also SEND_CWID while not idle</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Duplex not supported by this build. <strong>Ours (SFR only): <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> busy</strong>, the inbound call is being repeated (section 6)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Outside startup a NAK is a warning in the host's log; the refused frame is lost
+(no retry).</p>
+<h3 id="23-get_version-00">2.3 GET_VERSION (00)</h3>
+<p>Request: <code>E0 03 00</code>. The reply must be a short frame (at most 255 bytes).</p>
+<p><strong>Protocol 1</strong> (what RadioFoundry sends, see 2.3.1):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Frame offset</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-2</td>
+<td>E0, length, 00</td>
+</tr>
+<tr>
+<td>3</td>
+<td>01 (protocol version)</td>
+</tr>
+<tr>
+<td>4..</td>
+<td>description, <abbr class="gl" tabindex="0" title="The 7-bit character set of plain text." data-more="../dev/glossary.html#t-ascii">ASCII</abbr>, to the end of the frame. No terminating NUL needed. A modem may append a NUL and a hex UDID after the description.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Protocol 1 has no capability bytes, so a host can't tell which modes the modem has.
+It may therefore send SET_CONFIG enable bits and SET_MODE values for modes RadioFoundry doesn't
+have if the user's configuration enables them; the radio must tolerate that (2.5, 2.6).</p>
+<p>Answer version 1 or 2; a host may stop on anything else.</p>
+<h4 id="231-which-version-to-answer">2.3.1 Which version to answer</h4>
+<p>Answer <strong>protocol 1</strong>. Reasons: our bench tools (<code>hotspot_test.py</code>, <code>hs_normal.py</code> and their copies) send only the
+23-byte protocol 1 SET_CONFIG and read the protocol 1 status layout (flags at frame offset 5, slot 2 space at offset
+8); our status extension starts at the protocol 1 offset 13. The
+cost of protocol 1: the host can't learn that the radio is DMR only, so a misconfigured host may try other modes (they
+get NAK 2 / NAK 4).</p>
+<h4 id="232-description-string-rules">2.3.2 Description string rules</h4>
+<ul>
+<li>ASCII, printable, no NUL, at most 120 bytes (keeps the frame short and under two 64-byte USB packets; an
+earlier buffer overflowed with a long build ID plus a suffix, gotchas 8.11).</li>
+<li>SFR capability is announced by the suffix <code> SFR TS&lt;in&gt;&gt;TS&lt;out&gt; &lt;framing&gt;</code> (framing <code>MS</code>, <code>TS</code> or <code>BS</code>), present
+whenever the firmware has SFR, on or not, giving the slots and framing it would use: e.g. <code>... SFR TS1&gt;TS2 TS</code>.</li>
+<li>Split duplex capability is announced by the suffix <code> SPLIT&lt;version&gt;</code> (<code> SPLIT1</code>), present whenever the firmware
+has the extension, role or not (section 6.5).</li>
+</ul>
+<h3 id="24-get_status-01">2.4 GET_STATUS (01)</h3>
+<p>Request: <code>E0 03 01</code>. A standard host sends it every 250 ms, whether or not the last one was answered. The reply must come
+within a few tens of milliseconds even while transmitting (a standard host resets the modem after 2 s without a status reply, 3.4).</p>
+<p><strong>Protocol 1 layout</strong> (send this one):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Frame offset</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-2</td>
+<td>E0, length, 01</td>
+</tr>
+<tr>
+<td>3</td>
+<td>modes enabled: 02 DMR, 20 POCSAG. RadioFoundry sends the modes it was configured with, DMR and POCSAG only.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>modem state: 00 idle, 02 DMR, 06 POCSAG.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>flags: 01 TX, 02 <abbr class="gl" tabindex="0" title="Analog to digital converter." data-more="../dev/glossary.html#t-adc">ADC</abbr> overflow, 04 <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> overflow, 08 TX overflow, 10 lockout, 20 <abbr class="gl" tabindex="0" title="Digital to analog converter." data-more="../dev/glossary.html#t-dac">DAC</abbr> overflow, 40 carrier detect. 80: ours, SFR inbound busy (section 6).</td>
+</tr>
+<tr>
+<td>6</td>
+<td>D-Star space: 00</td>
+</tr>
+<tr>
+<td>7</td>
+<td>DMR slot 1 space</td>
+</tr>
+<tr>
+<td>8</td>
+<td>DMR slot 2 space</td>
+</tr>
+<tr>
+<td>9</td>
+<td>YSF space: 00</td>
+</tr>
+<tr>
+<td>10</td>
+<td>P25 space: 00</td>
+</tr>
+<tr>
+<td>11</td>
+<td>NXDN space: 00</td>
+</tr>
+<tr>
+<td>12</td>
+<td>POCSAG space: 00 or 01, never more (see 2.6)</td>
+</tr>
+<tr>
+<td>13..</td>
+<td>Ours: the SFR debug bytes, only in SFR mode (section 6)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Send 13
+(length 0D) or 14 bytes. The bench tools read offsets 5, 7, 8 and, from 13 on, the SFR debug bytes.</p>
+<p><strong>Flags</strong>:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Bit</th>
+<th>Meaning and what the hosts do with it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01 TX</td>
+<td>The modem is transmitting. Set from the moment it accepts traffic it will key for (buffering included) until its last burst, the terminator, has gone out, and while data is queued or on air; also while sending CW ID (gotchas 3.1, 8.6). Must not drop for a poll mid-call (gotchas 3.1).</td>
+</tr>
+<tr>
+<td>02, 20 overflow</td>
+<td>Report an event once, not as a sticky flag. RadioFoundry's modem passes bursts, not samples, so there is nothing to overflow: always clear.</td>
+</tr>
+<tr>
+<td>04 RX overflow</td>
+<td>Uplink frames were lost because the queue to the host was full since the last status. Event, cleared once reported.</td>
+</tr>
+<tr>
+<td>08 TX overflow</td>
+<td>The TX buffer was full and a frame was refused since the last status. Event.</td>
+</tr>
+<tr>
+<td>10 lockout</td>
+<td><strong>Never set.</strong> A host treats it as locked out.</td>
+</tr>
+<tr>
+<td>40 carrier detect</td>
+<td>Something is on the channel (from the receiver's noise / <abbr class="gl" tabindex="0" title="Received signal strength indicator: how strong the received signal is, in dBm." data-more="../user/22-glossary.html#t-rssi">RSSI</abbr>, so analog and other color codes count too), evaluated only while not transmitting.</td>
+</tr>
+<tr>
+<td>80</td>
+<td>Not defined by <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="mmdvm-protocol.html">MMDVM</abbr>. Ours, SFR mode only (section 6).</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Space</strong> (offsets 7 and 8): the number of further 33-byte DMR bursts the modem will accept for that slot right now
+without a NAK. Unit: one burst, i.e. one DMR_DATA frame, i.e. 60 ms of air time in simplex. One byte, 0-255; never
+negative, never wrapped (a negative count once reported 255, gotchas 8.4).</p>
+<p>How a host uses it: take the value from each status reply, write a
+DMR_DATA frame only while its copy is above 1 (so the last free place is never used), subtract 1 per frame written,
+and overwrite the copy with the next status reply. Consequences for the modem:</p>
+<ul>
+<li>The value must be conservative. Frames written after the GET_STATUS was sent but before the reply was processed
+are still on the way when the host overwrites its copy, so with 250 ms polling the host can overcommit by several
+frames. Report the free count minus a margin of at least 2, or keep that slack in the buffer. A refused frame is
+lost for good (no host retries).</li>
+<li>Only frames that will occupy the buffer count. Frames the modem drops at once (idle bursts) need not consume space.</li>
+<li>Simplex: slot 1's byte may be the constant 10 (0A) or 0; RadioFoundry reports 0.
+Slot 2's byte is the
+real space. A host may still write DMR_DATA1 frames; the modem refuses them
+(NAK 2) or drops them, and never transmits them.</li>
+<li>The initial value sets how much the host sends in one clump at the start of a network call: a host can queue 6 idle
+bursts and 8 voice headers up front, so a space of at least 16 lets a call start without
+waiting for a status round trip.</li>
+<li>In SFR mode both bytes carry the outbound slot's space (section 6).</li>
+<li>With no DMR mode (before SET_CONFIG, or in POCSAG / idle) the value may still be reported; it may be 0 when
+DMR isn't enabled. Hosts only write after SET_MODE DMR.</li>
+</ul>
+<h3 id="25-set_config-02">2.5 SET_CONFIG (02)</h3>
+<p>A standard host sends it once at startup (after SET_FREQ) and again after a modem reset. The modem answers ACK or NAK. <strong>A NAK at startup can stop the host</strong>,
+so NAK only for values that make DMR impossible.</p>
+<p><strong>Protocol 1 payload</strong> (a standard host sends 23 bytes, frame length 1A; RadioFoundry accepts 7 or
+more; the bench tools send 23):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Payload offset</th>
+<th>Content</th>
+<th>DMR-only radio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>flags: 10 debug (the host wants DEBUG frames), 80 simplex</td>
+<td>must honor 80 (simplex / duplex, section 3.6 and SFR); 10 gates DEBUG frames; ignore the other bits</td>
+</tr>
+<tr>
+<td>1</td>
+<td>modes enabled: 02 DMR, 20 POCSAG</td>
+<td>honor 02; ignore the others, never NAK for them</td>
+</tr>
+<tr>
+<td>2</td>
+<td>TX delay, 10 ms units</td>
+<td>Accept 0-255 and clamp; may use it as the key-up lead time</td>
+</tr>
+<tr>
+<td>3</td>
+<td>modem state to enter: 00 idle (a standard host sends 00), 02 DMR (the bench tools send 02), 06 POCSAG</td>
+<td>accept 00, 02, 06; NAK 4 for others</td>
+</tr>
+<tr>
+<td>6</td>
+<td>DMR color code 0-15</td>
+<td>honor; NAK 4 above 15</td>
+</tr>
+<tr>
+<td>4-5, 7-22</td>
+<td>other levels and settings</td>
+<td>ignore</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Protocol 2 payload</strong> (37 bytes, frame length 28): not used by RadioFoundry. Payload byte 25 carries the DMR flags (80 trunking).</p>
+<p>Effects to apply: color code (RX acceptance and TX framing), simplex / duplex, the state byte (as SET_MODE would),
+debug flag. SET_CONFIG must not reset a transmission in progress unless the color code or duplex flag changed. In SFR
+builds, re-evaluate the SFR trigger after it (section 6).</p>
+<h3 id="26-set_mode-03">2.6 SET_MODE (03)</h3>
+<p>Payload: 1 byte, the state. <code>E0 04 03 &lt;state&gt;</code>. A standard host doesn't wait for the reply.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>State</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00 idle</td>
+<td>Stop accepting new traffic for TX; a transmission in progress ends cleanly (terminator) within a superframe; the TX queue is cleared; TX flag clears once off air. The receiver keeps running and what it hears goes up; a host switches to DMR mode on the first frame. CW ID is accepted only in idle.</td>
+</tr>
+<tr>
+<td>02 DMR</td>
+<td>Normal <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> operation. <strong>Must be ACKed even before any SET_CONFIG.</strong></td>
+</tr>
+<tr>
+<td>06 POCSAG</td>
+<td>ACK and keep receiving DMR but don't pass it up; never transmit pages. Pi-Star enables POCSAG by default; a host can switch to POCSAG mode when a page arrives. Report POCSAG space 00 or 01 so the host never writes page data (it writes only while above 1).</td>
+</tr>
+<tr>
+<td>same as now</td>
+<td>ACK, no change.</td>
+</tr>
+<tr>
+<td>01, 03, 04, 05, 07, 0A and others</td>
+<td>NAK 4.</td>
+</tr>
+</tbody>
+</table></div>
+<p>A standard host sends SET_MODE idle at startup and when its mode hang expires, and SET_MODE DMR after the first RF frame in idle.</p>
+<h3 id="27-set_freq-04">2.7 SET_FREQ (04)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Payload offset</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>00 (reserved)</td>
+</tr>
+<tr>
+<td>1-4</td>
+<td>RX frequency, Hz, little endian</td>
+</tr>
+<tr>
+<td>5-8</td>
+<td>TX frequency, Hz, little endian</td>
+</tr>
+<tr>
+<td>9</td>
+<td>RF level 0-255 (100 % = FF)</td>
+</tr>
+<tr>
+<td>10-13</td>
+<td>POCSAG TX frequency, Hz, little endian (hosts send a filler or the TX frequency when POCSAG is off)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Lengths: hosts normally send 14 payload bytes (frame length 11 hex). Accept 9 (no
+RF level: full power), 10 (with RF level) and 14. Protocol 1 and 2 use the same layout.</p>
+<p>Rules:</p>
+<ul>
+<li>RX = TX is the normal simplex hotspot. RX ≠ TX in simplex is allowed (split simplex); tune both.</li>
+<li>Validate against the radio's hardware range only. Do not restrict to amateur bands: the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench runs business-band
+channels (461-467 MHz), and a band check that refused them had to go (gotchas 8.7). A NAK at
+startup can stop the host, which is the right outcome for a frequency the radio can't tune. Ignore the POCSAG
+frequency unless POCSAG TX is implemented (never NAK because of it).</li>
+<li>RF level: map 0-255 onto the radio's power steps; FF (the user never touched it) keeps the radio's own power setting.
+RadioFoundry retunes at once.</li>
+<li>SET_FREQ resets the hotspot's call state (gotchas 8.6): anything buffered for TX is dropped and the RF uplink call
+is closed. If an uplink call was open, send DMR_LOST2 before the ACK (a host may otherwise keep such a call open,
+3.7). After the ACK, every frame sent up must have been heard on the new frequency.</li>
+<li>In SFR builds, re-evaluate the SFR trigger after it (section 6).</li>
+</ul>
+<h3 id="28-dmr_data1--dmr_data2-18--1a">2.8 DMR_DATA1 / DMR_DATA2 (18 / 1A)</h3>
+<p>One DMR burst. Frame: <code>E0 25 1A &lt;control&gt; &lt;33 bytes&gt;</code> (length 37) for slot 2, 18 for slot 1. From the modem it may
+carry 2 more bytes of RSSI: length 27 (39).</p>
+<p>The 33 bytes are the whole 264-bit burst, first bit in the top bit of byte 0: 108 bits of payload, the 48-bit
+sync / <abbr class="gl" tabindex="0" title="Embedded signaling: the 32 bits in the middle of a voice burst that carry link control." data-more="../dev/glossary.html#t-emb">EMB</abbr> / embedded-signaling field (bits 108-155: low nibble of byte 13, bytes 14-18, high nibble of byte 19),
+108 bits of payload. For data-sync bursts the slot type (Golay(20,8), systematic) occupies the 10 bits on each side
+of the sync: color code in bits 98-101 (frame byte 12, mask 3C), data type in bits 102-105 (byte 12 mask 03, then
+byte 13 mask C0). Sync words (<abbr class="gl" tabindex="0" title="European Telecommunications Standards Institute, which publishes the DMR standard." data-more="../dev/glossary.html#t-etsi">ETSI</abbr> <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">TS</abbr> 102 361-1 table 9.2), 48 bits:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Voice</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BS (repeater)</td>
+<td>755FD7DF75F7</td>
+<td>DFF57D75DF5D</td>
+</tr>
+<tr>
+<td>MS (mobile)</td>
+<td>7F7D5DD57DFD</td>
+<td>D5D7F77FD757</td>
+</tr>
+<tr>
+<td>Direct mode TS1</td>
+<td>5D577F7757FF</td>
+<td>F7FDD5DDFD55</td>
+</tr>
+<tr>
+<td>Direct mode TS2</td>
+<td>7DFFD5F55D5F</td>
+<td>D7557F5FF7F5</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Control byte</strong> (frame offset 3):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>40 + data type</td>
+<td>a data-sync burst; low nibble = data type: 40 <abbr class="gl" tabindex="0" title="A DMR header that announces encryption with a changing key. RadioFoundry never plays such calls." data-more="../user/22-glossary.html#t-pi-header">PI header</abbr>, 41 voice <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr> header, 42 terminator with LC, 43 <abbr class="gl" tabindex="0" title="Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control." data-more="dmr-data.html">CSBK</abbr>, 44 <abbr class="gl" tabindex="0" title="Multi block control: a DMR signaling message that spans several bursts." data-more="../dev/glossary.html#t-mbc">MBC</abbr> header, 45 MBC continuation, 46 data header, 47 rate 1/2 data, 48 rate 3/4 data, 49 idle, 4A rate 1 data</td>
+</tr>
+<tr>
+<td>20</td>
+<td>voice burst A (voice sync)</td>
+</tr>
+<tr>
+<td>01-05</td>
+<td>voice bursts B-F (embedded signaling), the number is the position in the superframe</td>
+</tr>
+<tr>
+<td>00</td>
+<td>(host to modem) nothing said: classify from the burst</td>
+</tr>
+<tr>
+<td>80 + ...</td>
+<td>(duplex modem to host) what the idle receiver heard while the transmitter was off; a simplex radio never sends it</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Host to modem</strong>:</p>
+<ul>
+<li>A host may write control byte <strong>00 on every frame</strong>: header, voice, terminator, idle, data alike. The modem must
+classify each burst from its own content: the sync word (any of the eight above; a simplex host uses <abbr class="gl" tabindex="0" title="Mobile station: the radio, as opposed to the base station (BS)." data-more="../dev/glossary.html#t-ms">MS</abbr> sync on
+traffic and may use <abbr class="gl" tabindex="0" title="Base station: the repeater or modem side of a DMR link, as opposed to the radio (MS)." data-more="../dev/glossary.html#t-bs">BS</abbr> data sync on idle bursts), then for data sync the slot
+type's data type. Voice B-F carry an EMB instead of a sync: their position follows from the count since the last
+voice A and is confirmed by the
+EMB's <abbr class="gl" tabindex="0" title="Link control start/stop: the 2-bit field of a burst&#x27;s embedded signaling that says which fragment it carries." data-more="../dev/glossary.html#t-lcss">LCSS</abbr> (B first fragment, C and D continuation, E last, F single / reverse channel). Classifying from the
+control byte sent data as voice, ignored terminators and NAKed the idle bursts before each call (gotchas 8.2).
+When the control byte is non-zero it may be trusted,
+but classification from the burst must give the same answer.</li>
+<li>A network voice call in simplex can arrive as 6 idle bursts,
+8 voice LC headers, the voice superframes (A-F, silence bursts where the
+network lost frames), 3 terminators. A late-entry network call (no header) starts with the idle bursts and 8
+headers it builds itself. A PI header, if the network carries one, follows the headers. Data: 2 idle bursts, the
+data header, the blocks; CSBKs with up to 15 preamble CSBKs before them. A simplex host sends 8 headers and 3
+terminators.</li>
+<li>Idle bursts: accept (no NAK) and drop; the radio makes its own fill.</li>
+<li>PI headers: a radio that transmits privacy calls passes them on; one that doesn't accepts and drops them.</li>
+<li>Voice LC header: starts (or keys up) a call. Repeated headers with the same LC are the same call. A header with a
+different LC while the previous call is still going out is the next call: hold its frames behind the current call,
+end the current call with its terminator, then key again with the new headers (gotchas 8.3). A different header
+while still buffering (nothing on air yet) replaces the LC.</li>
+<li>Terminator: ends the call now; send what is buffered, then the radio's own terminator; no network timeout, no
+extra delay (gotchas 8.1). Further terminators of the same call are accepted and dropped.</li>
+<li>Start of transmission: start as soon as a few bursts are buffered (more than 4, or the terminator of a short call), never pad the start with silence superframes (gotchas 1.1). If nothing arrives for
+about 360 ms while buffering, give up and return to receive.</li>
+<li>Lone CSBKs and data: key, send, unkey.</li>
+<li>Length must be exactly 37 (34 payload bytes); NAK 4 otherwise.</li>
+<li>Full buffer: NAK 5 and drop the frame; never overwrite unsent frames (gotchas 8.4).</li>
+<li>Wrong mode: NAK 2 (state not idle / DMR, or DMR_DATA1 in plain simplex). A frame in idle state switches the modem to
+DMR.</li>
+</ul>
+<p><strong>Modem to host</strong> (what was heard on air), plain simplex:</p>
+<ul>
+<li>Every burst goes up as <strong>DMR_DATA2</strong>, whatever slot or sync the sender used.
+SFR mode uses the inbound slot's command (section 6).</li>
+<li>Control byte as in the table: 41 for each voice header heard, 20 for voice A, 01-05 for B-F, 42 for the
+terminator, 40 + type for PI headers, CSBK, data headers and blocks. A frame whose control byte is
+exactly 42 ends the call.</li>
+<li>The 33 bytes must be a well-formed burst: the full LC of headers and terminators must decode (<abbr class="gl" tabindex="0" title="Block product turbo code: the error correction on DMR headers and control blocks." data-more="../dev/glossary.html#t-bptc">BPTC</abbr>(196,96)
+and RS(12,9) with the header / terminator masks),
+the EMB must carry the configured color code, and B-E carry the embedded LC, <abbr class="gl" tabindex="0" title="A short text, usually a callsign and name, sent along with DMR voice." data-more="../user/22-glossary.html#t-talker-alias">talker alias</abbr>
+and GPS. Send the embedded signaling for B-E made from the call's LC, or as received if it decoded.</li>
+<li>Sequence: after voice A (20), B-F must follow as 01, 02, 03, 04, 05 in order. A repeated number loses that burst; a skipped
+number loses the rest of that superframe up to the next voice A. Fill a missed burst with a silence burst at
+its position rather than skip it (gotchas 8.5).</li>
+<li>Headers: send every header heard (a sender may send up to 8; repeats are ignored once the call is
+open). Late entry (voice heard without a header): a host can start a call itself from the embedded
+LC of B-E once it has seen a voice A. RadioFoundry sends, once the embedded LC is known, a voice LC header made
+from it, then the superframe so far as silence from A so the sequence restarts cleanly.</li>
+<li>One terminator per call (repeated terminators heard on air are the same call). Then nothing until the next call.</li>
+<li>RSSI: 2 bytes after the burst, big endian, raw. A host maps raw to dBm with a table or formula. Send 00 and the <abbr class="gl" tabindex="0" title="The RF transceiver chip that sets the frequency, deviation and power of many handheld DMR radios. Programmed over I2C." data-more="../dev/glossary.html#t-at1846s">AT1846S</abbr> RSSI register (0x1B) high
+byte on AT1846S radios; on other RF chips, document the scale.</li>
+</ul>
+<h3 id="29-dmr_lost1--dmr_lost2-19--1b">2.9 DMR_LOST1 / DMR_LOST2 (19 / 1B)</h3>
+<p><code>E0 03 1B</code> (slot 2; 19 for slot 1). Sent when a call heard on air stops without a terminator. A standard host has <strong>no</strong> short
+watchdog for RF calls: without DMR_LOST it keeps the call open. Timing: about 500 ms after the last burst of the call (RadioFoundry: 500 ms simplex,
+300 ms in SFR mode). Never
+send it during a long header run (8 headers take 480 ms: time the gap from the last burst of any kind) and never
+mid-call because of one missed burst (one header followed by a 300 ms timer produced DMR_LOST mid-call and split calls
+in two, gotchas 8.5).</p>
+<h3 id="210-dmr_shortlc-1c-dmr_start-1d-dmr_abort-1e-dmr_aloha-17">2.10 DMR_SHORTLC (1C), DMR_START (1D), DMR_ABORT (1E), DMR_ALOHA (17)</h3>
+<ul>
+<li>DMR_SHORTLC: <code>E0 0C 1C &lt;9 bytes&gt;</code>, the <abbr class="gl" tabindex="0" title="Common announcement channel: 24 bits ahead of each burst a repeater sends. It carries the slot number and short link control." data-more="../dev/glossary.html#t-cach">CACH</abbr> short LC (activity per slot), encoded and interleaved. <strong>A standard host sends
+it in simplex too</strong>, around every call. A direct-mode radio has no CACH:
+accept and ignore it, with no NAK (a NAK puts a warning in the host's log per call).</li>
+<li>DMR_START: <code>E0 04 1D 01</code> (key) / <code>E0 04 1D 00</code> (unkey). Duplex only. Ignore it
+(ACK or silence).</li>
+<li>DMR_ABORT: <code>E0 04 1E &lt;slot&gt;</code> (01 or 02). Duplex only for a standard host.
+In SFR mode: drop what is queued for TX. ACK or silence. Never NAK.</li>
+<li>DMR_ALOHA: trunking only; NAK 2 or ignore.</li>
+</ul>
+<h3 id="211-send_cwid-0a">2.11 SEND_CWID (0A)</h3>
+<p><code>E0 &lt;len&gt; 0A &lt;ASCII callsign&gt;</code>; a host may send up to 200 characters. Accepted only
+in idle state (hosts put the modem in idle first and wait for TX to clear): ACK, then key FM
+and send the Morse; TX flag set until done. In any other state NAK 5.
+After CW, restore the DMR setup fully (gotchas 8.13: the <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> tone configuration must be
+restored or DMR fails until a power cycle).</p>
+<p>Ours: the hotspot's <code>cw_id</code> op (<code>core/radio/radio_hotspot.c</code>) hands the callsign (up to 40 characters) to the radio
+task, which keys it on boards whose <code>hal_radio_t</code> has <code>tx_tone</code> (<code>tx_tone_key</code> switches
+the tone without retuning): the DMR keying released, <code>set_mode(FM)</code>, a carrier on the hotspot's TX frequency, 150 ms
+lead, the Morse (<code>core/radio/morse.c</code>: PARIS timing, dot = 1200 / wpm ms, <code>settings_t</code> <code>cw_wpm</code>, default 20 wpm,
+tone <code>cw_tone_hz</code>, default 800 Hz), 150 ms tail, then <code>set_mode(DMR)</code> (the modem set up again, 8.13), the receiver
+back on the hotspot's RX frequency and the DMR keying armed. The TX flag stays set meanwhile (<code>cw_busy</code>). Leaving
+hotspot mode or SET_FREQ cuts the ID. Boards without <code>tx_tone</code> ACK and count it (<code>hs.cwid_unsent</code>, nothing keyed).
+<abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">Debug link</abbr>: <code>hs.cw_*</code> in the <code>dmr_ext</code> view section.</p>
+<h3 id="212-serial-80-transparent-90-qso_info-91">2.12 SERIAL (80), TRANSPARENT (90), QSO_INFO (91)</h3>
+<ul>
+<li>SERIAL: passthrough for a display attached to the modem; it may arrive
+at any time. Drop silently (no NAK: it would flood the log). Never send it up.</li>
+<li>TRANSPARENT: drop silently.</li>
+<li>QSO_INFO: drop silently or ACK; never NAK.</li>
+</ul>
+<h3 id="213-debug1-5-f1-f5-and-debug_dump-fa-modem-to-host">2.13 DEBUG1-5 (F1-F5) and DEBUG_DUMP (FA), modem to host</h3>
+<p>Debug text from the modem to the host. Send them only
+when SET_CONFIG's debug flag (10) is set, never before the host has had its GET_VERSION reply (3.1), and never in a
+burst (each costs host log I/O and serial time). Optional; not needed by any host.</p>
+<h3 id="214-fm-parameters-60-63-and-other-modes">2.14 FM parameters (60-63) and other modes</h3>
+<p>Hosts only send FM_PARAMS1-4 when FM is configured. The
+ACK and ignore them even without FM, so a misconfigured host still starts.
+D-Star, YSF, P25, NXDN, M17 and POCSAG data: NAK 2.</p>
+<h2 id="3-handshake-and-timing">3. Handshake and timing</h2>
+<h3 id="31-standard-host-startup">3.1 Standard host startup</h3>
+<ol>
+<li>Opens the port (serial at the configured speed, 115200 usually; or <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr>).</li>
+<li>Waits <strong>2 s</strong>.</li>
+<li>Sends GET_VERSION, and repeats it about every 1.8 s while no version reply arrives, <strong>6 attempts</strong> in all (about 11 s), then
+gives up and stops. Frames the modem sends before the
+version reply get in its way: <strong>the modem must not send unsolicited frames (<abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> uplink, DEBUG) until
+it has been addressed</strong> (send nothing up until the host has sent any command).</li>
+<li>Sends <strong>SET_FREQ</strong> and waits for <abbr class="gl" tabindex="0" title="Acknowledgment: the reply that says a message arrived." data-more="../dev/glossary.html#t-ack">ACK</abbr> / NAK.</li>
+<li>Sends <strong>SET_CONFIG</strong> and waits for ACK / NAK.</li>
+<li>(FM only) FM_PARAMS1-4.</li>
+<li>Sends SET_MODE idle and starts polling GET_STATUS every 250 ms.</li>
+</ol>
+<p>Commands follow each other about 10 ms apart at the modem port, so ACK quickly (within 10 ms is ideal), and in any case before any other frame.</p>
+<p>In <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> mode's trial the radio answers the first host-like frame but takes the modem only with the second
+(<a href="open-firmware-cps.html#6-hotspot-mode-switch-0xe0">open-firmware-cps.md 6</a>, trial). Both startups above pass.</p>
+<p>The order is SET_FREQ before SET_CONFIG. The bench tools also send SET_FREQ,
+SET_CONFIG, SET_MODE in that order, and skip GET_VERSION entirely. The modem must accept these commands in any order, repeated, at any time.</p>
+<h3 id="32-tuning-while-running">3.2 Tuning while running</h3>
+<p>SET_FREQ, SET_CONFIG and SET_MODE can arrive repeated, at any time and in any order; accept them all (test C-17).
+SET_FREQ closes an open uplink call with DMR_LOST2 before its ACK, and after the ACK every frame sent up must have
+been heard on the new frequency (2.7). SET_CONFIG must not reset a transmission in progress unless the <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr> or
+duplex flag changed (2.5).</p>
+<h3 id="33-bench-tools">3.3 Bench tools</h3>
+<p><code>hotspot_test.py</code> and <code>hs_normal.py</code> (and their copy <code>mmdvm_hotspot.py</code> in this repo): no
+GET_VERSION; SET_FREQ, SET_CONFIG (protocol 1, 23 bytes), SET_MODE DMR, 150 ms apart, replies not waited on; then
+GET_STATUS every 250 ms. Over UDP they treat each datagram as one frame (command at datagram byte 2): the modem must
+send exactly one frame per datagram (5.3). <code>hs_normal.py</code> paces network calls by the reported space (space above 1, minus one
+per frame).</p>
+<h3 id="34-what-makes-a-standard-host-declare-the-modem-dead">3.4 What makes a standard host declare the modem dead</h3>
+<ul>
+<li>Startup: no version reply in 6 attempts: the host exits. A NAK to SET_FREQ or SET_CONFIG can stop it too.</li>
+<li>Running: <strong>2 s without a GET_STATUS reply</strong>: it resets the modem and runs the whole startup (3.1) again. Answer every
+GET_STATUS, even during DMR traffic.</li>
+</ul>
+<p>A modem that reboots (watchdog) while the host is running must answer the host's next GET_VERSION as at power on.</p>
+<h3 id="35-playout-and-pacing-network-to-air">3.5 Playout and pacing (network to air)</h3>
+<p>A host writes DMR frames only while its space copy
+is above 1 (2.4). A call therefore arrives as a clump (idle bursts +
+headers, as far as space allows) and then at the network rate, about one frame per 60 ms, with jitter.</p>
+<h3 id="36-simplex-duplex0-dmr-behavior">3.6 Simplex (Duplex=0) DMR behavior</h3>
+<ul>
+<li>One <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr> on air. The host uses DMR_DATA2 / DMR_LOST2 only (slot 1 space is the constant 10).</li>
+<li><abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr>: MS-sourced framing on air regardless of the sync in the host's frames (a host may put <abbr class="gl" tabindex="0" title="Mobile station: the radio, as opposed to the base station (BS)." data-more="../dev/glossary.html#t-ms">MS</abbr> sync on simplex
+traffic). The radio builds its own slot type,
+<abbr class="gl" tabindex="0" title="Embedded signaling: the 32 bits in the middle of a voice burst that carry link control." data-more="../dev/glossary.html#t-emb">EMB</abbr> and sync with the configured color code.</li>
+<li>The radio can't <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> while it transmits; <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> heard right after a transmission goes up normally.</li>
+<li>No DMR_START, no DMR_ABORT, short <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr> ignored, no <abbr class="gl" tabindex="0" title="Common announcement channel: 24 bits ahead of each burst a repeater sends. It carries the slot number and short link control." data-more="../dev/glossary.html#t-cach">CACH</abbr>.</li>
+<li>After the host's terminator, the TX flag stays set until the radio's own terminator is on air (about 0.7 s after
+the host's terminator, measured, gotchas 8.6), then clears.</li>
+<li>SET_CONFIG with the simplex flag clear and RX ≠ TX: a standard host then expects a duplex repeater (both slots, DMR_START,
+<abbr class="gl" tabindex="0" title="Base station: the repeater or modem side of a DMR link, as opposed to the radio (MS)." data-more="../dev/glossary.html#t-bs">BS</abbr> framing). RadioFoundry runs as a plain simplex hotspot in that case; with RX = TX it turns <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="sfr.html">SFR</abbr> on
+(section 6).</li>
+</ul>
+<h3 id="37-calls-and-space-around-back-to-back-traffic">3.7 Calls and &quot;space&quot; around back-to-back traffic</h3>
+<ul>
+<li>Back-to-back network calls: a host may deliver call 2's idle bursts and headers while call 1 is still in the
+modem's buffer. Call 1 must end with its terminator before call 2 keys up under its own header (gotchas 8.3);
+frames held for call 2 count against the space so the host doesn't overrun.</li>
+<li>Space must stay consistent: buffer occupied + held frames + free = capacity; report the smaller of voice buffer and
+data list space when they're separate (gotchas 8.6).</li>
+<li>RX and TX buffers are separate; RF frames don't survive into a later transmission and are cleared at a direction
+change (gotchas 8.8).</li>
+<li>Uplink (RF to host) frames go into a lock-free queue from the interrupt; a full queue drops and counts (RX overflow
+flag), never overwrites (gotchas 8.4).</li>
+<li>A DMR_LOST or terminator must close every uplink call before the next one's first frame; a host has no short RF
+watchdog (2.9).</li>
+</ul>
+<h2 id="4-client-compatibility-matrix">4. Client compatibility matrix</h2>
+<p>Columns: <strong>Standard host</strong> (Linux / Pi-Star / WPSD class hosts) and <strong>bench</strong> (our <code>hotspot_test.py</code>, <code>hs_normal.py</code>,
+<code>run_sfr_call.sh</code> and copies).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Point</th>
+<th>Standard host</th>
+<th>bench</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>Protocol version</td>
+<td>1 or 2</td>
+<td><strong>1 only</strong> (config and status offsets hard-coded)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>GET_VERSION timing</td>
+<td>2 s after open, 6 tries, ~300 ms window each</td>
+<td>never sent</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Status poll</td>
+<td>250 ms</td>
+<td>250 ms</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Dead modem</td>
+<td>2 s without status reply → reset and full re-handshake</td>
+<td>none</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Status layout read</td>
+<td>v1: up to offset 12</td>
+<td>5, 7, 8; 13.. <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="sfr.html">SFR</abbr> debug</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Command order</td>
+<td>GET_VERSION, SET_FREQ, SET_CONFIG, (status) SET_MODE</td>
+<td>SET_FREQ, SET_CONFIG, SET_MODE</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Waits for <abbr class="gl" tabindex="0" title="Acknowledgment: the reply that says a message arrived." data-more="../dev/glossary.html#t-ack">ACK</abbr> of</td>
+<td>SET_FREQ, SET_CONFIG, FM params (see 3.1)</td>
+<td>nothing</td>
+</tr>
+<tr>
+<td>9</td>
+<td>SET_CONFIG length</td>
+<td>23 payload (v1)</td>
+<td>23</td>
+</tr>
+<tr>
+<td>10</td>
+<td>SET_CONFIG state byte</td>
+<td>00</td>
+<td>02</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Simplex flag</td>
+<td>set (Duplex=0)</td>
+<td>set (<code>--simplex</code>) or clear + <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> = <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> (SFR)</td>
+</tr>
+<tr>
+<td>12</td>
+<td>SET_FREQ</td>
+<td>14 bytes, POCSAG 433 MHz filler</td>
+<td>14 bytes, 463.2500 MHz</td>
+</tr>
+<tr>
+<td>13</td>
+<td>DMR_DATA control byte to modem</td>
+<td><strong>always 00</strong></td>
+<td>00 or set</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Headers / terminators to modem</td>
+<td>8 / 3 (simplex), 6 idle bursts first</td>
+<td>6 idle, 8 headers, 3 terminators, 2 idle</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Space use</td>
+<td>write while &gt; 1, −1 per frame</td>
+<td>same (<code>take_space</code>)</td>
+</tr>
+<tr>
+<td>16</td>
+<td>ACK of <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> data</td>
+<td>ignored</td>
+<td>ignored</td>
+</tr>
+<tr>
+<td>17</td>
+<td>NAK of DMR data</td>
+<td>logged, frame lost</td>
+<td>fails on any NAK</td>
+</tr>
+<tr>
+<td>18</td>
+<td>DMR_SHORTLC</td>
+<td>sent every call, simplex too</td>
+<td>never</td>
+</tr>
+<tr>
+<td>19</td>
+<td>DMR_START / DMR_ABORT</td>
+<td>duplex only</td>
+<td>never</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Uplink slot</td>
+<td>DMR_DATA2 in simplex</td>
+<td>DATA2; SFR log: DATA1/2</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Uplink control byte</td>
+<td>41 / 20 / 01-05 / 42 / 4x; 42 = end of call</td>
+<td>sequence check</td>
+</tr>
+<tr>
+<td>22</td>
+<td><abbr class="gl" tabindex="0" title="Received signal strength indicator: how strong the received signal is, in dBm." data-more="../user/22-glossary.html#t-rssi">RSSI</abbr> after burst</td>
+<td>optional; user RSSI table</td>
+<td>printed</td>
+</tr>
+<tr>
+<td>23</td>
+<td>DMR_LOST</td>
+<td>required (no <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> watchdog)</td>
+<td>0.4-0.8 s after last burst</td>
+</tr>
+<tr>
+<td>24</td>
+<td>TX flag</td>
+<td>gates <abbr class="gl" tabindex="0" title="A station&#x27;s callsign sent in Morse code. A standalone SFR repeater channel sends one in FM every few minutes after traffic (Settings &gt; Talk &amp; listen &gt; SFR CW ID)." data-more="../user/14-hotspot.html">CW ID</abbr> and beacons</td>
+<td><code>transmitting()</code></td>
+</tr>
+<tr>
+<td>25</td>
+<td>Carrier detect 40</td>
+<td>stored</td>
+<td>ignored</td>
+</tr>
+<tr>
+<td>26</td>
+<td>SEND_CWID</td>
+<td>only from idle, not waited on</td>
+<td>never</td>
+</tr>
+<tr>
+<td>28</td>
+<td>POCSAG</td>
+<td>SET_MODE 06 when pages arrive (if enabled)</td>
+<td>never</td>
+</tr>
+<tr>
+<td>29</td>
+<td>Transport</td>
+<td>serial or <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr> (<code>Protocol=udp</code>, ModemAddress / ModemPort 3334, LocalPort 3335)</td>
+<td><strong>UDP 12.47.82.93:3334 from 12.47.82.92:3335</strong>, one frame per datagram (copies: serial or UDP)</td>
+</tr>
+<tr>
+<td>30</td>
+<td>DTR</td>
+<td>Windows: <strong>clears DTR</strong>; Linux / macOS: raised by the OS on open</td>
+<td>n/a (UDP)</td>
+</tr>
+<tr>
+<td>31</td>
+<td>0xD5 / extra status bytes</td>
+<td>never sent / ignored</td>
+<td><code>--debug</code> sends 0xD5; parses 13..</td>
+</tr>
+<tr>
+<td>31a</td>
+<td>0xD6 / <code> SPLIT1</code></td>
+<td>never sent / suffix ignored</td>
+<td>not used (a <abbr class="gl" tabindex="0" title="Transmitting on one frequency and receiving on another at the same time. Repeaters do, and so does the duplex hotspot setup." data-more="split-duplex.html">split duplex</abbr> host: <code>tools/split_duplex_host.py</code>)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="5-transport-details">5. Transport details</h2>
+<h3 id="51-usb-cdc-acm">5.1 USB CDC ACM</h3>
+<ul>
+<li>Don't gate anything on DTR / RTS / line coding: a host on Windows may open the port with DTR cleared, and many USB
+stacks' &quot;connected&quot; test is DTR. Check that the USB stack doesn't discard or block <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> data while DTR is clear (test
+7, T-USB-2).</li>
+<li>Replies whose length is a multiple of 64 must be ended with a zero-length packet so the host sees them at once.</li>
+<li>Linux ModemManager probes new ACM ports with <abbr class="gl" tabindex="0" title="Access type: the TACT bit that tells a radio whether the slot is free to transmit in." data-more="../dev/glossary.html#t-at">AT</abbr> commands: the parser must skip those bytes (they aren't 0xE0) and
+answer the next real frame.</li>
+<li>The port may be shared with the programming protocol: the first byte 0xE0 selects <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="mmdvm-protocol.html">MMDVM</abbr> (<code>open-firmware-cps.md</code>
+section 6). Once in <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> mode, programming commands aren't answered.</li>
+</ul>
+<h3 id="52-uart">5.2 UART</h3>
+<p>115200 8N1 (the programming cable's <abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="../dev/glossary.html#t-uart">UART</abbr> on a board without USB). A 39-byte frame takes about 3.4 ms; status replies and uplink frames at 60 ms
+intervals fit easily. Write from task context, not from an interrupt handler (gotchas 8.10). Stream parsing with
+0xE0 resync as in section 1.</p>
+<h3 id="53-udp-protocoludp">5.3 UDP (<code>Protocol=udp</code>)</h3>
+<ul>
+<li>The modem listens on <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr> port 3334 at its own address. The host sends from its LocalPort (configured in the host).</li>
+<li>Replies go from the modem's address, <strong>source port 3334</strong>, to the address and port the host's last datagram came
+from. Hosts drop datagrams that don't come from exactly ModemAddress:ModemPort.</li>
+<li>One MMDVM frame per datagram in both directions (the bench tools need
+each reply in its own datagram). Still parse incoming datagrams as a stream.</li>
+<li>One host at a time (the last sender wins).</li>
+<li>RadioFoundry offers this over its USB network adapter (<abbr class="gl" tabindex="0" title="Network control model: the USB class that makes the radio appear as a network adapter." data-more="../dev/glossary.html#t-ncm">CDC-NCM</abbr>, the radio's IP derived from the user's <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr>; on
+the bench 12.47.82.93 with the Mac at 12.47.82.92). Gotchas 9.1-9.8 cover the network side.</li>
+</ul>
+<h3 id="54-rssi-scale">5.4 RSSI scale</h3>
+<p>The raw value is the 16-bit big-endian number after the burst; RadioFoundry puts 00 in the
+high byte and the <abbr class="gl" tabindex="0" title="The RF transceiver chip that sets the frequency, deviation and power of many handheld DMR radios. Programmed over I2C." data-more="../dev/glossary.html#t-at1846s">AT1846S</abbr> register 0x1B high byte in the low byte. On the radio's raw scale, dBm = raw − 151 at
+300 MHz and above; dBm = −164 + raw × 32 / 27 below.</p>
+<h2 id="6-our-extensions-not-part-of-mmdvm">6. Our extensions (not part of MMDVM)</h2>
+<p>Both exist only for our single frequency repeater (<abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="sfr.html">SFR</abbr>) in <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> mode and for its on-air debugging. A standard host
+can't trigger either: SFR turns on only when SET_CONFIG has the simplex flag <strong>clear</strong> and SET_FREQ has <strong><abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> = <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr></strong>
+(both non-zero), evaluated after each of those commands in either order (gotchas 8.12). A host with <code>Duplex=0</code>, and
+Pi-Star, never get there.</p>
+<h3 id="61-detecting-them">6.1 Detecting them</h3>
+<ul>
+<li>The GET_VERSION description's <code> SFR TS&lt;in&gt;&gt;TS&lt;out&gt; &lt;framing&gt;</code> suffix (2.3.2) says the firmware has SFR and with
+which slots and framing. It appears whether SFR is on or not.</li>
+<li>Sending 0xD5 to a modem without it gets <abbr class="gl" tabindex="0" title="Acknowledgment: the reply that says a message arrived." data-more="../dev/glossary.html#t-ack">NAK</abbr> 1 (unknown command) from any firmware without SFR;
+ours answers ACK (or NAK 4 if too short). Send it only to a modem whose description announces SFR.</li>
+<li>The extra status bytes appear only while SFR is on: a status reply longer than 13 bytes from a radio announcing
+SFR. A client must not assume them from the length alone (a 14-byte status is not ours).</li>
+</ul>
+<h3 id="62-sfr-mode-behavior-seen-by-the-host">6.2 SFR mode behavior seen by the host</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Uplink</td>
+<td>What radios send on the inbound slot, burst by burst, never the radio's own repeat: DMR_DATA1 / DMR_LOST1 when the inbound slot is <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">TS1</abbr>, DMR_DATA2 / DMR_LOST2 for TS2. Every header, voice burst A-F, terminator, <abbr class="gl" tabindex="0" title="Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control." data-more="dmr-data.html">CSBK</abbr>, data header and block, control byte and <abbr class="gl" tabindex="0" title="Received signal strength indicator: how strong the received signal is, in dBm." data-more="../user/22-glossary.html#t-rssi">RSSI</abbr> as in 2.8. A voice burst of a call whose header wasn't heard goes up after a header made from the <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">embedded LC</abbr>. DMR_LOST 300 ms after the last burst of a call without a terminator.</td>
+</tr>
+<tr>
+<td>Downlink</td>
+<td>The host sends whole streams for the outbound slot as DMR_DATA2 (DMR_DATA1 when the outbound slot is TS1). The radio keys itself, frames them with its own sync / slot type / <abbr class="gl" tabindex="0" title="Embedded signaling: the 32 bits in the middle of a voice burst that carry link control." data-more="../dev/glossary.html#t-emb">EMB</abbr>, fills gaps with idle bursts and runs its own TX hang. Each frame is ACKed or NAKed. Idle bursts from the host: ACK and drop. Repeated terminators: ACK.</td>
+</tr>
+<tr>
+<td>NAKs for downlink frames</td>
+<td>6 <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> busy: an inbound call is being repeated, and for the rest of a network stream an RF call cut into (until a new voice header, its terminator, or 1 s without it). 5 full. 4 a burst it can't use. 2 SFR not on.</td>
+</tr>
+<tr>
+<td>RF priority</td>
+<td>When an RF call starts, what the host had queued is dropped. Busy ends once the inbound call's terminator has been repeated (or the call is lost and what was heard has been repeated), not at the end of the hang. Once the inbound terminator is queued, a new stream from the host is accepted and goes out after it.</td>
+</tr>
+<tr>
+<td>DMR_ABORT</td>
+<td>Any slot: drops what the host had queued. ACK.</td>
+</tr>
+<tr>
+<td>DMR_START, DMR_SHORTLC</td>
+<td>ACK and ignore (the radio owns its keying and has no <abbr class="gl" tabindex="0" title="Common announcement channel: 24 bits ahead of each burst a repeater sends. It carries the slot number and short link control." data-more="../dev/glossary.html#t-cach">CACH</abbr>).</td>
+</tr>
+<tr>
+<td>GET_STATUS flag 01</td>
+<td>transmitting for any reason (the repeat, the host's traffic, the hang).</td>
+</tr>
+<tr>
+<td>GET_STATUS flag 80</td>
+<td><strong>inbound slot busy</strong>: an RF call is being repeated, until its terminator has been repeated.</td>
+</tr>
+<tr>
+<td>GET_STATUS offsets 7 and 8</td>
+<td>both carry the outbound slot's free space (up to 16 bursts), so the host can write either slot's command. Outside SFR mode offset 7 is 10 as usual.</td>
+</tr>
+<tr>
+<td>SEND_CWID</td>
+<td>works while idle, as in simplex.</td>
+</tr>
+<tr>
+<td>SFR settings</td>
+<td><abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr> from SET_CONFIG, frequency and RF level from SET_FREQ; inbound / outbound slot, framing, hang and <abbr class="gl" tabindex="0" title="Transmit timeout: the longest transmission the radio allows." data-more="../user/22-glossary.html#t-tot">TOT</abbr> from the radio's own channel settings (defaults TS1 in, TS2 out, TS framing, 1 s hang, 180 s TOT). No SET_CONFIG byte is used for them.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="63-get_status-extra-bytes-sfr-mode-only">6.3 GET_STATUS extra bytes (SFR mode only)</h3>
+<p>The protocol 1 status (frame offsets 0-12) unchanged, followed by 108 bytes of SFR counters and state, frame offsets
+13 to 120; frame length 121 (79 hex). Counters are modulo 256. Layout: <code>drivers/modem/hrc6000/sfr_glue/hrcSfr.h</code>
+(the <code>hrcSfrDebug_t</code> structure), first member at frame offset 13; the field list and
+meanings are also in <code>tools/bench/mmdvm_hotspot.py</code>. A host that doesn't know them reads only up to offset 12 and is
+not disturbed.</p>
+<p>Keep the length and member order stable; add new members only at the end, and never change a member's meaning, so
+old bench tool versions stay correct.</p>
+<p>The generic SFR layer (<code>core/hotspot/hotspotSfr.c</code> on <code>core/dmr/sfrRunner.c</code>, any modem behind <code>hal_dmr_modem_t</code>)
+fills the members it knows: 14 bursts written, 15 bursts heard, 16 repeated, 17 send rejected, 24 state (01 keyed,
+02 own timing, 10 RF call, 20 busy), 25 flags, 28 echo, 29 ignored, 30 duplicate, 31 last burst, 32 its color code,
+35 reg10, 36 reg12, 38 ignored on the outbound slot, 39 bad checksum, 55 rssiMin, 60 raw area (FF: not used), 99 LC
+rebuilt, 106 reg11, 107 flags2, 117 late entry held. The rest (register reads, RF switch timing, raw bursts) belong
+to an <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> driver level SFR and stay 0 until one fills them.</p>
+<h3 id="64-command-0xd5-sfr-debug">6.4 Command 0xD5 (SFR debug)</h3>
+<p><code>E0 &lt;len&gt; D5 &lt;flags&gt; &lt;framing&gt; [&lt;reg10&gt; [&lt;reg12&gt; [&lt;rssiMin&gt; [&lt;reg11&gt; [&lt;flags2&gt;]]]]]</code>, payload 2 to 7 bytes. ACK
+(<code>E0 04 70 D5</code>) when at least 2 payload bytes are present, NAK 4 otherwise. Not stored (all zero at power on). Missing
+optional bytes take their defaults: reg10 00 (the driver's), reg12 FF (the driver's), rssiMin 00 (default threshold),
+reg11 00, flags2 00. Meanings of each bit: the <code>HRC_SFR_DEBUG_*</code> and <code>HRC_SFR_DEBUG2_*</code> definitions in
+<code>drivers/modem/hrc6000/sfr_glue/hrcSfr.h</code>; framing 0 = the channel setting, 1 <abbr class="gl" tabindex="0" title="Mobile station: the radio, as opposed to the base station (BS)." data-more="../dev/glossary.html#t-ms">MS</abbr>, 2 TS, 3 <abbr class="gl" tabindex="0" title="Base station: the repeater or modem side of a DMR link, as opposed to the radio (MS)." data-more="../dev/glossary.html#t-bs">BS</abbr> (GET_VERSION shows the
+result). In a firmware without SFR, 0xD5 is an unknown command (NAK 1). The generic SFR layer acts on the framing and on flags2 0x40
+(data calls repeated as heard, no hold); it keeps and reports the other switches for a driver that uses them.</p>
+<h3 id="65-command-0xd6-split-duplex">6.5 Command 0xD6 (split duplex)</h3>
+<p>Two radios run as one duplex repeater, each an <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="mmdvm-protocol.html">MMDVM</abbr> modem (<code>docs/spec/split-duplex.md</code>, the full definition). Built
+only with <code>CONFIG_HOTSPOT_SPLIT</code>; a firmware without it NAKs 0xD6 with 1, like any unknown command. Request
+<code>E0 &lt;len&gt; D6 &lt;sub&gt; [&lt;data&gt;]</code>, reply <code>E0 &lt;len&gt; D6 &lt;sub&gt; &lt;result&gt; [&lt;data&gt;]</code> (result 0 done, 1 unknown sub-command,
+2 wrong state, 4 invalid). Sub-commands: 00 INFO, 01 SET_ROLE, 02 TIME, 03 GET_EPOCH, 04 SET_EPOCH, 05 SET_AT,
+06 STATUS. Nothing changes for a host that never sends 0xD6 except the <code> SPLIT1</code> description suffix: a role starts
+only with SET_ROLE 1 (TX half) or 2 (RX half) and ends with SET_ROLE 0, the end of the session (the port closed with
+DTR, the 20 s timeout) or a 10 s lease that any 0xD6 refreshes. In a role the standard commands keep their framing
+and change meaning as a duplex MMDVM board's (<code>split-duplex.md</code> 4); no other status bytes are added.</p>
+<h2 id="7-conformance-checklist-and-test-list">7. Conformance checklist and test list</h2>
+<p>For the host tests (a fake transport feeding the protocol code) and <code>tools/mmdvm_probe.py</code> (against the radio).
+&quot;→&quot; is what the modem must answer; &quot;(none)&quot; means no frame within 100 ms. Payload bytes in examples are written in
+full where they matter; <code>&lt;33&gt;</code> is a 33-byte burst.</p>
+<h3 id="71-framing">7.1 Framing</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Send</th>
+<th>Expect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F-1</td>
+<td><code>E0 03 00</code></td>
+<td>version reply: <code>E0 LL 00 01 &lt;ASCII&gt;</code>, LL = 4 + description length, ≤ 7C</td>
+</tr>
+<tr>
+<td>F-2</td>
+<td><code>41 54 0D 0A</code> (&quot;<abbr class="gl" tabindex="0" title="Access type: the TACT bit that tells a radio whether the slot is free to transmit in." data-more="../dev/glossary.html#t-at">AT</abbr>&quot; CR LF) then <code>E0 03 00</code></td>
+<td>only the version reply</td>
+</tr>
+<tr>
+<td>F-3</td>
+<td><code>E0 03 01</code> split into three writes 20 ms apart</td>
+<td>one status reply</td>
+</tr>
+<tr>
+<td>F-4</td>
+<td><code>E0 03 01 E0 03 01</code> in one write</td>
+<td>two status replies</td>
+</tr>
+<tr>
+<td>F-5</td>
+<td>long frame <code>E0 00 02 65 &lt;253 bytes&gt;</code> (total 257) then <code>E0 03 01</code></td>
+<td><abbr class="gl" tabindex="0" title="Acknowledgment: the reply that says a message arrived." data-more="../dev/glossary.html#t-ack">NAK</abbr> for 65 (or nothing), then one status reply; parser in sync</td>
+</tr>
+<tr>
+<td>F-6</td>
+<td><code>E0 02</code> then <code>E0 03 01</code></td>
+<td>status reply (a length below 3 is resynced)</td>
+</tr>
+<tr>
+<td>F-7</td>
+<td><code>E0 03 C3</code> (unknown)</td>
+<td><code>E0 05 7F C3 01</code></td>
+</tr>
+<tr>
+<td>F-8</td>
+<td>1000 random bytes without E0, then <code>E0 03 01</code></td>
+<td>status reply</td>
+</tr>
+<tr>
+<td>F-9</td>
+<td>power on, open port, wait 3 s, read</td>
+<td>(none): nothing unsolicited before the first command</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="72-version-and-status">7.2 Version and status</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V-1</td>
+<td>Protocol byte 01; description printable <abbr class="gl" tabindex="0" title="The 7-bit character set of plain text." data-more="../dev/glossary.html#t-ascii">ASCII</abbr>, no NUL, ≤ 120 bytes; frame ≤ 255 bytes.</td>
+</tr>
+<tr>
+<td>V-2</td>
+<td>In <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="sfr.html">SFR</abbr> builds, the description contains <code> SFR TS1&gt;TS2 TS</code> (or the configured slots / framing), in the suffix format of 2.3.2.</td>
+</tr>
+<tr>
+<td>S-1</td>
+<td><code>E0 03 01</code> → length ≥ 0D, byte 2 = 01, byte 3 has bit 02, byte 7 = 0A in simplex, byte 12 ≤ 01. Fresh radio after SET_CONFIG simplex + SET_MODE <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr>: e.g. <code>E0 0D 01 22 02 00 00 0A &lt;space&gt; 00 00 00 01</code> with space ≥ 10 (16+ recommended).</td>
+</tr>
+<tr>
+<td>S-2</td>
+<td>50 GET_STATUS 20 ms apart while a network call is being transmitted: 50 replies, each within 50 ms.</td>
+</tr>
+<tr>
+<td>S-3</td>
+<td>Lockout bit 10 never set; bits 02 and 20 never set.</td>
+</tr>
+<tr>
+<td>S-4</td>
+<td><abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> overflow (08) appears in exactly one status after a NAK 5, then clears.</td>
+</tr>
+<tr>
+<td>S-5</td>
+<td>In simplex the reply is never longer than 14 bytes (no SFR bytes).</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="73-configuration">7.3 Configuration</h3>
+<p>Example frames (typical host defaults: levels 50 %, <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">CC</abbr> 1, TX delay 100 ms, simplex, DMR only):</p>
+<ul>
+<li>SET_FREQ 463.2500 MHz, <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> 100 %: <code>E0 11 04 00 50 A2 9C 1B 50 A2 9C 1B FF 40 0E CF 19</code> → <code>E0 04 70 04</code></li>
+<li>SET_CONFIG v1: <code>E0 1A 02 80 02 0A 00 80 80 01 00 80 80 80 80 80 80 80 80 04 80 80 05 05 00 00</code> → <code>E0 04 70 02</code></li>
+<li>SET_MODE DMR: <code>E0 04 03 02</code> → <code>E0 04 70 03</code></li>
+</ul>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Send</th>
+<th>Expect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C-1</td>
+<td>the three frames above, in that order, each within 2 ms of the last reply</td>
+<td>three ACKs, each within 10 ms</td>
+</tr>
+<tr>
+<td>C-2</td>
+<td>SET_MODE DMR before any SET_CONFIG (fresh power on)</td>
+<td><code>E0 04 70 03</code></td>
+</tr>
+<tr>
+<td>C-3</td>
+<td>SET_CONFIG with modes byte 3F (all modes)</td>
+<td>ACK (unsupported mode bits ignored)</td>
+</tr>
+<tr>
+<td>C-4</td>
+<td>SET_CONFIG with color code 10 hex (16)</td>
+<td><code>E0 05 7F 02 04</code></td>
+</tr>
+<tr>
+<td>C-5</td>
+<td>SET_CONFIG with TX delay 64 hex (1 s)</td>
+<td>ACK</td>
+</tr>
+<tr>
+<td>C-6</td>
+<td>SET_CONFIG with state 01 (D-Star)</td>
+<td><code>E0 05 7F 02 04</code></td>
+</tr>
+<tr>
+<td>C-7</td>
+<td>SET_CONFIG of 13 payload bytes (old hosts)</td>
+<td>ACK, color code taken from payload 6</td>
+</tr>
+<tr>
+<td>C-8</td>
+<td>SET_FREQ of 9 and of 10 payload bytes</td>
+<td>ACK each; 9 means full power</td>
+</tr>
+<tr>
+<td>C-9</td>
+<td>SET_FREQ at 463.2500 MHz with POCSAG 433 MHz, and at 146.52 MHz (if the radio has <abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="../user/22-glossary.html#t-vhf">VHF</abbr>)</td>
+<td>ACK (no amateur-band check, POCSAG frequency ignored)</td>
+</tr>
+<tr>
+<td>C-10</td>
+<td>SET_FREQ outside the hardware range (e.g. 1 GHz)</td>
+<td><code>E0 05 7F 04 04</code></td>
+</tr>
+<tr>
+<td>C-11</td>
+<td>SET_MODE 06, then 00, then 02, then 02 again</td>
+<td>four ACKs</td>
+</tr>
+<tr>
+<td>C-12</td>
+<td>SET_MODE 03 (YSF)</td>
+<td><code>E0 05 7F 03 04</code></td>
+</tr>
+<tr>
+<td>C-13</td>
+<td>SEND_CWID <code>E0 08 0A 54 45 53 54 31</code> in idle</td>
+<td>ACK, TX flag set while keying, clears after</td>
+</tr>
+<tr>
+<td>C-14</td>
+<td>SEND_CWID in DMR state</td>
+<td><code>E0 05 7F 0A 05</code></td>
+</tr>
+<tr>
+<td>C-15</td>
+<td>FM_PARAMS1 <code>E0 0A 60 &lt;7 bytes&gt;</code></td>
+<td>ACK</td>
+</tr>
+<tr>
+<td>C-16</td>
+<td>SET_FREQ during an uplink call</td>
+<td>DMR_LOST2 (<code>E0 03 1B</code>) before the ACK; no uplink frame from the old frequency after the ACK</td>
+</tr>
+<tr>
+<td>C-17</td>
+<td>the same three frames repeated 5 times a second for 10 s</td>
+<td>all ACKed, no crash, status still answered</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="74-dmr-downlink-network-to-air">7.4 DMR downlink (network to air)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Send</th>
+<th>Expect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D-1</td>
+<td>Standard host call, control 00: 6 idle (<abbr class="gl" tabindex="0" title="Base station: the repeater or modem side of a DMR link, as opposed to the radio (MS)." data-more="../dev/glossary.html#t-bs">BS</abbr> data sync, <abbr class="gl" tabindex="0" title="Data type: the field of a burst&#x27;s slot type that says what the burst carries (header, terminator, rate 1/2 block and so on)." data-more="../dev/glossary.html#t-dt">DT</abbr> 9), 8 headers (<abbr class="gl" tabindex="0" title="Mobile station: the radio, as opposed to the base station (BS)." data-more="../dev/glossary.html#t-ms">MS</abbr> data sync), 3 superframes, 3 terminators, 2 idle, paced by space</td>
+<td>no NAK; on air (<abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> / bench modem): one call, header <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr> as sent, ≥ 17 of 18 voice bursts, terminator, no voice after it</td>
+</tr>
+<tr>
+<td>D-2</td>
+<td>the same with control bytes set</td>
+<td>same</td>
+</tr>
+<tr>
+<td>D-3</td>
+<td>1 header, voice, 1 terminator</td>
+<td>one complete call on air</td>
+</tr>
+<tr>
+<td>D-4</td>
+<td>call 2's idle + headers arriving while call 1 is still being sent</td>
+<td>call 1 ends with its terminator, call 2 keys under its own LC; no NAK while the host respects space</td>
+</tr>
+<tr>
+<td>D-5</td>
+<td>frames beyond the reported space (ignore space)</td>
+<td>NAK 5 per refused frame (<code>E0 05 7F 1A 05</code>), the sent call not corrupted, space never reported above the true free count, never 255</td>
+</tr>
+<tr>
+<td>D-6</td>
+<td>DMR_DATA2 of length 36 or 38</td>
+<td><code>E0 05 7F 1A 04</code></td>
+</tr>
+<tr>
+<td>D-7</td>
+<td>DMR_DATA1 in simplex</td>
+<td><code>E0 05 7F 18 02</code> or nothing; nothing on air</td>
+</tr>
+<tr>
+<td>D-8</td>
+<td>DMR_SHORTLC <code>E0 0C 1C &lt;9 bytes&gt;</code>, DMR_START <code>E0 04 1D 01</code>, DMR_ABORT <code>E0 04 1E 02</code> in simplex</td>
+<td>no NAK</td>
+</tr>
+<tr>
+<td>D-9</td>
+<td>data: 2 idle, data header (DT 6), 3 rate 1/2 blocks (DT 7), control 00</td>
+<td>header and blocks on air in order; no NAK</td>
+</tr>
+<tr>
+<td>D-10</td>
+<td>lone <abbr class="gl" tabindex="0" title="Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control." data-more="dmr-data.html">CSBK</abbr> with 2 preamble CSBKs</td>
+<td>three CSBKs on air, transmitter off after</td>
+</tr>
+<tr>
+<td>D-11</td>
+<td>TX flag: set within one status after the first header is accepted; stays set through the call; clears within 1 s after the host's last terminator, only after the radio's terminator is on air</td>
+<td></td>
+</tr>
+<tr>
+<td>D-12</td>
+<td>SET_MODE 00 mid-call</td>
+<td>the call ends with a terminator within a superframe; TX flag clears; queue empty</td>
+</tr>
+<tr>
+<td>D-13</td>
+<td>serial / transparent / QSO info (<code>E0 06 80 41 42 43</code>, <code>E0 05 90 00 00</code>, <code>E0 2F 91 02 ...</code>) during a call</td>
+<td>no NAK, call unaffected</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="75-dmr-uplink-air-to-host">7.5 DMR uplink (air to host)</h3>
+<p>Tests with a bench board or the host test's uplink stream recorder (<code>tests/host/hotspotUplinkTest.c</code>).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Id</th>
+<th>On air</th>
+<th>Expect from the modem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U-1</td>
+<td>8 headers, 3 superframes, 3 terminators</td>
+<td>DMR_DATA2 only; 41 for each header received (≥ 1), then 20, 01, 02, 03, 04, 05 per superframe, one 42; no DMR_LOST during the headers; ≥ 17 of 18 voice bursts in sequence</td>
+</tr>
+<tr>
+<td>U-2</td>
+<td>late entry (no header, start mid-superframe)</td>
+<td>a header (41) with the sender's LC once the embedded LC is known, then voice starting at 20 with no sequence gap; ≥ 10 of 22 bursts; ended by 42</td>
+</tr>
+<tr>
+<td>U-3</td>
+<td>300 voice bursts</td>
+<td>one call, ≥ 297 bursts, no DMR_LOST</td>
+</tr>
+<tr>
+<td>U-4</td>
+<td>voice stopped without terminator</td>
+<td><code>E0 03 1B</code> 0.4-0.8 s after the last burst</td>
+</tr>
+<tr>
+<td>U-5</td>
+<td>three back-to-back calls, alternating sources</td>
+<td>three calls, each with its own header and terminator</td>
+</tr>
+<tr>
+<td>U-6</td>
+<td>4 CSBKs</td>
+<td>≥ 3 frames with control 43, no voice call</td>
+</tr>
+<tr>
+<td>U-7</td>
+<td>unconfirmed data, header + 3 blocks</td>
+<td>46 then three 47</td>
+</tr>
+<tr>
+<td>U-8</td>
+<td>every frame</td>
+<td>length 25 (no <abbr class="gl" tabindex="0" title="Received signal strength indicator: how strong the received signal is, in dBm." data-more="../user/22-glossary.html#t-rssi">RSSI</abbr>) or 27 (RSSI); if 27, the RSSI bytes give a sane dBm with the 5.4 formula</td>
+</tr>
+<tr>
+<td>U-9</td>
+<td>a burst heard with a wrong color code</td>
+<td>not sent up</td>
+</tr>
+<tr>
+<td>U-10</td>
+<td>every header / terminator sent up</td>
+<td>full LC decodes (<abbr class="gl" tabindex="0" title="Block product turbo code: the error correction on DMR headers and control blocks." data-more="../dev/glossary.html#t-bptc">BPTC</abbr> + RS with the right mask); <abbr class="gl" tabindex="0" title="Embedded signaling: the 32 bits in the middle of a voice burst that carry link control." data-more="../dev/glossary.html#t-emb">EMB</abbr> color code = configured</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="76-timing-and-robustness">7.6 Timing and robustness</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T-1</td>
+<td>Standard host startup (open, 2 s, GET_VERSION ...) succeeds on the first attempt.</td>
+</tr>
+<tr>
+<td>T-2</td>
+<td>Startup with GET_VERSION at once, then SET_MODE DMR, then SET_FREQ, SET_CONFIG, SET_MODE succeeds.</td>
+</tr>
+<tr>
+<td>T-3</td>
+<td>30 minutes of standard host polling with periodic calls: no status reply gap ≥ 2 s.</td>
+</tr>
+<tr>
+<td>T-4</td>
+<td>Host closes and reopens the port (or stops polling 25 s then restarts): the modem answers the new handshake; a call in progress is ended cleanly.</td>
+</tr>
+<tr>
+<td>T-5</td>
+<td>Modem reboot while the host polls: the host's re-handshake works.</td>
+</tr>
+<tr>
+<td>T-USB-1</td>
+<td>Status reply and uplink frames whose total is exactly 64 or 128 bytes arrive without delay (zero-length packet).</td>
+</tr>
+<tr>
+<td>T-USB-2</td>
+<td>Port opened with DTR cleared (as a host on Windows may): full handshake and a call both ways work.</td>
+</tr>
+<tr>
+<td>T-UDP-1</td>
+<td>Over <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr>: replies come from port 3334 to the sender's port, one frame per datagram; datagrams with two frames from the host are both handled.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="77-our-extensions">7.7 Our extensions</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Send</th>
+<th>Expect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-1</td>
+<td>simplex config (flag 80) + <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> = TX</td>
+<td>status 13 or 14 bytes, no flag 80, offset 7 = 0A</td>
+</tr>
+<tr>
+<td>X-2</td>
+<td>SET_CONFIG flag 00 + SET_FREQ RX = TX (either order)</td>
+<td>SFR on: status length 79 hex (121), offsets 7 and 8 equal</td>
+</tr>
+<tr>
+<td>X-3</td>
+<td>X-2 then SET_FREQ RX ≠ TX</td>
+<td>SFR off, status back to 13 / 14 bytes</td>
+</tr>
+<tr>
+<td>X-4</td>
+<td><code>E0 05 D5 00 00</code></td>
+<td><code>E0 04 70 D5</code> (SFR builds), <code>E0 05 7F D5 01</code> (non-SFR builds)</td>
+</tr>
+<tr>
+<td>X-5</td>
+<td><code>E0 04 D5 00</code></td>
+<td><code>E0 05 7F D5 04</code></td>
+</tr>
+<tr>
+<td>X-6</td>
+<td>SFR on, RF call on the inbound slot, host sends DMR_DATA2 for the outbound slot</td>
+<td><code>E0 05 7F 1A 06</code>; status flag 80 set until the inbound terminator has been repeated</td>
+</tr>
+<tr>
+<td>X-7</td>
+<td>SFR on, inbound <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">TS1</abbr></td>
+<td>uplink as DMR_DATA1 / DMR_LOST1; DMR_LOST1 300 ms after a call without terminator</td>
+</tr>
+<tr>
+<td>X-8</td>
+<td>SFR on, DMR_ABORT <code>E0 04 1E 02</code> during a network stream</td>
+<td>ACK, queued outbound bursts dropped</td>
+</tr>
+<tr>
+<td>X-9</td>
+<td>A host with Duplex=0, full session with SFR firmware</td>
+<td>never sees a status longer than 14 bytes, never gets NAK 6</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/mmdvm-protocol.md">Ver el código fuente de esta página</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="En esta página">
+		<p class="eyebrow">En esta página</p>
+		<ul><li class="l2"><a href="#1-framing">1. Framing</a></li><li class="l2"><a href="#2-commands-and-replies-for-a-dmr-only-modem">2. Commands and replies for a DMR-only modem</a></li><li class="l3"><a href="#21-summary">2.1 Summary</a></li><li class="l3"><a href="#22-ack-and-nak">2.2 ACK and NAK</a></li><li class="l3"><a href="#23-get_version-00">2.3 GET_VERSION (00)</a></li><li class="l3"><a href="#24-get_status-01">2.4 GET_STATUS (01)</a></li><li class="l3"><a href="#25-set_config-02">2.5 SET_CONFIG (02)</a></li><li class="l3"><a href="#26-set_mode-03">2.6 SET_MODE (03)</a></li><li class="l3"><a href="#27-set_freq-04">2.7 SET_FREQ (04)</a></li><li class="l3"><a href="#28-dmr_data1--dmr_data2-18--1a">2.8 DMR_DATA1 / DMR_DATA2 (18 / 1A)</a></li><li class="l3"><a href="#29-dmr_lost1--dmr_lost2-19--1b">2.9 DMR_LOST1 / DMR_LOST2 (19 / 1B)</a></li><li class="l3"><a href="#210-dmr_shortlc-1c-dmr_start-1d-dmr_abort-1e-dmr_aloha-17">2.10 DMR_SHORTLC (1C), DMR_START (1D), DMR_ABORT (1E), DMR_ALOHA (17)</a></li><li class="l3"><a href="#211-send_cwid-0a">2.11 SEND_CWID (0A)</a></li><li class="l3"><a href="#212-serial-80-transparent-90-qso_info-91">2.12 SERIAL (80), TRANSPARENT (90), QSO_INFO (91)</a></li><li class="l3"><a href="#213-debug1-5-f1-f5-and-debug_dump-fa-modem-to-host">2.13 DEBUG1-5 (F1-F5) and DEBUG_DUMP (FA), modem to host</a></li><li class="l3"><a href="#214-fm-parameters-60-63-and-other-modes">2.14 FM parameters (60-63) and other modes</a></li><li class="l2"><a href="#3-handshake-and-timing">3. Handshake and timing</a></li><li class="l3"><a href="#31-standard-host-startup">3.1 Standard host startup</a></li><li class="l3"><a href="#32-tuning-while-running">3.2 Tuning while running</a></li><li class="l3"><a href="#33-bench-tools">3.3 Bench tools</a></li><li class="l3"><a href="#34-what-makes-a-standard-host-declare-the-modem-dead">3.4 What makes a standard host declare the modem dead</a></li><li class="l3"><a href="#35-playout-and-pacing-network-to-air">3.5 Playout and pacing (network to air)</a></li><li class="l3"><a href="#36-simplex-duplex0-dmr-behavior">3.6 Simplex (Duplex=0) DMR behavior</a></li><li class="l3"><a href="#37-calls-and-space-around-back-to-back-traffic">3.7 Calls and &quot;space&quot; around back-to-back traffic</a></li><li class="l2"><a href="#4-client-compatibility-matrix">4. Client compatibility matrix</a></li><li class="l2"><a href="#5-transport-details">5. Transport details</a></li><li class="l3"><a href="#51-usb-cdc-acm">5.1 USB CDC ACM</a></li><li class="l3"><a href="#52-uart">5.2 UART</a></li><li class="l3"><a href="#53-udp-protocoludp">5.3 UDP (Protocol=udp)</a></li><li class="l3"><a href="#54-rssi-scale">5.4 RSSI scale</a></li><li class="l2"><a href="#6-our-extensions-not-part-of-mmdvm">6. Our extensions (not part of MMDVM)</a></li><li class="l3"><a href="#61-detecting-them">6.1 Detecting them</a></li><li class="l3"><a href="#62-sfr-mode-behavior-seen-by-the-host">6.2 SFR mode behavior seen by the host</a></li><li class="l3"><a href="#63-get_status-extra-bytes-sfr-mode-only">6.3 GET_STATUS extra bytes (SFR mode only)</a></li><li class="l3"><a href="#64-command-0xd5-sfr-debug">6.4 Command 0xD5 (SFR debug)</a></li><li class="l3"><a href="#65-command-0xd6-split-duplex">6.5 Command 0xD6 (split duplex)</a></li><li class="l2"><a href="#7-conformance-checklist-and-test-list">7. Conformance checklist and test list</a></li><li class="l3"><a href="#71-framing">7.1 Framing</a></li><li class="l3"><a href="#72-version-and-status">7.2 Version and status</a></li><li class="l3"><a href="#73-configuration">7.3 Configuration</a></li><li class="l3"><a href="#74-dmr-downlink-network-to-air">7.4 DMR downlink (network to air)</a></li><li class="l3"><a href="#75-dmr-uplink-air-to-host">7.5 DMR uplink (air to host)</a></li><li class="l3"><a href="#76-timing-and-robustness">7.6 Timing and robustness</a></li><li class="l3"><a href="#77-our-extensions">7.7 Our extensions</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

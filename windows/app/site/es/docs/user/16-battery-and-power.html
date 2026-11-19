@@ -1,0 +1,205 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Battery and Power · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Battery and Power · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/docs/user/16-battery-and-power.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/user/16-battery-and-power.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/user/16-battery-and-power.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/user/16-battery-and-power.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/user/16-battery-and-power.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/user/16-battery-and-power.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../es/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../../es/radios/index.html">Radios</a><a href="../../../es/features/index.html">Funciones</a><a href="../../../es/flash/index.html">Instalar</a><a href="../../../es/codeplug/index.html">Codeplug</a><a href="../../../es/docs/index.html" aria-current="page">Documentación</a><a href="../../../es/screenshots/index.html">Capturas</a><a href="../../../es/tools/index.html">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../../docs/user/16-battery-and-power.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/user/16-battery-and-power.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/user/16-battery-and-power.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/user/16-battery-and-power.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Manual del usuario">
+		<p class="eyebrow"><a href="../../../es/docs/index.html">Documentación</a> / Manual del usuario</p>
+		<ul><li><a href="index.html">RadioFoundry User Manual</a></li><li><a href="01-introduction.html">Introduction</a></li><li><a href="02-installing.html">Installing</a></li><li><a href="03-first-boot.html">First Boot</a></li><li><a href="04-programming.html">Programming the Radio</a></li><li><a href="05-keys-and-navigation.html">Keys and Navigation</a></li><li><a href="06-home-screen.html">The Home Screen</a></li><li><a href="07-channels-zones-vfo.html">Channels, Zones and the VFO</a></li><li><a href="08-fm.html">FM</a></li><li><a href="09-dmr.html">DMR</a></li><li><a href="10-messages-and-signaling.html">Messages, Call Alert and Radio Check</a></li><li><a href="11-emergency.html">Emergency</a></li><li><a href="12-scan.html">Scan and Dual Watch</a></li><li><a href="13-aprs.html">APRS</a></li><li><a href="14-hotspot.html">Hotspot Mode</a></li><li><a href="15-usb-network.html">USB Network Mode</a></li><li><a href="16-battery-and-power.html" aria-current="page">Battery and Power</a></li><li><a href="17-settings.html">Settings</a></li><li><a href="18-moving-from-stock-md380.html">Moving from Stock MD-380 Firmware</a></li><li><a href="19-moving-from-stock-dm32.html">Moving from Stock DM-32UV Firmware</a></li><li><a href="20-troubleshooting.html">Troubleshooting</a></li><li><a href="21-faq.html">FAQ</a></li><li><a href="22-glossary.html">Glossary</a></li><li><a href="23-radios.html">Radio Reference</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Esta página aún no está traducida; se muestra en inglés.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="battery-and-power">Battery and Power</h1>
+<p>The battery, power level and power switch values depend on the radio. The <a href="23-radios.html">Radio reference</a> has them
+for each radio. A radio without a battery (a mobile on a fixed supply) has none of the battery items in this chapter:
+no battery icon or percentage, no Tools &gt; Battery page, no Battery saver or Low battery warning setting, and no
+battery warnings.</p>
+<h2 id="battery-level">Battery level</h2>
+<p>The status line shows the battery as an icon and a percentage. On a small screen a page's title takes over the
+status line, so the battery shows on Home and on the larger screens' pages. The percentage turns to the warning color at the low
+battery warning level and below. The level is set in <strong>Settings &gt; Power saving &gt; Low battery warning</strong> (15 % by default).</p>
+<p><strong>OK</strong>, <strong>6</strong>, <strong>9</strong> opens Tools &gt; Battery, which shows the level. At the warning level and below it also shows &quot;charge
+soon&quot;.</p>
+<p>The radio reads the battery once a second. It doesn't read it while transmitting or for 3 s after, because the
+voltage sags under <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">transmit</abbr>.</p>
+<h2 id="low-and-critical-battery">Low and critical battery</h2>
+<p>At the low battery warning level the radio shows the banner &quot;Battery 15%: charge soon&quot; (with the actual percentage)
+and plays the low battery beep. The warning repeats every 5 minutes while the battery stays at or below that level.
+It stops once the battery is 3 % above the level (charged).</p>
+<p>Most radios also have two voltage thresholds. Whichever warning comes first applies.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Level</th>
+<th>What the radio does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Low</td>
+<td>Low battery beep (800 Hz, then 600 Hz), again every 2 minutes. The backlight is limited to 30 %</td>
+</tr>
+<tr>
+<td>Critical</td>
+<td>Critical beep (600 Hz three times), again every 30 s. Every transmission is refused</td>
+</tr>
+</tbody>
+</table></div>
+<p>Three readings in a row below a threshold change the level. The level goes back up when the battery is 0.2 V above
+the threshold. A radio without voltage thresholds has the percentage warning only.</p>
+<h2 id="transmit-power">Transmit power</h2>
+<p>Each radio has its own set of power levels. Each channel's power comes from the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>. A channel without one uses
+the radio's default level.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Way to change it</th>
+<th>Levels</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>*</strong>, <strong>1</strong></td>
+<td>Three steps: the radio's lowest level, its default, its highest</td>
+</tr>
+<tr>
+<td><strong>Power level</strong> key on Home</td>
+<td>All of the radio's levels, one per press (radios with that key only)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Both changes are temporary. Hold <strong>OK</strong> to save the level to the channel.</p>
+<p>Power levels use the radio's factory calibration. Use the lowest power that reaches the other station.</p>
+<h2 id="backlight">Backlight</h2>
+<p><strong>Settings &gt; Display &gt; Brightness</strong> sets the backlight level. Quick settings has it too (<strong>*</strong>, <strong>9</strong>).
+On radios that switch backlight speed to keep the audio quiet, a dimmed screen brightens while transmitting or
+receiving audio and returns to its set level when idle.</p>
+<p><strong>Settings &gt; Display &gt; Backlight Dim/Off</strong> sets two times: when the backlight dims to a fifth of the brightness, and
+when it goes off. <code>30s/2m</code> dims after 30 s and goes off after 2 minutes. <code>30s/dim</code> dims after 30 s and stays on,
+readable at a glance (on a desk or a bench), at the cost of some battery. Any key brings it back.</p>
+<p>The backlight also comes on for what needs you:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Comes on</th>
+<th>Stays as it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A call you hear (DMR), or a signal that opens the squelch (FM)</td>
+<td>A <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> call on a <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="22-glossary.html#t-talkgroup">talkgroup</abbr> you don't listen to</td>
+</tr>
+<tr>
+<td>A message, call alert, private call or emergency</td>
+<td>The radio's own data: <abbr class="gl" tabindex="0" title="Automatic Registration Service: a radio tells a presence server it is on the air." data-more="22-glossary.html#t-ars">ARS</abbr> registration, ACKs, location answers</td>
+</tr>
+<tr>
+<td>Your own transmission, or a refused PTT</td>
+<td>Timed beacons (<abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr>), roaming probes, <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="14-hotspot.html">hotspot</abbr> traffic</td>
+</tr>
+<tr>
+<td></td>
+<td>Broadcast FM that keeps playing</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="battery-saver">Battery saver</h2>
+<p><strong>Settings &gt; Power saving &gt; Battery saver</strong> puts the receiver to sleep on an idle FM channel. After 10 s without activity the
+receiver sleeps and wakes for 100 ms at a time to listen. Any signal in a listening window wakes it fully. It is off
+by default.</p>
+<p>These stop the battery saver:</p>
+<ul>
+<li>a key press, monitor, scan or <abbr class="gl" tabindex="0" title="Voice-operated transmit." data-more="22-glossary.html#t-vox">VOX</abbr>;</li>
+<li>a <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> channel, or <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="14-hotspot.html">hotspot</abbr> mode;</li>
+<li>a channel the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> marks &quot;no battery saving&quot;.</li>
+</ul>
+<h2 id="auto-power-off">Auto power off</h2>
+<p><strong>Settings &gt; Power saving &gt; Auto power off</strong> switches the radio off after a time without use: Off, 30 min, 1 h or 2 h (Off by
+default). A key press, a call received or sent, a scan and <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="14-hotspot.html">hotspot</abbr> mode count as use. One minute before, the radio
+beeps and shows &quot;Switching off in 1 min / Any key keeps it on&quot;. Any key cancels it.</p>
+<p>On a radio with the power switch on its volume knob, the knob is still on when auto power off acts. Whether each
+radio can cut its own power then is in the <a href="23-radios.html">Radio reference</a>. A radio that can't cut it comes back up
+after 2 s, shows &quot;Couldn't switch off / Turn the knob off&quot;, and keeps running as before.</p>
+<h2 id="turning-off">Turning off</h2>
+<p>Turn the radio off with its power switch. On the handhelds this is the volume knob, turned counterclockwise until it
+clicks. Where the radio sees the switch, it finishes what it is doing (an <abbr class="gl" tabindex="0" title="Automatic Registration Service: a radio tells a presence server it is on the air." data-more="22-glossary.html#t-ars">ARS</abbr> deregistration, at most 3 s), saves its
+settings and switches off. The <a href="23-radios.html">Radio reference</a> describes the power switch of each radio.</p>
+</div>
+		<nav class="prev-next"><a class="prev" href="15-usb-network.html">USB Network Mode</a><a class="next" href="17-settings.html">Settings</a></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/user/16-battery-and-power.md">Ver el código fuente de esta página</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="En esta página">
+		<p class="eyebrow">En esta página</p>
+		<ul><li class="l2"><a href="#battery-level">Battery level</a></li><li class="l2"><a href="#low-and-critical-battery">Low and critical battery</a></li><li class="l2"><a href="#transmit-power">Transmit power</a></li><li class="l2"><a href="#backlight">Backlight</a></li><li class="l2"><a href="#battery-saver">Battery saver</a></li><li class="l2"><a href="#auto-power-off">Auto power off</a></li><li class="l2"><a href="#turning-off">Turning off</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

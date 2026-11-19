@@ -1,0 +1,856 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crash log · RadioFoundry</title>
+<meta name="description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Crash log · RadioFoundry">
+<meta property="og:description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:url" content="https://radiofoundry.org/docs/spec/crash-log.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="The radios RadioFoundry runs on, each showing a different screen.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/crash-log.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/crash-log.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/crash-log.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/crash-log.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/crash-log.html">
+<link rel="icon" href="../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../" data-home="../../" data-gl-more="More">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../index.html">
+			<img src="../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Main"><a href="../../radios/index.html">Radios</a><a href="../../features/index.html">Features</a><a href="../../flash/index.html">Install</a><a href="../../codeplug/index.html">Codeplug</a><a href="../../docs/index.html" aria-current="page">Docs</a><a href="../../screenshots/index.html">Screenshots</a><a href="../../tools/index.html">Tools</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Language" title="Language">EN</summary><nav aria-label="Language"><a href="../../docs/spec/crash-log.html" aria-current="true" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../es/docs/spec/crash-log.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../it/docs/spec/crash-log.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../zh/docs/spec/crash-log.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Switch light and dark" title="Switch light and dark">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Specifications">
+		<p class="eyebrow"><a href="../../docs/index.html">Documentation</a> / Specifications</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html" aria-current="page">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<!-- Copyright (c) 2026 The RadioFoundry Authors -->
+<h1 id="crash-log">Crash log</h1>
+<p><code>CONFIG_CRASH_LOG</code> (default on). A crash keeps a record of where and why it happened in memory a reset doesn't
+clear, and restarts the radio. The next start takes the record up, so a crash in the field leaves something to read
+instead of a frozen radio. Code: <code>core/crash/</code>, <code>hal/hal_crash.h</code>, the platforms' <code>crash_*.c</code>. Off: a crash stops the
+radio until a power cycle, as before.</p>
+<h2 id="1-what-is-caught">1. What is caught</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Kind</th>
+<th><code>kind</code></th>
+<th>From</th>
+<th><code>cause</code></th>
+<th><code>pc</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fault</td>
+<td>1</td>
+<td>a <abbr class="gl" tabindex="0" title="Central processing unit." data-more="../dev/glossary.html#t-cpu">CPU</abbr> exception: the platform's fault entry (2)</td>
+<td>the exception number (CM4: 3 HardFault; CK803: the vector, 1 misaligned access, 2 access error, 3 divide by zero, 4 illegal instruction, 7 breakpoint, 8 unrecoverable error)</td>
+<td>the faulting instruction</td>
+</tr>
+<tr>
+<td>Stack overflow</td>
+<td>2</td>
+<td>FreeRTOS's stack check (<code>configCHECK_FOR_STACK_OVERFLOW</code> 2), at a context switch. Also the interrupt stack's canary, at every tick: its lowest 4 words no longer hold the fill (<abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr>: its own interrupt stack, <code>platform/hrc7000/irq_stack.h</code>; <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32F4</abbr>: the main stack, the handlers' once the scheduler runs, down to the end of <code>.bss</code>, <code>platform/stm32f4/irq_stack.c</code>)</td>
+<td>0</td>
+<td>in the kernel or the tick; <code>task</code> names the task, <code>irq</code> for the interrupt stack</td>
+</tr>
+<tr>
+<td>Out of heap</td>
+<td>3</td>
+<td>FreeRTOS's malloc-failed hook</td>
+<td>0</td>
+<td>in the kernel</td>
+</tr>
+<tr>
+<td>Assert</td>
+<td>4</td>
+<td><code>configASSERT</code> (the platforms' <code>FreeRTOSConfig.h</code>)</td>
+<td>the line</td>
+<td>the caller of the assertion</td>
+</tr>
+<tr>
+<td>Hang</td>
+<td>5</td>
+<td>the hang check in the tick interrupt (1.1), with <code>CONFIG_WATCHDOG</code></td>
+<td>ms since the last watchdog feed</td>
+<td>where the interrupted task was</td>
+</tr>
+<tr>
+<td>Stall</td>
+<td>6</td>
+<td>the stall check in the tick interrupt (1.1.1), with <code>CONFIG_WATCHDOG</code></td>
+<td>ms since the host link's task last passed its loop</td>
+<td>where the interrupted task was (often the idle task's): the stalled task's wait is in the snapshot (1.2)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The capture runs with interrupts off, on a stack of its own (1 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr>), and calls nothing that waits. It turns the
+transmitter off first (8), with or without the crash log. It adds the running
+task's name (empty in an interrupt handler: <code>CRASH_F_ISR</code>), the uptime, the 16 words at the stack pointer when that
+points into <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> (<code>CRASH_F_STACK</code>), the other tasks (1.2), the commit, then seals the record with a CRC-32, stores it
+and restarts the radio.</p>
+<p>Not caught: a hang with interrupts off (the tick can't run, so the hardware watchdog resets the radio with no record,
+<a href="watchdog.html">watchdog.md</a>), a fault while the fault entry pushes its frame (2.2), and an unhandled interrupt on the STM32F4 (the start-up's default
+handler spins until the watchdog resets the radio; no interrupt is enabled without a handler). The NMI on the STM32F4
+takes the HardFault entry (<code>cause</code> 2).</p>
+<h3 id="11-the-hang-check">1.1 The hang check</h3>
+<p>The watchdog (<a href="watchdog.html">watchdog.md</a>) resets a radio whose idle task stops running, but that reset leaves nothing
+to read. The hang check keeps a record first. Code: <code>watchdog_hung</code> and <code>watchdog_tick</code> in <code>core/app/watchdog.c</code>, the
+platforms' <code>hal_crash_hang</code>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Where</td>
+<td>the <abbr class="gl" tabindex="0" title="Real-time operating system: the scheduler that runs the firmware&#x27;s tasks." data-more="../dev/glossary.html#t-rtos">RTOS</abbr> tick interrupt, before the kernel's tick: <code>vPortTickHandler</code> (HR_C7000), <code>SysTick_Handler</code> (STM32F4). Not the tick hook: <code>xTaskResumeAll</code> also calls the hook from a task, for ticks that came while the scheduler was suspended</td>
+</tr>
+<tr>
+<td>Counts from</td>
+<td>the last feed: the idle task's, or a long job's <code>watchdog_kick</code> (a board's long <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> <abbr class="gl" tabindex="0" title="The flash chip type that holds large data, such as the codeplug and contacts, in some radios." data-more="../dev/glossary.html#t-nand">NAND</abbr> loops)</td>
+</tr>
+<tr>
+<td>Fires</td>
+<td>three quarters of the watchdog's timeout after it: 3 s on the HR_C7000 (4 s timeout), 3.75 s on the STM32F4 (5 s)</td>
+</tr>
+<tr>
+<td>Never</td>
+<td>before the idle task's first pass, with the watchdog stopped, or while a bench test starves it on purpose (the test times the hardware reset, <a href="watchdog.html">watchdog.md</a> 5)</td>
+</tr>
+<tr>
+<td>Record</td>
+<td>kind 5, <code>cause</code> the ms since the last feed, the registers of the task the tick interrupted, its name in <code>task</code></td>
+</tr>
+<tr>
+<td>Then</td>
+<td>as every capture: the transmitter off, the fault trace on the HR_C7000 (2.3, vector 0), the store, the restart</td>
+</tr>
+</tbody>
+</table></div>
+<p>What the record shows is the task that ran when the tick came, which on a hang is the one that kept the idle task out.
+The tick runs at the kernel's priority, the lowest on the STM32F4, and HR_C7000 interrupts don't nest, so the tick
+never interrupts another handler.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Registers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HR_C7000</td>
+<td><code>hrc_irq_entry</code> saved the task's frame (r0-r13, r15, EPSR, EPC, as the fault entry's) and wrote its address to the TCB's first word, <code>pxTopOfStack</code>. <code>hal_crash_hang</code> (<code>irq.c</code>) hands that frame to the same capture as a fault (<code>hrc_crash_frame</code>)</td>
+</tr>
+<tr>
+<td>STM32F4</td>
+<td>the CPU's frame on the PSP: r0-r3, r12, LR, PC, xPSR. r4-r11 belong to the handler's callers by then and stay 0. Without EXC_RETURN the frame's size (FPU or not) isn't known, so <code>sp</code> is the frame's address and <code>stack[]</code> starts with the frame</td>
+</tr>
+</tbody>
+</table></div>
+<p>Not caught this way: a hang with interrupts off or in a critical section (the STM32F4 masks the tick there too), and
+an interrupt storm that keeps the tick out. Those still end in the plain watchdog reset.</p>
+<p>The <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>'s CRASH TEST kind 3 (<a href="debuglink.html">debuglink.md</a> 3.19) spins in the host link's task with interrupts
+on: the check keeps a hang record of <code>host</code>.</p>
+<h4 id="111-the-stall-check">1.1.1 The stall check</h4>
+<p>A task that waits forever (a lock never given back, a queue nobody fills) doesn't keep the idle task out, so the
+watchdog and the hang check never see it. On a radio driven by a computer, the host link's task is the one that
+matters: when it stops, the link goes silent and the radio looks dead while everything else runs. The stall check
+watches that task. Code: <code>watchdog_task_pass</code> and <code>watchdog_stalled</code> in <code>core/app/watchdog.c</code>, called from the host
+link's loop (<code>core/hostlink/hostlink.c</code>) and the tick.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Counts from</td>
+<td>the host link's last pass of its loop. The loop waits at most <code>POLL_MS</code> for input, so an idle link passes several times a second</td>
+</tr>
+<tr>
+<td>Fires</td>
+<td><code>WATCHDOG_STALL_MS</code> (60 s) after it. No operation the loop runs takes that long: flash work waits by <code>hal_delay_ms</code>, and <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr> entry turns interrupts off first</td>
+</tr>
+<tr>
+<td>Never</td>
+<td>before the loop's first pass, with the watchdog stopped, or while a bench test starves the idle task</td>
+</tr>
+<tr>
+<td>Record</td>
+<td>kind 6, <code>cause</code> the ms since the last pass; the snapshot (1.2) shows what the host link's task (<code>host</code>) waits on</td>
+</tr>
+<tr>
+<td>Then</td>
+<td>as the hang check: the store and the restart, so the link comes back without a power cycle</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="12-the-other-tasks">1.2 The other tasks</h3>
+<p>The record's registers are the running task's. The task snapshot says where every other task was, so a hang or a
+fault also shows what the rest of the radio waited for. Code: <code>put_tasks</code> in <code>core/crash/crash_capture.c</code>, the
+platforms' <code>hal_crash_task_where</code>. Needs <code>CONFIG_TASK_STACKS</code> (on with the debug link): the tasks come from its table
+(<code>core/app/task_stack.c</code>), in creation order. Without it the snapshot is empty.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Left out</td>
+<td>the running task, and the idle task (<code>IDLE</code>), which only waits for work</td>
+</tr>
+<tr>
+<td>Entries</td>
+<td>at most 8 (<code>CRASH_TASKS</code>); <code>more_tasks</code> counts the rest</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>the first 4 letters (<code>CRASH_TAG_LEN</code>), NUL padded: <code>radi</code>, <code>ui</code>, <code>Tmr </code></td>
+</tr>
+<tr>
+<td><code>where</code>, bit 0 set</td>
+<td>the task was waiting in the kernel. The rest is the first return address in the 24 words above its saved context (<code>CRASH_TASK_SCAN_WORDS</code>): the code that called the wait. No return address found: the saved pc</td>
+</tr>
+<tr>
+<td><code>where</code>, bit 0 clear</td>
+<td>an interrupt took the task while it was ready. The rest is its pc</td>
+</tr>
+<tr>
+<td><code>where</code> 0</td>
+<td>its saved context isn't in RAM</td>
+</tr>
+</tbody>
+</table></div>
+<p>Each task's TCB starts with the stack pointer its last switch saved (<code>pxTopOfStack</code>), which points at its context.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Waiting or ready</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HR_C7000</td>
+<td>the 17-word frame (2.2). <code>vPortYield</code> stores its return address as both r15 and PC; the interrupt entry stores EPC as PC, which equals r15 only right after a call returns. r15 equal to PC counts as waiting</td>
+</tr>
+<tr>
+<td>STM32F4</td>
+<td>r4-r11 and EXC_RETURN, s16-s31 when EXC_RETURN bit 4 is clear, then the CPU's frame (2.1). The instruction before the stacked pc is the yield's <code>ISB</code> (<code>portYIELD</code>) or the <code>MSR BASEPRI</code> of a critical section's exit, where a held-back yield is taken: waiting. Anything else: ready</td>
+</tr>
+</tbody>
+</table></div>
+<p>The return address is a candidate, as the stack words are (4): a code address left above the context by an earlier
+call looks the same. A kernel task's own wait (the timer task's) can resolve to a kernel function. The packed report
+(4) leaves the snapshot out; the debug link's view shows it (<code>crash.t&lt;k&gt;</code>).</p>
+<h3 id="13-the-restart-cause">1.3 The restart cause</h3>
+<p>A reset the capture never sees leaves no record: the hardware watchdog after a hang with interrupts off, a supply dip,
+the reset pin. The restart cause says which it was. Code: <code>crash_init</code> and <code>crash_reset_cause</code> in
+<code>core/crash/crash.c</code>, the platforms' <code>hal_crash_boot</code> and <code>hal_crash_reset_flags</code>.</p>
+<p>Four words (<code>crash_boot_t</code>) sit next to the record, in the same kept memory (2):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Word</th>
+<th>Written by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>magic</code> (<code>BOOT</code>)</td>
+<td>the start-up. Gone after a power loss</td>
+</tr>
+<tr>
+<td><code>soft</code> (<code>SOFT</code>)</td>
+<td>every restart software asks for, first (<code>hal_crash_soft_mark</code>): a reboot, a crash's restart, the boot stub's reset. Cleared at each start</td>
+</tr>
+<tr>
+<td><code>uptime_ms</code></td>
+<td>the RTOS tick, with the hang check (<code>watchdog_tick</code>): the last run's uptime, to the tick</td>
+</tr>
+<tr>
+<td><code>warm</code></td>
+<td>the start-up: starts since the memory last lost its contents</td>
+</tr>
+</tbody>
+</table></div>
+<p>The chip's own reset flags come first where they say what happened. A chip without them leaves it to the words.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Chip flag</th>
+<th>Words</th>
+<th>Cause (<code>reset.cause</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>watchdog, brown-out, power-on or software</td>
+<td>any</td>
+<td>that flag</td>
+</tr>
+<tr>
+<td>none, or the reset pin</td>
+<td><code>soft</code> set</td>
+<td><code>software</code></td>
+</tr>
+<tr>
+<td>none, or the reset pin</td>
+<td><code>magic</code> missing</td>
+<td><code>power</code></td>
+</tr>
+<tr>
+<td>the reset pin</td>
+<td><code>magic</code> kept, no <code>soft</code></td>
+<td><code>pin</code></td>
+</tr>
+<tr>
+<td>none</td>
+<td><code>magic</code> kept, no <code>soft</code></td>
+<td><code>warm</code>: the watchdog, the reset pin, or a dip too short to lose memory</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Chip flags</th>
+<th>Words</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STM32F4</td>
+<td><code>RCC_CSR</code> (RM0090 7.3.21), read and cleared at start-up. Every reset also sets the pin flag, and a power-on sets the brown-out flag too, so the order is watchdog, software, power-on, brown-out, pin</td>
+<td>the backup <abbr class="gl" tabindex="0" title="Static RAM: the processor&#x27;s fast working memory." data-more="../dev/glossary.html#t-sram">SRAM</abbr>, after the record</td>
+</tr>
+<tr>
+<td>HR_C7000</td>
+<td>none: the POR, the reset pin and the watchdog drive one global reset (manual 2, 4.1)</td>
+<td><code>HRC_CRASH_BOOT</code>, the 16 bytes below the record. <code>hrc_restart</code> runs from RAM and writes <code>soft</code> by address</td>
+</tr>
+</tbody>
+</table></div>
+<p>The boot stubs mark their own reset, not their entry, so a stub that hangs and is reset by the watchdog reads as the
+watchdog. The STM32 stub's RESET writes <code>soft</code> itself (<code>F4STUB_SOFT_MARK_ADDR</code> in <code>stub/stm32f4/f4stub_header.h</code>,
+checked against the layout at build time). The HR_C7000 stub has no reset of its own: stubtool's <code>--boot reset</code> and
+the web flasher poke <code>soft</code> (<code>CRASH_SOFT_MARK</code>) before the soft reset, which works with every stub version. The stub
+runs in main SRAM only, so the words and the record survive it.</p>
+<p>The debug link's view section <code>reset</code> (23) shows it with or without a record: <code>reset.cause</code>, <code>reset.flags</code> (the chip's
+register as read, 0 without one), <code>reset.uptime_ms</code>, <code>reset.warm</code>.</p>
+<h2 id="2-platforms">2. Platforms</h2>
+<h3 id="21-stm32f4">2.1 STM32F4</h3>
+<p><code>platform/stm32f4/crash_stm32.c</code>. <code>HardFault_Handler</code> reads EXC_RETURN bit 2 to find the stack the <abbr class="gl" tabindex="0" title="Central processing unit." data-more="../dev/glossary.html#t-cpu">CPU</abbr> pushed the
+frame on (MSP, or a task's PSP), moves to its own stack, pushes r4-r11 and fills the record: r0-r3, r12, LR, PC and
+xPSR from the frame, the stack pointer before it (bit 4 of EXC_RETURN says whether the frame has the FPU registers,
+bit 9 of the stacked xPSR whether the CPU padded it), CFSR, HFSR, MMFAR and BFAR. MemManage, BusFault and UsageFault
+are not enabled, so they escalate to HardFault; CFSR still says which. If they are enabled later they take the same
+entry. A frame the CPU couldn't push (a stacking error) leaves the registers 0 and <code>sp</code> the address it tried.</p>
+<p>The store is the 4 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> backup <abbr class="gl" tabindex="0" title="Static RAM: the processor&#x27;s fast working memory." data-more="../dev/glossary.html#t-sram">SRAM</abbr> at 0x40024000 (<code>PWR_CR.DBP</code>, <code>RCC_AHB1ENR.BKPSRAMEN</code>). A system reset leaves the
+backup domain alone and the vendor bootloader, which runs in main <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> before the application, doesn't look at it
+(the <abbr class="gl" tabindex="0" title="Read-only memory: code fixed in the chip." data-more="../dev/glossary.html#t-rom">ROM</abbr> <abbr class="gl" tabindex="0" title="Device Firmware Upgrade: the USB protocol of the radio&#x27;s bootloader." data-more="../user/22-glossary.html#t-dfu">DFU</abbr> entry's RTC backup register survives the same way). The record is lost when
+the supply goes. Restart: <code>NVIC_SystemReset</code>, then the vendor bootloader and RadioFoundry as at power-on.</p>
+<h3 id="22-hr_c7000">2.2 HR_C7000</h3>
+<p><code>platform/hrc7000/crash_hrc.c</code>, the entry in <code>freertos/portasm.S</code>. The CK803S pushes nothing on an exception, so
+<code>hrc_fault_entry</code> stores r0-r13, r15, EPSR and EPC in a 68-byte frame below the stack pointer the fault left, as the
+interrupt entry does, then calls <code>hrc_fault</code> (<code>irq.c</code>) on its own stack. <code>hrc_fault</code> keeps the vector, EPC and EPSR
+in <code>hrc_fault_info</code> for a debugger, as before, and hands the frame to the capture. The CK803S has no fault address
+register. <code>status[0]</code> is the PSR in the handler. A stack pointer that can't take the frame faults again with
+exceptions off: an unrecoverable error, and the radio stays stopped as without the crash log.</p>
+<p>The store is 256 bytes at 0x18007F00, the top of the SRAM shared with the modem. The codec's tables (from
+0x18000800, at most to 0x18004F90 in any supported codec build) and the microphone <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> (0x18000000) don't reach it.
+Main SRAM is not used: the vendor bootloader and the start-up use it. Restart: a
+watchdog reset (<code>hrc_restart</code>, the same as a reboot; <a href="watchdog.html">watchdog.md</a> 3). With the fault trace (2.3) the
+lines go out first; without the crash log the fault ends in the same restart.</p>
+<h3 id="23-fault-trace">2.3 Fault trace</h3>
+<p><code>CONFIG_FAULT_TRACE</code> (default on; the <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr> radios turn it off). A CPU fault prints its registers on the host <abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="../dev/glossary.html#t-uart">UART</abbr>
+before the record and the restart, so a radio whose <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> is gone can still say where it crashed, with or
+without the crash log. Code: <code>core/crash/crash_trace.c</code> (the line, portable), <code>hrc_fault</code> in
+<code>platform/hrc7000/irq.c</code> (timing and output), <code>hrc_host_uart_put_polled</code> in <code>platform/hrc7000/uart.c</code>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Port</td>
+<td>the host UART (the programming cable), at the rate it runs at (115200 8N1)</td>
+</tr>
+<tr>
+<td>Lines</td>
+<td><code>CRASH_TRACE_LINES</code> (3), one a second, timed on the free-running clock timer (interrupts are off); then 50 ms for the UART's <abbr class="gl" tabindex="0" title="First in, first out: a queue of data between a producer and a consumer." data-more="../dev/glossary.html#t-fifo">FIFO</abbr> to empty, then the record and the restart</td>
+</tr>
+<tr>
+<td>Format</td>
+<td><code>\r\n#RD0FAULT1 n=01 v=&lt;vector, 0 for a hang&gt; pc=&lt;EPC&gt; psr=&lt;EPSR&gt; lr=&lt;r15&gt; sp=&lt;sp before the frame&gt; r0=&lt;..&gt; .. r13=&lt;..&gt; *&lt;crc&gt;\r\n</code>; every value 8 lower-case hex digits, <code>n</code> the line's number as 2 hex digits</td>
+</tr>
+<tr>
+<td>CRC</td>
+<td>CRC-16/CCITT-FALSE (polynomial 0x1021, init 0xFFFF, no reflection, no final <abbr class="gl" tabindex="0" title="Exclusive or: a bit operation that flips bits where the other operand has a 1." data-more="../dev/glossary.html#t-xor">XOR</abbr>) over the bytes from <code>#</code> up to and including the space before <code>*</code>, as 4 lower-case hex digits</td>
+</tr>
+<tr>
+<td>Watchdog</td>
+<td>fed once before the first line; the three seconds stay inside the timeout (<a href="watchdog.html">watchdog.md</a> 2)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The sync word <code>#RD0FAULT1</code> and the <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> let a reader pick the lines out of whatever else the port carries (<abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="mmdvm-protocol.html">MMDVM</abbr> or
+<abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> traffic, the debug link). <code>tools/rfoundry_fault_trace.py PORT</code> reads the port raw for a while (the debug link must not
+hold it), or <code>--file LOG</code> a saved capture, checks each line's CRC and prints the registers; <code>--selftest</code> decodes the
+golden line <code>tests/host/crashTest.c</code> builds.</p>
+<p>The STM32 radios have no UART a fault handler could print on: their host port is USB, which needs interrupts, and
+their one UART is a GPS <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> line. Their faults keep the record only.</p>
+<p>Checked on hardware (2026-10-21, an <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> radio): <code>rfoundry_debug.py crash test trap</code> printed lines the tool decoded
+with good CRCs, then the radio restarted with the record kept.</p>
+<h2 id="3-the-record">3. The record</h2>
+<p><code>crash_record_t</code> (<code>hal/hal_crash.h</code>), 256 bytes, little endian, no padding. Version 2. Version 1 (188 bytes, without
+the task snapshot) reads as no record.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Field</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>magic u32</td>
+<td><code>0x48535243</code> (<code>&quot;CRSH&quot;</code>)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>version u16, size u16</td>
+<td>2, 256</td>
+</tr>
+<tr>
+<td>8</td>
+<td>arch u8</td>
+<td>1 Cortex-M4, 2 CK803S</td>
+</tr>
+<tr>
+<td>9</td>
+<td>kind u8</td>
+<td>section 1</td>
+</tr>
+<tr>
+<td>10</td>
+<td>flags u8</td>
+<td>bit 0 in an interrupt handler, 1 the build had local changes, 2 <code>stack</code> is valid, 3 seen (shown or dismissed), 4 sent</td>
+</tr>
+<tr>
+<td>11</td>
+<td>count u8</td>
+<td>crashes in a row of this build nobody looked at: 1 the first; counts up while the record before is unseen and from the same build, saturates at 255</td>
+</tr>
+<tr>
+<td>12</td>
+<td>cause u32</td>
+<td>section 1</td>
+</tr>
+<tr>
+<td>16</td>
+<td>pc, lr, sp, psr u32</td>
+<td>where; the return address; the stack pointer before the exception; CM4 the stacked xPSR, CK803 EPSR</td>
+</tr>
+<tr>
+<td>32</td>
+<td>r[14] u32</td>
+<td>r0-r13 (CM4: r0-r12, <code>r[13]</code> = EXC_RETURN)</td>
+</tr>
+<tr>
+<td>88</td>
+<td>status[4] u32</td>
+<td>CM4: CFSR, HFSR, MMFAR, BFAR. CK803: the handler's PSR, 0, 0, 0</td>
+</tr>
+<tr>
+<td>104</td>
+<td>uptime_ms u32</td>
+<td>time since start</td>
+</tr>
+<tr>
+<td>108</td>
+<td>build u32</td>
+<td>the firmware commit's first 8 hex digits (0: unknown)</td>
+</tr>
+<tr>
+<td>112</td>
+<td>task char[8]</td>
+<td>the running task, NUL padded, not always terminated</td>
+</tr>
+<tr>
+<td>120</td>
+<td>stack[16] u32</td>
+<td>the words at <code>sp</code></td>
+</tr>
+<tr>
+<td>184</td>
+<td>ntasks u8, more_tasks u8, reserved u16</td>
+<td>entries in <code>tasks</code>; the other tasks that didn't fit (saturates at 255); 0</td>
+</tr>
+<tr>
+<td>188</td>
+<td>tasks[8] {name char[4], where u32}</td>
+<td>the other tasks (1.2)</td>
+</tr>
+<tr>
+<td>252</td>
+<td>crc u32</td>
+<td>CRC-32 (IEEE, reflected, init and final <abbr class="gl" tabindex="0" title="Exclusive or: a bit operation that flips bits where the other operand has a 1." data-more="../dev/glossary.html#t-xor">XOR</abbr> <code>0xFFFFFFFF</code>) of bytes 0-251</td>
+</tr>
+</tbody>
+</table></div>
+<p>A store that fails any of magic, version, size or <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> holds no record (power-on contents). <code>crash_init()</code> copies a
+valid record at start-up, before the tasks start; <code>crash_mark()</code> sets the seen and sent flags in both copies;
+<code>crash_clear()</code> forgets it. A new crash overwrites the store.</p>
+<h2 id="4-the-packed-report">4. The packed report</h2>
+<p><code>crash_pack()</code>: the record in fewer bytes, for sending over the air. Little endian.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>2</td>
+<td><code>'O' 'C'</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>the report's version (1, <code>CRASH_PACK_VERSION</code>), its own: the record's version 2 didn't change it</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+<td>arch</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1</td>
+<td>kind</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1</td>
+<td>flags</td>
+</tr>
+<tr>
+<td>6</td>
+<td>1</td>
+<td>count</td>
+</tr>
+<tr>
+<td>7</td>
+<td>1</td>
+<td>n: return addresses at the end</td>
+</tr>
+<tr>
+<td>8</td>
+<td>4</td>
+<td>build</td>
+</tr>
+<tr>
+<td>12</td>
+<td>4</td>
+<td>uptime_ms</td>
+</tr>
+<tr>
+<td>16</td>
+<td>4</td>
+<td>cause</td>
+</tr>
+<tr>
+<td>20</td>
+<td>16</td>
+<td>pc, lr, sp, psr</td>
+</tr>
+<tr>
+<td>36</td>
+<td>16</td>
+<td>status[4]</td>
+</tr>
+<tr>
+<td>52</td>
+<td>8</td>
+<td>task</td>
+</tr>
+<tr>
+<td>60</td>
+<td>16</td>
+<td>r0-r3</td>
+</tr>
+<tr>
+<td>76</td>
+<td>4 n</td>
+<td>the stack words that point into code (flash, and <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> code on the <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr>), in stack order, at most 12</td>
+</tr>
+</tbody>
+</table></div>
+<p>76 to 124 bytes. <code>tools/crash_decode.py</code> reads it (as received, as hex, or the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>'s crash view) and, with
+the build's ELF, names the functions at <code>pc</code>, <code>lr</code> and the return addresses through addr2line. The stack words are
+only candidates: a code address left on the stack by an earlier call looks the same as a live return address.</p>
+<h2 id="5-sending-the-report">5. Sending the report</h2>
+<p><code>CONFIG_CRASH_REPORT</code> (default on; needs the crash log's screen and <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr>). The UI sends the packed report over DMR as one <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr>
+datagram. Code: <code>core/ui/ui_svc_crash.c</code>, the Crash log screen in <code>core/ui/ui_menus.c</code>, <code>dmr_data_send_udp()</code> in
+<code>core/dmr/dmrDataService.c</code>.</p>
+<h3 id="51-on-the-air">5.1 On the air</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transport</td>
+<td>IPv4 + UDP, source and destination port 4090 (<code>CRASH_UDP_PORT</code>), the packed report as the payload</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>unconfirmed, rate 1/2 (<a href="dmr-data.html">dmr-data.md</a>)</td>
+</tr>
+<tr>
+<td>Destination</td>
+<td>a <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> contact: a private contact's ID (individual) or a group contact's <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr> (group)</td>
+</tr>
+<tr>
+<td>Channel</td>
+<td>the current one, when it is a DMR channel the radio may <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> on</td>
+</tr>
+<tr>
+<td>Wait</td>
+<td><code>UDP_WAIT_MS</code> (120 s) queued without a channel it may go on, then failed; a busy channel waits in the transmit queue and fails when the queue gives up</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>dmr_data_send_udp()</code> takes one datagram at a time (at most <code>DMR_DATA_UDP_MAX</code>, 128 bytes) from any task, under the
+service's lock; the radio task's tick sends it. <code>dmr_data_udp_state()</code> is queued, sending, OK (the bursts are out) or
+failed. Nothing on the air says the report arrived. When a send ends OK, the record gets the sent and seen flags.</p>
+<h3 id="52-settings-and-the-screen">5.2 Settings and the screen</h3>
+<p>Two settings, in spare bits of the settings record (<a href="settings-store.html">settings-store.md</a>): the target contact (the
+codeplug contact number, 1..1024, 0 none) and what happens after a crash.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>After a crash</th>
+<th>At the start after a crash</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Off (default)</td>
+<td>nothing; the report goes only from the menu</td>
+</tr>
+<tr>
+<td>Ask</td>
+<td>a prompt: &quot;Restarted after a crash. Send the report to <code>&lt;name&gt;</code>?&quot; with Send report and Not now</td>
+</tr>
+<tr>
+<td>Auto</td>
+<td>sent without a prompt; a toast says &quot;Sending crash report&quot;, then &quot;Crash report sent&quot; or &quot;Crash report not sent&quot;</td>
+</tr>
+</tbody>
+</table></div>
+<p>Ask and Auto act once per record, 1.5 s after the start, on the Home screen, and only for a record that is neither
+seen nor sent and with a target set. Showing the Crash log screen or the prompt marks the record seen.</p>
+<p><strong>Settings &gt; Advanced &gt; Crash log</strong> shows the summary line (<code>crash_summary</code>), &quot;Report sent&quot;, the count in a row, the
+uptime and the build. Its rows: Send report, Send to (the contacts list, type to find), After a crash (Off, Ask, Auto
+in turn) and Clear. Without <code>CONFIG_CRASH_REPORT</code> only Clear is there. The screen is <code>CONFIG_CRASH_SCREEN</code> (on with the
+crash log); without it the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> still shows the record.</p>
+<h2 id="6-checks-on-hardware">6. Checks on hardware</h2>
+<p>Checked with <code>tests/hil/test_crash.py</code> and <code>tests/hil/test_watchdog.py</code> under <code>--allow-reboot</code> (2026-10-17 to
+2026-10-23) on the bench radios, at least one of each <abbr class="gl" tabindex="0" title="System on chip: the processor and its on-chip peripherals." data-more="../dev/glossary.html#t-soc">SoC</abbr> family:</p>
+<ul>
+<li>The store survives the restart (backup <abbr class="gl" tabindex="0" title="Static RAM: the processor&#x27;s fast working memory." data-more="../dev/glossary.html#t-sram">SRAM</abbr> on the <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32F4</abbr>, modem SRAM on the <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr>, through the soft reset and
+the vendor bootloader, and through the watchdog reset that replaced the soft reset). The record's <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> means a store that doesn't survive shows no record; it can't show a wrong
+one.</li>
+<li>The trap test records a fault of the expected kind and the task <code>host</code>.</li>
+<li>The restart cause (1.3): the watchdog tests read <code>watchdog</code> on the STM32F4 and <code>warm</code> on the HR_C7000, whose modem SRAM
+keeps the words through a watchdog reset. A reboot and the <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr>'s reset read <code>software</code> on both. On the STM32F4
+<code>reset.flags</code> keeps <code>SFTRST</code> through the vendor bootloader, so it leaves <code>RCC_CSR</code> alone.</li>
+<li>The hang check and the task snapshot: CRASH TEST hang keeps kind 5, 3000 ms (3750 on a board with a slower
+timer), task <code>host</code>, pc in <code>debuglink_crash_service</code>; the snapshot names each waiting task's own wait.</li>
+<li>The stall check: CRASH TEST stall (kind 4) keeps kind 6 with <code>cause</code> from 60000 ms and <code>host</code> in the snapshot, and
+the link answers again after the restart.</li>
+</ul>
+<p>Each radio's result is in its hardware spec and in <code>docs/testing/results/</code>. Not checked: the report on the air (no
+receiver for port 4090 exists yet) and, on a radio that has not run <code>test_crash.py</code>, that its store survives the
+restart. Check: <code>rfoundry_debug.py crash test trap</code>, then <code>rfoundry_debug.py crash</code> after the restart.</p>
+<h2 id="7-tests">7. Tests</h2>
+<p><code>tests/host/crashTest.c</code>: the fault trace's golden line and its <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> (and <code>tools/rfoundry_fault_trace.py --selftest</code> on the
+same line), the CRC, sealing and the count in a row, the build ID, the start-up side on a fake store,
+the packed report and the summary line (a hang's too); <code>ui_svc_crash.c</code> on fake settings, contacts and data service (the record for
+the screen, seen, clear, the report to a private or group contact, its progress and the sent mark); and
+<code>debuglink_crash.c</code> (view section 21, CRASH's argument checks, token and <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> refusals, the deferred test and the stall test's endless wait).
+<code>tests/host/watchdogTest.c</code> (<code>test_hang_check</code>): when the hang check fires, a long job's kick, the starve and a
+stopped watchdog, and the tick keeping the uptime; (<code>test_stall_check</code>): the stall check's limit, kind, no record
+before the first pass or while starving. <code>crashTest.c</code> (<code>test_reset</code>): the restart cause's table and a run
+of starts on fake kept words (power-on, an unasked reset, a reboot, chip flags, no words). <code>tests/hil/test_watchdog.py</code>:
+after each bench watchdog reset the cause is <code>watchdog</code> (or <code>warm</code>) with the run's uptime; after a reboot, <code>software</code>.
+<code>tests/hil/test_crash.py</code> (<code>test_crash_hang_kept</code>): CRASH TEST hang keeps a hang record of <code>host</code>
+before the watchdog resets, with the UI and radio tasks in its snapshot and at least one of them waiting;
+(<code>test_crash_stall_kept</code>) CRASH TEST stall keeps a stall record with <code>host</code> in the snapshot, and the radio answers
+again.
+<code>tests/host/crashCaptureTest.c</code>: <code>crash_capture.c</code> on a stand-in <abbr class="gl" tabindex="0" title="Real-time operating system: the scheduler that runs the firmware&#x27;s tasks." data-more="../dev/glossary.html#t-rtos">RTOS</abbr>; every way in (a fault record, a stack
+overflow, out of heap, an assertion inside the capture) calls <code>board_rf_safe</code> first, with interrupts off, before the
+store and the restart; the snapshot's order, the running and idle tasks left out, names cut, the count of the rest. A board with a first stage tests that it drives the transmitter pins off (<code>boards/&lt;id&gt;/tests/</code>).
+<code>tests/host/dmrDataServiceTest.c</code> (<code>testUdpSend</code>): the <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr> mailbox. <code>tests/host/radioCoreTest.c</code>
+(<code>test_ui_settings</code>): the two settings through the UI service, their clamps, and that they leave the theme, Up/Down
+and the accent alone. <code>tests/host/uiFlowTest.c</code> (&quot;C crash ...&quot;): the screen, Send to, the three modes after a
+restart, a report that can't start or fails, no prompt off the Home screen. On the radio: the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>'s CRASH TEST
+and view section 21 (<a href="debuglink.html">debuglink.md</a> 3.19).</p>
+<h2 id="8-transmitter-off-on-any-fault-or-reset">8. Transmitter off on any fault or reset</h2>
+<p>A board faulted while transmitting (2026-10-21). The capture stored its record and soft-reset the chip, and the radio
+came back stopped before the display was lit with the <abbr class="gl" tabindex="0" title="Power amplifier: the stage that boosts the transmit signal to the output power." data-more="../dev/glossary.html#t-pa">PA</abbr> keyed, drawing about 15 W, until a power cycle. Nothing on the
+fault or reset paths turned the transmitter off, and the boards' pin set-up (<code>board_early_init</code>) ran only after the
+clock, interrupt and timer set-up. Now every board has <code>board_rf_safe()</code> (<code>hal/board.h</code>): transmitter off with
+register and <abbr class="gl" tabindex="0" title="General purpose input/output: a pin the firmware can read or drive." data-more="../dev/glossary.html#t-gpio">GPIO</abbr> writes only, callable with interrupts off and without the <abbr class="gl" tabindex="0" title="Real-time operating system: the scheduler that runs the firmware&#x27;s tasks." data-more="../dev/glossary.html#t-rtos">RTOS</abbr>, any number of times. On the
+<abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> it is <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> code, so it doesn't depend on the <abbr class="gl" tabindex="0" title="Execute in place: running code straight from flash." data-more="../dev/glossary.html#t-xip">XIP</abbr> flash.</p>
+<p>The pins each board forces are in its hardware spec: the <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> supply and PA enables low, the band or <abbr class="gl" tabindex="0" title="Voltage controlled oscillator: the oscillator in a synthesizer, tuned by a voltage." data-more="../dev/glossary.html#t-vco">VCO</abbr> select at its
+<abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> level and the power-control <abbr class="gl" tabindex="0" title="Digital to analog converter." data-more="../dev/glossary.html#t-dac">DAC</abbr> at 0 (powered down where it can be).</p>
+<p>Each pin is forced to an output at its level (the level first), so the call also works at start-up before
+<code>board_early_init</code>. The <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr> DAC is written only when its clock is on. On the HR_C7000 the platform's <code>hrc_rf_safe()</code>
+adds the modem's own transmit state: <code>FM_PTT</code> 0 and <code>LAYER2_TXRX_CTRL</code> 0 (neither slot direction). The <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> chips (<abbr class="gl" tabindex="0" title="The RF transceiver chip that sets the frequency, deviation and power of many handheld DMR radios. Programmed over I2C." data-more="../dev/glossary.html#t-at1846s">AT1846S</abbr>,
+SKY72310 and HR_C5000/C6000, FD6818, BK4819) are not touched: each needs a bus transaction, and with the TX supplies and
+PA selects off their output reaches no keyed PA. The next start sets them up again.</p>
+<p>Where it is called:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Path</th>
+<th>STM32F4</th>
+<th>HR_C7000</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPU fault</td>
+<td><code>stm32_fault</code> first (HardFault, MemManage, BusFault, UsageFault, NMI); without the crash log, <code>HardFault_Handler</code> and the NMI</td>
+<td><code>hrc_fault</code>, right after interrupts go off, with or without the crash log</td>
+</tr>
+<tr>
+<td>Crash capture</td>
+<td><code>crash_commit</code> and the soft capture (assert, stack overflow, out of heap), with interrupts off, before the store; <code>hal_crash_restart</code></td>
+<td>the same; <code>hal_crash_restart</code> is <code>hrc_restart</code></td>
+</tr>
+<tr>
+<td>Hooks without the crash log</td>
+<td>stack overflow and malloc-failed hooks (<code>main.c</code>)</td>
+<td>the same</td>
+</tr>
+<tr>
+<td>Software reset</td>
+<td><code>reboot()</code> (normal and <abbr class="gl" tabindex="0" title="Read-only memory: code fixed in the chip." data-more="../dev/glossary.html#t-rom">ROM</abbr> <abbr class="gl" tabindex="0" title="Device Firmware Upgrade: the USB protocol of the radio&#x27;s bootloader." data-more="../user/22-glossary.html#t-dfu">DFU</abbr>) before <code>NVIC_SystemReset</code>; the ROM DFU entry at start-up (<code>stm32_sysboot_check</code>)</td>
+<td><code>hrc_restart</code>, before the loader's clocks and the flash controller are put back</td>
+</tr>
+<tr>
+<td>Stub entry</td>
+<td><code>stm32_enter_stub</code> (replaces <code>board_stub_prepare</code>)</td>
+<td><code>enter_stub</code>, before the PIC, watchdog and flash controller changes</td>
+</tr>
+<tr>
+<td>Start-up</td>
+<td>first thing in <code>main()</code>, before the ROM DFU check and the clocks</td>
+<td>first thing in <code>main()</code>, before <code>hrc_clock_init</code></td>
+</tr>
+<tr>
+<td>First stage (a board that has one)</td>
+<td></td>
+<td><code>boot/&lt;id&gt;/boot.c</code> drives the TX supplies and PA selects low and the RX supply high right after the power latch, before it offers the handshake (it may wait there for a host)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Every reboot request (the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>'s REBOOT, the <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr>'s reset, the storage UI) goes through <code>board.system-&gt;reboot</code>, so
+it is covered by the reset row. The time from power-on to the first <code>board_rf_safe</code> is the vendor bootloader's (and, on a board with a first stage, its handful of instructions), which RadioFoundry can't change.</p>
+<p>Unverified on hardware: that each radio's transmitter actually stops (current and RF) at a crash while keyed, and that
+the DAC B write before <code>hrc_clock_init</code> is harmless on every HR_C7000 radio (the vendor loaders leave the peripheral
+clock gates on, as far as known). The debug link's crash test is refused while transmitting,
+so a bench check needs a local test build that lets it through: keyed at the lowest power, the trap, then the supply
+current and the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench's capture drop to receive levels within a millisecond of the crash, and the radio restarts
+receiving.</p>
+
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/crash-log.md">View the source of this page</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="On this page">
+		<p class="eyebrow">On this page</p>
+		<ul><li class="l2"><a href="#1-what-is-caught">1. What is caught</a></li><li class="l3"><a href="#11-the-hang-check">1.1 The hang check</a></li><li class="l3"><a href="#12-the-other-tasks">1.2 The other tasks</a></li><li class="l3"><a href="#13-the-restart-cause">1.3 The restart cause</a></li><li class="l2"><a href="#2-platforms">2. Platforms</a></li><li class="l3"><a href="#21-stm32f4">2.1 STM32F4</a></li><li class="l3"><a href="#22-hr_c7000">2.2 HR_C7000</a></li><li class="l3"><a href="#23-fault-trace">2.3 Fault trace</a></li><li class="l2"><a href="#3-the-record">3. The record</a></li><li class="l2"><a href="#4-the-packed-report">4. The packed report</a></li><li class="l2"><a href="#5-sending-the-report">5. Sending the report</a></li><li class="l3"><a href="#51-on-the-air">5.1 On the air</a></li><li class="l3"><a href="#52-settings-and-the-screen">5.2 Settings and the screen</a></li><li class="l2"><a href="#6-checks-on-hardware">6. Checks on hardware</a></li><li class="l2"><a href="#7-tests">7. Tests</a></li><li class="l2"><a href="#8-transmitter-off-on-any-fault-or-reset">8. Transmitter off on any fault or reset</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Join the RadioFoundry community</strong><span class="small muted">Questions, help with your radio and news, on Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Found a bug? Want your radio supported?</strong><span class="small muted">Open an issue on GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry is MIT licensed · <a href="https://github.com/radiofoundry/radiofoundry">Source Code</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Community</a> · <a href="../../docs/index.html">Docs</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Changelog</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

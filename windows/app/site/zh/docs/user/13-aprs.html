@@ -1,0 +1,268 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>APRS · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="APRS · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/user/13-aprs.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/user/13-aprs.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/user/13-aprs.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/user/13-aprs.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/user/13-aprs.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/user/13-aprs.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/user/13-aprs.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/user/13-aprs.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/user/13-aprs.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/user/13-aprs.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="用户手册">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 用户手册</p>
+		<ul><li><a href="index.html">RadioFoundry 用户手册</a></li><li><a href="01-introduction.html">简介</a></li><li><a href="02-installing.html">安装</a></li><li><a href="03-first-boot.html">首次启动</a></li><li><a href="04-programming.html">为电台编程</a></li><li><a href="05-keys-and-navigation.html">按键与导航</a></li><li><a href="06-home-screen.html">主屏幕</a></li><li><a href="07-channels-zones-vfo.html">信道、区域与 VFO</a></li><li><a href="08-fm.html">FM</a></li><li><a href="09-dmr.html">DMR</a></li><li><a href="10-messages-and-signaling.html">消息、呼叫提示与电台检查</a></li><li><a href="11-emergency.html">紧急</a></li><li><a href="12-scan.html">扫描与双守候</a></li><li><a href="13-aprs.html" aria-current="page">APRS</a></li><li><a href="14-hotspot.html">热点模式</a></li><li><a href="15-usb-network.html">USB 网络模式</a></li><li><a href="16-battery-and-power.html">电池与供电</a></li><li><a href="17-settings.html">设置</a></li><li><a href="18-moving-from-stock-md380.html">从原厂 MD-380 固件迁移</a></li><li><a href="19-moving-from-stock-dm32.html">从原厂 DM-32UV 固件迁移</a></li><li><a href="20-troubleshooting.html">故障排查</a></li><li><a href="21-faq.html">常见问题</a></li><li><a href="22-glossary.html">术语表</a></li><li><a href="23-radios.html">电台参考</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<h1 id="aprs">APRS</h1>
+<p><abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr>（自动分组报告系统）把你的位置分享给其他业余台站和 aprs.fi 等地图。电台以两种方式发送 APRS：</p>
+<ul>
+<li><strong>在 FM 上</strong>：作为 1200 波特 AFSK 分组，发到你所在区域的 APRS 频率。电台会离开你的信道约一秒，发送后返回。</li>
+<li><strong>经 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr></strong>：作为位置报告发往 APRS 网关 ID（默认是 <abbr class="gl" tabindex="0" title="A worldwide amateur DMR network of linked servers and talkgroups." data-more="22-glossary.html#t-brandmeister">BrandMeister</abbr> 的 5057）。这需要 DMR 信道。</li>
+</ul>
+<p>并非每款电台两种都支持。有些只能发送，有些尚不能在 FM 上发送 APRS，构建也可能因 flash 空间而省去 APRS。<a href="23-radios.html">电台参考</a>列出这些情况，并说明 APRS 在哪里已验证。</p>
+<h2 id="before-you-start">开始之前</h2>
+<ul>
+<li>你需要业余无线电执照。<abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr> 只在业余频率上发送，电台会拒绝其他频率。</li>
+<li>你的呼号是电台名的第一个词（设置 &gt; 我的电台，或电台频率中的电台名）。没有有效呼号时不会发送，APRS 页面会说明原因。</li>
+<li>发送默认关闭，直到你开启。“立即发送位置”随时可用。</li>
+</ul>
+<h2 id="the-aprs-page">APRS 页面</h2>
+<p>按 <strong>OK</strong>、<strong>6</strong>（工具）、<strong>8</strong>（<abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr>）。页面顶部显示你的呼号、APRS 频率、你的位置及其来源，以及下一个信标的发送时间。电台无法发送时会说明原因。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>行</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>立即发送位置</td>
+<td>立即发送一次位置</td>
+</tr>
+<tr>
+<td>自动信标</td>
+<td>开：位置会自动发出（见触发条件）</td>
+</tr>
+<tr>
+<td>频率</td>
+<td>你所在区域：北美 144.390、欧洲 144.800、澳大利亚 145.175、新西兰 144.575、日本 144.660、中国 144.640 MHz，或自定义（<code>tools/rfoundry_debug.py aprs set region custom</code>，然后 <code>aprs set freq_hz 144390000</code>）</td>
+</tr>
+<tr>
+<td>功率</td>
+<td>随信道：APRS 使用电台当前功率级别。或单独选择级别，例如为附近的数字中继选低功率。无法通过空中发送 APRS 的电台此项变暗</td>
+</tr>
+<tr>
+<td>路径</td>
+<td>数字中继转发你的分组多远：无、WIDE1-1、WIDE1-1,WIDE2-1（默认）、WIDE2-1 或 WIDE2-2。见下文“路径”。无法通过空中发送 APRS 的电台此项变暗</td>
+</tr>
+<tr>
+<td>间隔</td>
+<td>发送频率：关、1、2、5、10 或 30 分钟</td>
+</tr>
+<tr>
+<td>SmartBeaconing</td>
+<td>移动快时更频繁，转弯后立即发送，静止时很少发送</td>
+</tr>
+<tr>
+<td>发送方式</td>
+<td>AFSK（在 FM 上）、<abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr>，或两者</td>
+</tr>
+<tr>
+<td>位置</td>
+<td>位置来源，以及固定位置（见下文“位置”）</td>
+</tr>
+<tr>
+<td>DMR 呼叫中的位置</td>
+<td>在你的 DMR 语音呼叫中携带位置（见 <a href="09-dmr.html#position-in-calls">DMR</a>）</td>
+</tr>
+<tr>
+<td>USB 上的 KISS</td>
+<td>电台作为 <abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="22-glossary.html#t-kiss">KISS</abbr> TNC 供电脑上的 APRS 程序使用</td>
+</tr>
+<tr>
+<td>收到的台站</td>
+<td>电台听到的台站（能接收 APRS 的电台）</td>
+</tr>
+</tbody>
+</table></div>
+<p>符号、注释和 DMR 目的地目前通过调试工具设置（<code>tools/rfoundry_debug.py aprs set ...</code>），以后可通过 <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr> 设置。</p>
+<h2 id="station-details">路径</h2>
+<p>路径说明分组在 FM 上可经过多少数字中继跳。每个 <strong>WIDEn-N</strong> 项允许多 N 跳。在“路径”上按 <strong>OK</strong> 步进到下一个选择。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>路径</th>
+<th>跳数</th>
+<th>适用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无</td>
+<td>0</td>
+<td>只有直接听到你的台站（附近的 <abbr class="gl" tabindex="0" title="A station that passes APRS packets between the air and the APRS-IS internet network." data-more="22-glossary.html#t-igate">iGate</abbr>）</td>
+</tr>
+<tr>
+<td>WIDE1-1</td>
+<td>1</td>
+<td>补隙数字中继或一个广域数字中继</td>
+</tr>
+<tr>
+<td>WIDE1-1,WIDE2-1</td>
+<td>2</td>
+<td>北美和欧洲大部分地区的移动与手持使用（默认）</td>
+</tr>
+<tr>
+<td>WIDE2-1</td>
+<td>1</td>
+<td>能直接到达广域数字中继的固定台站</td>
+</tr>
+<tr>
+<td>WIDE2-2</td>
+<td>2</td>
+<td>稀疏地区；跳过补隙数字中继</td>
+</tr>
+</tbody>
+</table></div>
+<p>跳数越多，在繁忙频率上产生的副本越多。请使用能到达 iGate 的最少跳数。路径不适用于经 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> 发送的位置。</p>
+<p>路径也保存在电台频率的第一个 <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr> 配置中，由 <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr> 编辑。在电台上更改也会写入那里；用不同路径写入电台频率会改变电台的设置。以最后更改的为准。</p>
+<h2 id="path">接收</h2>
+<p>在能接收 <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr> 的电台上，电台会在你收听 APRS 频率时解码分组。在 <strong>频率</strong> 所示频率（你所在区域的，北美为 144.390 MHz）上建一个 FM 信道，或把 <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr> 调到那里，并让电台停留在该信道。若分组在其他频率上发送，请先把<strong>频率</strong>设为自定义并输入该频率。听到的台站会进入<strong>收到的台站</strong>，发给你的呼号的消息会被保留并确认，数字中继（若你开启）会转发分组。</p>
+<ul>
+<li>它只在 APRS 频率上以 FM 收听，且调谐频率必须与 APRS <strong>频率</strong> 完全一致。其他信道上不会解码任何内容。</li>
+<li>音量旋钮无关紧要：完全关小音量的电台仍能解码。</li>
+<li>在只解码能打开静噪的分组的电台上（<a href="23-radios.html">电台参考</a>），分组必须强到足以打开静噪。请把静噪保持在通常级别，不要收得太紧。</li>
+<li>电台收听 APRS 时会暂停省电：休眠的接收机会漏掉分组。</li>
+<li>接收默认开启。可用 <code>tools/rfoundry_debug.py aprs set rx 0</code> 关闭。</li>
+</ul>
+<h2 id="ssid">触发条件</h2>
+<p>自动信标按间隔发出，或在 SmartBeaconing 下按速度和转弯发出。间隔绝不短于 30 秒。电台发送前会等待 <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr> 频率空闲，10 秒后放弃。按下 PTT 总是优先：正在进行的 APRS 发送会停止，你的信道会回来。</p>
+<h2 id="receiving">位置</h2>
+<p>位置来自：</p>
+<ul>
+<li><strong>GPS</strong>：在有 GPS 的电台上（<a href="23-radios.html">电台参考</a>）。</li>
+<li><strong>电脑</strong>：电脑上 GPS 的 <abbr class="gl" tabindex="0" title="The text format GPS receivers use to report position and time." data-more="22-glossary.html#t-nmea">NMEA</abbr>，由 <code>tools/aprs_gate.py --nmea &lt;GPS 端口&gt;</code> 经 USB 发送（必须开启 USB 上的 <abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="22-glossary.html#t-kiss">KISS</abbr>）。</li>
+<li><strong>固定</strong>：你输入的位置。</li>
+</ul>
+<p>自动会取最新的 GPS 位置，否则取电脑的，再否则取固定位置。</p>
+<p><abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr> &gt; 位置有三行：<strong>来源</strong>（按 OK 在自动、GPS、电脑、固定间步进）、<strong>纬度</strong> 和 <strong>经度</strong>。设置固定位置：</p>
+<ol>
+<li>选择纬度并按 OK。数值打开以便编辑。</li>
+<li>用数字输入度数，包括小数位：<code>3</code>、<code>3</code>、<code>7</code>、<code>4</code>、<code>9</code>、<code>0</code> 是 33.7490。小数点已经在那里。经度小数点前有三位：84.3880 是 <code>8</code>、<code>4</code>、<code>3</code>、<code>8</code>、<code>8</code>、<code>0</code>（电台会为你补前导 0），122.4194 是 <code>1</code>、<code>2</code>、<code>2</code>、<code>4</code>、<code>1</code>、<code>9</code>、<code>4</code>。10 到 19 度时请自己输入 0。</li>
+<li>按上或下（或转动旋钮）在 N 与 S、E 与 W 之间切换。西经为 W。</li>
+<li>按 OK 保存。未输入的位置按零计算。BACK 删除最后一位；未输入任何内容时，关闭数值且不做更改。</li>
+</ol>
+<p>四位小数可精确到约 11 米。你也可以在主屏幕输入“latitude”或“position”找到该页面。</p>
+<h2 id="triggers">GPS 状态</h2>
+<p><strong>工具 &gt; 位置</strong>分四页显示电台 GPS 的状态。按上或下（或转动旋钮）到下一页，或按 1 到 4。屏幕较高的电台上，状态页还会显示网格定位和度分秒，因此只有三页。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>页</th>
+<th>显示内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 状态</td>
+<td>3D 定位、2D 定位（接收机不说明时显示“定位”）或搜索中；使用和看到的卫星；位置、海拔、速度、HDOP（精度：好、一般、差）以及定位的 UTC 时间</td>
+</tr>
+<tr>
+<td>2 星空</td>
+<td>每颗卫星的位置：外圈为地平线，中圈为仰角 45 度，上方为北。实心点表示用于定位。颜色和图例表示系统：GPS、GLONASS、Galileo、北斗、QZSS</td>
+</tr>
+<tr>
+<td>3 信号</td>
+<td>每颗卫星的信号强度条；实心条表示用于定位</td>
+</tr>
+<tr>
+<td>4 网格</td>
+<td>你的梅登黑德网格定位（FN42li），以及度分秒位置</td>
+</tr>
+</tbody>
+</table></div>
+<p>“无 GPS 或已关闭”表示电台没有 GPS，或<strong>设置 &gt; 位置 &gt; GPS</strong> 已关闭。户外首次定位需要几秒到几分钟；室内可能无法定位。</p>
+<h2 id="position">配合电脑（KISS 与 iGate）</h2>
+<p>开启 <strong>USB 上的 <abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="22-glossary.html#t-kiss">KISS</abbr></strong>，然后运行 <code>tools/aprs_gate.py --port &lt;电台端口&gt;</code>：</p>
+<ul>
+<li><code>--kiss-tcp 8001</code>：<abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr> 程序（APRSdroid、Xastir、YAAC）连接 TCP 端口 8001 并经电台发送。电台只发送来自你自己呼号的分组，在三连发之后每 10 秒最多一个。</li>
+<li><code>--call &lt;你的呼号&gt;</code>：连接 APRS-IS。能接收 APRS 的电台此时成为 <abbr class="gl" tabindex="0" title="A station that passes APRS packets between the air and the APRS-IS internet network." data-more="22-glossary.html#t-igate">iGate</abbr>，把它听到的内容传给 APRS-IS。若你允许，它也会把 APRS-IS 的消息回传到空中的本地台站。</li>
+<li>在 USB 网络模式下使用 <code>--port udp:&lt;电台地址&gt;</code>。</li>
+</ul>
+<p>电台不能同时处于热点模式。</p>
+<p>在 USB 网络模式下，电台无需辅助程序即可完成两件事。APRS 程序直接连接电台地址的 TCP 端口 8001（<a href="15-usb-network.html#services-on-the-radio">电台上的服务</a>）。电台自己登录 APRS-IS 服务器（<a href="15-usb-network.html#aprs-is-from-the-radio">电台自身连接 APRS-IS</a>）。两者都需要开启 USB 上的 KISS。</p>
+
+		<nav class="prev-next"><a class="prev" href="12-scan.html">扫描与双守候</a><a class="next" href="14-hotspot.html">热点模式</a></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/user/13-aprs.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#before-you-start">开始之前</a></li><li class="l2"><a href="#the-aprs-page">APRS 页面</a></li><li class="l2"><a href="#station-details">路径</a></li><li class="l2"><a href="#path">接收</a></li><li class="l2"><a href="#ssid">触发条件</a></li><li class="l2"><a href="#receiving">位置</a></li><li class="l2"><a href="#triggers">GPS 状态</a></li><li class="l2"><a href="#position">配合电脑（KISS 与 iGate）</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

@@ -1,0 +1,384 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MD-9600 bring-up checklist · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="MD-9600 bring-up checklist · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/docs/testing/md9600-bringup.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/testing/md9600-bringup.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/testing/md9600-bringup.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/testing/md9600-bringup.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/testing/md9600-bringup.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/testing/md9600-bringup.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../es/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../../es/radios/index.html">Radios</a><a href="../../../es/features/index.html">Funciones</a><a href="../../../es/flash/index.html">Instalar</a><a href="../../../es/codeplug/index.html">Codeplug</a><a href="../../../es/docs/index.html" aria-current="page">Documentación</a><a href="../../../es/screenshots/index.html">Capturas</a><a href="../../../es/tools/index.html">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../../docs/testing/md9600-bringup.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/testing/md9600-bringup.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/testing/md9600-bringup.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/testing/md9600-bringup.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Pruebas">
+		<p class="eyebrow"><a href="../../../es/docs/index.html">Documentación</a> / Pruebas</p>
+		<ul><li><a href="index.html">Testing</a></li><li><a href="results/index.html">Bring-up results</a></li><li><a href="backlight-curve.html">Backlight curve</a></li><li><a href="dm1801pro-bringup.html">DM-1801 Pro bring-up checklist</a></li><li><a href="dm32-bringup.html">DM-32UV bring-up checklist</a></li><li><a href="dmr-bench.html">DMR bench testing on the SDR bench</a></li><li><a href="md380-bringup.html">MD-380 bring-up checklist</a></li><li><a href="md9600-bringup.html" aria-current="page">MD-9600 bring-up checklist</a></li><li><a href="mduv380-bringup.html">MD-UV380 bring-up checklist</a></li><li><a href="mmdvm-audit.html">MMDVM implementation audit (2d45a21)</a></li><li><a href="on-air-coverage.html">On-air test coverage</a></li><li><a href="power-calibration.html">Transmit power calibration with a wattmeter</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Esta página aún no está traducida; se muestra en inglés.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<!-- Copyright (c) 2026 The RadioFoundry Authors -->
+<h1 id="md-9600-bring-up-checklist">MD-9600 bring-up checklist</h1>
+<p>The MD-9600 port (<code>make BOARD=md9600</code>) builds, passes its host tests and runs on a radio. This is the order to try it
+in, what each stage proves, and what to change when it doesn't work. The unknowns are numbered as in
+<a href="../spec/hardware-md9600.html">hardware-md9600.md</a> section 17. Every row names the knob in the source that the likely
+failure points at.</p>
+<p>The radio is a <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="../user/22-glossary.html#t-tyt">TYT</abbr> MD-9600 or Retevis RT90, any board revision (hardware-md9600.md 16). One image drives every
+revision; the revision is a stored setting (19.3).</p>
+<p>The feature checklist, with every feature's required <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> tests and the last recorded result, is
+<code>tools/bringup.py list --radio md9600</code>. <code>tools/bringup.py run --radio md9600</code> records a run
+(<a href="https://github.com/radiofoundry/radiofoundry/blob/main/tests/hil/README.md#bring-up-mode">tests/hil/README.md</a>). This page keeps the hardware steps and what to
+change when one fails.</p>
+<h2 id="status-2026-11-02">Status (2026-11-02)</h2>
+<p>First radio: a V1-V3 board (its original firmware reported version 06.09), on a dummy load, no signal generator.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boot, USB, debug link, CPS</td>
+<td>Work</td>
+</tr>
+<tr>
+<td>Display</td>
+<td>Works after turning it 180 degrees (segments reversed, COM normal, column offset 4; unknown 22)</td>
+</tr>
+<tr>
+<td>Keys, key lock, encoder, hand mic</td>
+<td>Work (<abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr>; by hand: the encoder one step per click both ways, a wobble counts none; all 19 mic keys and the mic PTT each read as the right key)</td>
+</tr>
+<tr>
+<td>Data flash, calibration, option block</td>
+<td>Read: <code>cal factory</code>, <code>opt factory</code>, band edges from the option block</td>
+</tr>
+<tr>
+<td>GPS</td>
+<td>No module on the first radio: no bytes at any rate, the receiver gave up (<code>board.gps=0</code>, <code>gps.nmea=0/0/0</code>). With a module not tried</td>
+</tr>
+<tr>
+<td>Clock</td>
+<td>The 8 MHz HSE starts as a crystal, 72 MHz</td>
+</tr>
+<tr>
+<td>Board revision</td>
+<td>Stored by hand as V1-V3 before the installers learned to read it</td>
+</tr>
+<tr>
+<td>FM receive, VHF</td>
+<td>Works: a NOAA station through the dummy load, at 25 kHz</td>
+</tr>
+<tr>
+<td>Beeps</td>
+<td>Work on FM and <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> channels (by ear, 2026-11-03). They follow the volume knob: they go out the <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> line out, ahead of the knob, where the radio's own firmware plays key beeps as <abbr class="gl" tabindex="0" title="Pulse width modulation: a pin switched on and off to give an average level, as for backlight or tone." data-more="../dev/glossary.html#t-pwm">PWM</abbr> on the beep pin, after it</td>
+</tr>
+<tr>
+<td>FM receive audio</td>
+<td>Loud at the bottom of the volume knob and overdriven. The HR_C6000 settings, FM_SW and the IF chip words were compared with the original firmware's and changed live without effect; whether the original firmware sounds the same on this radio is not checked</td>
+</tr>
+<tr>
+<td>Tone squelch (receive)</td>
+<td>Works: a handheld on 446.100 MHz, 12.5 kHz, <abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-ctcss">CTCSS</abbr> 100.0 Hz at -85 to -91 dBm opens it within a second, with and without speech, and the channel stays closed on noise and on a DMR carrier (2026-11-03). CTCSS 67.0 Hz too. <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-dcs">DCS</abbr> 023 normal from the same handheld opens it within about 0.5 s and holds for the whole transmission (2026-11-03), after the decoder's DCS slicer gained hysteresis: PA2 high-passes the DCS stream (corner near 18 Hz), and the old slicer missed 4 to 8 bits a word. The decoder reads PA2; PC3 carries the voice band without the tone. Encode is not written</td>
+</tr>
+<tr>
+<td>FM receive, UHF</td>
+<td>Works: a handheld on 446.000 MHz, 12.5 kHz, at -57 to -73 dBm; the audio sounds the same as on <abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="../user/22-glossary.html#t-vhf">VHF</abbr></td>
+</tr>
+<tr>
+<td>DMR data receive</td>
+<td>Works: an unconfirmed <abbr class="gl" tabindex="0" title="European Telecommunications Standards Institute, which publishes the DMR standard." data-more="../dev/glossary.html#t-etsi">ETSI</abbr> IP text from the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench's transmitter on 446.100 (<abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">CC</abbr> 1, slot 1) lands in the inbox with its text, the <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> good and no reply sent (2026-11-03). Deleting it from the UI works</td>
+</tr>
+<tr>
+<td>APRS receive</td>
+<td>Written (<code>afsk_md9600.c</code>: PC3 on ADC3, 9146 Hz), untested: no <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> traffic on 144.390 MHz in 12 minutes at the bench. Listening, the decoder sees the noise only (aborts, a few FCS errors)</td>
+</tr>
+<tr>
+<td>VOX mic level</td>
+<td>PA3 is a level tap: 3-4 counts (<abbr class="gl" tabindex="0" title="Voice-operated transmit." data-more="../user/22-glossary.html#t-vox">VOX</abbr> level 12-16 of 100) with the mic quiet, and a beep in the speaker doesn't move it. VOX on and off from Quick works. The level while speaking is not measured yet; VOX can't key while <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> is refused</td>
+</tr>
+<tr>
+<td>DMR receive</td>
+<td>Works on <abbr class="gl" tabindex="0" title="Ultra high frequency: 300 MHz to 3 GHz. The amateur 70 cm band is UHF." data-more="../user/22-glossary.html#t-uhf">UHF</abbr> (446.100) and VHF (151.505), by hand: a group call from another radio (CC 1, slot 1) plays clearly, every voice burst received. The DMR modem counters are on the diagnostics page after the board lines</td>
+</tr>
+<tr>
+<td>Transmit</td>
+<td>On in the build (<code>CONFIG_MD9600_TX</code>, <code>CONFIG_MD9600_DMR_TX</code>), once the board revision is confirmed. UHF, 5 W into a dummy load (section 5): DMR decoded burst for burst; FM with CTCSS and DCS passes the FM transmit HIL tests. VHF, 5 W on 151.5125 MHz: FM (12.5 and 25 kHz, CTCSS, DCS) and DMR checked off air (<a href="../spec/hardware-md9600.html">hardware-md9600.md</a> 19.9.1). Every power level checked on a wattmeter on both bands (<a href="power-calibration.html">power-calibration.md</a> 4)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="0-before-anything">0. Before anything</h2>
+<ol>
+<li>
+<p><strong>Back up the radio</strong> while its original firmware runs: the data flash (<abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>, contact list) and the
+firmware version (hardware-md9600.md 15). RadioFoundry's open-firmware layout overwrites the codeplug area, and its
+settings claim erases 0x011000-0x01AFFF. RadioFoundry never writes the flash security registers (calibration and
+option block).</p>
+</li>
+<li>
+<p><strong>Bootloader:</strong> DC off (the power key only puts the radio in standby), hold <strong>P1 and the orange key</strong>, DC on. The
+screen stays blank and the backlight blinks at 1 Hz (14.1). The radio's <abbr class="gl" tabindex="0" title="Device Firmware Upgrade: the USB protocol of the radio&#x27;s bootloader." data-more="../user/22-glossary.html#t-dfu">DFU</abbr> interface string tells the bootloader
+from the original firmware, which has the same USB IDs and strings.</p>
+</li>
+<li>
+<p>Build and flash. With the radio's original firmware file in <code>codecs/</code> the build also writes the image with the
+radio's own codec, <code>build/md9600/rfoundry_md9600_codec.bin</code> (<a href="../spec/codec-md9600.html">codec-md9600.md</a>):</p>
+<pre><code>make BOARD=md9600
+python3 tools/release.py --board md9600 --version v0.0.0-test --out build/dist
+cd tools/rfoundry &amp;&amp; python3 -m rfoundry flash ../../build/dist/rfoundry-md9600-v0.0.0-test.bin \
+    --stock FILE --board md9600 --codec merge --yes
+</code></pre>
+<p>Later updates go through the <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr> (<code>stub/stubtool.py PORT --rfoundry-enter --board md9600 --write-app IMAGE</code>).</p>
+</li>
+<li>
+<p><strong>Board revision:</strong> V4A / V5 is detected at every start (the AK2365A read test, 19.3); on V1-V4 the installers store
+it after the first boot or ask for it. Check it with <code>rfoundry_debug.py hwopt</code> (<code>state=ask</code> until it is set) and
+the <code>board</code> view's <code>rev.source</code> and <code>rev.ak2365</code>; set it by hand (<code>hwopt &quot;Board revision&quot; V1-V3|V4</code>) if it asks.
+The diagnostics page shows the source and the read test.</p>
+</li>
+<li>
+<p><strong>Codeplug:</strong> write one (<abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> or <code>tools/cps_client.py</code>) before judging the channel screens. Until then the codeplug
+area holds the original firmware's own bytes. Writes are refused until the settings area is claimed
+(<code>rfoundry_debug.py storage claim --out DIR</code>, which saves the area first).</p>
+</li>
+</ol>
+<h2 id="1-it-boots">1. It boots</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Look for</th>
+<th>Proves</th>
+<th>If not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USB serial enumerates, <code>rfoundry_debug.py --port PORT version</code> says <code>board=MD-9600</code></td>
+<td>clocks, <abbr class="gl" tabindex="0" title="USB On-The-Go: the controller can act as the host or the device." data-more="../dev/glossary.html#t-otg">OTG_FS</abbr>, the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr></td>
+<td>No USB: the HSE didn't start (<code>board.c</code> falls back to bypass, then HSI without USB). Unknown 18</td>
+</tr>
+<tr>
+<td><code>rfoundry_debug.py chip</code></td>
+<td>the <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr>, RDP level 1 (normal)</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="2-display">2. Display</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Look for</th>
+<th>Proves</th>
+<th>If not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The home screen upright, no column cut off</td>
+<td>ST7567 init, orientation, column offset</td>
+<td><code>seg_reverse</code>, <code>com_reverse</code>, <code>col_offset</code> in <code>display_md9600.c</code>. Unknown 22</td>
+</tr>
+<tr>
+<td>Readable contrast</td>
+<td>electronic volume 0x28</td>
+<td><code>contrast</code> in <code>display_md9600.c</code></td>
+</tr>
+<tr>
+<td>Odd glyphs in a channel name</td>
+<td>nothing wrong with the display: the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> area still holds the original firmware's bytes (step 0.5)</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="3-keys-encoder-power-flash">3. Keys, encoder, power, flash</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Look for</th>
+<th>Proves</th>
+<th>If not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>test_keys_idle</code>, <code>test_keys_move_the_channel</code> pass</td>
+<td>the key matrix</td>
+<td>rows and columns in <code>input_md9600.c</code></td>
+</tr>
+<tr>
+<td>Encoder: one channel per detent, the right direction (<code>pytest tests/hil/test_encoder.py --manual -s</code>)</td>
+<td>EXTI10 / EXTI11, steps per detent</td>
+<td>Unknown 23</td>
+</tr>
+<tr>
+<td><code>diag</code>: <code>supply</code> near the supply voltage</td>
+<td>ADC1 IN1</td>
+<td><code>adc_md9600.c</code> scale</td>
+</tr>
+<tr>
+<td><code>diag</code>: <code>flash ... mapped</code>, <code>cal factory</code>, <code>opt factory</code></td>
+<td>SPI2, the security registers</td>
+<td><code>flash_md9600.c</code>, <code>cal_md9600.c</code></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="4-fm-receive">4. FM receive</h2>
+<p>Put the radio on a <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> frequency with a known signal (<code>rfoundry_debug.py radio vfo on</code>, <code>radio freq F</code>, <code>radio bw 25</code>
+for a 25 kHz station).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Look for</th>
+<th>Proves</th>
+<th>If not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>diag</code>: the band's <code>rssi</code> up and <code>nz</code> down against an empty frequency</td>
+<td>the synthesizer locks, the IF chip runs</td>
+<td>the revision (step 0.4), then <code>rfplan_md9600.c</code></td>
+</tr>
+<tr>
+<td>Audio with the squelch open (<code>radio monitor</code>)</td>
+<td>FM_SW, FM_MUTE, the amplifier mute, U_V_AF_SW</td>
+<td><code>speaker_md9600.h</code>, <code>rfseq_md9600.c</code></td>
+</tr>
+<tr>
+<td>The volume knob covers a usable range</td>
+<td>the <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> audio level</td>
+<td>Open: see Status</td>
+</tr>
+</tbody>
+</table></div>
+<p>A <code>CONFIG_AUDIO_PROBE</code> build lets <code>rfoundry_debug.py aprobe reg|wreg 4 REG [VAL]</code> read and write <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> registers
+live.</p>
+<h2 id="5-dmr-receive-transmit">5. DMR receive, transmit</h2>
+<p><abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> works on <abbr class="gl" tabindex="0" title="Ultra high frequency: 300 MHz to 3 GHz. The amateur 70 cm band is UHF." data-more="../user/22-glossary.html#t-uhf">UHF</abbr> and <abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="../user/22-glossary.html#t-vhf">VHF</abbr> (2026-11-02, a simplex group call, <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">CC</abbr> 1, slot 1, from another radio at about -70 dBm): headers,
+terminator and every voice burst, played clearly. Three fixes, found in this order (hardware-md9600.md 2.6, 4.2):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Fault</th>
+<th>Symptom with it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4:0xA1 = 0x80 from the init (bit 7 reserved, must be 0)</td>
+<td>no sync at all, though the chip's <abbr class="gl" tabindex="0" title="Received signal strength indicator: how strong the received signal is, in dBm." data-more="../user/22-glossary.html#t-rssi">RSSI</abbr> follows the signal</td>
+</tr>
+<tr>
+<td>The tone pin (PC7) driven low into the reference oscillator</td>
+<td>no sync</td>
+</tr>
+<tr>
+<td>4:0x01 bit 6 (receive I/Q swap) not matching the first LO's side: set on UHF, where the LO is below the signal</td>
+<td>an inverted spectrum: the odd sync, about one voice burst in six, no call</td>
+</tr>
+</tbody>
+</table></div>
+<p>The first two were each needed for any sync while 0x01 was still wrong. Whether each is still needed with 0x01 right
+wasn't tried; both match what the manual and the radio's own start-up do.</p>
+<p><abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">Transmit</abbr>, UHF, 5 W into a dummy load, a <code>CONFIG_MD9600_TX</code> and <code>CONFIG_MD9600_DMR_TX</code> build
+(2026-11-03), received by the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DMR call, 3 s</td>
+<td>every burst decoded: headers, voice A-F, terminator, CC 1, <abbr class="gl" tabindex="0" title="Bit error rate: the share of received bits that were wrong. A measure of how clean a signal is." data-more="../dev/glossary.html#t-ber">BER</abbr> 0. Carrier off between bursts (over 26 dB down) once T5 switches per burst (19.8)</td>
+</tr>
+<tr>
+<td>FM carrier</td>
+<td>within 1 kHz of the channel, steady through the key</td>
+</tr>
+<tr>
+<td>CTCSS 100.0 Hz</td>
+<td>368 Hz deviation at 12.5 kHz, 754 Hz at 25 kHz on UHF; 380 / 758 Hz on VHF; <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-dcs">DCS</abbr> D023N +-385 / +-399 Hz (<code>test_fm_tx_ctcss</code>, <code>test_fm_tx_bandwidth</code>)</td>
+</tr>
+<tr>
+<td>DCS D023N</td>
+<td>+-700 Hz, 0.30 s turn-off tail (<code>test_fm_tx_dcs</code>); inverted until <code>MD9600_SUBTONE_TX_INVERT</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Transmit stays off in the build until the power levels are checked.</p>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/testing/md9600-bringup.md">Ver el código fuente de esta página</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="En esta página">
+		<p class="eyebrow">En esta página</p>
+		<ul><li class="l2"><a href="#status-2026-11-02">Status (2026-11-02)</a></li><li class="l2"><a href="#0-before-anything">0. Before anything</a></li><li class="l2"><a href="#1-it-boots">1. It boots</a></li><li class="l2"><a href="#2-display">2. Display</a></li><li class="l2"><a href="#3-keys-encoder-power-flash">3. Keys, encoder, power, flash</a></li><li class="l2"><a href="#4-fm-receive">4. FM receive</a></li><li class="l2"><a href="#5-dmr-receive-transmit">5. DMR receive, transmit</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

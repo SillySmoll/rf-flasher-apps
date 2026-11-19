@@ -1,0 +1,419 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hardware watchdog · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Hardware watchdog · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/spec/watchdog.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/watchdog.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/watchdog.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/watchdog.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/watchdog.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/watchdog.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/spec/watchdog.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/watchdog.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/watchdog.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/watchdog.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="规范">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 规范</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html" aria-current="page">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">本页尚未翻译，目前显示英文。</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<!-- Copyright (c) 2026 The RadioFoundry Authors -->
+<h1 id="hardware-watchdog">Hardware watchdog</h1>
+<p><code>CONFIG_WATCHDOG</code> (default on). The platform starts the <abbr class="gl" tabindex="0" title="System on chip: the processor and its on-chip peripherals." data-more="../dev/glossary.html#t-soc">SoC</abbr>'s watchdog in <code>main()</code> and the FreeRTOS idle task feeds
+it. The idle task runs only when every other task waits, so a feed says the whole system still gets through its work.
+A task that spins, a critical section that never ends, an interrupt storm or a hang with interrupts off stops the
+feeds, and the chip resets within a few seconds. Off: no watchdog runs, as before.</p>
+<p>With the crash log, the hang check in the tick interrupt keeps a record of the task that kept the idle task out, a
+quarter of the timeout before the reset would come, and restarts the radio itself (<a href="crash-log.html">crash-log.md</a> 1.1).
+Only a hang with interrupts off still reaches the hardware reset. The stall check, in the same tick, keeps a record
+and restarts the radio when the host link's task stops passing its loop for a minute while the rest runs on
+(<a href="crash-log.html">crash-log.md</a> 1.1.1).</p>
+<p>A watchdog reset is a chip reset: the radio starts as at power-on. The transmitter must be off by then, which is the
+early-boot RF-off step's job (<code>board_rf_safe</code>, <a href="crash-log.html">crash-log.md</a>), not the watchdog's.</p>
+<p>Code: <code>hal/hal_watchdog.h</code>, <code>core/app/watchdog.c</code> (the feed), <code>platform/stm32f4/watchdog.c</code>,
+<code>platform/hrc7000/watchdog.c</code>, <code>core/debuglink/debuglink_watchdog.c</code> (bench tests).</p>
+<h2 id="1-the-feed">1. The feed</h2>
+<p><code>vApplicationIdleHook</code> (<code>configUSE_IDLE_HOOK</code> follows <code>CONFIG_WATCHDOG</code> in every platform's <code>FreeRTOSConfig.h</code>) calls
+<code>watchdog_idle(hal_millis())</code> on every pass of the idle loop. It feeds the watchdog and notes how long the idle task
+was away since its last pass: the longest such gap since start is <code>watchdog.max_gap_ms</code> on the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> (6). That
+number shows how close legitimate work comes to the timeout.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Who feeds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>main()</code>, before the scheduler</td>
+<td><code>main()</code> after the start, after <code>board_early_init()</code> and after <code>app_start()</code>; <code>hal_delay_ms()</code> once a millisecond while it busy-waits before the scheduler runs</td>
+</tr>
+<tr>
+<td>Scheduler running</td>
+<td>the idle task</td>
+</tr>
+<tr>
+<td>A long busy operation that keeps the idle task out on purpose</td>
+<td>the operation, once per block or step, by <code>watchdog_kick()</code>, so the hang check counts from that feed too (4)</td>
+</tr>
+<tr>
+<td>A CPU fault with the fault trace</td>
+<td><code>hrc_fault</code> once, before the 3 s trace (<a href="crash-log.html">crash-log.md</a> 2.3)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="2-timeout">2. Timeout</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Watchdog</th>
+<th>Timeout</th>
+<th>Start</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STM32F4</td>
+<td>IWDG on the LSI <abbr class="gl" tabindex="0" title="Reverse channel: signaling the receiver sends back to the transmitter during a call, in space the burst leaves free." data-more="../dev/glossary.html#t-rc">RC</abbr> oscillator, prescaler 64, reload 2500</td>
+<td>5 s at the typical 32 kHz; 3.4 s at the data sheet's fastest LSI (47 kHz), 9.4 s at its slowest (17 kHz)</td>
+<td>right after <code>stm32_sysboot_check()</code></td>
+</tr>
+<tr>
+<td>HR_C7000</td>
+<td>the <abbr class="gl" tabindex="0" title="System on chip: the processor and its on-chip peripherals." data-more="../dev/glossary.html#t-soc">SoC</abbr> watchdog at 0x14010000 (<code>WDT_BASE</code>, <code>platform/hrc7000/platform.h</code>)</td>
+<td>4 s (the 24 MHz crystal, measured; 2.1)</td>
+<td>right after <code>hrc_clock_init()</code>, which turns off whatever the loader left</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="21-the-hr_c7000-counter">2.1 The HR_C7000 counter</h3>
+<p>OT_LOAD_H (bits 2:0) and OT_LOAD_L are one 35-bit start value. The counter counts up from it and the radio resets
+when it overflows at 2^35, so the timeout is (2^35 - load) / f and a small
+load is the longest timeout. f is the 24 MHz crystal: on one <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> board, H = 7, L = 0xF0000000 (2^28 counts) reset the
+radio after 11.1 s (6.2, 2026-10-21). <code>WDT_LOAD</code> is 2^35 - 4 s x 24 MHz (H = 7, L = 0xFA472800). RST_LOAD is left at
+its reset value (0x03F80000: about 20 ms from the overflow to the reset, per the manual). The timeout must stay
+comfortably above 3 s: the fault trace takes that long with no feeds.</p>
+<h2 id="3-leaving-the-application">3. Leaving the application</h2>
+<p>Code that never feeds the watchdog must not run with it on.</p>
+<p><strong>The guarantee.</strong> Flashing and backing up a radio, with <code>stub/stubtool.py</code>, <code>stub/f4stub.py</code> or the web flasher, never
+trips the watchdog unless the <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr> itself hangs. Every stub RadioFoundry can enter feeds the watchdog in every loop that can
+take time, and a watchdog build of RadioFoundry refuses to enter a stub that doesn't (3.1).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Exit</th>
+<th><abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr></th>
+<th><abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32F4</abbr></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reboot (<code>hal_system_t.reboot</code>, the debug link's REBOOT, a crash restart)</td>
+<td><code>hrc_restart</code> is a watchdog reset, which leaves the watchdog guarding the next start (below)</td>
+<td><code>NVIC_SystemReset</code>: a system reset stops the IWDG</td>
+</tr>
+<tr>
+<td>ROM DFU entry (REBOOT mode 1, STM32 boards)</td>
+<td>not offered</td>
+<td>the request resets first; <code>stm32_sysboot_check()</code> jumps to the <abbr class="gl" tabindex="0" title="Read-only memory: code fixed in the chip." data-more="../dev/glossary.html#t-rom">ROM</abbr> before <code>main()</code> starts the IWDG</td>
+</tr>
+<tr>
+<td>Runtime stub entry (STUB ENTER, <a href="debuglink.html">debuglink.md</a> 3.18)</td>
+<td><code>hrc_watchdog_stretch()</code> gives it 32 s and a feed, and the stub feeds it from its start-up on (3.2)</td>
+<td>the IWDG can't be stopped: ENTER is refused for a stub whose image header doesn't say it feeds; <code>stm32_watchdog_stretch()</code> sets the longest timeout (about 32 s, at least 22 s) for the jump, and the stub feeds it from its first instruction on (3.1)</td>
+</tr>
+<tr>
+<td>Power off</td>
+<td>the supply goes; until it does the idle task feeds as usual (a knob that keeps the radio on leaves it running normally)</td>
+<td>the same</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>The HR_C7000 restart.</strong> A soft reset (<code>SYS_SOFT_RSTN</code>) turns the watchdog off, and a watchdog reset keeps its enable
+and both loads, the counter starting again from the load (measured on an HR_C7000 radio). The restart used
+to be a soft reset, and once a start after one hung with nothing left to reset it: the radio stayed dead until a power
+cycle. <code>hrc_restart</code> (transmitter off, the loader's clocks and flash controller mode back) arms the watchdog with a
+1 ms load, then writes the 32 s load without a feed. The reset comes about 23 ms later (RST_LOAD's 22 ms included),
+and the start that follows counts from the 32 s load: <code>main()</code> turns it off and starts its own, and a start that hangs
+before <code>main()</code> is reset again. A 1 ms load alone resets the chip every 23 ms, inside the boot ROM, until a power cycle
+clears it (measured). A power cycle starts with the watchdog off, so a vendor bootloader's update mode, entered only at
+power-on, isn't cut off. Rebooted this way the radio answered 3 s later, with the restart cause kept.</p>
+<h3 id="31-the-stm32-stub-and-the-iwdg">3.1 The STM32 stub and the IWDG</h3>
+<p>The IWDG runs until the next reset once started, so a stub entered at run time inherits it. Choices considered:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Why not, or why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Don't start the IWDG on builds with <code>CONFIG_STUB_ENTRY</code></td>
+<td>the radios that update through the stub would lose the watchdog</td>
+</tr>
+<tr>
+<td>Start it late, only after a check</td>
+<td>nothing at start-up knows a stub session will come</td>
+</tr>
+<tr>
+<td>Only stretch the timeout at the jump</td>
+<td>22-62 s is shorter than a whole application write</td>
+</tr>
+<tr>
+<td><strong>The stub feeds it</strong> (chosen), <strong>and RadioFoundry enters only a stub that does</strong></td>
+<td>below</td>
+</tr>
+</tbody>
+</table></div>
+<p>The stub (<code>stub/stm32f4</code>) feeds the IWDG:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Where</th>
+<th>How often</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>stub_main</code>, first</td>
+<td>once, before anything else: RadioFoundry's stretch covered the copy and the jump</td>
+</tr>
+<tr>
+<td><code>stub_ms()</code>, which every wait loop reads: the main loop's receive poll, the flash erase and program busy waits (a 128 KB sector: up to 2 s), the SPI flash's status polls, the USB transmit waits, the delays</td>
+<td>every pass</td>
+</tr>
+<tr>
+<td>The protocol engine (<code>stubeng_port_t.feed</code>, <code>stub/common/stubeng.c</code>)</td>
+<td>at every request, before each erase or program, once per 4 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> block in SUMS and READ (a 1 MB SUMS is 256 blocks)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The loops left without a feed are bounded to microseconds (the <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> byte transfers, the <abbr class="gl" tabindex="0" title="First in, first out: a queue of data between a producer and a consumer." data-more="../dev/glossary.html#t-fifo">FIFO</abbr> copies) or are the stub
+hanging, which is what the watchdog is for.</p>
+<p>Every such image starts with a header at offset 0x10 (<a href="stub-stm32f4.html">stub-stm32f4.md</a> 3.1): a magic, the stub
+version and a flags word whose bit 0 says the stub feeds the IWDG. The first version that feeds is 3
+(<code>F4STUB_VERSION_FEEDS_IWDG</code>). While the IWDG runs, RadioFoundry checks the loaded image before ENTER fires
+(<code>stm32_stub_image_ok</code>, through <code>stub_load_t.image_ok</code>) and again in <code>stm32_enter_stub</code>, with one rule: the magic, a
+version of at least 3 and the feed flag, all three. A stub built before has no header (garbage where the header would
+be): ENTER answers refused (7) with reason 1
+(<code>STUB_REFUSE_WATCHDOG</code>, <a href="debuglink.html">debuglink.md</a> 3.18), RadioFoundry keeps running, and nothing is written. So an old
+<code>stubtool.py</code> or a web flasher page that hasn't been redeployed gets a clear refusal, never a reset part way through a
+write. <code>stubtool.py</code> says to use a current stub; the page says to reload.</p>
+<p>The web flasher has no stub of its own: the site's build takes the image from <code>stub/f4stub.py</code> (<code>f4_stub()</code> in
+<code>site/rfoundrysite/repo.py</code>, served as <code>data/f4-stub.json</code>), so the page and the repository can't drift apart. The site's
+tests and <code>f4stub.py --self-test</code> check the served and embedded images' headers (magic, version at least 3, the
+flag), and that their copies of the numbers match <code>stub/stm32f4/f4stub_header.h</code>, the one definition the stub and RadioFoundry
+both include.</p>
+<h3 id="32-the-hr_c7000-stub">3.2 The HR_C7000 stub</h3>
+<p>The watchdog keeps running while the stub runs, as on the STM32 radios, so a stub that hangs resets the radio. Before
+the jump, <code>enter_stub</code> calls <code>hrc_watchdog_stretch()</code> (<abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> code, interrupts off): a load for 32 s, the STM32 IWDG's
+longest timeout, and a feed. The universal stub leaves the watchdog as it finds it (off under the boot ROM, running
+after RadioFoundry's entry) and feeds it with the same knock sequence on every pass of its <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> wait and before every SPI read
+burst. An idle stub sits in its receive wait, so it feeds for as long as the host leaves it there. The flash erases and
+programs are host-driven SPI commands, one frame at a time, so the stub passes through its receive wait between them.
+A knock while the watchdog is off does nothing.</p>
+<p>The stub's reset (<code>--boot reset</code>, the web flasher's <code>resetChip</code>) turns the watchdog off over the stub's register write
+before <code>SYS_SOFT_RSTN</code>; the soft reset turns it off anyway (3). RadioFoundry starts it again in <code>main()</code>.</p>
+<p>RadioFoundry needs no version check here. Every older HR_C7000 stub turns the watchdog off at its start-up, so it runs as before,
+without the watchdog: never reset part way through a write. A watchdog build with no stub that feeds is the STM32 case
+(3.1) only. The web flasher takes this stub from
+<code>stub/stubtool.py</code> (<code>c7000_stub()</code> in <code>site/rfoundrysite/repo.py</code>); the site's tests check it carries the feed.</p>
+<h2 id="4-long-operations">4. Long operations</h2>
+<p>What keeps the idle task out on purpose, and how each is handled. Everything that waits by <code>hal_delay_ms()</code> or a
+FreeRTOS call after the scheduler starts lets the idle task run and needs nothing.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Where</th>
+<th>Handling</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start-up before the scheduler (clocks, board early init, display, the radio chips' reset waits)</td>
+<td><code>platform/*/main.c</code>, <code>board_early_init</code></td>
+<td><code>main()</code> feeds between steps; <code>hal_delay_ms()</code>'s busy wait feeds every millisecond before the scheduler runs</td>
+</tr>
+<tr>
+<td>SPI NOR erase and program (settings, journal, codeplug, CPS writes, TFTP)</td>
+<td><code>drivers/flash/spi_nor</code></td>
+<td>none needed: the busy polls are <code>hal_delay_ms(1)</code>, which sleeps once the scheduler runs</td>
+</tr>
+<tr>
+<td>SPI NAND mount, garbage collection, wear leveling, and every sector write, replace and erase (boards with SPI NAND storage)</td>
+<td><code>drivers/flash/nand_sectors</code></td>
+<td>busy waits of 10 µs: the layer calls <code>nand_dev_t.busy</code> once per block or sector, which such a board points at <code>watchdog_kick()</code>. A run of plain writes needs it as much as a collection: a zone import's dozens of sector writes in a row kept the idle task out past the hang check before the writes called it</td>
+</tr>
+<tr>
+<td>A single NAND page read, program or block erase</td>
+<td><code>drivers/flash/spi_nand</code></td>
+<td>at most a few ms each, fed through the above around them</td>
+</tr>
+<tr>
+<td>Settings saves, codeplug sector rewrites, CPS sessions, fast codeplug commits</td>
+<td><code>core/settings</code>, <code>core/storage</code>, <code>core/cps</code></td>
+<td>through the flash drivers above</td>
+</tr>
+<tr>
+<td>The HR_C7000 codec load into RAM at the first DMR call</td>
+<td><code>platform/hrc7000/vocoder.c</code></td>
+<td>a memcpy of tens of <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr>: milliseconds</td>
+</tr>
+<tr>
+<td>Internal flash erase and program</td>
+<td>the <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stubs</abbr> only (<code>stub/stm32f4</code>, the <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> stubs)</td>
+<td>RadioFoundry never writes its own program flash; the stubs run after the exits in 3</td>
+</tr>
+<tr>
+<td>UI work while keys come faster than it (Find, a filtered list of 1024 contacts or channels: about 0.1 s a key on a radio with polled SPI flash)</td>
+<td><code>core/ui/ui.c</code></td>
+<td>the UI task runs above the idle task and doesn't wait while keys are queued, so after <code>BUSY_MAX_MS</code> (250 ms) without waiting it sleeps a tick; a redraw waits while keys are queued, at most <code>FRAME_DEFER_MS</code> (300 ms). The longest gap is then one slice, one key's work and one redraw: fast typing on a full <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> measured 0.6 s at most; before, 1.8 s</td>
+</tr>
+<tr>
+<td>Critical sections, <code>vTaskSuspendAll</code></td>
+<td><code>core/input</code>, <code>core/radio</code>, <code>core/debuglink/dlog.c</code>, the audio drivers</td>
+<td>microseconds; none loops</td>
+</tr>
+<tr>
+<td>A CPU fault: the fault trace, then the record and the restart</td>
+<td><code>platform/hrc7000/irq.c</code></td>
+<td>one feed before the 3 s trace; the restart is a watchdog reset (3)</td>
+</tr>
+<tr>
+<td>A deliberate stop without the crash log (stack overflow or malloc-failed hook, a failed <code>configASSERT</code>)</td>
+<td><code>platform/*/main.c</code>, <code>FreeRTOSConfig.h</code></td>
+<td>none: they spin with interrupts off and the watchdog resets the radio, instead of leaving it stopped</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="5-unverified">5. Unverified</h2>
+<ul>
+<li>The <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> counter's clock and load units (2.1): until measured, the real timeout is somewhere between 4 s and
+much longer.</li>
+<li>The <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr> LSI on these radios (the IWDG's timeout scales with it).</li>
+<li>The longest legitimate idle gap on each radio, in particular the start-up of a <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> <abbr class="gl" tabindex="0" title="The flash chip type that holds large data, such as the codeplug and contacts, in some radios." data-more="../dev/glossary.html#t-nand">NAND</abbr> board with a full <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>.</li>
+<li>A whole STM32 <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr> write on a watchdog build, and the refusal of a stub without the header (version 2), on the
+radio.</li>
+</ul>
+<h2 id="6-bench-tests">6. Bench tests</h2>
+<p>The <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>'s watchdog view section and command <code>0x1D</code> (<a href="debuglink.html">debuglink.md</a> 3.21);
+<code>tools/rfoundry_debug.py watchdog</code> drives them. Every test ends in a watchdog reset, and none starts while the radio
+<abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmits</abbr>.</p>
+<h3 id="61-the-reset">6.1 The reset</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Starves the idle task by</th>
+<th>Checks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>watchdog test starve</code></td>
+<td>the idle task no longer feeds; everything else runs, the link answers until the reset</td>
+<td>the reset, and its timeout: the tool polls the view until the link goes quiet and prints the last <code>watchdog.starved_ms</code></td>
+</tr>
+<tr>
+<td><code>watchdog test spin</code></td>
+<td>the host link's task spins with interrupts on</td>
+<td>starvation by a busy task</td>
+</tr>
+<tr>
+<td><code>watchdog test irq-off</code></td>
+<td>the host link's task spins with the kernel's interrupts masked</td>
+<td>a hang with interrupts off</td>
+</tr>
+</tbody>
+</table></div>
+<p>After each: the radio restarts on its own, the boot is clean, the transmitter stays off, and <code>watchdog.feeds</code> counts
+again from 0.</p>
+<h3 id="62-measuring-the-hr_c7000-counter">6.2 Measuring the HR_C7000 counter</h3>
+<p><code>watchdog load H L [RST]</code> re-arms the watchdog with raw OT_LOAD_H, OT_LOAD_L (and RST_LOAD, left alone when not
+given), stops the feeds and polls as <code>starve</code> does. The view's <code>watchdog.regs</code> shows the six
+registers raw. Remember the count runs up to an overflow: a larger load is a shorter timeout. <code>load 7 0xF0000000</code>
+should reset after about 11 s (2^28 counts at 24 MHz).</p>
+<h2 id="7-tests">7. Tests</h2>
+<p><code>tests/host/watchdogTest.c</code>: the idle feed, the longest gap (with the millisecond clock wrapping), the starve and its
+time, the view's keys, and DL_CMD_WATCHDOG's guards (length, kind, token, transmitting, a PTT before the test
+starts, LOAD where the platform has none) with the deferred start. <code>tests/host/nandSectorsTest.c</code>
+(<code>test_busy_hook</code>): the sector layer's mount and garbage collection call the busy hook. <code>tests/host/f4stubTest.c</code>
+(<code>test_feeds</code>): the <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr> <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr>'s engine feeds at every request, before an erase or a program, and once per block of a
+1 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">MB</abbr> SUMS and a READ. <code>tests/host/stubEntryTest.c</code>: ENTER refused with reason 1 when the platform's image check says
+no, the image kept; the header rule with the IWDG running (no header, a wrong magic, an old version, no flag:
+refused; the feed version and later: entered) and not running (anything entered). <code>stub/f4stub.py --self-test</code> and
+the site's <code>f4stub.test.mjs</code> / <code>c7000.test.mjs</code>: the stubs the tools and the page serve have the header and the feed. On the radio: 6.</p>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/watchdog.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#1-the-feed">1. The feed</a></li><li class="l2"><a href="#2-timeout">2. Timeout</a></li><li class="l3"><a href="#21-the-hr_c7000-counter">2.1 The HR_C7000 counter</a></li><li class="l2"><a href="#3-leaving-the-application">3. Leaving the application</a></li><li class="l3"><a href="#31-the-stm32-stub-and-the-iwdg">3.1 The STM32 stub and the IWDG</a></li><li class="l3"><a href="#32-the-hr_c7000-stub">3.2 The HR_C7000 stub</a></li><li class="l2"><a href="#4-long-operations">4. Long operations</a></li><li class="l2"><a href="#5-unverified">5. Unverified</a></li><li class="l2"><a href="#6-bench-tests">6. Bench tests</a></li><li class="l3"><a href="#61-the-reset">6.1 The reset</a></li><li class="l3"><a href="#62-measuring-the-hr_c7000-counter">6.2 Measuring the HR_C7000 counter</a></li><li class="l2"><a href="#7-tests">7. Tests</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

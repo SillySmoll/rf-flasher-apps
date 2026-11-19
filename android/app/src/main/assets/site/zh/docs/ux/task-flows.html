@@ -1,0 +1,1345 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Task flows · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Task flows · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/ux/task-flows.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/ux/task-flows.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/ux/task-flows.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/ux/task-flows.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/ux/task-flows.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/ux/task-flows.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/ux/task-flows.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/ux/task-flows.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/ux/task-flows.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/ux/task-flows.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="用户体验">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 用户体验</p>
+		<ul><li><a href="wireframes/index.html">Wireframes</a></li><li><a href="dual-watch.html">Dual watch</a></li><li><a href="information-architecture.html">Information architecture</a></li><li><a href="principles.html">UI design principles</a></li><li><a href="survey.html">UI survey: what good radio and device interfaces do</a></li><li><a href="task-flows.html" aria-current="page">Task flows</a></li><li><a href="usability-tests.html">Usability test protocol</a></li><li><a href="wireframes/128x64.html">128x64 monochrome</a></li><li><a href="wireframes/160x128.html">160x128 color</a></li><li><a href="wireframes/240x320.html">240x320 color (portrait)</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">本页尚未翻译，目前显示英文。</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="task-flows">Task flows</h1>
+<p>Step-by-step flows for the 26 most frequent or most important tasks, with press counts per radio class. Keys use the logical names from <code>information-architecture.md</code>; the reference mapping is <code>SELECT</code> = green/Menu, <code>BACK</code> = red/Back, <code>QUICK</code> = <code>*</code>, <code>CONTEXT</code> = <code>#</code>, <code>TALK_TARGET</code> = SK2, <code>MONITOR</code> = SK1.</p>
+<h2 id="radio-classes">Radio classes</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Example radios</th>
+<th>Input</th>
+<th>Display</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>K</strong></td>
+<td>DM-1701, MD-UV380, DM-32UV</td>
+<td>keypad, channel knob or encoder, 2 side keys</td>
+<td>color</td>
+</tr>
+<tr>
+<td><strong>M</strong></td>
+<td>GD-77</td>
+<td>keypad, no knob/encoder, 2 side keys</td>
+<td>128x64 mono</td>
+</tr>
+<tr>
+<td><strong>V</strong></td>
+<td>MD-9600 (mobile)</td>
+<td>front panel keys (P1-P4) and encoder; mic keypad + mic function keys</td>
+<td>128x64 mono</td>
+</tr>
+<tr>
+<td><strong>F</strong></td>
+<td>few-key radios</td>
+<td>Up/Down/Select/Back, knob, PTT, no keypad</td>
+<td>any</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="counting-rules">Counting rules</h2>
+<ul>
+<li>One press = one short or long key press, or one knob/encoder detent. PTT counts as a press.</li>
+<li>&quot;+n&quot; means &quot;plus n navigation presses that depend on list position&quot;. Budgets assume the target is in the first 5 items or found by typing.</li>
+<li>Text typing counts each key press (T9 predictive: one press per letter).</li>
+<li>Budget = the target maximum (P1). A flow that needs more is a design bug.</li>
+</ul>
+<h2 id="caller-actions-opened-by-context-on-home">Caller actions (opened by <code>CONTEXT</code> on Home)</h2>
+<p>Numbered, so a digit picks directly:</p>
+<ol>
+<li>Talk to (their <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">TG</abbr>, or them privately if the call was private)</li>
+<li><abbr class="gl" tabindex="0" title="A DMR call to one radio." data-more="../user/22-glossary.html#t-private-call">Private call</abbr></li>
+<li>Message</li>
+<li><abbr class="gl" tabindex="0" title="A DMR request another radio answers automatically, to show it is on and in range." data-more="../user/22-glossary.html#t-radio-check">Radio check</abbr></li>
+<li><abbr class="gl" tabindex="0" title="A DMR page that makes another radio ring." data-more="../user/22-glossary.html#t-call-alert">Call alert</abbr></li>
+<li>Position (request or show)</li>
+<li>Save as contact</li>
+<li>Speak status</li>
+<li>Save to channel (shown only when the channel has <abbr class="gl" tabindex="0" title="A change that lasts until the channel changes or you press Back on Home. Hold OK to keep it." data-more="../user/22-glossary.html#t-temporary-change">temporary changes</abbr>)</li>
+</ol>
+<hr />
+<h2 id="1-change-channel">1. Change channel</h2>
+<ul>
+<li>K: turn the channel knob (on radios with an encoder, <code>CAP_ENCODER</code>, one detent per channel). Or <code>NAV_UP</code>/<code>NAV_DOWN</code>.</li>
+<li>M, V: <code>NAV_UP</code>/<code>NAV_DOWN</code> (V: or front encoder).</li>
+<li>By number or name (all keypad classes): type digits or T9 letters on Home, Find shows matches, <code>SELECT</code>.</li>
+<li>Feedback: Home redraws the channel name within 50 ms; voice prompt says &quot;Channel 4, County fire&quot;.</li>
+</ul>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>K</th>
+<th>M</th>
+<th>V</th>
+<th>F</th>
+<th>Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Next channel</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Channel 12 by number</td>
+<td>3 (<code>1</code>,<code>2</code>,<code>SELECT</code>)</td>
+<td>3</td>
+<td>3</td>
+<td>1+n</td>
+<td>3</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="2-change-zone">2. Change zone</h2>
+<ol>
+<li><code>SELECT</code> (Hub).</li>
+<li><code>4</code> (Zones). The zone list opens with the current zone focused.</li>
+<li><code>NAV_UP</code>/<code>NAV_DOWN</code> to the zone (or type its first letters).</li>
+<li><code>SELECT</code>: the radio switches to that zone (on the knob's channel, or channel 1 on encoder radios) and returns to Home. <code>CONTEXT</code> on a zone instead opens its channel list to pick a different channel.</li>
+</ol>
+<p>Shortcut: type the zone name on Home (Find lists zones too). Assignable side-key function &quot;Zone picker&quot; makes it 1 + n + 1.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>K</th>
+<th>M</th>
+<th>V</th>
+<th>F</th>
+<th>Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Zone 2 positions away</td>
+<td>5 (<code>SELECT</code>,<code>4</code>,<code>↓</code>,<code>↓</code>,<code>SELECT</code>)</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="3-switch-talkgroup-this-transmission-only-or-permanently">3. Switch talkgroup: this transmission only, or permanently</h2>
+<p><abbr class="gl" tabindex="0" title="A talk target used for one call and its reply window." data-more="../user/22-glossary.html#t-one-shot">One-shot</abbr> (this transmission and its replies):</p>
+<ol>
+<li><code>TALK_TARGET</code>: picker opens. Order: Channel default, Reply to last heard, the channel's <abbr class="gl" tabindex="0" title="The talkgroups a channel listens to. The codeplug calls it the RX group list." data-more="../user/22-glossary.html#t-listen-list">listen list</abbr>, recent <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroups</abbr>, speed dials, &quot;Type a number&quot;.</li>
+<li><code>NAV_DOWN</code> to TG 91 (or type <code>9</code>,<code>1</code>).</li>
+<li><code>PTT</code>: <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmits</abbr> to TG 91. Home shows &quot;PTT → TG 91 (reply 10 s)&quot; and reverts to the channel default after the <abbr class="gl" tabindex="0" title="The time after a call during which PTT answers it." data-more="../user/22-glossary.html#t-reply-window">reply window</abbr>.</li>
+</ol>
+<p>Temporary (until channel change): step 3 is <code>SELECT</code> instead of PTT. Home shows &quot;Temporary TG 91 · Back to revert&quot;.</p>
+<p>Permanent: step 3 is long <code>SELECT</code>. Banner &quot;TG 91 is now the default for County <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr>&quot;. Revert is done the same way.</p>
+<p>Without the side key: <code>QUICK</code>, <code>8</code> opens the same picker.</p>
+<p>TG not in the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>: on Home type <code>3</code>,<code>1</code>,<code>0</code>,<code>0</code>; Find's first result is &quot;Talk to TG 3100&quot;; <code>PTT</code> (one-shot) or <code>SELECT</code> (temporary).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>K</th>
+<th>M</th>
+<th>V</th>
+<th>F</th>
+<th>Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>One-shot, TG in list (2nd item)</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>4 (<code>SELECT</code> long → quick, <code>8</code>… via list)</td>
+<td>3</td>
+</tr>
+<tr>
+<td>One-shot, typed TG 3100</td>
+<td>5 (<code>3100</code>,<code>PTT</code>)</td>
+<td>5</td>
+<td>5</td>
+<td>n/a (picker list only)</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Permanent</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+<td>4</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="4-call-back-the-last-station-heard">4. Call back the last station heard</h2>
+<p>During the <abbr class="gl" tabindex="0" title="The time after a call during which PTT answers it." data-more="../user/22-glossary.html#t-reply-window">reply window</abbr> (default 10 s): just <code>PTT</code>. Home already shows &quot;Reply → <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">TG</abbr> 91&quot; or &quot;Reply → Q1AAA (private)&quot;.</p>
+<p>After the window:</p>
+<ol>
+<li><code>CONTEXT</code> (<code>#</code>): caller actions for the last heard.</li>
+<li><code>1</code> (Talk to): sets their TG (or them privately) as the temporary <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr>; or <code>PTT</code> directly with item 1 focused.</li>
+</ol>
+<p>Older station: <code>SELECT</code>, <code>3</code> opens Recent, <code>NAV_DOWN</code> to the station, <code>PTT</code>. (Long <code>CONTEXT</code> was Recent until #18 gave it the talk target picker.)</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>K</th>
+<th>M</th>
+<th>V</th>
+<th>F</th>
+<th>Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Within reply window</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>After window</td>
+<td>2 (<code>#</code>,<code>PTT</code>)</td>
+<td>2</td>
+<td>2</td>
+<td>3 (Hub item 0, <code>PTT</code>)</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3rd station in Recent</td>
+<td>5 (<code>OK</code>,<code>3</code>,<code>↓</code>,<code>↓</code>,<code>PTT</code>)</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="5-private-call-a-contact-by-name-or-id">5. Private call a contact by name or ID</h2>
+<p>By name:</p>
+<ol>
+<li>On Home type T9 letters (<code>5</code>,<code>6</code>,<code>3</code> for &quot;Joe&quot;). Find lists Joe Smith Q1AAA first.</li>
+<li><code>CONTEXT</code>: contact actions. <code>2</code> (<abbr class="gl" tabindex="0" title="A DMR call to one radio." data-more="../user/22-glossary.html#t-private-call">Private call</abbr>) or simply <code>PTT</code> with &quot;Private call&quot; focused.</li>
+</ol>
+<p>Shortcut: in Find, focus the contact and press <code>PTT</code>: <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr> choice for a person is private call, for a <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">TG</abbr> group call.</p>
+<p>By ID: type the ID (<code>3</code>,<code>1</code>,<code>0</code>,<code>1</code>,<code>2</code>,<code>3</code>,<code>4</code>); Find shows &quot;Private call 9991234&quot; (name from the ID database if present) and &quot;Talk to TG 9991234&quot;; focus the private call line and <code>PTT</code>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>K</th>
+<th>M</th>
+<th>V</th>
+<th>F</th>
+<th>Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>By name (3 letters)</td>
+<td>4 (3 letters, <code>PTT</code>)</td>
+<td>4</td>
+<td>4</td>
+<td>2+n (Contacts list)</td>
+<td>4</td>
+</tr>
+<tr>
+<td>By 7-digit ID</td>
+<td>9 (7 digits, <code>↓</code>, <code>PTT</code>)</td>
+<td>9</td>
+<td>9</td>
+<td>n/a</td>
+<td>9 (digits dominate)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="6-send-a-text-message">6. Send a text message</h2>
+<ol>
+<li>Pick the recipient: <code>CONTEXT</code> (last caller) or Find by name, then <code>CONTEXT</code>.</li>
+<li><code>3</code> (Message): the composer opens with Canned messages listed first (&quot;OK&quot;, &quot;On my way&quot;, &quot;Call me&quot;, &quot;QSY <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">TG</abbr> 91&quot;, user-defined), then &quot;Write…&quot;.</li>
+<li>Canned: <code>NAV_DOWN</code> to it, <code>SELECT</code> = Send. Written: <code>NAV_DOWN</code> to &quot;Write…&quot;, <code>SELECT</code>, type (T9), <code>SELECT</code> = Send.</li>
+<li>Status strip shows &quot;Sending…&quot;, then &quot;Delivered&quot; (if <abbr class="gl" tabindex="0" title="DMR packet data the receiving radio acknowledges. What didn&#x27;t arrive is sent again." data-more="../user/22-glossary.html#t-confirmed-data">confirmed data</abbr>) or &quot;Sent, no confirmation&quot; with what to do on failure (&quot;No answer from Q1AAA. Retry with Select, or Back to keep in Drafts&quot;).</li>
+</ol>
+<p>Long <code>BACK</code> from the composer keeps the text as a draft (P4).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>K</th>
+<th>M</th>
+<th>V</th>
+<th>F</th>
+<th>Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Canned reply to last caller</td>
+<td>4 (<code>#</code>,<code>3</code>,<code>↓</code>,<code>SELECT</code>)</td>
+<td>4</td>
+<td>4</td>
+<td>5</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Canned to contact by name</td>
+<td>6 (3 letters, <code>#</code>,<code>3</code>,<code>SELECT</code>)</td>
+<td>6</td>
+<td>6 (driving: canned only)</td>
+<td>3+n</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Written, 10 letters</td>
+<td>15</td>
+<td>15</td>
+<td>locked while driving</td>
+<td>n/a</td>
+<td>-</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="7-read-a-new-message">7. Read a new message</h2>
+<p>Banner is up (8 s): <code>CONTEXT</code> opens it. Banner gone: the status strip shows an envelope with the count; <code>SELECT</code>, <code>2</code> opens Messages with the newest unread focused; <code>SELECT</code> opens it. In the message: <code>CONTEXT</code> = Reply (canned first), Call, Delete (with Undo), Save sender.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>K</th>
+<th>M</th>
+<th>V</th>
+<th>F</th>
+<th>Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>While banner visible</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1 (<code>SELECT</code> while banner)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Later</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>3+n</td>
+<td>3</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="8-radio-check">8. Radio check</h2>
+<ol>
+<li>Pick the target (last caller: <code>CONTEXT</code>; contact: Find, <code>CONTEXT</code>).</li>
+<li><code>4</code> (<abbr class="gl" tabindex="0" title="A DMR request another radio answers automatically, to show it is on and in range." data-more="../user/22-glossary.html#t-radio-check">Radio check</abbr>). Status strip &quot;Checking Q1AAA…&quot;; tone and banner &quot;Q1AAA answered (0.8 s)&quot; or &quot;No answer from Q1AAA after 3 tries. They may be off, out of range, or on another channel.&quot;</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>K</th>
+<th>M</th>
+<th>V</th>
+<th>F</th>
+<th>Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Last caller</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Contact by name</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>3+n</td>
+<td>5</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="9-adjust-volume-squelch-and-power">9. Adjust volume, squelch and power</h2>
+<ul>
+<li>Volume: the volume knob (analog on the reference radios). If the board reports the volume position, Home shows a volume bar for 1 s. No presses in firmware.</li>
+<li>Squelch (FM): <code>QUICK</code>, <code>2</code>, <code>NAV_UP</code>/<code>NAV_DOWN</code> (live: hear it change), <code>QUICK</code> or <code>BACK</code> to close. Temporary; long <code>SELECT</code> saves.</li>
+<li>Power: <code>QUICK</code>, <code>1</code> cycles levels (Low, Mid, High; each press advances, voice &quot;Power high&quot;). <code>BACK</code> closes.</li>
+</ul>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>K</th>
+<th>M</th>
+<th>V</th>
+<th>F</th>
+<th>Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Power one step</td>
+<td>3 (<code>*</code>,<code>1</code>,<code>BACK</code>)</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Squelch 2 steps</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>6</td>
+<td>5</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="10-enable-privacy">10. Enable privacy</h2>
+<p><abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> channel: <code>QUICK</code>, <code>6</code> toggles Privacy. If the channel or contact has no key: the tile says &quot;No key for this channel. Add one in Settings &gt; Privacy or in <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr>&quot; and stays off. Home shows a privacy icon and the <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr> chip &quot;Private&quot; (blue + icon, P5). Making it permanent: long <code>SELECT</code> on the tile.</p>
+<p>Per-contact key: privacy follows the talk target automatically when the contact has a key; Home shows the icon whenever the next transmission will be encrypted.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>K</th>
+<th>M</th>
+<th>V</th>
+<th>F</th>
+<th>Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Toggle privacy</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+<td>3</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="11-scan">11. Scan</h2>
+<p>Start: Tools &gt; Scan (<code>SELECT</code>, <code>6</code>, <code>1</code>), or a side key set to Scan. Quick tile 7 and a long <code>TALK_TARGET</code> are <abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="../user/22-glossary.html#t-dual-watch">dual watch</abbr> instead (<a href="dual-watch.html">dual-watch.md</a>); if it is running, the scan stops it, staying on the selected channel. Home shows &quot;Scanning: Zone Local&quot; in the status strip and the channel name updating; when a channel stops the scan, Activity shows it.</p>
+<p>While scanning (Home keys): <code>PTT</code> talks on the channel that last stopped (or the start channel if none, setting); <code>NAV_UP</code>/<code>NAV_DOWN</code> skip ahead; <code>CONTEXT</code> on a stopped channel gives &quot;Skip channel for now&quot; (nuisance delete), &quot;Stay here&quot; (stop scan on this channel), &quot;Always skip&quot; (edit scan list, permanent). <code>BACK</code> stops scanning and returns to the start channel.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>K</th>
+<th>M</th>
+<th>V</th>
+<th>F</th>
+<th>Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Nuisance skip</td>
+<td>2 (<code>#</code>,<code>1</code>)</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Stop</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="11b-dual-watch">11b. Dual watch</h3>
+<p>Two channels, A and B (any channel of any zone, or the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr>); <code>PTT</code> talks on the selected one. The behavior, screens and per-radio keys are in <a href="dual-watch.html">dual-watch.md</a>.</p>
+<p>Start: <code>QUICK</code>, <code>7</code> (tile 7, Dual watch; long <code>TALK_TARGET</code> does the same). The first time the B picker opens: a channel number, then <code>SELECT</code>. For a B in another zone or the VFO: <code>UP</code> to the Zone row, <code>SELECT</code>, pick the zone (or the VFO), <code>SELECT</code>, then the channel. Later starts use the last B (kept across power off) and take two presses. <code>QUICK</code>, <code>7</code> again stops it.</p>
+<p>While it runs (Home keys): <code>PTT</code> talks on the selected channel and the watch goes on; <code>CONTEXT</code>, <code>1</code> talks on the other channel (an <code>A/B</code> side key or <code>NAV_LEFT</code>/<code>NAV_RIGHT</code>: one press); <code>NAV_UP</code>/<code>NAV_DOWN</code> and the knob move the selected channel; <code>CONTEXT</code> also changes A or B and shows the last caller. With Settings &gt; Talk &gt; Dual watch talk back on, a call that ends on the other channel selects it for 10 s so <code>PTT</code> answers there; <code>CONTEXT</code>, <code>1</code> goes back. <code>BACK</code> stops, staying on the selected channel.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>K</th>
+<th>M</th>
+<th>V</th>
+<th>F</th>
+<th>Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start with the last B</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Start, B from this zone by number</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Start, B on the VFO</td>
+<td>6</td>
+<td>6</td>
+<td>6</td>
+<td>6</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Start, B in another zone</td>
+<td>7</td>
+<td>7</td>
+<td>7</td>
+<td>7</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Talk on B</td>
+<td>2 (<code>#</code>,<code>1</code>; 1 with an A/B key)</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Stop</td>
+<td>1 (<code>BACK</code>)</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Talk back on (Settings &gt; Talk)</td>
+<td>10</td>
+<td>10</td>
+<td>10</td>
+<td>10</td>
+<td>10</td>
+</tr>
+</tbody>
+</table></div>
+<p>The budgets are the ones <code>tests/host/uiFlowTest.c</code> checks (&quot;11 dual watch ...&quot;). Zone scan starts in 3 (Tools &gt; Scan: <code>SELECT</code>, <code>6</code>, <code>1</code>).</p>
+<h2 id="12-enter-a-vfo-frequency">12. Enter a VFO frequency</h2>
+<p>Enter <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr>: <code>SELECT</code>, <code>4</code>, VFO is the first row in Zones: <code>SELECT</code>. (Or type &quot;VFO&quot; in Find.) Home shows the frequency large.</p>
+<p>On Home in VFO, digits enter a frequency directly: <code>4</code>,<code>4</code>,<code>6</code>,<code>0</code>,<code>0</code>,<code>0</code> is 446.000 MHz (the decimal point is implied after the band's MHz digits; <code>*</code> inserts it explicitly). Preview shows &quot;446.000 MHz&quot; as you type, out-of-band digits are refused as you type with a hint (&quot;<abbr class="gl" tabindex="0" title="Ultra high frequency: 300 MHz to 3 GHz. The amateur 70 cm band is UHF." data-more="../user/22-glossary.html#t-uhf">UHF</abbr> 400-480&quot;). <code>SELECT</code> tunes, and so does <code>CONTEXT</code> while digits are typed. <code>NAV_UP</code>/<code>NAV_DOWN</code> step by the step size (Settings › Talk › VFO step; Auto follows the width). Mode and tone are quick tiles 4 and 3. &quot;Save as channel&quot; is in <code>CONTEXT</code>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>K</th>
+<th>M</th>
+<th>V</th>
+<th>F</th>
+<th>Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Into VFO</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>446.000 in VFO</td>
+<td>7 (6 digits,<code>SELECT</code>)</td>
+<td>7</td>
+<td>7</td>
+<td>n/a (step with encoder)</td>
+<td>7</td>
+</tr>
+</tbody>
+</table></div>
+<p>From a channel, the same digits on Home open Find, whose first row (after a channel at that position) is &quot;Tune VFO to
+446.000&quot;. <code>SELECT</code> opens the VFO on it: 7 presses, the same budget, without entering the VFO first.</p>
+<h2 id="13-lock-and-unlock-keys">13. Lock and unlock keys</h2>
+<p>Lock: long <code>QUICK</code> (<code>*</code>). Banner &quot;Keys locked. Hold * to unlock.&quot; PTT, monitor, volume and emergency stay active (configurable). Any other press shows the hint with the invalid tone. Unlock: long <code>*</code> again.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>K</th>
+<th>M</th>
+<th>V</th>
+<th>F</th>
+<th>Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lock / unlock</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1 (Lock on an assignable key; few-key boards ship with one)</td>
+<td>1</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="14-check-gps">14. Check GPS</h2>
+<p>Status strip shows a GPS icon: hollow = searching, solid = fix, crossed = off. Details: <code>SELECT</code>, <code>6</code>, <code>2</code> (Tools &gt; Position): fix state, satellites, lat/long, altitude; Up / Down turn to the sky plot, the signal bars and the grid locator (ui.md 2.3). <code>CONTEXT</code> there: Send position now, Turn GPS off. Position of another station: caller actions <code>6</code>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>K</th>
+<th>M</th>
+<th>V</th>
+<th>F</th>
+<th>Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>See fix</td>
+<td>0 (strip) / 3</td>
+<td>0 / 3</td>
+<td>0 / 3</td>
+<td>0 / 2+n</td>
+<td>3</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="15-enter-hotspot-or-usb-network-mode">15. Enter hotspot or USB network mode</h2>
+<ol>
+<li>Connect USB.</li>
+<li><code>SELECT</code>, <code>6</code> (Tools), <code>3</code> (<abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">Hotspot</abbr>) or <code>4</code> (USB network).</li>
+<li><code>SELECT</code> = Start. Screen shows link state (host connected, mode, frequency, <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">TS</abbr>/CC, traffic and the current talker).</li>
+</ol>
+<p>Option (Connections): &quot;Start hotspot when a hotspot host connects&quot;, default off. When on, a banner says &quot;Hotspot started by host. OK stops it.&quot;</p>
+<p>While active: <code>BACK</code> goes Home; the hotspot keeps running and Home's status strip shows &quot;HOTSPOT&quot; with the traffic. Stop: <code>SELECT</code> = Stop on the hotspot screen or <code>CONTEXT</code> on Home &gt; &quot;Stop hotspot&quot;. PTT on the radio while in hotspot mode explains &quot;Hotspot mode: the radio relays network traffic. Stop hotspot to talk locally.&quot;</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>K</th>
+<th>M</th>
+<th>V</th>
+<th>F</th>
+<th>Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>3+n</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Stop from Home</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="16-see-who-is-talking">16. See who is talking</h2>
+<p>No presses: on <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> the Activity region shows, in order of what's known: name (contact, else ID database), callsign, <abbr class="gl" tabindex="0" title="A short text, usually a callsign and name, sent along with DMR voice." data-more="../user/22-glossary.html#t-talker-alias">talker alias</abbr> (as it arrives), <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr>, <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">TG</abbr> and <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">TS</abbr>, <abbr class="gl" tabindex="0" title="Received signal strength indicator: how strong the received signal is, in dBm." data-more="../user/22-glossary.html#t-rssi">RSSI</abbr>, distance and bearing if a position is known. On 128x64, the two most important lines (name or callsign, TG) are shown and <code>CONTEXT</code> &gt; Speak status or the RX detail view (<code>CONTEXT</code>, then <code>SELECT</code> on the header) shows the rest. Outside Home, the status strip shows &quot;RX TG 91 · Q1AAA&quot;.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>K</th>
+<th>M</th>
+<th>V</th>
+<th>F</th>
+<th>Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name and TG</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Full details on small screen</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="17-emergency-if-enabled-in-the-codeplug">17. Emergency (if enabled in the codeplug)</h2>
+<p>Hold <code>EMERGENCY</code> (top/orange key) 1.5 s. A rising tone during the hold, then &quot;EMERGENCY&quot; full screen in red with a word label, the radio sends the alarm and (per <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>) opens the mic. Cancel: hold the same key 1.5 s. If emergency is not configured, the hold gives a hint &quot;Emergency is not set up on this radio&quot; instead of nothing. On radios without a top key it is an assignable long press only, never on <code>PTT</code> or a key used for typing.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>K</th>
+<th>M</th>
+<th>V</th>
+<th>F</th>
+<th>Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start / cancel</td>
+<td>1 (hold)</td>
+<td>1</td>
+<td>1 (mic key)</td>
+<td>1 if a key is free</td>
+<td>1</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="18-copy-a-channel-to-the-vfo-switch-the-vfos-mode">18. Copy a channel to the VFO, switch the VFO's mode</h2>
+<p>On a channel: <code>QUICK</code>, <code>4</code> (&quot;To <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr>&quot;). What is in effect on the channel now (frequencies and offset, mode, bandwidth, power, tones, <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr>, <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr> and <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr>, <abbr class="gl" tabindex="0" title="A change that lasts until the channel changes or you press Back on Home. Hold OK to keep it." data-more="../user/22-glossary.html#t-temporary-change">temporary changes</abbr> included) becomes the VFO's own settings, the VFO opens on Home and the toast says &quot;Copied to VFO&quot;. The channel is unchanged; the VFO's values are kept like its other settings (no dot). A channel the VFO can't hold (a mode this build's VFO lacks, a frequency outside the radio's bands) is refused with a toast and nothing changes. The same is on a key: Settings &gt; Keys &gt; Copy to VFO, or the VFO/MR key's long press where a radio has one. In the VFO &quot;Already in VFO&quot;. The full rules are in <code>dmr-voice.md</code> 2.2.</p>
+<p>In the VFO: <code>QUICK</code>, <code>4</code> (&quot;Mode&quot;) switches the VFO FM / <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> on its frequency, kept (no dot): FM → DMR uses the VFO's color code (1 at first), slot and talk target (<abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr> 9 at first); change them with quick tiles 2, 3 and 8. Home's mode chip changes color and word. A channel has no temporary mode change.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>K</th>
+<th>M</th>
+<th>V</th>
+<th>F</th>
+<th>Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Copy to VFO</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="19-monitor-and-hear-all">19. Monitor and hear all</h2>
+<ul>
+<li><code>MONITOR</code>. FM: hold it, the squelch opens. <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr>: press it, <abbr class="gl" tabindex="0" title="Playing every talkgroup on the timeslot (promiscuous mode; &quot;hear all&quot; in older RadioFoundry builds)." data-more="../user/22-glossary.html#t-digital-monitor">digital monitor</abbr> (hear all: all <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">TGs</abbr> on this frequency and <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr>) goes on; press again for off (#19).</li>
+<li>Latched from quick settings: <code>QUICK</code>, <code>5</code>. Home shows &quot;DMon&quot; (DMR) or &quot;Mon&quot; (FM) until turned off or the channel changes.</li>
+<li>While hear all is on, every call shows its TG; the <abbr class="gl" tabindex="0" title="The time after a call during which PTT answers it." data-more="../user/22-glossary.html#t-reply-window">reply window</abbr> lets you answer on it with <code>PTT</code>.</li>
+</ul>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>K</th>
+<th>M</th>
+<th>V</th>
+<th>F</th>
+<th>Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Momentary</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>2 (quick tile)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Latched</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="20-change-a-channels-timeslot-or-color-code-on-the-fly">20. Change a channel's timeslot or color code on the fly</h2>
+<ul>
+<li><abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">Timeslot</abbr>: <code>QUICK</code>, <code>2</code> (toggles 1/2), <code>BACK</code>.</li>
+<li><abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">Color code</abbr>: <code>QUICK</code>, <code>3</code>, type the code (<code>7</code>) or <code>NAV_UP</code>/<code>NAV_DOWN</code>, <code>SELECT</code>.</li>
+<li>Both temporary with a dot on Home; long <code>SELECT</code> in quick settings or <code>CONTEXT</code> &gt; 9 on Home saves to the channel.</li>
+<li>Hearing traffic on the other timeslot or CC with hear all on shows a hint &quot;Heard on TS2 CC3. Press # to switch&quot; (<code>CONTEXT</code> &gt; &quot;Use TS2 CC3&quot;).</li>
+</ul>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>K</th>
+<th>M</th>
+<th>V</th>
+<th>F</th>
+<th>Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Timeslot</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Color code 7</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>5+n</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Save both to channel</td>
+<td>+1 (long <code>SELECT</code>)</td>
+<td>+1</td>
+<td>+1</td>
+<td>+2</td>
+<td>+1</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="21-edit-a-channel">21. Edit a channel</h2>
+<ol>
+<li><code>SELECT</code>, <code>5</code>: Channels opens on the channel in use. <code>NAV_UP</code>/<code>NAV_DOWN</code> or typing finds another one.</li>
+<li><code>SELECT</code>: the channel's settings.</li>
+<li><code>NAV_DOWN</code> to the row. Two-value rows (<abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr>, mode, bandwidth) flip on <code>SELECT</code>; rows with more values (power,
+PL / <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-dcs">DCS</abbr> tone, <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr>, time-out) open a spinner: turn the knob (or <code>NAV_UP</code>/<code>NAV_DOWN</code>) to the value, <code>SELECT</code>
+keeps it; frequencies and the ID take digits; the name opens text entry; the <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> contact opens a
+picker.</li>
+<li>Long <code>SELECT</code> saves. Changed rows show a dot until then; <code>BACK</code> with changes asks &quot;Discard the changes to this channel?&quot;.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>K</th>
+<th>M</th>
+<th>V</th>
+<th>F</th>
+<th>Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Timeslot of the channel in use, saved</td>
+<td>5+n</td>
+<td>5+n</td>
+<td>5+n</td>
+<td>5+n</td>
+<td>6+n</td>
+</tr>
+<tr>
+<td>TX contact by name (&quot;WCRA&quot;: 9 2 7 2)</td>
+<td>9+n</td>
+<td>9+n</td>
+<td>9+n</td>
+<td>7+n+m</td>
+<td>10+n</td>
+</tr>
+</tbody>
+</table></div>
+<p>Changing the channel in use for now is shorter from quick settings (flow 20). This flow is for saved changes, other
+channels and rows quick settings don't have.</p>
+<hr />
+<h2 id="22-new-channel-from-current-settings">22. New channel from current settings</h2>
+<ol>
+<li><code>SELECT</code>, <code>5</code>, <code>NAV_UP</code> to the first row, &quot;New from current&quot;, <code>SELECT</code>: an unsaved copy of the channel in
+use (with its <abbr class="gl" tabindex="0" title="A change that lasts until the channel changes or you press Back on Home. Hold OK to keep it." data-more="../user/22-glossary.html#t-temporary-change">temporary changes</abbr>) or of the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr>, at the lowest free number.</li>
+<li>Change what differs (flow 21, step 3), for example the name and the <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> contact.</li>
+<li>Long <code>SELECT</code> saves it. It is in no zone yet: add it from a zone's list (flow 25), or make the copy with Copy here
+instead (flow 24), which puts it in the zone right after its source.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>K</th>
+<th>M</th>
+<th>V</th>
+<th>F</th>
+<th>Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Copy, saved unchanged</td>
+<td>5+n</td>
+<td>5+n</td>
+<td>5+n</td>
+<td>5+n</td>
+<td>6+n</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="23-move-a-channel-in-a-zone">23. Move a channel in a zone</h2>
+<ol>
+<li><code>SELECT</code>, <code>4</code>: Zones, on the zone in use. <code>CONTEXT</code> opens its list on the channel in use (for another zone,
+<code>NAV_DOWN</code> to it first).</li>
+<li><code>CONTEXT</code> on the channel: Channel actions. Without <code>CONTEXT</code> (class F), long <code>SELECT</code> opens both.</li>
+<li><code>2</code> Move down (or <code>1</code> Move up). The menu stays open, so each further <code>2</code> moves it one more place; the toast says
+where it is (&quot;Position 4 of 16&quot;). <code>BACK</code> returns to the list, on the channel.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>K</th>
+<th>M</th>
+<th>V</th>
+<th>F</th>
+<th>Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Channel in use, one place down</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5+n</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Each further place</td>
+<td>+1</td>
+<td>+1</td>
+<td>+1</td>
+<td>+1</td>
+<td>+1</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="24-copy-a-channel-into-its-zone-and-change-it-copy-here">24. Copy a channel into its zone and change it (Copy here)</h2>
+<ol>
+<li>Flow 23, steps 1 and 2.</li>
+<li><code>3</code> Copy here: the channel editor opens on an unsaved copy at the lowest free number, named after the source with
+&quot; 2&quot; appended. A copy of the channel in use keeps its <abbr class="gl" tabindex="0" title="A change that lasts until the channel changes or you press Back on Home. Hold OK to keep it." data-more="../user/22-glossary.html#t-temporary-change">temporary changes</abbr>. A toast refuses it when no channel number
+is free or the zone is full.</li>
+<li>Change what differs (flow 21, step 3).</li>
+<li>Long <code>SELECT</code> saves: one storage job writes the channel and puts it in the zone right after its source.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>K</th>
+<th>M</th>
+<th>V</th>
+<th>F</th>
+<th>Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Channel in use, saved unchanged</td>
+<td>6</td>
+<td>6</td>
+<td>6</td>
+<td>7+n</td>
+<td>6+n</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="25-add-a-channel-to-a-zone">25. Add a channel to a zone</h2>
+<ol>
+<li><code>SELECT</code>, <code>4</code>, <code>CONTEXT</code>: the zone's list (flow 23, step 1).</li>
+<li>The first row is &quot;Add channel&quot;: <code>NAV_UP</code> to it, or type <code>2</code> (its first letter). <code>SELECT</code> opens the picker: every
+stored channel the zone doesn't hold yet, by number and name, filtered by typing.</li>
+<li>Type the number or the name, <code>SELECT</code>: the channel goes in after the channel in use (when this is the zone in use)
+or at the end. &quot;Zone full&quot; when it holds 80 (16 on a <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> with the old layout).</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>K</th>
+<th>M</th>
+<th>V</th>
+<th>F</th>
+<th>Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Channel 12 into the zone in use</td>
+<td>8 (<code>SELECT</code>,<code>4</code>,<code>#</code>,<code>2</code>,<code>SELECT</code>,<code>1</code>,<code>2</code>,<code>SELECT</code>)</td>
+<td>8</td>
+<td>8</td>
+<td>5+n+m</td>
+<td>8</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="26-copy-rename-or-delete-a-zone">26. Copy, rename or delete a zone</h2>
+<ol>
+<li><code>SELECT</code>, <code>4</code>, <code>CONTEXT</code>: the zone's list.</li>
+<li>The last row is &quot;Zone options&quot;: <code>NAV_UP</code> from &quot;Add channel&quot; (the list wraps), <code>SELECT</code>. Numbered: 1 Rename,
+2 Copy as new zone, 3 Delete zone (with zone sharing: 3 Share zone to..., 4 Delete zone).</li>
+<li>Rename opens text entry on the name; <code>SELECT</code> keeps it. Copy as new zone writes a zone with the same channels,
+named with &quot; 2&quot; appended. Delete zone asks first, with &quot;No, keep it&quot; focused (P7); its channels stay in Channels.
+Copy and Delete return to Zones.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>K</th>
+<th>M</th>
+<th>V</th>
+<th>F</th>
+<th>Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Copy the zone in use</td>
+<td>5+n</td>
+<td>5+n</td>
+<td>5+n</td>
+<td>5+n</td>
+<td>6+n</td>
+</tr>
+<tr>
+<td>Delete a zone</td>
+<td>7+n</td>
+<td>7+n</td>
+<td>7+n</td>
+<td>7+n</td>
+<td>8+n</td>
+</tr>
+</tbody>
+</table></div>
+<p>Zone writes run as storage jobs, so the screen never waits for a flash erase; the lists show the change within a
+fraction of a second. When a new zone takes a free slot ahead of the zone in use, or a zone ahead of it is deleted,
+the radio follows its zone to the new position and stays on its channel.</p>
+<h2 id="27-create-a-contact-from-a-typed-number">27. Create a contact from a typed number</h2>
+<ol>
+<li>On Home type the ID or <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr>: Find's last row is &quot;Create contact 9999876&quot; when no contact has that number.</li>
+<li>Focus it, <code>SELECT</code>: New Contact opens with the ID, the type (a person for 7 digits and more) and the number as its
+name. From a caller's or talkgroup's actions it is Save as contact (<code>7</code> for a person), filled from the call.</li>
+<li>Change the name or type if needed, long <code>SELECT</code> saves.</li>
+</ol>
+<p>A contact from nothing: <code>SELECT</code>, <code>1</code> (Contacts), and its first row, New contact, <code>SELECT</code>. The editor starts empty,
+on a talkgroup: the name (<code>SELECT</code>, text entry, <code>SELECT</code>), <code>NAV_DOWN</code>, the ID (<code>SELECT</code>, digits, <code>SELECT</code>), long
+<code>SELECT</code> saves and goes back to Contacts.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>K</th>
+<th>M</th>
+<th>V</th>
+<th>F</th>
+<th>Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Typed ID, saved as it is</td>
+<td>11 (7 digits, <code>NAV_DOWN</code> x2, <code>SELECT</code>, long <code>SELECT</code>)</td>
+<td>11</td>
+<td>11</td>
+<td>n/a (no keypad)</td>
+<td>11</td>
+</tr>
+<tr>
+<td>Last caller, saved</td>
+<td>3 (<code>CONTEXT</code>, <code>7</code>, long <code>SELECT</code>)</td>
+<td>3</td>
+<td>3</td>
+<td>3+n</td>
+<td>3</td>
+</tr>
+<tr>
+<td>New contact in Contacts</td>
+<td>5+n (n: the name and the ID, each with its two <code>SELECT</code>s)</td>
+<td>5+n</td>
+<td>5+n</td>
+<td>n/a (no keypad)</td>
+<td>5+n</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="summary">Summary</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Task</th>
+<th>K</th>
+<th>Budget met?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Change channel</td>
+<td>1</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Change zone</td>
+<td>5</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>TG one-shot / permanent</td>
+<td>3 / 3</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Reply to last heard</td>
+<td>1-2</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Private call by name</td>
+<td>4</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Canned text reply</td>
+<td>4</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Read new message</td>
+<td>1-3</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Radio check last caller</td>
+<td>2</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Power / squelch</td>
+<td>3 / 5</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Privacy</td>
+<td>3</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Scan start / stop</td>
+<td>3 / 1</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Dual watch start (last B / pick B) / stop</td>
+<td>2 / 4 / 1</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Dual watch, talk on B</td>
+<td>2</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>VFO 446.000</td>
+<td>7</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Lock</td>
+<td>1</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>GPS</td>
+<td>0-3</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Hotspot start / stop</td>
+<td>4 / 2</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Who is talking</td>
+<td>0</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Emergency</td>
+<td>1 hold</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Copy to VFO / VFO mode</td>
+<td>2</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Monitor / hear all</td>
+<td>1 / 2</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Edit a channel (timeslot, saved)</td>
+<td>5+n</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>New channel from current</td>
+<td>5+n</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Move a channel in a zone</td>
+<td>5</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Copy here, saved unchanged</td>
+<td>6</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Add a channel to a zone (typed number)</td>
+<td>8</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Copy / delete a zone</td>
+<td>5+n / 7+n</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>TS / CC</td>
+<td>3 / 4</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Create a contact (typed ID / last caller / Contacts)</td>
+<td>11 / 3 / 5+n</td>
+<td>yes</td>
+</tr>
+</tbody>
+</table></div>
+<p>Every task except typed entries (IDs, frequencies, free text) and deleting a zone (its confirmation, P7) completes in six presses or fewer, inside the NHTSA six-input guideline.</p>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/ux/task-flows.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#radio-classes">Radio classes</a></li><li class="l2"><a href="#counting-rules">Counting rules</a></li><li class="l2"><a href="#caller-actions-opened-by-context-on-home">Caller actions (opened by CONTEXT on Home)</a></li><li class="l2"><a href="#1-change-channel">1. Change channel</a></li><li class="l2"><a href="#2-change-zone">2. Change zone</a></li><li class="l2"><a href="#3-switch-talkgroup-this-transmission-only-or-permanently">3. Switch talkgroup: this transmission only, or permanently</a></li><li class="l2"><a href="#4-call-back-the-last-station-heard">4. Call back the last station heard</a></li><li class="l2"><a href="#5-private-call-a-contact-by-name-or-id">5. Private call a contact by name or ID</a></li><li class="l2"><a href="#6-send-a-text-message">6. Send a text message</a></li><li class="l2"><a href="#7-read-a-new-message">7. Read a new message</a></li><li class="l2"><a href="#8-radio-check">8. Radio check</a></li><li class="l2"><a href="#9-adjust-volume-squelch-and-power">9. Adjust volume, squelch and power</a></li><li class="l2"><a href="#10-enable-privacy">10. Enable privacy</a></li><li class="l2"><a href="#11-scan">11. Scan</a></li><li class="l3"><a href="#11b-dual-watch">11b. Dual watch</a></li><li class="l2"><a href="#12-enter-a-vfo-frequency">12. Enter a VFO frequency</a></li><li class="l2"><a href="#13-lock-and-unlock-keys">13. Lock and unlock keys</a></li><li class="l2"><a href="#14-check-gps">14. Check GPS</a></li><li class="l2"><a href="#15-enter-hotspot-or-usb-network-mode">15. Enter hotspot or USB network mode</a></li><li class="l2"><a href="#16-see-who-is-talking">16. See who is talking</a></li><li class="l2"><a href="#17-emergency-if-enabled-in-the-codeplug">17. Emergency (if enabled in the codeplug)</a></li><li class="l2"><a href="#18-copy-a-channel-to-the-vfo-switch-the-vfos-mode">18. Copy a channel to the VFO, switch the VFO&#x27;s mode</a></li><li class="l2"><a href="#19-monitor-and-hear-all">19. Monitor and hear all</a></li><li class="l2"><a href="#20-change-a-channels-timeslot-or-color-code-on-the-fly">20. Change a channel&#x27;s timeslot or color code on the fly</a></li><li class="l2"><a href="#21-edit-a-channel">21. Edit a channel</a></li><li class="l2"><a href="#22-new-channel-from-current-settings">22. New channel from current settings</a></li><li class="l2"><a href="#23-move-a-channel-in-a-zone">23. Move a channel in a zone</a></li><li class="l2"><a href="#24-copy-a-channel-into-its-zone-and-change-it-copy-here">24. Copy a channel into its zone and change it (Copy here)</a></li><li class="l2"><a href="#25-add-a-channel-to-a-zone">25. Add a channel to a zone</a></li><li class="l2"><a href="#26-copy-rename-or-delete-a-zone">26. Copy, rename or delete a zone</a></li><li class="l2"><a href="#27-create-a-contact-from-a-typed-number">27. Create a contact from a typed number</a></li><li class="l2"><a href="#summary">Summary</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

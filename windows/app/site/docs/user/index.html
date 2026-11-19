@@ -1,0 +1,210 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RadioFoundry User Manual · RadioFoundry</title>
+<meta name="description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="RadioFoundry User Manual · RadioFoundry">
+<meta property="og:description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:url" content="https://radiofoundry.org/docs/user/">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="The radios RadioFoundry runs on, each showing a different screen.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/user/">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/user/">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/user/">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/user/">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/user/">
+<link rel="icon" href="../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../" data-home="../../" data-gl-more="More">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../index.html">
+			<img src="../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Main"><a href="../../radios/index.html">Radios</a><a href="../../features/index.html">Features</a><a href="../../flash/index.html">Install</a><a href="../../codeplug/index.html">Codeplug</a><a href="../../docs/index.html" aria-current="page">Docs</a><a href="../../screenshots/index.html">Screenshots</a><a href="../../tools/index.html">Tools</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Language" title="Language">EN</summary><nav aria-label="Language"><a href="../../docs/user/index.html" aria-current="true" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../es/docs/user/index.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../it/docs/user/index.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../zh/docs/user/index.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Switch light and dark" title="Switch light and dark">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="User Manual">
+		<p class="eyebrow"><a href="../../docs/index.html">Documentation</a> / User Manual</p>
+		<ul><li><a href="index.html" aria-current="page">RadioFoundry User Manual</a></li><li><a href="01-introduction.html">Introduction</a></li><li><a href="02-installing.html">Installing</a></li><li><a href="03-first-boot.html">First Boot</a></li><li><a href="04-programming.html">Programming the Radio</a></li><li><a href="05-keys-and-navigation.html">Keys and Navigation</a></li><li><a href="06-home-screen.html">The Home Screen</a></li><li><a href="07-channels-zones-vfo.html">Channels, Zones and the VFO</a></li><li><a href="08-fm.html">FM</a></li><li><a href="09-dmr.html">DMR</a></li><li><a href="10-messages-and-signaling.html">Messages, Call Alert and Radio Check</a></li><li><a href="11-emergency.html">Emergency</a></li><li><a href="12-scan.html">Scan and Dual Watch</a></li><li><a href="13-aprs.html">APRS</a></li><li><a href="14-hotspot.html">Hotspot Mode</a></li><li><a href="15-usb-network.html">USB Network Mode</a></li><li><a href="16-battery-and-power.html">Battery and Power</a></li><li><a href="17-settings.html">Settings</a></li><li><a href="18-moving-from-stock-md380.html">Moving from Stock MD-380 Firmware</a></li><li><a href="19-moving-from-stock-dm32.html">Moving from Stock DM-32UV Firmware</a></li><li><a href="20-troubleshooting.html">Troubleshooting</a></li><li><a href="21-faq.html">FAQ</a></li><li><a href="22-glossary.html">Glossary</a></li><li><a href="23-radios.html">Radio Reference</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<h1 id="radiofoundry-user-manual">RadioFoundry User Manual</h1>
+<p>How to install RadioFoundry and use it on the radio. The chapters describe what RadioFoundry does on every radio. The
+<a href="23-radios.html">Radio reference</a> lists what differs from radio to radio: the keys, power levels, battery, power switch
+and display, and what has been checked on each. Each release also carries this manual as a PDF, built from these files
+(<code>tools/build_manual.sh</code>, in file name order).</p>
+<p>Start on the web site, <a href="https://radiofoundry.org">radiofoundry.org</a>: the <strong>web installer</strong> installs, updates, backs up
+and restores a radio, and the <strong><abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">Codeplug</abbr> Editor</strong> edits channels, zones and contacts. Both run in a Chromium browser.
+The chapters below name the command line tools as alternatives.</p>
+<img src="../ux/screens/160x120i5/home_dmr.png" width="200" alt="Home screen on a DMR channel">
+<img src="../ux/screens/160x120i5/quick_dmr.png" width="200" alt="Quick settings">
+<img src="../ux/screens/160x120i5/hub.png" width="200" alt="The hub">
+<h2 id="reading-order">Reading order</h2>
+<h3 id="get-started">Get started</h3>
+<ol>
+<li><a href="01-introduction.html">Introduction</a>: what RadioFoundry is, project status, conventions</li>
+<li><a href="02-installing.html">Installing</a>: the web installer first, then the advanced rfoundry command line; updating, backups, going back</li>
+<li><a href="03-first-boot.html">First boot</a>: built-in channels, the first checks</li>
+<li><a href="04-programming.html">Programming the radio</a>: the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">Codeplug</abbr> Editor (P25 and NXDN channels, trunked systems), <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr>, <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">RadioID</abbr> contacts</li>
+</ol>
+<h3 id="use-the-radio">Use the radio</h3>
+<ol start="5">
+<li><a href="05-keys-and-navigation.html">Keys and navigation</a>: the five key rules, Find, <abbr class="gl" tabindex="0" title="A change that lasts until the channel changes or you press Back on Home. Hold OK to keep it." data-more="22-glossary.html#t-temporary-change">temporary changes</abbr>, key lock</li>
+<li><a href="06-home-screen.html">The Home screen</a>: what each region shows, receiving, transmitting</li>
+<li><a href="07-channels-zones-vfo.html">Channels, zones and the VFO</a>: P25, P25 trunked and NXDN channels too</li>
+<li><a href="08-fm.html">FM</a>: squelch, monitor, tones, bandwidth, <abbr class="gl" tabindex="0" title="Voice-operated transmit." data-more="22-glossary.html#t-vox">VOX</abbr>, touch tones</li>
+<li><a href="09-dmr.html">DMR</a>: <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="22-glossary.html#t-talk-target">talk targets</abbr>, replying, Recent, contacts, <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="22-glossary.html#t-timeslot">timeslot</abbr> and <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="22-glossary.html#t-color-code">color code</abbr>, privacy, roaming, trunked systems</li>
+<li><a href="10-messages-and-signaling.html">Messages, call alert and radio check</a></li>
+<li><a href="11-emergency.html">Emergency</a></li>
+<li><a href="12-scan.html">Scan and dual watch</a></li>
+<li><a href="13-aprs.html">APRS</a>: positions on FM and over <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr>, beacons, <abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="22-glossary.html#t-kiss">KISS</abbr> and <abbr class="gl" tabindex="0" title="A station that passes APRS packets between the air and the APRS-IS internet network." data-more="22-glossary.html#t-igate">iGate</abbr> with a computer</li>
+<li><a href="14-hotspot.html">Hotspot mode</a>: MMDVMHost and Pi-Star, <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="../spec/sfr.html">SFR</abbr>, two radios as a duplex repeater</li>
+<li><a href="15-usb-network.html">USB network mode</a>: IP over DMR, the status page, rig control, KISS, <abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="../spec/tftp.html">TFTP</abbr>, <abbr class="gl" tabindex="0" title="Simple Network Management Protocol: reading a device&#x27;s state over the network." data-more="../spec/snmp.html">SNMP</abbr>, <abbr class="gl" tabindex="0" title="A radio a dispatch program on a computer uses to reach the fleet over the air." data-more="22-glossary.html#t-control-station">control station</abbr></li>
+<li><a href="16-battery-and-power.html">Battery and power</a></li>
+</ol>
+<h3 id="reference">Reference</h3>
+<ol start="17">
+<li><a href="17-settings.html">Settings</a>: every setting, its default and status</li>
+<li><a href="20-troubleshooting.html">Troubleshooting</a></li>
+<li><a href="21-faq.html">FAQ</a></li>
+<li><a href="22-glossary.html">Glossary</a></li>
+<li><a href="23-radios.html">Radio reference</a>: keys, power levels, battery, power switch, display, install values, programming and
+status of each radio</li>
+</ol>
+<h3 id="moving-from-the-stock-firmware">Moving from the stock firmware</h3>
+<p>These chapters are for a radio that still runs the manufacturer's firmware and has a codeplug worth keeping. One
+program installs RadioFoundry and carries the codeplug over. Without a chapter, install with the web installer and open
+its backup in the Codeplug Editor (<a href="02-installing.html#install-with-the-web-installer">Installing</a>).</p>
+<p>The <a href="23-radios.html">Radio reference</a> links the chapter from the radio's &quot;Installing&quot; section.</p>
+<h2 id="quick-reference">Quick reference</h2>
+<p>Keys are named by their job. <a href="23-radios.html#key-roles">Key roles</a> shows which key does each job on your radio.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>To</th>
+<th>Press</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Change channel</td>
+<td>Channel knob, or <strong>Up</strong> / <strong>Down</strong></td>
+</tr>
+<tr>
+<td>Change zone</td>
+<td><strong>Previous zone</strong> / <strong>Next zone</strong>, or <strong>OK</strong>, <strong>4</strong>, pick a zone</td>
+</tr>
+<tr>
+<td>Quick settings</td>
+<td><strong>*</strong></td>
+</tr>
+<tr>
+<td>Open the menu (hub)</td>
+<td><strong>OK</strong></td>
+</tr>
+<tr>
+<td>Act on the last caller</td>
+<td><strong>#</strong></td>
+</tr>
+<tr>
+<td>Recent calls</td>
+<td><strong>OK</strong>, <strong>3</strong></td>
+</tr>
+<tr>
+<td>Talk to another talkgroup or ID</td>
+<td>Hold <strong>#</strong></td>
+</tr>
+<tr>
+<td>Choose who to talk to</td>
+<td><strong><abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="22-glossary.html#t-talk-target">Talk target</abbr></strong> (<abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr>), or <strong>*</strong>, <strong>8</strong></td>
+</tr>
+<tr>
+<td>Monitor</td>
+<td>Hold <strong>Monitor</strong></td>
+</tr>
+<tr>
+<td>Dual watch on / off</td>
+<td>Hold <strong>Talk target</strong>, or <strong>*</strong>, <strong>7</strong></td>
+</tr>
+<tr>
+<td>Scan on / off</td>
+<td><strong>OK</strong>, <strong>6</strong>, <strong>1</strong></td>
+</tr>
+<tr>
+<td>Undo temporary changes</td>
+<td><strong>Back</strong> on Home</td>
+</tr>
+<tr>
+<td>Save changes to the channel</td>
+<td>Hold <strong>OK</strong></td>
+</tr>
+<tr>
+<td>Back to Home</td>
+<td>Hold <strong>Back</strong></td>
+</tr>
+<tr>
+<td>Lock / unlock keys</td>
+<td>Hold <strong>*</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Developers: see the <a href="../dev/index.html">developer documentation</a>.</p>
+
+		<nav class="prev-next"><a class="next" href="01-introduction.html">Introduction</a></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/user/README.md">View the source of this page</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="On this page">
+		<p class="eyebrow">On this page</p>
+		<ul><li class="l2"><a href="#reading-order">Reading order</a></li><li class="l3"><a href="#get-started">Get started</a></li><li class="l3"><a href="#use-the-radio">Use the radio</a></li><li class="l3"><a href="#reference">Reference</a></li><li class="l3"><a href="#moving-from-the-stock-firmware">Moving from the stock firmware</a></li><li class="l2"><a href="#quick-reference">Quick reference</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Join the RadioFoundry community</strong><span class="small muted">Questions, help with your radio and news, on Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Found a bug? Want your radio supported?</strong><span class="small muted">Open an issue on GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry is MIT licensed · <a href="https://github.com/radiofoundry/radiofoundry">Source Code</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Community</a> · <a href="../../docs/index.html">Docs</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Changelog</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

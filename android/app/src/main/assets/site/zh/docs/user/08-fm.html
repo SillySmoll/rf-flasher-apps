@@ -1,0 +1,221 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FM · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="FM · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/user/08-fm.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/user/08-fm.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/user/08-fm.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/user/08-fm.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/user/08-fm.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/user/08-fm.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/user/08-fm.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/user/08-fm.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/user/08-fm.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/user/08-fm.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="用户手册">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 用户手册</p>
+		<ul><li><a href="index.html">RadioFoundry 用户手册</a></li><li><a href="01-introduction.html">简介</a></li><li><a href="02-installing.html">安装</a></li><li><a href="03-first-boot.html">首次启动</a></li><li><a href="04-programming.html">为电台编程</a></li><li><a href="05-keys-and-navigation.html">按键与导航</a></li><li><a href="06-home-screen.html">主屏幕</a></li><li><a href="07-channels-zones-vfo.html">信道、区域与 VFO</a></li><li><a href="08-fm.html" aria-current="page">FM</a></li><li><a href="09-dmr.html">DMR</a></li><li><a href="10-messages-and-signaling.html">消息、呼叫提示与电台检查</a></li><li><a href="11-emergency.html">紧急</a></li><li><a href="12-scan.html">扫描与双守候</a></li><li><a href="13-aprs.html">APRS</a></li><li><a href="14-hotspot.html">热点模式</a></li><li><a href="15-usb-network.html">USB 网络模式</a></li><li><a href="16-battery-and-power.html">电池与供电</a></li><li><a href="17-settings.html">设置</a></li><li><a href="18-moving-from-stock-md380.html">从原厂 MD-380 固件迁移</a></li><li><a href="19-moving-from-stock-dm32.html">从原厂 DM-32UV 固件迁移</a></li><li><a href="20-troubleshooting.html">故障排查</a></li><li><a href="21-faq.html">常见问题</a></li><li><a href="22-glossary.html">术语表</a></li><li><a href="23-radios.html">电台参考</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<h1 id="fm">FM</h1>
+<p>FM 在每款电台上都可用。<a href="23-radios.html">电台参考</a>说明哪些电台的 FM 已验证，也列出无法发送或检测亚音的电台。</p>
+<h2 id="quick-settings-on-an-fm-channel">FM 信道上的快速设置</h2>
+<p>在主屏幕按 <strong>*</strong>。磁贴按键盘布局排列，数字键直接作用于对应磁贴。</p>
+<img src="../ux/screens/160x120i5/quick_fm.png" width="200" alt="FM 信道上的快速设置">
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>按键</th>
+<th>磁贴</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td>功率</td>
+<td>在电台的最低档、默认档和最高档之间步进（<a href="16-battery-and-power.html#transmit-power">功率级别</a>）</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>静噪</td>
+<td>打开静噪编辑器</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>亚音</td>
+<td>打开亚音编辑器</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>模式</td>
+<td>显示 FM。按下可临时在同一频率上以 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> 收听和通话</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>监听</td>
+<td>锁定打开静噪，或再次关闭。在 <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr> 中此磁贴为发射频率（<a href="07-channels-zones-vfo.html#split-repeater-offset">分离</a>）</td>
+</tr>
+<tr>
+<td><strong>6</strong></td>
+<td><abbr class="gl" tabindex="0" title="Voice-operated transmit." data-more="22-glossary.html#t-vox">VOX</abbr></td>
+<td>开或关声控发射</td>
+</tr>
+<tr>
+<td><strong>7</strong></td>
+<td>双守候</td>
+<td>开或关双守候</td>
+</tr>
+<tr>
+<td><strong>8</strong></td>
+<td>宽度</td>
+<td>带宽 12.5 或 25 kHz（VFO 中也可用）</td>
+</tr>
+<tr>
+<td><strong>9</strong></td>
+<td>亮度</td>
+<td>打开亮度编辑器</td>
+</tr>
+<tr>
+<td><strong>0</strong></td>
+<td></td>
+<td>打开设置</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>上</strong> 和 <strong>下</strong> 在磁贴间移动。<strong>OK</strong> 作用于焦点项。按 <strong>*</strong> 或 <strong>返回</strong> 关闭。所有更改都是临时的。长按 <strong>OK</strong> 可保存到信道。</p>
+<p>有<strong>功率级别</strong>键的电台，该键在主屏幕上也会逐级切换功率，按一次一级，走遍电台所有级别。</p>
+<h2 id="squelch">静噪</h2>
+<ol>
+<li><strong>*</strong>、<strong>2</strong>。静噪编辑器打开。</li>
+<li>按 <strong>上</strong> 或 <strong>下</strong>，或 <strong>0</strong> 到 <strong>9</strong> 数字键。更改即时生效，可以听到效果。</li>
+<li>按 <strong>OK</strong>、<strong>*</strong> 或 <strong>返回</strong> 关闭。</li>
+</ol>
+<p>静噪级别在主屏幕上显示为“SQ”加数字。电台级默认值在<strong>设置 &gt; 通话与收听 &gt; 默认静噪</strong>（未更改时为 5）。</p>
+<img src="../ux/screens/160x120i5/quick_fm_squelch.png" width="200" alt="编辑静噪">
+<h2 id="monitor">监听</h2>
+<ul>
+<li>按住<strong>监听</strong>可在按住期间打开静噪。状态行显示 <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">RX</abbr> 和 MON，<abbr class="gl" tabindex="0" title="Light-emitting diode: the radio&#x27;s status light." data-more="22-glossary.html#t-led">LED</abbr> 为绿色。</li>
+<li><strong>*</strong>、<strong>5</strong> 会锁定监听，直到再次用 <strong>*</strong>、<strong>5</strong> 关闭。</li>
+</ul>
+<h2 id="tones-ctcss-and-dcs">亚音（CTCSS 与 DCS）</h2>
+<ol>
+<li><strong>*</strong>、<strong>3</strong>。亚音编辑器在发射亚音上打开。电台显示“上下 亚音  # 收/发”。</li>
+<li>按 <strong>上</strong> 或 <strong>下</strong> 在 <abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="22-glossary.html#t-ctcss">CTCSS</abbr> 亚音和 <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="22-glossary.html#t-dcs">DCS</abbr> 码间步进。更改即时生效。</li>
+<li>按 <strong>#</strong> 选择编辑哪个亚音：收发都改、仅发射、仅接收。收发相同时，编辑器从“都改”开始。</li>
+<li>按 <strong>OK</strong> 或 <strong>*</strong> 关闭。</li>
+</ol>
+<p>使用 DCS 码时，松开 PTT 后电台会继续发射 0.3 秒，发送 DCS 关闭音。设为同一码的电台会据此关闭静噪，因此不会在末尾听到噪声爆音。</p>
+<p>主屏幕把亚音显示为标签，例如“T100.0”。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T</td>
+<td>发射亚音与接收亚音不同</td>
+</tr>
+<tr>
+<td>R</td>
+<td>只有接收亚音，没有发射亚音</td>
+</tr>
+<tr>
+<td>无标签</td>
+<td>无亚音</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="bandwidth">带宽</h2>
+<p><strong>*</strong>、<strong>8</strong> 在 12.5 和 25 kHz 间切换。主屏幕显示“12.5k”或“25k”。</p>
+<h2 id="to-vfo">到 VFO</h2>
+<p><strong>*</strong>、<strong>4</strong> 把信道复制到 <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr> 并打开（“已复制到 VFO”）。信道没有临时模式更改。要试听某个频率作为 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr>，请复制到 VFO，再在那里切换 VFO 的模式（<a href="07-channels-zones-vfo.html#copy-a-channel-to-the-vfo">VFO</a>）。</p>
+<h2 id="vox">VOX</h2>
+<p><strong>*</strong>、<strong>6</strong> 为 FM 信道打开 <abbr class="gl" tabindex="0" title="Voice-operated transmit." data-more="22-glossary.html#t-vox">VOX</abbr>（“VOX 开：说话即发射”）。你说话时电台发射，停止后 1.5 秒停止。接收音频绝不会触发它，<strong>PTT</strong> 照常工作。灵敏度尚无菜单项。哪些电台有 VOX 见<a href="../feature-matrix.html">功能矩阵</a>。</p>
+<h2 id="busy-channel-lockout-roger-beep-tone-burst">忙信道锁定、roger beep、单音突发</h2>
+<p>电台核心有忙信道锁定、roger beep 和用于中继接入的 1750 Hz 单音突发。它们尚无菜单项或按键。开发者可通过调试链路设置。</p>
+<h2 id="transmit-timeout">发射超时</h2>
+<p>超过发射超时后电台停止发射，并显示“已达发射超时”。电台频率中信道自己的超时优先。为 0 时，适用<strong>设置 &gt; 通话与收听 &gt; 发射超时</strong>（未更改时为 3 分钟）。超时前 10 秒会发出警告音。</p>
+<h2 id="touch-tones-dtmf">双音多频（DTMF）</h2>
+<p>在 FM 信道上按住 <strong>PTT</strong> 并按 <strong>0</strong> 到 <strong>9</strong>、<strong>*</strong> 或 <strong>#</strong>：电台在你按住期间发送该键的双音多频，快速点按至少发送 0.1 秒。播放音调时麦克风静音。连续快速按键会各自发送音调，中间有短暂间隔。发射屏幕第二行显示“<abbr class="gl" tabindex="0" title="Dual tone multi frequency: the touch tones a keypad sends, in the audio." data-more="22-glossary.html#t-dtmf">DTMF</abbr>”和最后发送的数字。</p>
+<ul>
+<li>有额外键盘键的电台可发送 A 到 D（<a href="23-radios.html">电台参考</a>）。</li>
+<li>按键锁定时不发送任何内容。</li>
+<li>在 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> 信道上发射时按键无作用。</li>
+<li>1750 Hz 突发或 roger beep 期间按键无作用。</li>
+<li>电台自行发射时（<abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr> 信标），或拒绝发射（“NO <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">TX</abbr>”）时，按键照常工作。</li>
+</ul>
+<p>存储的 DTMF 码和双音多频解码尚未构建。</p>
+
+		<nav class="prev-next"><a class="prev" href="07-channels-zones-vfo.html">信道、区域与 VFO</a><a class="next" href="09-dmr.html">DMR</a></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/user/08-fm.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#quick-settings-on-an-fm-channel">FM 信道上的快速设置</a></li><li class="l2"><a href="#squelch">静噪</a></li><li class="l2"><a href="#monitor">监听</a></li><li class="l2"><a href="#tones-ctcss-and-dcs">亚音（CTCSS 与 DCS）</a></li><li class="l2"><a href="#bandwidth">带宽</a></li><li class="l2"><a href="#to-vfo">到 VFO</a></li><li class="l2"><a href="#vox">VOX</a></li><li class="l2"><a href="#busy-channel-lockout-roger-beep-tone-burst">忙信道锁定、roger beep、单音突发</a></li><li class="l2"><a href="#transmit-timeout">发射超时</a></li><li class="l2"><a href="#touch-tones-dtmf">双音多频（DTMF）</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

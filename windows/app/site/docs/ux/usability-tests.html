@@ -1,0 +1,561 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Usability test protocol · RadioFoundry</title>
+<meta name="description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Usability test protocol · RadioFoundry">
+<meta property="og:description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:url" content="https://radiofoundry.org/docs/ux/usability-tests.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="The radios RadioFoundry runs on, each showing a different screen.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/ux/usability-tests.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/ux/usability-tests.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/ux/usability-tests.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/ux/usability-tests.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/ux/usability-tests.html">
+<link rel="icon" href="../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../" data-home="../../" data-gl-more="More">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../index.html">
+			<img src="../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Main"><a href="../../radios/index.html">Radios</a><a href="../../features/index.html">Features</a><a href="../../flash/index.html">Install</a><a href="../../codeplug/index.html">Codeplug</a><a href="../../docs/index.html" aria-current="page">Docs</a><a href="../../screenshots/index.html">Screenshots</a><a href="../../tools/index.html">Tools</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Language" title="Language">EN</summary><nav aria-label="Language"><a href="../../docs/ux/usability-tests.html" aria-current="true" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../es/docs/ux/usability-tests.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../it/docs/ux/usability-tests.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../zh/docs/ux/usability-tests.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Switch light and dark" title="Switch light and dark">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="User Experience">
+		<p class="eyebrow"><a href="../../docs/index.html">Documentation</a> / User Experience</p>
+		<ul><li><a href="wireframes/index.html">Wireframes</a></li><li><a href="dual-watch.html">Dual watch</a></li><li><a href="information-architecture.html">Information architecture</a></li><li><a href="principles.html">UI design principles</a></li><li><a href="survey.html">UI survey: what good radio and device interfaces do</a></li><li><a href="task-flows.html">Task flows</a></li><li><a href="usability-tests.html" aria-current="page">Usability test protocol</a></li><li><a href="wireframes/128x64.html">128x64 monochrome</a></li><li><a href="wireframes/160x128.html">160x128 color</a></li><li><a href="wireframes/240x320.html">240x320 color (portrait)</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<h1 id="usability-test-protocol">Usability test protocol</h1>
+<p>How we check that the UI meets <code>principles.md</code> and the budgets in <code>task-flows.md</code>, release after release. Three layers:</p>
+<ol>
+<li><strong>Automated checks</strong> in the SDL simulator on every build (press budgets, dead ends, status strip, latency).</li>
+<li><strong>Moderated sessions</strong> with people, in the simulator and on real radios, before each release.</li>
+<li><strong>Release metrics</strong> tracked over time.</li>
+</ol>
+<hr />
+<h2 id="1-tools">1. Tools</h2>
+<h3 id="sdl-simulator">SDL simulator</h3>
+<p>The host build of the UI (core UI + a simulated <code>hal/</code> display and input) runs in an SDL window. Requirements for testing:</p>
+<ul>
+<li>A <strong>skin per reference radio</strong> (DM-1701, DM-32, GD-77, MD-9600) drawing the real key layout and display size, with keyboard and mouse bindings, so testers press &quot;the radio&quot; and not a PC keyboard map they have to learn. The skin's key map is the board's real key map file.</li>
+<li><strong>Display class switch</strong> (240x320 portrait/landscape, 160x128, 128x64) and a &quot;glare&quot; filter (reduced contrast) and &quot;mono&quot; filter.</li>
+<li><strong>Event log</strong>: every logical action with gesture and timestamp, every screen enter/leave, every banner, every <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> write, every <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> start/stop, as JSON lines. This is the source of all metrics.</li>
+<li><strong>Scripted traffic</strong>: a scenario file injects <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> events (group call from ID 9991234 on <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">TG</abbr> 91 with <abbr class="gl" tabindex="0" title="A short text, usually a callsign and name, sent along with DMR voice." data-more="../user/22-glossary.html#t-talker-alias">talker alias</abbr>, <abbr class="gl" tabindex="0" title="A DMR call to one radio." data-more="../user/22-glossary.html#t-private-call">private call</abbr>, text message, <abbr class="gl" tabindex="0" title="A DMR request another radio answers automatically, to show it is on and in range." data-more="../user/22-glossary.html#t-radio-check">radio check</abbr> request, emergency, GPS position) at set times, so every session sees the same radio world.</li>
+<li><strong>Script runner</strong> (headless): replays a list of logical actions and asserts on screen state (named fields exposed by the UI model, not pixels). Used for the press-budget tests below.</li>
+<li><strong>Screen crawler</strong> (headless): from Home, explores every reachable screen with breadth-first logical actions and records the graph.</li>
+</ul>
+<h3 id="real-radios">Real radios</h3>
+<ul>
+<li>One of each reference radio with the release candidate firmware and the test codeplug (<code>tests/ux/codeplug-test.*</code>: 3 zones, 40 channels, 30 contacts, 20 talkgroups, <abbr class="gl" tabindex="0" title="The talkgroups a channel listens to. The codeplug calls it the RX group list." data-more="../user/22-glossary.html#t-listen-list">listen lists</abbr>, 2 privacy keys, canned messages).</li>
+<li>A second radio or <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr>/hotspot to generate the scripted traffic over the air (<abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> and FM), never on channels the team is not licensed for.</li>
+<li>A phone camera at 240 fps on a stand for latency, and a key-press counter: the firmware's debug build writes the same event log over USB serial as the simulator.</li>
+</ul>
+<hr />
+<h2 id="2-automated-checks-ci-every-build">2. Automated checks (CI, every build)</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Check</th>
+<th>What it does</th>
+<th>Pass</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Press budgets</td>
+<td>Runs each flow in <code>task-flows.md</code> as a script on all four key maps; counts presses</td>
+<td>every flow at or under its budget; impossible-on-a-map = fail (P1, P10)</td>
+</tr>
+<tr>
+<td>Dead ends</td>
+<td>Crawler verifies <code>BACK</code> leaves every screen and long <code>BACK</code> reaches Home</td>
+<td>zero failures (P4)</td>
+</tr>
+<tr>
+<td>Depth</td>
+<td>Crawler depth of screens tagged &quot;field use&quot;</td>
+<td>at most 3 (P4)</td>
+</tr>
+<tr>
+<td>Status strip</td>
+<td>Every screen reports the <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr>/RX pill as drawn; inject PTT on each screen</td>
+<td>pill shows TX within 100 ms on every screen (P2)</td>
+</tr>
+<tr>
+<td>Long-press lint</td>
+<td>Action tables: long press bound only to the key's global meaning</td>
+<td>zero violations (P3)</td>
+</tr>
+<tr>
+<td>Codeplug writes</td>
+<td>&quot;Operate only&quot; script (all 20 tasks, temporary variants)</td>
+<td>zero <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> writes (P7)</td>
+</tr>
+<tr>
+<td>Confirmations</td>
+<td>List of confirmation dialogs vs the destructive list</td>
+<td>no extras (P7)</td>
+</tr>
+<tr>
+<td>Error strings</td>
+<td>Lint over user-facing error strings</td>
+<td>each has an action or &quot;see&quot; reference (P9)</td>
+</tr>
+<tr>
+<td>Latency</td>
+<td>Simulator press-to-first-draw time (instrumented)</td>
+<td>p95 &lt; 50 ms on the host model of the slowest target <abbr class="gl" tabindex="0" title="Central processing unit." data-more="../dev/glossary.html#t-cpu">CPU</abbr></td>
+</tr>
+<tr>
+<td>Render fit</td>
+<td>Each screen at each display class with the longest test strings</td>
+<td>no clipping except middle ellipsis; channel name and <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr> the two largest text items on Home (P5)</td>
+</tr>
+<tr>
+<td>Voice prompts</td>
+<td>Every screen and focus change has a prompt string</td>
+<td>no missing prompts (P10)</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="3-moderated-sessions">3. Moderated sessions</h2>
+<h3 id="participants">Participants</h3>
+<p>Per release, at least 6 people (more for major UI changes):</p>
+<ul>
+<li>2 new to <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> (have used an FM handheld or none),</li>
+<li>2 regular DMR users of another radio brand (Anytone, <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="../user/22-glossary.html#t-tyt">TYT</abbr>, Motorola),</li>
+<li>1 existing RadioFoundry user,</li>
+<li>1 tester using voice prompts without looking (blindfold or a low-vision participant) for the accessibility tasks,</li>
+<li>plus, for the MD-9600, one session in a parked car with the mic only (and never while driving).</li>
+</ul>
+<h3 id="session-setup">Session setup</h3>
+<ul>
+<li>45 minutes, one radio class per participant, half in the simulator, half on the real radio (alternate the order).</li>
+<li>No training beyond a 1-minute &quot;this is PTT, this is the volume knob&quot; introduction. The hint row is on.</li>
+<li>Think aloud. The moderator reads tasks as goals, not as steps (&quot;Talk to Joe privately&quot;, never &quot;use Find&quot;).</li>
+<li>The event log is recorded; the moderator notes hesitations (no press for over 5 s), wrong turns and comments.</li>
+</ul>
+<h3 id="tasks">Tasks</h3>
+<p>Targets are for regular DMR users; new users get 2x the time target. &quot;Presses&quot; = the budget in <code>task-flows.md</code>; the target in a session is budget + 2 (to allow one exploration step).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Task (as read to the participant)</th>
+<th>Success criterion</th>
+<th>Target presses (K / M / V)</th>
+<th>Target time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T1</td>
+<td>Go to channel 12.</td>
+<td>Home shows Ch 12</td>
+<td>3 / 3 / 3</td>
+<td>10 s</td>
+</tr>
+<tr>
+<td>T2</td>
+<td>Switch to the zone &quot;Simplex&quot;.</td>
+<td>Zone shown on Home</td>
+<td>5</td>
+<td>15 s</td>
+</tr>
+<tr>
+<td>T3</td>
+<td>Say something on <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">TG</abbr> 91 once, then make sure you're back on the normal talkgroup.</td>
+<td><abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> on TG 91; Home back to channel default</td>
+<td>3 + 1</td>
+<td>20 s</td>
+</tr>
+<tr>
+<td>T4</td>
+<td>Make TG 91 the normal talkgroup for this channel.</td>
+<td><abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">Codeplug</abbr> written, banner seen</td>
+<td>3</td>
+<td>15 s</td>
+</tr>
+<tr>
+<td>T5</td>
+<td>Someone just called you. Answer them. (scripted call)</td>
+<td>TX to the caller's TG</td>
+<td>1-2</td>
+<td>5 s</td>
+</tr>
+<tr>
+<td>T6</td>
+<td>Call Joe Smith privately.</td>
+<td><abbr class="gl" tabindex="0" title="A DMR call to one radio." data-more="../user/22-glossary.html#t-private-call">Private call</abbr> TX to Joe's ID</td>
+<td>4</td>
+<td>15 s</td>
+</tr>
+<tr>
+<td>T7</td>
+<td>Call the ID 9991234 privately.</td>
+<td>Private call TX to that ID</td>
+<td>9</td>
+<td>25 s</td>
+</tr>
+<tr>
+<td>T8</td>
+<td>Reply &quot;OK&quot; to Joe by text.</td>
+<td>Message sent to Joe</td>
+<td>4</td>
+<td>15 s</td>
+</tr>
+<tr>
+<td>T9</td>
+<td>Read the message that just arrived. (scripted)</td>
+<td>Message body shown</td>
+<td>1-3</td>
+<td>10 s</td>
+</tr>
+<tr>
+<td>T10</td>
+<td>Check whether Joe's radio is on.</td>
+<td><abbr class="gl" tabindex="0" title="A DMR request another radio answers automatically, to show it is on and in range." data-more="../user/22-glossary.html#t-radio-check">Radio check</abbr> sent, result read aloud by participant</td>
+<td>2-5</td>
+<td>15 s</td>
+</tr>
+<tr>
+<td>T11</td>
+<td>Turn the power down to low. Then the squelch up two steps (FM channel).</td>
+<td>Both changed on Home</td>
+<td>3 / 5</td>
+<td>20 s</td>
+</tr>
+<tr>
+<td>T12</td>
+<td>Turn on privacy for this channel.</td>
+<td>Privacy icon on Home</td>
+<td>3</td>
+<td>10 s</td>
+</tr>
+<tr>
+<td>T13</td>
+<td>Scan this zone (Tools &gt; Scan); skip the noisy channel; stop.</td>
+<td>Scan started, channel skipped, stopped</td>
+<td>3 + 2 + 1</td>
+<td>30 s</td>
+</tr>
+<tr>
+<td>T14</td>
+<td>Listen on 446.000 MHz.</td>
+<td><abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> at 446.000</td>
+<td>10</td>
+<td>30 s</td>
+</tr>
+<tr>
+<td>T15</td>
+<td>Lock the keys, then unlock them.</td>
+<td>Lock and unlock events</td>
+<td>2</td>
+<td>10 s</td>
+</tr>
+<tr>
+<td>T16</td>
+<td>Does the radio have a GPS fix? What is your grid square?</td>
+<td>Correct answer</td>
+<td>0-3</td>
+<td>15 s</td>
+</tr>
+<tr>
+<td>T17</td>
+<td>Start the <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> (USB host connected), then stop it.</td>
+<td>Hotspot started and stopped</td>
+<td>4 + 2</td>
+<td>30 s</td>
+</tr>
+<tr>
+<td>T18</td>
+<td>Who was talking just now, and from where? (scripted call with alias)</td>
+<td>Name/callsign and alias stated</td>
+<td>0</td>
+<td>5 s</td>
+</tr>
+<tr>
+<td>T19</td>
+<td>Switch this channel to FM and back.</td>
+<td>Mode toggled twice</td>
+<td>4</td>
+<td>10 s</td>
+</tr>
+<tr>
+<td>T20</td>
+<td>Listen to everything on this <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr>, whatever the talkgroup.</td>
+<td>Hear all on</td>
+<td>1-2</td>
+<td>10 s</td>
+</tr>
+<tr>
+<td>T21</td>
+<td>Switch to timeslot 2 and <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr> 7 for now.</td>
+<td>Temporary TS2 CC7 on Home</td>
+<td>7</td>
+<td>20 s</td>
+</tr>
+<tr>
+<td>T22</td>
+<td>(any screen, after T21) Get back to the start screen and undo the <abbr class="gl" tabindex="0" title="A change that lasts until the channel changes or you press Back on Home. Hold OK to keep it." data-more="../user/22-glossary.html#t-temporary-change">temporary changes</abbr>.</td>
+<td>Home, defaults restored</td>
+<td>2</td>
+<td>5 s</td>
+</tr>
+<tr>
+<td>T23</td>
+<td>Five-second test: show Home for 2 s, cover it. &quot;Which channel? Where will PTT go? Is the battery OK?&quot;</td>
+<td>3 of 3 correct</td>
+<td>-</td>
+<td>2 s look</td>
+</tr>
+<tr>
+<td>T24</td>
+<td>Emergency (radio with emergency configured, in a shielded setup or dummy load). Start, then cancel.</td>
+<td>Started and canceled, no accidental start in other tasks</td>
+<td>1 + 1</td>
+<td>10 s</td>
+</tr>
+<tr>
+<td>T25</td>
+<td>Listen to this channel and to &quot;Metro DMR&quot; at the same time (channel 5 of this zone). Then stop.</td>
+<td><abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="../user/22-glossary.html#t-dual-watch">Dual watch</abbr> on with A = this channel, B = channel 5; then off, staying on the selected channel</td>
+<td>4 + 1</td>
+<td>25 s</td>
+</tr>
+<tr>
+<td>T26</td>
+<td>(during T25, scripted call on B) A call just came in on the other channel. Which channel will your PTT talk on, and answer the call there.</td>
+<td>Participant names the selected channel (A); TX on B after <code>#</code>, <code>1</code></td>
+<td>2 + 1</td>
+<td>15 s</td>
+</tr>
+<tr>
+<td>T27</td>
+<td>Listen to this channel and to the VFO at the same time.</td>
+<td>Dual watch on with B = the VFO</td>
+<td>6</td>
+<td>30 s</td>
+</tr>
+</tbody>
+</table></div>
+<p>Accessibility subset (voice prompts on, no looking): T1, T3, T5, T6, T9, T11, T15, T18. Target: all completed, time at most 2x the sighted target.</p>
+<p>Glove subset (winter or work gloves): T1, T3, T5, T11, T15, T24. Target: no extra errors versus bare hands.</p>
+<p>Dual watch subset (radios built with <code>CONFIG_DUAL_WATCH</code>): T25, T26, T27. Score T25 and T26 as a pair.</p>
+<h3 id="per-task-record">Per task, record</h3>
+<ul>
+<li>Success: completed / completed with help / failed (gave up or 3x the time target).</li>
+<li>Presses (from the event log) and time from the end of the instruction to the success event.</li>
+<li>Errors: wrong turns (screen entered and left without effect), invalid presses, accidental TX, accidental codeplug write, lost context (participant states the wrong <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr>).</li>
+<li>SEQ (single ease question, 1-7) after each task.</li>
+</ul>
+<h3 id="after-the-session">After the session</h3>
+<ul>
+<li>SUS (System Usability Scale) questionnaire.</li>
+<li>Three open questions: what was hardest, what would you change first, what did you expect to find somewhere else.</li>
+</ul>
+<hr />
+<h2 id="4-real-radio-checks-per-release">4. Real-radio checks per release</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Method</th>
+<th>Pass</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Press-to-pixel latency</td>
+<td>240 fps video, 20 presses per key type, per radio</td>
+<td>p95 &lt; 50 ms, max &lt; 150 ms (P8)</td>
+</tr>
+<tr>
+<td>PTT-to-TX pill</td>
+<td>video</td>
+<td>&lt; 100 ms</td>
+</tr>
+<tr>
+<td>Readability</td>
+<td>Home at arm's length (60 cm), indoor and in direct sun, by 3 people</td>
+<td>channel and <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr> read correctly in one glance</td>
+</tr>
+<tr>
+<td>Tones</td>
+<td>each tone played; participants name it from a list</td>
+<td>90% correct for talk permit, busy, invalid, message, low battery</td>
+</tr>
+<tr>
+<td>Voice prompts</td>
+<td>top 10 tasks blindfolded</td>
+<td>all completed</td>
+</tr>
+<tr>
+<td>Pocket test</td>
+<td>radio in a pocket and a belt holster, walk 10 minutes, keys unlocked and locked</td>
+<td>no <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr>, no settings change when locked; with keys unlocked, record what changed (should be channel/volume at most)</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="5-release-metrics">5. Release metrics</h2>
+<p>Tracked in <code>tests/ux/metrics.csv</code> (one row per release per radio class), plotted in the release notes.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Task success rate (moderated)</td>
+<td>≥ 90% overall, 100% for T1, T5, T9, T15, T18</td>
+<td>sessions</td>
+</tr>
+<tr>
+<td>Median presses / budget (per task)</td>
+<td>≤ 1.2</td>
+<td>event log</td>
+</tr>
+<tr>
+<td>Median time / target time</td>
+<td>≤ 1.0</td>
+<td>event log</td>
+</tr>
+<tr>
+<td>Wrong turns per task</td>
+<td>≤ 0.5</td>
+<td>event log</td>
+</tr>
+<tr>
+<td>Accidental TX or codeplug write</td>
+<td>0</td>
+<td>event log</td>
+</tr>
+<tr>
+<td>SUS score</td>
+<td>≥ 80 (a &quot;good to excellent&quot; product)</td>
+<td>questionnaire</td>
+</tr>
+<tr>
+<td>Five-second test (T23)</td>
+<td>≥ 90% fully correct</td>
+<td>sessions</td>
+</tr>
+<tr>
+<td>Press-budget CI failures</td>
+<td>0 at release</td>
+<td>CI</td>
+</tr>
+<tr>
+<td>Dead ends found by crawler</td>
+<td>0</td>
+<td>CI</td>
+</tr>
+<tr>
+<td>Latency p95 per radio</td>
+<td>&lt; 50 ms</td>
+<td>camera / log</td>
+</tr>
+<tr>
+<td>Confirm dialogs not on the destructive list</td>
+<td>0</td>
+<td>CI</td>
+</tr>
+<tr>
+<td>Settings found in &lt; 15 s (sample of 10)</td>
+<td>≥ 90%</td>
+<td>sessions</td>
+</tr>
+<tr>
+<td>Accessibility subset completion</td>
+<td>100%</td>
+<td>sessions</td>
+</tr>
+</tbody>
+</table></div>
+<p>A release that regresses any metric by more than 10% against the previous release needs a note in the release notes explaining why, or a fix.</p>
+<hr />
+<h2 id="6-running-a-session-in-the-simulator-checklist">6. Running a session in the simulator (checklist)</h2>
+<ol>
+<li>Build the host simulator with the release candidate (<code>tools/</code> will hold the exact command).</li>
+<li>Load <code>tests/ux/codeplug-test.*</code> and the scenario <code>tests/ux/scenario-session.*</code>.</li>
+<li>Choose the participant's radio skin and display class.</li>
+<li>Start the event log; note the participant code (no names in logs).</li>
+<li>Read tasks in order T1..T27 (randomize T6-T12 between participants to spread learning effects).</li>
+<li>After the session, run <code>tools/ux_report</code> (to be written) on the log: it produces the per-task presses, time, wrong turns and a press-by-press trace for each failure.</li>
+<li>File each problem as an issue labeled <code>ux</code> with the task number, the trace, the principle it breaks and a severity (blocker: task failed by 2+ people; major: over budget or wrong turn by 2+; minor: comments).</li>
+</ol>
+<h2 id="7-running-on-a-real-radio-checklist">7. Running on a real radio (checklist)</h2>
+<ol>
+<li>Flash the release candidate and the test <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>. Debug build streams the event log over USB serial.</li>
+<li>Set the traffic generator to the scenario (second radio or <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr>/SDR) on the test frequency only.</li>
+<li>Same task list; the moderator triggers scripted traffic at the marked steps.</li>
+<li>Record video of the screen and keys (for latency and for reviewing hesitation).</li>
+<li>Same report and issue filing as the simulator.</li>
+</ol>
+
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/ux/usability-tests.md">View the source of this page</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="On this page">
+		<p class="eyebrow">On this page</p>
+		<ul><li class="l2"><a href="#1-tools">1. Tools</a></li><li class="l3"><a href="#sdl-simulator">SDL simulator</a></li><li class="l3"><a href="#real-radios">Real radios</a></li><li class="l2"><a href="#2-automated-checks-ci-every-build">2. Automated checks (CI, every build)</a></li><li class="l2"><a href="#3-moderated-sessions">3. Moderated sessions</a></li><li class="l3"><a href="#participants">Participants</a></li><li class="l3"><a href="#session-setup">Session setup</a></li><li class="l3"><a href="#tasks">Tasks</a></li><li class="l3"><a href="#per-task-record">Per task, record</a></li><li class="l3"><a href="#after-the-session">After the session</a></li><li class="l2"><a href="#4-real-radio-checks-per-release">4. Real-radio checks per release</a></li><li class="l2"><a href="#5-release-metrics">5. Release metrics</a></li><li class="l2"><a href="#6-running-a-session-in-the-simulator-checklist">6. Running a session in the simulator (checklist)</a></li><li class="l2"><a href="#7-running-on-a-real-radio-checklist">7. Running on a real radio (checklist)</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Join the RadioFoundry community</strong><span class="small muted">Questions, help with your radio and news, on Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Found a bug? Want your radio supported?</strong><span class="small muted">Open an issue on GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry is MIT licensed · <a href="https://github.com/radiofoundry/radiofoundry">Source Code</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Community</a> · <a href="../../docs/index.html">Docs</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Changelog</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

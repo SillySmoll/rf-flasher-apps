@@ -1,0 +1,488 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Single frequency repeater (SFR) · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Single frequency repeater (SFR) · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/spec/sfr.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/sfr.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/sfr.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/sfr.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/sfr.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/sfr.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/spec/sfr.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/sfr.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/sfr.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/sfr.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="规范">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 规范</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html" aria-current="page">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">本页尚未翻译，目前显示英文。</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="single-frequency-repeater-sfr">Single frequency repeater (SFR)</h1>
+<p>A single frequency repeater <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receives</abbr> a <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> call on one <abbr class="gl" tabindex="0" title="Time division multiple access. A DMR channel carries two conversations by alternating them in 30 ms slots." data-more="../dev/glossary.html#t-tdma">TDMA</abbr> slot of a frequency (the inbound slot) and repeats it on
+the other slot of the same frequency (the outbound slot), 90 ms later. Radios in <abbr class="gl" tabindex="0" title="DMR radio to radio on one frequency, with no repeater. The standard calls it DMO." data-more="../dev/glossary.html#t-direct-mode">direct mode</abbr> hear both copies. Switch:
+<code>CONFIG_SFR</code>, on with DMR except where a board lists it as unsupported (the HR_C5000 has no CRC_MCU_Control for the idle bursts of section 3 item 4, gotchas 14.6) or not written (see <code>docs/build-config.md</code>). Background and the <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> findings: <code>docs/spec/gotchas.md</code> 8.11,
+8.12 and 14; the host protocol: <code>docs/spec/mmdvm-protocol.md</code> 6.</p>
+<p>There are two kinds:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>What</th>
+<th>State</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MMDVM SFR</strong></td>
+<td>The <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> repeats; an <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="mmdvm-protocol.html">MMDVM</abbr> host turns it on and links it to a network (section 2)</td>
+<td>Built, passes on air</td>
+</tr>
+<tr>
+<td><strong>Standalone SFR</strong></td>
+<td>A channel set up for <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="sfr.html">SFR</abbr> in the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>, no host: the repeater roles (Rpt, Rpt Moto) and the user roles (User, <abbr class="gl" tabindex="0" title="Motorola&#x27;s style of single frequency repeater, with different inbound and outbound color codes." data-more="../dev/glossary.html#t-erdm">ERDM</abbr>)</td>
+<td>Experimental: built, host tested, on the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench; not reliable end to end (section 6)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="1-layers">1. Layers</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>File</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Logic</td>
+<td><code>core/dmr/sfr.c</code></td>
+<td>roles, channel settings, framing, the repeat queue and its rules (<code>sfrEngine_t</code>: <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> priority, <abbr class="gl" tabindex="0" title="Transmit timeout: the longest transmission the radio allows." data-more="../user/22-glossary.html#t-tot">TOT</abbr>, data hold, hang), voice dedup, late entry, the uplink rules, checksums, version suffix, the <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="mmdvm-protocol.html">MMDVM</abbr> trigger. No hardware</td>
+</tr>
+<tr>
+<td>Runner</td>
+<td><code>core/dmr/sfrRunner.c</code></td>
+<td>the repeater roles on any modem behind <code>hal_dmr_modem_t</code>: received bursts filtered and fed to the engine, the outbound slot kept fed, an optional uplink to a host</td>
+</tr>
+<tr>
+<td>MMDVM SFR</td>
+<td><code>core/hotspot/hotspotSfr.c</code></td>
+<td>the MMDVM extension (version suffix, status flag 0x80, the space bytes, 108 extra status bytes, command 0xD5) and <code>hotspot.c</code>'s other mode (<code>hotspot_alt_t</code>)</td>
+</tr>
+<tr>
+<td>Standalone SFR</td>
+<td><code>core/radio/radio_sfr.c</code>, <code>core/radio/radio_sm.c</code>, <code>core/dmr/call/dmr_call.c</code></td>
+<td>a channel's role from its <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> bytes; the repeater roles run the runner instead of the call stack; the user roles are the call stack's <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="sfr.html">SFR</abbr> user mode</td>
+</tr>
+</tbody>
+</table></div>
+<p>The <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> glue in <code>drivers/modem/hrc6000/sfr_glue/</code> is not built; it documents what a driver
+level SFR did (raw <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> reads, RF switching per burst) and holds the extra status bytes' layout.</p>
+<h2 id="2-what-is-built">2. What is built</h2>
+<ul>
+<li><strong><abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="mmdvm-protocol.html">MMDVM</abbr> <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="sfr.html">SFR</abbr>.</strong> The host turns it on with SET_CONFIG's simplex flag clear and SET_FREQ <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> = <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> (both non-zero),
+evaluated after either command; the simplex flag set, RX != TX, a retune or the session's end turns it off.
+<ul>
+<li>Uplink: every burst heard on the inbound slot goes up as DMR_DATA1 (inbound <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">TS1</abbr>) or DMR_DATA2, framed as the
+simplex uplink frames them (headers and terminators from their <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr>, voice with the <abbr class="gl" tabindex="0" title="Embedded signaling: the 32 bits in the middle of a voice burst that carry link control." data-more="../dev/glossary.html#t-emb">EMB</abbr> of its position and the
+call's embedded LC in B-E); a call heard without its header gets a header made from the embedded LC first, once
+voice F has given it. DMR_LOST1 / DMR_LOST2 300 ms after the last burst of a call without a terminator. Our own
+repeat never goes up.</li>
+<li>Downlink: either slot's DMR_DATA command feeds the outbound slot (both space bytes carry its space, up to 16).
+Each frame is ACKed or NAKed: 6 <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> busy (an inbound call is being repeated; the rest of a stream an RF call cut
+into), 5 full, 4 a burst type that can't be sent. Idle bursts and repeated terminators are ACKed and dropped.
+DMR_ABORT, DMR_START and DMR_SHORTLC are ACKed (the radio owns its keying and sends no <abbr class="gl" tabindex="0" title="Common announcement channel: 24 bits ahead of each burst a repeater sends. It carries the slot number and short link control." data-more="../dev/glossary.html#t-cach">CACH</abbr>).</li>
+<li>Defaults: TS1 in, TS2 out, TS framing (the <abbr class="gl" tabindex="0" title="European Telecommunications Standards Institute, which publishes the DMR standard." data-more="../dev/glossary.html#t-etsi">ETSI</abbr> <abbr class="gl" tabindex="0" title="DMR radio to radio on one frequency, with no repeater. The standard calls it DMO." data-more="../dev/glossary.html#t-direct-mode">direct mode</abbr> sync of the outbound slot), 1 s hang, 180 s <abbr class="gl" tabindex="0" title="Transmit timeout: the longest transmission the radio allows." data-more="../user/22-glossary.html#t-tot">TOT</abbr>, the
+<abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr> from SET_CONFIG. <code>hotspot_sfr_set_settings()</code> takes a channel's settings once a UI or <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>
+provides them; command 0xD5 overrides the framing at run time.</li>
+</ul>
+</li>
+<li><strong>Runner behavior</strong> (gotchas 14):
+<ul>
+<li>a burst the modem places on the outbound slot (<code>ts</code> = the outbound slot) is ignored: our echo or another
+repeater's;</li>
+<li>own echo: a burst with the kind, position and payload of one we put on air in the last 250 ms is dropped (the
+<abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> reports what it sent in empty inbound slots), except a voice header or terminator while an inbound call
+is open: a header run is identical copies (gotchas 14.10);</li>
+<li>late entry: outside a voice call a lone voice A is held; a B 60 ms after it starts the call;</li>
+<li>while keyed (or for a burst the modem reports out of step) the checksums are checked here, not taken from the
+chip: RS(12,9) of headers and terminators, CRC-CCITT of <abbr class="gl" tabindex="0" title="A DMR header that announces encryption with a changing key. RadioFoundry never plays such calls." data-more="../user/22-glossary.html#t-pi-header">PI</abbr>, <abbr class="gl" tabindex="0" title="Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control." data-more="dmr-data.html">CSBK</abbr>, <abbr class="gl" tabindex="0" title="Multi block control: a DMR signaling message that spans several bursts." data-more="../dev/glossary.html#t-mbc">MBC</abbr> and data headers. A header or terminator
+that fails and matches the call's LC in its first five bytes is rebuilt from the call's LC (<code>sfrLcBurstGuess</code>);</li>
+<li>keyed aligned to the inbound call (<code>DMR_TIMING_ALIGNED</code>, the outbound TS) when one is being heard, else on its own
+slot clock (<code>DMR_TIMING_OWN</code>), always impolite (gotchas 1.8); two bursts kept queued in the modem, one engine
+decision per outbound slot; a gap inside an inbound call (a burst missed) is <code>DMR_BURST_EMPTY</code>: the slot stays
+empty and is received, never an idle burst, which corrupts the inbound burst decoded next to it (gotchas 14.4,
+<code>sfr.tx_gaps</code>); a burst heard while such placeholders wait in the modem takes the oldest one's slot (<code>tx_fill</code>),
+so it still goes out 90 ms later; idle bursts only in the hang and a network stream's gaps; <code>DMR_EV_TX_REJECTED</code>
+unkeys.</li>
+</ul>
+</li>
+<li><strong>Idle beacon</strong> (optional, off by default): with the radio setting <code>rpt_beacon</code> on, the runner keys its outbound
+with idle bursts for <code>roam_beacon_len_s</code> every <code>roam_beacon_s</code> while it carries nothing, so roaming radios can
+measure the site (<code>sfrRunnerSetBeacon</code>, <code>hotspot_sfr_set_beacon</code>; <code>dmr-roaming.md</code> 7). Traffic has priority. The
+phase is the runner's own (no network time).</li>
+<li><strong><abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">Debug link</abbr></strong> (section <code>sfr</code>, the channel's repeater role when it runs, else the <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr>'s mode, <code>sfr.mode</code> =
+<code>channel</code>, <code>hotspot</code> or <code>off</code>; <code>sfr.evq_drops</code> the role's modem events lost): <code>sfr.on sfr.keyed sfr.busy sfr.slots sfr.rx sfr.repeated sfr.ignored sfr.echo sfr.bad_crc sfr.tx_bursts sfr.tx_idle sfr.tx_starts sfr.up sfr.up_lost sfr.tx_beacons sfr.tx_gaps sfr.ignored_slot sfr.ignored_cc sfr.last_ignored</code> (why bursts were ignored: reported on the outbound slot, another
+color code; the last one's color code and data type or voice index in hex), <code>sfr.rx_fec</code> (frames/bits/lost: the
+repeated voice's <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE</abbr> frames as heard, the C0/C1 Golay bits corrected in them and the frames whose C0 failed; the
+bits go out as heard, so an <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> seeing more errors in the repeat than this means the transmit side adds them),
+<code>sfr.rx_fec_pos</code> (those bits by the frame's place in the burst: errors piling up in the first frame point at the
+receiver still settling at the slot's start).</li>
+</ul>
+<h2 id="3-what-the-modem-driver-must-do">3. What the modem driver must do</h2>
+<p>The runner assumes these of <code>hal_dmr_modem_t</code>; they are the open work for each radio's driver:</p>
+<ol>
+<li>Keep receiving, and report bursts, while it <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmits</abbr>: the inbound slot is heard between our bursts. The runner
+asks for it with <code>tx_listen()</code> after every <code>tx_begin</code> (a plain call never does). Report <code>ts</code> when it knows the slot,
+and <code>in_step</code> false for a burst whose status it can't trust.</li>
+<li><code>tx_begin(DMR_TIMING_ALIGNED, ts)</code>: send in the slot opposite to the bursts being received, in step with them
+(the repeat goes out 90 ms after the burst, gotchas 14.3). <code>DMR_TIMING_OWN</code> with a ts: its own slot clock.</li>
+<li><code>dmr_tx_burst_t.sync_override</code>: the outbound sync (<abbr class="gl" tabindex="0" title="Mobile station: the radio, as opposed to the base station (BS)." data-more="../dev/glossary.html#t-ms">MS</abbr>, <abbr class="gl" tabindex="0" title="Base station: the repeater or modem side of a DMR link, as opposed to the radio (MS)." data-more="../dev/glossary.html#t-bs">BS</abbr>, or <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">TS1</abbr> / TS2 <abbr class="gl" tabindex="0" title="DMR radio to radio on one frequency, with no repeater. The standard calls it DMO." data-more="../dev/glossary.html#t-direct-mode">direct mode</abbr> sync) on every burst.</li>
+<li><code>DMR_BURST_IDLE</code> with the payload given (the <abbr class="gl" tabindex="0" title="European Telecommunications Standards Institute, which publishes the DMR standard." data-more="../dev/glossary.html#t-etsi">ETSI</abbr> idle message) and no <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> of its own (gotchas 14.4); data bursts
+with <code>host_crc</code> sent as they are; <code>DMR_BURST_EMPTY</code>: nothing sent in that slot (received with <code>tx_listen</code>).</li>
+<li><code>DMR_EV_TX_SLOT_STARTED</code> once per burst taken from its queue, <code>DMR_EV_TX_DONE</code> after <code>tx_end</code> has drained it.</li>
+<li>An <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="sfr.html">SFR</abbr> channel never switches to repeater (<abbr class="gl" tabindex="0" title="DMR through a repeater, which receives on one frequency and transmits on another. The standard calls it RMO." data-more="../dev/glossary.html#t-repeater-mode">RMO</abbr>) mode on BS sync (gotchas 14.7).</li>
+</ol>
+<p>Status per modem driver:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Driver</th>
+<th>Radios</th>
+<th>Items</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HR_C6000 (<code>drivers/modem/hrc6000/hrc6000_dmr.c</code>, owned by the DMR modem work)</td>
+<td><abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr> boards with an <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> (an HR_C5000 board builds without SFR)</td>
+<td>all: <code>sync_override</code>, idle bursts, <code>host_crc</code>, <code>DMR_TIMING_ALIGNED</code> (to the slot numbering it learned from the bursts heard), <code>tx_listen</code>, <code>DMR_BURST_EMPTY</code>, the TX slot events; reports keep coming while it transmits</td>
+</tr>
+<tr>
+<td>HR_C7000 (<code>drivers/modem/hrc7000/hrc7000_dmr.c</code>)</td>
+<td><abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> boards</td>
+<td>all: <code>sync_override</code>, <code>DMR_TIMING_ALIGNED</code> (the TX slot built from the <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> slot, ours picked by slot number), <code>tx_listen</code> (with the voice-access flag during a call), <code>DMR_BURST_EMPTY</code>, <code>tx_fill</code>, the TX slot events; headers and terminators heard while sending are passed on with the chip's CRC verdict. On air (gotchas 14.11)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The board switches the <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> per burst: the RF TX interrupt keys the <abbr class="gl" tabindex="0" title="Power amplifier: the stage that boosts the transmit signal to the output power." data-more="../dev/glossary.html#t-pa">PA</abbr>, the timeslot interrupt that starts the next slot
+drops it (the <abbr class="gl" tabindex="0" title="The RF transceiver chip that sets the frequency, deviation and power of many handheld DMR radios. Programmed over I2C." data-more="../dev/glossary.html#t-at1846s">AT1846S</abbr> goes back to RX about 1.3 ms into the slot, gotchas 3.4). A board with one synthesizer for
+receive and transmit retunes it per burst as well (gotchas 14.6). The rest of this
+section is the HR_C6000 bring-up, measured on an AT1846S board. Item 1 was missing in the chip: the slot between our bursts was written
+&quot;no receive&quot; (0x41 = 0x00), so nothing was heard there and <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="mmdvm-protocol.html">MMDVM</abbr> SFR repeated only what it heard before
+keying (<abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> 2026-10-10: mode switching and the first repeat on TS2 passed, the rest of the call failed). With
+<code>tx_listen</code> (<code>hrc6000_dmr_tx_listen</code>) the engine writes &quot;receive&quot; (0x50) for that slot instead, for that transmission
+only; <code>hrc6000DmrTest</code> test_tx_listen checks it. Two more things were needed on air (gotchas 14.9): the per-burst
+switch back to RX goes receiver off, RX frequency, RX supply, RX on (it went from <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> TX straight to RX on), and a gap
+in the inbound call leaves our slot empty (<code>DMR_BURST_EMPTY</code>) instead of an idle burst. On air (HIL 2026-10-12,
+06c5bc6): the bench's 3-superframe call goes up whole (18 voice frames and the terminator) and is repeated whole on
+TS2 (17-18 of 18 voice bursts, the terminator, then the hang's idle bursts). The voice repeat came 210 ms after the
+inbound burst, not 90 ms, and only 2 of the bench's 8 headers were repeated: the echo rule dropped the identical
+headers, and the gap left two placeholders queued ahead of the voice (gotchas 14.10). Both fixed in the runner
+(host tested), to be confirmed on air.</p>
+<h2 id="4-standalone-sfr">4. Standalone SFR</h2>
+<p>A channel's role comes from its <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> bytes (<code>sfrChannelDecode</code>, <code>docs/spec/open-firmware-cps.md</code> 7.3.3: flag 1
+bit 1, <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="sfr.html">SFR</abbr> bytes A and B; the <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> keeps them as read, the Codeplug Editor sets them). <code>codeplug.c</code> hands them to the
+core as read (<code>channel_t.sfr_flag1 / sfr_a / sfr_b</code>); <code>radio_sfr_channel()</code> turns them into a role and an
+<code>sfrConfig_t</code>. A role needs one frequency: <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> = <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> (a user may have no TX frequency). On a two-frequency channel the
+bytes are ignored and the channel is an ordinary one.</p>
+<p>The <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> has a role of its own: byte A only, stored per VFO in the settings (<code>vfo_sfr</code>, <code>vfo2_sfr</code>,
+<a href="settings-store.html">settings-store.md</a> 3), with no byte B, so the outbound <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr> is the VFO's color code. It is
+set by <code>radio_req_vfo_sfr</code> (RREQ_VFO_SFR: refused outside the VFO, while transmitting and in <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> mode; the debug
+link's RADIO op 38) and by Copy to VFO, which takes the channel's byte A. The radio core tunes again on a change, and
+looks at the role again when the VFO's split or color code changes, so a repeater stops on a split and starts once
+the VFO is on one frequency again. In FM the role is kept and does nothing. Tools &gt; Single-freq repeater, opened in
+the VFO, has a Role row (Off, User, User <abbr class="gl" tabindex="0" title="Motorola&#x27;s style of single frequency repeater, with different inbound and outbound color codes." data-more="../dev/glossary.html#t-erdm">ERDM</abbr>, Repeater, Repeater ERDM style) and an Inbound slot row; SELECT steps
+each.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rpt, Rpt Moto</td>
+<td>The radio core starts the runner (section 2) on the modem instead of the call stack: <abbr class="gl" tabindex="0" title="DMR radio to radio on one frequency, with no repeater. The standard calls it DMO." data-more="../dev/glossary.html#t-direct-mode">DMO</abbr> framing, every slot received, the inbound color code, no uplink. The keying stays armed on the frequency for the modem's per-burst keying, as in hotspot mode. The modem events reach the radio task through a queue (<code>radio_sfr_poll</code> every tick). PTT is refused (<code>TXDENY_SFR_RPT</code>). The screen shows receiving while an inbound call is repeated, the red <abbr class="gl" tabindex="0" title="Light-emitting diode: the radio&#x27;s status light." data-more="../user/22-glossary.html#t-led">LED</abbr> while the outbound slot is sent. The settings' idle beacon (<code>rpt_beacon</code>) applies. With TX inhibit set, a critical battery or a frequency outside the TX bands the channel is an ordinary one, and it goes back to one if that happens while it runs. The same holds while a scan or <abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="../user/22-glossary.html#t-dual-watch">dual watch</abbr> runs: they visit the channel to listen. Once the radio may transmit again and no scan runs, the role starts by itself between calls (<code>sfr_denied</code>), with no channel change. Hotspot mode ends the role and takes the modem; the role starts again when hotspot mode ends. If the board refuses to arm the keying, the channel is an ordinary one</td>
+</tr>
+<tr>
+<td>User, ERDM</td>
+<td>The call stack's SFR user mode (<code>dmr_call_config_t.sfr_user</code>). TX on the inbound slot (it replaces the channel's <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr>), every burst with the sync of <code>radio_sfr_user()</code>: TS1 / TS2 direct mode sync with TS framing, <abbr class="gl" tabindex="0" title="Mobile station: the radio, as opposed to the base station (BS)." data-more="../dev/glossary.html#t-ms">MS</abbr> sync with MS or <abbr class="gl" tabindex="0" title="Base station: the repeater or modem side of a DMR link, as opposed to the radio (MS)." data-more="../dev/glossary.html#t-bs">BS</abbr> framing. Keyed in step with the repeater's slots (<code>DMR_TIMING_ALIGNED</code>) when a burst whose sync named its slot (TS1, TS2, BS) was heard in the last <code>DMR_CALL_ALIGN_MS</code>, else on its own timing (the repeater aligns to us); always impolite at the modem (the repeater's hang). RX by the setting <code>sfr_rx</code> (<code>dmr_call_config_t.sfr_rx</code>, table below). The repeat is the burst with <code>rx_sync</code>: the outbound slot's TS sync (TS framing) or BS sync (BS framing); the talker's copy has the inbound sync or comes on the inbound slot. With MS framing the copies look alike, and the call locks to the first slot heard. ERDM: the outbound color code is heard too (the modem passes every color code, the stack filters)</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th><code>sfr_rx</code></th>
+<th>What the user plays</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 Repeater (default)</td>
+<td>The repeat only. The talker's copy is dropped (<code>dmr_call</code> stat <code>rx_sfr_direct</code>)</td>
+</tr>
+<tr>
+<td>1 First copy</td>
+<td>Both copies; each voice burst once, whichever comes first (<code>sfrDedupVoice</code>, stat <code>rx_sfr_dup</code>). The second copy of a header doesn't restart the burst sequence</td>
+</tr>
+<tr>
+<td>2 Dual-path RX (<code>CONFIG_SFR_DUALPATH_RX</code>)</td>
+<td>As first copy, but a voice burst with a frame whose C0 Golay check fails (<code>ambeFecDecode</code>) is held up to <code>DMR_SFR_DUALPATH_MS</code> (120 ms) for the other copy, and each failed frame is taken from it when its own check passes (stats <code>rx_sfr_held</code>, <code>rx_sfr_fixed</code>). A pass/fail check per frame, nothing ranked. No other copy in time: the burst plays as it came. Encrypted voice is never held</td>
+</tr>
+</tbody>
+</table></div>
+<p>The setting is stored in bits 1-2 of the settings record's <code>rpt_beacon</code> byte (<code>settings-store.md</code>), set in
+Settings &gt; Talk &amp; listen &gt; SFR receive and by <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> setting 30.</p>
+<p><abbr class="gl" tabindex="0" title="A station&#x27;s callsign sent in Morse code. A standalone SFR repeater channel sends one in FM every few minutes after traffic (Settings &gt; Talk &amp; listen &gt; SFR CW ID)." data-more="../user/14-hotspot.html">CW ID</abbr> (<code>CONFIG_SFR_CWID</code>, <code>core/radio/radio_cwid.c</code>): the repeater role can identify itself in Morse. The setting
+<code>sfr_cwid</code> picks the interval: 0 off (default), 1 5 min, 2 10 min, 3 15 min, 4 30 min. It is stored in bits 3-5 of
+<code>rpt_beacon</code>, set in Settings &gt; Talk &amp; listen &gt; SFR CW ID and by debug link setting 32.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>When</td>
+<td>The repeater has transmitted since the last ID (a repeat or its beacon), has been quiet <code>RADIO_CWID_QUIET_MS</code> (2 s), and the interval has passed since the last ID. The first ID comes as soon as the first traffic ends. No traffic, no ID</td>
+</tr>
+<tr>
+<td>What</td>
+<td>The callsign: the radio name's first word, up to a space, <code>-</code> (an SSID) or <code>/</code>, in upper case, and only if it clearly is one: 4 to 7 letters and digits with at least one of each (<code>radio_cwid_callsign</code>). Otherwise (a personal name, an empty name) nothing is keyed and the ID counts as skipped</td>
+</tr>
+<tr>
+<td>How</td>
+<td>The runner stops (<code>radio_sfr_stop</code>), the board goes to FM and keys a carrier on the channel's frequency at the channel's power, the TX tone is keyed in Morse with the settings' speed and tone (<code>cw_wpm</code>, <code>cw_tone_hz</code>; 20 wpm, 800 Hz by default) after a 150 ms lead and before a 150 ms tail. Then <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> mode again, the receiver back on the frequency, and the role starts again with its schedule kept. This is the hotspot's CW keyer (<code>radio_sm.c</code>)</td>
+</tr>
+<tr>
+<td>Meanwhile</td>
+<td>The role stays active: PTT is still refused, calls aren't repeated, the Home screen says &quot;Sending ID&quot;</td>
+</tr>
+<tr>
+<td>Cut</td>
+<td>A channel change or hotspot mode during the ID ends it at once; it counts as cut</td>
+</tr>
+</tbody>
+</table></div>
+<p>On air the ID came 2 s after the hang, at 20 wpm (60 ms elements), 800 Hz, about 1.8 kHz deviation, with the 150 ms lead and
+tail, and the next one an interval later after new traffic. The runner's counters carry on over the ID (<code>radio_sfr_start</code>
+<code>keep_stats</code>). Bench figures: the <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> repeater's hardware page.</p>
+<p>Debug link view <code>dmr</code>: <code>dmr.sfr_cwid</code> (the setting), <code>dmr.sfr_cw</code> (keying now), <code>dmr.sfr_cwid_sent</code>,
+<code>dmr.sfr_cwid_cut</code> (cut or skipped).</p>
+<p>Why a user may want both slots: the inbound copy comes straight from a talker in range, the repeat from one out of range.
+A user whose inbound slot is TS2 has TS1 as its outbound slot, so two users on the same frequency with different
+inbound slots still hear each other: they are users of two different repeater set-ups, which can't share one frequency.</p>
+<p>No <abbr class="gl" tabindex="0" title="Common announcement channel: 24 bits ahead of each burst a repeater sends. It carries the slot number and short link control." data-more="../dev/glossary.html#t-cach">CACH</abbr>: the repeater keys only its own slot (it listens on the other one), so there is no continuous BS outbound to
+carry it. Users find the slots from the outbound slot's sync (TS framing) and the hang's idle bursts.</p>
+<p>On air (<abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench, 2026-10-19), the numbers on the radios' own hardware pages:</p>
+<ul>
+<li>The user's call goes out on slot A with the TS1 direct mode sync; the repeater repeats it on slot B with the TS2
+sync, every voice burst 90.2 ms after the original (72 of 72), then the hang's idle bursts. The repeat carried 2 of
+the 3 headers and no terminator (the users' fade time ends the call), and its voice frames needed Golay
+corrections where the direct copy was clean: an HR_C7000 repeater's receiver takes bit errors while it switches per
+burst (gotchas 14.13). Both open.</li>
+<li>An <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> user played a bench call (TS1 sync) whole, no frame lost. It never reported the repeated copy during
+the call (<code>rx_sfr_dup</code> 0): the chip decodes the voice of the slot it locked onto, although the driver writes
+&quot;receive&quot; for every slot (<code>rx_lock_slot(0)</code>); its reports for the other slot are stale status (gotchas 14.12). With
+<code>sfr_rx</code> 1 or 2 it falls over to the other copy only between calls or after a loss. A user out of range of the
+talker locks to the repeat; one whose talker fades mid-call hears a gap until the receiver's lost-signal restart.
+Hearing both slots during a call needs the raw RX <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> path (section 3).</li>
+<li>An HR_C7000 user reports both copies. Its driver gives the voice-access flag to every chip slot with a call on it;
+with the flag on one slot only, every burst read the voice RAM of the last one decoded and the user played the same
+burst for the whole call (gotchas 14.15). Fixed in the driver; on air (2026-10-25, <code>test_sfr_chain_rfoundry_user</code>, 12
+calls) the HR_C7000 listener's <code>voice.rx_repeats</code> was 0 on every call.</li>
+</ul>
+<p>Not built: the HR_C6000 driver level parts (raw RX RAM classification, <code>sfrRawClassify</code>; the register switches of
+command 0xD5); a setting on the radio for a channel's role (the Codeplug Editor sets it; the VFO's is set on the radio,
+above), and the framing and <abbr class="gl" tabindex="0" title="How long after a call a repeater or radio keeps the call&#x27;s talkgroup ready for a reply." data-more="../user/22-glossary.html#t-hang-time">hang time</abbr> of the VFO's role on the radio (the debug link sets them). On the radio, Tools &gt;
+Single-freq repeater shows the
+channel's role, slots and the repeater's state, and a repeater channel's Home screen says &quot;SFR repeater&quot; or &quot;Repeating&quot;
+where a DMR channel shows its <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr>.</p>
+<p>A two-frequency repeater made of two radios is the <abbr class="gl" tabindex="0" title="Transmitting on one frequency and receiving on another at the same time. Repeaters do, and so does the duplex hotspot setup." data-more="split-duplex.html">split duplex</abbr> extension (<code>split-duplex.md</code>, <code>CONFIG_HOTSPOT_SPLIT</code>),
+not the SFR: it registers in mmdvm.c and hotspot.c ahead of the SFR (a priority extension), so while a split role
+is active the SFR stays off, and without a role the SFR works exactly as described here.</p>
+<h2 id="5-tests">5. Tests</h2>
+<ul>
+<li>Host: <code>tests/host/sfrTest.c</code> (the logic), <code>tests/host/hotspotSfrTest.c</code> (<abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="mmdvm-protocol.html">MMDVM</abbr> <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="sfr.html">SFR</abbr> through mmdvm.c and
+hotspot.c against the simulated modem: trigger and suffix, status bytes, an <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> call repeated and sent up, a network
+stream, RF priority, echo, late entry, DMR_LOST1, command 0xD5, DMR_ABORT, back to simplex),
+<code>tests/host/dmrCallTest.c</code> test_sfr_user (both copies played once, the talker fading out, <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> slot, sync and timing,
+<abbr class="gl" tabindex="0" title="Motorola&#x27;s style of single frequency repeater, with different inbound and outbound color codes." data-more="../dev/glossary.html#t-erdm">ERDM</abbr> <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr>), <code>tests/host/radioCoreTest.c</code> test_sfr_roles (the repeater role from the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> bytes repeats a
+call on <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">TS2</abbr>, PTT refused, <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> mode and a scan take over and give it back, the keying refused, TX inhibit,
+two-frequency channel refused; the user role's TX slot and sync), test_sfr_cwid (the ID schedule and callsign, an ID
+after a call in FM on the channel's frequency, the role back after it, a retune cutting it, no callsign);
+<code>tests/host/roamTest.c</code> (the <code>sfr_cwid</code> bits stored and clamped).</li>
+<li><abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr>: <code>tests/hil/test_hotspot_sfr.py</code> (MMDVM SFR on and off through MMDVM on the radio's channel, no traffic sent;
+marked <code>radio_tx</code> because a call heard would be repeated). On-air repeat tests need the driver work of section 3
+and the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench (<code>tools/bench/mmdvm_hotspot.py --sfr</code>).
+<code>tests/hil/test_sfr_standalone.py</code> runs the standalone roles from codeplug channels: the repeater's inbound quality
+(<code>sfr.rx_fec</code>, <code>sfr.rx_fec_pos</code>), TX inhibit, the <abbr class="gl" tabindex="0" title="A station&#x27;s callsign sent in Morse code. A standalone SFR repeater channel sends one in FM every few minutes after traffic (Settings &gt; Talk &amp; listen &gt; SFR CW ID)." data-more="../user/14-hotspot.html">CW ID</abbr> and the user's <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> modes against the bench talker, and
+<code>test_sfr_chain_rfoundry_user</code>, a whole chain of RadioFoundry radios (talker, repeater, listener) judged by what the
+listener played (<code>voice.rx_in</code>, <code>voice.rx_peak</code>, <code>voice.rx_repeats</code>).</li>
+</ul>
+<h2 id="6-known-issues-by-radio">6. Known issues by radio</h2>
+<p>Standalone <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="sfr.html">SFR</abbr> is experimental. This section names radios on purpose (an owner-approved exception to the generic-docs
+rule, <code>tools/generic_allow.txt</code>); keep each radio's details on its hardware page. Unless noted: <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench, a <abbr class="gl" tabindex="0" title="Ultra high frequency: 300 MHz to 3 GHz. The amateur 70 cm band is UHF." data-more="../user/22-glossary.html#t-uhf">UHF</abbr> test
+frequency, <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">CC</abbr> 2, the bench's <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="mmdvm-protocol.html">MMDVM</abbr> talker sending a 4-superframe group call (72 voice frames). &quot;Bits&quot; are <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE</abbr> bits the
+receiving radio's Golay decoders corrected (<code>sfr.rx_fec</code>, by frame place <code>sfr.rx_fec_pos</code>).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Radio</th>
+<th>Role</th>
+<th>What fails</th>
+<th>How often</th>
+<th>Evidence</th>
+<th>Workaround</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Any</td>
+<td>Whole chain (user, repeater, user)</td>
+<td>Not rechecked with live voice and a hand-keyed PTT since the voice <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> fix (gotchas 14.15): the hand test before it had about 1 clean call in 30</td>
+<td><code>test_sfr_chain_rfoundry_user</code> (DM-1701 talker, DM-1801 Pro repeater, DM-32UV listener, debug-link PTT, the voice test signal) after the fix: 12 of 12 calls played whole, 4 per <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> mode, no repeated frames, at most 2 bad frames a call (2026-10-25)</td>
+<td>Hand test 2026-10-20</td>
+<td>A hand test with voice is still to do</td>
+</tr>
+<tr>
+<td>DM-1701</td>
+<td>Repeater</td>
+<td>Inbound bit errors sit in the first frame of each burst, the one right after the radio's own outbound burst, and the repeat carries them on</td>
+<td>Every call: 54-66 bits per 72 frames, 48-54 of them in the first frame, no frame lost (3 calls, 2026-10-25)</td>
+<td>Switching back to RX earlier trades them against our own burst: 28.0 ms after the key, inbound 17-39 bits but the repeat's last frame took 45-61 bits on the SDR (the burst cut short); 28.8 ms, inbound 104-143 bits. The <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr> interrupt (30.25 ms) stays. Dropping only the <abbr class="gl" tabindex="0" title="Power amplifier: the stage that boosts the transmit signal to the output power." data-more="../dev/glossary.html#t-pa">PA</abbr> earlier did nothing (<code>hardware-dm1701.md</code> 6)</td>
+<td>None needed to play: the errors are corrected. A weak inbound signal adds to them</td>
+</tr>
+<tr>
+<td>DM-1701</td>
+<td>User</td>
+<td>Hears one copy of a call at a time, so First copy and Dual-path RX only switch copies between calls</td>
+<td>Always</td>
+<td>Gotchas 14.12</td>
+<td>Receive mode Repeater (the default)</td>
+</tr>
+<tr>
+<td>DM-1801 Pro</td>
+<td>Repeater</td>
+<td>The repeat carries the inbound bit errors on: a listener playing the repeat corrects about 1.1-1.9 bits a frame, against 0-0.03 for one playing the talker's own copy</td>
+<td>Every call</td>
+<td>Gotchas 14.13; <code>test_sfr_chain_rfoundry_user</code> 2026-10-25 (receive mode Repeater against First copy and Dual-path RX)</td>
+<td>Receive mode First copy or Dual-path RX where the talker is in range</td>
+</tr>
+<tr>
+<td>DM-1801 Pro, DM-32UV</td>
+<td>User</td>
+<td>Fixed: the listener played the call's first decoded burst over and over (stale voice RAM: the voice-access flag on the wrong chip slot)</td>
+<td>Hand test 2026-10-20: most calls. After the fix: none in 12 calls (<code>voice.rx_repeats</code> 0)</td>
+<td>Gotchas 14.15; <code>hrc7000DmrTest</code> test_rx_sfr_both_copies</td>
+<td>-</td>
+</tr>
+<tr>
+<td>DM-32UV</td>
+<td>Repeater</td>
+<td>Repeat quality falls with a weak, fading inbound path</td>
+<td>One site: 39 of 72 frames repeated</td>
+<td><code>hardware-dm32.md</code> 8.9</td>
+<td>Put the repeater where it hears the users well</td>
+</tr>
+<tr>
+<td>DB25-D PRO</td>
+<td>Repeater</td>
+<td>Inbound bit errors sit in the first and third frame of each burst: the receive chain settling after the per-burst retune of its superhet. The repeat carries them on</td>
+<td>Every call: 170-194 bits per 72 frames (98-120 / 22-30 / 48-54 by frame place), no frame lost (8 calls, 2026-10-25, another test frequency); the same call received without transmitting: 29-37 bits</td>
+<td>With the stock burst timing 10-13 frames were lost per call; the shorter <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> lead and the TX off at the last symbol fixed that. Moving the switch points further and keeping the LO running changed nothing; the modem's phase averaging off made it worse (51 of 72 frames) (<code>hardware-db25d.md</code> 4.5)</td>
+<td>None needed to play: the errors are corrected</td>
+</tr>
+<tr>
+<td>DB25-D PRO</td>
+<td>MMDVM SFR</td>
+<td>The <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr>'s SFR mode repeats the bench call on air only some of the time: two runs failed the SDR's check for the repeat's <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr> on the other slot, one sent only 7 of 18 voice frames up to the host</td>
+<td><code>test_sfr_repeats_bench_call</code> passed 1 of 4 runs (2026-10-25); <code>test_hotspot_sfr_mode</code> passes</td>
+<td>Not chased yet</td>
+<td>Use the standalone repeater role</td>
+</tr>
+<tr>
+<td>MD-380</td>
+<td>Any</td>
+<td>Not available: the HR_C5000 lacks what the SFR uses (section 3)</td>
+<td>-</td>
+<td>Gotchas 14.6</td>
+<td>None</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/sfr.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#1-layers">1. Layers</a></li><li class="l2"><a href="#2-what-is-built">2. What is built</a></li><li class="l2"><a href="#3-what-the-modem-driver-must-do">3. What the modem driver must do</a></li><li class="l2"><a href="#4-standalone-sfr">4. Standalone SFR</a></li><li class="l2"><a href="#5-tests">5. Tests</a></li><li class="l2"><a href="#6-known-issues-by-radio">6. Known issues by radio</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

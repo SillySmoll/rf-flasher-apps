@@ -1,0 +1,281 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transmit power calibration with a wattmeter · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Transmit power calibration with a wattmeter · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/docs/testing/power-calibration.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/testing/power-calibration.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/testing/power-calibration.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/testing/power-calibration.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/testing/power-calibration.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/testing/power-calibration.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../es/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../../es/radios/index.html">Radios</a><a href="../../../es/features/index.html">Funciones</a><a href="../../../es/flash/index.html">Instalar</a><a href="../../../es/codeplug/index.html">Codeplug</a><a href="../../../es/docs/index.html" aria-current="page">Documentación</a><a href="../../../es/screenshots/index.html">Capturas</a><a href="../../../es/tools/index.html">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../../docs/testing/power-calibration.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/testing/power-calibration.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/testing/power-calibration.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/testing/power-calibration.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Pruebas">
+		<p class="eyebrow"><a href="../../../es/docs/index.html">Documentación</a> / Pruebas</p>
+		<ul><li><a href="index.html">Testing</a></li><li><a href="results/index.html">Bring-up results</a></li><li><a href="backlight-curve.html">Backlight curve</a></li><li><a href="dm1801pro-bringup.html">DM-1801 Pro bring-up checklist</a></li><li><a href="dm32-bringup.html">DM-32UV bring-up checklist</a></li><li><a href="dmr-bench.html">DMR bench testing on the SDR bench</a></li><li><a href="md380-bringup.html">MD-380 bring-up checklist</a></li><li><a href="md9600-bringup.html">MD-9600 bring-up checklist</a></li><li><a href="mduv380-bringup.html">MD-UV380 bring-up checklist</a></li><li><a href="mmdvm-audit.html">MMDVM implementation audit (2d45a21)</a></li><li><a href="on-air-coverage.html">On-air test coverage</a></li><li><a href="power-calibration.html" aria-current="page">Transmit power calibration with a wattmeter</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Esta página aún no está traducida; se muestra en inglés.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="transmit-power-calibration-with-a-wattmeter">Transmit power calibration with a wattmeter</h1>
+<p>How to find the <abbr class="gl" tabindex="0" title="Power amplifier: the stage that boosts the transmit signal to the output power." data-more="../dev/glossary.html#t-pa">PA</abbr> drive for each of a radio's power levels, quickly and to about ±0.5 dB. The full procedure runs
+once per radio model; each further radio of that model gets the short check. The results go on the radio's hardware
+page and into its board power table.</p>
+<p>The procedure uses the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>'s PA drive override (RADIO op 36, and the <code>core</code> view's <code>tx_drive</code> for each level's
+drive) and the test <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> limit (<a href="../spec/debuglink.html">debuglink.md</a>). <code>tools/power_cal.py</code> does
+the keying: it puts the radio in the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> on the frequency (FM, no sub-audio tone, the TX limit on that frequency alone),
+keys each step and asks for the reading.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>power_cal.py --allow-rf MHZ key STEP...</code></td>
+<td>Key each drive (or <code>Ln</code>, power level n), 2 s each (<code>STEP:S</code> for S seconds)</td>
+</tr>
+<tr>
+<td><code>power_cal.py --allow-rf MHZ zero --hi D --lo D</code></td>
+<td>The bisection for the zero point and the cliff (3.2)</td>
+</tr>
+<tr>
+<td><code>power_cal.py --allow-rf MHZ check --margin M</code></td>
+<td>The short check (4): every level, then the margin step; PASS or FAIL</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>--no-prompt</code> keys without asking, for an operator who reads the meter and reports the readings afterwards (<code>check --readings W,W,...</code> then judges them).</p>
+<h2 id="1-what-the-measurements-showed">1. What the measurements showed</h2>
+<p>These facts set the procedure. Check them again only on a new model.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Fact</th>
+<th>Consequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Labels on the factory calibration rows can be wrong by 3 dB or more (a &quot;5 W&quot; row gave 9-10 W)</td>
+<td>Measure every factory row once; never trust the label</td>
+</tr>
+<tr>
+<td>Power against drive is steep at the bottom and saturates at the top</td>
+<td>Bisect at the bottom, use coarse steps at the top</td>
+</tr>
+<tr>
+<td>The bottom of the curve follows the <strong>absolute</strong> drive: the drive where output reaches zero (the zero point, Z) moved 0-10 counts between two frequencies 5-6 MHz apart in the same band</td>
+<td>The low levels are fixed drives per band, not fractions of a factory row (a fraction put 1 W at 1.9 W). At the very bottom 10 counts is 2-3 dB, so the lowest level's name must fit both frequencies</td>
+</tr>
+<tr>
+<td>The top of the curve moves with frequency (the 25 W and top drives differed by up to 50 counts between the same two frequencies)</td>
+<td>The upper levels follow the factory rows, which are calibrated at several frequencies</td>
+</tr>
+<tr>
+<td><strong>The cliff:</strong> 5-20 counts below the zero point, the power loop loses control and the PA jumps to about 10 W</td>
+<td>A level is never set within the margin below; the lowest level's drive is checked against the cliff, not just the zero point</td>
+</tr>
+<tr>
+<td>A drive of 0 is below the cliff</td>
+<td>The <abbr class="gl" tabindex="0" title="Power amplifier: the stage that boosts the transmit signal to the output power." data-more="../dev/glossary.html#t-pa">PA</abbr> must not be on with the drive at 0: the ramp starts and ends at the zero point (a carrier leak at key-up and a splash at key-down come from this)</td>
+</tr>
+<tr>
+<td>A warm PA moved the zero point and the cliff by about 5 counts</td>
+<td>One hot check per model; no hot checks per radio</td>
+</tr>
+<tr>
+<td>With the drive changed after key-up, the meter first shows the starting level</td>
+<td>The override sets the drive before key-up</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="2-equipment-and-setup">2. Equipment and setup</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dummy load</td>
+<td>Rated for the radio's top power continuously, at the band's frequencies</td>
+</tr>
+<tr>
+<td>Wattmeter</td>
+<td>In line between the radio and the load, averaging (not peak), resolution 0.01 W below 1 W</td>
+</tr>
+<tr>
+<td>Supply</td>
+<td>The radio's top-power current with margin (about 12 A for a 50 W radio at 13.8 V)</td>
+</tr>
+<tr>
+<td>Frequencies</td>
+<td>Per band: one near the middle (A) and one at least 5 MHz away (B, model runs only). Both must be in the test <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> limit</td>
+</tr>
+<tr>
+<td>Radio</td>
+<td>Ready to transmit (no hardware option pending); FM, no sub-audio tone (an unmodulated carrier reads steadiest)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Each key-up lasts 2 s and is read at its end; 3 s between key-ups. 5 s key-ups only for the warm-up.</p>
+<h2 id="3-full-procedure-once-per-model-per-band">3. Full procedure (once per model, per band)</h2>
+<p>About 30 key-ups per band at frequency A, plus 12 at B and 12 hot.</p>
+<h3 id="31-factory-rows-4-key-ups">3.1 Factory rows (4 key-ups)</h3>
+<p>Key each factory power row as the radio drives it. Record the drive and watts. A row whose power doesn't rise with its
+drive stops the procedure: the factory calibration is unusable.</p>
+<h3 id="32-zero-point-and-cliff-about-8-key-ups">3.2 Zero point and cliff (about 8 key-ups)</h3>
+<p>Bisect between the lowest row's drive (on the curve) and half of it (below the cliff): <code>power_cal.py zero</code>. Each
+reading is classified:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Reading</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.02 W or more and under the lowest row's power</td>
+<td>on the curve: the new upper bound</td>
+</tr>
+<tr>
+<td>under 0.02 W</td>
+<td>between the cliff and the zero point</td>
+</tr>
+<tr>
+<td>about the lowest row's power or more, at a drive below it</td>
+<td>past the cliff: the new lower bound</td>
+</tr>
+</tbody>
+</table></div>
+<p>Stop when Z (the highest drive reading under 0.02 W) and the cliff C (the highest drive past the cliff) are each known
+to 5 counts.</p>
+<h3 id="33-low-curve-4-6-key-ups">3.3 Low curve (4-6 key-ups)</h3>
+<p>Key Z + 10, Z + 30, Z + 60 and Z + 120, then halfway to the lowest row if 5 W isn't bracketed. Interpolate the drive for
+each low level (for example 100 mW, 1 W, 5 W) on log(P) between neighbors, then key each once to verify (3 key-ups). Accept within
+±0.5 dB; else interpolate again with the new point.</p>
+<h3 id="34-upper-levels-3-5-key-ups">3.4 Upper levels (3-5 key-ups)</h3>
+<p>Interpolate each upper level (25 W) between the factory rows on log(P), using the watts measured in 3.1, and verify.
+For the top level, key the top row + 100 and + 200 until the target is bracketed or the gain falls under 1 W per 100
+counts (saturation). Stop at the radio's rating.</p>
+<h3 id="35-second-frequency-b-about-12-key-ups">3.5 Second frequency (B, about 12 key-ups)</h3>
+<p>The factory rows (4), Z and C by bisection from A's values (about 4), and each low level at A's drive (3). A low level
+that misses its tolerance at B moves to the drive between A's and B's points that fits both, or up to the next name
+that does (two key-ups per try); 1 W and above have always fit.</p>
+<h3 id="36-hot-check-about-12-key-ups">3.6 Hot check (about 12 key-ups)</h3>
+<p>Three 5 s key-ups at about 25 W, then at once Z and C by bisection from the cold values, and the lowest level once.
+Record the shift.</p>
+<h3 id="37-margin-and-the-lowest-level">3.7 Margin and the lowest level</h3>
+<p>A low level is usable only when its drive lies at least <code>margin</code> above the highest cliff seen (A, B, hot), with
+<code>margin = 2 × (largest Z shift seen) + 5</code> counts, and at least 20. A target below that becomes the lowest drive that
+meets the margin, rounded to a level name it reaches (for example 0.25 W instead of 50 mW).</p>
+<h2 id="4-short-check-each-further-radio-of-a-model">4. Short check (each further radio of a model)</h2>
+<p>About 10 key-ups per band at frequency A, with the model's table in the firmware (<code>power_cal.py check</code>). The <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr>
+version (<code>test_fm_tx_power_levels --manual</code>) keys every level at 445 and 146 MHz by default, the middle of where hams
+<abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> on 70 cm and 2 m, in one batch; the readings are typed after it:</p>
+<ol>
+<li>Each power level once through the normal level setting: within ±1 dB of its name (±2 dB for levels under 1 W).</li>
+<li>The lowest level's drive minus the model's margin plus 5 counts (5 counts above the model's highest cliff), once:
+it must read under 0.02 W. A reading near 10 W means this radio's cliff is higher: run 3.2 and 3.7 for it.</li>
+</ol>
+<p>A level outside its tolerance: run the full procedure for that band on this radio.</p>
+<h2 id="5-what-to-record">5. What to record</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Where</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The radio's hardware page</td>
+<td>Per band and frequency: factory row drives and watts, Z, C, the hot shift, the margin, the drive and measured watts per level</td>
+</tr>
+<tr>
+<td>The board's power table</td>
+<td>The low levels' fixed drives per band, the upper levels' place between the factory rows, the top level's offset, Z per band for the ramp</td>
+</tr>
+<tr>
+<td>The bring-up records</td>
+<td>The short check's readings</td>
+</tr>
+</tbody>
+</table></div>
+<p>Don't record repeat readings of the same point: the procedure takes each point once.</p>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/testing/power-calibration.md">Ver el código fuente de esta página</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="En esta página">
+		<p class="eyebrow">En esta página</p>
+		<ul><li class="l2"><a href="#1-what-the-measurements-showed">1. What the measurements showed</a></li><li class="l2"><a href="#2-equipment-and-setup">2. Equipment and setup</a></li><li class="l2"><a href="#3-full-procedure-once-per-model-per-band">3. Full procedure (once per model, per band)</a></li><li class="l3"><a href="#31-factory-rows-4-key-ups">3.1 Factory rows (4 key-ups)</a></li><li class="l3"><a href="#32-zero-point-and-cliff-about-8-key-ups">3.2 Zero point and cliff (about 8 key-ups)</a></li><li class="l3"><a href="#33-low-curve-4-6-key-ups">3.3 Low curve (4-6 key-ups)</a></li><li class="l3"><a href="#34-upper-levels-3-5-key-ups">3.4 Upper levels (3-5 key-ups)</a></li><li class="l3"><a href="#35-second-frequency-b-about-12-key-ups">3.5 Second frequency (B, about 12 key-ups)</a></li><li class="l3"><a href="#36-hot-check-about-12-key-ups">3.6 Hot check (about 12 key-ups)</a></li><li class="l3"><a href="#37-margin-and-the-lowest-level">3.7 Margin and the lowest level</a></li><li class="l2"><a href="#4-short-check-each-further-radio-of-a-model">4. Short check (each further radio of a model)</a></li><li class="l2"><a href="#5-what-to-record">5. What to record</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

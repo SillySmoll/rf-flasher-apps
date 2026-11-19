@@ -1,0 +1,358 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>240x320 color (portrait) · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="240x320 color (portrait) · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/ux/wireframes/240x320.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/ux/wireframes/240x320.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/ux/wireframes/240x320.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/ux/wireframes/240x320.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/ux/wireframes/240x320.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/ux/wireframes/240x320.html">
+<link rel="icon" href="../../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../../" data-home="../../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../../zh/index.html">
+			<img src="../../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../../zh/radios/index.html">电台</a><a href="../../../../zh/features/index.html">功能</a><a href="../../../../zh/flash/index.html">安装</a><a href="../../../../zh/codeplug/index.html">电台频率</a><a href="../../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../../docs/ux/wireframes/240x320.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../../es/docs/ux/wireframes/240x320.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../../it/docs/ux/wireframes/240x320.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../../zh/docs/ux/wireframes/240x320.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="用户体验">
+		<p class="eyebrow"><a href="../../../../zh/docs/index.html">文档</a> / 用户体验</p>
+		<ul><li><a href="index.html">Wireframes</a></li><li><a href="../dual-watch.html">Dual watch</a></li><li><a href="../information-architecture.html">Information architecture</a></li><li><a href="../principles.html">UI design principles</a></li><li><a href="../survey.html">UI survey: what good radio and device interfaces do</a></li><li><a href="../task-flows.html">Task flows</a></li><li><a href="../usability-tests.html">Usability test protocol</a></li><li><a href="128x64.html">128x64 monochrome</a></li><li><a href="160x128.html">160x128 color</a></li><li><a href="240x320.html" aria-current="page">240x320 color (portrait)</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">本页尚未翻译，目前显示英文。</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="240x320-color-portrait">240x320 color (portrait)</h1>
+<p>30 columns x 26 rows of 8x12 px. UPPERCASE words are drawn in the 2x font (16x24). Example board: any 240x320 radio (DM-32 class if its panel is this size).</p>
+<h2 id="home-idle-dmr">Home, idle, DMR</h2>
+<pre><code>┌──────────────────────────────┐
+│ IDLE  DMR ▮▮▮▯  ⌖  ✉2   84%  │  status strip (row 1)
+├──────────────────────────────┤
+│ Zone: Local repeaters        │  place
+│ 03  COUNTY DMR               │  channel, 2x font
+│                              │
+├──────────────────────────────┤
+│ PTT →                        │  talk target
+│ TG 3100  USA                 │  2x font
+│ ┌────┐┌────┐┌────┐┌──────┐   │
+│ │TS 1││CC 1││High││♦ Priv│   │  chips; privacy chip only when on
+│ └────┘└────┘└────┘└──────┘   │
+├──────────────────────────────┤
+│ Last heard  · 2 min ago      │  activity (idle = last heard)
+│ Joe Smith  Q1AAA             │
+│ TG 91 · TS1 · 12 km NE       │
+│                              │
+│                              │
+│                              │
+│                              │
+│                              │
+│                              │
+├──────────────────────────────┤
+│ OK Menu  * Quick  # Joe      │  hint row
+└──────────────────────────────┘
+</code></pre>
+<p>Notes: the channel name and the <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../../user/22-glossary.html#t-talk-target">talk target</abbr> are the two biggest things (P5). The hint row names the last caller so the user learns that <code>#</code> acts on them.</p>
+<h2 id="home-idle-with-temporary-changes-and-reply-window">Home, idle, with temporary changes and reply window</h2>
+<pre><code>┌──────────────────────────────┐
+│ IDLE  DMR ▮▮▮▯  ⌖       84%  │
+├──────────────────────────────┤
+│ Zone: Local repeaters        │
+│ 03  COUNTY DMR •             │  • = channel has temporary changes
+├──────────────────────────────┤
+│ PTT → reply  (8 s)           │  countdown, then back to TG 3100
+│ TG 91  WORLDWIDE             │
+│ ┌──────┐┌────┐┌────┐         │
+│ │•TS 2 ││CC 1││High│         │  changed field marked
+│ └──────┘└────┘└────┘         │
+├──────────────────────────────┤
+│ Last heard  · 3 s ago        │
+│ Joe Smith  Q1AAA             │
+│ TG 91 · TS2                  │
+│                              │
+├──────────────────────────────┤
+│ Back: undo changes  # Joe    │  hint row explains how to revert
+└──────────────────────────────┘
+</code></pre>
+<h2 id="home-idle-fm">Home, idle, FM</h2>
+<pre><code>┌──────────────────────────────┐
+│ IDLE  FM  ▮▮▯▯          84%  │
+├──────────────────────────────┤
+│ Zone: Simplex                │
+│ 12  2M CALLING               │
+├──────────────────────────────┤
+│ 146.520 MHz                  │  frequency as the &quot;target&quot; line, 2x
+│ ┌──────┐┌──────┐┌────┐┌───┐  │
+│ │T 100.0││25 kHz││Low ││SQ5│  │  tone, bandwidth, power, squelch
+│ └──────┘└──────┘└────┘└───┘  │
+├──────────────────────────────┤
+│ Last activity · 14 min ago   │
+│                              │
+├──────────────────────────────┤
+│ OK Menu  * Quick  SK1 Mon    │
+└──────────────────────────────┘
+</code></pre>
+<h2 id="receiving-dmr-group-call">Receiving (DMR group call)</h2>
+<pre><code>┌──────────────────────────────┐
+│ [RX] TG 91  ▮▮▮▮        84%  │  green pill with the word RX
+├──────────────────────────────┤
+│ 03  County DMR               │  place shrinks to one line during RX
+├──────────────────────────────┤
+│ JOE SMITH                    │  caller, 2x
+│ Q1AAA · 9991234              │
+│ &quot;Joe - Boston, MA&quot;           │  talker alias as it arrives
+│                              │
+│ TG 91 Worldwide · TS 1       │
+│ ▮▮▮▮▮▮▮▮▯▯  -71 dBm          │  RSSI bar
+│ 12 km NE (GPS)               │  when a position is known
+│ 00:14                        │  call timer
+├──────────────────────────────┤
+│ PTT → reply TG 91            │  what PTT will do now
+├──────────────────────────────┤
+│ # Actions  SK1 Hear all      │
+└──────────────────────────────┘
+</code></pre>
+<h2 id="transmitting">Transmitting</h2>
+<pre><code>┌──────────────────────────────┐
+│ [TX] TG 3100  High      84%  │  red pill with the word TX
+├──────────────────────────────┤
+│                              │
+│ TALKING                      │  2x
+│ TG 3100  USA                 │
+│ TS 1 · CC 1 · ♦ Private      │
+│                              │
+│ 00:07          TOT 03:00     │  timer and time-out timer
+│ ▮▮▮▮▮▮▯▯▯▯ mic level         │
+│                              │
+└──────────────────────────────┘
+</code></pre>
+<p>If <abbr class="gl" tabindex="0" title="Transmit." data-more="../../user/22-glossary.html#t-tx">TX</abbr> is refused, the same screen shows <code>CAN'T TRANSMIT</code> with the reason and what to do, with the error tone.</p>
+<h2 id="home-dual-watch-a-call-coming-in-on-b">Home, dual watch (a call coming in on B)</h2>
+<p>Two panes of the same size, A over B. The selected pane's tag is filled and its pill says PTT; the pane with the call
+is green, with the caller and the <abbr class="gl" tabindex="0" title="Receive." data-more="../../user/22-glossary.html#t-rx">RX</abbr> pill on row 2. The selected pane has the arrow under its letter. Under the panes: the state line when there is one, then the last calls, each with its pane's letter.
+Details: <a href="../dual-watch.html">dual-watch.md</a>.</p>
+<pre><code>┌──────────────────────────────┐
+│ DMR DUAL            ▮▮▮  84% │ DUAL in amber, next to the mode
+├──────────────────────────────┤
+│ ▓▓▓  3 COUNTY DMR      [PTT] │ tag A filled: the selected channel
+│ ▓A▓  TG 3100 USA             │ what PTT talks to
+│ ▓▶▓  438.250 MHz TS1 CC1     │ arrow: the selected pane
+│      Local repeaters         │ the zone
+├──────────────────────────────┤
+│ ┌─┐  5 METRO DMR             │ green: a call is coming in on B
+│ │B│  JOE SMITH TG 91  [RX]   │ the caller, RX at the right
+│ └─┘  444.500 MHz TS1 CC1     │
+│      Local repeaters         │
+├──────────────────────────────┤
+│ Receiving on B ▮▮▮▮▮▮▯▯      │ or TALKING on A 0:07; nothing when idle
+│ A Eve Park TG 3100     7s ago│ the last calls, newest first
+│ B Joe Smith TG 91     10s ago│
+├──────────────────────────────┤
+│ # options         Back stop  │ after a call on the other channel: # 1 talk on B
+└──────────────────────────────┘
+</code></pre>
+<h2 id="incoming-message-banner-over-any-screen">Incoming message (banner over any screen)</h2>
+<pre><code>┌──────────────────────────────┐
+│ IDLE  DMR ▮▮▮▯  ⌖  ✉1   84%  │
+├──────────────────────────────┤
+│ 03  COUNTY DMR               │
+├──────────────────────────────┤
+│ PTT →                        │
+│ TG 3100  USA                 │
+├──────────────────────────────┤
+│╔════════════════════════════╗│
+│║ ✉ Q1AAA Joe Smith          ║│  banner, does not take focus
+│║ &quot;Meet at the north lot in…&quot;║│
+│║ # Open    (8 s)            ║│
+│╚════════════════════════════╝│
+├──────────────────────────────┤
+│ OK Menu  * Quick  # Open     │
+└──────────────────────────────┘
+</code></pre>
+<h2 id="message-view">Message view</h2>
+<pre><code>┌──────────────────────────────┐
+│ IDLE  DMR ▮▮▮▯          84%  │
+├──────────────────────────────┤
+│ ‹ Messages   1 of 3 unread   │
+├──────────────────────────────┤
+│ Joe Smith  Q1AAA             │
+│ 10:42 · via TG 3100          │
+│                              │
+│ Meet at the north lot in     │
+│ 15 minutes. Bring the spare  │
+│ battery for the repeater.    │
+│                              │
+├──────────────────────────────┤
+│ ▸ Reply: &quot;OK&quot;                │  canned replies first
+│   Reply: &quot;On my way&quot;         │
+│   Write reply…               │
+│   Call Joe                   │
+├──────────────────────────────┤
+│ OK Send  ↓ Next  Back        │
+└──────────────────────────────┘
+</code></pre>
+<h2 id="quick-settings-dmr">Quick settings (DMR)</h2>
+<pre><code>┌──────────────────────────────┐
+│ IDLE  DMR ▮▮▮▯          84%  │
+├──────────────────────────────┤
+│ Quick · 03 County DMR        │
+├─────────┬─────────┬──────────┤
+│1 Power  │2 Slot   │3 Color   │
+│  HIGH   │  TS 1   │  CC 1    │
+├─────────┼─────────┼──────────┤
+│4 Mode   │5 Hear   │6 Privacy │
+│  → FM   │  all OFF│  OFF     │
+├─────────┼─────────┼──────────┤
+│7 Scan   │8 Talk to│9 Bright  │
+│  OFF    │  TG 3100│  70%     │
+├─────────┴─────────┴──────────┤
+│ 0 All settings               │
+├──────────────────────────────┤
+│ 1-9 change  Hold OK save     │
+└──────────────────────────────┘
+</code></pre>
+<p>The grid is the keypad: the tile under the <code>5</code> key is tile 5. Focused tile has a thick border; <code>NAV_UP</code>/<code>NAV_DOWN</code> move focus in reading order.</p>
+<h2 id="find-typing-563-on-home">Find (typing &quot;563&quot; on Home)</h2>
+<pre><code>┌──────────────────────────────┐
+│ IDLE  DMR ▮▮▮▯          84%  │
+├──────────────────────────────┤
+│ Find: 563_       (jod, joe…) │  T9 and digits matched together
+├──────────────────────────────┤
+│ ▸ Joe Smith  Q1AAA      👤   │  contact
+│   Jodi Ruiz  Q2BB       👤   │
+│   TG 563  (not saved)   #    │  number interpreted as a TG
+│   Private call 563      👤   │
+│   Ch 56  Johnson Pk     ⌁    │  channels by number/name
+│   Settings: Join…       ⚙    │
+│                              │
+├──────────────────────────────┤
+│ PTT talk  OK open  # actions │
+└──────────────────────────────┘
+</code></pre>
+<h2 id="caller-actions--on-home">Caller actions (<code>#</code> on Home)</h2>
+<pre><code>┌──────────────────────────────┐
+│ IDLE  DMR ▮▮▮▯          84%  │
+├──────────────────────────────┤
+│ Joe Smith  Q1AAA  · 2 min    │
+│ heard on TG 91 · TS 1        │
+├──────────────────────────────┤
+│ ▸1 Talk to TG 91             │
+│  2 Private call Joe          │
+│  3 Message                   │
+│  4 Radio check               │
+│  5 Call alert                │
+│  6 Position · 12 km NE       │
+│  7 Save as contact           │
+│  8 Speak status              │
+├──────────────────────────────┤
+│ 1-8 pick  PTT talk  Back     │
+└──────────────────────────────┘
+</code></pre>
+<h2 id="hub">Hub</h2>
+<pre><code>┌──────────────────────────────┐
+│ IDLE  DMR ▮▮▮▯  ⌖  ✉2   84%  │
+├──────────────────────────────┤
+│  1 Contacts                  │
+│  2 Messages            2 new │
+│  3 Recent                    │
+│  4 Channels     Local rpt.   │
+│  5 Tools        GPS fix      │
+│  6 Settings                  │
+├──────────────────────────────┤
+│ 1-6 open  Back               │
+└──────────────────────────────┘
+</code></pre>
+<h2 id="talk-target-picker-talk_target">Talk target picker (<code>TALK_TARGET</code>)</h2>
+<pre><code>┌──────────────────────────────┐
+│ IDLE  DMR ▮▮▮▯          84%  │
+├──────────────────────────────┤
+│ Talk to… (03 County DMR)     │
+├──────────────────────────────┤
+│   TG 3100 USA   (default)    │
+│ ▸ TG 91 Worldwide (reply)    │
+│   TG 31 North America  listen│
+│   TG 3125 Mass.        listen│
+│   TG 310 TAC 310       recent│
+│   Joe Smith Q1AAA    speed 1 │
+│   Type a number…             │
+├──────────────────────────────┤
+│ PTT once  OK use  Hold OK set│
+└──────────────────────────────┘
+</code></pre>
+<h2 id="landscape-variant-320x240-home">Landscape variant (320x240) Home</h2>
+<pre><code>┌────────────────────────────────────────┐
+│ IDLE  DMR ▮▮▮▯  ⌖  ✉2             84%  │
+├───────────────────────┬────────────────┤
+│ Local repeaters       │ Last heard 2 m │
+│ 03 COUNTY DMR         │ Joe Smith      │
+│                       │ Q1AAA          │
+│ PTT → TG 3100 USA     │ TG 91 · TS1    │
+│ TS1  CC1  High        │ 12 km NE       │
+├───────────────────────┴────────────────┤
+│ OK Menu   * Quick   # Joe              │
+└────────────────────────────────────────┘
+</code></pre>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/ux/wireframes/240x320.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#home-idle-dmr">Home, idle, DMR</a></li><li class="l2"><a href="#home-idle-with-temporary-changes-and-reply-window">Home, idle, with temporary changes and reply window</a></li><li class="l2"><a href="#home-idle-fm">Home, idle, FM</a></li><li class="l2"><a href="#receiving-dmr-group-call">Receiving (DMR group call)</a></li><li class="l2"><a href="#transmitting">Transmitting</a></li><li class="l2"><a href="#home-dual-watch-a-call-coming-in-on-b">Home, dual watch (a call coming in on B)</a></li><li class="l2"><a href="#incoming-message-banner-over-any-screen">Incoming message (banner over any screen)</a></li><li class="l2"><a href="#message-view">Message view</a></li><li class="l2"><a href="#quick-settings-dmr">Quick settings (DMR)</a></li><li class="l2"><a href="#find-typing-563-on-home">Find (typing &quot;563&quot; on Home)</a></li><li class="l2"><a href="#caller-actions--on-home">Caller actions (# on Home)</a></li><li class="l2"><a href="#hub">Hub</a></li><li class="l2"><a href="#talk-target-picker-talk_target">Talk target picker (TALK_TARGET)</a></li><li class="l2"><a href="#landscape-variant-320x240-home">Landscape variant (320x240) Home</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

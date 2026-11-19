@@ -1,0 +1,277 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Codeplug Editor · RadioFoundry</title>
+<meta name="description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="The Codeplug Editor · RadioFoundry">
+<meta property="og:description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:url" content="https://radiofoundry.org/docs/dev/codeplug-editor.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="The radios RadioFoundry runs on, each showing a different screen.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/dev/codeplug-editor.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/dev/codeplug-editor.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/dev/codeplug-editor.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/dev/codeplug-editor.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/dev/codeplug-editor.html">
+<link rel="icon" href="../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../" data-home="../../" data-gl-more="More">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../index.html">
+			<img src="../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Main"><a href="../../radios/index.html">Radios</a><a href="../../features/index.html">Features</a><a href="../../flash/index.html">Install</a><a href="../../codeplug/index.html">Codeplug</a><a href="../../docs/index.html" aria-current="page">Docs</a><a href="../../screenshots/index.html">Screenshots</a><a href="../../tools/index.html">Tools</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Language" title="Language">EN</summary><nav aria-label="Language"><a href="../../docs/dev/codeplug-editor.html" aria-current="true" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../es/docs/dev/codeplug-editor.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../it/docs/dev/codeplug-editor.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../zh/docs/dev/codeplug-editor.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Switch light and dark" title="Switch light and dark">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Developer Guide">
+		<p class="eyebrow"><a href="../../docs/index.html">Documentation</a> / Developer Guide</p>
+		<ul><li><a href="index.html">Developer Documentation</a></li><li><a href="adding-a-mode.html">Adding a Mode</a></li><li><a href="adding-a-radio.html">Adding a Radio</a></li><li><a href="architecture.html">Architecture</a></li><li><a href="board-registry.html">The Board Registry</a></li><li><a href="building.html">Building</a></li><li><a href="ci-runners.html">CI Runners and Images</a></li><li><a href="ci.html">Continuous Integration</a></li><li><a href="codec.html">The Codec</a></li><li><a href="codeplug-editor.html" aria-current="page">The Codeplug Editor</a></li><li><a href="contributing.html">Contributing</a></li><li><a href="cps-and-codeplug.html">CPS, Codeplug and Settings</a></li><li><a href="debug-link.html">Debug Link</a></li><li><a href="glossary.html">Developer glossary</a></li><li><a href="manual-pdf.html">The User Manual PDF</a></li><li><a href="release.html">Releases</a></li><li><a href="stack-check.html">Stack Check</a></li><li><a href="testing.html">Testing</a></li><li><a href="translating.html">Translating</a></li><li><a href="web-flasher.html">The Web Flasher</a></li><li><a href="website.html">The Web Site</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<h1 id="the-codeplug-editor">The Codeplug Editor</h1>
+<p>The browser tool for editing a <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="cps-and-codeplug.html">codeplug</abbr>, hosted on the site (<a href="website.html">website.md</a>). For users it is the recommended
+way to edit a codeplug (<a href="../user/04-programming.html">Programming the radio</a>); this page is for people who change it.</p>
+<p><code>site/templates/codeplug.html</code> and <code>site/static/js/editor/</code> make the page (<code>codeplug/index.html</code>).
+<code>site/static/js/codeplug/</code> holds what doesn't depend on the page, so the Tools page, the flasher and the tests can
+use it too. Both are plain ES modules that also run in Node. The user's view is in
+<a href="../user/04-programming.html#the-codeplug-editor">Programming the radio</a>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>codeplug/image.js</code></td>
+<td>The codeplug as one flat image, file offset = the <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="glossary.html#t-stm32">STM32</abbr> wire address (<a href="../spec/open-firmware-cps.html">open-firmware-cps.md</a> 7.1), as <code>tools/cps_client.py</code> and backups store it. Keeps every byte the editor doesn't decode</td>
+</tr>
+<tr>
+<td><code>codeplug/fields.js</code></td>
+<td>Field encodings: <abbr class="gl" tabindex="0" title="Binary coded decimal: each decimal digit in 4 bits." data-more="glossary.html#t-bcd">BCD</abbr> frequencies, IDs and tones, 0xFF-padded names, 24-bit locations</td>
+</tr>
+<tr>
+<td><code>codeplug/records.js</code></td>
+<td>Each record decoded into a plain object and encoded back. An encoder writes only the fields it owns, so vendor bytes survive an edit</td>
+</tr>
+<tr>
+<td><code>codeplug/model.js</code></td>
+<td>The editing model. References are the records themselves, so a delete or renumber can't leave one pointing at the wrong record. <code>encode()</code> rewrites only changed records: an unedited codeplug round-trips byte for byte. <code>validate()</code> returns the Problems list</td>
+</tr>
+<tr>
+<td><code>codeplug/iddb.js</code></td>
+<td>The <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr> database, format N (7.5): area 1, then area 2 up to the radio's end</td>
+</tr>
+<tr>
+<td><code>codeplug/csv.js</code></td>
+<td>Tables as <abbr class="gl" tabindex="0" title="Comma separated values: a table as plain text, as programming software exports it." data-more="../user/22-glossary.html#t-csv">CSV</abbr> (RFC 4180): fixed English headers, references by name, import matched by number then name</td>
+</tr>
+<tr>
+<td><code>codeplug/chirp.js</code></td>
+<td>CHIRP's CSV channel list to the model and back: FM channels only, replacing the channels and zones</td>
+</tr>
+<tr>
+<td><code>codeplug/chirp_img.js</code></td>
+<td>A CHIRP <code>.img</code> of one radio model: the memory layout learned from an image and the CSV CHIRP wrote from it, never from CHIRP's source. Gives rows to the CSV reader. A model is added by learning its layout the same way; the footer names the model, and any other is refused (<a href="../spec/hardware-uv5r-chirp-image.html">layout</a>)</td>
+</tr>
+<tr>
+<td><code>codeplug/yaml.js</code></td>
+<td>The <abbr class="gl" tabindex="0" title="A text file format. qdmr stores its codeplug as YAML." data-more="../user/22-glossary.html#t-yaml">YAML</abbr> subset <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr> writes: block and flow maps and lists, quoted values, <code>!default</code> tags, comments. Anchors are refused</td>
+</tr>
+<tr>
+<td><code>codeplug/qdmr.js</code></td>
+<td>qdmr YAML to the model and back (<a href="../spec/qdmr-yaml.html">qdmr-yaml.md</a>), with notes on what each side can't hold</td>
+</tr>
+<tr>
+<td><code>codeplug/detect.js</code>, <code>codeplug/stock_tyt.js</code></td>
+<td>Telling the open-firmware layout from a vendor codeplug, and converting that to the editing model (<a href="../spec/codeplug-stock-tyt.html">codeplug-stock-tyt.md</a>)</td>
+</tr>
+<tr>
+<td><code>codeplug/stock_baofeng.js</code></td>
+<td>The same for a paged vendor codeplug in an <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="glossary.html#t-hr-c7000">HR_C7000</abbr> radio's data flash (spec in the radio's own <code>&lt;id&gt;-stock-codeplug.md</code>)</td>
+</tr>
+<tr>
+<td><code>codeplug/channelmodes.js</code></td>
+<td>The channel-mode layer (<a href="../spec/channel-modes.html">channel-modes.md</a>): channel tags, systems and their entries and secrets, radio-wide mode settings, their validation. Knows no mode: records of a kind, type, class or setting it doesn't know are kept byte for byte</td>
+</tr>
+<tr>
+<td><code>codeplug/modes.js</code></td>
+<td>The registry of kinds and system types, the same rows as <code>core/codeplug/codeplug_modes.h</code> (<code>tools/check_modes.py</code>), each with its mode module and the firmware feature that runs it</td>
+</tr>
+<tr>
+<td><code>codeplug/mode_t3.js</code>, <code>mode_p25.js</code></td>
+<td>Mode modules: a kind's parameter block, a type's block, entry classes and secret, as fields the forms show (<a href="adding-a-mode.html">adding-a-mode.md</a>)</td>
+</tr>
+<tr>
+<td><code>codeplug/modebytes.js</code></td>
+<td>Little-endian helpers and the name check (channel-modes.md 2.2) for mode modules</td>
+</tr>
+<tr>
+<td><code>codeplug/transport.js</code></td>
+<td>How the page reaches a radio (below)</td>
+</tr>
+<tr>
+<td><code>codeplug/fakecps.js</code></td>
+<td>A simulated RadioFoundry radio: VERSION, <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> reads, sector writes and <code>C 5</code>, writes refused outside the codeplug as the radio refuses them</td>
+</tr>
+<tr>
+<td><code>codeplug/fastlink.js</code></td>
+<td>The fast codeplug protocol (<a href="../spec/cps-fast.html">cps-fast.md</a>): block CRCs, LZ4 reads and pipelined writes</td>
+</tr>
+<tr>
+<td><code>codeplug/iddb.js</code></td>
+<td>The <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> ID database in format N and format C (<a href="../spec/iddb-compact.html">iddb-compact.md</a>): write, read, convert, size</td>
+</tr>
+<tr>
+<td><code>codeplug/sources/</code></td>
+<td>Contacts sources: <code>radioid.js</code> (RadioID.net's <code>user.csv</code> and API), <code>regions.js</code> (generated region names), <code>output.js</code> (users to the ID database or contacts)</td>
+</tr>
+<tr>
+<td><code>editor/app.js</code></td>
+<td>The page: tabs, the file menu, radio read and write, the draft</td>
+</tr>
+<tr>
+<td><code>editor/grid.js</code>, <code>views.js</code></td>
+<td>The table (in-place edit, sort, filter, selection, keyboard) and each record kind's columns, form and membership editor</td>
+</tr>
+<tr>
+<td><code>editor/undo.js</code></td>
+<td>Snapshots of every table's order and every record's fields</td>
+</tr>
+<tr>
+<td><code>editor/modesview.js</code>, <code>modefields.js</code></td>
+<td>The Systems tab, its dialogs (system, entries, key) and the Radio tab's mode settings; the fields a mode module declares turned into form fields</td>
+</tr>
+<tr>
+<td><code>editor/files.js</code></td>
+<td>What an opened file holds (codeplug image, backup bundle, <code>codeplug.bin</code>), and the draft in IndexedDB</td>
+</tr>
+<tr>
+<td><code>editor/extensions.js</code>, <code>parts.js</code></td>
+<td>Optional parts register their Save items, table actions, text file openers and DMR ID Database views. <code>parts.js</code> lists them, so a part is added without touching <code>app.js</code></td>
+</tr>
+<tr>
+<td><code>editor/csvpart.js</code>, <code>qdmrpart.js</code>, <code>chirppart.js</code>, <code>contactspart.js</code></td>
+<td>The CSV, qdmr YAML, CHIRP CSV and RadioID parts</td>
+</tr>
+</tbody>
+</table></div>
+<p>Add <code>#sim</code> to the page's address to read and write a simulated radio (<code>fakecps.js</code>), <code>#sim-compact</code> for one that
+reads format C ID databases, <code>#sim-modes</code> for one whose features report every channel mode in the registry. Append <code>&amp;release=vYY.M</code> for a radio that runs that release, or <code>&amp;git_time=N</code> for a build
+of a commit from that time, which brings up the update notice when <code>releases.json</code> lists a newer one.</p>
+<p>After a read, the radio is offered the newest release for its board from <code>releases.json</code> when that is newer
+(<code>updateFor</code> in <code>flasher/version.js</code>). A radio that runs a release (<code>release=</code> in VERSION) is compared by release name,
+and is offered pre-releases only when it runs one. Any other build (a developer's, one from a version link) is
+compared by commit time (<code>git_time=</code> against the release's <code>git_time</code>) and is offered only final releases. Firmware
+from before <code>git_time=</code> that isn't a release gets no offer. The dialog lists what the editor gains (<code>CPS_FAST</code>,
+<code>IDDB_COMPACT</code>, when the release has them and the radio doesn't) and opens the installer for the radio. It comes once
+per tab for each radio, running release and new release, after the compact database offer when both apply.</p>
+<h2 id="transports">Transports</h2>
+<p>A transport has <code>identify(radios)</code>, <code>read({iddb, progress, signal})</code>, <code>write(image, current, {progress, signal})</code> and
+<code>close()</code>. Addresses are image addresses; the transport adds the radio's base on the wire. <code>cps-serial</code> is the only one
+today: the open-firmware <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> (<a href="../spec/cps-protocol.html">cps-protocol.md</a> 2) over the radio's USB serial port or the
+programming cable (Web Serial). It identifies the radio by the board name the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="debug-link.html">debug link</abbr> reports, matched against
+<code>codeplug.names</code> in <code>data/radios.json</code>. The registry (<code>tools/boards.py</code> <code>Board.codeplug()</code>) fills that entry from the
+board's flash map: the base (the CPS address offset, nonzero on some radios), the end of the room for the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="cps-and-codeplug.html">codeplug</abbr> and ID database, and whether
+the radio has a <abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="../spec/tftp.html">TFTP</abbr> staging area. The radio can say it has less room: the fast protocol's image end, or a memory
+chip smaller than the board's usual one (the radio info's flash part id, <code>flashBytes</code>); <code>tr.end</code> is the smallest of
+the three, and the ID database is sized for it. A radio whose STORAGE INFO answers unavailable has no settings region
+(a chip too small for the board's flash map): it stores no codeplug and refuses every codeplug write, so <code>identify</code>
+stops with <code>no_storage</code>, which says so, before anything is read. A read takes the ID database's header first
+(<code>readIddbHeader</code>), then the codeplug's regions and the database in one pass, so one progress bar covers it. The
+database's size and the last read's speed (a guess on a radio's first read) give its time: at <code>IDDB_ASK</code> (20 s) or
+more the editor asks before reading. A skipped database stays out of the model (its header erased there, kept in <code>S.conn.image</code>), so no write
+touches it; the <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr> Database tab reads it later into the model. A write compares with the
+radio and sends only the changed bytes inside the codeplug's regions, never whole sectors, since a sector can hold the
+radio's own settings (0x6000). It verifies, then ends with <code>C 5</code> so the radio reloads the codeplug without a restart.</p>
+<p>The radio's bytes a write compares with (<code>S.conn.image</code>) belong to one radio. A programming cable stays open while the
+radio on it is swapped, so before every read and write the page asks <code>who(radios)</code>: the board again and the chip UID
+(INFO_CHIP). A different UID, or none, drops the image and the write reads the radio first. <code>keepIdentity(want, have)</code>
+copies the radio's name, <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> ID and boot text (<code>IDENTITY</code>) into the image it writes, for one codeplug written to
+several radios.</p>
+<p>A browser can't reach the radio's <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="glossary.html#t-udp">UDP</abbr> port or its http server (see USB network mode above), so for a radio in USB
+network mode the editor saves <code>codeplug.bin</code> for <code>tftp put</code> instead.</p>
+<p>A radio that lists <code>CPS_FAST</code> in its features is read and written with the fast protocol (<code>fastlink.js</code>) on the
+same port: SUMS compares 4 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="glossary.html#t-kb">KB</abbr> blocks by <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="glossary.html#t-crc">CRC</abbr>, so a read with a cached image moves only blocks that differ, and a
+write sends only changed blocks, LZ4 coded. The codeplug goes in one staged session when it fits the staging area.
+The ID database goes in its own direct session, its header block first with the header erased and again last.
+Blocks the radio refuses as out of range fall back to CPS sector writes; <code>tr.noFast</code> turns the protocol off.</p>
+<p>The ID database is kept as records and written in the format the radio reads: format C when it lists
+<code>IDDB_COMPACT</code>, else format N. A format N database read from a radio that reads C is offered for conversion; a format
+C database written to a radio that doesn't is converted to N, with a warning when records don't fit.</p>
+<h2 id="radioidnet">RadioID.net</h2>
+<p>RadioID.net's API sends no CORS headers. <code>radioid.js</code> tries a request directly, then through a public CORS proxy
+(<code>PROXIES</code>), until <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">RadioID</abbr> allows the site's origin. The user's own API key (optional) is sent only on direct requests
+(<code>X-API-Token</code>), never through a proxy, and is kept in the browser's <code>localStorage</code> with the user's choices. Pages
+come 200 users at a time, one request after another. Larger selections use a <code>user.csv</code> the user downloads. No user
+data is in the repository or on the site: <code>regions.js</code> holds only country and state names
+(<code>site/rfoundrysite/radioid_regions.py</code>).</p>
+<h2 id="tests">Tests</h2>
+<p><code>site/tests/codeplug.test.mjs</code> checks the decoder and encoder against the radio's own <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="cps-and-codeplug.html">codeplug</abbr> code: <code>fixtures.py</code>
+builds <code>tests/host/cpsSim</code>, stores a populated codeplug, and records what the radio reads back (<code>--detail</code>). The JS
+decode must match it, and the encode must store what the radio then reads. <code>csv.test.mjs</code> covers the <abbr class="gl" tabindex="0" title="Comma separated values: a table as plain text, as programming software exports it." data-more="../user/22-glossary.html#t-csv">CSV</abbr> round trips and
+import problems; <code>sources.test.mjs</code> covers the <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">RadioID</abbr> parser, the API client against a fake <code>fetch</code> (the key never sent
+through the proxy), templates and outputs. <code>chirp.test.mjs</code> covers the CHIRP CSV mapping, its round trip and what it
+can't read, and the CHIRP image reader: a made-up image in the documented layout, other radios, cut short images and
+receive-only channels. <code>qdmr.test.mjs</code> covers the <abbr class="gl" tabindex="0" title="A text file format. qdmr stores its codeplug as YAML." data-more="../user/22-glossary.html#t-yaml">YAML</abbr> parser, the mapping, round trips and the converters; when
+<code>dmrconf</code> (<abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr>'s command line tool) is installed it also encodes an exported file. Nothing reaches the network.</p>
+
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/dev/codeplug-editor.md">View the source of this page</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="On this page">
+		<p class="eyebrow">On this page</p>
+		<ul><li class="l2"><a href="#transports">Transports</a></li><li class="l2"><a href="#radioidnet">RadioID.net</a></li><li class="l2"><a href="#tests">Tests</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Join the RadioFoundry community</strong><span class="small muted">Questions, help with your radio and news, on Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Found a bug? Want your radio supported?</strong><span class="small muted">Open an issue on GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry is MIT licensed · <a href="https://github.com/radiofoundry/radiofoundry">Source Code</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Community</a> · <a href="../../docs/index.html">Docs</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Changelog</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

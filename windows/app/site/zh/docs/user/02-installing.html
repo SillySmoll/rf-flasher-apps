@@ -1,0 +1,398 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>安装 · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="安装 · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/user/02-installing.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/user/02-installing.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/user/02-installing.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/user/02-installing.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/user/02-installing.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/user/02-installing.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/user/02-installing.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/user/02-installing.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/user/02-installing.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/user/02-installing.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="用户手册">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 用户手册</p>
+		<ul><li><a href="index.html">RadioFoundry 用户手册</a></li><li><a href="01-introduction.html">简介</a></li><li><a href="02-installing.html" aria-current="page">安装</a></li><li><a href="03-first-boot.html">首次启动</a></li><li><a href="04-programming.html">为电台编程</a></li><li><a href="05-keys-and-navigation.html">按键与导航</a></li><li><a href="06-home-screen.html">主屏幕</a></li><li><a href="07-channels-zones-vfo.html">信道、区域与 VFO</a></li><li><a href="08-fm.html">FM</a></li><li><a href="09-dmr.html">DMR</a></li><li><a href="10-messages-and-signaling.html">消息、呼叫提示与电台检查</a></li><li><a href="11-emergency.html">紧急</a></li><li><a href="12-scan.html">扫描与双守候</a></li><li><a href="13-aprs.html">APRS</a></li><li><a href="14-hotspot.html">热点模式</a></li><li><a href="15-usb-network.html">USB 网络模式</a></li><li><a href="16-battery-and-power.html">电池与供电</a></li><li><a href="17-settings.html">设置</a></li><li><a href="18-moving-from-stock-md380.html">从原厂 MD-380 固件迁移</a></li><li><a href="19-moving-from-stock-dm32.html">从原厂 DM-32UV 固件迁移</a></li><li><a href="20-troubleshooting.html">故障排查</a></li><li><a href="21-faq.html">常见问题</a></li><li><a href="22-glossary.html">术语表</a></li><li><a href="23-radios.html">电台参考</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<h1 id="installing">安装</h1>
+<p>在电台上安装 RadioFoundry、更新、备份与恢复，推荐使用项目网站 <a href="https://radiofoundry.org/flash/index.html">radiofoundry.org</a> 上的<strong>网页安装器</strong>。它运行在基于 Chromium 的浏览器（Chrome、Edge）中，无需安装任何东西。你载入其中的文件不会离开你的电脑。这里的任何操作都不会改动电台的校准。</p>
+<p>命令行工具 <strong>rfoundry</strong> 可在终端中完成同样的工作。它是进阶选项：用于脚本、无法与电台通信的浏览器，或本地构建（<a href="#advanced-rfoundry-on-the-command-line">进阶：命令行 rfoundry</a>）。</p>
+<p>各机型之间的差异（原厂固件文件、进入引导程序的按键、安装路径）见<a href="23-radios.html">电台参考</a>中你的电台的“安装”一节。仍运行厂商原厂固件、且有迁移章节的电台，见<a href="index.html#moving-from-the-stock-firmware">从原厂固件迁移</a>。</p>
+<h2 id="what-you-need">你需要什么</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一台装有 Windows、macOS 或 Linux 的电脑，或一台 Android 手机 / 平板</td>
+<td>Android：Chrome，以及用于线缆的 USB OTG 转接头（<a href="21-faq.html">常见问题</a>）</td>
+</tr>
+<tr>
+<td>一个基于 Chromium 的浏览器</td>
+<td>用于网页安装器</td>
+</tr>
+<tr>
+<td>你的电台的原厂固件文件</td>
+<td>厂商提供的文件，版本需被安装器识别。你的电台的“安装”一节会说明文件名和获取位置</td>
+</tr>
+<tr>
+<td>电台的 USB 线或编程线</td>
+<td>随电台附带的线缆</td>
+</tr>
+</tbody>
+</table></div>
+<p>发行版固件包含除 <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE</abbr> 编解码器之外的一切。安装器会保留电台中已有的编解码器，或从你电脑上的原厂固件文件中取出并写入电台。原厂文件还为安装器提供电台引导程序所需的密钥。一旦电台运行 RadioFoundry，安装器就改为从电台读取密钥。文件都用 SHA-256 校验，未知文件会被拒绝。</p>
+<p>刷写前，先用你现在的程序（厂商 <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="04-programming.html">CPS</abbr> 或 <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr>）备份电台当前的电台频率。RadioFoundry 使用的电台频率布局与原厂固件不同。以后若要回到原厂固件，需要这份备份。网页安装器自带的备份（见下文）也会包含它。</p>
+<h2 id="install-with-the-web-installer">用网页安装器安装</h2>
+<p>打开<a href="https://radiofoundry.org/flash/index.html">网页安装器</a>，选择<strong>安装</strong>，然后按步骤操作（已经运行 RadioFoundry 的电台：<a href="#updating-radiofoundry">更新 RadioFoundry</a>）：</p>
+<ol>
+<li>
+<p><strong>电台。</strong> 选择你的电台。</p>
+</li>
+<li>
+<p><strong>构建。</strong> 选择<strong>完整</strong>（电台支持的全部功能）、<strong>业余</strong>、<strong>商用</strong>，或用<strong>自定义</strong>逐个挑选功能。电台不支持的功能会被标出。自定义构建在你继续时生成，用时不到一分钟。当浏览器请求某种电台能显示、但构建未包含的语言时，页面会提示将其加入（电台上的 设置 &gt; 显示 &gt; 语言，见<a href="17-settings.html">设置</a>）。<strong>电台语言</strong>选择电台启动时使用的语言；构建包含该语言时，预设为页面语言。选择构建未包含的语言会把它加入构建。之后可在电台上更改。构建对电台来说过大时，会说明超出多少：在<strong>自定义</strong>中关掉一些功能，或选择更小的构建，然后重新构建。</p>
+</li>
+<li>
+<p><strong>当前固件。</strong> 说明电台现在运行什么：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>何时使用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RadioFoundry</strong></td>
+<td>连接电台并开机。安装器会读取已安装的版本。</td>
+</tr>
+<tr>
+<td><strong>原厂固件</strong></td>
+<td>出厂时安装的固件。</td>
+</tr>
+<tr>
+<td><strong>其他开源固件</strong></td>
+<td>另一个开源固件项目，例如 OpenGD77 系列。</td>
+</tr>
+<tr>
+<td><strong>其他 / 不确定</strong></td>
+<td>任何其他固件，或者你不知道电台运行什么。</td>
+</tr>
+</tbody>
+</table></div>
+<p>安装器只在需要编解码器或密钥时才要求原厂固件文件。如果你选择 RadioFoundry，而电台运行的是 OpenGD77 系列固件，安装器会说明这一点，并改为提供<strong>其他开源固件</strong>。没有调试链路的 RadioFoundry 构建也会给出同样的回答。</p>
+</li>
+<li>
+<p><strong>备份。</strong> 安装器会在你的电脑上保存一个备份文件（<code>.zip</code>）：固件、信道与设置，以及校准。请保留它。若无法先读取原厂固件，安装器会在安装后立即备份电台，先于其他任何改动。</p>
+<p>通过编程线安装的电台，线缆较慢，因此安装器会显示每部分所需时间。程序存储器是必需的，除非你改用原厂文件（见下文）。<strong>所有信道和设置</strong>是可选项，默认关闭：安装器从不改动它们，而整个数据存储器可能需要许多分钟。如果你有电台的原厂固件文件，<strong>改用原厂文件</strong>可在读取前或读取过程中跳过固件备份。安装器随后只读取编解码器区域，并在下一步从文件取用编解码器。电台中的固件不会被备份，但原厂文件可以恢复原厂固件。</p>
+<p><strong>没有固件备份或原厂文件时，安装器没有编解码器可写入电台。</strong> 如果你跳过固件备份且未选择受支持的原厂文件，唯一的选择是<strong>不装编解码器安装</strong>。安装器会在“安装”按钮上方警告：此次安装不包含 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> 语音编解码器：模拟 FM 可用，但在你使用受支持的厂商固件文件重新安装 RadioFoundry 之前，DMR 语音不可用。再次安装会保留你的信道和设置。按下<strong>安装</strong>时，对话框会再问一次：<strong>返回并添加编解码器</strong>回到选择文件的步骤，<strong>仍然安装</strong>则不装 DMR 语音继续。</p>
+<p>备份发现某个固件版本的编解码器尚未被 RadioFoundry 映射时，也会出现同样的选择。备份本身仍然完整；编解码器步骤会改为要求受支持的原厂固件文件。</p>
+</li>
+<li>
+<p><strong>安装。</strong> 在提示时把电台置于其引导程序（<a href="23-radios.html">你电台的按键</a>）。安装器写入变更的部分并重启电台。在提示安装完成之前，不要拔下电台。</p>
+</li>
+<li>
+<p><strong>校验。</strong> 安装器读取电台报告的内容：它写入的版本，以及编解码器就位时的“DMR 语音已就绪”。</p>
+</li>
+<li>
+<p><strong>信道。</strong> 如果电台仍保留原厂固件的电台频率，安装器会将其转换为 RadioFoundry 布局并写入电台，然后读回并显示迁移了多少信道、区域和联系人。备份包含原厂电台频率后，这一步会自动运行。若你跳过了备份，安装器会先询问：在某些电台上，转换后的电台频率会替换原始字节。在将原厂电台频率与 RadioFoundry 的分开保存的电台上，无论有无备份都会运行，只在替换电台上已有的 RadioFoundry 电台频率之前询问。更新 RadioFoundry 会跳过这一步。如果安装器无法读取、转换或写入原厂电台频率，它会说明原因，电台将在没有信道的情况下启动：按<a href="#backing-up-and-restoring">备份与恢复</a>所述转换备份。</p>
+</li>
+</ol>
+<p>在 Windows 上，引导程序需要安装一次驱动（<a href="#windows-the-bootloader-driver">Windows：引导程序驱动</a>）。</p>
+<p>然后继续<a href="03-first-boot.html">首次启动</a>。</p>
+<h3 id="coming-from-another-open-firmware">从其他开源固件转来</h3>
+<p>在运行 OpenGD77 系列固件的电台上，安装器可以在安装前通过该固件备份整个电台，并从备份中取得更新密钥和语音编解码器。这样就不需要原厂固件文件。安装器只在可行的电台上提供此选项；其他电台仍照常需要原厂固件文件。</p>
+<ol>
+<li>在<strong>当前固件</strong>中选择<strong>其他开源固件</strong>，然后在电台已连接并开机时选择<strong>检查电台</strong>。选择 <strong>RadioFoundry</strong> 也能发现其他固件。安装器会报告其版本。</li>
+<li>选择<strong>备份并读取</strong>。备份约需一分半钟，只读取，不会改动电台。请保留保存的文件。</li>
+<li>安装器会说明是否找到了更新密钥和编解码器。若两者都找到，继续即可：编解码器步骤使用电台中的编解码器。若都没找到或只找到一个，请在编解码器步骤选择你的原厂固件文件。跳过备份或电台报告为其他型号时也是如此：编解码器步骤会要求原厂文件。其他开源固件的安装器可能已把它选定的某个电台固件中的编解码器放了进去；备份会发现它，<a href="23-radios.html">电台参考</a>中你的电台一节会说明哪些文件算数。</li>
+<li>照常通过引导程序安装。</li>
+</ol>
+<p>如果备份过程中电台停止响应，请关机再开机，然后选择<strong>继续读取</strong>：备份会从停止处继续。<strong>保存已读取内容</strong>会保留目前已读取的部分。</p>
+<p>若要回退，选择<strong>恢复</strong>并载入该备份，然后选择<strong>之前的开源固件</strong>。固件会被写回；信道和设置不会。若缺少它们，请用该固件自带的编程软件写入。</p>
+<p>此路径尚未在真实电台上测试过。请把原厂固件文件放在手边。</p>
+<h3 id="updating-radiofoundry">更新 RadioFoundry</h3>
+<p>在 RadioFoundry 正常运行时启动电台，然后在网页安装器中选择<strong>更新</strong>：</p>
+<ol>
+<li>连接电台并点击<strong>连接</strong>。端口列表会同时显示电台的 USB 口和编程线。</li>
+<li>安装器显示电台、已安装版本、新版本以及电台的构建（完整、业余、商用或自定义）。更新会安装新发行版的同一构建。
+<ul>
+<li><strong>编辑构建</strong>会打开构建步骤，在更新前更改功能。</li>
+<li>预设构建会列出新发行版为其增加的功能。</li>
+<li>自定义构建会列出自其生成以来新增的功能。更新前为每一项选择<strong>开</strong>或<strong>关</strong>。</li>
+<li>版本过旧、无法报告构建的固件会进入构建步骤，从最接近的匹配开始。</li>
+<li>电台保持其启动语言。如果之前的一次更新可能误改了它，安装程序会询问是保留该语言还是以英语启动。</li>
+</ul>
+</li>
+<li><strong>先保存备份</strong>是可选项，默认关闭。更新会保留信道、设置、校准和编解码器。</li>
+<li>点击<strong>更新</strong>。安装器生成镜像、写入并核对版本。</li>
+</ol>
+<p>电台会从 RadioFoundry 直接进入加载器：无需按键组合，也无需原厂文件。电台频率和设置都会保留：它们位于更新从不触碰的闪存中。对运行 RadioFoundry 的电台，<strong>安装</strong>仍然可用，只是会问所有问题。</p>
+<h3 id="backing-up-and-restoring">备份与恢复</h3>
+<p><strong>备份</strong>会保存一个文件，包含电台的固件、编解码器、信道和设置。<strong>恢复</strong>用该文件写回整个电台、仅固件，或仅信道和设置；也可以从你的原厂固件文件把电台恢复为原厂固件。厂商文件只要适用于你的电台即可，不限于安装器为编解码器所需的那个版本。即使在固件损坏时，也可从更新模式恢复。</p>
+<p><strong>备份</strong>会像安装一样询问电台当前运行什么。<strong>RadioFoundry</strong> 通过调试链路读取。<strong>其他开源固件</strong>通过该固件读取，仅限安装器支持的电台。处于原厂固件的电台不在此处备份：请选择“安装”，它会在安装后立即备份。</p>
+<p>每款电台都会列出所有备份选项及其耗时：程序存储器、出厂校准，以及所有信道和设置。<strong>仅校准</strong>（或<strong>出厂校准</strong>）只读取出厂校准。在程序存储器中保存校准副本的电台，该选项名为<strong>程序存储器与校准</strong>。信道和设置位于 NAND 存储器的电台，<strong>所有信道和设置</strong>会读取整个 NAND，可能需要数分钟。</p>
+<p>没有程序存储器，使用这些工具无法把备份恢复到电台最初的原厂固件。恢复只写回程序存储器；备份中的校准和数据存储器仅作记录保留。选择此类备份时，恢复会说明这一点，并提供<strong>选择固件文件</strong>：改为选择适用于你电台的厂商固件文件，版本需受安装器支持。电台完整的程序存储器转储同样可用，即使其固件版本尚未被映射：恢复会原样写回，绝不触碰引导程序。在版本被映射之前，安装无法使用该转储的编解码器，因此安装器会提议把转储发送给 RadioFoundry 团队进行映射，并改为要求受支持的厂商固件文件。</p>
+<p>解压后又重新打包的备份（macOS 会自动解压下载文件）仍然可以恢复。备份就是那个 <code>.zip</code> 文件本身（文件名是电台型号、<code>_Backup_</code> 和日期），而不是其中的某个文件。选择非备份文件时，恢复会说明它是什么，以及应选择什么。原厂固件文件则继续进入原厂固件恢复流程，前提是电台无需备份即可支持。</p>
+<p>如果备份包含原厂固件的电台频率，请在<a href="04-programming.html#the-codeplug-editor">电台频率编辑器</a>中打开该文件。它会将信道、区域和联系人转换为 RadioFoundry 布局。</p>
+<h2 id="windows-the-bootloader-driver">Windows：引导程序驱动</h2>
+<p>Windows 没有适用于通过 USB 刷写的电台 USB 引导程序的驱动，因此在你安装驱动之前，网页安装器和 rfoundry 都无法打开它。每台电脑只需用 Zadig 做一次：</p>
+<ol>
+<li>从 <a href="https://zadig.akeo.ie">zadig.akeo.ie</a> 下载 Zadig 并运行。无需安装。</li>
+<li>把电台置于引导程序（按键见其<a href="23-radios.html">电台参考</a>一节）并插上。</li>
+<li>在 Zadig 列表中选择 <strong>Digital Radio in USB mode</strong>。USB ID 框会显示 <code>0483</code> <code>DF11</code>。若未列出，选择 <strong>Options &gt; List All Devices</strong>。</li>
+<li>选择 <strong>WinUSB</strong> 作为驱动（绿色箭头右侧），点击 <strong>Install Driver</strong>（或 <strong>Replace Driver</strong>）。等待 Zadig 提示成功。</li>
+<li>拔下电台，重新置于引导程序并再次连接。</li>
+</ol>
+<p>只有引导程序需要这个驱动。电台运行 RadioFoundry 后，其串口无需驱动即可工作。</p>
+<p>使用相同 USB ID 的厂商工具（厂商升级工具或 <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="04-programming.html">CPS</abbr>）需要装回它们自己的驱动。请在设备管理器中卸载该设备，勾选<strong>删除此设备的驱动程序软件</strong>，然后重新插入。</p>
+<h2 id="install-from-the-command-line-with-a-kit">用安装包从命令行安装</h2>
+<p>网页安装器无法安装时，会提供<strong>手动安装包</strong>：一个 zip，包含在这台电脑的终端中用 rfoundry 安装你所选固件所需的一切。照常选择和构建固件；安装包会取用该固件。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>安装器何时提供</th>
+<th>位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>浏览器没有 WebUSB 或 Web Serial（Safari、Firefox）</td>
+<td>起始页会说明。需要电台的步骤改为显示安装包，并提供原厂固件文件选择器</td>
+</tr>
+<tr>
+<td>引导程序连接或写入失败</td>
+<td>错误信息下方的一行</td>
+</tr>
+<tr>
+<td>电台在三分钟内未回应线缆，或准备失败</td>
+<td>错误信息下方的一行</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>安装包内容</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>README.txt</code></td>
+<td>Windows、macOS 和 Linux 上的准备（Python、引导程序驱动、串口）、如何让电台进入更新模式，以及校验（<code>--dry-run</code>）和安装的命令，文件名已填好</td>
+</tr>
+<tr>
+<td><code>firmware/</code></td>
+<td>镜像及其清单</td>
+</tr>
+<tr>
+<td><code>stock/</code></td>
+<td>你提供的原厂固件文件（如有）。否则 README 会说明应放入哪个文件</td>
+</tr>
+<tr>
+<td><code>rfoundry.py</code>、<code>tools/</code>、<code>stub/</code>、<code>requirements.txt</code></td>
+<td>与网页安装器同一版本的 rfoundry。它从该文件夹运行；<code>pip</code> 会把依赖装进虚拟环境</td>
+</tr>
+</tbody>
+</table></div>
+<p>需要 Python 3.8 或更高版本。README 会说明如何在各系统上安装 Python 和 rfoundry 的依赖，以及 Windows 和 Linux 上 USB 引导程序所需的驱动。安装包在浏览器中生成，不会上传任何内容。rfoundry 无法安装的电台不会得到安装包：请在电脑上使用 Chrome 或 Edge。<a href="../feature-matrix.html">功能矩阵</a>和<a href="23-radios.html">电台参考</a>中你的电台一节会说明每款电台的安装方式。</p>
+<h2 id="advanced-rfoundry-on-the-command-line">进阶：命令行 rfoundry</h2>
+<p>每个发行版都附带 <strong>rfoundry</strong>，每个系统一个文件，名为 <code>rfoundry-&lt;version&gt;-&lt;system&gt;</code>。也可以用 <code>pipx install</code> 安装（<a href="https://github.com/radiofoundry/radiofoundry/blob/main/tools/rfoundry/README.md">tools/rfoundry/README.md</a>）。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>系统</th>
+<th>一次性设置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows</td>
+<td>安装引导程序的驱动（<a href="#windows-the-bootloader-driver">见上</a>）。Windows 可能会警告 rfoundry 文件未签名</td>
+</tr>
+<tr>
+<td>macOS</td>
+<td>在终端中执行：<code>xattr -d com.apple.quarantine rfoundry-*</code> 和 <code>chmod +x rfoundry-*</code>（文件未签名）</td>
+</tr>
+<tr>
+<td>Linux</td>
+<td><code>chmod +x rfoundry-*</code>。若 rfoundry 提示拒绝访问，它会打印需要添加的 udev 规则。电台运行 RadioFoundry 后，要访问其串口（<code>rfoundry probe</code>、更新），请加入 <code>dialout</code> 组：<code>sudo usermod -aG dialout $USER</code>，然后重新登录</td>
+</tr>
+</tbody>
+</table></div>
+<p>示例中称其为 <code>rfoundry</code>，原厂文件为 <code>STOCK.bin</code>。若不想每次都传入原厂文件，可让 rfoundry 保存密钥：</p>
+<pre><code>rfoundry key --stock STOCK.bin --save
+</code></pre>
+<h3 id="flash">刷写</h3>
+<pre><code>rfoundry flash --release latest --stock STOCK.bin
+</code></pre>
+<p>有些电台存在一个镜像无法覆盖的硬件版本，例如 <abbr class="gl" tabindex="0" title="Ultra high frequency: 300 MHz to 3 GHz. The amateur 70 cm band is UHF." data-more="22-glossary.html#t-uhf">UHF</abbr> 和 <abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="22-glossary.html#t-vhf">VHF</abbr> 板。它们每个版本一个镜像。rfoundry 会依据已运行 RadioFoundry 的电台报告来选择，否则询问，或接受 <code>--option BAND=vhf</code>。你的电台一节会列出其版本。</p>
+<p>rfoundry 下载最新发行版、校验、决定编解码器（<a href="#keep-the-codec-or-write-it">见下</a>），并打印计划：将擦写哪些闪存扇区，哪些保持不动。加上 <code>--dry-run</code> 可只看计划而不触碰电台。然后它会要求你把电台置于引导程序：</p>
+<ol>
+<li>关闭电台。</li>
+<li>把线缆连接到电台和电脑。</li>
+<li>按住电台的引导程序按键并开机。屏幕保持黑屏。</li>
+<li>松开按键。</li>
+</ol>
+<p>rfoundry 找到引导程序，再询问一次，然后写入。完成后电台重启进入 RadioFoundry，rfoundry 会核对电台报告的内容。</p>
+<h3 id="keep-the-codec-or-write-it">保留编解码器，或写入它</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>电台运行</th>
+<th>rfoundry 的做法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RadioFoundry，且 DMR 语音正常</td>
+<td>保留编解码器：只写 RadioFoundry 自己的扇区。它会在你切换到引导程序之前通过 USB 询问正在运行的电台（或先运行 <code>rfoundry probe</code>）</td>
+</tr>
+<tr>
+<td>其他任何情况，或不确定</td>
+<td>写入编解码器：优先使用它上次运行 RadioFoundry 时从该电台保存的副本，否则使用原厂文件（<code>--stock</code>）</td>
+</tr>
+</tbody>
+</table></div>
+<p>原厂固件把编解码器放在 RadioFoundry 自己固件所在的位置，因此刚从原厂状态来的电台需要原厂文件一次。之后，rfoundry 会在你电脑上保存一份编解码器副本。</p>
+<p>如果 rfoundry 保留了实际不在电台中的编解码器，也不会出问题：RadioFoundry 在使用前会检查编解码器。FM 可用，<abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> 呼叫会显示“无编解码器：语音关闭”。用 <code>--stock</code> 重新刷写即可修复。</p>
+<h3 id="update">更新</h3>
+<pre><code>rfoundry flash --release latest
+</code></pre>
+<h3 id="building-it-yourself">自行构建</h3>
+<p>开发者用 <code>make BOARD=&lt;board&gt;</code> 构建，并用
+<code>rfoundry flash build/&lt;board&gt;/rfoundry_&lt;board&gt;.bin --board &lt;board&gt;</code> 刷写（编解码器选择相同）。把原厂文件放进 <code>codecs/</code> 后，构建还会生成 <code>rfoundry_&lt;board&gt;_codec.bin</code>，其中带有编解码器：<code>rfoundry flash build/&lt;board&gt;/rfoundry_&lt;board&gt;_codec.bin</code> 可在不带 <code>--board</code> 的情况下刷写，只有引导程序密钥还需要 <code>--stock</code>。见<a href="../dev/building.html">构建</a>。</p>
+<h2 id="no-codec-no-codec-voice-off">没有编解码器（“无编解码器：语音关闭”）</h2>
+<p>屏幕上显示 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> 呼叫但没有声音：电台没有可用的编解码器。再次运行安装器并给它原厂固件文件，或在终端中执行：</p>
+<pre><code>rfoundry flash --release latest --codec merge --stock STOCK.bin
+</code></pre>
+<h2 id="when-the-installer-cant-use-a-file">安装器无法使用某个文件时</h2>
+<p>如果固件文件无法使用，安装器会说明发现的问题和该怎么做：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>提示</th>
+<th>处理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>此文件属于另一款电台</td>
+<td>选择你电台的文件，或打开该文件所属电台的安装器</td>
+</tr>
+<tr>
+<td>这不是厂商固件文件</td>
+<td>选择厂商原始文件。其他开源固件项目的构建不可用</td>
+</tr>
+<tr>
+<td>此文件不适用于（你的电台）</td>
+<td>它属于其他型号，或被修改过的构建。请选择适用于你电台的厂商文件</td>
+</tr>
+<tr>
+<td>尚不支持此版本的编解码器</td>
+<td>选择其下方列出的受支持文件之一，或发送该文件以便添加此版本</td>
+</tr>
+<tr>
+<td>文件已损坏或不完整</td>
+<td>重新下载</td>
+</tr>
+<tr>
+<td>电台编程工具无法使用此文件</td>
+<td>文件本身没有问题。安装器会报告故障，或说明如何报告；你也可以发送该文件以协助排查</td>
+</tr>
+</tbody>
+</table></div>
+<p>尚未支持的版本仍可能提供引导程序密钥；提示中会说明。你也可以在没有可用文件的情况下继续：安装器会保留电台中已有的编解码器，并在写入前说明 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> 语音依赖它。</p>
+<p><strong>技术细节</strong>会显示确切消息。仅对厂商固件文件提供发送选项，且只在你点击时发送。自动错误报告会包含文件名（名称、大小和校验和），绝不包含内容。</p>
+<h2 id="if-something-goes-wrong">出问题时</h2>
+<p>引导程序位于安装器从不擦除的闪存区域，因此你总能重新开始：把电台置于引导程序并重新安装。刷写后电台一直黑屏时，也照此处理。网页安装器的帮助页会逐步说明更新模式。另见<a href="20-troubleshooting.html#installing">故障排查</a>。</p>
+<p><strong>报告问题</strong>位于每次失败信息下方、每个步骤下方的按钮栏中以及校验步骤上。页面看起来卡住却没有显示错误时，请在重新加载之前使用它：重新加载会丢失日志。它会发送安装器的判断及最后几步。你可以附加消息、用于回复的邮箱，以及它列出的文件（原厂固件文件、备份、从电台读出的固件）。备份包含你的信道、联系人和电台校准：取消勾选即可不包含。附件和你的邮箱地址会在 90 天内删除。</p>
+<p><strong>电台停留在更新模式：</strong> 备份或安装因拔线中断，或中途关闭页面，可能让电台停留在加载器（更新模式），此时电源开关可能无效。在安装器首页选择<strong>电台停留在更新模式</strong>并选择电台。对于通过编程线编程的电台，也请选择线缆，安装器会把它重启到正常模式；其他电台则由页面说明如何手动重启。你在做其他任务时连接，而加载器已在运行，连接步骤会在<strong>继续</strong>旁提供<strong>重启电台</strong>。如果加载器完全无响应，请关闭再打开电台；若电源开关无效，取出电池几秒。在<strong>备份</strong>之后，<strong>重启电台</strong>会在完成页面结束任务，并提供“安装”或“完成”（电台运行 RadioFoundry 时还有“更新”）。</p>
+<p><strong>编程线：</strong> 使用 CH340 芯片的线缆在备份和安装时可能不可靠。若失败，请改用 FTDI、CP210x 或 PL2303 芯片的线缆。安装器检测到 CH340 线缆时会警告。</p>
+<p><strong>线缆无法准备电台时：</strong> 通过编程线安装的电台会先在内存中得到一个小型加载器。电台开机时只等待约 1/20 秒来接收安装器的应答，而某些线缆和 USB 集线器比这更慢。因此安装器会在电台启动期间持续发送应答（这原本是单独的<strong>慢速线缆模式</strong>，现在始终开启）。关闭电台，选择<strong>电台已关闭</strong>，然后开机。已运行 RadioFoundry 的电台会跳过该步骤。</p>
+<p>如果加载失败（“准备电台失败”）、电台改为正常启动，或始终无应答，安装器会提供<strong>使用厂商更新模式</strong>：即电台自带的更新模式，通过在开机时按住按键进入（<a href="23-radios.html">电台参考</a>中你电台的“安装”一节）。这种方式无法从电台读取任何内容，因此不会备份，语音编解码器来自文件：原厂固件文件，或在安装器没有该电台原厂文件时使用电台的程序存储器备份。故障排查也提供同一路径（“在厂商更新模式中重新安装”），恢复也会使用它。</p>
+<h2 id="going-back-to-the-stock-firmware">回到原厂固件</h2>
+<ol>
+<li>把电台置于引导程序。</li>
+<li>在网页安装器中选择<strong>恢复</strong>，载入你的备份并选择原厂固件，同时提供原厂固件文件（适用于你电台的任意版本）。如果安装器在首次安装前备份了原厂固件（见你电台的一节），载入该备份；没有备份时，载入厂商固件文件。或者运行厂商的固件升级工具并载入原厂文件。</li>
+<li>用厂商 <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="04-programming.html">CPS</abbr> 写入你的电台频率备份。原厂固件无法读取 RadioFoundry 使用过的电台频率。</li>
+</ol>
+<p><a href="23-radios.html">电台参考</a>中你的电台一节会说明适用哪种方式。</p>
+
+		<nav class="prev-next"><a class="prev" href="01-introduction.html">简介</a><a class="next" href="03-first-boot.html">首次启动</a></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/user/02-installing.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#what-you-need">你需要什么</a></li><li class="l2"><a href="#install-with-the-web-installer">用网页安装器安装</a></li><li class="l3"><a href="#coming-from-another-open-firmware">从其他开源固件转来</a></li><li class="l3"><a href="#updating-radiofoundry">更新 RadioFoundry</a></li><li class="l3"><a href="#backing-up-and-restoring">备份与恢复</a></li><li class="l2"><a href="#windows-the-bootloader-driver">Windows：引导程序驱动</a></li><li class="l2"><a href="#install-from-the-command-line-with-a-kit">用安装包从命令行安装</a></li><li class="l2"><a href="#advanced-rfoundry-on-the-command-line">进阶：命令行 rfoundry</a></li><li class="l3"><a href="#flash">刷写</a></li><li class="l3"><a href="#keep-the-codec-or-write-it">保留编解码器，或写入它</a></li><li class="l3"><a href="#update">更新</a></li><li class="l3"><a href="#building-it-yourself">自行构建</a></li><li class="l2"><a href="#no-codec-no-codec-voice-off">没有编解码器（“无编解码器：语音关闭”）</a></li><li class="l2"><a href="#when-the-installer-cant-use-a-file">安装器无法使用某个文件时</a></li><li class="l2"><a href="#if-something-goes-wrong">出问题时</a></li><li class="l2"><a href="#going-back-to-the-stock-firmware">回到原厂固件</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

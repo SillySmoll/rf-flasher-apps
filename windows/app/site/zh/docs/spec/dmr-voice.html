@@ -1,0 +1,523 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DMR voice calls · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="DMR voice calls · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/spec/dmr-voice.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/dmr-voice.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/dmr-voice.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/dmr-voice.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/dmr-voice.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/dmr-voice.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/spec/dmr-voice.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/dmr-voice.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/dmr-voice.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/dmr-voice.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="规范">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 规范</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html" aria-current="page">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">本页尚未翻译，目前显示英文。</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="dmr-voice-calls">DMR voice calls</h1>
+<p>What the voice side of the <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> stack does above the modem (<code>dmr-modem.md</code> covers the air interface and the modem
+contract). Code: <code>core/dmr/call</code> (the call stack), <code>core/dmr/dmrPrivacy.c</code> (<abbr class="gl" tabindex="0" title="A fixed voice scrambling from Motorola and Anytone radios. Not encryption." data-more="../user/22-glossary.html#t-basic-privacy">basic privacy</abbr>), <code>core/radio/radio_sm.c</code>
+(the radio core: channel, contacts, settings), <code>core/codeplug</code> (contacts, settings, the <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr> database). Protocol
+references are <abbr class="gl" tabindex="0" title="European Telecommunications Standards Institute, which publishes the DMR standard." data-more="../dev/glossary.html#t-etsi">ETSI</abbr> <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">TS</abbr> 102 361-1 and -2.</p>
+<h2 id="1-who-we-hear">1. Who we hear</h2>
+<p>A voice call on our <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr> and <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr> starts from a voice <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr> header or by late entry (section 4). It is played
+when it passes the filters, and shown either way. <abbr class="gl" tabindex="0" title="Playing every talkgroup on the timeslot (promiscuous mode; &quot;hear all&quot; in older RadioFoundry builds)." data-more="../user/22-glossary.html#t-digital-monitor">Digital monitor</abbr> (hear all, below) also takes calls on any color code
+and either timeslot (<code>dmr_listen_filter_t.any_cc</code>, <code>.both_ts</code>; the modem gets no color code filter and, through a
+repeater, no slot lock). The first call heard keeps the voice until it ends: bursts on the other slot meanwhile are
+dropped. Turning it on or off changes only the modem's filters: the call being heard and the <abbr class="gl" tabindex="0" title="The time after a call during which PTT answers it." data-more="../user/22-glossary.html#t-reply-window">reply window</abbr> stay, and
+a call heard as not ours plays at once. The view gives the call's color code and slot (<code>rx_cc</code>, <code>rx_ts</code>; the slot 0
+when unknown, the code from the first burst that carries one, never burst A) beside the channel's (<code>cc</code>, <code>ts</code>), which
+PTT always uses.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Call</th>
+<th>Played when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Group (FLCO 0)</td>
+<td>its <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr> is the <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr>'s, <abbr class="gl" tabindex="0" title="DMR talkgroup 16777215, heard by every radio on the slot." data-more="../user/22-glossary.html#t-all-call">all call</abbr> (0xFFFFFF), in the channel's <abbr class="gl" tabindex="0" title="The talkgroups a channel listens to. The codeplug calls it the RX group list." data-more="../user/22-glossary.html#t-listen-list">RX group list</abbr> (listen list), the reply target's during the reply window, or hear all, &quot;digital monitor&quot; in the UI (the hear-all latch: the MONITOR key's press toggles it on a <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> channel, its release does nothing (#19); Quick 5; <code>radio_req_dmr_hear_all</code>; until the channel changes, DMR stops (a mode change), or BACK on Home; the end of a call doesn't end it. A zone or <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> scan started with it on keeps it on at every stop and latches it on the channel the scan ends on; turning it off during the scan ends it for the scan, <a href="radio-features.html">radio-features.md</a> 2)</td>
+</tr>
+<tr>
+<td>Private (FLCO 3)</td>
+<td>addressed to our ID (the channel's <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr> override, else the radio's), or all call, or hear all</td>
+</tr>
+<tr>
+<td>Our own ID as source</td>
+<td>not while we <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> or for <code>DMR_CALL_OWN_ECHO_MS</code> (700 ms) after our call ended or was cut short (the repeater's echo of it); later it is judged as any other call, so a parrot's playback of our call plays (#294). A terminator from our ID ends only the call with its LC, never another station's</td>
+</tr>
+<tr>
+<td>Encrypted</td>
+<td>only with a privacy key, and never after a <abbr class="gl" tabindex="0" title="A DMR header that announces encryption with a changing key. RadioFoundry never plays such calls." data-more="../user/22-glossary.html#t-pi-header">PI header</abbr> (section 5)</td>
+</tr>
+</tbody>
+</table></div>
+<p>A call that doesn't pass is shown as busy (&quot;not played&quot;) while it lasts, and counts for polite channel access.</p>
+<p>The caller is shown by name when one is known: the channel's talk target and listen list contacts first, then every
+<abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> contact with that ID (group and private IDs are separate name spaces), then, for a private ID, the DMR ID
+database text (callsign and name, cut to the 16-character name field). The radio core keeps the last four answers
+(including &quot;no name&quot;), so flash is read once per new ID.</p>
+<p>The emergency service option (bit 7) marks the call (<code>emergency</code> in the view, the call screen's warning color). With
+<code>CONFIG_DMR_EMERGENCY</code> a played emergency call also raises the emergency alert and tone, and the radio's own
+emergency calls carry the option (<code>dmr-emergency.md</code>).</p>
+<h2 id="2-who-we-talk-to">2. Who we talk to</h2>
+<p>PTT sends to, in order:</p>
+<ol start="0">
+<li>a <abbr class="gl" tabindex="0" title="A talk target used for one call and its reply window." data-more="../user/22-glossary.html#t-one-shot">one-shot</abbr> target: the row with the focus in the <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr> picker or a list (<code>radio_req_dmr_focus</code>, handed over
+by the UI as the focus moves). PTT talks to it once; after the call the radio follows it (plays its calls and
+sends to it on PTT) for the <abbr class="gl" tabindex="0" title="The time after a call during which PTT answers it." data-more="../user/22-glossary.html#t-reply-window">reply window</abbr>, then goes back to the channel's target. A channel change, Reply cancel,
+a new manual target, or the focus moving to the talk target itself end it (<code>dmr.one_shot</code>, <code>dmr.focus_id</code>).</li>
+<li>the reply target while the reply window runs: after a call we played, its <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr> (group call) or its caller
+(<abbr class="gl" tabindex="0" title="A DMR call to one radio." data-more="../user/22-glossary.html#t-private-call">private call</abbr> to us); after our own call, its target again. The window is the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>'s group or private call
+<abbr class="gl" tabindex="0" title="How long after a call a repeater or radio keeps the call&#x27;s talkgroup ready for a reply." data-more="../user/22-glossary.html#t-hang-time">hang time</abbr> (rounded up to whole seconds, at most 30 s), or 10 s when the codeplug has none; the reply time setting
+(<code>reply_s</code>, 0 to 30 s, Settings &gt; Talk &amp; listen) replaces the codeplug's for both. BACK on Home ends it.</li>
+<li>a talk target chosen for now: a typed ID or talkgroup, a codeplug contact (with its <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr> override), or &quot;call
+back&quot;, which takes the last call heard (its caller for a private call, its talkgroup for a group call). It lasts
+until the channel changes or it is cleared.</li>
+<li>the channel's <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> contact; with none, the first talkgroup of its <abbr class="gl" tabindex="0" title="The talkgroups a channel listens to. The codeplug calls it the RX group list." data-more="../user/22-glossary.html#t-listen-list">RX group list</abbr> (private calls skipped); with neither,
+talkgroup 9. <code>codeplug_channel_talk_contact()</code> is the one place this is decided.</li>
+</ol>
+<p>The call is unit to unit (<abbr class="gl" tabindex="0" title="Full link control opcode: the field of a link control message that says its kind." data-more="../dev/glossary.html#t-flco">FLCO</abbr> 3) for a private target, else group (FLCO 0).</p>
+<p>For now changes (Quick settings, P7): <code>radio_req_dmr_timeslot</code> and <code>radio_req_dmr_color_code</code> set the timeslot
+(temp bit 0x20; it overrides a contact's timeslot) and the <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr> (0x40) without touching the channel;
+<code>radio_req_mode</code> listens in FM or <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> on the same frequencies (0x80). They are refused while transmitting or busy, and
+BACK on Home (<code>radio_req_clear_temporary</code>) or a channel change undoes them. Save to channel writes them into the
+channel. In the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> the same requests change the VFO's own settings instead (section 2.1).</p>
+<p>TX time-out: the channel's codeplug <abbr class="gl" tabindex="0" title="Transmit timeout: the longest transmission the radio allows." data-more="../user/22-glossary.html#t-tot">TOT</abbr> (15 s units) when it has one, else the radio's (180 s by default). The
+transmission ends at the next superframe boundary with its terminator, and PTT shows &quot;timed out&quot; until released.</p>
+<p>Stalled modem: PTT release and the time-out both wait for a superframe boundary, which only comes while the modem
+sends bursts. When the modem takes no burst for <code>DMR_CALL_TX_STALL_MS</code> (1.5 s; a burst counts when it is queued or its
+slot starts), the stack aborts the transmission and returns to <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> with <code>DMR_TX_ERR_STALLED</code> (<code>dmr.tx_error=stalled</code>
+on the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>). With PTT still held the radio shows &quot;Modem refused to send&quot; until release. A modem without slot
+timing (a modem that stops answering) otherwise kept the radio keyed until the battery came out
+(<a href="gotchas.html">gotchas</a> 3.12). Through a repeater, before the first burst's slot, the wait is 300 ms longer
+(<code>DMR_CALL_TX_ALIGN_GRACE_MS</code>): the modem's own aligned-start timeout (1.5 s and a slot) must come first, so its
+refusal wakes the repeater again (<a href="dmr-modem.html">dmr-modem.md</a> 2.7). With an encoder slow to start, the headers are
+the last bursts queued, so without the margin the stall cut comes first.</p>
+<h3 id="21-the-dmr-vfo">2.1 The DMR VFO</h3>
+<p>With <code>CONFIG_VFO_DMR</code> the VFO has a mode, FM or DMR, as a setting of its own, next to its frequency, bandwidth and
+tones. In DMR it works like a DMR channel that has no codeplug record behind it:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>What</th>
+<th>In the DMR VFO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Frequency</td>
+<td>The VFO's. RX and TX are the same (simplex, <abbr class="gl" tabindex="0" title="DMR radio to radio on one frequency, with no repeater. The standard calls it DMO." data-more="../dev/glossary.html#t-direct-mode">direct mode</abbr>). A VFO A record written by a <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> with a TX offset keeps it, and then the VFO is a repeater-mode channel by the channel rule (RX and TX differ)</td>
+</tr>
+<tr>
+<td>Color code</td>
+<td>0 to 15, default 1</td>
+</tr>
+<tr>
+<td>Timeslot</td>
+<td>1 or 2, default 1. A contact's timeslot override is not applied: the VFO's slot is the slot</td>
+</tr>
+<tr>
+<td>Own ID</td>
+<td>The radio's, as on a channel without an ID of its own</td>
+</tr>
+<tr>
+<td>Talk target</td>
+<td>A typed ID or talkgroup, or a codeplug contact, private or group. Default: talkgroup 9, as a channel with no contact and no RX group list</td>
+</tr>
+<tr>
+<td>Heard</td>
+<td>The talk target's group, <abbr class="gl" tabindex="0" title="DMR talkgroup 16777215, heard by every radio on the slot." data-more="../user/22-glossary.html#t-all-call">all call</abbr>, private calls to our ID, the reply window, and everything with <abbr class="gl" tabindex="0" title="Playing every talkgroup on the timeslot (promiscuous mode; &quot;hear all&quot; in older RadioFoundry builds)." data-more="../user/22-glossary.html#t-digital-monitor">digital monitor</abbr>. The VFO has no RX group list, so no other talkgroup is played (it is shown as busy), as on a DMR channel whose list is empty</td>
+</tr>
+<tr>
+<td>Power, TOT, privacy key</td>
+<td>The radio's, as on a channel (the VFO's power level, the radio's TOT, the radio-wide privacy key)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Not in the VFO: <abbr class="gl" tabindex="0" title="A short text, usually a callsign and name, sent along with DMR voice." data-more="../user/22-glossary.html#t-talker-alias">talker alias</abbr> (a channel's setting), roaming, the &quot;hear all by default&quot; setting, saving to a channel.</p>
+<p>These are the VFO's own settings, so they are not <abbr class="gl" tabindex="0" title="A change that lasts until the channel changes or you press Back on Home. Hold OK to keep it." data-more="../user/22-glossary.html#t-temporary-change">temporary changes</abbr>: no dot on Home, BACK on Home doesn't undo them,
+they stay while the radio is on a channel, and they are kept across power cycles with the VFO's frequency
+(<code>settings-store.md</code> 3). Squelch has no VFO value: changed in the VFO it becomes the radio's default squelch at once,
+so it is not temporary either. The requests are the ones a channel uses and the radio core gives them the VFO meaning:
+<code>radio_req_mode</code> (needs both <code>CONFIG_VFO_FM</code> and <code>CONFIG_VFO_DMR</code>; on a channel the mode is no longer a quick menu change, Copy to VFO (2.2) is the way in), <code>radio_req_dmr_color_code</code>,
+<code>radio_req_dmr_timeslot</code>, and <code>radio_req_dmr_target</code> / <code>radio_req_dmr_contact</code> for the talk target. A typed or
+chosen target is the VFO's from then on (<code>dmr.target_manual</code> stays 0); &quot;call back&quot; is for now as on a channel and
+<code>radio_req_dmr_target_clear</code> returns to the VFO's target. All are refused while transmitting.</p>
+<p>A mode change retunes the same frequency. FM to DMR starts the call stack and sets the board to DMR; DMR to FM stops
+it, and the VFO's FM bandwidth and tones come back. No sub-audio squelch is set while in DMR, whatever tone the VFO
+holds. A build with only <code>CONFIG_VFO_DMR</code> has a DMR VFO and no mode change; one with only <code>CONFIG_VFO_FM</code> is as
+before.</p>
+<p>A split VFO's TX frequency is set by <code>radio_req_vfo_tx</code> (<code>RREQ_VFO_TX</code>, the quick tile TX freq, <a href="../ux/information-architecture.html">information-architecture.md</a> 5): any frequency in a transmit band, 0 for simplex, in the VFO only, not while transmitting or in <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> mode. The receiver isn't retuned. It is saved with the VFO's settings (<code>vfo_tx_hz</code>).</p>
+<h3 id="22-copy-to-vfo">2.2 Copy to VFO</h3>
+<p>From a channel (FM or DMR), Copy to VFO (<code>radio_req_vfo_copy</code>, <code>RREQ_VFO_COPY</code>) makes the channel's settings the VFO's
+own and opens the VFO. It is in the channel's quick menu (tile 4, &quot;To VFO&quot;), on the assignable key function &quot;Copy to
+VFO&quot; (<code>KEYFN_COPY_VFO</code>, short or long press) and on the debug link (RADIO op 32). It needs <code>CONFIG_VFO_FM</code> or
+<code>CONFIG_VFO_DMR</code>.</p>
+<p>What is copied is what is in effect now, so a temporary change on the channel (bandwidth, tone, mode, color code,
+timeslot, power, a talk target chosen for now) goes along. The channel itself is unchanged: leaving the VFO brings
+back the channel as it was, without the temporary changes, as any channel change does.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Channel</th>
+<th>VFO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RX and TX frequency</td>
+<td>Both, so a repeater offset stays (the VFO is then a split VFO; a new RX frequency, typed or stepped, keeps the offset while RX stays in its transmit band and TX lands there too, <code>board_offset_carries</code>; a move to another band, or TX off the band, makes the VFO simplex). Direct-mode channels (DMO) copy RX only</td>
+</tr>
+<tr>
+<td>Mode, bandwidth</td>
+<td>Both</td>
+</tr>
+<tr>
+<td>Power</td>
+<td>The level in effect; a channel on &quot;default&quot; stays on the radio's default</td>
+</tr>
+<tr>
+<td>CTCSS / DCS, RX and TX (FM)</td>
+<td>Both. A DMR channel has none: the VFO keeps its own for its FM mode</td>
+</tr>
+<tr>
+<td>Color code, timeslot (DMR)</td>
+<td>Both. The slot is the one in use: a timeslot chosen for now, else the talk contact's override, else the channel's</td>
+</tr>
+<tr>
+<td>Talk target (DMR)</td>
+<td>The ID and the group / private flag of what the channel would send now: a target chosen for now, else its contact, else the first talkgroup of its RX group list, else talkgroup 9 (the channel default). A one-shot or reply target is not copied</td>
+</tr>
+<tr>
+<td>FM channel into a VFO that has DMR values</td>
+<td>Color code, timeslot and talk target stay as the VFO had them</td>
+</tr>
+</tbody>
+</table></div>
+<p>Not copied, because the VFO has nothing to hold them: the RX group list, the privacy key, roaming, the data and
+emergency settings, the talker alias, TOT and the squelch level (a radio setting, not the VFO's). They apply to the VFO
+as the radio-wide values.</p>
+<p>The VFO's values are saved as its own settings (<code>settings-store.md</code> 3) and the VFO's temporary marks are cleared.
+Nothing changes, and the UI says why (<code>radio_vfo_copy_check</code>), when:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Reason</th>
+<th>Toast</th>
+<th>Debug link status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No VFO in the build</td>
+<td>&quot;VFO: not in this build&quot;</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>A DMR channel without <code>CONFIG_VFO_DMR</code>, or an FM channel without <code>CONFIG_VFO_FM</code></td>
+<td>&quot;VFO: no DMR in this build&quot; / &quot;VFO: no FM in this build&quot;</td>
+<td>REFUSED</td>
+</tr>
+<tr>
+<td>RX or TX frequency outside the board's bands</td>
+<td>&quot;VFO: frequency outside its bands&quot;</td>
+<td>REFUSED</td>
+</tr>
+<tr>
+<td>Already in the VFO</td>
+<td>&quot;Already in VFO&quot;</td>
+<td>UNAVAILABLE</td>
+</tr>
+</tbody>
+</table></div>
+<p>The radio core also ignores the request while transmitting and in hotspot mode. A scan in progress ends first (the
+channel it stopped on is the one copied).</p>
+<h2 id="3-talker-alias">3. Talker alias</h2>
+<p><abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">Receive</abbr>: header (<abbr class="gl" tabindex="0" title="Full link control opcode: the field of a link control message that says its kind." data-more="../dev/glossary.html#t-flco">FLCO</abbr> 4) and blocks 1-3 (FLCO 5-7) in the <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">embedded LC</abbr>, in any order, all four formats. 7-bit text
+starts at the header's first data bit; ISO 8-bit, UTF-8 and UTF-16 (big endian) at its second. Characters outside
+printable <abbr class="gl" tabindex="0" title="The 7-bit character set of plain text." data-more="../dev/glossary.html#t-ascii">ASCII</abbr> show as one <code>?</code> each (a UTF-8 multi-byte sequence or a UTF-16 surrogate pair is one character). The
+announced length counts characters, but some senders count UTF-8 bytes or overstate it, so an alias also counts as
+complete at the first zero character (padding) or once all four parts are in. A different header (format or length)
+starts a new alias; a new talker resets it.</p>
+<p><abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">Transmit</abbr> (<code>CONFIG_DMR_TALKER_ALIAS</code>): the radio name (the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> callsign, 8 characters) in ISO 8-bit, when the
+channel's <abbr class="gl" tabindex="0" title="A short text, usually a callsign and name, sent along with DMR voice." data-more="../user/22-glossary.html#t-talker-alias">talker alias</abbr> setting asks for text on its <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr>. From the second superframe, every other superframe
+carries one alias LC instead of the voice LC (LC, header, LC, block 1, LC, header, ...), so late entry still finds the
+voice LC within two superframes. The modem takes the new embedded LC at the next burst A it sets up; the stack hands
+it over before queueing that burst A.</p>
+<h3 id="31-gps-info">3.1 GPS Info</h3>
+<p><code>CONFIG_DMR_GPS</code> (= <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr>). The GPS Info LC (TS 102 361-2 7.1.1, FLCO 8, <abbr class="gl" tabindex="0" title="Feature set ID: the byte that says whether a message is standard or manufacturer specific." data-more="../dev/glossary.html#t-fid">FID</abbr> 0) rides in the embedded LC like a talker
+alias block. After the FLCO and FID octets: 4 reserved bits, the position error (3 bits: below 2 m, 20 m, 200 m,
+2 km, 20 km, 200 km, more, 7 unknown), the longitude (25 bits, two's complement, 360 / 2^25 degree steps, east
+positive) and the latitude (24 bits, two's complement, 180 / 2^24 degree steps, north positive). One step is about
+1.2 m. <code>dmr_lc.c</code> (<code>dmr_gps_encode</code>, <code>dmr_gps_decode</code>) packs and unpacks it; a manufacturer FID or 0, 0 (no fix) is
+not a position.</p>
+<p>Receive: <code>dmr_call</code> decodes every GPS Info LC on the call into <code>dmr_caller_t.gps</code> / <code>gps_valid</code> (counter <code>rx_gps</code>);
+a new talker clears it, and <code>last_heard</code> keeps it after the call. The radio core adds the distance and bearing from
+our own position (the position service, <a href="position.html">position.md</a>) in <code>radio_dmr_call_t</code>, the receive screen shows &quot;12.3 km NE&quot;
+(or the coordinates when we have no position of our own), Recent keeps the distance with the entry, and in
+<code>CONFIG_APRS_RX</code> builds the caller goes into the <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> station list (named by its alias's callsign, else its <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr>).</p>
+<p>Transmit, when either asks for it:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Where</th>
+<th>Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&quot;Send in DMR calls&quot;</td>
+<td>Settings &gt; Location (<code>position_cfg_t.dmr_gps</code>, off by default, P7)</td>
+<td>every DMR call</td>
+</tr>
+<tr>
+<td>The channel's talker alias field for its timeslot: APRS or Both</td>
+<td>the codeplug (<code>open-firmware-cps.md</code> 7.3.3, offset 0x30; <code>channel_t.alias_tx</code> <code>CODEPLUG_ALIAS_TS1_GPS</code> / <code>_TS2_GPS</code>), so a <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> sets it</td>
+<td>calls on that channel; not the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr></td>
+</tr>
+</tbody>
+</table></div>
+<p>At
+PTT the radio core takes the position in use (<code>position_now</code>: GPS on boards with one, the host's <abbr class="gl" tabindex="0" title="The text format GPS receivers use to report position and time." data-more="../user/22-glossary.html#t-nmea">NMEA</abbr>, else the fixed
+position; position ambiguity applied) and hands it to the stack (<code>dmr_call_set_tx_gps</code>); no position, no GPS Info. The GPS Info
+LC is one more entry at the end of the talker alias rotation in the odd superframes: LC, header, LC, block 1, LC,
+block 2, LC, GPS, ... with an alias, or LC, GPS, LC, GPS without (counter <code>tx_gps_lcs</code>). The position error says 20 m
+for GPS and host fixes, 200 m for a typed position, or the ambiguity's blur. It needs no APRS: the setting and the
+position are the position service's, built with <code>CONFIG_DMR_GPS</code>. A radio without a GPS sends its fixed position.</p>
+<p>The <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> already passes FLCO 4-8 embedded LCs through to the host (<code>hotspot.c</code>).</p>
+<h2 id="4-late-entry">4. Late entry</h2>
+<p>A call heard without its header is acquired from the <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">embedded LC</abbr> once two consecutive voice bursts were seen (a lone
+burst is noise) and the LC differs from the previous call's (the modem's stale LC, gotcha 1.4), or the same LC came
+in two superframes. Playback starts at the burst that completed the LC. A new talker on a running call (a repeater
+passing overs without a header) switches the caller from the embedded LC. The host tests cover joining at burst C,
+the lone burst, the stale LC needing confirmation, a fresh LC taken at once, and a talker change.</p>
+<p>A call lost for a moment, with no terminator heard, ends and has to be joined again. Where the modem can prove the
+same call is back, that takes one superframe instead of two, and it counts as one call
+(<a href="dmr-modem.html">dmr-modem.md</a> 2.4).</p>
+<h2 id="5-privacy">5. Privacy</h2>
+<p><abbr class="gl" tabindex="0" title="A fixed voice scrambling from Motorola and Anytone radios. Not encryption." data-more="../user/22-glossary.html#t-basic-privacy">Basic privacy</abbr> (<code>CONFIG_DMR_PRIVACY</code>): Motorola BP (key 1-255) and Anytone 16-bit BP (<code>dmrPrivacy.c</code>). The keystream
+is XORed onto the 49 <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE+2</abbr> parameter bits of each frame by superframe position: on <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> as the burst is queued (the
+encoder's bits as they are), on <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> before the voice sink (after the <abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="../dev/glossary.html#t-fec">FEC</abbr> decode, <code>core/dmr/ambe/ambeFec.c</code>). With a key
+loaded our calls carry <abbr class="gl" tabindex="0" title="Feature set ID: the byte that says whether a message is standard or manufacturer specific." data-more="../dev/glossary.html#t-fid">FID</abbr> 0x10 and the privacy service option (0x40), and received calls with the privacy service
+option (or <abbr class="gl" tabindex="0" title="A DMR header that announces encryption with a changing key. RadioFoundry never plays such calls." data-more="../user/22-glossary.html#t-pi-header">PI</abbr>) are descrambled. Without a key such bursts are never played; they count as <code>rx_enc_dropped</code>.</p>
+<p>The same key covers packet data where its scheme defines a data form (Motorola BP encrypts it, Anytone BP blocks
+data TX): <a href="dmr-data.html">dmr-data.md</a> 13.</p>
+<p>The key is set over the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> (RADIO op 19, <code>radio_req_dmr_privacy</code>). The radio core saves it in settings slot 1
+and loads the active slot at boot (<code>settings-store.md</code> 3.1); the open-firmware <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> has no key storage, so <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr> can't
+set it.</p>
+<p>PI header (data type 0, CRC-CCITT masked 0x6969): heard between the voice <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr> header and burst A, it marks the call
+encrypted and its first two octets are kept for display (algorithm and key ID in the common layout; not interpreted).
+A PI header heard just before a late entry is attached to that call. A PI header means an MI-based scheme the static
+keystream can't undo, so such a call is never played, key or not. We never send PI headers.</p>
+<p>The <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> reports the <abbr class="gl" tabindex="0" title="Embedded signaling: the 32 bits in the middle of a voice burst that carry link control." data-more="../dev/glossary.html#t-emb">EMB</abbr> PI bit unreliably for voice, so its driver clears it (<code>modem-hrc6000.md</code>); on that modem
+privacy is recognized from the service options and PI headers only.</p>
+<h2 id="6-encoding-the-microphone">6. Encoding the microphone</h2>
+<p>The <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">vocoder</abbr> encodes each 20 ms of microphone audio (<code>core/dmr/ambe/ambeVoice.c</code>, in the audio task). Before that the
+samples are scaled by the mic gain (Settings &gt; Talk &amp; listen, 2 dB a step). The codec itself can also clean up the
+input. These are generic encode options in <code>hal_vocoder_t</code>; the board maps them to its codec, and <code>core/</code> never sees
+codec bits.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Effect</th>
+<th>Default</th>
+<th>Setting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>VOCODER_OPT_NOISE_REDUCTION</code></td>
+<td>Suppresses steady background noise, also between words. It also lowers a steady tone held into the mic</td>
+<td>on</td>
+<td>Settings &gt; Talk &amp; listen &gt; Mic noise reduction</td>
+</tr>
+<tr>
+<td><code>VOCODER_OPT_TONE_FRAMES</code></td>
+<td>A steady tone or tone pair (<abbr class="gl" tabindex="0" title="Dual tone multi frequency: the touch tones a keypad sends, in the audio." data-more="../user/22-glossary.html#t-dtmf">DTMF</abbr>) is sent as a tone frame and comes out at its frequency on the other side. Speech is not affected</td>
+<td>on</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>VOCODER_OPT_AGC</code></td>
+<td>Input level control: quiet speech raised (about 4x), loud speech lowered. The codec's own parameters; not yet checked on air</td>
+<td>off</td>
+<td>Settings &gt; Talk &amp; listen &gt; Mic <abbr class="gl" tabindex="0" title="Automatic gain control: the receiver adjusting itself to the signal level." data-more="../dev/glossary.html#t-agc">AGC</abbr></td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><code>options()</code> says which options the board's codec takes. A board without them leaves <code>options</code>, <code>set_options</code> and
+<code>encode_flags</code> NULL. Then the settings are shown dimmed (&quot;Not on this radio&quot;) and nothing changes.</li>
+<li><code>ambeVoiceSetEncodeOptions</code> may be called from any task. The audio callback hands the options to the vocoder before
+the next frame it encodes, so every codec call of a frame uses the same options. The board keeps them across
+<code>reset()</code>, so a new transmission starts with the options in force.</li>
+<li>The options are read at start-up from the settings and on every change (<code>ui_svc_apply</code>). With AGC on, the mic gain
+is step 5, the board's levels (FM too on a radio whose board sets the gain), and Mic gain is dimmed, showing &quot;AGC&quot;.</li>
+<li>Voice is simplex: while a transmission runs, nothing is decoded. A call still being heard goes on as silence, and
+the decoder starts fresh once the transmission ends; a call that begins meanwhile resets nothing until then. A
+platform may keep the encoder's and the decoder's state in one block (<code>hal_vocoder_t</code>): a decode during the
+transmission would cost it its encoder.</li>
+<li>Each board's codec mapping is on its <code>codec-&lt;id&gt;.md</code> page (&quot;Encode flags&quot;). Boards with an AMBE+2 host share
+<code>drivers/vocoder/ambe2_flags.h</code>.</li>
+</ul>
+<h3 id="61-a-tone-in-place-of-the-microphone">6.1 A tone in place of the microphone</h3>
+<p><code>ambeVoiceTxTone</code> (<code>ambeVoice.h</code>, radio task) hands the audio callback a tone sequence of up to <code>SIG_AIR_STEPS</code> steps (<code>SIG_STEPS</code> and a guard of silence, <code>SIG_AIR_GUARD_MS</code>)
+(<a href="radio-features.html">radio-features.md</a> 4.3). From the next block of a transmission (the first, if it has not started)
+the encoder gets the generated tone instead of the microphone, after the mic gain. While it plays the encode options are
+<code>VOCODER_OPT_TONE_FRAMES</code> set and <code>VOCODER_OPT_NOISE_REDUCTION</code> cleared, and the options in force come back after it.</p>
+<ul>
+<li>The encoder waits for room in its queue (<code>AMBE_VOICE_QUEUE</code>) before each block of the tone, instead of letting the
+queue overflow, so a tone longer than the headers' time is not cut.</li>
+<li><code>final</code>: the microphone stays muted after the tone until the transmission ends.</li>
+<li><code>dmr_voice_source_t.busy</code> tells the call stack the tone's frames are not all pulled yet. After PTT is let go the stack
+then goes on at each superframe boundary, for at most <code>DMR_CALL_TX_TAIL_HOLDS</code> superframes, before it ends the over
+with the terminator. A time-out ends it at once.</li>
+<li><code>ambeVoiceTxToneCancel</code> drops a request, and the source's <code>end</code> does it too: a request for a transmission that never
+went on air is not played in the next one. <code>busy</code> is false while no transmission runs.</li>
+<li>The tone's amplitude is fixed (<code>TONE_AMP_Q15</code>). It is not checked on air, nor how other makes of radio play a tone
+frame.</li>
+</ul>
+<h2 id="7-observing-it">7. Observing it</h2>
+<p><abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">Debug link</abbr> (<code>debuglink.md</code>): the <code>core</code> view's <code>mode</code> and <code>vfo</code>, the <code>dmr</code> view's <code>dmr.cc</code>, <code>dmr.ts</code>, <code>dmr.target_id</code>,
+<code>dmr.target_private</code>, <code>dmr.target_manual</code>, <code>dmr.privacy</code>, <code>dmr.alias_tx</code>, <code>dmr.gps_tx_channel</code> (the channel's own position setting); RADIO op 31 sets the mode, <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr> and <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr> (the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr>'s
+own in the VFO), op 15 the <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr> and op 32 copies the channel to the VFO (2.2); the <code>dmr_call</code> view's
+<code>emergency</code>, <code>pi_header</code>, <code>alias_complete</code>, <code>fid</code>, <code>svc</code>, <code>pi_alg</code>, <code>pi_key</code>; the counters <code>rx_private_calls</code>,
+<code>rx_emergency_calls</code>, <code>rx_encrypted_calls</code>, <code>rx_pi_headers</code>, <code>rx_alias_complete</code>, <code>tx_alias_lcs</code>, <code>rx_gps</code>,
+<code>tx_gps_lcs</code>; GPS Info as <code>call.gps_valid gps_lat gps_lon gps_err gps_dist_m gps_bearing</code> (and <code>last.</code>). <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> tests:
+<code>tests/hil/test_dmr_call_features.py</code> (<code>test_gps_info</code>: the bench sends a call with a GPS block, a <code>bench_tx</code>
+<code>voice --gps LAT,LON[,ERR]</code> job), <code>tests/hil/test_dmr_tx.py</code> (<code>test_dmr_gps_tx</code>: our GPS Info decoded by the
+bench modem's listener).</p>
+<h3 id="71-receive-level">7.1 Receive level</h3>
+<p>A <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> receiver decodes 4FSK well only while the demodulated level at its modem sits in a window: too high and the outer
+symbol threshold is crossed (corrected bits on every frame, even far above sensitivity), too low and sync is lost. That
+level is the receiver's audio gain times the transmitter's deviation, and transmitters differ by 10-20 % in deviation,
+so the gain a board sets has to sit in the middle of the window, not at its best point for an exact transmitter. A
+carrier offset shifts the same level: a gain with no headroom clips on one side of the channel first, and a fixed
+<abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> offset moves the whole window off the channel. Transmitters a kHz or two off frequency are common, so a board
+keeps its window centered on the channel. Where a board's window was measured is on its hardware page
+(<a href="../feature-matrix.html">feature-matrix.md</a> for the radios).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tools/dmr_rx_sweep.py</code></td>
+<td>Steps a chip register (debug link CHIP_REG), or one bit field of it (<code>--field HI:LO</code>), through values while the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench sends speech, over bench levels, deviations and carrier offsets (<code>--detune</code> makes the offset by tuning the radio away instead); ranks the values by their worst cell. About three minutes a grid</td>
+</tr>
+<tr>
+<td><code>test_dmr_audio_rx_strong</code></td>
+<td>The bench's simplex speech at -75 and -55 dBm at the radio: 95 % of the frames and at most 0.2 corrected bits a frame at each (a level the bench can't reach is left out)</td>
+</tr>
+<tr>
+<td><code>test_dmr_audio_rx_deviation</code></td>
+<td>The bench's speech at 0.85 and 1.15 of the standard deviation, at -100 dBm at the radio: 95 % of the frames and at most 0.8 corrected bits a frame, both ways</td>
+</tr>
+<tr>
+<td><code>test_dmr_audio_rx_offset_wide</code></td>
+<td>The bench's speech with its carrier 2.5 kHz below and above the channel, at -100 dBm at the radio: 90 % of the frames and at most 2 corrected bits a frame, both ways</td>
+</tr>
+</tbody>
+</table></div>
+<p>Measure near sensitivity (-90 to -105 dBm at the radio) for the level window: there a fraction of a dB shows. Measure
+strong simplex signals too (-75 to -45 dBm): a simplex transmitter keys one 30 ms burst every 60 ms, so the receiver's
+<abbr class="gl" tabindex="0" title="Automatic gain control: the receiver adjusting itself to the signal level." data-more="../dev/glossary.html#t-agc">AGC</abbr> sees the carrier come and go with every burst, and one that settles too slowly overloads the start of each burst.
+That costs a bit or more a frame however strong the signal, and only on simplex: a repeater's continuous carrier
+hides it. A clean receiver corrects almost nothing at those levels. Use speech or another varied recording, never
+<abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE</abbr> silence: its errors land in bits with no <abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="../dev/glossary.html#t-fec">FEC</abbr>.
+Let the radio drop the last call before the next one starts (about 2 s): a call that begins while it still follows the
+last one's slot timing can be decoded at that timing to its end.</p>
+<h2 id="8-open-points">8. Open points</h2>
+<ul>
+<li>The <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>'s <abbr class="gl" tabindex="0" title="How long after a call a repeater or radio keeps the call&#x27;s talkgroup ready for a reply." data-more="../user/22-glossary.html#t-hang-time">hang time</abbr> unit is not confirmed. The interop spec lists the group and private hang bytes
+(general settings 0x18, 0x19) only as vendor layout that the open-firmware layout does not use
+(<code>open-firmware-cps.md</code> 7.3.2), and neither the reference notes nor the vendor guide give a unit.
+Assumed: 500 ms steps (<code>codeplug.c</code>, <code>GEN_HANG_UNIT_MS</code>), so a stored 6 is 3 s. Confirm with the vendor <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr>
+(set a known hang time, read the byte) on the bench; the reply time setting (<code>rs_reply_s</code>) overrides it meanwhile.</li>
+<li><abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr> database plain format: the 4-byte <abbr class="gl" tabindex="0" title="Binary coded decimal: each decimal digit in 4 bits." data-more="../dev/glossary.html#t-bcd">BCD</abbr> ID is read as a little-endian word (the spec doesn't say).</li>
+<li>A codeplug <abbr class="gl" tabindex="0" title="Transmit timeout: the longest transmission the radio allows." data-more="../user/22-glossary.html#t-tot">TOT</abbr> of 0 means &quot;off&quot; in the vendor layout; here it falls back to the radio's TOT.</li>
+<li>Emergency alarm and emergency call <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> are in <code>dmr-emergency.md</code>. No <abbr class="gl" tabindex="0" title="A fixed voice scrambling from Motorola and Anytone radios. Not encryption." data-more="../user/22-glossary.html#t-basic-privacy">enhanced privacy</abbr>. GPS Info is host-tested
+(<code>dmrCallTest</code>) and on air both ways against the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench (<code>docs/testing/on-air-coverage.md</code>). Not done: GPS Info in the <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr>'s own
+transmissions (it relays the host's), a separate Settings &gt; Location toggle for it (it lives on the <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> page).</li>
+</ul>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/dmr-voice.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#1-who-we-hear">1. Who we hear</a></li><li class="l2"><a href="#2-who-we-talk-to">2. Who we talk to</a></li><li class="l3"><a href="#21-the-dmr-vfo">2.1 The DMR VFO</a></li><li class="l3"><a href="#22-copy-to-vfo">2.2 Copy to VFO</a></li><li class="l2"><a href="#3-talker-alias">3. Talker alias</a></li><li class="l3"><a href="#31-gps-info">3.1 GPS Info</a></li><li class="l2"><a href="#4-late-entry">4. Late entry</a></li><li class="l2"><a href="#5-privacy">5. Privacy</a></li><li class="l2"><a href="#6-encoding-the-microphone">6. Encoding the microphone</a></li><li class="l3"><a href="#61-a-tone-in-place-of-the-microphone">6.1 A tone in place of the microphone</a></li><li class="l2"><a href="#7-observing-it">7. Observing it</a></li><li class="l3"><a href="#71-receive-level">7.1 Receive level</a></li><li class="l2"><a href="#8-open-points">8. Open points</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

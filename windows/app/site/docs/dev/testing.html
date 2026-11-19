@@ -1,0 +1,312 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Testing · RadioFoundry</title>
+<meta name="description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Testing · RadioFoundry">
+<meta property="og:description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:url" content="https://radiofoundry.org/docs/dev/testing.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="The radios RadioFoundry runs on, each showing a different screen.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/dev/testing.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/dev/testing.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/dev/testing.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/dev/testing.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/dev/testing.html">
+<link rel="icon" href="../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../" data-home="../../" data-gl-more="More">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../index.html">
+			<img src="../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Main"><a href="../../radios/index.html">Radios</a><a href="../../features/index.html">Features</a><a href="../../flash/index.html">Install</a><a href="../../codeplug/index.html">Codeplug</a><a href="../../docs/index.html" aria-current="page">Docs</a><a href="../../screenshots/index.html">Screenshots</a><a href="../../tools/index.html">Tools</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Language" title="Language">EN</summary><nav aria-label="Language"><a href="../../docs/dev/testing.html" aria-current="true" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../es/docs/dev/testing.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../it/docs/dev/testing.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../zh/docs/dev/testing.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Switch light and dark" title="Switch light and dark">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Developer Guide">
+		<p class="eyebrow"><a href="../../docs/index.html">Documentation</a> / Developer Guide</p>
+		<ul><li><a href="index.html">Developer Documentation</a></li><li><a href="adding-a-mode.html">Adding a Mode</a></li><li><a href="adding-a-radio.html">Adding a Radio</a></li><li><a href="architecture.html">Architecture</a></li><li><a href="board-registry.html">The Board Registry</a></li><li><a href="building.html">Building</a></li><li><a href="ci-runners.html">CI Runners and Images</a></li><li><a href="ci.html">Continuous Integration</a></li><li><a href="codec.html">The Codec</a></li><li><a href="codeplug-editor.html">The Codeplug Editor</a></li><li><a href="contributing.html">Contributing</a></li><li><a href="cps-and-codeplug.html">CPS, Codeplug and Settings</a></li><li><a href="debug-link.html">Debug Link</a></li><li><a href="glossary.html">Developer glossary</a></li><li><a href="manual-pdf.html">The User Manual PDF</a></li><li><a href="release.html">Releases</a></li><li><a href="stack-check.html">Stack Check</a></li><li><a href="testing.html" aria-current="page">Testing</a></li><li><a href="translating.html">Translating</a></li><li><a href="web-flasher.html">The Web Flasher</a></li><li><a href="website.html">The Web Site</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<h1 id="testing">Testing</h1>
+<p>From a laptop with no radio to a radio on the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="glossary.html#t-sdr">SDR</abbr> bench. The commands, flags and pass criteria are in
+<a href="../testing/index.html">docs/testing/README.md</a> and <a href="https://github.com/radiofoundry/radiofoundry/blob/main/tests/hil/README.md">tests/hil/README.md</a>; this page says
+what each level is for and where a new test goes.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Runs on</th>
+<th>Command</th>
+<th>Catches</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unit</td>
+<td>the host</td>
+<td><code>make -C tests/host</code></td>
+<td>Wrong math, encoders, parsers, the settings format</td>
+</tr>
+<tr>
+<td>Software in the loop</td>
+<td>the host</td>
+<td><code>make -C tests/host</code></td>
+<td>Whole features against simulated chips: calls, data, <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr>, <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr>, storage, the UI</td>
+</tr>
+<tr>
+<td>Hardware in the loop</td>
+<td>a radio on USB</td>
+<td><code>python3 -m pytest tests/hil -v -rs</code></td>
+<td>The real chips and timing; with flags, <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> and <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> on air</td>
+</tr>
+<tr>
+<td>Manual bench cases</td>
+<td>the bench board and a person</td>
+<td><code>tools/bench/bench_line.py HOST run bench_tx ARGS</code></td>
+<td>What can't be scripted yet (<a href="../testing/dmr-bench.html">dmr-bench.md</a>)</td>
+</tr>
+<tr>
+<td>Release gate</td>
+<td>the host</td>
+<td><code>JOBS=8 tools/ci.sh</code></td>
+<td>Everything above that needs no radio, plus every board's feature matrix with zero warnings, doc links and the license checks</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>tools/ci.sh</code> must pass before every merge (<a href="contributing.html">Contributing</a>); what it runs step by step is in
+<a href="../testing/index.html">docs/testing/README.md</a> section 1. The CI workflows run its pieces per push and nightly
+(<a href="ci.html">CI</a>).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Also</th>
+<th>Command</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Coverage</td>
+<td><code>tools/coverage.sh</code> (needs gcovr)</td>
+<td><code>build/coverage/index.html</code>; <a href="ci.html#coverage">CI, Coverage</a></td>
+</tr>
+<tr>
+<td>Sanitizers</td>
+<td><code>make -C tests/host clean &amp;&amp; make -C tests/host SANITIZE=1</code></td>
+<td>ASan and UBSan; any report fails the test. <code>RFOUNDRY_CI_SANITIZE=1 tools/ci.sh</code> adds it to the host step</td>
+</tr>
+<tr>
+<td>Fuzzing</td>
+<td><code>RFOUNDRY_FUZZ_ITERS=1000000 make -C tests/host SANITIZE=1</code></td>
+<td>Seeded mutation loops over the parsers of untrusted input (<code>tests/host/fuzz.h</code>); <code>RFOUNDRY_FUZZ_SEED</code> varies the seed</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="host-tests">Host tests</h2>
+<p><code>tests/host/</code> holds one <code>*Test.c</code> per area and the simulators they share:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>File</th>
+<th>Simulates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sim/dmr_sim_modem.c</code></td>
+<td>A <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> modem: plays bursts into the call stack and records what it sends</td>
+</tr>
+<tr>
+<td><code>sim/sim_flash.c</code></td>
+<td><abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="glossary.html#t-spi">SPI</abbr> flash, for the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="cps-and-codeplug.html">codeplug</abbr>, the settings ring and the journal</td>
+</tr>
+<tr>
+<td><code>sim/ui_sim.c</code>, <code>sim/ui_png.c</code></td>
+<td>The UI's display and keys, with a script language and PNG output</td>
+</tr>
+<tr>
+<td><code>sim/split_sim_modem.c</code>, <code>sim/splitSim.c</code>, <code>sim/splitPairTest.py</code></td>
+<td>Two radios' cores in lockstep virtual time, for the <abbr class="gl" tabindex="0" title="Transmitting on one frequency and receiving on another at the same time. Repeaters do, and so does the duplex hotspot setup." data-more="../spec/split-duplex.html">split duplex</abbr> repeater</td>
+</tr>
+<tr>
+<td><code>cpsSim.c</code></td>
+<td>The radio's side of the <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> protocol, for <code>tools/cps_client.py</code> and <code>cpsClientTest.py</code></td>
+</tr>
+<tr>
+<td><code>snmpPeer.c</code></td>
+<td>An <abbr class="gl" tabindex="0" title="Simple Network Management Protocol: reading a device&#x27;s state over the network." data-more="../spec/snmp.html">SNMP</abbr> manager, for the agent's end-to-end test</td>
+</tr>
+<tr>
+<td><code>fuzz.h</code></td>
+<td>The seeded mutation fuzzer the parser tests use</td>
+</tr>
+<tr>
+<td><code>stubs/</code></td>
+<td>Stand-ins for services a test doesn't exercise</td>
+</tr>
+</tbody>
+</table></div>
+<p>The Makefile groups the tests into <code>run-*</code> targets (<code>run-core</code>, <code>run-ui</code>, <code>run-call</code>, <code>run-mmdvm</code>, <code>run-settings</code>,
+<code>run-cps</code>, ...); <code>make -C tests/host</code> runs them all. Each test compiles the firmware's own sources with the host
+compiler, so a test exercises the code that ships. Test vectors come from the standards or are recorded from real
+radios and the stock codec, never from other firmware.</p>
+<p>To add a test: write <code>tests/host/&lt;area&gt;Test.c</code>, add its rule and a <code>run-&lt;area&gt;</code> target to <code>tests/host/Makefile</code>, and
+hook it into <code>run</code> (<code>run: run-&lt;area&gt;</code>). Groups are named by the area or directory they test, never by a radio or
+platform. <code>make -C tests/host check-run</code> (part of <code>run</code>) fails when a test in <code>TESTS</code> has no <code>./&lt;test&gt;</code> line in any
+group; a program a test script drives (a simulated peer) goes in <code>HELPERS</code> instead. Build without warnings; ci.sh
+fails on any. A parser of bytes from outside (USB, the air, the network) also gets a fuzz loop with <code>fuzz.h</code>.</p>
+<p>A test of one board's own code (its calibration reader, its pin tables, its first stage) lives with the board, in
+<code>boards/&lt;b&gt;/tests/</code>. Its <code>host.mk</code> adds the test to <code>TESTS</code> and to the <code>run-boards::</code> target. <code>tests/host</code> includes
+every <code>boards/*/tests/host.mk</code>; a fragment names its own files through <code>HERE := $(dir $(lastword $(MAKEFILE_LIST)))</code>
+in its prerequisites, and its recipes use <code>$&lt;</code> and <code>$^</code>, since <code>HERE</code> changes with the next fragment. The binaries are built in <code>tests/host/</code> like the rest.
+The firmware build only compiles the <code>*.c</code> directly in a board's directory, so these never reach an image. A driver
+or platform test stays in <code>tests/host/</code>, named by what it tests, even when one radio needed it first.</p>
+<h2 id="the-ui-simulator-and-the-gallery">The UI simulator and the gallery</h2>
+<p>The UI runs unchanged on the host. Three tools use it:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>make -C tests/host run-ui</code></td>
+<td><code>gfxTest</code> (drawing) and <code>uiFlowTest</code>: replays every task flow of <a href="../ux/task-flows.html">task-flows.md</a> against the press budgets of <a href="../ux/usability-tests.html">usability-tests.md</a> on four display and key map pairs, and crawls every screen for the rules in <a href="../spec/ui.html">ui.md</a> 7</td>
+</tr>
+<tr>
+<td><code>tests/host/uiSim --geom 160x120i5 --script &quot;ok 4&quot; --out f.png</code></td>
+<td>Renders one screen after a key script. The options are in the header comment of <code>tests/host/uiSim.c</code>, the script tokens in <code>tests/host/sim/ui_sim.c</code></td>
+</tr>
+<tr>
+<td><code>tools/beep_reel.py</code></td>
+<td>Makes <code>build/beep-reel/beep_reel.mp4</code>: every beep in the scene that sounds it, on the simulated screen, captioned. Needs ffmpeg built with libass (its <code>subtitles</code> filter draws the captions). <code>make -C tests/host run-ui</code> runs its checks without the video (<a href="../spec/radio-features.html">radio-features.md</a> 4)</td>
+</tr>
+<tr>
+<td><code>make -C tests/host ui-gallery</code></td>
+<td>Renders every gallery screen at every display class into <code>docs/ux/screens/&lt;class&gt;/</code>, and one contact sheet per class into <code>docs/ux/screens/sheets/&lt;class&gt;.png</code></td>
+</tr>
+<tr>
+<td><code>make -C tests/host ui-sheets [GEOM=128x64]</code></td>
+<td>The contact sheets only, into <code>tests/host/out/sheets/</code> (not committed): every gallery screen at 2x under its name on one page, to audit a layout change at a glance. <code>GEOM</code> takes any geometry <code>--geom</code> does</td>
+</tr>
+</tbody>
+</table></div>
+<p>The display classes are <code>160x120i5</code> (160x120 with 5 px hidden left and right), <code>160x128</code>,
+<code>240x320i10x5</code> (16 colors, anti-aliased fonts one size up, 10 px hidden left and right and 5 px top and bottom),
+<code>128x64</code> and <code>240x320</code>; <a href="../ux/wireframes/index.html">the wireframes README</a> says which radio uses which.
+The user manual uses the <code>160x120i5</code> images.</p>
+<p>After a UI change, run <code>ui-gallery</code> and commit the PNGs with the change, so the review shows the difference. The
+gallery target deletes and rewrites <code>docs/ux/screens/*/</code>; commit only what you meant to change. Commit the contact
+sheet of each class whose screens changed. A new screen gets an
+entry in the <code>gallery[]</code> table at the top of <code>tests/host/uiSim.c</code>.</p>
+<h2 id="hardware-in-the-loop">Hardware in the loop</h2>
+<p>The <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="testing.html">HIL</abbr> tests drive a radio through the <a href="debug-link.html">debug link</a>: they press keys, read the radio's state and take
+screenshots. Each test leaves the radio as it found it. Without a radio they all skip.</p>
+<p>Opt-in flags allow what changes the radio or the air around it:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Allows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>none</td>
+<td>Radio-only tests. Nothing <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmits</abbr></td>
+</tr>
+<tr>
+<td><code>--allow-rf</code></td>
+<td>Transmitting, from the radio or the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="glossary.html#t-sdr">SDR</abbr> bench</td>
+</tr>
+<tr>
+<td><code>--allow-service-stop</code></td>
+<td>Accepted and ignored: a bench board stops nothing</td>
+</tr>
+<tr>
+<td><code>--allow-usb-switch</code></td>
+<td>Switching the radio to USB network mode and back</td>
+</tr>
+<tr>
+<td><code>--allow-codeplug-write</code></td>
+<td>Writing the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="cps-and-codeplug.html">codeplug</abbr> over <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> (backed up and restored)</td>
+</tr>
+<tr>
+<td><code>--allow-reboot</code></td>
+<td>Restarting the radio</td>
+</tr>
+</tbody>
+</table></div>
+<p>The full list, the options and the rig assumptions are in <a href="https://github.com/radiofoundry/radiofoundry/blob/main/tests/hil/README.md">tests/hil/README.md</a>;
+&quot;Writing a test&quot; there has the fixtures.</p>
+<p>A skip is not a pass. Every skip names its kind, and a bring-up run (<code>tools/bringup.py run --radio &lt;id&gt;</code>) runs a
+radio's feature checklist, fails a required test that skips for a reason its feature doesn't declare, and records the
+result in <code>docs/testing/results/</code> (<a href="https://github.com/radiofoundry/radiofoundry/blob/main/tests/hil/README.md#bring-up-mode">tests/hil/README.md</a>).</p>
+<h2 id="the-sdr-bench">The SDR bench</h2>
+<p>A second station for on-air tests: one or two boards that serve the bench line protocol (<code>tools/bench/bench_line.py</code>).
+They send calls, texts and data to the radio and check what the radio <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmits</abbr> (IDs, <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr>, slot timing, ramps, carrier
+offset, FM tones and deviation). A board's address comes from <code>--bench-api</code> or <code>RFOUNDRY_BENCH_API</code>, never from files
+in the repository. Setup and the manual cases: <a href="../testing/dmr-bench.html">docs/testing/dmr-bench.md</a>.</p>
+<p>A bug found on the bench should end as a host test, so it stays fixed without the bench.</p>
+
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/dev/testing.md">View the source of this page</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="On this page">
+		<p class="eyebrow">On this page</p>
+		<ul><li class="l2"><a href="#host-tests">Host tests</a></li><li class="l2"><a href="#the-ui-simulator-and-the-gallery">The UI simulator and the gallery</a></li><li class="l2"><a href="#hardware-in-the-loop">Hardware in the loop</a></li><li class="l2"><a href="#the-sdr-bench">The SDR bench</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Join the RadioFoundry community</strong><span class="small muted">Questions, help with your radio and news, on Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Found a bug? Want your radio supported?</strong><span class="small muted">Open an issue on GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry is MIT licensed · <a href="https://github.com/radiofoundry/radiofoundry">Source Code</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Community</a> · <a href="../../docs/index.html">Docs</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Changelog</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

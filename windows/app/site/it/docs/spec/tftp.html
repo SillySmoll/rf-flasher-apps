@@ -1,0 +1,355 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="it" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TFTP codeplug access on the USB network link · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="TFTP codeplug access on the USB network link · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:url" content="https://radiofoundry.org/it/docs/spec/tftp.html">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Le radio su cui gira RadioFoundry, ognuna con una schermata diversa.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/tftp.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/tftp.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/tftp.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/tftp.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/tftp.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../it/" data-gl-more="Altro">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../it/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principale"><a href="../../../it/radios/index.html">Radio</a><a href="../../../it/features/index.html">Funzioni</a><a href="../../../it/flash/index.html">Installa</a><a href="../../../it/codeplug/index.html">Codeplug</a><a href="../../../it/docs/index.html" aria-current="page">Documenti</a><a href="../../../it/screenshots/index.html">Schermate</a><a href="../../../it/tools/index.html">Strumenti</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Lingua" title="Lingua">IT</summary><nav aria-label="Lingua"><a href="../../../docs/spec/tftp.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/tftp.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/tftp.html" aria-current="true" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/tftp.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Passa da chiaro a scuro" title="Passa da chiaro a scuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Specifiche">
+		<p class="eyebrow"><a href="../../../it/docs/index.html">Documentazione</a> / Specifiche</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html" aria-current="page">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Questa pagina non è ancora tradotta; è mostrata in inglese.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="tftp-codeplug-access-on-the-usb-network-link">TFTP codeplug access on the USB network link</h1>
+<p>In USB network mode (<code>usb-network.md</code>) the radio runs a <abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="tftp.html">TFTP</abbr> server on <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr> port 69 at its own address:
+<code>get codeplug.bin</code> reads the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>, <code>put codeplug.bin</code> writes it, <code>get</code> and <code>put iddb.bin</code> do the same for the <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr>
+ID database, <code>get info.txt</code> says who the radio is. Any standard TFTP client works (<code>tftp</code>, <code>curl tftp://</code>, tftpy).
+Switches: <code>CONFIG_TFTP</code> (= <code>CONFIG_DMR_IP_GATEWAY</code>), <code>CONFIG_TFTP_IDDB</code> (= <code>CONFIG_TFTP</code>, section 5). Code:
+<code>core/net/tftp.c</code> (the protocol, no <abbr class="gl" tabindex="0" title="Real-time operating system: the scheduler that runs the firmware&#x27;s tasks." data-more="../dev/glossary.html#t-rtos">RTOS</abbr>), <code>core/net/tftp_codeplug.c</code> (codeplug.bin, the staging and the commit),
+<code>core/net/tftp_iddb.c</code> (the ID database), <code>core/net/net_services.c</code> (the glue, info.txt). Written from RFC 1350, 2347, 2348 and 2349.</p>
+<h2 id="1-protocol">1. Protocol</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Requests</td>
+<td>RRQ and WRQ on port 69, octet mode only (<code>netascii</code> and <code>mail</code>: error 4). File names are case insensitive, leading <code>/</code> ignored</td>
+</tr>
+<tr>
+<td>Transfer port</td>
+<td>Each transfer answers from a port of its own (49152 and up, its TID), bound in the gateway's port table while it lasts. Packets from another address or port to it get error 5 and the transfer goes on</td>
+</tr>
+<tr>
+<td>One at a time</td>
+<td>A request while a transfer runs: error 0 &quot;busy&quot;. The same request again (a client's retry) is ignored: the first answer is resent by the timer</td>
+</tr>
+<tr>
+<td>Options</td>
+<td><code>blksize</code> 8-554 (the gateway's 600-byte frames: 600 - 14 - 20 - 8 - 4). A bigger one is ignored, so the transfer uses 512: RFC 2348 lets the server answer a smaller value, but macOS <code>tftp</code> keeps the size it asked for and takes the first, shorter block for the last. <code>tsize</code> (a read: the file's size; a write: the size announced, checked by the file); <code>timeout</code> 1-255 s, echoed and used. Unknown options and malformed values are ignored. Any accepted option: OACK first (a read then waits for <abbr class="gl" tabindex="0" title="Acknowledgment: the reply that says a message arrived." data-more="../dev/glossary.html#t-ack">ACK</abbr> 0)</td>
+</tr>
+<tr>
+<td>Lock step</td>
+<td>One DATA (read) or ACK (write) outstanding, resent after the timeout (1 s, or the client's), abandoned after 5 resends with error 0 &quot;timed out&quot;. A duplicate ACK is never answered with a DATA (RFC 1123 4.2.3.1). A duplicate DATA is ACKed again</td>
+</tr>
+<tr>
+<td>End</td>
+<td>A read ends with the ACK of the block shorter than blksize (an empty one when the size is a multiple). A write's last ACK goes out only after the file was checked and stored, or an error instead, so the client learns the outcome. After it the transfer dallies 3 s and ACKs a resent last DATA again</td>
+</tr>
+<tr>
+<td>Block numbers</td>
+<td>Roll over from 65535 to 0</td>
+</tr>
+<tr>
+<td>Errors from the client</td>
+<td>End the transfer (a write's staged data is dropped). During a commit they are ignored: the data is complete and the commit finishes</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="2-files">2. Files</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Read</th>
+<th>Write</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>codeplug.bin</code></td>
+<td>yes</td>
+<td>yes (section 4)</td>
+<td>the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> image (section 3); a write may carry the ID database too (5.2)</td>
+</tr>
+<tr>
+<td><code>iddb.bin</code></td>
+<td>yes</td>
+<td>yes (section 5)</td>
+<td>the <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr> database alone (5.1). A read of a radio without one: error 1</td>
+</tr>
+<tr>
+<td><code>info.txt</code></td>
+<td>yes</td>
+<td>no</td>
+<td><code>board</code>, <code>firmware</code>, <code>dmr_id</code>, <code>callsign</code>, <code>radio_ip</code>, <code>host_ip</code>, <code>mdns</code>, <code>codeplug</code> (open-firmware / builtin / none), <code>codeplug_write</code> (allowed / off), one <code>key: value</code> per line</td>
+</tr>
+</tbody>
+</table></div>
+<p>No <code>settings.bin</code>: the settings record holds the privacy keys (<code>settings-store.md</code> 3.1), which the radio doesn't give
+out over a read (<code>cps-protocol.md</code> 2.7 has the same open question for the <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr>'s area 1).</p>
+<h2 id="3-the-image-codeplugbin">3. The image: codeplug.bin</h2>
+<p><strong>Format: the flat image <code>tools/cps_client.py</code> reads and writes</strong>, 716,384 bytes (0xAEE60): file offset = the
+open-firmware <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr>'s <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr> wire address. Bytes 0x00000-0x0FFFF are the <abbr class="gl" tabindex="0" title="Electrically erasable programmable read-only memory: a small chip that keeps settings." data-more="../dev/glossary.html#t-eeprom">EEPROM</abbr> image, 0x20000 on the flash image
+(<code>open-firmware-cps.md</code> 7.1). On a read, the regions <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr> transfers and the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> settings area hold the stored
+bytes and everything else is 0xFF:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>File range</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00080-0x0605F</td>
+<td>EEPROM image part 1: device info, general settings (call sign, <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr>), <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr>, <abbr class="gl" tabindex="0" title="Dual tone multi frequency: the touch tones a keypad sends, in the audio." data-more="../user/22-glossary.html#t-dtmf">DTMF</abbr>, channels 1-128</td>
+</tr>
+<tr>
+<td>0x07500-0x0AFFF</td>
+<td>EEPROM image part 2: boot screen, quick-key slots (the side keys), VFOs, zones</td>
+</tr>
+<tr>
+<td>0x0E000-0x0EFFF</td>
+<td>the codeplug settings area (<a href="codeplug-settings.html">codeplug-settings.md</a>): the radio keeps its own when it is valid and the file's isn't, or when it is newer (section 6 there)</td>
+</tr>
+<tr>
+<td>0x20000-0x2119F</td>
+<td>custom data</td>
+</tr>
+<tr>
+<td>0x9B000-0xAEE5F</td>
+<td>flash codeplug: channels 129-1024, contacts, <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> group lists</td>
+</tr>
+</tbody>
+</table></div>
+<p>Why this one:</p>
+<ul>
+<li>It is what the CPS path already exposes. A <abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="tftp.html">TFTP</abbr> read is byte for byte what <code>cps_client.py read</code> (default <code>radio</code>
+regions) writes to its file, apart from <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> A: the CPS read overlays the live VFO there, TFTP gives the stored
+record. So <code>cps_client.py write</code>, <code>verify</code> and the <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> tests' backups take a TFTP image and the other way round, and
+the record decoders in <code>cps_client.py</code> (<code>decode_channel</code>, <code>set_channel_name</code>) work on it.</li>
+<li>The file stops at the end of the last region, so a read moves 716 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr>, not the 1.15 MB of a whole cps_client
+image. A write takes any size from 716,384 bytes up to the end of the open-firmware space (<code>openfw_end</code>, as an
+image address): a whole cps_client image (1,179,648 bytes), or an image that carries a <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> ID database (5.2).
+Bytes outside the regions and the database are ignored.</li>
+<li>Not the radio's raw flash: the settings ring, the journal, the calibration sector and the native area aren't part
+of a codeplug and stay out (privacy keys, calibration).</li>
+<li>Not a new container with a header: no tool reads one, and the open-firmware layout is still the radio's storage
+(<code>codeplug-native.md</code> 4). When the native codeplug comes, it gets a file of its own.</li>
+</ul>
+<h2 id="4-writing-codeplugbin">4. Writing codeplug.bin</h2>
+<p>The <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> writes over USB without asking, so <abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="tftp.html">TFTP</abbr> over USB does too: writes are <strong>allowed by default</strong>, under the same
+rules as the CPS shim (<code>cps-protocol.md</code> 2.3), plus a setting to turn them off: <strong>Settings &gt; Connections &gt; TFTP
+<abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> write</strong> (<code>settings_t.net_flags</code> bit 0 set = off; read at boot and when changed). Refused (error 2) while off,
+while the flash region is foreign (<code>settings-store.md</code> 5), or without a staging area.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WRQ</td>
+<td><code>tsize</code>, when given, must be from 716,384 up to the end of the open-firmware space (else error 3). A commit record left by an earlier failed commit is finished first</td>
+</tr>
+<tr>
+<td>DATA</td>
+<td>The bytes inside the regions go to the staging area (<code>hal_flash_map_t.staging_addr</code>, <code>staging_size</code>, set by the board; some boards have none), back to back from its second sector, erased as the data reaches it; a CRC-32 runs over them. Bytes outside the regions are ignored. Nothing of the stored codeplug changes</td>
+</tr>
+<tr>
+<td>Last DATA</td>
+<td>The size must be in the same range. An ID database the file carries is finished first (5.2). The staged bytes are read back and checked against the <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr>. Then the image check: the general settings' <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr> is 8 <abbr class="gl" tabindex="0" title="Binary coded decimal: each decimal digit in 4 bits." data-more="../dev/glossary.html#t-bcd">BCD</abbr> digits, and at least one channel marked used (any bank) decodes (<code>codeplug_openfw_decode</code>). The open-firmware layout has no header or version to check, so this is what tells a codeplug from a wrong file</td>
+</tr>
+<tr>
+<td>Commit</td>
+<td>The commit record (magic 0x5452444F, version 1, length, the staged CRC, its own CRC) goes in the staging area's first sector. Then each 4 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> sector of the codeplug that a region touches is rebuilt (the stored sector, the staged bytes over it) and written through the sector journal (<code>settings-store.md</code> 4), one sector per tick so the host link keeps running; unchanged sectors are skipped. The quick-key slots (<abbr class="gl" tabindex="0" title="Electrically erasable programmable read-only memory: a small chip that keeps settings." data-more="../dev/glossary.html#t-eeprom">EEPROM</abbr> 0x7524-0x7537, the side key assignment, <code>ui.md</code> 3.1) are written like the rest, as with the CPS. The settings area's sector follows its transfer rule: the stored one stays when it is valid and the staged one isn't, or when it is of a newer version (<code>codeplug-settings.md</code> 6), so a file from before the area, 0xFF there, leaves the radio's keys. Then the record is erased, the codeplug re-read (<code>codeplug_reload</code>), and the last <abbr class="gl" tabindex="0" title="Acknowledgment: the reply that says a message arrived." data-more="../dev/glossary.html#t-ack">ACK</abbr> sent</td>
+</tr>
+<tr>
+<td>Failure</td>
+<td>Any check failing: error 0 with the reason, the stored codeplug untouched. A transfer that stops, an error from the client, a timeout: the staged bytes are left and never used (no record)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Power cuts: before the commit record exists the old codeplug is intact. After it, <code>tftp_codeplug_resume()</code>, called
+at boot right after <code>storage_init()</code> and before the codeplug is read, checks the record and the staged CRC and copies
+every sector again (each one journaled, so a cut inside a sector write is finished by the journal first), then erases
+the record. A torn record fails its CRC and is erased. So a cut transfer or a cut commit leaves the old or the new
+codeplug, never parts of both.</p>
+<p>Not carried over from the CPS: the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> A record is written as it is in the image, and the live VFO doesn't follow it
+(the CPS decodes a changed VFO A into the settings).</p>
+<h2 id="5-the-dmr-id-database">5. The DMR ID database</h2>
+<p>The database (<code>open-firmware-cps.md</code> 7.5) runs to megabytes (100,000 users at 41 bytes is 4 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">MB</abbr>; the <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr> radios
+take up to 13 MB), against a 256 KB staging area. It doesn't need staging: a broken database costs names on the
+<abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> screen, not a usable radio. So it is written in place, in an order that never shows a broken one:</p>
+<ol>
+<li>The sector holding the header (image 0x50000) is erased, and the radio drops its cached header
+(<code>dmr_iddb_init</code>): from here it has no database.</li>
+<li>The records are programmed as they arrive, area 1 then area 2, each sector erased as the data reaches it, each
+write read back and compared.</li>
+<li>At the end of a complete transfer the header is programmed into its still erased bytes, read back, and the radio
+reads the database again. <code>codeplug_reload</code> bumps the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> serial, so the radio drops the names it cached.</li>
+</ol>
+<p>A transfer that stops, an error from the client or a timeout leaves the header erased: no database, never a broken
+one. No journal, no commit record and no staging area are involved, so <code>iddb.bin</code> works on radios without one. Writes follow the same rules as codeplug.bin: refused while <abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="tftp.html">TFTP</abbr> codeplug writes are off or the flash region
+is foreign. They are not refused while transmitting, as codeplug.bin's aren't: the flash calls take the storage lock
+like every other writer. A put isn't power-cut safe beyond that rule: a cut mid-transfer leaves no database.</p>
+<p>Accepted headers: <code>Id</code>, a record size the radio reads (more than the ID, at most <code>DMR_IDDB_RECORD_MAX</code>), at most
+0x400000 records, any format but <code>n</code> (whose area 2 sits in the voice prompts). Format <code>C</code> (<a href="iddb-compact.html">iddb-compact.md</a>)
+fails the record size check and is refused: hosts send format <code>N</code> over TFTP. The records must fit below
+<code>openfw_end</code>. A header that fails these is refused before anything is erased.</p>
+<h3 id="51-iddbbin">5.1 iddb.bin</h3>
+<p><strong>Format: the database alone</strong>, the 12-byte header and then the records back to back, as a <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> uploads them and as
+the web editor builds them. The server splits them between area 1 (as many whole records as fit in 256 KB with the
+header) and area 2. Chosen over an image-shaped file because it is the database's own format: a tool that writes one
+needn't know the areas, and a read moves only the database (a 4 MB database, not 13 MB of mostly erased image).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RRQ</td>
+<td>The stored database: size = 12 + count x record size. No database (or one whose records would run past <code>openfw_end</code>): error 1. A format <code>n</code> database reads too, from its voice prompt area 2</td>
+</tr>
+<tr>
+<td>WRQ</td>
+<td><code>tsize</code>, when given, must be at least 12 (else error 3). Nothing is erased yet</td>
+</tr>
+<tr>
+<td>DATA</td>
+<td>The header is taken first (it may span blocks at the smallest blksize), checked, and checked against <code>tsize</code> (12 + count x record size, else error 3); then step 1. Then the records, step 2. Bytes past the header's count: error 3</td>
+</tr>
+<tr>
+<td>Last DATA</td>
+<td>The size must be 12 + count x record size (else error 0, no database). Then step 3, then the last <abbr class="gl" tabindex="0" title="Acknowledgment: the reply that says a message arrived." data-more="../dev/glossary.html#t-ack">ACK</abbr></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="52-a-combined-codeplugbin">5.2 A combined codeplug.bin</h3>
+<p>A codeplug.bin written past 716,384 bytes can carry the database in its image layout: the header and area 1 at
+0x50000, area 2 at 0xD8000 (as the editor's image and a cps_client image hold it). The bytes in those ranges go to
+the same writer as iddb.bin's, while the codeplug's regions are staged as in section 4. The database is taken only
+when both hold:</p>
+<ul>
+<li>the 12 bytes at 0x50000 are a header the radio reads (above), and</li>
+<li>the client announced a <code>tsize</code> that reaches the end of its last record.</li>
+</ul>
+<p>Otherwise those bytes are ignored and the radio keeps its database. That covers every codeplug.bin made before
+(0xFF at 0x50000: a TFTP read, <code>cps_client.py read</code> with its default regions), a client that doesn't send <code>tsize</code>,
+and a whole cps_client image of a radio whose database runs past 1,179,648 bytes. Without <code>tsize</code> the server can't
+know before it erases the old header whether the file covers the new database, so it doesn't start. Use iddb.bin
+with such a client.</p>
+<p>The header is programmed when the last DATA arrives, before the codeplug's own checks and commit. The database
+arrived whole and checked, so it stays even if the codeplug is then refused (not <abbr class="gl" tabindex="0" title="Binary coded decimal: each decimal digit in 4 bits." data-more="../dev/glossary.html#t-bcd">BCD</abbr>, no channel) or its commit is
+cut short: the two don't roll back together. A transfer that stops leaves no database and the old codeplug.</p>
+<p>A read of codeplug.bin stays 716,384 bytes without the database: read <code>iddb.bin</code> for it.</p>
+<h2 id="6-tests">6. Tests</h2>
+<ul>
+<li>Host: <code>tests/host/tftpTest.c</code> with the real gateway and a client in the test: reads with and without options, an
+oversized blksize ignored and the largest taken, tsize, the timeout option, the empty last block, roll-over past block 65535, retransmits and the
+give-up, duplicate ACKs, a foreign TID, busy, a repeated request, refusals (unknown file, netascii, wrong
+direction, junk), writes with a slow commit, duplicate DATA, the dally, a refused commit, a refused open, a block
+longer than blksize, a client's error, a write that never starts. Then codeplug.bin on a simulated flash: the read
+matches the flash, an edited image written back (the quick-key slots written too, the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> re-read, outside bytes untouched, no
+missing erases), a whole cps_client image, refusals (tsize, short, no channel, not <abbr class="gl" tabindex="0" title="Binary coded decimal: each decimal digit in 4 bits." data-more="../dev/glossary.html#t-bcd">BCD</abbr>, writes off, a transfer
+that stops) leaving every byte as it was, and power cuts at 29 points through a commit, each followed by a restart
+and the resume: old or new codeplug, never a mix. Then the ID database: iddb.bin across areas 1 and 2 (lookups,
+the read back equal, nothing outside the areas touched, the header split over blocks at blksize 8), refusals
+before any erase (no header, format <code>n</code>, too big, <code>tsize</code> against the header, writes off), a transfer that stops,
+one too long and one too short leaving no database, a combined codeplug.bin past 1,179,648 bytes, the old-size
+image, a combined one without <code>tsize</code> and one cut short inside its database each keeping the radio's, and a
+refused codeplug that keeps its database. The short transfers go to <code>tftpTest.pcap</code>, checked by tshark.</li>
+<li><abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr>: <code>tests/hil/test_net_services.py</code> (<code>--allow-usb-switch</code>): <code>info.txt</code>, two reads of <code>codeplug.bin</code> identical and
+equal to the stored image; with <code>--allow-codeplug-write</code> also: back up, write a channel rename, read it back, write
+the backup again and verify it byte for byte, as <code>test_cps.py</code> does over the <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr>.
+<abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">Debug link</abbr> view keys (section <code>net_svc</code>): <code>tftp.state</code> (0 idle, 1 reading, 2 writing, 3 committing, 4 dallying)
+<code>tftp.reads tftp.writes tftp.errors tftp.timeouts tftp.retransmits tftp.last_size tftp.blksize tftp.write_allowed</code>.</li>
+</ul>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/tftp.md">Vedi il sorgente di questa pagina</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="In questa pagina">
+		<p class="eyebrow">In questa pagina</p>
+		<ul><li class="l2"><a href="#1-protocol">1. Protocol</a></li><li class="l2"><a href="#2-files">2. Files</a></li><li class="l2"><a href="#3-the-image-codeplugbin">3. The image: codeplug.bin</a></li><li class="l2"><a href="#4-writing-codeplugbin">4. Writing codeplug.bin</a></li><li class="l2"><a href="#5-the-dmr-id-database">5. The DMR ID database</a></li><li class="l3"><a href="#51-iddbbin">5.1 iddb.bin</a></li><li class="l3"><a href="#52-a-combined-codeplugbin">5.2 A combined codeplug.bin</a></li><li class="l2"><a href="#6-tests">6. Tests</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Unisciti alla comunità RadioFoundry</strong><span class="small muted">Domande, aiuto con la tua radio e novità, su Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Hai trovato un bug? Vuoi che la tua radio sia supportata?</strong><span class="small muted">Apri una segnalazione su GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry ha licenza MIT · <a href="https://github.com/radiofoundry/radiofoundry">Codice sorgente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunità</a> · <a href="../../../it/docs/index.html">Documenti</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Novità</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

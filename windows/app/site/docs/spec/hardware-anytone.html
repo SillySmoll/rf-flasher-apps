@@ -1,0 +1,675 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware · RadioFoundry</title>
+<meta name="description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware · RadioFoundry">
+<meta property="og:description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:url" content="https://radiofoundry.org/docs/spec/hardware-anytone.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="The radios RadioFoundry runs on, each showing a different screen.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/hardware-anytone.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/hardware-anytone.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/hardware-anytone.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/hardware-anytone.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/hardware-anytone.html">
+<link rel="icon" href="../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../" data-home="../../" data-gl-more="More">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../index.html">
+			<img src="../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Main"><a href="../../radios/index.html">Radios</a><a href="../../features/index.html">Features</a><a href="../../flash/index.html">Install</a><a href="../../codeplug/index.html">Codeplug</a><a href="../../docs/index.html" aria-current="page">Docs</a><a href="../../screenshots/index.html">Screenshots</a><a href="../../tools/index.html">Tools</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Language" title="Language">EN</summary><nav aria-label="Language"><a href="../../docs/spec/hardware-anytone.html" aria-current="true" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../es/docs/spec/hardware-anytone.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../it/docs/spec/hardware-anytone.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../zh/docs/spec/hardware-anytone.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Switch light and dark" title="Switch light and dark">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Specifications">
+		<p class="eyebrow"><a href="../../docs/index.html">Documentation</a> / Specifications</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html" aria-current="page">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<h1 id="anytone-at-d868uv--at-d878uv--at-d578uv-hardware">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</h1>
+<p>Status: facts only. RadioFoundry has no Anytone board. This page collects what is known about the family, what a RadioFoundry port would need, and what is
+still missing. The survey entry is in <a href="radios.html">radios.md</a>. The AT-D868UV pin map in section 4 is not confirmed on a radio (unverified).</p>
+<p><strong>Summary.</strong> These radios are a GD32F303 (or, on late D578UVs, an Artery AT32F43x) <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr> driving a Sicomm SCT3258 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr>
+baseband over an 8-bit parallel host port. The SCT3258 runs DMR layers 1 and 2 and the <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE+2</abbr> vocoder itself, and
+voice audio goes codec ↔ SCT3258 over <abbr class="gl" tabindex="0" title="Inter-IC sound: the bus audio samples travel on between chips." data-more="../dev/glossary.html#t-i2s">I2S</abbr> without passing through the MCU. The <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> chip is the <abbr class="gl" tabindex="0" title="The RF transceiver chip that sets the frequency, deviation and power of many handheld DMR radios. Programmed over I2C." data-more="../dev/glossary.html#t-at1846s">AT1846S</abbr> (or a
+compatible QA4818N), which RadioFoundry already drives. On the AT-D868UV, every bus (the SCT3258 host port, the <abbr class="gl" tabindex="0" title="Liquid crystal display: the radio&#x27;s screen." data-more="../user/22-glossary.html#t-lcd">LCD</abbr>, the <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr>
+<abbr class="gl" tabindex="0" title="The flash chip type that holds large data, such as the codeplug and contacts, in some radios." data-more="../dev/glossary.html#t-nand">NAND</abbr>, the AT1846S and <abbr class="gl" tabindex="0" title="Inter-integrated circuit: a 2-wire bus for small chips such as the RF transceiver." data-more="../dev/glossary.html#t-i2c">I2C</abbr>) is bit-banged on <abbr class="gl" tabindex="0" title="General purpose input/output: a pin the firmware can read or drive." data-more="../dev/glossary.html#t-gpio">GPIO</abbr>: the vendor firmware uses no SPI, I2C or EXMC peripheral. Loading our firmware looks possible: native USB, a documented vendor
+update mode, and <abbr class="gl" tabindex="0" title="Serial wire debug: the two-wire debug port of ARM processors." data-more="../dev/glossary.html#t-swd">SWD</abbr> pads with no read-out protection on the units documented so far. The cost is the baseband.
+RadioFoundry's burst-level modem and vocoder interfaces don't map onto it directly, and features that need the AMBE bits
+(privacy, the <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> voice bridge) aren't possible unless a vocoder bypass is found.</p>
+<p>A value marked <code>(datasheet)</code> is from the Sicomm CT3258 / SCT3258 datasheet and &quot;Packet Interface of CT3258&quot; v1.0 (2015), copies of which are mirrored on hackaday.io; their license is unclear, so cite them, don't copy them into this repository. <code>(unverified)</code> is not confirmed on a radio or in a datasheet.</p>
+<hr />
+<h2 id="1-models-and-chips">1. Models and chips</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>AT-D868UV</th>
+<th>AT-D878UV / UV PLUS, 878UVII PLUS</th>
+<th>AT-D578UV / PLUS / PRO (mobile)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MCU</td>
+<td>GD32F303VET6 (512 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> flash, 64 KB <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr>) on V1 and early V2 boards; GD32F303VGT6 (1 MB, 96 KB) on late V2</td>
+<td>GD32F303VGT6. 878UVII: not found</td>
+<td>GD32F303VKT6 (3 MB flash, 96 KB RAM) until 2022-07-01, then Artery AT32F435/437</td>
+</tr>
+<tr>
+<td>DMR baseband</td>
+<td>Sicomm SCT3258 (CML Microcircuits sells it as SCT3258TD)</td>
+<td>SCT3258</td>
+<td>SCT3258</td>
+</tr>
+<tr>
+<td>Vocoder</td>
+<td><abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE+2</abbr> inside the SCT3258. No separate DVSI chip</td>
+<td>same</td>
+<td>same</td>
+</tr>
+<tr>
+<td>Audio codec</td>
+<td>TI TLV320AIC3204, <abbr class="gl" tabindex="0" title="Inter-IC sound: the bus audio samples travel on between chips." data-more="../dev/glossary.html#t-i2s">I2S</abbr> to the SCT3258</td>
+<td>same</td>
+<td>same</td>
+</tr>
+<tr>
+<td>RF transceiver</td>
+<td><abbr class="gl" tabindex="0" title="The RF transceiver chip that sets the frequency, deviation and power of many handheld DMR radios. Programmed over I2C." data-more="../dev/glossary.html#t-at1846s">AT1846S</abbr>, 26 MHz <abbr class="gl" tabindex="0" title="Temperature compensated crystal oscillator: the stable clock the radio&#x27;s frequency is derived from." data-more="../dev/glossary.html#t-tcxo">TCXO</abbr></td>
+<td>AT1846S</td>
+<td>4× QA4818N (pin-compatible with the AT1846S): two as the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> A/B local oscillators, two as receivers. True dual <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr></td>
+</tr>
+<tr>
+<td>External flash</td>
+<td>1 Gbit <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> <abbr class="gl" tabindex="0" title="The flash chip type that holds large data, such as the codeplug and contacts, in some radios." data-more="../dev/glossary.html#t-nand">NAND</abbr>, Toshiba TC58CVG0S3HRAIG (V2)</td>
+<td>1 Gbit; 878UVII: 2 Gbit (the vendor firmware won't boot on 1 Gbit)</td>
+<td>2 Gbit TC58CVG1S3HRAIG</td>
+</tr>
+<tr>
+<td>FM broadcast</td>
+<td>RDA5802N</td>
+<td>RDA5802N</td>
+<td>RDA5802N</td>
+</tr>
+<tr>
+<td>PA</td>
+<td>2× NXP AFT05MS006</td>
+<td>same</td>
+<td>2× AFT05MP075N</td>
+</tr>
+<tr>
+<td>Audio amp</td>
+<td>HM8872</td>
+<td>HM8872</td>
+<td>2× YD1517P, push-pull</td>
+</tr>
+<tr>
+<td>GPS</td>
+<td>Fitted on some units (community pages say some have none). USART1, 9600 baud, <abbr class="gl" tabindex="0" title="The text format GPS receivers use to report position and time." data-more="../user/22-glossary.html#t-nmea">NMEA</abbr></td>
+<td>ATGM336H or T3RV1 (GPS + BDS)</td>
+<td>ATGM336H</td>
+</tr>
+<tr>
+<td>Bluetooth</td>
+<td>none</td>
+<td>PLUS: Beken BK3260 module. 878UVII: a daughter board with Bluetooth and an <abbr class="gl" tabindex="0" title="Frequency shift keying: data as frequency steps. DMR uses 4-level FSK." data-more="../dev/glossary.html#t-fsk">FSK</abbr> receiver for <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr>, with its own firmware (&quot;BHT_BOARD&quot;)</td>
+<td>PLUS: the same daughter board; &quot;BT01&quot; module</td>
+</tr>
+<tr>
+<td>Display</td>
+<td>ST7735S-compatible, 128×160, RGB565, 8-bit 8080 parallel bus (section 4.2)</td>
+<td>1.77&quot; color TFT, 160×128 (unverified, from the size); controller not found</td>
+<td>not found</td>
+</tr>
+<tr>
+<td>Accelerometer</td>
+<td>NXP MMA8653FC (<abbr class="gl" tabindex="0" title="Inter-integrated circuit: a 2-wire bus for small chips such as the RF transceiver." data-more="../dev/glossary.html#t-i2c">I2C</abbr> 0x1D, WHO_AM_I 0x5A). The firmware probes for it, so it may not be fitted</td>
+<td>not checked</td>
+<td>not checked</td>
+</tr>
+<tr>
+<td>Other MCUs</td>
+<td>none known</td>
+<td>the BT/APRS daughter board</td>
+<td>the BT/APRS board and a small <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr> in the handheld microphone</td>
+</tr>
+</tbody>
+</table></div>
+<p>The 868UV ships two firmware lines, 1.xx and 2.xx (package &quot;D868UVE-FW-1.40&amp;2.40&quot;). Which hardware each line is
+for isn't stated in the package. The line probably follows the board version (unverified).</p>
+<h2 id="2-sct3258-baseband">2. SCT3258 baseband</h2>
+<h3 id="21-chip">2.1 Chip</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Finding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Package</td>
+<td>QFN64. Core 1.2 V, I/O 2.5–3.3 V (datasheet)</td>
+</tr>
+<tr>
+<td>Clock</td>
+<td>12.288 MHz input; on-chip <abbr class="gl" tabindex="0" title="Phase locked loop: the circuit that holds the radio&#x27;s synthesizer on its frequency." data-more="../dev/glossary.html#t-pll">PLL</abbr> up to 110.592 MHz (datasheet)</td>
+</tr>
+<tr>
+<td>Host port (HPI)</td>
+<td>8-bit asynchronous parallel bus, Intel or Motorola timing. PIO1 at reset selects which (low = Intel). HOBIB is a handshake line for the host. 64-word FIFOs (datasheet)</td>
+</tr>
+<tr>
+<td>Audio</td>
+<td>Two serial ports: one for the codec (<abbr class="gl" tabindex="0" title="Inter-IC sound: the bus audio samples travel on between chips." data-more="../dev/glossary.html#t-i2s">I2S</abbr>, 16-bit stereo, 24 kHz), one for an optional external <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">vocoder</abbr> (AMBE-3000 timing modes) (datasheet)</td>
+</tr>
+<tr>
+<td>Firmware</td>
+<td>Held in the chip's own flash: application (&quot;UserFlash&quot;) and several vocoder images (the vendor tool loads &quot;Vocoder1, 2, 4, 5&quot;). The vocoders are enabled per chip by separate &quot;Activation&quot; and &quot;Voice Activation&quot; files</td>
+</tr>
+<tr>
+<td>Slot timing</td>
+<td>PIO3 can output a 60 ms slot signal (high = slot 1) (datasheet)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="22-boot">2.2 Boot</h3>
+<p>After every reset the chip waits for <strong>exactly 1024 16-bit words</strong> over the HPI (16-bit mode, low byte first). It
+runs them at once. That block normally holds a second-stage loader, which starts the application from the chip's
+flash. <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> and dPMR use different boot blocks, and the block chosen sets the chip's mode. On success the chip sends
+the packet <code>84 A9 61 00 02 20 17 01</code> (datasheet).</p>
+<p>So the <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr> firmware must hold this 1024-word block and send it at every power-on. It is Sicomm's code. RadioFoundry can't
+ship it, so like the AMBE codec on other radios, it has to come from the user's own radio.</p>
+<p>The vendor firmware keeps it in the application image (internal flash), not in the <abbr class="gl" tabindex="0" title="The flash chip type that holds large data, such as the codeplug and contacts, in some radios." data-more="../dev/glossary.html#t-nand">NAND</abbr>. The 2048 bytes are the
+same in every image examined (868 V1.40 and V2.40, 878 and 878UVII 3.08n, 578 GD 2.08). SHA-256 of the block:
+<code>743515b9f7cd90737c1fff29b652b7558bc5a56487ec38df4fdea8877e7a619a</code>. A mode setting (0–3) makes the firmware
+replace one or two bytes while sending it (offsets 0x34C and 0x352, or 0x45C–0x45D); mode 0 sends it as stored.
+What the modes select isn't known yet. An extraction tool can find the block in any vendor image by its hash.</p>
+<p>Reset sequence on the 868: two enable outputs go high, the PIO1 strap line is driven low (Intel mode), RSTN is
+pulsed high for 100 ms and then held low for at least 500 ms. RSTN then goes high, the strap line is released to a
+pulled-down input, and the boot block follows over the host port.</p>
+<h3 id="23-packet-interface">2.3 Packet interface</h3>
+<p>Commands and reports are packets with a header (<code>84 A9 61 ...</code>), a TYPE byte and fields. TYPE bits: 7 external
+vocoder bypass, 6 codec bypass (the bytes go straight to the codec), 5 read/write, 4 near/far end, 3–0 packet type.
+Fields cover vocoder selection (<code>VOCODER_SEL</code>: 4 = AMBE+2, 16 = analog), mode (<code>PROCESS_MODE</code>), <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr>,
+call options, slot, work mode (<abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> / <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> / duplex), gains, <abbr class="gl" tabindex="0" title="Bit error rate: the share of received bits that were wrong. A measure of how clean a signal is." data-more="../dev/glossary.html#t-ber">BER</abbr> test, tones, record and playback, and calibration (datasheet).</p>
+<p>Two DMR modes (DS, packet interface 2.3):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>The chip does</th>
+<th>The MCU does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Easy mode (layer 3)</td>
+<td>Layers 1–3 per <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">TS</abbr> 102 361: dialing, ID and group matching, call setup</td>
+<td><code>DMR_CALL_START</code>, <code>CALL_STOP</code>; reacts to match reports</td>
+</tr>
+<tr>
+<td>Layer 2 mode</td>
+<td>Layers 1 and 2: <abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="../dev/glossary.html#t-fec">FEC</abbr>, burst building, 4FSK, sync, slot timing</td>
+<td>Layer 3 and up, through <code>DIGC_DATA_FRAME</code>: <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr> headers, terminators, the LC for voice superframes, data blocks. Frames must go to the chip every 60 ms, no more and no less often</td>
+</tr>
+</tbody>
+</table></div>
+<p>Voice in layer 2 mode: the MCU sends the full LC (9 bytes, without <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr>) for the voice header, terminator and voice
+bursts. The AMBE bits come from the chip's own vocoder (datasheet). Encoded voice passes over the packet interface
+(<code>CHAN_D</code>, 36 bytes per 80 ms) <strong>in dPMR mode only</strong> (datasheet). The manual also has <abbr class="gl" tabindex="0" title="Base station: the repeater or modem side of a DMR link, as opposed to the radio (MS)." data-more="../dev/glossary.html#t-bs">base station</abbr> activation (continuous
+outbound with <abbr class="gl" tabindex="0" title="Common announcement channel: 24 bits ahead of each burst a repeater sends. It carries the slot number and short link control." data-more="../dev/glossary.html#t-cach">CACH</abbr>) and listen-before-transmit (DS 2.3.4–2.3.5).</p>
+<h3 id="24-fit-with-radiofoundry">2.4 Fit with RadioFoundry</h3>
+<p>RadioFoundry's <code>hal_dmr_modem</code> takes bursts and gives burst events. <code>hal_vocoder</code> converts <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> frames to and from 49-bit
+frames. On the SCT3258:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>RadioFoundry function</th>
+<th>Layer 2 mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Voice calls, group and private, talker alias, embedded GPS</td>
+<td>Yes: the stack builds the LC; the chip does the bursts and voice</td>
+</tr>
+<tr>
+<td>CSBK, data headers, rate 1/2, 3/4, 1 data (SMS, IP over DMR, LRRP, ARS)</td>
+<td>Likely, through <code>DIGC_DATA_FRAME</code> data types. Needs confirming per data type</td>
+</tr>
+<tr>
+<td>Basic privacy (Motorola, Anytone BP)</td>
+<td>Not by RadioFoundry: it XORs the AMBE bits, which the MCU never sees. The chip may have its own scrambler (not checked)</td>
+</tr>
+<tr>
+<td>Hotspot / MMDVM voice bridge, voice relay from the network</td>
+<td>Not unless AMBE frames can be passed through in DMR mode</td>
+</tr>
+<tr>
+<td>RadioFoundry's own FEC and burst code (<code>core/dmr/fec</code>, <code>ambeFec</code>)</td>
+<td>Unused: the chip does it</td>
+</tr>
+<tr>
+<td>Split duplex, the hotspot's BS outbound</td>
+<td>Maybe, through base station activation; voice still needs the AMBE bits</td>
+</tr>
+<tr>
+<td>The software vocoder (<code>hal_vocoder</code>)</td>
+<td>Not needed. A <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr> reports the vocoder as hosted by the modem</td>
+</tr>
+</tbody>
+</table></div>
+<p>A port therefore needs a modem driver that turns the burst queue into <code>DIGC_DATA_FRAME</code> commands, plus a way for the
+core to know that voice frames don't pass through the MCU on this radio, so the features above are hidden
+(a <code>board_t</code> capability, so other radios are unaffected).</p>
+<h3 id="25-what-the-vendor-firmware-does">2.5 What the vendor firmware does</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Finding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DMR mode</td>
+<td>Layer 3 easy mode for voice: the firmware sets <code>DMR_FLC</code>, <code>DMR_CC</code>, <code>DMR_CALLED_ID_BCD</code>, <code>DMR_OWN_ID_BCD</code>, <code>DMR_CALL_OPTION</code>, <code>DMR_CALL_SLOT</code>, <code>DMR_OFFSET</code> and starts calls with <code>DMR_CALL_START</code>. <code>DIGC_DATA_FRAME</code> is used only in a small group of functions (data services)</td>
+</tr>
+<tr>
+<td>Encoded voice to and from the MCU</td>
+<td>Used in DMR mode for call recording and playback. <code>VOCODER_IO_SET</code> is sent with values 0x04, 0x08, 0x10, 0x20 and 0x40 (0 to end), and voice moves in <code>CHAN_D</code> fields with 36-byte payloads, stored in and read back from the NAND. 0x40 feeds the modulator from the MCU, so a recorded call can be transmitted. So the v1.0 manual's &quot;dPMR only&quot; note doesn't hold for the chip firmware these radios run. 36 bytes per 80 ms fits four 72-bit (FEC-coded) AMBE+2 frames (unverified)</td>
+</tr>
+<tr>
+<td>Codec</td>
+<td>Programmed through the SCT3258: about 20 small codec-bypass packets (TYPE bit 6), plus <code>CODEC_SELECT</code>, <code>SET_I2C_ADDRESS</code> and <code>I2C_OPERATION</code>. The MCU has no direct link to the codec</td>
+</tr>
+<tr>
+<td>Scrambler</td>
+<td><code>SCRAMBLER_SEED</code> is used (the radio's <abbr class="gl" tabindex="0" title="A fixed voice scrambling from Motorola and Anytone radios. Not encryption." data-more="../user/22-glossary.html#t-basic-privacy">basic privacy</abbr>, unverified)</td>
+</tr>
+<tr>
+<td>Other fields</td>
+<td>Gains (<code>MOD_GAIN</code>, <code>DEMOD_GAIN</code>, <code>DIGI_MIC_GAIN</code>, <code>DIGI_SPEAKER_GAIN</code>, <code>MISC_GAIN</code>), <code>ANALOG_CONFIG</code>, <code>CTC_PARAM</code>, <code>ANALOG_SUBAUDIO</code>, <code>DC_OFFSET</code>, <code>IQCOMP_COEF</code>, <code>AFC_CONFIG</code>, <code>MODOUT_CONFIG</code>, <code>EQUALIZER_FILTER</code>, <code>SQ_LEVEL</code>, <code>BER_REPORT</code>, <code>PARITY_ENABLE</code>. Two field IDs, 0x2B and 0x3B, aren't in the v1.0 manual</td>
+</tr>
+</tbody>
+</table></div>
+<p>This changes the fit in 2.4: if <code>CHAN_D</code> carries the AMBE frames in DMR mode, privacy and the <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> voice bridge
+are possible on this baseband, either in easy mode with the vocoder routed through the MCU or in layer 2 mode. To
+confirm on the radio: the <code>CHAN_D</code> frame format in DMR mode and its timing against the 60 ms slots.</p>
+<h2 id="3-update-and-recovery">3. Update and recovery</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Finding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PC link</td>
+<td>Native USB on the <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr>, a CDC serial port (<code>/dev/ttyACM*</code>). The cable is a plain USB cable; the baud setting makes no difference</td>
+</tr>
+<tr>
+<td>MCU update mode, 868/878</td>
+<td>Hold PTT + PF3 (top key) at power-on; the red <abbr class="gl" tabindex="0" title="Light-emitting diode: the radio&#x27;s status light." data-more="../user/22-glossary.html#t-led">LED</abbr> blinks</td>
+</tr>
+<tr>
+<td>MCU update mode, 578</td>
+<td>Hold MENU + EXIT at power-on (or while switching off); the status LED blinks. The radio stays in update mode until an update is written</td>
+</tr>
+<tr>
+<td>Vendor tool</td>
+<td><abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> → Tool → Firmware and Icon Update (&quot;QX_Firmware_Update&quot;): opens a <code>.spi</code> file, shows model and version, 921600 baud, a &quot;Duplex&quot; option and a grayed-out &quot;Encrypt&quot; option</td>
+</tr>
+<tr>
+<td>Update files</td>
+<td>Three per update: <code>.spi</code> (14 or 51 bytes, the file the user opens), <code>.CDI</code> (278 bytes for firmware, about 11 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> for icon sets), <code>.CDD</code> (the payload). The icon (graphics) update uses the same tool and file set</td>
+</tr>
+<tr>
+<td>Image sizes (.CDD)</td>
+<td>D878UV 3.08n: 939,168 bytes. D878UVII 3.08n: 939,240. D578UV2 GD 2.08: 1,020,408. D578UV2 <abbr class="gl" tabindex="0" title="Access type: the TACT bit that tells a radio whether the slot is free to transmit in." data-more="../dev/glossary.html#t-at">AT</abbr> 2.08: 1,040,008. Icon sets: 3.7 MB (878), 2.1–7.3 MB (578)</td>
+</tr>
+<tr>
+<td>Model check</td>
+<td>The 578 has separate GD and AT images, and the CPS refuses the wrong one, so the files carry a model / MCU identity</td>
+</tr>
+<tr>
+<td>Transfer</td>
+<td>The host sends &quot;UPDATE&quot;, then the .CDD in 32-byte packets with an additive checksum. The image is staged in the external flash and installed on the next boot</td>
+</tr>
+<tr>
+<td>After the update</td>
+<td>&quot;MCU reboot&quot;: PTT + PF1 at power-on (578: P2 + channel knob), confirm, set the date and time. This initializes the radio and erases the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr></td>
+</tr>
+<tr>
+<td>Encryption, signing</td>
+<td>None on the images examined: each .CDD is a plain Cortex-M image starting with its vector table. The tool's grayed &quot;Encrypt&quot; option shows the format can carry encryption</td>
+</tr>
+<tr>
+<td>Bootloader</td>
+<td>Anytone's own, internal flash 0x08000000–0x08003FFF; application from 0x08004000</td>
+</tr>
+<tr>
+<td>SWD</td>
+<td>Pads marked &quot;AF&quot; beside the MCU. A documented 868 → 878 conversion read and wrote internal flash with an ST-LINK, so read-out protection was off on those radios. Recovery from a bad write: hold NRST (MCU pin 14) low</td>
+</tr>
+<tr>
+<td>SWD while running</td>
+<td>The vendor application turns SWJ off early in its init (AFIO remap: SWJ fully disabled) and reuses PA13/PA14 as inputs. A debugger must connect under reset (NRST held low)</td>
+</tr>
+<tr>
+<td>SCT3258 update</td>
+<td>Separate &quot;Boot Mode for Sct&quot;: hold # + the top key at power-on. Sicomm's SCT_PORT tool talks to the chip through the radio's COM port (9600 shown) and writes an Intel-hex file (<code>SCT3258TD_UpdateFlash_V2_01_07BF.hex</code> in the 578 package)</td>
+</tr>
+<tr>
+<td>SCT pass-through</td>
+<td>In that mode the MCU is a transparent bridge: USB OUT data is written to the host port unchanged, and whenever HOBIB signals data the MCU reads the <abbr class="gl" tabindex="0" title="First in, first out: a queue of data between a producer and a consumer." data-more="../dev/glossary.html#t-fifo">FIFO</abbr> and returns it over USB. The PC tool speaks the SCT3258 packet protocol itself</td>
+</tr>
+<tr>
+<td>MCU ROM bootloader</td>
+<td>Whether BOOT0 is reachable on the board is not known (GD32F303 and AT32F43x both have a <abbr class="gl" tabindex="0" title="Read-only memory: code fixed in the chip." data-more="../dev/glossary.html#t-rom">ROM</abbr> USB/UART loader)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="4-at-d868uv-pin-map">4. AT-D868UV pin map</h2>
+<p>On the 868 (V2.40). V1.40 drives the same buses on the same pins; it differs in a few key
+inputs (pull-down instead of pull-up, not yet confirmed) and adds outputs PC10 and PC11. All buses are bit-banged:
+the firmware sets and clears pins one at a time. RadioFoundry can do the same, or move a bus to a hardware peripheral where
+the pins allow it (the <abbr class="gl" tabindex="0" title="The flash chip type that holds large data, such as the codeplug and contacts, in some radios." data-more="../dev/glossary.html#t-nand">NAND</abbr>, <abbr class="gl" tabindex="0" title="Liquid crystal display: the radio&#x27;s screen." data-more="../user/22-glossary.html#t-lcd">LCD</abbr> and host port pins don't match the GD32F303 <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> or EXMC pin options).</p>
+<h3 id="41-buses">4.1 Buses</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Bus</th>
+<th>Pins</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SCT3258 host port (HPI)</td>
+<td>Data PD8–PD15. HCSN PD2, HWRN PD3, HRDN PD4 (active low). HOBIB PD5 (input, low = data waiting)</td>
+<td>Intel mode. The data pins switch between push-pull output and input (whole PD8–15 group). Single-byte and block reads and writes, with a short busy-wait between strobes</td>
+</tr>
+<tr>
+<td>SCT3258 control</td>
+<td>RSTN PD6. PIO1 strap PC12. Enables PA8, PC6 (both high before reset)</td>
+<td>Sequence in 2.2</td>
+</tr>
+<tr>
+<td>LCD (8080, 8-bit)</td>
+<td>Data PE7–PE14 (bit 0 on PE7). RS/DC PB10 (low = command). CS PB12, WR PB13 (active low). RD PE15 (held high). RESET PB11</td>
+<td>Section 4.2</td>
+</tr>
+<tr>
+<td>Keypad</td>
+<td>Drive lines PE7–PE14 (shared with the LCD data bus). Sense inputs with pull-ups: PA10, PA14, PE1, PB1, PB2, PC5</td>
+<td>Scanned between LCD writes</td>
+</tr>
+<tr>
+<td>Channel knob</td>
+<td>PC8, PC9 (quadrature, EXTI on both)</td>
+<td>Direction from comparing the two pins at each edge</td>
+</tr>
+<tr>
+<td>AT1846S</td>
+<td>SCLK PB3, SDIO PB4 (bidirectional), SEN PB5 (active low)</td>
+<td>3-wire: 8-bit address (bit 7 set = read) then 16-bit data, <abbr class="gl" tabindex="0" title="Most significant bit (or byte): the first, highest-value one." data-more="../dev/glossary.html#t-msb">MSB</abbr> first</td>
+</tr>
+<tr>
+<td>SPI NAND</td>
+<td>CS PB8, CLK PB14, MOSI/IO0 PB15, MISO/IO1 PA15</td>
+<td>Mode 0, MSB first. Reads use dual output (two bits per clock on PA15 and PB15). JEDEC ID 0x9F: the firmware accepts manufacturer 0xC8 (GigaDevice) and 0x98 (Toshiba)</td>
+</tr>
+<tr>
+<td>I2C</td>
+<td>SCL PB6, SDA PB7</td>
+<td>Devices: 0x10 (RDA5802 FM receiver, sequential register writes), 0x1D (MMA8653FC accelerometer)</td>
+</tr>
+<tr>
+<td>GPS UART</td>
+<td>USART1: <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> PA2, <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> PA3, 9600 baud</td>
+<td><abbr class="gl" tabindex="0" title="The text format GPS receivers use to report position and time." data-more="../user/22-glossary.html#t-nmea">NMEA</abbr> parser present ($GPRMC, $GNRMC, $GPGGA, $GPGSV, $PMTK commands). Some 868 units have a GPS fitted</td>
+</tr>
+<tr>
+<td>USB</td>
+<td>PA11, PA12 (USB FS device)</td>
+<td>CDC serial</td>
+</tr>
+</tbody>
+</table></div>
+<p>The audio codec is not on the <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr>'s <abbr class="gl" tabindex="0" title="Inter-integrated circuit: a 2-wire bus for small chips such as the RF transceiver." data-more="../dev/glossary.html#t-i2c">I2C</abbr> bus. The SCT3258's PIO0/PIO1 are an I2C master in its preloaded firmware
+(datasheet), so the codec is probably set up by the baseband (unverified, not confirmed).</p>
+<h3 id="42-display">4.2 Display</h3>
+<p>The vendor init sequence is an ST7735S-class controller: reset low 100 ms, then 500 ms; SLPOUT, 120 ms; frame
+rate B1/B2/B3 = 01 01 01; inversion B4 = 03; power C0 = 28 08 84, C1 = C0, C2 = 0C 00, C3 = 8C 2A, C4 = 8A EE;
+VCOM C5 = 0C; MADCTL = 0x88; gamma E0/E1; COLMOD = 0x55 (16-bit RGB565); column 0–0x80, row 0–0xA0. That is a
+128×160 panel addressed in portrait. RadioFoundry's <code>st7735</code> driver covers the controller; it needs a parallel-bus
+transport instead of SPI.</p>
+<h3 id="43-other-io">4.3 Other I/O</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Pin</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PA4</td>
+<td><abbr class="gl" tabindex="0" title="Digital to analog converter." data-more="../dev/glossary.html#t-dac">DAC</abbr> channel 1 (12-bit): TX power level. Value from the calibration tables (4.4) by power level and frequency</td>
+</tr>
+<tr>
+<td>PA5</td>
+<td>DAC channel 2 (configured, use not seen)</td>
+</tr>
+<tr>
+<td>PA6</td>
+<td>12-bit <abbr class="gl" tabindex="0" title="Pulse width modulation: a pin switched on and off to give an average level, as for backlight or tone." data-more="../dev/glossary.html#t-pwm">PWM</abbr> (TIMER2 channel 0)</td>
+</tr>
+<tr>
+<td>PB0</td>
+<td>12-bit PWM (TIMER2 channel 2) or plain output</td>
+</tr>
+<tr>
+<td>PB9</td>
+<td>PWM (TIMER3 channel 3), switched off to analog when idle; probably the tone output</td>
+</tr>
+<tr>
+<td>PC0, PC1, PC2</td>
+<td><abbr class="gl" tabindex="0" title="Analog to digital converter." data-more="../dev/glossary.html#t-adc">ADC</abbr> channels 10, 11, 12 (battery voltage and others)</td>
+</tr>
+<tr>
+<td>PD0</td>
+<td>Input with interrupt, acted on only while transmitting: high → PC4 and PE6 on and DAC0 at the power level; low → all off. Most likely the SCT3258 PIO3 slot-timing output, so the <abbr class="gl" tabindex="0" title="Power amplifier: the stage that boosts the transmit signal to the output power." data-more="../dev/glossary.html#t-pa">PA</abbr> is keyed per <abbr class="gl" tabindex="0" title="Time division multiple access. A DMR channel carries two conversations by alternating them in 30 ms slots." data-more="../dev/glossary.html#t-tdma">TDMA</abbr> slot</td>
+</tr>
+<tr>
+<td>PA0</td>
+<td>Input, pull-up, read at start-up (power key or wake, unverified)</td>
+</tr>
+<tr>
+<td>PA7, PE0</td>
+<td>Outputs switched with the tone generator and on RX/TX changes. PA7 is probably the speaker amplifier enable</td>
+</tr>
+<tr>
+<td>PA1, PC3, PC4, PC13, PD1, PD7, PC7, PE2–PE6</td>
+<td>Outputs; function not identified. PE3–PE5 are turned off in the SCT pass-through mode</td>
+</tr>
+</tbody>
+</table></div>
+<p>The two PWM outputs (PA6, PB0) are probably the LCD backlight and a tuning voltage; not checked (unverified).</p>
+<h3 id="44-calibration-and-settings-in-the-nand">4.4 Calibration and settings in the NAND</h3>
+<p>The radio's calibration is in the SPI NAND: a primary copy at byte address 0x02F60000 and a fallback at
+0x02F80000, used when the primary fails its check. It is about 1.5 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> of small blocks at fixed offsets. Two of them
+match the bands: four 81-byte tables (one value per MHz, 400–480 MHz) and four 39-byte tables (136–174 MHz), one
+of each per TX power level. The TX power DAC value is taken from them. The radio settings are a 34-byte record
+with an A/B pair at 0x02501000 and 0x02521000.</p>
+<p>A port must read this calibration from the radio's own NAND and never overwrite it. If the vendor programming protocol
+addresses the NAND directly (the public flash-tool notes use 32-bit addresses in this range), the calibration can
+be read over USB before RadioFoundry is installed. Not yet confirmed.</p>
+<h3 id="45-at1846s-setup">4.5 AT1846S setup</h3>
+<p>The vendor firmware programs the <abbr class="gl" tabindex="0" title="The RF transceiver chip that sets the frequency, deviation and power of many handheld DMR radios. Programmed over I2C." data-more="../dev/glossary.html#t-at1846s">AT1846S</abbr> with a common table, two band and bandwidth tables (each with two variants)
+and the <abbr class="gl" tabindex="0" title="Automatic gain control: the receiver adjusting itself to the signal level." data-more="../dev/glossary.html#t-agc">AGC</abbr> gain table on register page 1. TX and RX switch through register 0x30. The values are kept in the
+reference directory notes, not here. RadioFoundry's AT1846S driver already covers the chip; the per-radio values come from
+the user's radio and its calibration.</p>
+<h2 id="5-what-a-port-needs">5. What a port needs</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>RadioFoundry has</th>
+<th>New work</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MCU</td>
+<td><code>platform/stm32f4</code> (a different family)</td>
+<td><code>platform/gd32f30x</code> (clock tree, <abbr class="gl" tabindex="0" title="General purpose input/output: a pin the firmware can read or drive." data-more="../dev/glossary.html#t-gpio">GPIO</abbr>, timers, <abbr class="gl" tabindex="0" title="Digital to analog converter." data-more="../dev/glossary.html#t-dac">DAC</abbr>, <abbr class="gl" tabindex="0" title="Analog to digital converter." data-more="../dev/glossary.html#t-adc">ADC</abbr>, USART, USB FS device). The AT32F43x for late 578s is a second platform</td>
+</tr>
+<tr>
+<td>Baseband</td>
+<td>none</td>
+<td><code>drivers/modem/sct3258</code>: bit-banged HPI on GPIO, reset and boot block load, packet framing, layer 2 mode, 60 ms pacing, calibration</td>
+</tr>
+<tr>
+<td>Boot block</td>
+<td>none</td>
+<td>A tool that finds the 2048-byte block in the user's vendor image by its hash (2.2) and puts it where our firmware reads it, like the codec tools</td>
+</tr>
+<tr>
+<td>RF</td>
+<td><code>drivers/rf/at1846s</code></td>
+<td>A bit-banged 3-wire transport; per-radio tuning tables; QA4818N compatibility on the 578</td>
+</tr>
+<tr>
+<td>Audio codec</td>
+<td>none</td>
+<td>Codec setup sent through the SCT3258 (codec-bypass packets or <code>I2C_OPERATION</code>); register values to work out from the TLV320AIC3204 datasheet</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td><abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> <abbr class="gl" tabindex="0" title="The flash chip type that holds code and can run it in place." data-more="../dev/glossary.html#t-nor">NOR</abbr> drivers</td>
+<td>SPI <abbr class="gl" tabindex="0" title="The flash chip type that holds large data, such as the codeplug and contacts, in some radios." data-more="../dev/glossary.html#t-nand">NAND</abbr> driver (bit-banged, dual-output read) with bad-block handling; two vendors (also needed by the DB25-D and GD-88)</td>
+</tr>
+<tr>
+<td>Display</td>
+<td><code>st7735</code>, <code>st7789</code></td>
+<td>An 8080 parallel transport for <code>st7735</code>, sharing its data lines with the keypad scan</td>
+</tr>
+<tr>
+<td>Flashing</td>
+<td>rfoundry (<abbr class="gl" tabindex="0" title="Device Firmware Upgrade: the USB protocol of the radio&#x27;s bootloader." data-more="../user/22-glossary.html#t-dfu">DFU</abbr>, <abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="../dev/glossary.html#t-uart">UART</abbr> loaders)</td>
+<td>The Anytone update protocol over USB CDC, or <abbr class="gl" tabindex="0" title="Serial wire debug: the two-wire debug port of ARM processors." data-more="../dev/glossary.html#t-swd">SWD</abbr> under reset for the first bring-up</td>
+</tr>
+<tr>
+<td>Calibration</td>
+<td>per-radio readers</td>
+<td>A reader for the NAND calibration block (4.4), read-only</td>
+</tr>
+<tr>
+<td>Core</td>
+<td>—</td>
+<td>A capability for &quot;voice frames stay in the modem&quot;, in case <code>CHAN_D</code> pass-through turns out unusable in <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="6-open-questions">6. Open questions</h2>
+<ol>
+<li><strong>Board version</strong>: the 868UV's version and <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr> (VET6 with 64 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr>, or VGT6). Read the MCU marking, or read the
+ID code over <abbr class="gl" tabindex="0" title="Serial wire debug: the two-wire debug port of ARM processors." data-more="../dev/glossary.html#t-swd">SWD</abbr>. The 868 images of both lines fit 64 KB RAM.</li>
+<li><strong>The unidentified 868 outputs</strong> (4.3) and the <abbr class="gl" tabindex="0" title="Digital to analog converter." data-more="../dev/glossary.html#t-dac">DAC</abbr> and <abbr class="gl" tabindex="0" title="Pulse width modulation: a pin switched on and off to give an average level, as for backlight or tone." data-more="../dev/glossary.html#t-pwm">PWM</abbr> roles. Next step: confirm on the radio with a meter.</li>
+<li><strong>878 and 578 pin maps</strong>: not yet recorded. The 878 has a larger display.</li>
+<li><strong>The .CDD format</strong>: plain, a Cortex-M image linked at 0x08004000 (868/878) or 0x08006000 (578). Still open:
+the 878 trailer after the stated length, how the identity check works, and whether the vendor update mode loads
+any image. The update protocol lives in the bootloader, which isn't in the update files.</li>
+<li><strong>Boot block modes</strong>: what the four patch modes select (<abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> or dPMR, clock, HPI options).</li>
+<li><strong><abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE</abbr> pass-through in DMR mode.</strong> The vendor firmware uses <code>VOCODER_IO_SET</code> and <code>CHAN_D</code> in its DMR build
+(2.5). Still to confirm on the radio: the 36-byte <code>CHAN_D</code> format and timing in DMR. It decides whether privacy
+and the <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> voice bridge are possible.</li>
+<li><strong>Data types</strong> that <code>DIGC_DATA_FRAME</code> accepts in layer 2 mode (<abbr class="gl" tabindex="0" title="Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control." data-more="dmr-data.html">CSBK</abbr>, rate 1/2, 3/4, 1, <abbr class="gl" tabindex="0" title="Unified data transport: DMR short data sent as a plain block of bytes." data-more="../dev/glossary.html#t-udt">UDT</abbr>) and whether
+the chip filters any of them. (The vendor firmware uses easy mode for voice, 2.5.)</li>
+<li><strong>Calibration over USB</strong>: whether the vendor programming protocol reads <abbr class="gl" tabindex="0" title="The flash chip type that holds large data, such as the codeplug and contacts, in some radios." data-more="../dev/glossary.html#t-nand">NAND</abbr> addresses directly (4.4).</li>
+<li><strong>Read-out protection</strong> on current production radios, and whether BOOT0 is reachable for recovery.</li>
+<li><strong>878UVII MCU</strong>, and <strong>the AT32F43x pin map</strong> on late 578s.</li>
+</ol>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>CT3258 datasheet (2015): <a href="https://cdn.hackaday.io/files/1642237026116832/CT3258_datasheet.pdf">https://cdn.hackaday.io/files/1642237026116832/CT3258_datasheet.pdf</a></li>
+<li>SCT3258 datasheet v2.0: <a href="https://cdn.hackaday.io/files/1642237026116832/SCT3258_datasheet_v2_0.pdf">https://cdn.hackaday.io/files/1642237026116832/SCT3258_datasheet_v2_0.pdf</a></li>
+<li>Packet Interface of CT3258 v1.0: <a href="https://cdn.hackaday.io/files/1642237026116832/CT3258_Packet_Interface.pdf">https://cdn.hackaday.io/files/1642237026116832/CT3258_Packet_Interface.pdf</a></li>
+<li>CML Microcircuits SCT3258TD: <a href="https://www.cmlmicro.com/products/sct3258td-dmr-dpmr-analog-processor/">https://www.cmlmicro.com/products/sct3258td-dmr-dpmr-analog-processor/</a></li>
+<li>D878UV technical mods: <a href="https://hamradiosouthernrepeaters.co.uk/images/878Mods/878techmods.html">https://hamradiosouthernrepeaters.co.uk/images/878Mods/878techmods.html</a></li>
+<li>D578UV technical mods: <a href="https://www.hamradiosouthernrepeaters.co.uk/images/578Mods/578techmods.html">https://www.hamradiosouthernrepeaters.co.uk/images/578Mods/578techmods.html</a></li>
+<li>868UV mods: <a href="http://members.optuszoo.com.au/jason.reilly1/868mods.htm">http://members.optuszoo.com.au/jason.reilly1/868mods.htm</a></li>
+<li>F5UII, converting an AT-D868UV to an AT-D878UV over <abbr class="gl" tabindex="0" title="Serial wire debug: the two-wire debug port of ARM processors." data-more="../dev/glossary.html#t-swd">SWD</abbr>:
+<a href="https://www.f5uii.net/en/convert-at-d868uv-to-at-d878uv-analog-aprs-roaming/amp/">https://www.f5uii.net/en/convert-at-d868uv-to-at-d878uv-analog-aprs-roaming/amp/</a></li>
+<li>anytone-flash-tools protocol notes (prose only):
+<a href="https://github.com/reald/anytone-flash-tools/blob/master/at-d878uv_protocol.md">https://github.com/reald/anytone-flash-tools/blob/master/at-d878uv_protocol.md</a></li>
+<li>Vendor update packages (Anytone / BridgeCom): D868UVE FW 1.40 and 2.40, D878UV PLUS and D878UVII PLUS 3.08N
+(2025-06-14), D578UV PLUS 2.08 (2024-06-19), AT-D578 PRO 1.21; their &quot;Firmware Update Instructions&quot;, &quot;D878UV IC
+3258 Base Band Update&quot; and &quot;D578UV FW Update Including <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr> Reboot&quot; PDFs</li>
+</ul>
+
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/hardware-anytone.md">View the source of this page</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="On this page">
+		<p class="eyebrow">On this page</p>
+		<ul><li class="l2"><a href="#1-models-and-chips">1. Models and chips</a></li><li class="l2"><a href="#2-sct3258-baseband">2. SCT3258 baseband</a></li><li class="l3"><a href="#21-chip">2.1 Chip</a></li><li class="l3"><a href="#22-boot">2.2 Boot</a></li><li class="l3"><a href="#23-packet-interface">2.3 Packet interface</a></li><li class="l3"><a href="#24-fit-with-radiofoundry">2.4 Fit with RadioFoundry</a></li><li class="l3"><a href="#25-what-the-vendor-firmware-does">2.5 What the vendor firmware does</a></li><li class="l2"><a href="#3-update-and-recovery">3. Update and recovery</a></li><li class="l2"><a href="#4-at-d868uv-pin-map">4. AT-D868UV pin map</a></li><li class="l3"><a href="#41-buses">4.1 Buses</a></li><li class="l3"><a href="#42-display">4.2 Display</a></li><li class="l3"><a href="#43-other-io">4.3 Other I/O</a></li><li class="l3"><a href="#44-calibration-and-settings-in-the-nand">4.4 Calibration and settings in the NAND</a></li><li class="l3"><a href="#45-at1846s-setup">4.5 AT1846S setup</a></li><li class="l2"><a href="#5-what-a-port-needs">5. What a port needs</a></li><li class="l2"><a href="#6-open-questions">6. Open questions</a></li><li class="l2"><a href="#sources">Sources</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Join the RadioFoundry community</strong><span class="small muted">Questions, help with your radio and news, on Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Found a bug? Want your radio supported?</strong><span class="small muted">Open an issue on GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry is MIT licensed · <a href="https://github.com/radiofoundry/radiofoundry">Source Code</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Community</a> · <a href="../../docs/index.html">Docs</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Changelog</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

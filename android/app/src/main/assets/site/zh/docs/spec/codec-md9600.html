@@ -1,0 +1,936 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MD-9600: hosting the AMBE+2 codec · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="MD-9600: hosting the AMBE+2 codec · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/spec/codec-md9600.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/codec-md9600.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/codec-md9600.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/codec-md9600.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/codec-md9600.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/codec-md9600.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/spec/codec-md9600.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/codec-md9600.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/codec-md9600.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/codec-md9600.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="规范">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 规范</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html" aria-current="page">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">本页尚未翻译，目前显示英文。</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="md-9600-hosting-the-ambe2-codec">MD-9600: hosting the AMBE+2 codec</h1>
+<p>Status: format description and a map and install profile for each of 33 <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="../user/22-glossary.html#t-tyt">TYT</abbr> and Retevis original firmware files (03.28
+to 126.61, below). The codecs were run in a host instruction set emulator (measured); no MD-9600 has run any of them, the V5
+(26.xx) ones included.</p>
+<p>Rule: the radio runs exactly the codec its own TYT firmware shipped. The user's machine extracts it from a firmware
+file the user supplies. No codec bytes go in this repository or in released binaries. Any MD-9600 firmware version is the
+MD-9600's own donor; the codec is board-independent code, so a file for one board revision serves every revision.</p>
+<p>These files are also a codec source for another radio: an open-firmware install made from this firmware leaves this
+codec on that radio. Its tables then move with the code (<code>codecmap.move_window</code>), and the open-firmware backup finds it
+wherever the install put it (<code>stockfw.from_moved</code>). The radio's own codec page lists the files and placements;
+<a href="codec-placement.html">codec-placement.md</a> has the shared format.</p>
+<h2 id="stock-files">Stock files</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>version</th>
+<th>boards</th>
+<th>file</th>
+<th>size</th>
+<th>sha256</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>03.28 REC</td>
+<td>older (board not known)</td>
+<td><code>MD9600-REC-D03.28.bin</code></td>
+<td>1089024</td>
+<td><code>b25c573013b79f58a65629f0df85f5aced57c89eabde40465331984bb14dcc38</code></td>
+</tr>
+<tr>
+<td>03.29 REC</td>
+<td>older (board not known)</td>
+<td><code>MD9600-REC-D03.29.bin</code></td>
+<td>1089024</td>
+<td><code>9035209ffb2ecd08999cea93bfe5d255006e783f0a4da11354390c9ecbcb8521</code></td>
+</tr>
+<tr>
+<td>04.03 REC</td>
+<td>older (board not known)</td>
+<td><code>MD9600-REC-D04.03.bin</code></td>
+<td>1089024</td>
+<td><code>32044e55879afa44c7a525a9a53633a51e38c3ae01ff512d2d0971117a97a75b</code></td>
+</tr>
+<tr>
+<td>06.03 CSV</td>
+<td>V1-V3</td>
+<td><code>MD9600-CSV-V06.03.bin</code></td>
+<td>1093120</td>
+<td><code>cf52b678629466bac593d533abc87fd7524c6e123b608dce6ef0d4e685a1d79e</code></td>
+</tr>
+<tr>
+<td>06.03 CSV + GPS</td>
+<td>V1-V3</td>
+<td><code>MD9600-CSV-GPS-P06.03.bin</code></td>
+<td>1099264</td>
+<td><code>50eed60616030f5ca110db649ec938782d90b23d7c911d05e388a0a7cd20af53</code></td>
+</tr>
+<tr>
+<td>06.03 REC</td>
+<td>V1-V3</td>
+<td><code>MD9600-REC-D06.03.bin</code></td>
+<td>1102336</td>
+<td><code>6356f4f467942ea0a1137d625071945ad47c0af72320bfc4f7890d99371cd8ca</code></td>
+</tr>
+<tr>
+<td>06.03 GPS + REC</td>
+<td>V1-V3</td>
+<td><code>MD9600-GPS-REC-S06.03.bin</code></td>
+<td>1108480</td>
+<td><code>4cb9f3bd483eb998a96c2700b070af94393f91aab688dd5b0670c85e379f1452</code></td>
+</tr>
+<tr>
+<td><strong>06.09 CSV (first supported)</strong></td>
+<td>V1-V3</td>
+<td><code>MD9600-CSV-V06.09.bin</code></td>
+<td>1094144</td>
+<td><code>79a561eda2f5843334ea5974f5de511b6e172a1643f9163806d54a94404f0f09</code></td>
+</tr>
+<tr>
+<td>06.09 CSV + GPS</td>
+<td>V1-V3</td>
+<td><code>MD9600-CSV-GPS-P06.09.bin</code></td>
+<td>1100288</td>
+<td><code>9454eb221ae1f206fca5a15ec1b540bf06b3db4991f466b1626a3a3073ca91d5</code></td>
+</tr>
+<tr>
+<td>06.09 REC</td>
+<td>V1-V3</td>
+<td><code>MD9600-REC-D06.09.bin</code></td>
+<td>1103360</td>
+<td><code>7b1b1b33e661766a5b0c0b3ddab9c31c96e3855b09f4e280b07f4990b563b68f</code></td>
+</tr>
+<tr>
+<td>06.09 GPS + REC</td>
+<td>V1-V3</td>
+<td><code>MD9600-GPS-REC-S06.09.bin</code></td>
+<td>1109504</td>
+<td><code>4610ed115e80efa04be554a94915ec2e053ae00f6b64dfa4815451966840dba7</code></td>
+</tr>
+<tr>
+<td>06.24 CSV</td>
+<td>V1-V3</td>
+<td><code>MD9600-CSV-V06.24.bin</code></td>
+<td>1094144</td>
+<td><code>194526d60f796cc0f7339d14c1efeedc267731d108fd66a96876b459408de0ba</code></td>
+</tr>
+<tr>
+<td>06.24 CSV + GPS</td>
+<td>V1-V3</td>
+<td><code>MD9600-CSV-GPS-P06.24.bin</code></td>
+<td>1100288</td>
+<td><code>1eafdb774fd71cb7bc3334d06617ed42264ee25df1c73f61744f6b21742bbd20</code></td>
+</tr>
+<tr>
+<td>06.24 REC</td>
+<td>V1-V3</td>
+<td><code>MD9600-REC-D06.24.bin</code></td>
+<td>1104384</td>
+<td><code>6643261e62b9778a5df43b1e5c3428d6d308bf54b34478513df3e08f6f4dbb63</code></td>
+</tr>
+<tr>
+<td>06.24 GPS + REC</td>
+<td>V1-V3</td>
+<td><code>MD9600-GPS-REC-S06.24.bin</code></td>
+<td>1110528</td>
+<td><code>ec44929e855442ad248f1a5c171a467922d6cb5742fc35f759db269c645e22ab</code></td>
+</tr>
+<tr>
+<td>16.24 CSV</td>
+<td>V4</td>
+<td><code>MD9600-CSV(V4)-V16.24.bin</code></td>
+<td>1095168</td>
+<td><code>98302fbc26fa0db93bd7ecbd29a410ac9fbb42cbd7d6ce15d54ce085fefff329</code></td>
+</tr>
+<tr>
+<td>16.24 CSV + GPS</td>
+<td>V4</td>
+<td><code>MD9600-CSV-GPS(V4)-P16.24.bin</code></td>
+<td>1101312</td>
+<td><code>e86b9e9775758548dd2d01334cfacc96c640fbf843aa6c5fa009b4bc7598e98d</code></td>
+</tr>
+<tr>
+<td>16.24 REC</td>
+<td>V4</td>
+<td><code>MD9600-REC(V4)-D16.24.bin</code></td>
+<td>1105408</td>
+<td><code>e21c72e30716fb43e4d15798012aec15e964b9ec8c1a534ede5d0b0fe73f3acb</code></td>
+</tr>
+<tr>
+<td>16.24 GPS + REC</td>
+<td>V4</td>
+<td><code>MD9600-GPS-REC(V4)-S16.24.bin</code></td>
+<td>1111552</td>
+<td><code>4e1c5c081d5bdf4bef8f205668fd7381391187d8b07150df7e99275b030b811b</code></td>
+</tr>
+<tr>
+<td><strong>16.45 CSV (first supported)</strong></td>
+<td>V4</td>
+<td><code>MD9600-CSV(V4)-V16.45.bin</code></td>
+<td>1099264</td>
+<td><code>de368437de05307d3e217f049bb5e30b1a8ec201e50b8e81aa5c506089c53532</code></td>
+</tr>
+<tr>
+<td>16.45 CSV + GPS</td>
+<td>V4</td>
+<td><code>MD9600-CSV-GPS(V4)-P16.45.bin</code></td>
+<td>1105408</td>
+<td><code>7f4d760288f0c1875c7c5dc83dcdf3f355f5188becde2b505eedf609fdbe665f</code></td>
+</tr>
+<tr>
+<td>16.45 REC</td>
+<td>V4</td>
+<td><code>MD9600-REC(V4)-D16.45.bin</code></td>
+<td>1108480</td>
+<td><code>d2ef7a7e9c484dc1a8777488816f4da47181899ff8b7299a0ead7d141d55e10c</code></td>
+</tr>
+<tr>
+<td>16.45 GPS + REC</td>
+<td>V4</td>
+<td><code>MD9600-GPS-REC(V4)-S16.45.bin</code></td>
+<td>1114624</td>
+<td><code>3d71b4358267fe5fdae8980f340b6a158e7b229c9d32c8ab894c4985964e8aff</code></td>
+</tr>
+<tr>
+<td>26.38 REC</td>
+<td>V5, Retevis RT90 (&quot;2571&quot;)</td>
+<td><code>RT90-REC(2571V5)-D26.38.bin</code></td>
+<td>1105408</td>
+<td><code>267dac314c1aa217ab259a6f9709f2e19342ff3a79aa18a2bf8b501939347e49</code></td>
+</tr>
+<tr>
+<td>26.41 CSV</td>
+<td>V5, Retevis RT90 (&quot;2571&quot;)</td>
+<td><code>RT90-CSV(2571V5)-V26.41.bin</code></td>
+<td>1096192</td>
+<td><code>1536ea3093394859c29ec6a522464c1b3f87a516e1a73b2cbf4f7be254b2dec4</code></td>
+</tr>
+<tr>
+<td>26.41 CSV + GPS</td>
+<td>V5, Retevis RT90 (&quot;2571&quot;)</td>
+<td><code>RT90-CSV-GPS(2571V5)-P26.41.bin</code></td>
+<td>1102336</td>
+<td><code>8acfedbc60fe8dec2d88ed1f00a1444d6f8f243590d967a1a59b121f5d6dfef4</code></td>
+</tr>
+<tr>
+<td>26.42 GPS + REC</td>
+<td>V5, Retevis RT90 (&quot;2571&quot;)</td>
+<td><code>RT90-GPS-REC(2571V5)-S26.42.bin</code></td>
+<td>1111552</td>
+<td><code>a10bad809048c8bbd9602c7b50ca4c824a6dbdee34b2167b872ec86c0affbbe1</code></td>
+</tr>
+<tr>
+<td>26.45 CSV</td>
+<td>V5 (&quot;2571&quot;)</td>
+<td><code>MD9600-CSV(2571V5)-V26.45.bin</code></td>
+<td>1096192</td>
+<td><code>d8a653307222e576ee416ab6d4704d14758fa71c1b0e826ffd840f26266cf11f</code></td>
+</tr>
+<tr>
+<td>26.45 CSV + GPS</td>
+<td>V5 (&quot;2571&quot;)</td>
+<td><code>MD9600-CSV-GPS(2571V5)-P26.45.bin</code></td>
+<td>1102336</td>
+<td><code>02e366687f122ed752581344db8316666d21782d9353334518b69237a81e74dc</code></td>
+</tr>
+<tr>
+<td>26.45 REC</td>
+<td>V5 (&quot;2571&quot;)</td>
+<td><code>MD9600-REC(2571V5)-D26.45.bin</code></td>
+<td>1106432</td>
+<td><code>baee36b0fd852dfc1fb14952242a1231dbfa4fabc37cba57c61f1b8d3e0d830d</code></td>
+</tr>
+<tr>
+<td>26.45 GPS + REC</td>
+<td>V5 (&quot;2571&quot;)</td>
+<td><code>MD9600-GPS-REC(2571V5)-S26.45.bin</code></td>
+<td>1112576</td>
+<td><code>6df34152e9786530d61032ab71f1962cf194aca0b99cf0a54e3802fd2cd4ac72</code></td>
+</tr>
+<tr>
+<td>26.57 REC</td>
+<td>V4A (&quot;2571V4&quot;)</td>
+<td><code>MD9600-REC(2571V4)-D26.57.bin</code></td>
+<td>1107456</td>
+<td><code>2522008737d7845e43ab47a307d38498ee783c788a377fac855dff94dea53af0</code></td>
+</tr>
+<tr>
+<td>126.61 GPS + REC AES</td>
+<td>V5 (&quot;2571&quot;), user-supplied</td>
+<td><code>MD9600-AES-GPS-REC(2571V5)-S126.61.bin</code></td>
+<td>1153536</td>
+<td><code>86af65c40c66307f10262995a8037740df8433e67ce0af87137c809fa1ba9578</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>All 33 on hand (the 03.28, 03.29 and 04.03 ones from a dealer's page, the 06.03 ones from a community page that mirrors <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="../user/22-glossary.html#t-tyt">TYT</abbr>'s update, the RT90 ones from the Retevis firmware download, the others as before): TYT &quot;OutSecurityBin&quot; container, two segments (0x00060000, 0x59800) and (0x0800C000, app length),
+payload at 0x100, 0x100 trailing bytes (<a href="hardware-md9600.html">hardware-md9600.md</a> 14.3).</p>
+<h2 id="container-and-encryption">Container and encryption</h2>
+<p>plain[i] = file[0x100 + i] ^ key[i mod 1024]; the application starts at payload offset 0x59800, so for an application
+address A: <strong>file offset = A - 0x0800C000 + 0x59900, key index = (A - 0x0800C000) mod 1024</strong> (the resource segment is a
+multiple of 1024 long). Every 26.xx file has the same layout; V26.45's codec code starts at 0x0807537C (checked in the
+decoded image).</p>
+<p>Key: SHA-256 <code>c3d665b297651b52310ec098e87440b147136241359c1154d474e517b048c9ae</code>, first bytes A2 FA BB 4B. The plain
+column vote (most common cipher byte per key column) gives it on all the files without any refinement; this is what
+<code>rfoundry/stockfw.derive_key</code> does first. No key file is needed.</p>
+<h2 id="same-codec-33-builds">Same codec, 33 builds</h2>
+<p>The codec does not sit at one address: every version and variant links it elsewhere, and the library's object code
+differs slightly between builds (the head of V06.09 has 0x14 extra bytes at +0x9D2 against V26.45, which moves the <abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="../dev/glossary.html#t-fec">FEC</abbr>
+decode; literal pools and relocations differ throughout). So <strong>no two codec windows are
+byte-identical</strong>: they are different links of the same library, as the reference V02.06 and V26.45
+codecs are.</p>
+<p>Functionally they are the same codec: with the same init and per-frame calls, the first 32 builds and the reference
+V02.06 codec give <strong>bit-identical</strong> air bits and decoded <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr>, and 126.61 matches the map tool's reference build (below,
+&quot;Verification&quot;). The 26.xx (V5) builds use the same entry
+offsets as the rest, so the calls in <code>boards/md9600/vocoder_md9600.c</code> fit them as they are; only the FEC decode
+differs (+0xB64 in the 26.45 <abbr class="gl" tabindex="0" title="Comma separated values: a table as plain text, as programming software exports it." data-more="../user/22-glossary.html#t-csv">CSV</abbr> builds, +0xB54 in the 26.xx REC ones), and the firmware does not call it. The three REC
+builds 03.28, 03.29 and 04.03 have a code window 0x1000 bytes longer than the others (0x102xx), because the library link
+puts more of the codec's routines past the entries; their entry offsets are the 06.09 REC build's. Checked on 03.28 by comparing each
+entry's first 40 bytes with the 06.09 REC build (four entries match in all 40, the other six in at least 35, the
+difference being literal pool offsets) and on all three by the emulator run; the map tool's carve could not place the
+decoder set in them, so these three maps take the entry offsets from that comparison.</p>
+<h2 id="entry-points">Entry points</h2>
+<p>Offsets from the code start C (the first word 0x4FF0E92D, <code>push.w {r4-r11, lr}</code>), . The init order is encoder init, <abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="../dev/glossary.html#t-fec">FEC</abbr> init x2, decoder init, encoder parameters, encoder set, decoder set and one
+decode; the per-frame calls are encode, encode <abbr class="gl" tabindex="0" title="Error correcting code: a code that repairs damaged bits, such as the one a NAND flash needs." data-more="../dev/glossary.html#t-ecc">ECC</abbr>, FEC decode and decode:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>call</th>
+<th>offset</th>
+<th>reference</th>
+<th>arguments (as the reference build's codec page)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>encode</td>
+<td>+0x130</td>
+<td>+0x130</td>
+<td>(bits out, 0, <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> in, 80, stack: flags, half, 0x2000, E)</td>
+</tr>
+<tr>
+<td>encoder set</td>
+<td><strong>+0x1C0</strong></td>
+<td>+0x1C0</td>
+<td>(E, 128, -20)</td>
+</tr>
+<tr>
+<td>encoder init</td>
+<td>+0x284</td>
+<td>+0x284</td>
+<td>(E, 1, 1)</td>
+</tr>
+<tr>
+<td>FEC init</td>
+<td>+0x4CC</td>
+<td>+0x4CC</td>
+<td>(F, 1)</td>
+</tr>
+<tr>
+<td>encode ECC</td>
+<td>+0x4E8</td>
+<td>+0x4E8</td>
+<td>(bit buffer, same buffer, 0, F_enc)</td>
+</tr>
+<tr>
+<td>decode</td>
+<td>+0x5D8</td>
+<td>+0x5D8</td>
+<td>(PCM out, 80, bits in, 0, stack: flags, half, D)</td>
+</tr>
+<tr>
+<td>decoder set</td>
+<td>+0x688</td>
+<td>+0x688</td>
+<td>(D, 128, -20)</td>
+</tr>
+<tr>
+<td>decoder init</td>
+<td>+0x6D0</td>
+<td>+0x6D0</td>
+<td>(D, 1)</td>
+</tr>
+<tr>
+<td>encoder parameters</td>
+<td>+0x848</td>
+<td>+0x848</td>
+<td>(E, -22, 20, -10, stack: -40, 0x4000, 3276, 3276, 1310, 10, 20)</td>
+</tr>
+<tr>
+<td>FEC decode</td>
+<td><strong>per build</strong></td>
+<td>+0xB54</td>
+<td>(49 bits out, 0, 72 bits in, 1, stack: flags, F_dec): 0 good, 4 C0 uncorrectable</td>
+</tr>
+</tbody>
+</table></div>
+<p>FEC decode: <strong>+0xB78</strong> in the <abbr class="gl" tabindex="0" title="Comma separated values: a table as plain text, as programming software exports it." data-more="../user/22-glossary.html#t-csv">CSV</abbr> and CSV + GPS builds of the 06.xx and 16.xx versions, <strong>+0xB68</strong> in their REC and GPS +
+REC builds, +0xB64 in the 26.45 CSV and CSV + GPS builds, +0xB54 in the 26.xx REC and GPS + REC builds (the 03.28, 03.29
+and 04.03 value, +0xB68, is the 06.09 REC build's and was not checked). +0x1C0 is the encoder set (its head differs from the decoder set's only in the BL target).</p>
+<p>State: D 0x7EC, E 0x16E0, FEC 0x44 each (guard pages: 0x7E8, 0x16DC and 0x40 fault in decoder init, encoder init and
+FEC init); stack 3822 bytes peak; no fixed <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> address; no FPU instruction executed. Identical to the reference build.
+<strong>This is RadioFoundry's <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr> <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">vocoder</abbr> call interface unchanged</strong> (<code>platform/stm32f4/codec_call.c</code> and the boards'
+glue): a board only needs the code base, the FEC decode offset and the window table.</p>
+<p>Encode flags: the shared host (<code>platform/stm32f4/hrc/vocoder.c</code>) passes one flags word on every encode call, the
+same word as on the DM-1701 and MD-380 (<code>drivers/vocoder/ambe2_flags.h</code>, 0x1840 by default; the bits:
+<a href="codec-md380.html">codec-md380.md</a>, &quot;Encode flags&quot;). On the MD-9600 builds the bits are unverified: the code is the
+same family, but they were not measured on it.</p>
+<h2 id="codec-windows">Codec windows</h2>
+<p>Two windows per build, cut by execution (below) and checked against the literal targets: the code window from the
+first word to the end of the last executed instruction and literal pool; the table window from the lowest table
+literal to the end of the last table (14 bytes at the window's end, the same bytes the reference V02.06 table window
+ends with; what follows differs between builds). Both hold some vendor bytes the codec never uses.
+File offset = A - 0x0800C000 + 0x59900; &quot;key phase&quot; = (A - 0x0800C000) mod 1024.</p>
+<p><strong>06.09 <abbr class="gl" tabindex="0" title="Comma separated values: a table as plain text, as programming software exports it." data-more="../user/22-glossary.html#t-csv">CSV</abbr> (<code>79a561ed...</code>), <abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="../dev/glossary.html#t-fec">FEC</abbr> decode +0xB78:</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>window</th>
+<th>flash</th>
+<th>length</th>
+<th>file offset</th>
+<th>key phase</th>
+<th>sha256 (decrypted)</th>
+<th>CRC-32</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>0x08074B18..0x08083D2C</td>
+<td>0xF214</td>
+<td>0xC2418</td>
+<td>0x318</td>
+<td><code>c729480a47c7444c03eff1ec6b176a76d071f72b64d2f0fe3965e517c85a1215</code></td>
+<td>0x5D8FB9E0</td>
+</tr>
+<tr>
+<td>tables</td>
+<td>0x080AB13C..0x080BC122</td>
+<td>0x10FE6</td>
+<td>0xF8A3C</td>
+<td>0x13C</td>
+<td><code>0b431c14ef7e32fe8a0915976c250f127a757ed4cc5af2bc7f867ae261c6f1ca</code></td>
+<td>0x8BE15327</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>16.45 CSV(V4) (<code>de368437...</code>), FEC decode +0xB78:</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>window</th>
+<th>flash</th>
+<th>length</th>
+<th>file offset</th>
+<th>key phase</th>
+<th>sha256 (decrypted)</th>
+<th>CRC-32</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>0x08075C98..0x08084EAC</td>
+<td>0xF214</td>
+<td>0xC3598</td>
+<td>0x098</td>
+<td><code>4bcfec3e1113d17bb53bee1543039894db00c00c32d1b7dfd258f224043f52cd</code></td>
+<td>0xB212C7A1</td>
+</tr>
+<tr>
+<td>tables</td>
+<td>0x080AC2BC..0x080BD2F2</td>
+<td>0x11036</td>
+<td>0xF9BBC</td>
+<td>0x2BC</td>
+<td><code>a101749f26c6df7d784130c45570e25abc5c88e02bee6f2510beb0a6c3ad4dfa</code></td>
+<td>0xAAFA995B</td>
+</tr>
+</tbody>
+</table></div>
+<p>Every other build has a map and a profile too:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>file</th>
+<th>code</th>
+<th>tables</th>
+<th>FEC decode</th>
+<th>code sha256</th>
+<th>tables sha256</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>REC-D03.28</td>
+<td>0x080724B4+0x102F6</td>
+<td>0x080A9F5C+0x10C8E</td>
+<td>+0xB68 (as 06.09 REC, not checked)</td>
+<td><code>79f12a84...</code></td>
+<td><code>897fa811...</code></td>
+</tr>
+<tr>
+<td>REC-D03.29</td>
+<td>0x080724C0+0x102EA</td>
+<td>0x080A9F5C+0x10C8E</td>
+<td>+0xB68 (as 06.09 REC, not checked)</td>
+<td><code>066d2c85...</code></td>
+<td><code>07f412b7...</code></td>
+</tr>
+<tr>
+<td>REC-D04.03</td>
+<td>0x080727CC+0x102DE</td>
+<td>0x080AA25C+0x10C7E</td>
+<td>+0xB68 (as 06.09 REC, not checked)</td>
+<td><code>6cdc6fad...</code></td>
+<td><code>484461f3...</code></td>
+</tr>
+<tr>
+<td>CSV-V06.03</td>
+<td>0x080746B0+0xF23A</td>
+<td>0x080AACFC+0x10FE6</td>
+<td>+0xB78</td>
+<td><code>8ebfa48e...</code></td>
+<td><code>65595c1b...</code></td>
+</tr>
+<tr>
+<td>CSV-GPS-P06.03</td>
+<td>0x08075C80+0xF234</td>
+<td>0x080AC2BC+0x11066</td>
+<td>+0xB78</td>
+<td><code>01b4e193...</code></td>
+<td><code>0912f563...</code></td>
+</tr>
+<tr>
+<td>REC-D06.03</td>
+<td>0x0807682C+0xF210</td>
+<td>0x080AD1E0+0x10FF6</td>
+<td>+0xB68</td>
+<td><code>1bfe2e1e...</code></td>
+<td><code>ed2b8cea...</code></td>
+</tr>
+<tr>
+<td>GPS-REC-S06.03</td>
+<td>0x08077E3C+0xF22E</td>
+<td>0x080AE820+0x11076</td>
+<td>+0xB68</td>
+<td><code>f6c803bd...</code></td>
+<td><code>624a0d72...</code></td>
+</tr>
+<tr>
+<td>CSV-GPS-P06.09</td>
+<td>0x080760B8+0xF234</td>
+<td>0x080AC6FC+0x11066</td>
+<td>+0xB78</td>
+<td><code>1836c087...</code></td>
+<td><code>f2b8bda5...</code></td>
+</tr>
+<tr>
+<td>REC-D06.09</td>
+<td>0x08076C9C+0xF210</td>
+<td>0x080AD660+0x10FF6</td>
+<td>+0xB68</td>
+<td><code>75a93730...</code></td>
+<td><code>d61403ec...</code></td>
+</tr>
+<tr>
+<td>GPS-REC-S06.09</td>
+<td>0x08078280+0xF22C</td>
+<td>0x080AEC60+0x11076</td>
+<td>+0xB68</td>
+<td><code>a3d76822...</code></td>
+<td><code>2fe79fad...</code></td>
+</tr>
+<tr>
+<td>CSV-V06.24</td>
+<td>0x08074C78+0xF232</td>
+<td>0x080AB2BC+0x10FE6</td>
+<td>+0xB78</td>
+<td><code>cc3372d8...</code></td>
+<td><code>3e19a511...</code></td>
+</tr>
+<tr>
+<td>CSV-GPS-P06.24</td>
+<td>0x080763CC+0xF21E</td>
+<td>0x080AC9FC+0x11066</td>
+<td>+0xB78</td>
+<td><code>403b3df9...</code></td>
+<td><code>be95f990...</code></td>
+</tr>
+<tr>
+<td>REC-D06.24</td>
+<td>0x08076DFC+0xF22E</td>
+<td>0x080AD7E0+0x10FF6</td>
+<td>+0xB68</td>
+<td><code>c5b5123c...</code></td>
+<td><code>8db73635...</code></td>
+</tr>
+<tr>
+<td>GPS-REC-S06.24</td>
+<td>0x08078594+0xF216</td>
+<td>0x080AEF60+0x11076</td>
+<td>+0xB68</td>
+<td><code>16fbf16c...</code></td>
+<td><code>10db31bf...</code></td>
+</tr>
+<tr>
+<td>CSV(V4)-V16.24</td>
+<td>0x08074FB0+0xF23A</td>
+<td>0x080AB5FC+0x10FE6</td>
+<td>+0xB78</td>
+<td><code>f68bd78b...</code></td>
+<td><code>df2ca5d5...</code></td>
+</tr>
+<tr>
+<td>CSV-GPS(V4)-P16.24</td>
+<td>0x08076704+0xF226</td>
+<td>0x080ACD3C+0x11066</td>
+<td>+0xB78</td>
+<td><code>bd0d774b...</code></td>
+<td><code>545966b6...</code></td>
+</tr>
+<tr>
+<td>REC(V4)-D16.24</td>
+<td>0x08077134+0xF236</td>
+<td>0x080ADB20+0x10FF6</td>
+<td>+0xB68</td>
+<td><code>d7f73d85...</code></td>
+<td><code>c989388d...</code></td>
+</tr>
+<tr>
+<td>GPS-REC(V4)-S16.24</td>
+<td>0x080788CC+0xF21E</td>
+<td>0x080AF2A0+0x11076</td>
+<td>+0xB68</td>
+<td><code>181da1f9...</code></td>
+<td><code>1af5f6df...</code></td>
+</tr>
+<tr>
+<td>CSV-GPS(V4)-P16.45</td>
+<td>0x08077434+0xF238</td>
+<td>0x080ADA7C+0x110B6</td>
+<td>+0xB78</td>
+<td><code>70bbb7be...</code></td>
+<td><code>b2949489...</code></td>
+</tr>
+<tr>
+<td>REC(V4)-D16.45</td>
+<td>0x08077E38+0xF234</td>
+<td>0x080AE820+0x11046</td>
+<td>+0xB68</td>
+<td><code>c870d2b5...</code></td>
+<td><code>e1baec74...</code></td>
+</tr>
+<tr>
+<td>GPS-REC(V4)-S16.45</td>
+<td>0x08079630+0xF1FC</td>
+<td>0x080AFFE0+0x110C6</td>
+<td>+0xB68</td>
+<td><code>5a7f1d52...</code></td>
+<td><code>2172ecdd...</code></td>
+</tr>
+<tr>
+<td>RT90-REC(2571V5)-D26.38</td>
+<td>0x080771B0+0xF210</td>
+<td>0x080ADB60+0x1100E</td>
+<td>+0xB54</td>
+<td><code>96e8464d...</code></td>
+<td><code>dda353cf...</code></td>
+</tr>
+<tr>
+<td>RT90-CSV(2571V5)-V26.41</td>
+<td>0x080751E0+0xF214</td>
+<td>0x080AB7FC+0x11036</td>
+<td>+0xB64</td>
+<td><code>52d94dde...</code></td>
+<td><code>356f6ae0...</code></td>
+</tr>
+<tr>
+<td>RT90-CSV-GPS(2571V5)-P26.41</td>
+<td>0x08076980+0xF234</td>
+<td>0x080ACFBC+0x110B6</td>
+<td>+0xB64</td>
+<td><code>a09d8a83...</code></td>
+<td><code>085caab1...</code></td>
+</tr>
+<tr>
+<td>RT90-GPS-REC(2571V5)-S26.42</td>
+<td>0x08078C18+0xF22C</td>
+<td>0x080AF5E0+0x110C6</td>
+<td>+0xB54</td>
+<td><code>74395e46...</code></td>
+<td><code>8f193578...</code></td>
+</tr>
+<tr>
+<td>CSV(2571V5)-V26.45</td>
+<td>0x0807537C+0xF22E</td>
+<td>0x080AB9BC+0x11036</td>
+<td>+0xB64</td>
+<td><code>c437494b...</code></td>
+<td><code>b7017c23...</code></td>
+</tr>
+<tr>
+<td>CSV-GPS(2571V5)-P26.45</td>
+<td>0x08076B18+0xF212</td>
+<td>0x080AD13C+0x110B6</td>
+<td>+0xB64</td>
+<td><code>72dd6322...</code></td>
+<td><code>b6c9bf64...</code></td>
+</tr>
+<tr>
+<td>REC(2571V5)-D26.45</td>
+<td>0x0807751C+0xF20E</td>
+<td>0x080ADEE0+0x11046</td>
+<td>+0xB54</td>
+<td><code>8974385c...</code></td>
+<td><code>fa652e60...</code></td>
+</tr>
+<tr>
+<td>GPS-REC(2571V5)-S26.45</td>
+<td>0x08078D14+0xF216</td>
+<td>0x080AF6E0+0x110C6</td>
+<td>+0xB54</td>
+<td><code>7789393c...</code></td>
+<td><code>17ad382f...</code></td>
+</tr>
+<tr>
+<td>REC(2571V4)-D26.57</td>
+<td>0x08077C3C+0xF1EE</td>
+<td>0x080AE5E0+0x11032</td>
+<td>+0xB54</td>
+<td><code>c43426f0...</code></td>
+<td><code>87786610...</code></td>
+</tr>
+<tr>
+<td>AES-GPS-REC(2571V5)-S126.61</td>
+<td>0x0808274C+0xF21E</td>
+<td>0x080B94EC+0x110C2</td>
+<td>+0xB54</td>
+<td><code>b50a9528...</code></td>
+<td><code>88fd5c8c...</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Executed code in 06.09 CSV: 0x08074B18..0x08083D2A and a code island 0x080B25B8..0x080B26A0 inside the table window
+(reached by BL from the code window, as in the hosted builds). The code also holds two code pointers, one into
+each window (0x0807A40D and 0x080B01BD in 06.09 CSV).</p>
+<h2 id="position-dependence">Position dependence</h2>
+<p>As in the hosted builds: calls inside the code are PC-relative, but the code reaches its tables through absolute
+literals, the table window holds a short code island (executed; reached by BL from the code window), and the code holds
+absolute code pointers into both windows. So the windows must sit at their vendor addresses. Unlike one hosted family there
+are <strong>no small tables outside the two windows</strong> (every literal target lies in them).</p>
+<h2 id="hosting">Hosting</h2>
+<p>Decided as the MD-380 (<code>docs/spec/codec-placement.md</code>). The code window starts in sector 7
+(0x08074B18 or 0x08075C98), which the application owns (sectors 3-9, <code>boards/md9600/memory.ld</code>), so the merge moves
+both windows as blocks:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Where it goes</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Code (0xF1EE to 0x102F6 bytes by build)</td>
+<td>start of sector 11, 0x080E0000</td>
+<td>the code is position independent except for 1 self reference, its absolute references into the table window and 12 calls from the table window's island; the codec map lists them</td>
+</tr>
+<tr>
+<td>Table window (0x10FE6 to 0x110C6 bytes by build)</td>
+<td>start of sector 10, 0x080C0000 plus the build's address modulo 16 (06.09 and 16.45: 0x080C000C)</td>
+<td>too long to share sector 11 with the code (the two windows together are up to 135,044 bytes); every build leaves at least 61 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> of sector 10 and 64 KB of sector 11 free</td>
+</tr>
+<tr>
+<td>Descriptor</td>
+<td>end of sector 11, 0x080FFF80</td>
+<td><code>platform/stm32f4/codec_desc.h</code>: tag, code window, table window, a CRC-32 of each</td>
+</tr>
+</tbody>
+</table></div>
+<p>The codec's flash is sectors 10 and 11 (<code>CODEC_FLASH_LO</code> 0x080C0000 in the firmware profiles). The application never
+links past 0x080BFFFF, so an update erases sectors 3-9 only and keeps the codec.</p>
+<p><strong>Earlier layout.</strong> Releases before this one kept the table window at the build's own address in sector 9 (four GPS-REC
+builds, S16.24, S16.45, S26.42 and S26.45, ran 0x316 to 0x10A6 bytes into sector 10), gave the application sectors 3-8
+and reported <code>md9600-s11</code>. The flashing tools read such a codec back and move it on the first install of this layout
+(<a href="codec-placement.html">codec-placement.md</a>, &quot;Moving to a new layout&quot;); its profiles are the <code>former</code> entries in
+<code>stockfw.py</code>.</p>
+<p>One profile per file, one codec id (<code>md9600-s11v2</code>): the tag in the descriptor says which build the radio holds. The tag
+is the variant in bits 16-17 (0 <abbr class="gl" tabindex="0" title="Comma separated values: a table as plain text, as programming software exports it." data-more="../user/22-glossary.html#t-csv">CSV</abbr>, 1 CSV-GPS, 2 REC, 3 GPS-REC) and the version in <abbr class="gl" tabindex="0" title="Binary coded decimal: each decimal digit in 4 bits." data-more="../dev/glossary.html#t-bcd">BCD</abbr> below, so 0x0609 is 06.09 CSV,
+0x1645 is 16.45 CSV and 0x11645 its CSV-GPS build. Bit 20 marks the AES line (126.xx): 0x132661 is 126.61 GPS + REC.</p>
+<p>The codec in the earlier layout was run on the host (Cortex-M model) against the stock-address run: the same 60-frame
+vector (encode and decode, tone plus noise) gives the same air bits and <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> for every build, with the code at
+0x080E0000 and the table window's island calls rewritten. The current layout (the table window moved as well) has not
+had that run yet. The placed CRC-32s are in <code>stockfw.PROFILES</code> and
+<code>boards/md9600/vocoder_md9600.c</code> and must match.</p>
+<p><strong>Supported donors: every file in the first table.</strong> 06.09 CSV (V1-V3 boards) and 16.45 CSV (V4) came first and are the
+default; they are the plain CSV builds (no recorder or GPS code moving the codec). The rest work the same way with their
+own windows from the table above. An owner of a V5 radio (the <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="../user/22-glossary.html#t-tyt">TYT</abbr> 26.45 files, the Retevis RT90 26.38, 26.41 and 26.42
+files, the 26.57 V4A REC build, or the 126.61 AES GPS + REC build) installs from the file the radio came with: the 26.xx codec calls are the 16.xx ones
+at the same entry offsets. <strong>Not covered:</strong> the 05.xx files (05.02, 05.04 and 05.05), whose copies on hand are cut off at 1 MiB, short of their
+tables. A file whose hash is none of the above is refused, not guessed at.</p>
+<h2 id="extraction-recipe-0609-csv">Extraction recipe (06.09 CSV)</h2>
+<ol>
+<li>Check the file's SHA-256 (<code>79a561ed...</code>), its size 1094144, and the segment table (0x00060000, 0x59800),
+(0x0800C000, 0xB1800).</li>
+<li>Derive the key (plain column vote) and check it by SHA-256 (<code>c3d665b2...</code>), or use a key file with that hash.</li>
+<li>Decrypt each window: file offset = A - 0x0800C000 + 0x59900, key index (A - 0x0800C000) mod 1024. Check each
+window's SHA-256 and the code's first word.</li>
+<li>Write the code at 0x080E0000 and the table window at 0x080C000C with the references between them rewritten (codec
+map), then the descriptor at 0x080FFF80 (0xFF between). On the user's machine
+only (<code>make</code>, <code>tools/codec_extract.py</code> or rfoundry), never in a release.</li>
+</ol>
+<h2 id="verification">Verification</h2>
+<p>The decrypted images were run in a host emulator (Thumb, Cortex-M4 model); the per-run hash covers the 72 air bits
+and the decoded <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> of every frame.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>run</th>
+<th>reference V02.06</th>
+<th>V26.45 carve</th>
+<th>each of the 8 V06.09 / V16.45 builds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 kHz tone, 30 frames</td>
+<td><code>32b5fdbac4a399c9</code></td>
+<td>same</td>
+<td>same</td>
+</tr>
+<tr>
+<td>stress, 300 frames (noise, silence, full-scale sweeps, 0-4 injected bit errors, random frames, flags 8)</td>
+<td><code>40d0ca30a8c2f7e0</code></td>
+<td>same</td>
+<td>same</td>
+</tr>
+</tbody>
+</table></div>
+<p>The other 24 builds (32 in all) were run again with the vector set below, each as <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="../user/22-glossary.html#t-tyt">TYT</abbr> links it and moved as the merge
+moves it, with only the moved windows mapped:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>run</th>
+<th>each of the 32 builds, at the stock address and as placed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>60 frames (encode and decode, tone plus noise), air bits and PCM hashed</td>
+<td><code>7cb52253c4b2</code> in all 64 runs</td>
+</tr>
+<tr>
+<td>300 frames (random samples, silence, sine sweeps, square waves, low-level noise, flags 8 on every 7th frame), air bits and PCM hashed</td>
+<td><code>2788dd5ca0ad31c5</code> in all 64 runs</td>
+</tr>
+</tbody>
+</table></div>
+<p>The 126.61 build was run with the map tool's vector set instead: a 30-frame trace gives <code>03d150f1c525afe0</code> and a
+300-frame stress run <code>7b0f10283a8114ce</code>, the reference build's hashes for that set, from the whole image, from the moved
+windows alone and as placed.</p>
+<p>This second set has no injected bit errors. A decode of a frame with three injected errors gave different PCM for the
+06.09 <abbr class="gl" tabindex="0" title="Comma separated values: a table as plain text, as programming software exports it." data-more="../user/22-glossary.html#t-csv">CSV</abbr> and the 16.45 CSV builds in a trial run, so the cross-build identity of decoded error frames is not claimed;
+the placed run is bit-identical to the stock-address run of its own build, which is what the merge needs.</p>
+<p><abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="../dev/glossary.html#t-fec">FEC</abbr> decode results 0 and 4 as in the reference build. The minimal windows were found by bisection: each end was moved until the
+stress run (60 frames) changed, then the final windows were checked with 300 stress frames with the rest of the mapped
+pages filled three ways (0x00 and two random patterns); all three give the reference hash, so nothing outside the
+windows is read.</p>
+<h2 id="open-items">Open items</h2>
+<ul>
+<li>Every file on hand has a map and a profile. The 05.xx files are not on hand in full (above).</li>
+<li>The RT90 files' maps were made against the 06.09 builds (the map tool's reference), not against the 26.45 ones; they
+carve without outside references and run to the same hash as the rest.</li>
+<li>The 03.28, 03.29 and 04.03 maps take their entry offsets from a comparison with 06.09 REC, and their <abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="../dev/glossary.html#t-fec">FEC</abbr> decode offset
+was not checked (the firmware does not call it).</li>
+<li>The encode flags (above) are unverified on every build, the V5 ones included.</li>
+<li>The DM-1701's firmware profile list (<code>boards/dm1701/vocoder_dm1701.c</code>) takes the 21 files before 06.03; the seven newer
+ones are MD-9600 sources only.</li>
+</ul>
+<h2 id="only-a-radio-can-check">Only a radio can check</h2>
+<p>Audio level and quality through the MD-9600 path, timing at 72 MHz, and that the loader accepts the merged sectors.
+Voice <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> and <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> after the move from the earlier layout through the bootloader route, the loader route and the web
+flasher, including a move stopped halfway and run again.</p>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/codec-md9600.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#stock-files">Stock files</a></li><li class="l2"><a href="#container-and-encryption">Container and encryption</a></li><li class="l2"><a href="#same-codec-33-builds">Same codec, 33 builds</a></li><li class="l2"><a href="#entry-points">Entry points</a></li><li class="l2"><a href="#codec-windows">Codec windows</a></li><li class="l2"><a href="#position-dependence">Position dependence</a></li><li class="l2"><a href="#hosting">Hosting</a></li><li class="l2"><a href="#extraction-recipe-0609-csv">Extraction recipe (06.09 CSV)</a></li><li class="l2"><a href="#verification">Verification</a></li><li class="l2"><a href="#open-items">Open items</a></li><li class="l2"><a href="#only-a-radio-can-check">Only a radio can check</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

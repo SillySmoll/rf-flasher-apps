@@ -1,0 +1,256 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stub entry · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Stub entry · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/spec/stub-entry.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/stub-entry.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/stub-entry.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/stub-entry.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/stub-entry.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/stub-entry.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/spec/stub-entry.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/stub-entry.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/stub-entry.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/stub-entry.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="规范">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 规范</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html" aria-current="page">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">本页尚未翻译，目前显示英文。</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="stub-entry">Stub entry</h1>
+<p>A running RadioFoundry loads the host's flash-access <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> monitor (the &quot;<abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr>&quot;) into free RAM and jumps to it, so a radio is
+updated with no key held at power-on. The web flasher, <code>stub/stubtool.py</code> (<code>--rfoundry-enter</code>) and <code>tools/rfoundry</code> use
+it. Because every update after the first one depends on it, the stub entry is its own small feature, apart from the
+<abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>: a build without the debug link still offers it.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Switch</td>
+<td><code>CONFIG_STUB_ENTRY</code>: on wherever <code>CONFIG_HOSTLINK</code> is (every radio), needs only <code>HOSTLINK</code></td>
+</tr>
+<tr>
+<td>The STUB state machine (portable, host tested)</td>
+<td><code>core/stubentry/stub_load.c</code></td>
+</tr>
+<tr>
+<td>Firmware glue: the RAM span, the transmit checks, the banner, the jump</td>
+<td><code>core/stubentry/stub_entry.c</code></td>
+</tr>
+<tr>
+<td>Own listener for a build without the debug link (portable, host tested)</td>
+<td><code>core/stubentry/stub_link.c</code></td>
+</tr>
+<tr>
+<td>Framing shared with the debug link</td>
+<td><code>core/debuglink/dl_frame.{h,c}</code> (no <abbr class="gl" tabindex="0" title="Real-time operating system: the scheduler that runs the firmware&#x27;s tasks." data-more="../dev/glossary.html#t-rtos">RTOS</abbr>, no board)</td>
+</tr>
+<tr>
+<td>Platform: span and quiesce-and-jump</td>
+<td><code>hal_system_t.stub_region / enter_stub / stub_run_addr / stub_image_ok</code>: the <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> platform code (<code>platform/hrc7000</code>), <a href="stub-stm32f4.html">stub-stm32f4.md</a> (<abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32F4</abbr>)</td>
+</tr>
+<tr>
+<td>Tests</td>
+<td><code>tests/host/stubEntryTest.c</code> (state machine), <code>tests/host/stubLinkTest.c</code> (wire bytes, both listeners)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="1-wire-format">1. Wire format</h2>
+<p>The <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr> entry speaks the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>'s framing (<a href="debuglink.html">debuglink.md</a> 2) and its command <code>0x1A</code> STUB with the
+operations INFO, BEGIN, DATA and ENTER (<a href="debuglink.html">debuglink.md</a> 3.18). The request and reply bytes are the
+same whichever listener answers, and <code>stubLinkTest</code> replays recorded request frames and checks the replies byte for byte through both listeners. A
+host can't tell the listeners apart by the STUB command; VERSION says which one answered (section 2).</p>
+<h2 id="2-listeners">2. Listeners</h2>
+<p>The host link has one side protocol slot (<code>hostlink_side_t</code>, first byte <code>0xA5</code>). Who takes it depends on the build:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Build</th>
+<th>Listener</th>
+<th>Commands answered</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DEBUGLINK=y</code>, <code>STUB_ENTRY=y</code> (the default)</td>
+<td>the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>. Its dispatcher hands <code>0x1A</code> to <code>stub_entry_request</code> and calls <code>stub_entry_service</code> after every frame</td>
+<td>every debug link command</td>
+</tr>
+<tr>
+<td><code>DEBUGLINK=n</code>, <code>STUB_ENTRY=y</code></td>
+<td>the <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr> entry's own (<code>stub_entry_start</code>, <code>stub_link.c</code>), on the same framing</td>
+<td>PING (echo), VERSION (the build's keys), STUB, <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">CODEPLUG</abbr> (with <code>CPS_FAST</code>; else <code>DL_ST_UNAVAILABLE</code>); anything else <code>DL_ST_UNKNOWN_CMD</code></td>
+</tr>
+<tr>
+<td><code>STUB_ENTRY=n</code></td>
+<td>the debug link, or none</td>
+<td>STUB answers <code>DL_ST_UNAVAILABLE</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>So with the debug link on, nothing changes on the wire and no code is duplicated: the debug link's parser is the
+listener. With it off, the stub entry brings the parser (<code>dl_frame.c</code>, about 0.4 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr>) and a reply buffer the size of
+the debug link's (1 KB): the VERSION text and a fast codeplug protocol block fit.</p>
+<p>The debug link is the first thing a build short of flash drops. What the web tools need stays: identifying the radio
+and its build (VERSION), the hand-over to the stub for updates and backups (STUB), and the Codeplug Editor's reads and
+writes (CODEPLUG, <a href="cps-fast.html">cps-fast.md</a>).</p>
+<p>The own listener's VERSION carries the keys the flashing and web tools read, then <code>stub=1</code>, then the build's start
+language, preset and off list (<a href="debuglink.html">debuglink.md</a> 3.1, <code>core/hostlink/build_info.c</code>, shared with the debug link):</p>
+<pre><code>proto=1
+git=5277f73a
+git_time=1793318400
+board=XR-100UV
+features=FM,DMR,...,CPS_FAST,USB,HOSTLINK
+codec=xr100uv-2501
+stub=1
+start=en
+preset=full
+off=APRS_IGATE,FONT_AA
+</code></pre>
+<p><code>stubtool.py</code> and <code>f4stub.py</code> take <code>board=</code> from it to pick the stub's profile, <code>rfoundry</code> and the web flasher's probe
+take <code>board=</code>, <code>git=</code> and <code>codec=</code>, the web flasher's update <code>start=</code>, <code>preset=</code> and <code>off=</code>, the Codeplug Editor <code>features=</code>
+(<code>CPS_FAST</code>). A key that doesn't fit the reply is left out whole. Their INFO_CHIP request gets <code>DL_ST_UNKNOWN_CMD</code>, which every tool already treats
+as &quot;older firmware&quot; and goes on without the chip UID.</p>
+<h2 id="3-coexistence-on-the-host-port">3. Coexistence on the host port</h2>
+<p>The listener sits where the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> does (<a href="debuglink.html">debuglink.md</a> 1, <code>hostlink.h</code>): a frame is recognized
+only at a request boundary (idle; in a <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> session after the 3 ms gap; in <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> mode between <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="mmdvm-protocol.html">MMDVM</abbr> frames), so the
+CPS, hotspot, <abbr class="gl" tabindex="0" title="Terminal node controller: the modem that turns packet data into audio tones and back." data-more="../dev/glossary.html#t-tnc">TNC</abbr> and <abbr class="gl" tabindex="0" title="Point-to-point protocol: IP over a serial link." data-more="ppp.html">PPP</abbr> personalities work as with the debug link. In the USB network personality the host link
+feeds <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr> serial bytes through the same dispatch, so the <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">STUB</abbr> frames arrive there too. The <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr> entry then tells
+the stub that the port is not a serial device (<code>handoff_flags</code>), and the stub enumerates again as one.</p>
+<p>The stub entry reads no pins and does not touch PTT. On the <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> radios whose PTT shares the cable's serial line,
+the input task's shared-PTT filter (<code>drivers/input/sharedptt</code>) works from the <abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="../dev/glossary.html#t-uart">UART</abbr>'s <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> time, whoever parses the
+bytes, so a stub upload can't key the radio.</p>
+<h2 id="4-safety">4. Safety</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The magic <code>'C7SB'</code> on BEGIN and ENTER, the exact length and the CRC-32 of the whole image before the jump</td>
+<td><code>stub_load.c</code></td>
+</tr>
+<tr>
+<td>ENTER while the radio core is transmitting, or the hotspot is sending, answers busy before the image is looked at</td>
+<td><code>stub_entry_request</code></td>
+</tr>
+<tr>
+<td>The platform's image check (the STM32 IWDG: the stub must say it feeds it)</td>
+<td><code>hal_system_t.stub_image_ok</code>, <a href="stub-stm32f4.html">stub-stm32f4.md</a> 3.1</td>
+</tr>
+<tr>
+<td>100 ms after the ENTER reply, the jump is dropped if the radio is transmitting; otherwise <code>tx_off</code>, the banner, the jump</td>
+<td><code>stub_entry_service</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>The <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> check reads only the radio core's state (<code>radio_get_state</code>), not the whole view, so the check fits the
+host link task's stack in a build without the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>.</p>
+<h2 id="5-cost">5. Cost</h2>
+<p>Default builds (<abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> on), against a build without the <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr> entry:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Board family</th>
+<th>Flash</th>
+<th><abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STM32 with an HR_C6000</td>
+<td>+52 B</td>
+<td>0</td>
+</tr>
+<tr>
+<td>STM32 with an HR_C5000</td>
+<td>+232 B (<abbr class="gl" tabindex="0" title="Link-time optimization: the compiler optimizes across files. It shrinks the firmware." data-more="../dev/glossary.html#t-lto">LTO</abbr> inlining moves)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>HR_C7000</td>
+<td>+12 to +16 B</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p>The stub entry without the debug link (an <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr> board with an HR_C5000, <code>CONFIG_DEBUGLINK=n</code> with and without <code>CONFIG_STUB_ENTRY</code>): 2,356 B of
+flash and 8,456 B of RAM, of which 8 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> is the STM32 staging buffer. The <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> boards load the image into the codec window and add no staging buffer.</p>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/stub-entry.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#1-wire-format">1. Wire format</a></li><li class="l2"><a href="#2-listeners">2. Listeners</a></li><li class="l2"><a href="#3-coexistence-on-the-host-port">3. Coexistence on the host port</a></li><li class="l2"><a href="#4-safety">4. Safety</a></li><li class="l2"><a href="#5-cost">5. Cost</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

@@ -1,0 +1,403 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adding a Radio · RadioFoundry</title>
+<meta name="description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Adding a Radio · RadioFoundry">
+<meta property="og:description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:url" content="https://radiofoundry.org/docs/dev/adding-a-radio.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="The radios RadioFoundry runs on, each showing a different screen.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/dev/adding-a-radio.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/dev/adding-a-radio.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/dev/adding-a-radio.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/dev/adding-a-radio.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/dev/adding-a-radio.html">
+<link rel="icon" href="../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../" data-home="../../" data-gl-more="More">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../index.html">
+			<img src="../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Main"><a href="../../radios/index.html">Radios</a><a href="../../features/index.html">Features</a><a href="../../flash/index.html">Install</a><a href="../../codeplug/index.html">Codeplug</a><a href="../../docs/index.html" aria-current="page">Docs</a><a href="../../screenshots/index.html">Screenshots</a><a href="../../tools/index.html">Tools</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Language" title="Language">EN</summary><nav aria-label="Language"><a href="../../docs/dev/adding-a-radio.html" aria-current="true" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../es/docs/dev/adding-a-radio.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../it/docs/dev/adding-a-radio.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../zh/docs/dev/adding-a-radio.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Switch light and dark" title="Switch light and dark">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Developer Guide">
+		<p class="eyebrow"><a href="../../docs/index.html">Documentation</a> / Developer Guide</p>
+		<ul><li><a href="index.html">Developer Documentation</a></li><li><a href="adding-a-mode.html">Adding a Mode</a></li><li><a href="adding-a-radio.html" aria-current="page">Adding a Radio</a></li><li><a href="architecture.html">Architecture</a></li><li><a href="board-registry.html">The Board Registry</a></li><li><a href="building.html">Building</a></li><li><a href="ci-runners.html">CI Runners and Images</a></li><li><a href="ci.html">Continuous Integration</a></li><li><a href="codec.html">The Codec</a></li><li><a href="codeplug-editor.html">The Codeplug Editor</a></li><li><a href="contributing.html">Contributing</a></li><li><a href="cps-and-codeplug.html">CPS, Codeplug and Settings</a></li><li><a href="debug-link.html">Debug Link</a></li><li><a href="glossary.html">Developer glossary</a></li><li><a href="manual-pdf.html">The User Manual PDF</a></li><li><a href="release.html">Releases</a></li><li><a href="stack-check.html">Stack Check</a></li><li><a href="testing.html">Testing</a></li><li><a href="translating.html">Translating</a></li><li><a href="web-flasher.html">The Web Flasher</a></li><li><a href="website.html">The Web Site</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<h1 id="adding-a-radio">Adding a Radio</h1>
+<p>A new radio is a new <code>boards/&lt;b&gt;/</code> directory, drivers for any chip the tree doesn't have yet, and a platform if its <abbr class="gl" tabindex="0" title="System on chip: the processor and its on-chip peripherals." data-more="glossary.html#t-soc">SoC</abbr>
+is new. The core doesn't change. If it seems to need a change, the difference belongs in <code>board_t</code> or a <code>hal_*</code>
+interface instead, used through a field that other radios leave at its default.</p>
+<p>Before writing code, the facts go into a hardware spec, <code>docs/spec/hardware-&lt;b&gt;.md</code>, written by the spec side under
+the <a href="contributing.html#clean-room">clean-room rules</a>. Use the hardware spec of a radio on the same platform (<code>hardware-&lt;id&gt;.md</code>, <a href="../spec/radios.html">radios.md</a>) as the model: <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="glossary.html#t-mcu">MCU</abbr> and memory map, pins, chips, keys, display, power,
+bootloader and image format, calibration, codec location. Start from the radio's entry in
+<a href="../spec/radios.html">radios.md</a>: its chip list and which RadioFoundry drivers it can reuse.</p>
+<h2 id="the-files">The files</h2>
+<p>A board's files list only how it differs from its platform. The platform's defaults are in <code>platform/&lt;p&gt;/</code>:
+<code>platform.mk</code> (compiler, part defines, <abbr class="gl" tabindex="0" title="Hardware abstraction layer: the interfaces the core uses instead of touching a chip." data-more="architecture.html">HAL</abbr> modules), <code>config.mk</code> (feature defaults), <code>common.ld</code> (the sections) and
+<code>FreeRTOSConfig.h</code>. Glue that every radio with the same part on that <abbr class="gl" tabindex="0" title="System on chip: the processor and its on-chip peripherals." data-more="glossary.html#t-soc">SoC</abbr> shares is in a subdirectory the board lists
+in <code>BOARD_DIRS</code>. The board then keeps only its wiring and what its chips leave to it.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Subdirectory</th>
+<th>For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>platform/stm32f4/hrc</code></td>
+<td>an <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="glossary.html#t-hr-c6000">HR_C6000</abbr> or HR_C5000: <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> glue, <abbr class="gl" tabindex="0" title="Inter-IC sound: the bus audio samples travel on between chips." data-more="glossary.html#t-i2s">I2S</abbr> audio, the chip's ports, the stock codec host</td>
+</tr>
+<tr>
+<td><code>platform/stm32f4/spi_flash</code></td>
+<td>the data flash on <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="glossary.html#t-spi">SPI</abbr> <abbr class="gl" tabindex="0" title="The flash chip type that holds code and can run it in place." data-more="glossary.html#t-nor">NOR</abbr>, with its security registers. A flash that shares its bus with another device takes the board's bus lock (<code>bus_take</code>, <code>bus_give</code>) instead of the driver's own mutex</td>
+</tr>
+<tr>
+<td><code>platform/stm32f4/fsmc_keypad</code></td>
+<td>a key matrix on the <abbr class="gl" tabindex="0" title="Liquid crystal display: the radio&#x27;s screen." data-more="../user/22-glossary.html#t-lcd">LCD</abbr> data lines</td>
+</tr>
+<tr>
+<td><code>platform/stm32f4/gps_uart</code></td>
+<td>a GPS module on a USART</td>
+</tr>
+</tbody>
+</table></div>
+<p>The board's own files:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>File</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>boards/&lt;b&gt;/board.mk</code></td>
+<td><code>PLATFORM</code>, <code>APP_BASE</code> (where the image starts: the first byte the bootloader runs), <code>BOARD_DIRS</code> (the board directory and each driver it uses) and any <code>MCU_DEFS</code> of its own. <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="glossary.html#t-stm32">STM32</abbr>: <code>MCU</code> (the part, which picks the CMSIS define and start-up file) and <code>HSE_VALUE</code> (the crystal in Hz); optional <code>BOARD_HAL_MODULES</code> (HAL modules beyond the platform's, such as <code>hal_i2c</code>)</td>
+</tr>
+<tr>
+<td><code>boards/&lt;b&gt;/board.toml</code></td>
+<td>The board registry entry: identity, status, flashing, codec route, the site's data. <code>tools/boards.py check</code> validates it against <code>board.mk</code>, the linker script and <code>board_t</code>. Every key is in <a href="board-registry.html">The board registry</a>. Copy a neighbor on the same platform</td>
+</tr>
+<tr>
+<td><code>boards/&lt;b&gt;/config.mk</code></td>
+<td>Feature defaults where this radio differs from <code>platform/&lt;p&gt;/config.mk</code>, with <code>?=</code> (for example <code>CONFIG_USB ?= n</code> on a radio without USB, <code>CONFIG_DISPLAY_INSET</code>), each with the reason. Also <code>BOARD_UNSUPPORTED</code> (switches its hardware can't do, one a line with the reason: <code>BOARD_UNSUPPORTED += AM_RX  # no air band receiver</code>), <code>BOARD_NOT_WRITTEN</code> (the same form: the hardware can, the driver or glue isn't written yet, with <code>CONFIG_X ?= n</code>; ci.sh's maximal build leaves both lists off, <a href="../build-config.html#unsupported-not-written-unconfirmed">the rule</a>), <code>BOARD_REQUIRED</code> (switches it can't build without; ci.sh skips their <code>no-</code> build) and <code>MAXIMAL_VARS</code> (make variables for that build, e.g. <code>LTO=1</code>)</td>
+</tr>
+<tr>
+<td><code>boards/&lt;b&gt;/memory.ld</code></td>
+<td>The memory map: the codec symbols, then <code>MEMORY</code> (the application's <code>FLASH</code> region from <code>__app_start</code>, which the Makefile defines from <code>APP_BASE</code>, and the <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="glossary.html#t-ram">RAM</abbr> regions), then <code>INCLUDE common.ld</code>, the platform's sections. Keep the region's end below the codec. Keep the application out of every flash sector the codec touches (not only the codec bytes), so rfoundry can update the firmware without erasing the codec. The flashing tools read the region and the codec symbols from it, and derive the erasable sectors and the protected range (<a href="release.html#sector-maps">release.md</a>)</td>
+</tr>
+<tr>
+<td><code>boards/&lt;b&gt;/freertos_board.h</code></td>
+<td>Optional: <abbr class="gl" tabindex="0" title="Real-time operating system: the scheduler that runs the firmware&#x27;s tasks." data-more="glossary.html#t-rtos">RTOS</abbr> settings that differ from <code>platform/&lt;p&gt;/FreeRTOSConfig.h</code> (the heap size, for example), read before its defaults</td>
+</tr>
+<tr>
+<td><code>boards/&lt;b&gt;/board.c</code></td>
+<td>The <code>board_t</code> descriptor, the key map, bands, power level names</td>
+</tr>
+<tr>
+<td><code>boards/&lt;b&gt;/pins.h</code>, <code>&lt;b&gt;.h</code></td>
+<td>Pin assignments and the board's private declarations. The registry reads the pins the flash <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="glossary.html#t-stub">stub</abbr> uses from <code>pins.h</code> (<code>[flash.stub]</code> in <a href="board-registry.html#boardtoml">The board registry</a>)</td>
+</tr>
+<tr>
+<td><code>boards/&lt;b&gt;/*_&lt;b&gt;.c</code></td>
+<td>One file per interface: radio, DMR, audio, <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="codec.html">vocoder</abbr>, display, input, flash, power, calibration, diagnostics, USB</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="a-board-family">A board family</h3>
+<p>Radios that are one board design with different data (other key positions, panel types, power tables, a battery
+divider) share their board code in <code>boards/&lt;family&gt;/</code>, which each radio lists in <code>BOARD_DIRS</code>. The family directory
+holds the interface files (<code>*_&lt;prefix&gt;.c</code>), the family's header and a pin map, and declares what it reads from each
+radio: a variant table and the key matrix, defined in the radio's own <code>board.c</code>. Each radio's directory keeps
+<code>board.mk</code>, <code>config.mk</code>, <code>board.toml</code>, <code>memory.ld</code>, a <code>pins.h</code> that includes the family's (and changes what differs),
+<code>board.c</code> and the files that really differ (USB identity, vocoder profiles). Differences the build can't detect, such
+as a higher power version with swapped pins, are a <code>BUILD_OPTIONS</code> choice in <code>board.mk</code>.</p>
+<p>The registry and the tools treat the family directories a board's <code>BOARD_DIRS</code> lists as that board's sources: the
+<code>board_t</code> name, the flash map, the key enum for the web control page and the stub's pins are found there, and
+<code>tools/check_generic.py</code> lets the family's files name the radios that build them. The family's host tests are in
+<code>boards/&lt;family&gt;/tests/</code>. <a href="../spec/radios.html">radios.md</a> says which radios share a family.</p>
+<p>Look at the boards on your platform for a model (<code>tools/boards.py list --platform &lt;p&gt;</code>; their chips are in
+<a href="../spec/radios.html">radios.md</a>).</p>
+<h2 id="board_t">board_t</h2>
+<p><a href="https://github.com/radiofoundry/radiofoundry/blob/main/hal/board.h">hal/board.h</a> defines it. The fields:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Fill with</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>The model as shown in About and the <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr>'s description</td>
+</tr>
+<tr>
+<td><code>caps</code></td>
+<td><code>CAP_KEYPAD</code>, <code>CAP_ENCODER</code>, <code>CAP_GPS</code>, <code>CAP_DMR</code>, <code>CAP_VOLUME_POT</code>, <code>CAP_AM_RX</code>, <code>CAP_BCAST_FM</code>, <code>CAP_NO_BATTERY</code> (a mobile on a fixed supply: no battery UI, no battery monitor; leave <code>battery_mv</code> and <code>battery_pct</code> NULL, and set <code>hal_power_t.supply_mv</code> if the radio measures its DC input: <a href="../spec/radio-features.html">radio-features.md</a>, battery)</td>
+</tr>
+<tr>
+<td><code>bands</code>, <code>band_count</code></td>
+<td><abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">Receive</abbr> ranges, each with <code>tx</code> true where <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> is allowed</td>
+</tr>
+<tr>
+<td><code>power_count</code>, <code>power_names</code>, <code>power_default</code></td>
+<td>Power levels as short labels, lowest first, and the default index</td>
+</tr>
+<tr>
+<td><code>power_bands</code>, <code>power_band_count</code></td>
+<td>Optional: the labels per band, where a level gives a different power on each band (a top level of 45 W on one band, 50 W on the other). Same <code>power_count</code> on every band; a frequency in no entry uses <code>power_names</code></td>
+</tr>
+<tr>
+<td><code>display</code>, <code>input</code>, <code>keymap</code>, <code>keymap_len</code></td>
+<td>Display and key interfaces, and the key map (below)</td>
+</tr>
+<tr>
+<td><code>radio</code>, <code>dmr</code>, <code>audio</code>, <code>vocoder</code></td>
+<td><abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> chip, <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> modem (NULL on an FM-only radio), audio path, codec hosting</td>
+</tr>
+<tr>
+<td><code>power</code>, <code>flash</code></td>
+<td>Battery and power switch, external flash</td>
+</tr>
+<tr>
+<td><code>host_port</code>, <code>cps</code>, <code>netif</code></td>
+<td>The link to a computer (NULL if none), <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> and USB network hooks</td>
+</tr>
+<tr>
+<td><code>system</code>, <code>diag_line</code>, <code>diag_reset</code></td>
+<td>Optional: chip identity and reboot modes, a diagnostics page</td>
+</tr>
+<tr>
+<td><code>battery_low_mv</code>, <code>battery_critical_mv</code></td>
+<td>Battery warning levels; 0 for none</td>
+</tr>
+<tr>
+<td><code>audio_tap</code>, <code>bcast</code>, <code>afsk</code></td>
+<td>Optional: audio path taps, a broadcast FM receiver, <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> <abbr class="gl" tabindex="0" title="Audio frequency shift keying: data as two audio tones on an FM carrier. APRS at 1200 baud uses it." data-more="glossary.html#t-afsk">AFSK</abbr> transmit and receive audio</td>
+</tr>
+<tr>
+<td><code>air</code>, <code>baseband</code></td>
+<td>Optional: the modem chip's air interface provider for the modes the core frames itself (P25, NXDN; <a href="../spec/air-interface.html">air-interface.md</a> 3), and the sample taps the soft modem receives through (section 6). The platform's DMR glue exports both (<code>stm32_hrc_air</code> and <code>stm32_hrc_baseband</code>, <code>hrc_air</code> and <code>hrc_baseband</code>); point the board at them. Without <code>air</code>, list <code>P25</code>, <code>P25_TRUNK</code> and <code>NXDN</code> in <code>BOARD_NOT_WRITTEN</code></td>
+</tr>
+<tr>
+<td><code>gps</code></td>
+<td>With <code>CAP_GPS</code>: the GPS receiver (<a href="https://github.com/radiofoundry/radiofoundry/blob/main/hal/hal_gps.h">hal_gps.h</a>): whether the module was heard, and its power for Settings &gt; Location &gt; GPS. The platform drivers export one (<code>stm32_gps</code>, <code>hrc_gps</code>); the board gives them its <abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="glossary.html#t-uart">UART</abbr> and a power hook</td>
+</tr>
+</tbody>
+</table></div>
+<p>Optional hooks may be NULL; the core checks them.</p>
+<h2 id="the-key-map">The key map</h2>
+<p>Each <code>keymap_entry_t</code> (<code>hal/hal_input.h</code>) maps one bit of the board's key scan to logical actions:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bit</code></td>
+<td>The key's bit in <code>hal_input_t.scan()</code></td>
+</tr>
+<tr>
+<td><code>short_action</code>, <code>long_action</code></td>
+<td><code>input_action_t</code> for a press and a hold</td>
+</tr>
+<tr>
+<td><code>raw_edges</code></td>
+<td>Report down and up instead of press and hold (PTT, monitor)</td>
+</tr>
+<tr>
+<td><code>repeat</code></td>
+<td>Repeat while held (Up, Down)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Map keys to the logical actions of <code>input_action_t</code> (<code>ACT_SELECT</code>, <code>ACT_BACK</code>, <code>ACT_QUICK</code>, <code>ACT_CONTEXT</code>, <code>ACT_USER_1</code> to <code>ACT_USER_4</code>, <code>ACT_MONITOR</code>, <code>ACT_TALK_TARGET</code>, ...)
+so the five key rules of <a href="../ux/principles.html">docs/ux/principles.md</a> hold on the new radio. A radio without a keypad
+or with fewer keys must still reach every task; <a href="../spec/ui.html">docs/spec/ui.md</a> section 3 says how. Give some key
+<code>ACT_EMERGENCY</code> if the radio has one.</p>
+<h2 id="the-display">The display</h2>
+<p>The UI draws for a display class (size, color depth, insets). If the new display matches an existing class, nothing
+changes in the UI. A new class needs a gallery entry and a key map pair in the UI host tests (see
+<a href="testing.html">Testing</a>); ask before adding one, since every class multiplies the screens to review.</p>
+<p>The frame buffer is sized to the panel in <code>board.mk</code> <code>MCU_DEFS</code>: <code>GFX_FB_BYTES</code> (width times height times bits per pixel,
+over 8), <code>GFX_MAX_ROWS</code> (the height) and <code>GFX_INDEXED=1</code> for a 16-color panel. Without them the build reserves the
+40 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="glossary.html#t-kb">KB</abbr> RGB565 default. <code>boards.py check</code> requires the buffer to hold the board's <code>hardware.gallery</code> class.</p>
+<h2 id="the-drawing">The drawing</h2>
+<p>The site, the web control page and the web flasher's update mode steps show the radio as a drawing,
+<code>site/static/img/radios/src/&lt;b&gt;.svg</code>; until it has one, a generic drawing from <code>board.toml</code> <code>[frame]</code> stands in. Its rules are in
+<a href="website.html#radio-images">Radio images</a>. Once the board's key enum is written, run <code>tools/svg_keys.py tag &lt;b&gt;</code>: it tags
+the keys it finds by their labels and prints the rest. Tag those by hand, with <code>data-edge</code> on side and top keys, or
+list them in <code>data-undrawn</code>. <code>tools/svg_keys.py check &lt;b&gt;</code> must pass; the site build fails CI otherwise. Run <code>tag</code>
+again after any redraw, so the tags follow the new shapes.</p>
+<p>The keys held to enter the bootloader go in <code>board.toml</code> <code>[flash.bootloader] hold</code> by key name (<code>[&quot;ptt&quot;, &quot;sk1&quot;]</code>),
+beside the prose <code>steps</code>, and only from a documented source (the radio's hardware page). The web flasher rings them on
+the drawing and names them in a caption, so tag those keys in the drawing when it shows them, and add a
+<code>flash.key.&lt;name&gt;</code> label to <code>site/i18n/en.json</code> for a key no other radio holds. <code>tools/boards.py check</code> and
+<code>site/tests/radio_images_test.py</code> fail a key the board doesn't have, one in neither the drawing nor <code>data-undrawn</code>, or
+one without a label.</p>
+<h2 id="bring-up-order">Bring-up order</h2>
+<ol>
+<li>Platform: start-up, clocks, a time base, a <abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="glossary.html#t-uart">UART</abbr> or USB for logging. Blink something.</li>
+<li><code>board.c</code> with the display and input interfaces. The UI comes up with the built-in channels.</li>
+<li>The <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="debug-link.html">debug link</abbr> on the host port, so screenshots and key injection work from here on (<a href="debug-link.html">Debug link</a>).
+If the host port is a two-pin K-type programming jack, check whether PTT shares the line that carries the host's
+data: send back-to-back 0x00 bytes and watch the raw PTT pin. If it goes low, gate PTT on UART traffic
+(<code>drivers/input/sharedptt</code>, <a href="../spec/gotchas.html">gotchas.md</a> 16.2) before anything <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmits</abbr>. Then run
+<code>tests/hil/test_ptt_host_traffic.py</code>: host polling must make no PTT press.
+If PTT also comes through a mic jack, power on with the jack empty and watch the raw pin. If it reads low, count it
+only once it has read high (<code>drivers/input/plugptt</code>, <a href="../spec/gotchas.html">gotchas.md</a> 16.3).</li>
+<li>Flash, settings and calibration reads. Check the foreign-region guard on a radio that still runs the vendor firmware
+(<a href="../spec/settings-store.html">settings-store.md</a> 5).</li>
+<li><abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> chip: FM <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr>, then FM transmit into a dummy load.</li>
+<li><abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> modem and the codec: receive, then transmit, checked on the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="glossary.html#t-sdr">SDR</abbr> bench.
+Then the DMR <abbr class="gl" tabindex="0" title="Power amplifier: the stage that boosts the transmit signal to the output power." data-more="glossary.html#t-pa">PA</abbr> key-up on every band with its own PA: <code>tools/bench/pa_cal.py</code>
+(<a href="../spec/pa-keyup.html">pa-keyup.md</a> 6).</li>
+<li>The air interface, where the modem chip has a physical layer mode (<a href="../spec/air-interface.html">air-interface.md</a>):
+point <code>air</code> and <code>baseband</code> at the platform glue's provider (above); on a platform whose receive tap is optional, set the glue's <code>air_tap</code> once the tap is wired. The glue reports each mode's fit with
+<code>AIR_FIT_UNTESTED</code> until the board sets the glue's <code>air_verified</code>, which it does only after P25 and NXDN were
+checked on air both ways: <code>tests/hil/test_p25.py</code> (<code>test_p25_rx_from_bench</code>, <code>test_p25_tx_off_air</code>) and
+<code>tests/hil/test_nxdn.py</code> (<code>test_nxdn_rx_speech</code>, <code>test_nxdn_tx_off_air</code>, both rates). Check DMR voice right after
+each: P25 runs in memory the DMR <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="codec.html">vocoder</abbr> lends where the platform has that (<code>hal_vocoder_t.lend</code>). A mode the
+provider can't fit stays in <code>BOARD_NOT_WRITTEN</code> with the reason.</li>
+<li><abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr>, so <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr> can program it.</li>
+<li>Flashing from where an owner starts:
+<ul>
+<li>Find every stock build an owner's radio may run before RadioFoundry: every firmware version the vendor and its
+rebadgers have shipped, for every model the board is sold as (<code>also</code>, <code>looks</code>). Give each a codec map and a
+<code>[codec] stock</code> entry, so the web flasher and rfoundry find the codec in whatever file or readout the
+owner has.</li>
+<li>For each of those models, check the bootloader's USB identity, entry keys and key against <code>[flash]</code>.</li>
+<li>Walk the web flasher through each starting point:
+<ul>
+<li>the vendor's download as the owner gets it (a zip or a <code>.bin</code>);</li>
+<li>a readout of the radio;</li>
+<li>an update of a radio already running RadioFoundry.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>The stock <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="cps-and-codeplug.html">codeplug</abbr>, so the install keeps the owner's channels. Map the vendor layout clean room
+(<a href="../CLEANROOM.html">CLEANROOM.md</a>), from data only: compare reads of the radio's memory with <code>dmrconf decode</code> of the
+same codeplug, then confirm each field with reads taken before and after one change in the stock menu. Write it up
+as the radio's <code>&lt;id&gt;-stock-codeplug.md</code> and convert it in <code>site/static/js/codeplug/</code>. The Codeplug Editor, the
+Tools page and the install's channel step share the converter.
+<ul>
+<li>If a channel record holds no <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr> or TX contact, look for a separate table indexed by channel number: a
+few bytes per channel, in channel order, holding the contact's number in the contact table. One supported radio
+keeps its TX contacts this way, and dmrconf 0.15 doesn't decode that table, so an empty TX contact in its output
+doesn't mean the codeplug has none. Change one channel's talkgroup on the radio and diff the reads to find it.
+Other vendors' radios (AnyTone's among them) likely do the same.</li>
+</ul>
+</li>
+</ol>
+<p>A bring-up page under <a href="../testing/index.html">docs/testing/</a> is this list made concrete for one radio.</p>
+<h2 id="bring-up-records">Bring-up records</h2>
+<p>What the docs claim for a radio comes from its records, so each step above ends with a recorded run.</p>
+<ol>
+<li>Add <code>boards/&lt;b&gt;/board.toml</code> with <code>[status] level = &quot;bring-up&quot;</code>, a <code>summary</code> and <code>[docs] hardware</code>. A bring-up page
+(<code>docs/testing/&lt;b&gt;-bringup.md</code>, <code>[docs] bringup</code>) is optional; with one, the README links the radio to it.</li>
+<li><code>tools/bringup.py list --radio &lt;b&gt;</code> shows the checklist: every feature of
+<a href="https://github.com/radiofoundry/radiofoundry/blob/main/tests/hil/features.toml">tests/hil/features.toml</a> the board builds, <code>n/a</code> for its <code>BOARD_UNSUPPORTED</code>
+switches and <code>not written</code> for its <code>BOARD_NOT_WRITTEN</code> ones. Each needs a reason in <code>config.mk</code>; a feature built
+but known not to work yet gets a <code>[features]</code> entry in <code>board.toml</code> (<code>state = &quot;unsupported&quot;</code>), and so does a
+feature without a switch that the hardware rules out (<code>state = &quot;n/a&quot;</code>).</li>
+<li>As a step works, <code>tools/bringup.py run --radio &lt;b&gt; --feature F -- &lt;pytest options&gt;</code> runs its tests under the
+radio lock and writes <code>docs/testing/results/&lt;b&gt;/&lt;date&gt;-&lt;commit&gt;.json</code>. Commit the record with the change it
+checks; a record with failures is the to-do list (<a href="https://github.com/radiofoundry/radiofoundry/blob/main/tests/hil/README.md#bring-up-mode">HIL bring-up mode</a>).</li>
+<li>A check made before the radio had records (a bench log, a hand test written up in the hardware page) can go in
+the board's seed record, <code>docs/testing/results/&lt;b&gt;/seed.json</code>
+(<a href="../testing/results/index.html#seed-record">format</a>). A run replaces a seed row.</li>
+<li>Raise <code>[status] level</code> to <code>testing</code>, then <code>supported</code>, as the records cover the radio, update <code>summary</code>, and run
+<code>tools/boards.py docs</code>. <code>--floor</code> in ci.sh fails a change that makes any radio read lower than on <code>main</code>.</li>
+</ol>
+<h2 id="tests-and-ci">Tests and CI</h2>
+<ul>
+<li>Add host tests for each new driver against a simulated chip (<code>tests/host/*Test.c</code>; see the existing driver tests).
+Tests of the board's own code go in <code>boards/&lt;b&gt;/tests/</code> with a <code>host.mk</code> (<a href="testing.html#host-tests">Testing</a>).</li>
+<li><abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="testing.html">HIL</abbr> tests (<a href="https://github.com/radiofoundry/radiofoundry/blob/main/tests/hil/README.md#tests">tests/hil</a>): the health checks' numbers go in <code>board.toml</code> <code>[hil]</code>, a
+pass limit the radio is held to instead of a test's default in <code>[hil.limits]</code> (with the reason), the <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> radio types
+in <code>[cps]</code>, and a check only this radio can use in <code>boards/&lt;b&gt;/hil/test_*.py</code>.</li>
+<li><code>tools/ci.sh</code> finds the board by its <code>board.mk</code> and builds its feature matrix when the compiler is installed. A
+board without its compiler is skipped with a notice.</li>
+<li>Run <code>tools/boards.py docs</code>: it writes the radio into the README's radio table, the user manual's radio index
+(<a href="../user/23-radios.html">23-radios.md</a>), the feature matrix's &quot;Built by default&quot; table and the Port cell of the
+radio's row in the <a href="../spec/radios.html">radio survey</a>. <code>tools/ci.sh</code> fails when that wasn't run. Remove the radio's
+planned row from the survey, or make it the board's row: a planned row that names a board fails <code>tools/boards.py check</code>. Add the radio to <a href="../user/01-introduction.html">the user manual's introduction</a>.</li>
+<li>The web site lists the radio from <code>board.toml</code>: <code>order</code> places it, <code>[status] level</code> and <code>summary</code> give its badge and
+its line for visitors. A survey row that names a board is the board's row, so the site doesn't list it as planned.</li>
+<li>Before it can be released: its <code>board.toml</code> <code>[flash]</code> and <code>[codec]</code> tables, <code>[status] release = &quot;stable&quot;</code> and the
+regenerated <code>tools/rfoundry/rfoundry/registry.json</code> (<code>tools/boards.py json --for rfoundry --out ...</code>). The release
+workflow's job for its toolchain then builds and packages it, with each build option value
+(<a href="release.html#the-release-workflow">release.md</a>); CI and the nightly pick it up from the registry too
+(<a href="ci.html">ci.md</a>). The jobs are grouped by toolchain (<code>platform.toml</code> <code>[toolchain] id</code>), so neither a new radio nor
+a new platform on a known toolchain (another Arm <abbr class="gl" tabindex="0" title="System on chip: the processor and its on-chip peripherals." data-more="glossary.html#t-soc">SoC</abbr>, say) needs a workflow edit. Only a new toolchain does.</li>
+</ul>
+
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/dev/adding-a-radio.md">View the source of this page</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="On this page">
+		<p class="eyebrow">On this page</p>
+		<ul><li class="l2"><a href="#the-files">The files</a></li><li class="l3"><a href="#a-board-family">A board family</a></li><li class="l2"><a href="#board_t">board_t</a></li><li class="l2"><a href="#the-key-map">The key map</a></li><li class="l2"><a href="#the-display">The display</a></li><li class="l2"><a href="#the-drawing">The drawing</a></li><li class="l2"><a href="#bring-up-order">Bring-up order</a></li><li class="l2"><a href="#bring-up-records">Bring-up records</a></li><li class="l2"><a href="#tests-and-ci">Tests and CI</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Join the RadioFoundry community</strong><span class="small muted">Questions, help with your radio and news, on Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Found a bug? Want your radio supported?</strong><span class="small muted">Open an issue on GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry is MIT licensed · <a href="https://github.com/radiofoundry/radiofoundry">Source Code</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Community</a> · <a href="../../docs/index.html">Docs</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Changelog</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

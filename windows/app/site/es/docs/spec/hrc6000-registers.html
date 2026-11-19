@@ -1,0 +1,5816 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HR_C6000 register reference · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="HR_C6000 register reference · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/docs/spec/hrc6000-registers.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/hrc6000-registers.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/hrc6000-registers.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/hrc6000-registers.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/hrc6000-registers.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/hrc6000-registers.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../es/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../../es/radios/index.html">Radios</a><a href="../../../es/features/index.html">Funciones</a><a href="../../../es/flash/index.html">Instalar</a><a href="../../../es/codeplug/index.html">Codeplug</a><a href="../../../es/docs/index.html" aria-current="page">Documentación</a><a href="../../../es/screenshots/index.html">Capturas</a><a href="../../../es/tools/index.html">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../../docs/spec/hrc6000-registers.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/hrc6000-registers.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/hrc6000-registers.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/hrc6000-registers.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Especificaciones">
+		<p class="eyebrow"><a href="../../../es/docs/index.html">Documentación</a> / Especificaciones</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html" aria-current="page">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Esta página aún no está traducida; se muestra en inglés.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="hr_c6000-register-reference">HR_C6000 register reference</h1>
+<p>A complete English register reference for the Hongrui <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> / FM baseband chip, translated from the vendor's
+user manual: Zhejiang Hongrui Communication Technology (浙江宏睿通信技术有限公司), <em>HR_C6000 用户手册</em>, Chinese,
+updated edition (revision A2, 2014-04-26). The Chinese text is authoritative. The English machine translations that
+circulate (the &quot;updated translated English&quot; PDF, the older translated PDF and other translations) have
+errors; section 9 lists the ones that matter.</p>
+<p>This file is a fact reference: what the manual says each register, bit and <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> location does. How RadioFoundry drives the
+chip, and what the bench has confirmed, is in <a href="modem-hrc6000.html">modem-hrc6000.md</a>; section 10 here repeats only
+the bench facts that bear on a register's meaning. FM audio paths and their bench results are in <code>modem-hrc6000.md</code> 8.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Contents</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1, 2</td>
+<td>U_SPI access, RAM maps</td>
+</tr>
+<tr>
+<td>3</td>
+<td>System parameter table, register by register (0x00-0xE6)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Auxiliary parameter table</td>
+</tr>
+<tr>
+<td>5, 6</td>
+<td><abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">Transmit</abbr> and <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> interfaces, interrupts and layer 2 timing</td>
+</tr>
+<tr>
+<td>7, 8</td>
+<td>FM, signaling and MSK; FM transmit from <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr> data</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Translation notes and manual conflicts</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Bench notes</td>
+</tr>
+</tbody>
+</table></div>
+<p>Conventions:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Mark</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R, W, R/W</td>
+<td>access as the manual's table gives it; blank where the manual gives none</td>
+</tr>
+<tr>
+<td>default</td>
+<td>the manual's reset value; &quot;-&quot; where it gives none</td>
+</tr>
+<tr>
+<td>&quot;(manual section x)&quot;</td>
+<td>the fact comes from a chapter, not the register table</td>
+</tr>
+<tr>
+<td>&quot;(text layer only)&quot;</td>
+<td>present in the PDF's text layer but not visible on the rendered page</td>
+</tr>
+<tr>
+<td>&quot;(not stated)&quot;</td>
+<td>the manual says nothing about it</td>
+</tr>
+<tr>
+<td>&quot;(conflict)&quot;</td>
+<td>two places in the manual disagree; section 9.2 has the details</td>
+</tr>
+<tr>
+<td>RadioFoundry page n</td>
+<td>the U_SPI OPMode value RadioFoundry's driver calls &quot;page&quot; (section 1)</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="1-u_spi-access-manual-44-52">1. U_SPI access (manual 4.4, 5.2)</h2>
+<p>The <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr> reaches every register table and both RAMs over U_SPI (pins 55-58: U_SDO, U_SDI, U_SCLK, U_CS). The chip is
+the <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> slave. SCLK is at most 4 MHz. Bytes are <abbr class="gl" tabindex="0" title="Most significant bit (or byte): the first, highest-value one." data-more="../dev/glossary.html#t-msb">MSB</abbr> first.</p>
+<p>A transaction is: CS low, a command byte, an address, one or more data bytes, CS high.</p>
+<h3 id="11-command-byte">1.1 Command byte</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Bit</th>
+<th>Name</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td>IsRead</td>
+<td>1 = read, 0 = write</td>
+</tr>
+<tr>
+<td>6</td>
+<td>address extension</td>
+<td>0 = 8-bit address, 1 = 16-bit address field (11-bit address)</td>
+</tr>
+<tr>
+<td>5-3</td>
+<td>-</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td>2-0</td>
+<td>OPMode</td>
+<td>which space the transaction addresses (table below)</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>OPMode</th>
+<th>Space (manual)</th>
+<th>RadioFoundry page</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>000</td>
+<td>reserved</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>001</td>
+<td>auxiliary parameter table (附属参数配置表)</td>
+<td>1</td>
+<td>section 4</td>
+</tr>
+<tr>
+<td>010</td>
+<td>write: <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr>; read: <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> RAM</td>
+<td>2</td>
+<td>section 2</td>
+</tr>
+<tr>
+<td>011</td>
+<td>power-on tone / prompt tone (开机音或其他提示音)</td>
+<td>3</td>
+<td>the prompt tone <abbr class="gl" tabindex="0" title="First in, first out: a queue of data between a producer and a consumer." data-more="../dev/glossary.html#t-fifo">FIFO</abbr>, section 7.7</td>
+</tr>
+<tr>
+<td>100</td>
+<td>system parameter table (系统参数表)</td>
+<td>4</td>
+<td>section 3</td>
+</tr>
+<tr>
+<td>101</td>
+<td>external AMBE3000 <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">vocoder</abbr> registers</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td>110</td>
+<td>write: RX RAM; read: TX RAM</td>
+<td>6</td>
+<td></td>
+</tr>
+<tr>
+<td>111</td>
+<td>external AMBE1000 vocoder registers</td>
+<td>7</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>So OPMode 010 is the normal direction (the MCU fills what the chip sends and reads what it received), and 110 is the
+crossed direction (the MCU can read back the TX RAM, or preload the RX RAM).</p>
+<h3 id="12-address">1.2 Address</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Cmd bit 6</th>
+<th>Address field</th>
+<th>Start address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>one byte</td>
+<td>that byte</td>
+</tr>
+<tr>
+<td>1</td>
+<td>two bytes, &quot;high first&quot; as Addr[15:8], Addr[7:0]</td>
+<td>{Addr[2:0], Addr[15:8]}: the first byte is address bits 7-0, the low 3 bits of the second byte are address bits 10-8</td>
+</tr>
+</tbody>
+</table></div>
+<p>The address auto-increments after each data byte for as long as CS stays low.</p>
+<p>Manual examples:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Cmd</th>
+<th>Addr</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>write 0x80 to system register 0x01</td>
+<td>0x04</td>
+<td>0x01</td>
+<td>0x80</td>
+</tr>
+<tr>
+<td>read 2 bytes of RX RAM from 0x30</td>
+<td>0x82</td>
+<td>0x30</td>
+<td>(0x01, 0x02 returned)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="13-v_spi-manual-461">1.3 V_SPI (manual 4.6.1)</h3>
+<p>The vocoder SPI (pins 41-44) is a second slave port with the same framing, one operation per transaction: read
+Cmd = 0x83, Addr = 0x00, 27 data bytes; write Cmd = 0x03, Addr = 0x00, 27 data bytes. SCLK is at most 4 MHz. Using
+the HR_V3000 vocoder over V_SPI needs only 0x06 = 0x24 (manual).</p>
+<p>RadioFoundry note: on U_SPI, OPMode 011 is the prompt tone FIFO (section 7.7). RadioFoundry's &quot;flush page 3 with 0x06 = 0x22&quot;
+(modem-hrc6000.md 3.2) is, in the manual's terms, 64 prompt-tone samples of 0x7F7F written with the prompt tone path
+open (0x06 bit 1).</p>
+<h3 id="14-power-down-reset-and-clocks-manual-41-43-44">1.4 Power down, reset and clocks (manual 4.1, 4.3, 4.4)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Fact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RESETn (pin 39)</td>
+<td>power-on reset, active low, at least 0.1 µs</td>
+</tr>
+<tr>
+<td>Software reset</td>
+<td>write 0x00 bit 7 = 0: one Sys_clk period (1/9.8304 MHz); the chip sets the bit back to 1 itself</td>
+</tr>
+<tr>
+<td>PWD (pin 47)</td>
+<td>high = sleep, every internal clock stopped (the <abbr class="gl" tabindex="0" title="Phase locked loop: the circuit that holds the radio&#x27;s synthesizer on its frequency." data-more="../dev/glossary.html#t-pll">PLL</abbr> also sleeps). Valid 100 ns after it rises</td>
+</tr>
+<tr>
+<td>Leaving sleep</td>
+<td>after PWD goes low, run from the crystal (PLL bypassed), wait more than 500 µs for the PLL, then switch to the PLL</td>
+</tr>
+<tr>
+<td>Crystal</td>
+<td>1.5 V bias best, at least 2 Vpp (4.3.1); the characteristics table gives 12.288 MHz typical, 320 mVpp minimum</td>
+</tr>
+<tr>
+<td>Interrupt pins</td>
+<td>four, active-low pulses 3 Sys_clk wide</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="2-ram-maps-manual-53">2. RAM maps (manual 5.3)</h2>
+<p>Two 1.2 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> RAMs (0x000-0x4AF each), one per direction, reached with OPMode 010 / 110 and 11-bit addresses. The
+manual's tables are for layer 2 mode. Areas overlap: the <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> is reused per mode.</p>
+<h3 id="21-tx-ram-表-52">2.1 TX RAM (表 5.2)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Frame / use</th>
+<th>Address</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Voice LC header</td>
+<td>0x00-0x0B</td>
+<td>0x00-0x08: 72 control bits; 0x09-0x0B: 24 check bits (<abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr> optional)</td>
+</tr>
+<tr>
+<td>Voice PI header</td>
+<td>0x00-0x0B</td>
+<td>0x00-0x09: 80 control bits; 0x0A-0x0B: 16 check bits (MCU optional)</td>
+</tr>
+<tr>
+<td>Voice EMB (embedded LC)</td>
+<td>0x00-0x09</td>
+<td>0x00-0x08: 72 control bits; 0x09 bits 7-3: 5 check bits (MCU optional). Prepared together with voice burst A</td>
+</tr>
+<tr>
+<td>Voice A-F</td>
+<td>0x30-0x4A</td>
+<td>216 voice bits (27 bytes)</td>
+</tr>
+<tr>
+<td>RC burst</td>
+<td>0x00-0x01</td>
+<td>11 bits: 0x00 and 0x01 bits 7-5</td>
+</tr>
+<tr>
+<td>Voice terminator</td>
+<td>0x00-0x0B</td>
+<td>0x00-0x08: 72 control bits; 0x09-0x0B: 24 check bits (MCU optional)</td>
+</tr>
+<tr>
+<td>CSBK</td>
+<td>0x00-0x0B</td>
+<td>0x00-0x09: 80 control bits; 0x0A-0x0B: 16 check bits (MCU optional)</td>
+</tr>
+<tr>
+<td>MBC header</td>
+<td>0x00-0x0B</td>
+<td>0x00-0x09: 80 control bits; 0x0A-0x0B: 16 check bits (MCU optional)</td>
+</tr>
+<tr>
+<td>MBC intermediate</td>
+<td>0x00-0x0B</td>
+<td>96 control bits</td>
+</tr>
+<tr>
+<td>MBC last</td>
+<td>0x00-0x0B</td>
+<td>96 control bits</td>
+</tr>
+<tr>
+<td>Data header</td>
+<td>0x00-0x0B</td>
+<td>0x00-0x09: 80 control bits; 0x0A-0x0B: 16 check bits (MCU optional)</td>
+</tr>
+<tr>
+<td>Rate 1/2 data</td>
+<td>0x00-0x0B</td>
+<td>96 data bits</td>
+</tr>
+<tr>
+<td>Rate 3/4 data</td>
+<td>0x00-0x11</td>
+<td>144 data bits (the manual's description column says &quot;0x00-0x0B&quot;, a copy error)</td>
+</tr>
+<tr>
+<td>Rate 1 data</td>
+<td>0x00-0x17</td>
+<td>192 data bits (description column again says &quot;0x00-0x0B&quot;)</td>
+</tr>
+<tr>
+<td>Idle</td>
+<td>0x18-0x23</td>
+<td>96 control bits</td>
+</tr>
+<tr>
+<td>Short LC (CACH)</td>
+<td>0x24-0x28</td>
+<td>0x24-0x26 and 0x27 bits 7-4: 28 control bits; 0x28: 8 check bits</td>
+</tr>
+<tr>
+<td>Voice F EMB fill</td>
+<td>0x29-0x2C</td>
+<td>voice burst F embedded fill, or 0x29 = superframe number (KeyID) and 0x2A bits 7-5 = encryption algorithm ID</td>
+</tr>
+<tr>
+<td>Data / control burst embedded RC</td>
+<td>0x4B-0x50</td>
+<td>the 48-bit <abbr class="gl" tabindex="0" title="Reverse channel: signaling the receiver sends back to the transmitter during a call, in space the burst leaves free." data-more="../dev/glossary.html#t-rc">RC</abbr> embedded in a data or control burst, or the 11-bit RC encoder input in 0x4B and the high 3 bits of 0x4C</td>
+</tr>
+<tr>
+<td>C_RC burst (PDT)</td>
+<td>0x00-0x0A</td>
+<td>0x00 and 0x01 bits 7-5: 11 RC bits; 0x02-0x08: 56 control bits; 0x09-0x0A: 16 check bits</td>
+</tr>
+<tr>
+<td>196-bit information</td>
+<td>0x30-0x48</td>
+<td>196 control bits</td>
+</tr>
+<tr>
+<td>Test send (测试发送)</td>
+<td>0x00-0x48</td>
+<td>data for the <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> test mode</td>
+</tr>
+<tr>
+<td>FM data buffer 1</td>
+<td>0x030-0x22F</td>
+<td>512 bytes. &quot;Can be FM transmit voice data written externally; the voice data can also come internally from the codec&quot;</td>
+</tr>
+<tr>
+<td>FM data buffer 2</td>
+<td>0x230-0x42F</td>
+<td>512 bytes, same text</td>
+</tr>
+<tr>
+<td>Encryption key stream</td>
+<td>0x495-0x4AF</td>
+<td>216 bits, 27 bytes</td>
+</tr>
+</tbody>
+</table></div>
+<p>The manual says nothing more about the FM buffers: not the sample format, the rate, the order of the two halves,
+or which register makes the chip transmit from them instead of the codec. Section 8 collects what it does say.</p>
+<h3 id="22-rx-ram-表-53">2.2 RX RAM (表 5.3)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Frame / use</th>
+<th>Address</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Voice LC header</td>
+<td>0x00-0x0B</td>
+<td>0x00-0x08: 72 control bits; 0x09-0x0B: 24 check bits</td>
+</tr>
+<tr>
+<td>Voice PI header</td>
+<td>0x00-0x0B</td>
+<td>0x00-0x09: 80 control bits; 0x0A-0x0B: 16 check bits</td>
+</tr>
+<tr>
+<td>Voice EMB (embedded LC)</td>
+<td>0x00-0x09</td>
+<td>0x00-0x08: 72 control bits; 0x09 bits 7-3: 5 check bits</td>
+</tr>
+<tr>
+<td>RC burst</td>
+<td>(registers)</td>
+<td>the decoded 11-bit RC is in registers (0x53 / 0x54)</td>
+</tr>
+<tr>
+<td>Voice terminator</td>
+<td>0x00-0x0B</td>
+<td>0x00-0x08: 72 control bits; 0x09-0x0B: 24 check bits</td>
+</tr>
+<tr>
+<td>CSBK</td>
+<td>0x00-0x0B</td>
+<td>0x00-0x09: 80 control bits; 0x0A-0x0B: 16 check bits</td>
+</tr>
+<tr>
+<td>MBC header</td>
+<td>0x00-0x0B</td>
+<td>0x00-0x09: 80 control bits; 0x0A-0x0B: 16 check bits</td>
+</tr>
+<tr>
+<td>MBC intermediate</td>
+<td>0x00-0x0B</td>
+<td>96 control bits</td>
+</tr>
+<tr>
+<td>MBC last</td>
+<td>0x00-0x0B</td>
+<td>96 control bits</td>
+</tr>
+<tr>
+<td>Data header</td>
+<td>0x00-0x0B</td>
+<td>0x00-0x09: 80 control bits; 0x0A-0x0B: 16 check bits</td>
+</tr>
+<tr>
+<td>Rate 1/2 data</td>
+<td>0x00-0x0B</td>
+<td>96 data bits</td>
+</tr>
+<tr>
+<td>Rate 3/4 data</td>
+<td>0x00-0x11</td>
+<td>144 data bits</td>
+</tr>
+<tr>
+<td>Rate 1 data</td>
+<td>0x00-0x17</td>
+<td>192 data bits</td>
+</tr>
+<tr>
+<td>Idle</td>
+<td>0x00-0x0B</td>
+<td>96 control bits</td>
+</tr>
+<tr>
+<td>C_RC burst (PDT)</td>
+<td>0x00-0x08</td>
+<td>0x00-0x06: 56 control bits; 0x07-0x08: 16 check bits; the 11 RC bits are in registers</td>
+</tr>
+<tr>
+<td>EMB_48_INFO_0</td>
+<td>0x1F-0x24</td>
+<td>the 48-bit <abbr class="gl" tabindex="0" title="Embedded signaling: the 32 bits in the middle of a voice burst that carry link control." data-more="../dev/glossary.html#t-emb">EMB</abbr> field received in slot 0</td>
+</tr>
+<tr>
+<td>EMB_48_INFO_1</td>
+<td>0x25-0x2A</td>
+<td>the 48-bit EMB field received in slot 1</td>
+</tr>
+<tr>
+<td>Short LC</td>
+<td>0x2B-0x2F</td>
+<td>the 36-bit <abbr class="gl" tabindex="0" title="Common announcement channel: 24 bits ahead of each burst a repeater sends. It carries the slot number and short link control." data-more="../dev/glossary.html#t-cach">CACH</abbr> short <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr> received; the low 4 bits of 0x2F are unused</td>
+</tr>
+<tr>
+<td>264bit_info_0</td>
+<td>0x30-0x53</td>
+<td>one slot's last burst received, 288 bits: the CACH (24), then the burst deframed (a voice burst: its sync / EMB / RC 48, then the voice 216). Live in layer 2 mode too</td>
+</tr>
+<tr>
+<td>264bit_info_1</td>
+<td>0x60-0x83</td>
+<td>the other slot's, the same layout</td>
+</tr>
+<tr>
+<td>264bit_soft_0</td>
+<td>0xA8-0x1AF</td>
+<td>slot 0's 264 soft values, one per byte in bits 5-0</td>
+</tr>
+<tr>
+<td>264bit_soft_1</td>
+<td>0x1C8-0x2CF</td>
+<td>slot 1's 264 soft values, one per byte in bits 5-0</td>
+</tr>
+<tr>
+<td>FM data buffer 1</td>
+<td>0x030-0x22F</td>
+<td>512 bytes</td>
+</tr>
+<tr>
+<td>FM data buffer 2</td>
+<td>0x230-0x42F</td>
+<td>512 bytes</td>
+</tr>
+<tr>
+<td>Decryption key stream</td>
+<td>0x495-0x4AF</td>
+<td>216 bits, 27 bytes</td>
+</tr>
+</tbody>
+</table></div>
+<p>Layer 3 service data (manual 5.1.1): after 0x82 bit 2 with sub-status 0x80 (all checks passed), the MCU reads the
+<abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> RAM from 0x30; the length comes from the received header.</p>
+<p>Physical layer mode (manual 5.4.6): each demodulated burst, 36 bytes, is stored from RX RAM 0x30. The layouts are
+CACH 24 + slot type 20 + sync 48 + data 196 bits, or CACH 24 + sync / EMB / RC 48 + voice 216 bits; the CACH is
+present only in continuous mode.</p>
+<hr />
+<h2 id="3-system-parameter-table-manual-table-81-opmode-100">3. System parameter table (manual table 8.1, OPMode 100)</h2>
+<p>One table per functional group, in the manual's order. Addresses the manual's table omits are listed in 3.22 with
+whatever other chapters say about them.</p>
+<h3 id="31-reset-0x00">3.1 Reset (0x00)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Addr</th>
+<th>R/W</th>
+<th>Name</th>
+<th>Default</th>
+<th>Bit</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00</td>
+<td>W</td>
+<td>DMRnRst</td>
+<td>0x00</td>
+<td>7</td>
+<td>0 = reset the <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> protocol. Lasts one system clock; the chip releases it itself (likewise for every bit here)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>PHYnRst</td>
+<td></td>
+<td>6</td>
+<td>0 = reset the physical layer</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>CodernRst</td>
+<td></td>
+<td>5</td>
+<td>0 = reset the channel encoder / decoder</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>FMnRst</td>
+<td></td>
+<td>4</td>
+<td>0 = reset FM</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>VoCoderRst</td>
+<td></td>
+<td>3</td>
+<td>0 = reset the <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">vocoder</abbr> interface</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>MSKRst</td>
+<td></td>
+<td>2</td>
+<td>0 = reset the MSK block</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>IISRst</td>
+<td></td>
+<td>1</td>
+<td>0 = reset the <abbr class="gl" tabindex="0" title="Inter-IC sound: the bus audio samples travel on between chips." data-more="../dev/glossary.html#t-i2s">I2S</abbr> interface</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>CodeCRst</td>
+<td></td>
+<td>0</td>
+<td>0 = reset the built-in codec; lasts 3 system clocks, released by the chip</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="32-hardware-configuration-0x01-0x06">3.2 Hardware configuration (0x01-0x06)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Addr</th>
+<th>R/W</th>
+<th>Name</th>
+<th>Default</th>
+<th>Bit</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x01</td>
+<td>R/W</td>
+<td>RFTransIQMode</td>
+<td>0xB0</td>
+<td>7</td>
+<td>IQ modes: 0 = <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> I on <abbr class="gl" tabindex="0" title="Digital to analog converter." data-more="../dev/glossary.html#t-dac">DAC</abbr> I, TX Q on DAC Q; 1 = swapped. Two-point mode: selects the symbol-to-deviation mapping (section 7.1)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>RFRecvIQMode</td>
+<td></td>
+<td>6</td>
+<td>0 = <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> I from <abbr class="gl" tabindex="0" title="Analog to digital converter." data-more="../dev/glossary.html#t-adc">ADC</abbr> I, RX Q from ADC Q; 1 = swapped</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>RFTransMode</td>
+<td></td>
+<td>5-4</td>
+<td>TX interface: 00 IF, 01 IF IQ, 10 baseband IQ, 11 two-point modulation</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>RFRecvMode</td>
+<td></td>
+<td>3-2</td>
+<td>RX interface: 00 IF, 01 IF IQ, 10 baseband IQ</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>-</td>
+<td></td>
+<td>1</td>
+<td>IQ balance test: 1 = output zero plus the offset values, 0 = normal</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>-</td>
+<td></td>
+<td>0</td>
+<td>ADC / DAC clock phase: 1 = inverted relative to the system clock, 0 = in phase</td>
+</tr>
+<tr>
+<td>0x02</td>
+<td>R/W</td>
+<td>TransIsigCenter</td>
+<td>0x00</td>
+<td>7-0</td>
+<td>IQ modes: TX I offset (added to DAC I, or DAC Q if 0x01 bit 7 = 1). Two-point mode: &quot;MOD2 output offset&quot;, about ±422 mV in 3.3 mV steps (conflict, 9.2)</td>
+</tr>
+<tr>
+<td>0x03</td>
+<td>R/W</td>
+<td>RecvIsigCenter</td>
+<td>0x00</td>
+<td>7-0</td>
+<td>RX I offset (ADC I, or ADC Q if 0x01 bit 6 = 1). Digital range -127..127 (4.8.1)</td>
+</tr>
+<tr>
+<td>0x04</td>
+<td>R/W</td>
+<td>TransQsigCenter</td>
+<td>0x00</td>
+<td>7-0</td>
+<td>IQ modes: TX Q offset (DAC Q, or DAC I if swapped). Two-point mode: &quot;MOD2 output offset&quot; in the table, MOD1 in 4.7.2 (conflict, 9.2); about ±422 mV in 3.3 mV steps</td>
+</tr>
+<tr>
+<td>0x05</td>
+<td>R/W</td>
+<td>RecvQsigCenter (the table prints &quot;RecvIsigCenter&quot;)</td>
+<td>0x00</td>
+<td>7-0</td>
+<td>RX Q offset (ADC Q, or ADC I if swapped). Range -127..127</td>
+</tr>
+<tr>
+<td>0x06</td>
+<td>R/W</td>
+<td>Vocoder</td>
+<td>0x40</td>
+<td>7-6</td>
+<td>vocoder: 00 V_SPI vocoder, 01 AMBE3000, 11 AMBE1000</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>DMRFrom</td>
+<td></td>
+<td>5</td>
+<td>0 = one of the two external vocoders (AMBE3000 / AMBE1000) supplies the encoded voice; 1 = the vocoder on the V_SPI general interface does</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>VocoderFrom</td>
+<td></td>
+<td>4</td>
+<td>0 = encoded / decoded voice packets go through the DMR protocol layer (normal TX); 1 = encoded voice goes straight into the vocoder's decode buffer (loopback test)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>SPIFrom</td>
+<td></td>
+<td>3</td>
+<td>0 = V_SPI reads voice data from the protocol layer (normal RX); 1 = V_SPI reads the vocoder's packets directly (voice recording)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>CodeCMode</td>
+<td></td>
+<td>2</td>
+<td>0 = built-in codec, 1 = external codec</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>OpenMusic</td>
+<td></td>
+<td>1</td>
+<td>1 = open the path for the power-on tone or call prompts (section 7.7); 0 = closed</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>LocalVoCoderControl</td>
+<td></td>
+<td>0</td>
+<td>0 = the system switches the vocoder; 1 = the <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr> does</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="33-if-clocks-and-status-0x07-0x0f">3.3 IF, clocks and status (0x07-0x0F)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Addr</th>
+<th>R/W</th>
+<th>Name</th>
+<th>Default</th>
+<th>Bit</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x07</td>
+<td>R/W</td>
+<td>IFFreq2</td>
+<td>0x0B</td>
+<td>7-0</td>
+<td>IF word bits 23-16. IF = word / 2^24 x 9.8304 MHz</td>
+</tr>
+<tr>
+<td>0x08</td>
+<td>R/W</td>
+<td>IFFreq1</td>
+<td>0xB8</td>
+<td>7-0</td>
+<td>IF word bits 15-8</td>
+</tr>
+<tr>
+<td>0x09</td>
+<td>R/W</td>
+<td>IFFreq0</td>
+<td>0x00</td>
+<td>7-0</td>
+<td>IF word bits 7-0. Default word 0x0BB800 = 450 kHz</td>
+</tr>
+<tr>
+<td>0x0A</td>
+<td>R/W</td>
+<td>Clk_enb</td>
+<td>0x81</td>
+<td>7</td>
+<td>Clk_in_sel: 1 = run directly from the crystal, 0 = from the <abbr class="gl" tabindex="0" title="Phase locked loop: the circuit that holds the radio&#x27;s synthesizer on its frequency." data-more="../dev/glossary.html#t-pll">PLL</abbr>. After changing 0x0B / 0x0C wait more than 500 µs before switching back to the PLL</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>6-1</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+<td>ClkOut_enb: 1 = drive CLKOUT (pin 15)</td>
+</tr>
+<tr>
+<td>0x0B</td>
+<td>R/W</td>
+<td>PLLM</td>
+<td>0x28</td>
+<td>7-0</td>
+<td>PLL feedback divider M</td>
+</tr>
+<tr>
+<td>0x0C</td>
+<td>R/W</td>
+<td>PLLBP</td>
+<td>0xB3</td>
+<td>7</td>
+<td>0 = use the PLL, 1 = bypass (CLK = XTALI)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>PLL SLEEP</td>
+<td></td>
+<td>6</td>
+<td>reserved in the table; 4.3.2 says 1 = PLL asleep (no output)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>PLLDO</td>
+<td></td>
+<td>5-4</td>
+<td>PLL output divider: NO = 2^PLLDO</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>PLLN</td>
+<td></td>
+<td>3-0</td>
+<td>PLL input divider N</td>
+</tr>
+<tr>
+<td>0x0D</td>
+<td>R/W</td>
+<td>Voice_superframe</td>
+<td>0x02</td>
+<td>7-4</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>3-0</td>
+<td>voice abnormality wait before exit, in superframes: the chip waits (value + 1) x 360 ms</td>
+</tr>
+<tr>
+<td>0x0E</td>
+<td>R/W</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td>0x0F</td>
+<td>R</td>
+<td>FSKErro</td>
+<td>-</td>
+<td>7-0</td>
+<td><abbr class="gl" tabindex="0" title="Frequency shift keying: data as frequency steps. DMR uses 4-level FSK." data-more="../dev/glossary.html#t-fsk">FSK</abbr> error or EVM statistic (selected by 0x48 bit 7); valid when read at the <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr> interrupt</td>
+</tr>
+</tbody>
+</table></div>
+<p>PLL (manual 4.3.2): CLK = XTALI x M / N / NO, NO = 2^PLLDO, with 1 MHz &lt; XTALI / N &lt; 25 MHz,
+200 MHz &lt; CLK x NO &lt; 1000 MHz, M &gt; 1, N &gt; 1. CLK (49.152 MHz recommended) is divided into Sys_clk (0xB9), the codec
+clock (0xBA) and CLKOUT (0xBB). Recommended settings (表 4.1):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>XTALI</th>
+<th>0x0B</th>
+<th>0x0C</th>
+<th>PLL out</th>
+<th>0xB9 / 0xBA / 0xBB</th>
+<th>Sys_clk / codec / CLKOUT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12.288 MHz</td>
+<td>0x40</td>
+<td>0x32</td>
+<td>49.152 MHz</td>
+<td>0x05 / 0x04 / 0x02</td>
+<td>9.8304 / 12.288 / 24.576 MHz</td>
+</tr>
+<tr>
+<td>29.4912 MHz</td>
+<td>0x28</td>
+<td>0x33</td>
+<td>49.152 MHz</td>
+<td>0x05 / 0x04 / 0x02</td>
+<td>9.8304 / 12.288 / 24.576 MHz</td>
+</tr>
+</tbody>
+</table></div>
+<p>The three dividers behave as divide-by-value in this table (the manual gives no formula).</p>
+<p>The appendix A1 text uses 0x0D, 0x0E, 0x0F and 0x38 as built-in codec registers (section 7.7), which the table
+doesn't (conflict, 9.2).</p>
+<h3 id="34-system-mode-and-rf-timing-0x10-0x13">3.4 System mode and RF timing (0x10-0x13)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Addr</th>
+<th>R/W</th>
+<th>Name</th>
+<th>Default</th>
+<th>Bit</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x10</td>
+<td>R/W</td>
+<td>ModulatorMode</td>
+<td>0x73</td>
+<td>7</td>
+<td>0 = DMR, 1 = FM</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>TierMode</td>
+<td></td>
+<td>6</td>
+<td>0 = Tier I, 1 = <abbr class="gl" tabindex="0" title="The conventional DMR tier of the standard (TS 102 361-2): repeaters and direct mode without trunking." data-more="../dev/glossary.html#t-tier-ii">Tier II</abbr></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>ContinueMode</td>
+<td></td>
+<td>5</td>
+<td>0 = continuous, 1 = timeslot. In layer 2, must be 0 to receive the <abbr class="gl" tabindex="0" title="Common announcement channel: 24 bits ahead of each burst a repeater sends. It carries the slot number and short link control." data-more="../dev/glossary.html#t-cach">CACH</abbr></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>LayerMode</td>
+<td></td>
+<td>4-3</td>
+<td>00 physical layer, 01 layer 2, 10 layer 3</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>ISRepeater</td>
+<td></td>
+<td>2</td>
+<td>0 = not a repeater, 1 = repeater</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>ISAligned</td>
+<td></td>
+<td>1</td>
+<td>0 = offset (in non-repeater mode, offset means single-frequency repeating), 1 = aligned</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>RepeaterSlot</td>
+<td></td>
+<td>0</td>
+<td>layer 3: must be 1. Layer 2: 0 = slot 1, 1 = slot 2</td>
+</tr>
+<tr>
+<td>0x11</td>
+<td>R/W</td>
+<td>LocalChanMode</td>
+<td>0x80</td>
+<td>7</td>
+<td>1 = <abbr class="gl" tabindex="0" title="DMR through a repeater, which receives on one frequency and transmits on another. The standard calls it RMO." data-more="../dev/glossary.html#t-repeater-mode">repeater mode</abbr>: RepeatedSimplex; <abbr class="gl" tabindex="0" title="DMR radio to radio on one frequency, with no repeater. The standard calls it DMO." data-more="../dev/glossary.html#t-direct-mode">direct mode</abbr>: DirectSimplex</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>6</td>
+<td>1 = repeater mode: RepeatedDuplex; direct mode: DirectDuplex</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>5, 4</td>
+<td>no description</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>3</td>
+<td>1 = SingleFreqSimplex (text layer only)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>2, 1</td>
+<td>no description</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+<td>1 = receive digital and analog at the same time; 0 = digital or analog only</td>
+</tr>
+<tr>
+<td>0x12</td>
+<td>R/W</td>
+<td>rf_pre_on</td>
+<td>0x00</td>
+<td>7</td>
+<td>smooth ramp up / down of the signal at slot boundaries. In TX (4.7.1, 4.7.2): ramp start point 0 = 1.65 V, 1 = 0 V</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>6</td>
+<td>two-point test: the DAC outputs a 40 Hz sine (4.7.2 says square wave)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>5-0</td>
+<td>RF_TX_INTER (RX-to-TX switch) advance before the 30 ms boundary, about 100 µs steps, 0-6.3 ms. The TX-to-RX advance is 0xC0</td>
+</tr>
+<tr>
+<td>0x13</td>
+<td>W</td>
+<td>Cend_band</td>
+<td>0x00</td>
+<td>7-4</td>
+<td>RF_TX_EN / RF_RX_EN active-to-inactive advance before the 30 ms boundary, 100 µs steps, at most 11 (1.1 ms). Non-continuous mode only</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>3-0</td>
+<td>RF_TX_EN / RF_RX_EN inactive-to-active delay after the boundary, 100 µs steps, at most 11. Non-continuous mode only</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="35-addresses-and-color-code-0x14-0x1f">3.5 Addresses and color code (0x14-0x1F)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Addr</th>
+<th>R/W</th>
+<th>Name</th>
+<th>Default</th>
+<th>Bit</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x14</td>
+<td>R/W</td>
+<td>LocalSreAdrressL</td>
+<td>0x01</td>
+<td>7-0</td>
+<td>own address bits 7-0</td>
+</tr>
+<tr>
+<td>0x15</td>
+<td>R/W</td>
+<td>LocalSreAdrressM</td>
+<td>0x00</td>
+<td>7-0</td>
+<td>own address bits 15-8</td>
+</tr>
+<tr>
+<td>0x16</td>
+<td>R/W</td>
+<td>LocalSreAdrressH</td>
+<td>0x00</td>
+<td>7-0</td>
+<td>own address bits 23-16</td>
+</tr>
+<tr>
+<td>0x17</td>
+<td>R/W</td>
+<td>LocalGroupAdrressL</td>
+<td>0x33</td>
+<td>7-0</td>
+<td>own group address bits 7-0</td>
+</tr>
+<tr>
+<td>0x18</td>
+<td>R/W</td>
+<td>LocalGroupAdrressM</td>
+<td>0xEF</td>
+<td>7-0</td>
+<td>own group address bits 15-8</td>
+</tr>
+<tr>
+<td>0x19</td>
+<td>R/W</td>
+<td>LocalGroupAdrressH</td>
+<td>0x00</td>
+<td>7-0</td>
+<td>own group address bits 23-16</td>
+</tr>
+<tr>
+<td>0x1A</td>
+<td>R/W</td>
+<td>LocalBSAdrressL</td>
+<td>0xFF</td>
+<td>7-0</td>
+<td>own <abbr class="gl" tabindex="0" title="Base station: the repeater or modem side of a DMR link, as opposed to the radio (MS)." data-more="../dev/glossary.html#t-bs">BS</abbr> address bits 7-0</td>
+</tr>
+<tr>
+<td>0x1B</td>
+<td>R/W</td>
+<td>LocalBSAdrressM</td>
+<td>0xFF</td>
+<td>7-0</td>
+<td>own BS address bits 15-8</td>
+</tr>
+<tr>
+<td>0x1C</td>
+<td>R/W</td>
+<td>LocalBSAdrressH</td>
+<td>0xFF</td>
+<td>7-0</td>
+<td>own BS address bits 23-16</td>
+</tr>
+<tr>
+<td>0x1D</td>
+<td>R/W</td>
+<td>LocalUnaddress</td>
+<td>0xFF</td>
+<td>7-4</td>
+<td>unaddressed-call receive address</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>MaskUnaddr</td>
+<td></td>
+<td>3-0</td>
+<td>unaddressed-call match mask: a bit set to 1 is <strong>ignored</strong> in the address compare</td>
+</tr>
+<tr>
+<td>0x1E</td>
+<td>R/W</td>
+<td>LocalBroadCast</td>
+<td>0xFF</td>
+<td>7-4</td>
+<td>broadcast (all-call) receive address</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>MaskBroadCast</td>
+<td></td>
+<td>3-0</td>
+<td>all-call match mask: a bit set to 1 is ignored</td>
+</tr>
+<tr>
+<td>0x1F</td>
+<td>R/W</td>
+<td>LocalEMB</td>
+<td>0x10</td>
+<td>7-4</td>
+<td>own <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>3</td>
+<td><abbr class="gl" tabindex="0" title="A DMR header that announces encryption with a changing key. RadioFoundry never plays such calls." data-more="../user/22-glossary.html#t-pi-header">PI</abbr> bit</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>2</td>
+<td>monitor calls whose address doesn't match (text layer only)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1-0</td>
+<td>ratio of PI (encryption) information to late-entry information in the <abbr class="gl" tabindex="0" title="Embedded signaling: the 32 bits in the middle of a voice burst that carry link control." data-more="../dev/glossary.html#t-emb">EMB</abbr> field: 00 no encryption info, 01 1:1, 10 1:2, 11 1:4</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="36-access-policy-and-vocoder-control-0x20-0x24">3.6 Access policy and vocoder control (0x20-0x24)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Addr</th>
+<th>R/W</th>
+<th>Name</th>
+<th>Default</th>
+<th>Bit</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x20</td>
+<td>R/W</td>
+<td>LocalAccessPolicy</td>
+<td>0xAA</td>
+<td>7-6</td>
+<td>00 impolite, 01 polite to all, 10 polite to own CC (the manual doesn't say which service each 2-bit field covers)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>5-4, 3-2, 1-0</td>
+<td>same coding</td>
+</tr>
+<tr>
+<td>0x21</td>
+<td>R/W</td>
+<td>LocalAccessPolicy1</td>
+<td>0xA0</td>
+<td>7-6, 5-4</td>
+<td>same coding as 0x20</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>3</td>
+<td>confirmed-packet response policy: 0 impolite, 1 polite</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>2</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+<td>1 = clear the vocoder encode buffer; the chip resets the bit to 0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+<td>1 = clear the vocoder decode buffer; self-clearing</td>
+</tr>
+<tr>
+<td>0x22</td>
+<td>R/W</td>
+<td>EncodeStart</td>
+<td>0x01</td>
+<td>7</td>
+<td>write 1: vocoder encoding starts</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>EncodeStop</td>
+<td></td>
+<td>6</td>
+<td>write 1: encoding stops</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>DecodeStart</td>
+<td></td>
+<td>5</td>
+<td>write 1: decoding starts</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>DecodeStop</td>
+<td></td>
+<td>4</td>
+<td>write 1: decoding stops</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>3</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>sel_I2S_mode</td>
+<td></td>
+<td>2</td>
+<td>1 = the vocoder I2S interface is master, 0 = slave. Only when bit 1 = 1</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>sel_I2StoI2S</td>
+<td></td>
+<td>1</td>
+<td><abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> to / from the vocoder over 1 = I2S, 0 = <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> (C_SPI)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Ambe1000_noise_enb</td>
+<td></td>
+<td>0</td>
+<td>AMBE1000 squelch: 0 = off</td>
+</tr>
+<tr>
+<td>0x23</td>
+<td>R/W</td>
+<td>-</td>
+<td>-</td>
+<td>7-0</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td>0x24</td>
+<td>R/W</td>
+<td>-</td>
+<td>0xF8</td>
+<td>7-2</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>AMBE1000FrameRept</td>
+<td></td>
+<td>1</td>
+<td>AMBE1000 frame repeat</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>AMBE1000ForceSilen</td>
+<td></td>
+<td>0</td>
+<td>AMBE1000: force the decoder silent</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="37-vocoder-spi-fm-squelch-and-companding-tx-advance-codec-interface-0x2a-0x37">3.7 Vocoder SPI, FM squelch and companding, TX advance, codec interface (0x2A-0x37)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Addr</th>
+<th>R/W</th>
+<th>Name</th>
+<th>Default</th>
+<th>Bit</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x2A</td>
+<td>R/W</td>
+<td>spi_clk_cnt</td>
+<td>0x0B</td>
+<td>7-0</td>
+<td>C_SPI clock = codec clock / (2 x (value + 1))</td>
+</tr>
+<tr>
+<td>0x2B</td>
+<td>R</td>
+<td>Sql_l</td>
+<td>0x00</td>
+<td>7-0</td>
+<td>FM: squelch signal bits 7-0</td>
+</tr>
+<tr>
+<td>0x2C</td>
+<td>R</td>
+<td>Sql_h</td>
+<td>0x00</td>
+<td>7-0</td>
+<td>FM: squelch signal bits 15-8</td>
+</tr>
+<tr>
+<td>0x2D</td>
+<td>R/W</td>
+<td>shift_radix</td>
+<td>0x0B</td>
+<td>7-4</td>
+<td>FM: 0 dB point of the expander (RX)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>3-0</td>
+<td>FM: 0 dB point of the compressor (TX)</td>
+</tr>
+<tr>
+<td>0x2E</td>
+<td>R/W</td>
+<td>tx_pre_on</td>
+<td>0x04</td>
+<td>7-5</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>4-0</td>
+<td>TX advance in 100 µs units, to cancel the <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> chain's delay so DMR bursts sit on the 30 ms boundary. The internal path has a fixed 400 µs; with no RF delay use 0x04</td>
+</tr>
+<tr>
+<td>0x2F</td>
+<td>R/W</td>
+<td>par_ck_cnt</td>
+<td>0x00</td>
+<td>7-0</td>
+<td>vocoder I2S master bit clock: I2S_CK_M = codec clock / (2 x (value + 1)); must be above 272 kHz</td>
+</tr>
+<tr>
+<td>0x32</td>
+<td>R/W</td>
+<td>LRCK_CNT_H</td>
+<td>0x02</td>
+<td>7-0</td>
+<td>I2S frame clock in master mode: I2S_FS_M = codec clock / (2 x ({0x32, 0x33} + 1)); must be 8 kHz. Also sets the external-codec LRCK (4.5.2)</td>
+</tr>
+<tr>
+<td>0x33</td>
+<td>R/W</td>
+<td>LRCK_CNT_L</td>
+<td>0xFF</td>
+<td>7-0</td>
+<td>low byte of the above. Default 0x02FF gives 8 kHz from 12.288 MHz</td>
+</tr>
+<tr>
+<td>0x34</td>
+<td>R/W</td>
+<td>FMBpfOn</td>
+<td>0xBE</td>
+<td>7</td>
+<td>1 = 300-3400 Hz band-pass filter on (TX and RX)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>FMCompressorOn</td>
+<td></td>
+<td>6</td>
+<td>1 = compressor on (TX) / expander on (RX, 6.2)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>FMPreEmphasisOn</td>
+<td></td>
+<td>5</td>
+<td>1 = pre-emphasis on (TX) / de-emphasis on (RX, 6.2)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>FMBandWidth</td>
+<td></td>
+<td>4</td>
+<td>FM TX bandwidth: 0 = 12.5 kHz, 1 = 25 kHz</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>FMBandWidth_adj</td>
+<td></td>
+<td>3</td>
+<td>FM with baseband IQ, IF or IF IQ TX: adjacent-channel filter bandwidth, 0 = 12.5 kHz, 1 = 25 kHz</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>FMBandWidth_r</td>
+<td></td>
+<td>2</td>
+<td>FM RX bandwidth: 0 = 12.5 kHz, 1 = 25 kHz</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>FMBandWidth_ctc</td>
+<td></td>
+<td>1</td>
+<td><abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-ctcss">CTCSS</abbr> RX bandwidth: 0 = 12.5 kHz, 1 = 25 kHz</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td>0x35</td>
+<td>R/W</td>
+<td>FM_dev_coef_t</td>
+<td>0x14</td>
+<td>7-0</td>
+<td>FM TX deviation coefficient</td>
+</tr>
+<tr>
+<td>0x36</td>
+<td>R/W</td>
+<td>mcu_alc_clk_down</td>
+<td>0x00</td>
+<td>7</td>
+<td>1 = stop the external codec's BCLK and LRCK</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>mcu_vspi_clk_down, mcu_vspi_cs_down</td>
+<td></td>
+<td>6-5</td>
+<td>vocoder C_SPI SCK: x1 = always off, 00 = always on, 10 = on while CS is low. When the vocoder PCM uses I2S, bit 6 = 1 enables I2S_CK and I2S_FS (4.6.1 says the opposite polarity, conflict, 9.2)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>mcu_pkt_clk_down</td>
+<td></td>
+<td>4</td>
+<td>1 = stop the vocoder packet interface clock</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>mcu_ctr_rst1000</td>
+<td></td>
+<td>3</td>
+<td>AMBE1000 reset: 0 = system controlled, 1 = MCU controlled</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>mcu_val_rst1000</td>
+<td></td>
+<td>2</td>
+<td>MCU's AMBE1000 reset level: 1 = high</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+<td>FM receive: voice channel to the codec, 1 = on, 0 = off</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td>0x37</td>
+<td>R/W</td>
+<td>mcu_control_shift</td>
+<td>0x00</td>
+<td>7</td>
+<td>1 = the MCU changes the DAC data level of the built-in / external codec (DALIN_VOL), 0 = unchanged</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>zoom</td>
+<td></td>
+<td>6</td>
+<td>with bit 7 set: 0 = quieter, 1 = louder</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>5</td>
+<td>0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>shift_size</td>
+<td></td>
+<td>4-0</td>
+<td>DAC data level change, 00001-11111, 1.5 dB steps (4.5.1: all zero is the minimum when turning down; when turning up, 0 means no change)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="38-fm-deviation-and-limiter-0x3e-0x3f">3.8 FM deviation and limiter (0x3E, 0x3F)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Addr</th>
+<th>R/W</th>
+<th>Name</th>
+<th>Default</th>
+<th>Bit</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x3E</td>
+<td>R/W</td>
+<td>FM_dev_coef_r</td>
+<td>0x08</td>
+<td>7-0</td>
+<td>FM RX deviation coefficient. Chapter 6.1 says 0x3E (with mic gain &quot;0x0F&quot;) adjusts the TX deviation when the FM modulator feeds baseband IQ or IF (conflict, 9.2)</td>
+</tr>
+<tr>
+<td>0x3F</td>
+<td>R/W</td>
+<td>TR_SIG_LIM</td>
+<td>0x10</td>
+<td>7-0</td>
+<td>FM limiter coefficient (TX soft limiter, against over-deviation)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="39-phy--dll-control-0x40-0x4f">3.9 PHY / DLL control (0x40-0x4F)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Addr</th>
+<th>R/W</th>
+<th>Name</th>
+<th>Default</th>
+<th>Bit</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x40</td>
+<td>R/W</td>
+<td>TxEn</td>
+<td>0x03</td>
+<td>7</td>
+<td>TX synchronization enable: 1 = on</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>RxEn</td>
+<td></td>
+<td>6</td>
+<td>RX synchronization enable: 1 = on. Timing exists only while bit 7 or bit 6 is set</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>MasterMode</td>
+<td></td>
+<td>5</td>
+<td>0 = passive timing (follows received syncs), 1 = active timing (own clock)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Layer2Slot</td>
+<td></td>
+<td>4</td>
+<td>the MCU tells the chip whether the current layer 2 slot is in use (1) or not (0); for a smooth change from layer 2 to layer 3</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>CRC_MCU_Control</td>
+<td></td>
+<td>3</td>
+<td>1 = the MCU computes the <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> / checksums; 0 = the chip does</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>2</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Decode_Mode</td>
+<td></td>
+<td>1-0</td>
+<td>00 = physical layer test without decoding, 11 = normal (non-test) operation</td>
+</tr>
+<tr>
+<td>0x41</td>
+<td>R/W</td>
+<td>TxNxtSlotEn</td>
+<td>0x00</td>
+<td>7</td>
+<td>1 = transmit in the slot starting at the coming timeslot interrupt</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>RxNxtSlotEn</td>
+<td></td>
+<td>6</td>
+<td>1 = receive in that slot</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>SyncFail</td>
+<td></td>
+<td>5</td>
+<td>1 = no sync: the physical layer searches again</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>begin_v_layer2</td>
+<td></td>
+<td>4</td>
+<td>layer 2 access success: write 1 to start receiving voice; write 0 in the slot that isn't receiving voice</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>CC_Match_Ctrl</td>
+<td></td>
+<td>3</td>
+<td>0 = deframe only when the CC matches, 1 = deframe without a CC match</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>2</td>
+<td>(not listed)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>AutoTest</td>
+<td></td>
+<td>0</td>
+<td>1 = physical layer test enable</td>
+</tr>
+<tr>
+<td>0x42</td>
+<td>R</td>
+<td>TransSlot</td>
+<td>-</td>
+<td>7</td>
+<td>1 = the current slot transmits</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>RecvSlot</td>
+<td></td>
+<td>6</td>
+<td>1 = the current slot receives</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>UsedSlot</td>
+<td></td>
+<td>5</td>
+<td>table: 0 = slot in use, 1 = not in use. 5.4.4 reads it the other way (conflict, 9.2)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>4-0</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td>0x43</td>
+<td>R</td>
+<td>RSSILevelH</td>
+<td>-</td>
+<td>7-0</td>
+<td><abbr class="gl" tabindex="0" title="Received signal strength indicator: how strong the received signal is, in dBm." data-more="../user/22-glossary.html#t-rssi">RSSI</abbr> bits 15-8</td>
+</tr>
+<tr>
+<td>0x44</td>
+<td>R</td>
+<td>RSSILevelL</td>
+<td>-</td>
+<td>7-0</td>
+<td>RSSI bits 7-0 (appendix B: RSSI against ADC input)</td>
+</tr>
+<tr>
+<td>0x45</td>
+<td>R/W</td>
+<td>Sig_Reduce</td>
+<td>0x00</td>
+<td>7-0</td>
+<td>IQ modes: IQ amplitude (4.7.1: bits 3-0, 170 mV-2725 mV in 170 mV steps). Two-point: MOD2 amplitude, 8.75 mV-2240 mV in 8.75 mV steps</td>
+</tr>
+<tr>
+<td>0x46</td>
+<td>R/W</td>
+<td>Phase_Reduce</td>
+<td>0x00</td>
+<td>7-0</td>
+<td>two-point: MOD1 amplitude, 8.75 mV-2240 mV in 8.75 mV steps</td>
+</tr>
+<tr>
+<td>0x47</td>
+<td>R/W</td>
+<td>Two_Point_Bias</td>
+<td>0x00</td>
+<td>7-0</td>
+<td>two-point bias, low 8 bits of 10 (high 2 bits in 0x48 bits 1-0). 4.7.2 swaps the halves (conflict, 9.2)</td>
+</tr>
+<tr>
+<td>0x48</td>
+<td>R/W</td>
+<td>Two_Point_Bias</td>
+<td>0x00</td>
+<td>7</td>
+<td>1 = 0x0F reports the FSK error statistic, 0 = EVM</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>6-2</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1-0</td>
+<td>two-point bias, high 2 bits. 4.7.2: with 0x25 bit 5 = 1 and bit 3 = 0, this 10-bit value sets MOD1's DC output while receiving, 0-3.3 V (for a reference crystal control voltage)</td>
+</tr>
+<tr>
+<td>0x49</td>
+<td>W</td>
+<td>DEV_LIMITERH</td>
+<td>0xFF</td>
+<td>7-0</td>
+<td>TX deviation limit, bits 15-8: deviation above it is clipped to it</td>
+</tr>
+<tr>
+<td>0x4A</td>
+<td>W</td>
+<td>DEV_LIMITERL</td>
+<td>0x00</td>
+<td>7-0</td>
+<td>TX deviation limit, bits 7-0</td>
+</tr>
+<tr>
+<td>0x4B</td>
+<td>R/W</td>
+<td>Code_Type1</td>
+<td>0x00</td>
+<td>7-6</td>
+<td>coding of user data type 1011: 00 <abbr class="gl" tabindex="0" title="Block product turbo code: the error correction on DMR headers and control blocks." data-more="../dev/glossary.html#t-bptc">BPTC</abbr>(196,96), 01 rate 3/4 trellis (&quot;convolutional 3/4&quot;), 10 none, 11 BPTC72</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>5-4</td>
+<td>same for data type 1100</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>3-2</td>
+<td>same for data type 1101</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1-0</td>
+<td>same for data type 1110</td>
+</tr>
+<tr>
+<td>0x4C</td>
+<td>R/W</td>
+<td>Code_Type2</td>
+<td>0x00</td>
+<td>7-6</td>
+<td>same for data type 1111</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>5-3</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>data_embrc_ctrl</td>
+<td></td>
+<td>2</td>
+<td><abbr class="gl" tabindex="0" title="Reverse channel: signaling the receiver sends back to the transmitter during a call, in space the burst leaves free." data-more="../dev/glossary.html#t-rc">RC</abbr> in the EMB field of data / control bursts: 0 = taken from the <abbr class="gl" tabindex="0" title="Central processing unit." data-more="../dev/glossary.html#t-cpu">CPU</abbr>, 1 = RC-encoded internally</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>data_embrc_en</td>
+<td></td>
+<td>1</td>
+<td>1 = embed RC in the sync field of data bursts</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>voice_burstF_emb_ctr</td>
+<td></td>
+<td>0</td>
+<td>voice burst F embedded info: 0 = from the CPU, 1 = RC-encoded internally</td>
+</tr>
+<tr>
+<td>0x4E</td>
+<td>R</td>
+<td>AD_Bias_I</td>
+<td>-</td>
+<td>7-0</td>
+<td>measured DC offset of the ADC I input</td>
+</tr>
+<tr>
+<td>0x4F</td>
+<td>R</td>
+<td>AD_Bias_Q</td>
+<td>-</td>
+<td>7-0</td>
+<td>measured DC offset of the ADC Q input</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="310-dll-0x50-0x5f">3.10 DLL (0x50-0x5F)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Addr</th>
+<th>R/W</th>
+<th>Name</th>
+<th>Default</th>
+<th>Bit</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x50</td>
+<td>W/R</td>
+<td>LocalDataType</td>
+<td>-</td>
+<td>7-4</td>
+<td>what the next TX slot carries: the data type, the voice burst, or RC (table below)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>LocalVoD</td>
+<td></td>
+<td>3</td>
+<td>0 = data, 1 = voice or RC</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>2</td>
+<td>1 = a data header is a &quot;data header 2&quot;; ignored for other types</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>LocalLCSS</td>
+<td></td>
+<td>1-0</td>
+<td><abbr class="gl" tabindex="0" title="Link control start/stop: the 2-bit field of a burst&#x27;s embedded signaling that says which fragment it carries." data-more="../dev/glossary.html#t-lcss">LCSS</abbr> for this TX slot</td>
+</tr>
+<tr>
+<td>0x51</td>
+<td>R</td>
+<td>DLLRecvDataType</td>
+<td>-</td>
+<td>7-4</td>
+<td>data burst: the received data type. Voice burst: bit 7 = 1 and bits 6-4 = 1..6 for A..F</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>DLLRecvPI</td>
+<td></td>
+<td>3</td>
+<td>received PI</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>DLLRecvCRC</td>
+<td></td>
+<td>2</td>
+<td>0 = checks passed, 1 = error</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>SyncClass</td>
+<td></td>
+<td>1-0</td>
+<td>00 no sync, 01 voice, 10 data, 11 RC. A burst F EMB report uses SyncClass 0 (5.1.1)</td>
+</tr>
+<tr>
+<td>0x52</td>
+<td>R</td>
+<td>DLLCC</td>
+<td>-</td>
+<td>7-4</td>
+<td>received color code</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>CACH</td>
+<td></td>
+<td>3</td>
+<td>received <abbr class="gl" tabindex="0" title="Access type: the TACT bit that tells a radio whether the slot is free to transmit in." data-more="../dev/glossary.html#t-at">AT</abbr></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>2</td>
+<td>received <abbr class="gl" tabindex="0" title="TDMA channel: the TACT bit that names the timeslot, so a radio can tell TS1 from TS2." data-more="../dev/glossary.html#t-tc">TC</abbr></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1-0</td>
+<td>received CACH LCSS</td>
+</tr>
+<tr>
+<td>0x52</td>
+<td>W</td>
+<td>CACH</td>
+<td>-</td>
+<td>3</td>
+<td>AT for the chip's BS downlink</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>2</td>
+<td>TC for the chip's BS downlink</td>
+</tr>
+<tr>
+<td>0x53</td>
+<td>R</td>
+<td>RC_Info</td>
+<td>-</td>
+<td>7-0</td>
+<td>RC bits 10-3, or the superframe number of burst F's info</td>
+</tr>
+<tr>
+<td>0x54</td>
+<td>R</td>
+<td>RC_Info</td>
+<td>-</td>
+<td>7-6</td>
+<td>LCSS of the voice burst's EMB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>5-3</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>2-0</td>
+<td>RC bits 2-0, or burst F's algorithm ID</td>
+</tr>
+<tr>
+<td>0x55</td>
+<td>R</td>
+<td>Check_sum_reg</td>
+<td>-</td>
+<td>7</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>6</td>
+<td>CRC8 error</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>5</td>
+<td>Golay (&quot;gdout&quot;) check error</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>4</td>
+<td>QR check error</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>3</td>
+<td>CS (5-bit checksum) error</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>2</td>
+<td>CRC16 error</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+<td>CRC24 error</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+<td>CRC9 error</td>
+</tr>
+<tr>
+<td>0x5F</td>
+<td>W/R</td>
+<td>Sync_Detect_Ctrl</td>
+<td>-</td>
+<td>7-4</td>
+<td>layer 2: which syncs may be detected, 1 = enabled. Bit 7 <abbr class="gl" tabindex="0" title="Mobile station: the radio, as opposed to the base station (BS)." data-more="../dev/glossary.html#t-ms">MS</abbr>, bit 6 BS, bit 5 <abbr class="gl" tabindex="0" title="Time division multiple access. A DMR channel carries two conversations by alternating them in 30 ms slots." data-more="../dev/glossary.html#t-tdma">TDMA</abbr> direct slot 1, bit 4 TDMA direct slot 2</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>3-2</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td></td>
+<td>R</td>
+<td>Recv_Sync_Type</td>
+<td></td>
+<td>1-0</td>
+<td>sync received: 00 MS, 01 BS, 10 TDMA1, 11 TDMA2</td>
+</tr>
+</tbody>
+</table></div>
+<p>LocalDataType codes (表 5.5, with LocalVoD):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Burst</th>
+<th>Bits 7-4</th>
+<th>VoD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>voice LC header</td>
+<td>0001</td>
+<td>0</td>
+</tr>
+<tr>
+<td>voice PI header</td>
+<td>0000</td>
+<td>0</td>
+</tr>
+<tr>
+<td>voice A, B, C, D, E, F</td>
+<td>0000, 0001, 0010, 0011, 0100, 0101</td>
+<td>1</td>
+</tr>
+<tr>
+<td>RC burst</td>
+<td>0110</td>
+<td>1</td>
+</tr>
+<tr>
+<td>voice terminator</td>
+<td>0010</td>
+<td>0</td>
+</tr>
+<tr>
+<td>CSBK</td>
+<td>0011</td>
+<td>0</td>
+</tr>
+<tr>
+<td>MBC header</td>
+<td>0100</td>
+<td>0</td>
+</tr>
+<tr>
+<td>MBC intermediate</td>
+<td>0101</td>
+<td>0</td>
+</tr>
+<tr>
+<td>MBC last</td>
+<td>0101</td>
+<td>0</td>
+</tr>
+<tr>
+<td>data header</td>
+<td>0110</td>
+<td>0</td>
+</tr>
+<tr>
+<td>rate 1/2 data</td>
+<td>0111</td>
+<td>0</td>
+</tr>
+<tr>
+<td>rate 3/4 data</td>
+<td>1000</td>
+<td>0</td>
+</tr>
+<tr>
+<td>rate 1 data</td>
+<td>1010</td>
+<td>0</td>
+</tr>
+<tr>
+<td>idle</td>
+<td>1001</td>
+<td>0</td>
+</tr>
+<tr>
+<td>reserved</td>
+<td>1011-1111 (1011 is listed twice, 1101 not at all)</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p>These are the <abbr class="gl" tabindex="0" title="European Telecommunications Standards Institute, which publishes the DMR standard." data-more="../dev/glossary.html#t-etsi">ETSI</abbr> data type values. 0x4B / 0x4C give the coding of the user types 1011-1111.</p>
+<h3 id="311-call-control-0x60-0x63">3.11 Call control (0x60-0x63)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Addr</th>
+<th>R/W</th>
+<th>Name</th>
+<th>Default</th>
+<th>Bit</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x60</td>
+<td>-</td>
+<td>TransControl</td>
+<td>-</td>
+<td>7-6</td>
+<td>10 = voice TX request, 01 = data TX request. FM (6.1): 0x80 opens the analog TX path, 0x00 is receive (6.2)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>5-0</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td>0x61</td>
+<td>-</td>
+<td>LocalDestAdrressL</td>
+<td>0x03</td>
+<td>7-0</td>
+<td>call destination address bits 7-0</td>
+</tr>
+<tr>
+<td>0x62</td>
+<td>-</td>
+<td>LocalDestAdrressM</td>
+<td>0x00</td>
+<td>7-0</td>
+<td>bits 15-8</td>
+</tr>
+<tr>
+<td>0x63</td>
+<td>-</td>
+<td>LocalDestAdrressH</td>
+<td>0x00</td>
+<td>7-0</td>
+<td>bits 23-16</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="312-interrupts-0x81-0x90-0x98">3.12 Interrupts (0x81-0x90, 0x98)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Addr</th>
+<th>R/W</th>
+<th>Name</th>
+<th>Default</th>
+<th>Bit</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x81</td>
+<td>W</td>
+<td>InterClass1Mask</td>
+<td>-</td>
+<td>7-0</td>
+<td>mask for 0x82: a bit at 0 masks that interrupt</td>
+</tr>
+<tr>
+<td>0x82</td>
+<td>R</td>
+<td>InterRequestDeny</td>
+<td>-</td>
+<td>7</td>
+<td>DMR: TX request rejected (channel busy under a polite policy). <strong>FM: &quot;send data request&quot; interrupt</strong></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>InterSendStart</td>
+<td></td>
+<td>6</td>
+<td>DMR: TX start (sub-status 0x84). MSK: TX ping-pong buffer half empty (&quot;half full&quot;)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>InterSendStop</td>
+<td></td>
+<td>5</td>
+<td>DMR: TX end (sub-status 0x86). MSK: physical layer TX finished</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>InterLateEntry</td>
+<td></td>
+<td>4</td>
+<td>DMR: late entry. MSK: response / acknowledge interrupt</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>InterRecvData</td>
+<td></td>
+<td>3</td>
+<td>DMR: a control / data burst was parsed (status in 0x51). MSK: receive interrupt</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>InterRecvMessage</td>
+<td></td>
+<td>2</td>
+<td>DMR: service data received (sub-status 0x90). FM: FM function detection (tone matched)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>InterQuit</td>
+<td></td>
+<td>1</td>
+<td>DMR: voice abnormal exit (type in 0x98). <strong>FM: &quot;receive data&quot; interrupt</strong></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>InterPHYOnly</td>
+<td></td>
+<td>0</td>
+<td>physical-layer-only receive: data ready (<abbr class="gl" tabindex="0" title="Bit error rate: the share of received bits that were wrong. A measure of how clean a signal is." data-more="../dev/glossary.html#t-ber">BER</abbr> testing)</td>
+</tr>
+<tr>
+<td>0x83</td>
+<td>W</td>
+<td>InterClear</td>
+<td>-</td>
+<td>7-0</td>
+<td>write 1 to clear the matching 0x82 bit: 7 rejected, 6 TX start, 5 TX end, 4 late entry, 3 control frame, 2 short message, 1 abnormal exit, 0 physical layer</td>
+</tr>
+<tr>
+<td>0x84</td>
+<td>R</td>
+<td>SendStartVoice</td>
+<td>-</td>
+<td>7</td>
+<td>voice TX start</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>SendStartCSBK1</td>
+<td></td>
+<td>6</td>
+<td><abbr class="gl" tabindex="0" title="Off air call set up: signaling that sets up a call before voice is sent. The radio asks over the air and waits for the answer." data-more="../dev/glossary.html#t-oacsu">OACSU</abbr> request sent (first or retry)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>KeyUpdateInterp</td>
+<td></td>
+<td>5</td>
+<td>end-to-end voice encryption: key update request (0x88 bits 5-4 say which)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Over_VocoderRespon</td>
+<td></td>
+<td>4</td>
+<td>AMBE3000 configuration done (MCU-configured external AMBE3000 only)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>SendStartData</td>
+<td></td>
+<td>3</td>
+<td>data TX start</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>SendStartDataPart</td>
+<td></td>
+<td>2</td>
+<td>data partial retransmission</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>SendStartDataFull</td>
+<td></td>
+<td>1</td>
+<td>data full retransmission</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>config_done_pulse</td>
+<td></td>
+<td>0</td>
+<td>vocoder initialization done (external AMBE3000 / AMBE1000 only)</td>
+</tr>
+<tr>
+<td>0x85</td>
+<td>W/R</td>
+<td>SendStartMask</td>
+<td>-</td>
+<td>7-0</td>
+<td>enables for the 0x84 bits, same order</td>
+</tr>
+<tr>
+<td>0x86</td>
+<td>R</td>
+<td>Tx_finished</td>
+<td>-</td>
+<td>7</td>
+<td>service completely sent, voice or data (for <abbr class="gl" tabindex="0" title="DMR packet data the receiving radio acknowledges. What didn&#x27;t arrive is sent again." data-more="../user/22-glossary.html#t-confirmed-data">confirmed data</abbr>: after the good response)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>tx_complet_data</td>
+<td></td>
+<td>6</td>
+<td>a fragment that needs no immediate response was sent</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>tx_denied_overtime_o</td>
+<td></td>
+<td>5</td>
+<td>voice OACSU wait timeout</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>rdy_lst_interp</td>
+<td></td>
+<td>4</td>
+<td>layer 2 &quot;last moment&quot;: after it, a slot not fully set up can't be a TX slot (layer 2 only)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>tx_complet_confirmed</td>
+<td></td>
+<td>3</td>
+<td>a fragment that needs a response was sent: start the response timer</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>short_lc_interp</td>
+<td></td>
+<td>2</td>
+<td>short <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr> received</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>tx_denied_overtime_bs</td>
+<td></td>
+<td>1</td>
+<td>BS activation timeout</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>lost_gps_pps</td>
+<td></td>
+<td>0</td>
+<td>GPS 1 PPS lost (5.1.1 calls bit 0 &quot;none&quot;)</td>
+</tr>
+<tr>
+<td>0x87</td>
+<td>W/R</td>
+<td>SendStopMask</td>
+<td>-</td>
+<td>7-0</td>
+<td>enables for the 0x86 bits, same order</td>
+</tr>
+<tr>
+<td>0x88</td>
+<td>R</td>
+<td>config_done_auto</td>
+<td>-</td>
+<td>7</td>
+<td>1 = the chip's automatic vocoder initialization is done</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>config_done_force</td>
+<td></td>
+<td>6</td>
+<td>1 = it isn't done</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>key_update_interp</td>
+<td></td>
+<td>5</td>
+<td>voice encryption key update</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>emb_update_interp</td>
+<td></td>
+<td>4</td>
+<td>voice encryption EMB update</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>embF_update_interp</td>
+<td></td>
+<td>3</td>
+<td>burst F EMB info sent</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>2-1</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>FIFO_FULL</td>
+<td></td>
+<td>0</td>
+<td>the PCM <abbr class="gl" tabindex="0" title="First in, first out: a queue of data between a producer and a consumer." data-more="../dev/glossary.html#t-fifo">FIFO</abbr> the MCU writes is full: stop writing until it reads 0 (the prompt tone FIFO, 7.7)</td>
+</tr>
+<tr>
+<td>0x89</td>
+<td>W/R</td>
+<td>rf_tx_interp_mask</td>
+<td>-</td>
+<td>7</td>
+<td>RF_TX_INTER mask</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>rf_rx_interp_mask</td>
+<td></td>
+<td>6</td>
+<td>RF_RX_INTER mask (the table calls it &quot;TX end RF interrupt&quot;)</td>
+</tr>
+<tr>
+<td></td>
+<td>R</td>
+<td></td>
+<td></td>
+<td>5-0</td>
+<td>sync field bit error count</td>
+</tr>
+<tr>
+<td>0x90</td>
+<td>R</td>
+<td>RecvDataCRC</td>
+<td>-</td>
+<td>7</td>
+<td>whole-fragment CRC-32: 1 = good, 0 = bad</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>6</td>
+<td>1 = unconfirmed short message error</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>5</td>
+<td>FM: function detection interrupt (5.1.1 gives the FM sub-status as 0x10, bit 4: conflict, 9.2)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>4-0</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td>0x98</td>
+<td>W/R</td>
+<td>voice_lostmask</td>
+<td>-</td>
+<td>7-5</td>
+<td>voice abnormality interrupt mask</td>
+</tr>
+<tr>
+<td></td>
+<td>R</td>
+<td>voice_abnormal_state</td>
+<td></td>
+<td>2-0</td>
+<td>bit 2: slot 1 voice_sync_lost timeout; bit 1: slot 0 voice_sync_lost timeout; bit 0: layer 3 voice receive lost sync</td>
+</tr>
+</tbody>
+</table></div>
+<p>Sub-status values for 0x82 bit 2 (5.1.1): DMR 0x80 all checks passed (data from RX <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> 0x30), 0x00 check failed,
+0x40 unconfirmed short message error.</p>
+<h3 id="313-tone-decoder-and-msk-receive-status-0x93-0x97">3.13 Tone decoder and MSK receive status (0x93-0x97)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Addr</th>
+<th>R/W</th>
+<th>Name</th>
+<th>Default</th>
+<th>Bit</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x93</td>
+<td>R</td>
+<td>decode_flag[7:0]</td>
+<td>-</td>
+<td>7-0</td>
+<td>see below</td>
+</tr>
+<tr>
+<td>0x94</td>
+<td>R</td>
+<td>decode_flag[15:8]</td>
+<td>-</td>
+<td>7-0</td>
+<td></td>
+</tr>
+<tr>
+<td>0x95</td>
+<td>R</td>
+<td>decode_flag[19:16]</td>
+<td>-</td>
+<td>3-0</td>
+<td>(bits 7-4 reserved)</td>
+</tr>
+<tr>
+<td>0x96</td>
+<td>R</td>
+<td>RecBitLen</td>
+<td>-</td>
+<td>7-0</td>
+<td>MSK: received data length in bits (128 during acquisition, 64 once synchronized)</td>
+</tr>
+<tr>
+<td>0x97</td>
+<td>R</td>
+<td>-</td>
+<td>-</td>
+<td>7-6</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>TrainCodewordFlag</td>
+<td></td>
+<td>5</td>
+<td>MSK: 0 data codeword, 1 codeword with sync (training) sequence</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>TrainErrorBitNum</td>
+<td></td>
+<td>4-0</td>
+<td>MSK: training sequence bit errors, 0-31; valid when bit 5 = 1</td>
+</tr>
+</tbody>
+</table></div>
+<p>decode_flag by mode (0xA1):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Bits</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5-tone</td>
+<td>19-0</td>
+<td>5-tone decoder output</td>
+</tr>
+<tr>
+<td>2-tone</td>
+<td>11-8</td>
+<td>long tone output</td>
+</tr>
+<tr>
+<td>2-tone</td>
+<td>7-0</td>
+<td>the two tones' output</td>
+</tr>
+<tr>
+<td>CTCSS / CDCSS</td>
+<td>0</td>
+<td>speaker enable (tone or code matched)</td>
+</tr>
+<tr>
+<td>DTMF</td>
+<td>4</td>
+<td><abbr class="gl" tabindex="0" title="Dual tone multi frequency: the touch tones a keypad sends, in the audio." data-more="../user/22-glossary.html#t-dtmf">DTMF</abbr> decode finished</td>
+</tr>
+<tr>
+<td>DTMF</td>
+<td>3-0</td>
+<td>DTMF code</td>
+</tr>
+<tr>
+<td>XTCSS</td>
+<td>9</td>
+<td>XTCSS individual-call flag</td>
+</tr>
+<tr>
+<td>XTCSS</td>
+<td>8</td>
+<td>XTCSS all-call flag</td>
+</tr>
+<tr>
+<td>XTCSS</td>
+<td>7-0</td>
+<td>XTCSS type flags</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="314-fm-signaling-0xa0-0xaf">3.14 FM signaling (0xA0-0xAF)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Addr</th>
+<th>R/W</th>
+<th>Name</th>
+<th>Default</th>
+<th>Bit</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0xA0</td>
+<td>-</td>
+<td>subvoice_dev_coef</td>
+<td>0x0E</td>
+<td>7-0</td>
+<td>deviation of the sub-audio / signaling tone (A2: 0x0D CTCSS 350 Hz, 0x03 CDCSS 350 Hz, 0x39 DTMF / selcall 1.8 kHz)</td>
+</tr>
+<tr>
+<td>0xA1</td>
+<td>W/R</td>
+<td>fm_mod</td>
+<td>0x08</td>
+<td>7</td>
+<td>reserved, must be 0. Chapter 4.8 table 4.8 calls it &quot;AF / non-AF receive mode&quot; (section 7.2)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>6</td>
+<td>MSK mode</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>5</td>
+<td>5-tone</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>4</td>
+<td>2-tone</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>3</td>
+<td>CTCSS</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>2</td>
+<td>CDCSS</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+<td>DTMF</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+<td>XTCSS</td>
+</tr>
+<tr>
+<td>0xA2</td>
+<td>W/R</td>
+<td>signal_std</td>
+<td>0x10</td>
+<td>7-6</td>
+<td>XTCSS TX signaling length</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>5-4</td>
+<td>CTCSS squelch tail (reverse burst): 00 off, 01 standard 240° phase shift, 10 non-standard 180°</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>3</td>
+<td>CDCSS TX polarity: 1 inverted, 0 normal</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>2</td>
+<td>CDCSS RX polarity: 1 inverted, 0 normal</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+<td>CDCSS TX turn-off code (134.4 Hz tail) enable</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+<td>send the XTCSS end message</td>
+</tr>
+<tr>
+<td>0xA3</td>
+<td>W/R</td>
+<td>intertone_time</td>
+<td>0x05</td>
+<td>7-0</td>
+<td>2-tone / 5-tone: gap between tones, 100 ms steps. DTMF: gap between codes, 2 ms steps</td>
+</tr>
+<tr>
+<td>0xA4</td>
+<td>W/R</td>
+<td>first_tone_length</td>
+<td>0x05</td>
+<td>7-0</td>
+<td>2-tone: first tone TX / RX time, 100 ms steps. 5-tone: each tone, 100 ms. DTMF: one code's TX time, 2 ms steps</td>
+</tr>
+<tr>
+<td>0xA5</td>
+<td>W/R</td>
+<td>second_tone_length</td>
+<td>0x05</td>
+<td>7-0</td>
+<td>2-tone: second tone TX / RX time, 100 ms steps</td>
+</tr>
+<tr>
+<td>0xA6</td>
+<td>W/R</td>
+<td>long_tone_length</td>
+<td>0x0A</td>
+<td>7-0</td>
+<td>2-tone: long tone time, 100 ms steps</td>
+</tr>
+<tr>
+<td>0xA7</td>
+<td>W/R</td>
+<td>FREQ_AMP_LIMIT</td>
+<td>0x10</td>
+<td>7-0</td>
+<td>detection threshold of every FM tone decoder</td>
+</tr>
+<tr>
+<td>0xA8</td>
+<td>W/R</td>
+<td>-</td>
+<td>0x01</td>
+<td>7-0</td>
+<td>DTMF: DTMF_tone[7:0] (TX digits). CTCSS: ctcss_send_addr (TX tone index, 7.8)</td>
+</tr>
+<tr>
+<td>0xA9</td>
+<td>W/R</td>
+<td>-</td>
+<td>0x00</td>
+<td>7-0</td>
+<td>DTMF: DTMF_tone[15:8]. XTCSS: xtc_send_hi, TX address</td>
+</tr>
+<tr>
+<td>0xAA</td>
+<td>W/R</td>
+<td>-</td>
+<td>0x00</td>
+<td>7-0</td>
+<td>DTMF: DTMF_tone[23:16]. XTCSS: xtc_send_low, TX type</td>
+</tr>
+<tr>
+<td>0xAB</td>
+<td>W/R</td>
+<td>-</td>
+<td>0x00</td>
+<td>7-0</td>
+<td>DTMF: DTMF_tone[31:24]. CDCSS: dcs_code[7:0]</td>
+</tr>
+<tr>
+<td>0xAC</td>
+<td>W/R</td>
+<td>-</td>
+<td>0x00</td>
+<td>7-0</td>
+<td>DTMF: DTMF_tone[39:32]. CDCSS: dcs_code[8] in bit 0</td>
+</tr>
+<tr>
+<td>0xAD</td>
+<td>W/R</td>
+<td>-</td>
+<td>0x00</td>
+<td>7-0</td>
+<td>DTMF: DTMF_tone[47:40]. 2-tone / 5-tone: selcall_tone[7:0]</td>
+</tr>
+<tr>
+<td>0xAE</td>
+<td>W/R</td>
+<td>-</td>
+<td>-</td>
+<td>7-0</td>
+<td>DTMF: DTMF_tone[55:48]. 2-tone / 5-tone: selcall_tone[15:8]</td>
+</tr>
+<tr>
+<td>0xAF</td>
+<td>W/R</td>
+<td>-</td>
+<td>0x00</td>
+<td>7-0</td>
+<td>DTMF: DTMF_tone[63:56]. 2-tone / 5-tone: selcall_tone[19:16] in bits 3-0</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="315-ambe1000-squelch-packet-0xb0-0xb8">3.15 AMBE1000 squelch packet (0xB0-0xB8)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Addr</th>
+<th>R/W</th>
+<th>Name</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0xB0-0xB8</td>
+<td>W/R</td>
+<td>Ambe1000_noise_reg0..8</td>
+<td>CE C9 32 E8 A4 06 2C F7 B4</td>
+<td>the 9 bytes of the AMBE1000 squelch (comfort noise) output packet</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="316-clocks-0xb9-0xbb">3.16 Clocks (0xB9-0xBB)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Addr</th>
+<th>R/W</th>
+<th>Name</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0xB9</td>
+<td>W/R</td>
+<td>Sys_clk_Reg</td>
+<td>0x05</td>
+<td>system clock divider (Sys_clk)</td>
+</tr>
+<tr>
+<td>0xBA</td>
+<td>W/R</td>
+<td>Codec_clk_Reg</td>
+<td>0x04</td>
+<td>built-in codec clock divider</td>
+</tr>
+<tr>
+<td>0xBB</td>
+<td>W/R</td>
+<td>ClkOut_Reg</td>
+<td>0x02</td>
+<td>CLKOUT divider</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="317-rf-timing-codec-level-pin-multiplexing-0xc0-0xd0">3.17 RF timing, codec level, pin multiplexing (0xC0-0xD0)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Addr</th>
+<th>R/W</th>
+<th>Name</th>
+<th>Default</th>
+<th>Bit</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0xC0</td>
+<td>W/R</td>
+<td>rf_pre_on_rx</td>
+<td>0x00</td>
+<td>7-6</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>5-0</td>
+<td>RF_RX_INTER (TX-to-RX switch) advance before the 30 ms boundary, about 100 µs steps</td>
+</tr>
+<tr>
+<td>0xC1</td>
+<td>W/R</td>
+<td>RF_LEVEL</td>
+<td>0x00</td>
+<td>7</td>
+<td>RF_LEVEL source: 0 = generated inside the chip, 1 = written by the MCU</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>6</td>
+<td>the MCU's RF_LEVEL value</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>5</td>
+<td>layer 3: enable the 30 ms timeslot interrupt</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>4-0</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td>0xC2</td>
+<td>W/R</td>
+<td>Codec_AGC_CTRL</td>
+<td>0x00</td>
+<td>7</td>
+<td>1 = mic gain <abbr class="gl" tabindex="0" title="Automatic gain control: the receiver adjusting itself to the signal level." data-more="../dev/glossary.html#t-agc">AGC</abbr> on</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>6-0</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td>0xC3</td>
+<td>W/R</td>
+<td>CODEC_OPTIMALH</td>
+<td>0x08</td>
+<td>7-0</td>
+<td>AGC: best codec output level, bits 15-8 (target mean level)</td>
+</tr>
+<tr>
+<td>0xC4</td>
+<td>W/R</td>
+<td>CODEC_OPTIMALL</td>
+<td>0x00</td>
+<td>7-0</td>
+<td>bits 7-0</td>
+</tr>
+<tr>
+<td>0xC5</td>
+<td>W/R</td>
+<td>CODEC_LOWLEVELH</td>
+<td>0x00</td>
+<td>7-0</td>
+<td>AGC: lowest codec output level, bits 15-8</td>
+</tr>
+<tr>
+<td>0xC6</td>
+<td>W/R</td>
+<td>CODEC_LOWLEVELL</td>
+<td>0x64</td>
+<td>7-0</td>
+<td>bits 7-0 (the table repeats &quot;high 8 bits&quot;)</td>
+</tr>
+<tr>
+<td>0xC7</td>
+<td>W/R</td>
+<td>RF_3TC_ON</td>
+<td>0x00</td>
+<td>7</td>
+<td>1 = pin 17 (LRCK) becomes the RF_3TC_EN output</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>6</td>
+<td>edge to high: 1 = after the 30 ms boundary, 0 = before</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>5-0</td>
+<td>that time, about 100 µs steps</td>
+</tr>
+<tr>
+<td>0xC8</td>
+<td>W/R</td>
+<td>RF_3TC_OFF</td>
+<td>0x00</td>
+<td>7</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>6</td>
+<td>edge to low: 1 = after the boundary, 0 = before</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>5-0</td>
+<td>that time, 100 µs steps</td>
+</tr>
+<tr>
+<td>0xC9 / 0xCA</td>
+<td>W/R</td>
+<td>RF_5TC_ON / OFF</td>
+<td>0x00</td>
+<td>as 0xC7 / 0xC8</td>
+<td>pin 19 (ADCDAT) as RF_5TC_EN</td>
+</tr>
+<tr>
+<td>0xCB / 0xCC</td>
+<td>W/R</td>
+<td>RF_ANT_ON / OFF</td>
+<td>0x00</td>
+<td>as 0xC7 / 0xC8</td>
+<td>pin 16 (MCLK) as RF_ANT_EN</td>
+</tr>
+<tr>
+<td>0xCD / 0xCE</td>
+<td>W/R</td>
+<td>RF_3RC_ON / OFF</td>
+<td>0x00</td>
+<td>as 0xC7 / 0xC8</td>
+<td>pin 18 (BCLK) as RF_3RC_EN</td>
+</tr>
+<tr>
+<td>0xCF / 0xD0</td>
+<td>W/R</td>
+<td>RF_5RC_ON / OFF</td>
+<td>0x00</td>
+<td>as 0xC7 / 0xC8</td>
+<td>pin 20 (DACDAT) as RF_5RC_EN</td>
+</tr>
+</tbody>
+</table></div>
+<p>Manual 4.5.2 (表 4.4, figure 4.15): any external-codec pin can be a <abbr class="gl" tabindex="0" title="General purpose input/output: a pin the firmware can read or drive." data-more="../dev/glossary.html#t-gpio">GPIO</abbr> output whose edges sit up to 6 ms either
+side of the 30 ms boundary, in 100 µs steps. The figure labels its two cases &quot;C7=0x81, C7=0x61&quot; (high 100 µs early,
+low 100 µs late) and &quot;C7=0xC1, C7=0x01&quot; (high 100 µs late, low 100 µs early). By the bit definitions the first value
+of each pair fits 0xC7 and the second belongs in 0xC8 (whose bit 7 is reserved); 0x61 doesn't decode as 100 µs. Treat
+the figure as illustrative.</p>
+<h3 id="318-fm-tone-decoder-control-0xd1-0xd4">3.18 FM tone decoder control (0xD1-0xD4)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Addr</th>
+<th>R/W</th>
+<th>Name</th>
+<th>Default</th>
+<th>Bit</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0xD1</td>
+<td>W/R</td>
+<td>dtmf_code_width</td>
+<td>0x04</td>
+<td>7-5</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>4-0</td>
+<td>number of DTMF codes to send</td>
+</tr>
+<tr>
+<td>0xD2</td>
+<td>W/R</td>
+<td>-</td>
+<td>0xD0</td>
+<td>7-0</td>
+<td>sample_size[7:0]: tone decoders' sampling depth</td>
+</tr>
+<tr>
+<td>0xD3</td>
+<td>W/R</td>
+<td>-</td>
+<td>0x07</td>
+<td>7-5</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>4</td>
+<td>CDCSS RX code bit 8</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>3-0</td>
+<td>sample_size[11:8]</td>
+</tr>
+<tr>
+<td>0xD4</td>
+<td>W/R</td>
+<td>-</td>
+<td>0x01</td>
+<td>7-0</td>
+<td>CTCSS: RX tone index. CDCSS: RX code bits 7-0. XTCSS: RX address</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="319-msk-0xd5-0xd8-0xdc-0xdd">3.19 MSK (0xD5-0xD8, 0xDC-0xDD)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Addr</th>
+<th>R/W</th>
+<th>Name</th>
+<th>Default</th>
+<th>Bit</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0xD5</td>
+<td>W/R</td>
+<td>AcqEnable</td>
+<td>0x00</td>
+<td>7</td>
+<td>1 = the PHY starts acquisition. Edge triggered: the PHY clears it once it has seen it</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>OperationType</td>
+<td></td>
+<td>6</td>
+<td>0 idle, 1 working</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>ChannelType</td>
+<td></td>
+<td>5-4</td>
+<td>00 control channel, 01 traffic channel, 10 data channel, 11 reserved (BS: TX channel type; MS: both)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>TranOrRecFlag</td>
+<td></td>
+<td>3</td>
+<td>0 receive, 1 transmit</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>SoftReset</td>
+<td></td>
+<td>2</td>
+<td>1 = reset (BS: TX block; MS: both)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1-0</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td>0xD6</td>
+<td>W/R</td>
+<td>RemBitNum</td>
+<td>0x00</td>
+<td>7-6</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>5-0</td>
+<td>MAC framing: bits left to send, 0-63</td>
+</tr>
+<tr>
+<td>0xD7</td>
+<td>W/R</td>
+<td>MultiMessageTransFlag</td>
+<td>0x00</td>
+<td>7</td>
+<td>1 = insert a reversal bit after the current codeword (multi-message, PHY framing only); edge triggered</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>RxInterMask</td>
+<td></td>
+<td>6</td>
+<td>1 = mask the receive interrupt</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>CtrlDataInterMask</td>
+<td></td>
+<td>5</td>
+<td>1 = mask the control-data interrupt</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>MacFrameEn</td>
+<td></td>
+<td>4</td>
+<td>0 = PHY framing, 1 = MAC framing</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>MACTransFinishFlag</td>
+<td></td>
+<td>3</td>
+<td>1 = last data: PHY framing stops after this codeword; MAC framing after this codeword plus RemBitNum bits</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Unsolicited</td>
+<td></td>
+<td>2</td>
+<td>0 = response message, 1 = unsolicited message (traffic channel)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><strong>msk_voice_send_en</strong></td>
+<td></td>
+<td><strong>1</strong></td>
+<td><strong>0 = send MSK signaling, 1 = send FM voice</strong></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td>0xD8</td>
+<td>-</td>
+<td>ChannelType_RX</td>
+<td>-</td>
+<td>1-0</td>
+<td>BS only: RX channel type, coded as 0xD5 bits 5-4 (chapter 7 only)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>SoftReset_RX</td>
+<td></td>
+<td>2</td>
+<td>BS only: 1 = reset the RX block (chapter 7 only)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>7-3</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td>0xDC</td>
+<td>-</td>
+<td>TDMA_Slot_Num_H</td>
+<td>-</td>
+<td>0</td>
+<td>trunking: multiframe number from the short LC, bit 8</td>
+</tr>
+<tr>
+<td>0xDD</td>
+<td>-</td>
+<td>TDMA_Slot_Num_L</td>
+<td>-</td>
+<td>7-0</td>
+<td>bits 7-0</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="320-built-in-codec-0xe0-0xe6">3.20 Built-in codec (0xE0-0xE6)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Addr</th>
+<th>R/W</th>
+<th>Name</th>
+<th>Default</th>
+<th>Bit</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0xE0</td>
+<td>W/R</td>
+<td>-</td>
+<td>-</td>
+<td>7</td>
+<td>1 = the MCU switches the codec blocks through these bits; 0 = the chip switches them</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>6</td>
+<td>LINEIN1 enable</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>5</td>
+<td>LINEIN2 enable</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>4</td>
+<td>LINEOUT1 enable</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>3</td>
+<td>LINEOUT2 enable</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>2</td>
+<td>MIC_N enable</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+<td>MIC_P enable</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+<td>I2S mode: the chip works as slave, set to 1</td>
+</tr>
+<tr>
+<td>0xE2</td>
+<td>W/R</td>
+<td>-</td>
+<td>-</td>
+<td>7</td>
+<td>default 0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>6</td>
+<td>DAC switch, 0 in normal operation</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>5</td>
+<td>codec bias switch, 0 normal; 1 stops the DAC and ADC (standby value 1)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>4</td>
+<td>ADC enable switch: 0 normal, 1 when the ADC isn't used</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>3</td>
+<td>ADC mic amplifier switch: 0 normal, 1 when the ADC isn't used</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>2</td>
+<td>anti-pop: set 1 ms after the DAC starts, clear 10 ms before it stops</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+<td>DAC to output amplifier switch: 1 normal; 0 = no DAC signal at LINEOUT</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+<td>codec power down: 0 normal, 1 standby</td>
+</tr>
+<tr>
+<td>0xE3</td>
+<td>W/R</td>
+<td>-</td>
+<td>-</td>
+<td>7-6</td>
+<td>default 01</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>5-4</td>
+<td>default 01</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>3-1</td>
+<td>default 001</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+<td>codec internal DAC-ADC pass-through: 1 = on, 0 in normal operation (direction not stated)</td>
+</tr>
+<tr>
+<td>0xE4</td>
+<td>W/R</td>
+<td>-</td>
+<td>-</td>
+<td>7-6</td>
+<td>LINEOUT gain: 00 0 dB, 01 2 dB, 10 4 dB, 11 6 dB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>5-4</td>
+<td>mic first stage: 00 0 dB, 01 -6 dB, other -12 dB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>3-0</td>
+<td>mic second stage: 3 dB steps above the first stage, 0000 lowest</td>
+</tr>
+<tr>
+<td>0xE5</td>
+<td>W/R</td>
+<td>-</td>
+<td>-</td>
+<td>7-1</td>
+<td>default 00001010 (the table gives 8 bits for a 7-bit field)</td>
+</tr>
+<tr>
+<td>0xE6</td>
+<td>W/R</td>
+<td>-</td>
+<td>-</td>
+<td>7</td>
+<td>HP_PREV_EN, default 0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>6-5</td>
+<td>HP_TIME_SET, default 00</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>4</td>
+<td>POP_SEL_EN, default 0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>3-0</td>
+<td>reserved</td>
+</tr>
+</tbody>
+</table></div>
+<p>Codec gain stages (4.5.1): MIC_VOL 0 / -6 / -12 dB before the ADC; ADLIN_VOL 0 to +36 dB in 3 dB steps before
+the ADC; DALIN_VOL on the DAC data in 1.5 dB steps (0x37); HPOUT_VOL 0 / 2 / 4 / 6 dB (0xE4 bits 7-6). The
+characteristics table gives the mic range as -12 to +24 dB in 3 dB steps and the digital volume as ±45 dB in
+1.5 dB steps. Inputs: MIC_P / MIC_N differential, or LINEIN1 / LINEIN2 single ended, through one mux (K2) to the
+ADC; the output path K1 drives LINEOUT1 / LINEOUT2. Table 4.3 says 0xE3 is &quot;the K1 switch control&quot;.</p>
+<h3 id="321-table-43-summary-of-codec-registers">3.21 Table 4.3 summary of codec registers</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Addr</th>
+<th>Use (表 4.3)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0xE0</td>
+<td>MCU control of the codec; LINEIN, MIC and LINEOUT enables</td>
+</tr>
+<tr>
+<td>0xE2</td>
+<td>DAC / ADC switches and codec power down</td>
+</tr>
+<tr>
+<td>0xE3</td>
+<td>K1 switch control</td>
+</tr>
+<tr>
+<td>0xE4</td>
+<td>LINEOUT gain (7-6), mic first stage (5-4), mic second stage (3-0)</td>
+</tr>
+<tr>
+<td>0x37</td>
+<td>DALIN_VOL: bits 5-0 in 1.5 dB steps (all zero is the minimum), bit 6 louder / quieter, bit 7 enable</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="322-addresses-the-register-table-omits">3.22 Addresses the register table omits</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Addr</th>
+<th>What the manual says elsewhere</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x25</td>
+<td>&quot;DAC working control word&quot; (4.7, 表 4.5). Bits 3 and 2 choose chip control of the DACs by TX slot; bits 5 and 4 let the MCU switch them. 4.7.2: bit 5 = 1 and bit 3 = 0 keep MOD1's DAC on all the time (the pairing of bits 4 and 2 with the other DAC is not stated)</td>
+</tr>
+<tr>
+<td>0x26, 0x27, 0x28</td>
+<td>&quot;ADC working control word&quot; (4.8, 表 4.8). Bits not stated; the ADCs can sleep in TX slots under chip or MCU control</td>
+</tr>
+<tr>
+<td>0x29</td>
+<td>(not stated)</td>
+</tr>
+<tr>
+<td>0x30, 0x31</td>
+<td>external codec BCLK = codec clock / (2 x ({0x30, 0x31} + 1)) (4.5.2). Defaults not stated</td>
+</tr>
+<tr>
+<td>0x38</td>
+<td>A1: written 0x00, &quot;no change&quot; (a built-in codec setting)</td>
+</tr>
+<tr>
+<td>0x39-0x3D</td>
+<td>(not stated)</td>
+</tr>
+<tr>
+<td>0x4D</td>
+<td>(not stated)</td>
+</tr>
+<tr>
+<td>0x56-0x5E</td>
+<td>(not stated)</td>
+</tr>
+<tr>
+<td>0x64-0x80</td>
+<td>(not stated)</td>
+</tr>
+<tr>
+<td>0x8A-0x8F, 0x91, 0x92, 0x99-0x9F</td>
+<td>(not stated)</td>
+</tr>
+<tr>
+<td>0xBC-0xBF</td>
+<td>(not stated)</td>
+</tr>
+<tr>
+<td>0xD9-0xDB, 0xDE, 0xDF</td>
+<td>(not stated)</td>
+</tr>
+<tr>
+<td>0xE1, 0xE7-0xFF</td>
+<td>(not stated)</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="4-auxiliary-parameter-table-附属参数配置表-opmode-001">4. Auxiliary parameter table (附属参数配置表, OPMode 001)</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Addr</th>
+<th>Name</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TX data sync</td>
+<td>0x04-0x09</td>
+<td>DATA SYNC1-6</td>
+<td>DF F5 7D 75 DF 5D</td>
+<td>48-bit data sync the chip <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmits</abbr> (default: BS-sourced data sync). The chip sends voice sync as its inverse (modem-hrc6000.md 2)</td>
+</tr>
+<tr>
+<td>TX RC sync</td>
+<td>0x0A-0x0F</td>
+<td><abbr class="gl" tabindex="0" title="Reverse channel: signaling the receiver sends back to the transmitter during a call, in space the burst leaves free." data-more="../dev/glossary.html#t-rc">RC</abbr> SYNC1-6</td>
+<td>DF F5 7D 75 DF 5D</td>
+<td>48-bit RC sync transmitted</td>
+</tr>
+<tr>
+<td>Scrambler</td>
+<td>0x24, 0x25</td>
+<td>scramble_reg0, 1</td>
+<td>00 00</td>
+<td>voice encryption initialization</td>
+</tr>
+<tr>
+<td>Descrambler</td>
+<td>0x26, 0x27</td>
+<td>dscramble_reg0, 1</td>
+<td>00 00</td>
+<td>voice decryption initialization</td>
+</tr>
+<tr>
+<td>RS init</td>
+<td>0x2A-0x2C</td>
+<td>RS_H_INITREG0-2</td>
+<td>00</td>
+<td>RS check initial value, voice header</td>
+</tr>
+<tr>
+<td></td>
+<td>0x2D-0x2F</td>
+<td>RS_T_INITREG0-2</td>
+<td>00</td>
+<td>RS check initial value, terminator</td>
+</tr>
+<tr>
+<td>CRC init</td>
+<td>0x30, 0x31</td>
+<td>CSBK_INITREG0, 1</td>
+<td>00</td>
+<td><abbr class="gl" tabindex="0" title="Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control." data-more="dmr-data.html">CSBK</abbr> CRC-16 initial value</td>
+</tr>
+<tr>
+<td></td>
+<td>0x3A, 0x3B</td>
+<td>DATAH_INITREG0, 1</td>
+<td>00</td>
+<td>data header CRC-16 initial value</td>
+</tr>
+<tr>
+<td></td>
+<td>0x3C, 0x3D</td>
+<td>PI_INITREG0, 1</td>
+<td>00</td>
+<td><abbr class="gl" tabindex="0" title="A DMR header that announces encryption with a changing key. RadioFoundry never plays such calls." data-more="../user/22-glossary.html#t-pi-header">PI header</abbr> CRC-16 initial value</td>
+</tr>
+<tr>
+<td></td>
+<td>0x3E, 0x3F</td>
+<td>MBC_INITREG0, 1</td>
+<td>00</td>
+<td><abbr class="gl" tabindex="0" title="Multi block control: a DMR signaling message that spans several bursts." data-more="../dev/glossary.html#t-mbc">MBC</abbr> CRC-16 initial value</td>
+</tr>
+<tr>
+<td></td>
+<td>0x40</td>
+<td>CRC8_INITREG</td>
+<td>00</td>
+<td>CRC-8 initial value</td>
+</tr>
+<tr>
+<td>RX MS data sync</td>
+<td>0x47-0x4C</td>
+<td>DATA SYNC1-6</td>
+<td>D5 D7 F7 7F D7 57</td>
+<td>MS-sourced data sync the receiver looks for</td>
+</tr>
+<tr>
+<td>CRC9 init</td>
+<td>0x4D-0x50</td>
+<td>CRC9_INITREG0-3</td>
+<td>00</td>
+<td>CRC-9 initial value for <abbr class="gl" tabindex="0" title="DMR packet data the receiving radio acknowledges. What didn&#x27;t arrive is sent again." data-more="../user/22-glossary.html#t-confirmed-data">confirmed data</abbr> at every rate</td>
+</tr>
+<tr>
+<td>DMR receive thresholds</td>
+<td>0x52</td>
+<td>RSSIBottonH</td>
+<td>0x1A</td>
+<td>signal (energy) detection threshold bits 15-8</td>
+</tr>
+<tr>
+<td></td>
+<td>0x53</td>
+<td>RSSIBottonL</td>
+<td>0xF0</td>
+<td>bits 7-0</td>
+</tr>
+<tr>
+<td></td>
+<td>0x54</td>
+<td>MaxValue</td>
+<td>0x78</td>
+<td>sync (timing synchronization) detection threshold</td>
+</tr>
+<tr>
+<td></td>
+<td>0x55</td>
+<td>Sig_COR_VALUE</td>
+<td>0x67</td>
+<td>signal arrival detection threshold</td>
+</tr>
+<tr>
+<td>RX BS data sync</td>
+<td>0x56-0x5B</td>
+<td>DATA SYNC1_1-6_1</td>
+<td>DF F5 7D 75 DF 5D</td>
+<td>BS-sourced data sync</td>
+</tr>
+<tr>
+<td>CRC32 init</td>
+<td>0x5C-0x5F</td>
+<td>CRC32_INITREG0-3</td>
+<td>00</td>
+<td>CRC-32 initial value</td>
+</tr>
+<tr>
+<td>Multi-group addresses</td>
+<td>0x60-0xBF</td>
+<td>GroupAddr_L1/M1/H1 .. L32/M32/H32</td>
+<td>-</td>
+<td>32 group addresses of 24 bits (L, M, H per group)</td>
+</tr>
+<tr>
+<td>MSK</td>
+<td>0x12A</td>
+<td>TrainErrorThreshold</td>
+<td>-</td>
+<td>bits 5-0: training sequence decision threshold for acquisition and sync (7.3: set 5)</td>
+</tr>
+<tr>
+<td></td>
+<td>0x12B</td>
+<td>DTBeforeTransAndRec</td>
+<td>-</td>
+<td>delay between the <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> pulse and the TX start pulse, n / 19.2 ms (7.3: 160)</td>
+</tr>
+<tr>
+<td></td>
+<td>0x12C</td>
+<td>NT</td>
+<td>-</td>
+<td>delay from MAC framing to the air (7.3: 103)</td>
+</tr>
+<tr>
+<td></td>
+<td>0x12D</td>
+<td>ChannelDelay</td>
+<td>-</td>
+<td>longest delay, in bits, for the <abbr class="gl" tabindex="0" title="The controller of a Tier III system: the infrastructure side the radio talks to." data-more="../dev/glossary.html#t-tsc">TSC</abbr>'s answer to an <abbr class="gl" tabindex="0" title="Mobile station: the radio, as opposed to the base station (BS)." data-more="../dev/glossary.html#t-ms">MS</abbr>'s unsolicited message on a traffic channel (7.3: 20)</td>
+</tr>
+<tr>
+<td>RX RC sync</td>
+<td>0x12E-0x133</td>
+<td>RC SYNC1-6</td>
+<td>77 D5 5F 7D FD 77</td>
+<td>RC sync received</td>
+</tr>
+<tr>
+<td>RX TDMA1 sync</td>
+<td>0x134-0x139</td>
+<td>DATA SYNC1_2-6_2</td>
+<td>F7 FD D5 <abbr class="gl" tabindex="0" title="Defined data format: the field of a short data header that says how its payload is coded (7-bit text, ISO 8859, UTF-16 and so on)." data-more="../dev/glossary.html#t-dd">DD</abbr> FD 55</td>
+<td><abbr class="gl" tabindex="0" title="DMR radio to radio on one frequency, with no repeater. The standard calls it DMO." data-more="../dev/glossary.html#t-direct-mode">direct mode</abbr> slot 1 data sync</td>
+</tr>
+<tr>
+<td>RX TDMA2 sync</td>
+<td>0x13A-0x13F</td>
+<td>DATA SYNC1_3-6_3</td>
+<td>D7 55 7F 5F F7 F5</td>
+<td>direct mode slot 2 data sync</td>
+</tr>
+</tbody>
+</table></div>
+<p>Addresses outside these rows are not in the table. Appendix A2 uses two more ranges of this table:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Addr</th>
+<th>Use (A2)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x102-0x119</td>
+<td>eight 24-bit tone detector coefficients, {high, mid, low} at {0x104, 0x103, 0x102} .. {0x119, 0x118, 0x117}: value = 2 cos(2 pi f / fs) x 2^22</td>
+</tr>
+<tr>
+<td>0x11A-0x129</td>
+<td>eight 16-bit tone generator phase steps, low byte first ({0x11B, 0x11A} .. {0x129, 0x128}): value = f / 32000 x 2^16</td>
+</tr>
+</tbody>
+</table></div>
+<p>Values are in section 7.8.</p>
+<hr />
+<h2 id="5-hardware-chapter-facts-on-transmit-and-receive-manual-47-48">5. Hardware chapter facts on transmit and receive (manual 4.7, 4.8)</h2>
+<h3 id="51-transmit-interface-表-45">5.1 Transmit interface (表 4.5)</h3>
+<p>Two 10-bit single-ended DACs (pins 75 DAC_IVOUT/MOD1 and 74 DAC_QVOUT/MOD2 in the pin list).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Register</th>
+<th>Use in <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x01 bit 7</td>
+<td>TX port mapping (IQ swap; two-point: deviation sign)</td>
+</tr>
+<tr>
+<td>0x01 bits 5-4</td>
+<td>00 IF, 01 IF IQ, 10 baseband IQ, 11 two-point</td>
+</tr>
+<tr>
+<td>0x02 / 0x04</td>
+<td>DC offset of the two outputs</td>
+</tr>
+<tr>
+<td>0x07-0x09</td>
+<td>IF word</td>
+</tr>
+<tr>
+<td>0x12</td>
+<td>bit 7 ramp, bit 6 two-point test tone, bits 5-0 RF_TX_INTER advance</td>
+</tr>
+<tr>
+<td>0x25</td>
+<td><abbr class="gl" tabindex="0" title="Digital to analog converter." data-more="../dev/glossary.html#t-dac">DAC</abbr> control word</td>
+</tr>
+<tr>
+<td>0x2E</td>
+<td>TX advance (fixed internal delay 400 µs, so 0x04 with no <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> delay)</td>
+</tr>
+<tr>
+<td>0x45</td>
+<td>two-point MOD2 amplitude (表 4.5 writes &quot;MOD2 (DAC_IVOUT)&quot;)</td>
+</tr>
+<tr>
+<td>0x46</td>
+<td>two-point MOD1 amplitude (表 4.5 writes &quot;MOD1 (DAC_QVOUT)&quot;)</td>
+</tr>
+<tr>
+<td>0x47 / 0x48</td>
+<td>10-bit two-point bias</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Mode (0x01 bits 5-4)</th>
+<th>Facts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Baseband IQ (10)</td>
+<td>Single-ended I and Q around 1.65 V into an IQ modulator (the example is a CMX991 with TXIN / TXQN at 1.65 V), through image filters. Up to 2725 mV differential for random data. 0x02 / 0x04: I / Q offset, about ±264 mV in 3.3 mV steps. 0x45 bits 3-0: both amplitudes, 170-2725 mV in 170 mV steps. 0x12 bit 7: ramp start 1.65 V (0) or 0 V (1)</td>
+</tr>
+<tr>
+<td>Two-point (11)</td>
+<td>Two op-amps shift and scale the DAC outputs into MOD1 (drives the reference crystal) and MOD2 (drives the <abbr class="gl" tabindex="0" title="Voltage controlled oscillator: the oscillator in a synthesizer, tuned by a voltage." data-more="../dev/glossary.html#t-vco">VCO</abbr>) (figure 4.21: pin 75 MOD1 to the crystal / <abbr class="gl" tabindex="0" title="Phase locked loop: the circuit that holds the radio&#x27;s synthesizer on its frequency." data-more="../dev/glossary.html#t-pll">PLL</abbr>, pin 74 MOD2 to the VCO). Bias1 / Bias2 come from a DAC or digital potentiometer; an AD5165 sets the gain. Up to about 2240 mV differential. 0x04: MOD1 offset and 0x02: MOD2 offset, about ±422 mV in 3.3 mV steps (4.7.2; the register table says MOD2 for both). 0x46 MOD1 and 0x45 MOD2 amplitude, 8.75-2240 mV in 8.75 mV steps. 0x12 bit 6: 40 Hz test square wave. With 0x25 bit 5 = 1 and bit 3 = 0, MOD1's DAC stays on in <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> and 0x47 / 0x48 set its voltage (0-3.3 V)</td>
+</tr>
+<tr>
+<td>IF IQ (01)</td>
+<td>Like baseband IQ; IF word = IF / Sys_clk x 2^24 (0x07, 0x08, 0x09)</td>
+</tr>
+<tr>
+<td>IF (00)</td>
+<td>The IF IQ pair combined into one single-ended output; same IF word</td>
+</tr>
+</tbody>
+</table></div>
+<p>Two-point symbol mapping (表 4.6, 4.7):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>0x01 bit 7 = 0</th>
+<th>0x01 bit 7 = 1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+3</td>
+<td>+1944 Hz</td>
+<td>-1944 Hz</td>
+</tr>
+<tr>
+<td>+1</td>
+<td>+648 Hz</td>
+<td>-648 Hz</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>-648 Hz</td>
+<td>+648 Hz</td>
+</tr>
+<tr>
+<td>-3</td>
+<td>-1944 Hz</td>
+<td>+1944 Hz</td>
+</tr>
+</tbody>
+</table></div>
+<p>Characteristics (表 3.4): two-point offset 1.228-2.072 V (1.65 typical), 3.3 mV resolution; amplitude
+8.75-2240 mV, 8.75 mV resolution. IQ offset 1.386-1.914 V; amplitude 0.17-2.725 V in 0.17 V steps.</p>
+<h3 id="52-receive-interface-表-48-481-482">5.2 Receive interface (表 4.8, 4.8.1, 4.8.2)</h3>
+<p>Two 10-bit ADCs (pins 70 / 71 I, 63 / 62 Q).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Register</th>
+<th>Use in receive</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0xA1 bit 7</td>
+<td>AF receive mode or not; when not AF, 0x01 bits 3-2 choose the mode (the register table says this bit is reserved, must be 0)</td>
+</tr>
+<tr>
+<td>0x01 bit 6</td>
+<td>RX port mapping (IQ swap)</td>
+</tr>
+<tr>
+<td>0x01 bits 3-2</td>
+<td>00 IF, 01 IF IQ, 10 baseband IQ</td>
+</tr>
+<tr>
+<td>0x03 / 0x05</td>
+<td>I / Q input offset, -127..127</td>
+</tr>
+<tr>
+<td>0x07-0x09</td>
+<td>IF word (the <abbr class="gl" tabindex="0" title="Bit error rate: the share of received bits that were wrong. A measure of how clean a signal is." data-more="../dev/glossary.html#t-ber">BER</abbr> test uses 0x0BD954, 455 kHz)</td>
+</tr>
+<tr>
+<td>0x26, 0x27, 0x28</td>
+<td><abbr class="gl" tabindex="0" title="Analog to digital converter." data-more="../dev/glossary.html#t-adc">ADC</abbr> control words</td>
+</tr>
+<tr>
+<td>aux 0x52 / 0x53</td>
+<td>signal energy threshold, high / low byte</td>
+</tr>
+<tr>
+<td>aux 0x54</td>
+<td>timing sync detection threshold</td>
+</tr>
+<tr>
+<td>aux 0x55</td>
+<td>arrival detection threshold</td>
+</tr>
+</tbody>
+</table></div>
+<p>IF mode: the low IF goes into ADC_IVINP; ADC_IVINN is grounded or held at the IF bias. IF filter: ±7.5 kHz for
+25 kHz channels, ±3.75 or ±4.5 kHz for 12.5 kHz. Receive IF 450 kHz typical, up to 1 MHz; Eb/N0 7 dB at 5 % BER.
+Appendix B gives <abbr class="gl" tabindex="0" title="Received signal strength indicator: how strong the received signal is, in dBm." data-more="../user/22-glossary.html#t-rssi">RSSI</abbr> (0x43 / 0x44) against a 450 kHz <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> input: 0 at -34 dBm (0.048 V), 75 at -10 dBm, 790 at
+0 dBm (1.5 V), 1980 at +3 dBm.</p>
+<h3 id="53-external-codec-and-vocoder-interfaces-452-46">5.3 External codec and vocoder interfaces (4.5.2, 4.6)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Fact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>External codec port</td>
+<td>pins 17 LRCK, 18 BCLK, 19 ADCDAT, 20 DACDAT, 16 MCLK; the chip is the <abbr class="gl" tabindex="0" title="Inter-IC sound: the bus audio samples travel on between chips." data-more="../dev/glossary.html#t-i2s">I2S</abbr> master. Example codec ALC5621: LRCK 8 kHz, BCLK 512 kHz, CLKOUT (24.576 MHz) wired to MCLK and to the codec's clock. With the built-in codec, CLKOUT and MCLK stay unconnected</td>
+</tr>
+<tr>
+<td>Pin reuse</td>
+<td>every external-codec pin can be a timed <abbr class="gl" tabindex="0" title="General purpose input/output: a pin the firmware can read or drive." data-more="../dev/glossary.html#t-gpio">GPIO</abbr> output instead (0xC7-0xD0)</td>
+</tr>
+<tr>
+<td>Vocoder I2S (pins 34-37: C_SDI/I2S_RX, C_SDO/I2S_TX, C_SCLK/I2S_CK, C_CS/I2S_FS)</td>
+<td>master or slave. In <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> mode (0x22 bit 1 = 0) the chip is SPI master: C_SDO carries the codec ADC's voice to the <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">vocoder</abbr>, C_SDI brings the vocoder's data in</td>
+</tr>
+<tr>
+<td>I2S master clocks</td>
+<td>I2S_CK_M from 0x2F, I2S_FS_M from 0x32 / 0x33 (must be 8 kHz). I2S_CK_M &gt; 34 x I2S_FS_M, codec clock &gt;= 6 x I2S_CK_M</td>
+</tr>
+<tr>
+<td>I2S master clock gate</td>
+<td>4.6.1: 0x36 bit 6 = 0 runs I2S_CK_M and I2S_FS_M, 1 stops them (the register table says 1 enables, conflict)</td>
+</tr>
+<tr>
+<td>HR_V3000</td>
+<td>encoded voice over V_SPI, <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> over I2S (chip as I2S master), keys and frame sync over the <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr>'s <abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="../dev/glossary.html#t-uart">UART</abbr>. 0x06 = 0x24</td>
+</tr>
+<tr>
+<td>AMBE3000 / AMBE1000</td>
+<td>McBSP / CHS on pins 22-31; OPMode 101 / 111 reach their registers</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="6-interrupts-and-layer-2-timing-manual-51-54">6. Interrupts and layer 2 timing (manual 5.1, 5.4)</h2>
+<h3 id="61-pins">6.1 Pins</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Pin</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TIME_SLOT_INTER (48)</td>
+<td>every 30 ms once slot timing exists, until sync is lost (passive) or TxEn and RxEn are both cleared</td>
+</tr>
+<tr>
+<td>SYS_INTER (49)</td>
+<td>status and control events: read 0x82, handle, write 0x83. The layer 2 &quot;Rdy_lst_inter&quot; (0x86 bit 4) shares this pin</td>
+</tr>
+<tr>
+<td>RF_TX_INTER (50)</td>
+<td>only at a RX-to-TX slot change; advance from 0x12</td>
+</tr>
+<tr>
+<td>RF_RX_INTER (51)</td>
+<td>only at a TX-to-RX slot change; advance from 0xC0</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="62-layer-2-slot-timing-figures-511-514">6.2 Layer 2 slot timing (figures 5.11-5.14)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>t1</td>
+<td>1.7 ms</td>
+<td>the chip starts encoding and framing the next slot's burst</td>
+</tr>
+<tr>
+<td>t2</td>
+<td>27 ms</td>
+<td>the window for the <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr> to write the data and 0x41 for the next slot</td>
+</tr>
+<tr>
+<td>t3</td>
+<td>under 3 ms (figure 5.11), 4 ms (5.12-5.14)</td>
+<td>from slot end to the SYS_INTER with the decoded data</td>
+</tr>
+</tbody>
+</table></div>
+<p>At the <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr> interrupt (or at Rdy_lst_inter, if unmasked) the MCU sets 0x41 for the slot after the next; at the
+following timeslot interrupt 0x42 reports what that slot is doing. 0x42 bits 7-5 (5.4.4): 001 working slot, <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> and
+<abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> off; 101 working slot, TX on; 011 working slot, RX on; xx0 not a working slot.</p>
+<p>Active timing: 0x40 bit 5 = 1 with bit 7 or 6 set; the manual's TX value is 0xA3. Passive timing: 0x40 = 0x43 and
+0x41 = 0x40 (&quot;blind&quot; continuous receive) until a burst is received; corrections within 1.25 ms are applied at once,
+and the timing free-runs when the signal goes. The manual's recipe after a SYS_INTER: read the <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">CC</abbr> in 0x52; on a
+mismatch write 0x41 = 0x20 to resynchronize; on a match decide the next slots from 0x51. Active full duplex: the
+received bursts don't update the timing. Passive full duplex: they do.</p>
+<p>Layer 2 setup (5.4.3): 0x10 = 0x68, 0x40 = 0x43, 0x41 = 0x40; the TX burst type goes in 0x50. With 0x40 bit 3 the
+MCU supplies the check bits for the types in 表 5.5 (for example 80 <abbr class="gl" tabindex="0" title="Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control." data-more="dmr-data.html">CSBK</abbr> bits plus its own 16-bit check in TX <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr>
+0-11); otherwise the chip follows the <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> standard.</p>
+<h3 id="63-manual-application-examples-545">6.3 Manual application examples (5.4.5)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Register sequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data TX</td>
+<td>0x10 = 0x6A; on request 0x40 = 0xA3; at a timeslot interrupt 0x41 = 0x80, 0x50 = 0x60, header in TX RAM 0x00-0x09; next 0x41 = 0x00; next 0x41 = 0x80, 0x50 = 0x70, 96 bits in 0x00-0x0B; repeat; finally 0x40 = 0x03</td>
+</tr>
+<tr>
+<td>Data RX</td>
+<td>0x10 = 0x6A, 0x40 = 0x43, 0x41 = 0x40; at SYS_INTER read 0x51 / 0x52 and the header's blocks-to-follow (RX RAM 0x08 bits 6-0); then 0x41 alternates 0x00 / 0x40 per slot; to stop, 0x40 = 0x03, 0x41 = 0x20 then 0x00</td>
+</tr>
+<tr>
+<td>Voice TX</td>
+<td>0x10 = 0x6A, 0x06 = 0x45; 0x40 = 0xA3; 0x41 = 0x80, 0x50 = 0x10 with the <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr>; next 0x41 = 0x00, 0x22 = 0x80 (encode on); then per our slot 0x50 = 0x08 (A), 0x19 (B), 0x2B (C), 0x3B (D), 0x4A (E), 0x58 (F), 0x41 = 0x00 between; terminator 0x50 = 0x20; then 0x41 = 0x00, 0x22 = 0x40 (encode off); finally 0x40 = 0x03</td>
+</tr>
+<tr>
+<td>Voice RX</td>
+<td>0x10 = 0x6A, 0x40 = 0x43, 0x41 = 0x40; on an LC header for us 0x22 = 0x20 (decode on); 0x41 alternates 0x50 / 0x00; on the terminator 0x22 = 0x10 (decode off)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The voice TX example's 0x50 values carry the embedded LC's <abbr class="gl" tabindex="0" title="Link control start/stop: the 2-bit field of a burst&#x27;s embedded signaling that says which fragment it carries." data-more="../dev/glossary.html#t-lcss">LCSS</abbr> in bits 1-0 (B 01, C 11, D 11, E 10). The voice RX
+example reads &quot;0x50&quot; where 0x51 is meant and compares the CC with 0x51 bits 7-4 (0x52 holds it); the data RX example
+does the same with 0x51.</p>
+<h3 id="64-physical-layer-ber-test-546-表-56">6.4 Physical layer BER test (5.4.6, 表 5.6)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Reg</th>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x01</td>
+<td>xxxx 0000</td>
+<td>IF receive</td>
+</tr>
+<tr>
+<td>0x07-0x09</td>
+<td>0x0B, 0xD9, 0x54</td>
+<td>455 kHz IF</td>
+</tr>
+<tr>
+<td>0x10</td>
+<td>0000 0010</td>
+<td>physical layer, continuous (set bit 5 for slotted)</td>
+</tr>
+<tr>
+<td>0x40</td>
+<td>0100 0000</td>
+<td>RX on, physical layer test mode</td>
+</tr>
+<tr>
+<td>0x41</td>
+<td>0100 0001</td>
+<td>RX test enable (AutoTest)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The chip stores each demodulated 36-byte burst at RX RAM 0x30 and raises 0x82 bit 0; the MCU compares it with what
+was sent.</p>
+<hr />
+<h2 id="7-fm-analog-signaling-and-msk-manual-6-7-appendix-a">7. FM, analog signaling and MSK (manual 6, 7, appendix A)</h2>
+<h3 id="71-fm-transmit-chain-61-figure-61">7.1 FM transmit chain (6.1, figure 6.1)</h3>
+<p>0x10 bit 7 = 1 selects FM. FM is simplex only. 0x60 = 0x80 opens the analog <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> path. The manual's chain:</p>
+<p>mic → codec <abbr class="gl" tabindex="0" title="Analog to digital converter." data-more="../dev/glossary.html#t-adc">ADC</abbr> → compressor (0x34 bit 6) → pre-emphasis (0x34 bit 5) → filter with soft limiter → FM modulator →
+Tr_I / MOD1 and Tr_Q / MOD2.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Block</th>
+<th>Register</th>
+<th>Fact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Band-pass</td>
+<td>0x34 bit 7</td>
+<td>300-3400 Hz</td>
+</tr>
+<tr>
+<td>Compressor</td>
+<td>0x34 bit 6, 0x2D bits 3-0</td>
+<td>syllabic: 2 dB in gives 1 dB out (60 dB range to 30 dB); 0x2D sets the 0 dB point. Use with an expander at the far end</td>
+</tr>
+<tr>
+<td>Pre-emphasis</td>
+<td>0x34 bit 5</td>
+<td>TIA, +6 dB / octave over 300-3000 Hz</td>
+</tr>
+<tr>
+<td>Low-pass with soft limiter</td>
+<td>0x34 bit 4 (and bit 3 for IQ / IF TX)</td>
+<td>2.55 kHz for 12.5 kHz channels, 3 kHz for 25 kHz</td>
+</tr>
+<tr>
+<td>Deviation</td>
+<td>0x35, 0x3F</td>
+<td>TX deviation coefficient; limiter. 6.1 says 0x3E and mic gain &quot;0x0F&quot; for baseband IQ / IF TX (conflict)</td>
+</tr>
+<tr>
+<td>Sub-audio / tones</td>
+<td>0xA0, 0xA1</td>
+<td>added after weighting by 0xA0</td>
+</tr>
+</tbody>
+</table></div>
+<p>Signaling carried on this chain: analog voice, <abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-ctcss">CTCSS</abbr>, CDCSS, <abbr class="gl" tabindex="0" title="Dual tone multi frequency: the touch tones a keypad sends, in the audio." data-more="../user/22-glossary.html#t-dtmf">DTMF</abbr>, 2-tone, 5-tone and MSK.</p>
+<h3 id="72-fm-receive-chain-62">7.2 FM receive chain (6.2)</h3>
+<p>0x60 = 0x00. IQ or IF in → filter, phase discriminator → audio filter → de-emphasis → expander → codec <abbr class="gl" tabindex="0" title="Digital to analog converter." data-more="../dev/glossary.html#t-dac">DAC</abbr>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Block</th>
+<th>Register</th>
+<th>Fact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Low-pass</td>
+<td>0x34 bit 2</td>
+<td>2.55 kHz (12.5 kHz channels) or 3 kHz (25 kHz)</td>
+</tr>
+<tr>
+<td>De-emphasis</td>
+<td>0x34 bit 5</td>
+<td>TIA, -6 dB / octave over 300-3000 Hz</td>
+</tr>
+<tr>
+<td>Expander</td>
+<td>0x34 bit 6, 0x2D bits 7-4</td>
+<td>1 dB in gives 2 dB out; 0x2D sets the 0 dB point</td>
+</tr>
+<tr>
+<td>Band-pass</td>
+<td>0x34 bit 7</td>
+<td>300-3400 Hz</td>
+</tr>
+<tr>
+<td>Squelch</td>
+<td>0x2B / 0x2C</td>
+<td>squelch signal level (read only)</td>
+</tr>
+<tr>
+<td>To the codec</td>
+<td>0x36 bit 1</td>
+<td>FM <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> voice channel to the codec on / off</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="73-interrupts-in-fm-mode-511-81">7.3 Interrupts in FM mode (5.1.1, 8.1)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>0x82 bit</th>
+<th>FM meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td>send data request (发送数据请求中断)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>FM function detection: a tone / code / selcall matched (sub-status 0x90)</td>
+</tr>
+<tr>
+<td>1</td>
+<td>receive data (接收数据中断)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The manual pairs bits 7 and 1 with nothing else: no sub-status, no buffer index, no format.</p>
+<h3 id="74-ctcss-611-621-a221">7.4 CTCSS (6.1.1, 6.2.1, A2.2.1)</h3>
+<p>TX: sine table with phase accumulation; tone index 1-51 (62.5-254.1 Hz). On PTT release the tone continues about
+155 ms with a phase reversal. RX: discriminator, offset calibration, limiter, 4th-order 300 Hz IIR low-pass,
+magnitude against a threshold; a match sets 0x93 bit 0 and raises the FM interrupt.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Writes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mode</td>
+<td>0xA1 = 0x08</td>
+</tr>
+<tr>
+<td>TX deviation</td>
+<td>0xA0 = 0x0D (350 Hz)</td>
+</tr>
+<tr>
+<td>tail</td>
+<td>0xA2 bits 5-4 = 01 (240°, default), 10 (180°), 00 off</td>
+</tr>
+<tr>
+<td>RX threshold</td>
+<td>0xA7 = 0x10</td>
+</tr>
+<tr>
+<td>TX tone</td>
+<td>0xA8 = index</td>
+</tr>
+<tr>
+<td>RX sampling depth</td>
+<td>0xD3 = 0x07, 0xD2 = 0xD0: 2000 samples (8 kHz, 250 ms)</td>
+</tr>
+<tr>
+<td>RX tone</td>
+<td>0xD4 = index</td>
+</tr>
+<tr>
+<td>speaker</td>
+<td>on a match 0x36 = 0x72, else 0x36 = 0x80</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Index</th>
+<th>Hz</th>
+<th>Index</th>
+<th>Hz</th>
+<th>Index</th>
+<th>Hz</th>
+<th>Index</th>
+<th>Hz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>67.0</td>
+<td>14</td>
+<td>107.2</td>
+<td>27</td>
+<td>167.9</td>
+<td>40</td>
+<td>62.5</td>
+</tr>
+<tr>
+<td>2</td>
+<td>71.9</td>
+<td>15</td>
+<td>110.9</td>
+<td>28</td>
+<td>173.8</td>
+<td>41</td>
+<td>159.8</td>
+</tr>
+<tr>
+<td>3</td>
+<td>74.4</td>
+<td>16</td>
+<td>114.8</td>
+<td>29</td>
+<td>179.9</td>
+<td>42</td>
+<td>165.5</td>
+</tr>
+<tr>
+<td>4</td>
+<td>77.0</td>
+<td>17</td>
+<td>118.8</td>
+<td>30</td>
+<td>186.2</td>
+<td>43</td>
+<td>171.3</td>
+</tr>
+<tr>
+<td>5</td>
+<td>79.7</td>
+<td>18</td>
+<td>123.0</td>
+<td>31</td>
+<td>192.8</td>
+<td>44</td>
+<td>177.3</td>
+</tr>
+<tr>
+<td>6</td>
+<td>82.5</td>
+<td>19</td>
+<td>127.3</td>
+<td>32</td>
+<td>203.5</td>
+<td>45</td>
+<td>183.5</td>
+</tr>
+<tr>
+<td>7</td>
+<td>85.4</td>
+<td>20</td>
+<td>131.8</td>
+<td>33</td>
+<td>210.7</td>
+<td>46</td>
+<td>189.9</td>
+</tr>
+<tr>
+<td>8</td>
+<td>88.5</td>
+<td>21</td>
+<td>136.5</td>
+<td>34</td>
+<td>218.1</td>
+<td>47</td>
+<td>196.6</td>
+</tr>
+<tr>
+<td>9</td>
+<td>91.5</td>
+<td>22</td>
+<td>141.3</td>
+<td>35</td>
+<td>225.7</td>
+<td>48</td>
+<td>199.5</td>
+</tr>
+<tr>
+<td>10</td>
+<td>94.8</td>
+<td>23</td>
+<td>146.2</td>
+<td>36</td>
+<td>233.6</td>
+<td>49</td>
+<td>206.5</td>
+</tr>
+<tr>
+<td>11</td>
+<td>97.4</td>
+<td>24</td>
+<td>151.4</td>
+<td>37</td>
+<td>241.8</td>
+<td>50</td>
+<td>229.1</td>
+</tr>
+<tr>
+<td>12</td>
+<td>100.0</td>
+<td>25</td>
+<td>156.7</td>
+<td>38</td>
+<td>250.3</td>
+<td>51</td>
+<td>254.1</td>
+</tr>
+<tr>
+<td>13</td>
+<td>103.5</td>
+<td>26</td>
+<td>162.2</td>
+<td>39</td>
+<td>69.3</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="75-cdcss-612-622-a222">7.5 CDCSS (6.1.2, 6.2.2, A2.2.2)</h3>
+<p>TX: the 12 data bits are Golay(23,12) coded and sent repeatedly, NRZ mapped, two interpolation filters, into the FM
+modulator. RX: low-pass, FM demodulation, two low-pass stages, offset compensation, decimation at 7x the symbol
+rate, hard decision, Golay decoding.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Writes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mode</td>
+<td>0xA1 = 0x04</td>
+</tr>
+<tr>
+<td>TX deviation</td>
+<td>0xA0 = 0x03 (350 Hz)</td>
+</tr>
+<tr>
+<td>polarity / tail</td>
+<td>0xA2 bits 3-1 (default 001 per A2): bit 3 TX inverted, bit 2 RX inverted, bit 1 turn-off code</td>
+</tr>
+<tr>
+<td>TX code</td>
+<td>0xAC bit 0 = code bit 8, 0xAB = bits 7-0. Code &quot;114&quot; is 0xAB = 0x4C: the octal code number as a 9-bit binary value</td>
+</tr>
+<tr>
+<td>RX sampling depth</td>
+<td>0xD3 bits 3-0 = 0x3, 0xD2 = 0x20: 800 samples (8 kHz, 100 ms)</td>
+</tr>
+<tr>
+<td>RX code</td>
+<td>0xD3 bit 4 = bit 8, 0xD4 = bits 7-0</td>
+</tr>
+<tr>
+<td>turn-off code detector</td>
+<td>aux {0x104, 0x103, 0x102} = 0x7F499D (8341917): 2 cos(2 pi 134.4 / 8000) x 2^22</td>
+</tr>
+<tr>
+<td>speaker</td>
+<td>as CTCSS: a match sets 0x93 bit 0; 0x36 = 0x72 on, 0x80 off</td>
+</tr>
+</tbody>
+</table></div>
+<p>On PTT release with the turn-off code enabled, a 134.4 Hz tone follows.</p>
+<h3 id="76-dtmf-613-623-a223">7.6 DTMF (6.1.3, 6.2.3, A2.2.3)</h3>
+<p>TX: two table-driven sines, the low group 2.5 dB below the high group, weighted and FM modulated. The manual's usual
+timing is about 600 ms of quiet after PTT, then 50 ms per code and 50 ms gap. RX: eight-frequency magnitude analysis
+behind a 3 kHz 4th-order IIR low-pass; each decoded code raises an interrupt.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Writes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mode</td>
+<td>0xA1 = 0x02</td>
+</tr>
+<tr>
+<td>TX deviation</td>
+<td>0xA0 = 0x39 (1.8 kHz)</td>
+</tr>
+<tr>
+<td>code time</td>
+<td>0xA4 = 0x32 (100 ms, 2 ms steps)</td>
+</tr>
+<tr>
+<td>gap</td>
+<td>0xA3 = 0x19 (50 ms, 2 ms steps)</td>
+</tr>
+<tr>
+<td>RX threshold</td>
+<td>0xA7 = 0x0A</td>
+</tr>
+<tr>
+<td>TX digits</td>
+<td>0xAF, 0xAE, ... 0xA8, up to 16 digits, 4 bits each, from the top: &quot;1234&quot; is 0xAF = 0x12, 0xAE = 0x34</td>
+</tr>
+<tr>
+<td>TX count</td>
+<td>0xD1 bits 4-0 = number of digits (4 for &quot;1234&quot;)</td>
+</tr>
+<tr>
+<td>RX sampling depth</td>
+<td>0xD3 bits 3-0 = 0x4, 0xD2 = 0x20: 1056 samples (32 kHz, 33 ms)</td>
+</tr>
+<tr>
+<td>send</td>
+<td>each new PTT sends the sequence once</td>
+</tr>
+<tr>
+<td>receive</td>
+<td>at each FM interrupt queue 0x93 bits 3-0; when 0x93 bit 4 = 1 compare the queue with the expected digits; 0x36 = 0x72 on a match, 0x80 otherwise</td>
+</tr>
+</tbody>
+</table></div>
+<p>The 4-bit codes for 0, *, #, A-D are not stated (the manual shows only the standard keypad grid).</p>
+<p>Seen on air (2026-11-03): one code at 0xA4 = 0xFF lasts 510 ms and ends in about 20 ms of silence even with 0xA3 = 0,
+so a digit held longer than one code has a short dropout every 510 ms. 0xD1 = 16 sends 16 codes, 8.16 s.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Hz</th>
+<th>RX coefficient (aux, 24 bit)</th>
+<th>Address</th>
+<th>TX phase step (aux, 16 bit)</th>
+<th>Address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>697</td>
+<td>0x7ECD9D</td>
+<td>0x104-0x102</td>
+<td>0x0593</td>
+<td>0x11B-0x11A</td>
+</tr>
+<tr>
+<td>770</td>
+<td>0x7E8A34</td>
+<td>0x107-0x105</td>
+<td>0x0629</td>
+<td>0x11D-0x11C</td>
+</tr>
+<tr>
+<td>852</td>
+<td>0x7E368C</td>
+<td>0x10A-0x108</td>
+<td>0x06D1</td>
+<td>0x11F-0x11E</td>
+</tr>
+<tr>
+<td>941</td>
+<td>0x7DD245</td>
+<td>0x10D-0x10B</td>
+<td>0x0787</td>
+<td>0x121-0x120</td>
+</tr>
+<tr>
+<td>1209</td>
+<td>0x7C690D</td>
+<td>0x110-0x10E</td>
+<td>0x09AC</td>
+<td>0x123-0x122</td>
+</tr>
+<tr>
+<td>1336</td>
+<td>0x7B9F03</td>
+<td>0x113-0x111</td>
+<td>0x0AB0</td>
+<td>0x125-0x124</td>
+</tr>
+<tr>
+<td>1477</td>
+<td>0x7AA7A8</td>
+<td>0x116-0x114</td>
+<td>0x0BD1</td>
+<td>0x127-0x126</td>
+</tr>
+<tr>
+<td>1633</td>
+<td>0x7979F5</td>
+<td>0x119-0x117</td>
+<td>0x0D10</td>
+<td>0x129-0x128</td>
+</tr>
+</tbody>
+</table></div>
+<p>RX coefficient = 2 cos(2 pi f / 32000) x 2^22; TX step = f / 32000 x 2^16. Addresses are high byte first in the
+first column, low byte at the lower address.</p>
+<h3 id="77-prompt-tone-path-appendix-a1">7.7 Prompt tone path (appendix A1)</h3>
+<p>For power-on, call and message tones. Speaker path only.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Writes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>codec choice</td>
+<td>0x06 bit 2: built-in or external</td>
+</tr>
+<tr>
+<td>external codec</td>
+<td>0x36 bit 7 = 0 (BCLK, LRCK on); 0x30 / 0x31 BCLK; 0x32 / 0x33 LRCK</td>
+</tr>
+<tr>
+<td>built-in codec</td>
+<td>0x0D = 0x10 (codec in normal mode, AD / DA switched by the system; change for low power); 0x0E = 0x8E (MicEn, HPoutEn, LineoutEn; HPoutVol 0 dB); 0x0F = 0xB8 (ADLinVol and MicVol 0 dB); 0x38 = 0x00</td>
+</tr>
+<tr>
+<td>level</td>
+<td>0x37 = 0x00 (DAC data level unchanged)</td>
+</tr>
+<tr>
+<td>open</td>
+<td>0x06 bit 1 = 1, then write samples at once</td>
+</tr>
+<tr>
+<td>close</td>
+<td>0x06 bit 1 = 0 as soon as the tone ends</td>
+</tr>
+</tbody>
+</table></div>
+<p>Data: U_SPI Cmd = 0x03, Addr = 0x00, then 16-bit DAC samples (DACDATA), two bytes each. The <abbr class="gl" tabindex="0" title="First in, first out: a queue of data between a producer and a consumer." data-more="../dev/glossary.html#t-fifo">FIFO</abbr> is 64 samples deep.
+Every 1 ms the <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr> reads 0x88 bit 0; when it reads 0, the MCU writes 32 samples in one transaction (the figure
+shows Data0-Data63, 64 bytes). Byte order is not stated.</p>
+<h3 id="78-fm-path-setup-and-selcall-appendix-a2">7.8 FM path setup and selcall (appendix A2)</h3>
+<p>A2.1: 0x06 bit 1 = 0 and 0x10 bit 7 = 1 (prompt tone path closed, FM path open); 0x06 bit 2 chooses the codec, which
+is then set up as in A1; 0x37 = 0x00.</p>
+<p>2-tone (A2.2.4) and 5-tone (A2.2.5), CCIR1 by default:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>2-tone</th>
+<th>5-tone</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mode</td>
+<td>0xA1 = 0x10</td>
+<td>0xA1 = 0x20</td>
+</tr>
+<tr>
+<td>TX deviation</td>
+<td>0xA0 = 0x39 (1.8 kHz)</td>
+<td>0xA0 = 0x39</td>
+</tr>
+<tr>
+<td>tone time</td>
+<td>0xA4 = 0x05 first tone, 0xA5 = 0x05 second tone (500 ms, 100 ms steps)</td>
+<td>0xA4 = 0x05 each tone</td>
+</tr>
+<tr>
+<td>gap</td>
+<td>0xA3 = 0x05 (500 ms)</td>
+<td>0xA3 = 0x05</td>
+</tr>
+<tr>
+<td>long tone</td>
+<td>0xA6 = 0x0A (1000 ms)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>RX threshold</td>
+<td>0xA7 = 0x0A</td>
+<td>0xA7 = 0x0A</td>
+</tr>
+<tr>
+<td>TX code</td>
+<td>{0xAF bits 3-0, 0xAE bits 7-4}: a pair from A-D (&quot;A-B&quot;) or one long tone (&quot;long A&quot;)</td>
+<td>{0xAF bits 3-0, 0xAE, 0xAD}: five tones (&quot;A-B-C-D-E&quot;)</td>
+</tr>
+<tr>
+<td>RX sampling depth</td>
+<td>0xD3 bits 3-0 = 0xC, 0xD2 = 0x80: 3200 samples (32 kHz, 100 ms)</td>
+<td>same</td>
+</tr>
+<tr>
+<td>receive</td>
+<td>compare 0x93 with the two-tone address and 0x94 bits 3-0 with the long-tone address</td>
+<td>compare {0x95 bits 3-0, 0x94, 0x93}</td>
+</tr>
+<tr>
+<td>speaker</td>
+<td>0x36 = 0x72 on a match, 0x80 otherwise</td>
+<td>same</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Tone</th>
+<th>Hz</th>
+<th>RX coefficient</th>
+<th>Address</th>
+<th>TX phase step</th>
+<th>Address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>1981</td>
+<td>0x767041</td>
+<td>0x104-0x102</td>
+<td>0x0FD9</td>
+<td>0x11B-0x11A</td>
+</tr>
+<tr>
+<td>B</td>
+<td>1124</td>
+<td>0x7CE537</td>
+<td>0x107-0x105</td>
+<td>0x08FE</td>
+<td>0x11D-0x11C</td>
+</tr>
+<tr>
+<td>C</td>
+<td>1197</td>
+<td>0x7C7B1E</td>
+<td>0x10A-0x108</td>
+<td>0x0993</td>
+<td>0x11F-0x11E</td>
+</tr>
+<tr>
+<td>D</td>
+<td>1275</td>
+<td>0x7C0285</td>
+<td>0x10D-0x10B</td>
+<td>0x0A33</td>
+<td>0x121-0x120</td>
+</tr>
+<tr>
+<td>E</td>
+<td>1358</td>
+<td>0x7B7A03</td>
+<td>0x110-0x10E</td>
+<td>0x0ADD</td>
+<td>0x123-0x122</td>
+</tr>
+</tbody>
+</table></div>
+<p>Each sequence goes out once per PTT.</p>
+<p>Seen on air (2026-11-03): the code nibbles are the tones' hex letters. 0xAF bits 3-0 = 0xA (with 0xAE bits 7-4 = 0xB or
+0) sends; 0, 1 and 2 send nothing. With every tone entry set to one frequency and 0xA4 = 0xA5 = 0xFF, a 2-tone sequence
+is one gapless tone of at least 25.5 s, used for single tones (1750 Hz burst, roger beep, <abbr class="gl" tabindex="0" title="Audio frequency shift keying: data as two audio tones on an FM carrier. APRS at 1200 baud uses it." data-more="../dev/glossary.html#t-afsk">AFSK</abbr>).</p>
+<h3 id="79-msk-chapter-7">7.9 MSK (chapter 7)</h3>
+<p>TX: framed data at 1.2 kbit/s, mapped, interpolated to 19.2 kHz, MSK modulated and moved to a 1.5 kHz IF by an NCO
+in one block (continuous phase), then into the FM modulator. RX (MPT1327-style, non-coherent): FM demodulation,
+band-pass, differential phase detection, NCO, low-pass, a second differential detection, arrival detection and
+timing sync, hard decision at 1.2 kbit/s.</p>
+<p>MCU flow (7.3):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Registers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>init</td>
+<td>aux 0x12A TrainErrorThreshold = 5, 0x12B DTBeforeTransAndRec = 160, 0x12D ChannelDelay = 20, 0x12C NT = 103</td>
+</tr>
+<tr>
+<td>control channel TX</td>
+<td>at a receive-slot interrupt fill the TX ping-pong buffer, then OperationType = 1, ChannelType = 0, TranOrRecFlag = 1, MacFrameEn (1 MAC framing, 0 PHY framing), Unsolicited = 0, MultiMessageTransFlag = 0</td>
+</tr>
+<tr>
+<td>on each half-full interrupt (0x82 bit 6)</td>
+<td>PHY framing: send the next 64 bits, or set MACTransFinishFlag when done. MAC framing: 64 bits at a time; with the last (possibly short) block set MACTransFinishFlag and RemBitNum</td>
+</tr>
+<tr>
+<td>traffic channel TX</td>
+<td>as control, ChannelType = 1, Unsolicited = 1; between messages of a multi-message set MultiMessageTransFlag (PHY framing)</td>
+</tr>
+<tr>
+<td>data channel TX</td>
+<td>as control, ChannelType = 2</td>
+</tr>
+<tr>
+<td>RX</td>
+<td>OperationType = 1, ChannelType 0 / 1 / 2, TranOrRecFlag = 0, AcqEnable = 1, RxInterMask = 0, CtrlDataInterMask = 0 (1 on the data channel); on each receive pulse read RecBitLen (0x96), TrainCodewordFlag and TrainErrorBitNum (0x97) and then the data</td>
+</tr>
+<tr>
+<td>re-acquire</td>
+<td>SoftReset 1 then 0</td>
+</tr>
+</tbody>
+</table></div>
+<p>MSK-mode interrupts (0x82): bit 6 TX ping-pong buffer half full, bit 5 PHY TX finished, bit 4 response, bit 3
+receive. Two interrupt lines are used: a receive-slot interrupt (which also stands for &quot;demodulated data ready&quot;,
+with a flag saying whether the data is valid) and a control-data interrupt (half-full and TX-finished, told apart
+by register). The manual never says where the MSK TX ping-pong buffer is or how it is written.</p>
+<hr />
+<h2 id="8-fm-transmit-from-mcu-data-what-the-manual-gives">8. FM transmit from MCU data: what the manual gives</h2>
+<p>The open question is how to make the chip <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> FM audio the <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr> writes into TX <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> 0x030-0x42F. Everything the
+manual says that touches it:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Source</th>
+<th>What it says</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TX RAM FM buffers 1 and 2</td>
+<td>表 5.2</td>
+<td>512 bytes each; &quot;can be FM transmit voice data written externally; the voice data can also come internally from the codec&quot;</td>
+</tr>
+<tr>
+<td>0x82 bit 7 in FM</td>
+<td>8.1</td>
+<td>&quot;send data request&quot; interrupt</td>
+</tr>
+<tr>
+<td>0x82 bit 1 in FM</td>
+<td>8.1</td>
+<td>&quot;<abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> data&quot; interrupt</td>
+</tr>
+<tr>
+<td>0xD7 bit 1 msk_voice_send_en</td>
+<td>8.1, 7.4.2</td>
+<td>0 = send MSK signaling, 1 = send FM voice. Listed with the MSK controls, default 0x00</td>
+</tr>
+<tr>
+<td>0xA1 bit 6</td>
+<td>8.1</td>
+<td>MSK mode</td>
+</tr>
+<tr>
+<td>0xD5 OperationType / TranOrRecFlag / ChannelType</td>
+<td>8.1, 7.3</td>
+<td>MSK PHY state; &quot;fill the TX ping-pong buffer, then set these&quot;</td>
+</tr>
+<tr>
+<td>0x60 bits 7-6</td>
+<td>8.1, 6.1</td>
+<td>10 voice TX request, 01 data TX request; FM TX = 0x80</td>
+</tr>
+<tr>
+<td>0x06 bit 2</td>
+<td>8.1, A1, A2</td>
+<td>built-in or external codec for the FM path</td>
+</tr>
+<tr>
+<td>0x06 bit 1</td>
+<td>A1, A2.1</td>
+<td>prompt tone path; A2.1 closes it to open the FM path</td>
+</tr>
+<tr>
+<td>0x88 bit 0</td>
+<td>8.1, A1</td>
+<td>the MCU-written <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> <abbr class="gl" tabindex="0" title="First in, first out: a queue of data between a producer and a consumer." data-more="../dev/glossary.html#t-fifo">FIFO</abbr>'s full flag</td>
+</tr>
+<tr>
+<td>0xE3 bit 0</td>
+<td>8.1</td>
+<td>codec internal DAC-ADC pass-through</td>
+</tr>
+</tbody>
+</table></div>
+<p>Nothing names a sample format, a rate, a buffer order or a bit that selects RAM over the codec <abbr class="gl" tabindex="0" title="Analog to digital converter." data-more="../dev/glossary.html#t-adc">ADC</abbr>. The register
+the manual pairs with &quot;send FM voice&quot; is <strong>0xD7 bit 1</strong>, not 0xDB (section 9.3).</p>
+<hr />
+<h2 id="9-translation-notes">9. Translation notes</h2>
+<h3 id="91-where-the-english-translations-are-wrong-or-misleading">9.1 Where the English translations are wrong or misleading</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Place</th>
+<th>Chinese</th>
+<th>Translation says</th>
+<th>Correct reading</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>everywhere (pin list, chapter 6, A2)</td>
+<td>模拟</td>
+<td>&quot;simulation&quot;, &quot;simulates&quot; (pin list: &quot;Codec simulates a 3.3V power supply&quot;; 6.1: &quot;In simulation mode&quot;)</td>
+<td>analog: &quot;analog 3.3 V supply&quot;, &quot;in analog mode&quot;</td>
+</tr>
+<tr>
+<td>feature list, figure 6.1, 6.1</td>
+<td>加重 / 去加重</td>
+<td>&quot;aggravation&quot;, &quot;weighting and de-weighting&quot;, &quot;Aggravate&quot;</td>
+<td>pre-emphasis / de-emphasis</td>
+</tr>
+<tr>
+<td>0x02 / 0x04</td>
+<td>两点模式下：调整输出 MOD2 路偏置 (both rows)</td>
+<td>0x02 &quot;<abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> I or Mod1 output&quot;, 0x04 &quot;Q or Mod2 output&quot;</td>
+<td>the table says MOD2 for both; 4.7.2 says 0x04 = MOD1, 0x02 = MOD2 (9.2)</td>
+</tr>
+<tr>
+<td>0x1D / 0x1E masks</td>
+<td>匹配码为 1 的对应 bit ... 予以忽略</td>
+<td>&quot;1 = compare, 0 = ignore&quot;</td>
+<td>a mask bit of 1 means <strong>ignore</strong> that address bit</td>
+</tr>
+<tr>
+<td>0x11 bit 7 / 6</td>
+<td>置 1 有效。在中继模式下表示 RepeatedSimplex；在直接模式下表示 DirectSimplex</td>
+<td>&quot;0 = Direct Simplex, 1 = Repeated Simplex&quot;</td>
+<td>1 = simplex in either mode; repeater vs direct comes from the mode, not the bit</td>
+</tr>
+<tr>
+<td>0x11 bit 0</td>
+<td>只开启数字或者模拟接收</td>
+<td>&quot;only numbers or modes&quot;</td>
+<td>digital or analog <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> only</td>
+</tr>
+<tr>
+<td>0x41 bit 3</td>
+<td>0 表示接收需要 <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">CC</abbr> 匹配才做解帧处理，1 表示接收无需 CC 匹配便做解帧处理</td>
+<td>&quot;0 = CC decode off, 1 = CC decode on&quot;</td>
+<td>0 = deframe only on a CC match, 1 = deframe regardless of CC</td>
+</tr>
+<tr>
+<td>0x51 SyncClass 00</td>
+<td>无同步头</td>
+<td>&quot;Sync Header&quot;</td>
+<td>no sync</td>
+</tr>
+<tr>
+<td>0x85</td>
+<td>SendStart 中断的使能</td>
+<td>&quot;mask bits for reg 0x86&quot;</td>
+<td>enables for 0x84</td>
+</tr>
+<tr>
+<td>0x86 bit 3</td>
+<td>需要等待反馈的确认数据包的一个 fragment 发送完成</td>
+<td>&quot;confirmation packet received&quot;</td>
+<td>a fragment that needs a response was <strong>sent</strong></td>
+</tr>
+<tr>
+<td>0x82 FM meanings</td>
+<td>FM 模式下表示发送数据请求中断 / 接收数据中断 / FM 功能接收检测中断</td>
+<td>absent: bit 7 &quot;request rejected&quot;, bit 1 &quot;voice unusual exit&quot; only</td>
+<td>FM: bit 7 send data request, bit 2 FM tone detect, bit 1 receive data</td>
+</tr>
+<tr>
+<td>0x82 bit 1 FM (updated translation)</td>
+<td>FM 模式下表示接收数据中断</td>
+<td>&quot;it indicates that receiving data is interrupted&quot;</td>
+<td>a &quot;receive data&quot; interrupt, not an interruption</td>
+</tr>
+<tr>
+<td>0x36 bit 1</td>
+<td>FM 模式下接收开启语音通道 Codec 开关</td>
+<td>&quot;Open FM Voice Channel&quot;</td>
+<td>FM <strong>receive</strong> voice channel to the codec on / off; nothing to do with TX</td>
+</tr>
+<tr>
+<td>0x37 bit 7</td>
+<td>mcu 控制内置与外置 Codec 的 DACDATA 变化</td>
+<td>&quot;<abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr> Control Codec enable&quot;</td>
+<td>enables the MCU's <abbr class="gl" tabindex="0" title="Digital to analog converter." data-more="../dev/glossary.html#t-dac">DAC</abbr> data level change (volume step), not codec control</td>
+</tr>
+<tr>
+<td>0x3E</td>
+<td>FM 收端调制频偏系数</td>
+<td>&quot;FM Modulation Frequency Offset&quot;</td>
+<td>FM <strong>receive</strong> deviation coefficient</td>
+</tr>
+<tr>
+<td>0x32 / 0x33</td>
+<td>配置 I2S_FS_M 的时钟频率</td>
+<td>&quot;Set Codec Operating Frequency&quot;</td>
+<td><abbr class="gl" tabindex="0" title="Inter-IC sound: the bus audio samples travel on between chips." data-more="../dev/glossary.html#t-i2s">I2S</abbr> frame clock (LRCK) divider, must give 8 kHz</td>
+</tr>
+<tr>
+<td>0x2A</td>
+<td>C_SPI 时钟 = Codec 时钟 / [2 x (spi_clk_cnt + 1)]</td>
+<td>&quot;Codec Clock / (value + 1)&quot;</td>
+<td>the factor 2 is missing</td>
+</tr>
+<tr>
+<td>0x42 bit 5</td>
+<td>0 表示当前时隙是通信使用的，1 表示...不使用的</td>
+<td>&quot;current <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr> active&quot; (1 = active)</td>
+<td>the table says 0 = in use (but see 9.2)</td>
+</tr>
+<tr>
+<td>0x0F access</td>
+<td>0x0F R</td>
+<td>&quot;R/W&quot;</td>
+<td>0x0F is read only</td>
+</tr>
+<tr>
+<td>0xB9 default</td>
+<td>0x05</td>
+<td>0x04</td>
+<td>0x05</td>
+</tr>
+<tr>
+<td>5.4.4 (all)</td>
+<td>盲收</td>
+<td>&quot;blind reception&quot;</td>
+<td>continuous receive before any sync (searching)</td>
+</tr>
+<tr>
+<td>5.4.5 (all)</td>
+<td>忙收</td>
+<td>&quot;busy receiving&quot;</td>
+<td>the same continuous receive-and-search state that 5.4.4 calls 盲收 (&quot;blind&quot; receive); not a busy channel</td>
+</tr>
+<tr>
+<td>1.2KRAM (all)</td>
+<td>发端 / 收端 <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr></td>
+<td>&quot;send end / receive end RAM&quot;</td>
+<td>TX RAM / RX RAM</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="92-conflicts-inside-the-chinese-manual">9.2 Conflicts inside the Chinese manual</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>One place</th>
+<th>Other place</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Two-point offsets 0x02 / 0x04</td>
+<td>4.7.2: 0x04 = MOD1 offset, 0x02 = MOD2 offset. Figure 4.21: MOD1 drives the reference crystal, MOD2 the <abbr class="gl" tabindex="0" title="Voltage controlled oscillator: the oscillator in a synthesizer, tuned by a voltage." data-more="../dev/glossary.html#t-vco">VCO</abbr></td>
+<td>table 8.1: both 0x02 and 0x04 &quot;adjust the MOD2 output offset&quot;</td>
+</tr>
+<tr>
+<td>MOD1 / MOD2 pins</td>
+<td>pin list: 74 DAC_QVOUT/MOD2, 75 DAC_IVOUT/MOD1; figure 4.21 agrees</td>
+<td>表 4.5: 0x45 &quot;MOD2 (DAC_IVOUT)&quot;, 0x46 &quot;MOD1 (DAC_QVOUT)&quot;</td>
+</tr>
+<tr>
+<td>0x47 / 0x48 bias halves</td>
+<td>table 8.1 and 表 4.5: 0x47 low 8 bits, 0x48 bits 1-0 the high 2</td>
+<td>4.7.2: &quot;0x47[1:0] and 0x48[7:0], with 0x47[1:0] the high 2 bits&quot;</td>
+</tr>
+<tr>
+<td>0x12 bit 6 test signal</td>
+<td>table 8.1: 40 Hz sine</td>
+<td>4.7.2: 40 Hz square wave</td>
+</tr>
+<tr>
+<td>0x42 bit 5 polarity</td>
+<td>table 8.1: 0 = slot in use</td>
+<td>5.4.4: bits 7-5 = xx1 is a working slot, xx0 is not</td>
+</tr>
+<tr>
+<td>FM sub-status of 0x82 bit 2</td>
+<td>5.1.1: 0x90 = 0x10</td>
+<td>table 8.1: 0x90 bit 5 (0x20)</td>
+</tr>
+<tr>
+<td>0x36 bit 6 I2S clock gate</td>
+<td>table 8.1: 1 enables I2S_CK / I2S_FS</td>
+<td>4.6.1: 0x36[6] = 0 runs them, 1 stops them</td>
+</tr>
+<tr>
+<td>0x0D / 0x0E / 0x0F</td>
+<td>table 8.1: voice superframe timeout, reserved, <abbr class="gl" tabindex="0" title="Frequency shift keying: data as frequency steps. DMR uses 4-level FSK." data-more="../dev/glossary.html#t-fsk">FSK</abbr> error (read only)</td>
+<td>A1: written 0x10, 0x8E, 0xB8 as built-in codec settings</td>
+</tr>
+<tr>
+<td>FM TX deviation</td>
+<td>table 8.1: 0x35 TX coefficient, 0x3E RX coefficient</td>
+<td>6.1: &quot;0x3E and the mic gain 0x0F&quot; adjust the deviation (IQ / IF TX)</td>
+</tr>
+<tr>
+<td>0xA1 bit 7</td>
+<td>table 8.1: reserved, must be 0</td>
+<td>表 4.8: AF / non-AF receive mode</td>
+</tr>
+<tr>
+<td>0xA2 bits 3-1 default</td>
+<td>A2.2.2.1: 001</td>
+<td>table 8.1: default 0x10 (bits 3-1 = 000)</td>
+</tr>
+<tr>
+<td>0xA2 bit list in A2.2.2.1</td>
+<td>&quot;0xa2[2]&quot; is listed twice</td>
+<td>the second is bit 1, the turn-off code</td>
+</tr>
+<tr>
+<td>0x86 bit 0</td>
+<td>table 8.1: GPS PPS lost</td>
+<td>5.1.1: &quot;none&quot;</td>
+</tr>
+<tr>
+<td>0x05 name</td>
+<td>table 8.1 prints RecvIsigCenter</td>
+<td>it is the Q offset (RecvQsigCenter)</td>
+</tr>
+<tr>
+<td>Rate 3/4 and rate 1 RAM rows</td>
+<td>address column 0x00-0x11 / 0x00-0x17</td>
+<td>description column 0x00-0x0B</td>
+</tr>
+<tr>
+<td>表 5.5 codes</td>
+<td>1011 listed twice, 1101 missing</td>
+<td></td>
+</tr>
+<tr>
+<td>Layer 2 mode value</td>
+<td>5.4.3: 0x10 = 0x68</td>
+<td>5.4.5: 0x10 = 0x6A</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="93-conflicts-with-radiofoundrys-current-docs-and-code">9.3 Conflicts with RadioFoundry's current docs and code</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>RadioFoundry</th>
+<th>Manual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&quot;send FM voice&quot; bit</td>
+<td><code>tests/hil/test_audio_probe.py</code> uses <strong>0xDB</strong> bit 1 (modem-hrc6000.md 8.1 names 0xD7)</td>
+<td>0xD7 bit 1 (msk_voice_send_en). 0xDB is not in the manual. The bench result &quot;0xDB bit 1: no FM TX from RAM&quot; says nothing about 0xD7</td>
+</tr>
+<tr>
+<td>CDCSS TX polarity</td>
+<td>modem-hrc6000.md 8: 0xA2 = 0x00 inverted, 0x08 normal</td>
+<td>0xA2 bit 3 = 1 means TX inverted. The RX mapping (0x04 inverted) agrees with the manual</td>
+</tr>
+<tr>
+<td>Page 1 table at 0x60</td>
+<td>modem-hrc6000.md 3: a 32-entry table of <code>nn EF 00</code> is not needed</td>
+<td>aux 0x60-0xBF is the 32-entry multi-group address table; <code>nn EF 00</code> matches the group default 0x00EF33 pattern (L, M, H)</td>
+</tr>
+<tr>
+<td>Page 3 flush</td>
+<td>modem-hrc6000.md 3.2: &quot;<abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">vocoder</abbr> frame buffer&quot;</td>
+<td>U_SPI OPMode 011 with 0x06 bit 1 is the prompt tone <abbr class="gl" tabindex="0" title="First in, first out: a queue of data between a producer and a consumer." data-more="../dev/glossary.html#t-fifo">FIFO</abbr> (7.7)</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="10-bench-notes">10. Bench notes</h2>
+<p>Only facts already recorded in <a href="modem-hrc6000.html">modem-hrc6000.md</a>, plus the 2026-10-12 two-point measurement, measured on an <abbr class="gl" tabindex="0" title="The RF transceiver chip that sets the frequency, deviation and power of many handheld DMR radios. Programmed over I2C." data-more="../dev/glossary.html#t-at1846s">AT1846S</abbr> board.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Register</th>
+<th>Bench fact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OPMode 010</td>
+<td>writes land in the <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> and go out bit exact; OPMode 110 untried</td>
+</tr>
+<tr>
+<td>0x01</td>
+<td>0xF0 in <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> (two-point TX, IF <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr>, bit 7 = 1)</td>
+</tr>
+<tr>
+<td>0x04</td>
+<td><strong>FM TX, two-point mode (2026-10-12):</strong> writing 0x04 moves the carrier about 75 Hz per step, as a signed byte around the calibrated base 0xCF, linear over ±128. Firmware writing 0x04 at 37,500 writes a second sends tones of 300-3000 Hz, about 57 Hz of deviation per step at 1 kHz</td>
+</tr>
+<tr>
+<td>0x02, 0x03, 0x05, 0x45, 0x46, 0x47, 0x48</td>
+<td>stepped while keyed in FM: no carrier movement (2026-10-12)</td>
+</tr>
+<tr>
+<td>0x10</td>
+<td>0x6E in DMR operation; 0x80 for FM. <strong>Every FM value (0x81-0xFF) leaves the TX RAM unused</strong> (2026-10-12). 0x66 (physical layer, <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr>) modulates TX RAM 0x00-0x23 / 0x24-0x47 as 288 raw bits per slot in alternate slots</td>
+</tr>
+<tr>
+<td>0x40 bit 3</td>
+<td>set: the 96 info bits go out verbatim (<abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr> <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr>); also upsets the receiver's deframing while set</td>
+</tr>
+<tr>
+<td>0x41</td>
+<td>0x80 send, 0x50 receive, 0x20 drop sync; passive timing corrects within 1.25 ms</td>
+</tr>
+<tr>
+<td>0x52 (W)</td>
+<td>layer 2 <abbr class="gl" tabindex="0" title="Base station: the repeater or modem side of a DMR link, as opposed to the radio (MS)." data-more="../dev/glossary.html#t-bs">BS</abbr> <abbr class="gl" tabindex="0" title="Common announcement channel: 24 bits ahead of each burst a repeater sends. It carries the slot number and short link control." data-more="../dev/glossary.html#t-cach">CACH</abbr> stays all zero on air whatever is written</td>
+</tr>
+<tr>
+<td>0x82</td>
+<td>bit 7 is seen set when read on other interrupts. FM, keyed: bit 7 every 32 ms (31.0 a second) once 0x81 unmasks it. FM receive: bit 1 every 32 ms once unmasked (0x81 = 0x19 masks it)</td>
+</tr>
+<tr>
+<td>RX RAM FM buffers</td>
+<td>8 kHz, 16-bit big endian receive audio, ungated, after 0x34's processing; one 512-byte half per 32 ms, filled progressively</td>
+</tr>
+<tr>
+<td>0x34</td>
+<td>de-emphasis (bit 5), band-pass (bit 7) and the wider RX filter (bit 2) act on the RX RAM tap; a fixed sub-audio high-pass stays about 20 dB down below 300 Hz</td>
+</tr>
+<tr>
+<td>TX RAM FM buffers</td>
+<td>a 1 kHz tone in both halves, either byte order, never reached the air with: the flags unmasked, &quot;0xDB&quot; bit 1, 0x60 = 0x40 or 0xC0, 0x06 bits 0, 2, 3 or 4, 0xE0 bit 7 off, 0xE2 bit 4. The chip doesn't clear or rewrite the TX RAM</td>
+</tr>
+<tr>
+<td>Prompt tone FIFO</td>
+<td>drains at 8000 samples a second whether 0x06 bit 1 is set or not; never reaches the modulator, with or without 0xE3 bit 0</td>
+</tr>
+<tr>
+<td>0xE0 bit 5 (LINEIN2)</td>
+<td>puts a 2.49-2.61 kHz tone of its own on air during FM TX</td>
+</tr>
+<tr>
+<td>0xE3 bit 0</td>
+<td>no effect on FM TX from <abbr class="gl" tabindex="0" title="Inter-IC sound: the bus audio samples travel on between chips." data-more="../dev/glossary.html#t-i2s">I2S</abbr>; lowers FM RX on I2S</td>
+</tr>
+<tr>
+<td>0x25, 0x26, 0xE1, 0xE2, 0xE3, 0xE5, 0x0D, 0x0E, 0x0F, 0x38</td>
+<td>each bit flipped while keyed: no MCU audio on air</td>
+</tr>
+<tr>
+<td>0x36</td>
+<td>0x02 / 0x00 feed-through; also gates the I2S receive stream</td>
+</tr>
+<tr>
+<td>aux 0x04-0x09</td>
+<td>the TX data sync; voice sync is sent as its inverse</td>
+</tr>
+</tbody>
+</table></div>
+<p>The 2026-10-12 result fits the manual's 4.7.2 reading of 0x04 as the MOD1 offset: MOD1 drives the reference
+oscillator, where a DC step moves the carrier, while a DC step on the <abbr class="gl" tabindex="0" title="Voltage controlled oscillator: the oscillator in a synthesizer, tuned by a voltage." data-more="../dev/glossary.html#t-vco">VCO</abbr> side (MOD2, 0x02) is pulled back by the
+synthesizer loop. That is an inference, not a measurement of the wiring.</p>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/hrc6000-registers.md">Ver el código fuente de esta página</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="En esta página">
+		<p class="eyebrow">En esta página</p>
+		<ul><li class="l2"><a href="#1-u_spi-access-manual-44-52">1. U_SPI access (manual 4.4, 5.2)</a></li><li class="l3"><a href="#11-command-byte">1.1 Command byte</a></li><li class="l3"><a href="#12-address">1.2 Address</a></li><li class="l3"><a href="#13-v_spi-manual-461">1.3 V_SPI (manual 4.6.1)</a></li><li class="l3"><a href="#14-power-down-reset-and-clocks-manual-41-43-44">1.4 Power down, reset and clocks (manual 4.1, 4.3, 4.4)</a></li><li class="l2"><a href="#2-ram-maps-manual-53">2. RAM maps (manual 5.3)</a></li><li class="l3"><a href="#21-tx-ram-表-52">2.1 TX RAM (表 5.2)</a></li><li class="l3"><a href="#22-rx-ram-表-53">2.2 RX RAM (表 5.3)</a></li><li class="l2"><a href="#3-system-parameter-table-manual-table-81-opmode-100">3. System parameter table (manual table 8.1, OPMode 100)</a></li><li class="l3"><a href="#31-reset-0x00">3.1 Reset (0x00)</a></li><li class="l3"><a href="#32-hardware-configuration-0x01-0x06">3.2 Hardware configuration (0x01-0x06)</a></li><li class="l3"><a href="#33-if-clocks-and-status-0x07-0x0f">3.3 IF, clocks and status (0x07-0x0F)</a></li><li class="l3"><a href="#34-system-mode-and-rf-timing-0x10-0x13">3.4 System mode and RF timing (0x10-0x13)</a></li><li class="l3"><a href="#35-addresses-and-color-code-0x14-0x1f">3.5 Addresses and color code (0x14-0x1F)</a></li><li class="l3"><a href="#36-access-policy-and-vocoder-control-0x20-0x24">3.6 Access policy and vocoder control (0x20-0x24)</a></li><li class="l3"><a href="#37-vocoder-spi-fm-squelch-and-companding-tx-advance-codec-interface-0x2a-0x37">3.7 Vocoder SPI, FM squelch and companding, TX advance, codec interface (0x2A-0x37)</a></li><li class="l3"><a href="#38-fm-deviation-and-limiter-0x3e-0x3f">3.8 FM deviation and limiter (0x3E, 0x3F)</a></li><li class="l3"><a href="#39-phy--dll-control-0x40-0x4f">3.9 PHY / DLL control (0x40-0x4F)</a></li><li class="l3"><a href="#310-dll-0x50-0x5f">3.10 DLL (0x50-0x5F)</a></li><li class="l3"><a href="#311-call-control-0x60-0x63">3.11 Call control (0x60-0x63)</a></li><li class="l3"><a href="#312-interrupts-0x81-0x90-0x98">3.12 Interrupts (0x81-0x90, 0x98)</a></li><li class="l3"><a href="#313-tone-decoder-and-msk-receive-status-0x93-0x97">3.13 Tone decoder and MSK receive status (0x93-0x97)</a></li><li class="l3"><a href="#314-fm-signaling-0xa0-0xaf">3.14 FM signaling (0xA0-0xAF)</a></li><li class="l3"><a href="#315-ambe1000-squelch-packet-0xb0-0xb8">3.15 AMBE1000 squelch packet (0xB0-0xB8)</a></li><li class="l3"><a href="#316-clocks-0xb9-0xbb">3.16 Clocks (0xB9-0xBB)</a></li><li class="l3"><a href="#317-rf-timing-codec-level-pin-multiplexing-0xc0-0xd0">3.17 RF timing, codec level, pin multiplexing (0xC0-0xD0)</a></li><li class="l3"><a href="#318-fm-tone-decoder-control-0xd1-0xd4">3.18 FM tone decoder control (0xD1-0xD4)</a></li><li class="l3"><a href="#319-msk-0xd5-0xd8-0xdc-0xdd">3.19 MSK (0xD5-0xD8, 0xDC-0xDD)</a></li><li class="l3"><a href="#320-built-in-codec-0xe0-0xe6">3.20 Built-in codec (0xE0-0xE6)</a></li><li class="l3"><a href="#321-table-43-summary-of-codec-registers">3.21 Table 4.3 summary of codec registers</a></li><li class="l3"><a href="#322-addresses-the-register-table-omits">3.22 Addresses the register table omits</a></li><li class="l2"><a href="#4-auxiliary-parameter-table-附属参数配置表-opmode-001">4. Auxiliary parameter table (附属参数配置表, OPMode 001)</a></li><li class="l2"><a href="#5-hardware-chapter-facts-on-transmit-and-receive-manual-47-48">5. Hardware chapter facts on transmit and receive (manual 4.7, 4.8)</a></li><li class="l3"><a href="#51-transmit-interface-表-45">5.1 Transmit interface (表 4.5)</a></li><li class="l3"><a href="#52-receive-interface-表-48-481-482">5.2 Receive interface (表 4.8, 4.8.1, 4.8.2)</a></li><li class="l3"><a href="#53-external-codec-and-vocoder-interfaces-452-46">5.3 External codec and vocoder interfaces (4.5.2, 4.6)</a></li><li class="l2"><a href="#6-interrupts-and-layer-2-timing-manual-51-54">6. Interrupts and layer 2 timing (manual 5.1, 5.4)</a></li><li class="l3"><a href="#61-pins">6.1 Pins</a></li><li class="l3"><a href="#62-layer-2-slot-timing-figures-511-514">6.2 Layer 2 slot timing (figures 5.11-5.14)</a></li><li class="l3"><a href="#63-manual-application-examples-545">6.3 Manual application examples (5.4.5)</a></li><li class="l3"><a href="#64-physical-layer-ber-test-546-表-56">6.4 Physical layer BER test (5.4.6, 表 5.6)</a></li><li class="l2"><a href="#7-fm-analog-signaling-and-msk-manual-6-7-appendix-a">7. FM, analog signaling and MSK (manual 6, 7, appendix A)</a></li><li class="l3"><a href="#71-fm-transmit-chain-61-figure-61">7.1 FM transmit chain (6.1, figure 6.1)</a></li><li class="l3"><a href="#72-fm-receive-chain-62">7.2 FM receive chain (6.2)</a></li><li class="l3"><a href="#73-interrupts-in-fm-mode-511-81">7.3 Interrupts in FM mode (5.1.1, 8.1)</a></li><li class="l3"><a href="#74-ctcss-611-621-a221">7.4 CTCSS (6.1.1, 6.2.1, A2.2.1)</a></li><li class="l3"><a href="#75-cdcss-612-622-a222">7.5 CDCSS (6.1.2, 6.2.2, A2.2.2)</a></li><li class="l3"><a href="#76-dtmf-613-623-a223">7.6 DTMF (6.1.3, 6.2.3, A2.2.3)</a></li><li class="l3"><a href="#77-prompt-tone-path-appendix-a1">7.7 Prompt tone path (appendix A1)</a></li><li class="l3"><a href="#78-fm-path-setup-and-selcall-appendix-a2">7.8 FM path setup and selcall (appendix A2)</a></li><li class="l3"><a href="#79-msk-chapter-7">7.9 MSK (chapter 7)</a></li><li class="l2"><a href="#8-fm-transmit-from-mcu-data-what-the-manual-gives">8. FM transmit from MCU data: what the manual gives</a></li><li class="l2"><a href="#9-translation-notes">9. Translation notes</a></li><li class="l3"><a href="#91-where-the-english-translations-are-wrong-or-misleading">9.1 Where the English translations are wrong or misleading</a></li><li class="l3"><a href="#92-conflicts-inside-the-chinese-manual">9.2 Conflicts inside the Chinese manual</a></li><li class="l3"><a href="#93-conflicts-with-radiofoundrys-current-docs-and-code">9.3 Conflicts with RadioFoundry&#x27;s current docs and code</a></li><li class="l2"><a href="#10-bench-notes">10. Bench notes</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

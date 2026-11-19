@@ -1,0 +1,411 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Backlight curve · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Backlight curve · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/docs/testing/backlight-curve.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/testing/backlight-curve.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/testing/backlight-curve.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/testing/backlight-curve.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/testing/backlight-curve.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/testing/backlight-curve.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../es/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../../es/radios/index.html">Radios</a><a href="../../../es/features/index.html">Funciones</a><a href="../../../es/flash/index.html">Instalar</a><a href="../../../es/codeplug/index.html">Codeplug</a><a href="../../../es/docs/index.html" aria-current="page">Documentación</a><a href="../../../es/screenshots/index.html">Capturas</a><a href="../../../es/tools/index.html">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../../docs/testing/backlight-curve.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/testing/backlight-curve.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/testing/backlight-curve.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/testing/backlight-curve.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Pruebas">
+		<p class="eyebrow"><a href="../../../es/docs/index.html">Documentación</a> / Pruebas</p>
+		<ul><li><a href="index.html">Testing</a></li><li><a href="results/index.html">Bring-up results</a></li><li><a href="backlight-curve.html" aria-current="page">Backlight curve</a></li><li><a href="dm1801pro-bringup.html">DM-1801 Pro bring-up checklist</a></li><li><a href="dm32-bringup.html">DM-32UV bring-up checklist</a></li><li><a href="dmr-bench.html">DMR bench testing on the SDR bench</a></li><li><a href="md380-bringup.html">MD-380 bring-up checklist</a></li><li><a href="md9600-bringup.html">MD-9600 bring-up checklist</a></li><li><a href="mduv380-bringup.html">MD-UV380 bring-up checklist</a></li><li><a href="mmdvm-audit.html">MMDVM implementation audit (2d45a21)</a></li><li><a href="on-air-coverage.html">On-air test coverage</a></li><li><a href="power-calibration.html">Transmit power calibration with a wattmeter</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Esta página aún no está traducida; se muestra en inglés.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<!-- Copyright (c) 2026 The RadioFoundry Authors -->
+<h1 id="backlight-curve">Backlight curve</h1>
+<p>How to measure a <abbr class="gl" tabindex="0" title="Pulse width modulation: a pin switched on and off to give an average level, as for backlight or tone." data-more="../dev/glossary.html#t-pwm">PWM</abbr> backlight and set the board's levels for the core's brightness settings (off, 10 % to 100 %) so
+each step looks even. It needs the radio, its owner's eyes and a build with <code>CONFIG_BACKLIGHT_TEST=y</code>
+(<strong>Settings &gt; Advanced &gt; Backlight tests</strong>, <a href="../build-config.html">build-config.md</a>). The board provides the display's
+optional backlight hooks (<code>hal_display_t</code> <code>set_backlight_raw</code>, <code>backlight_raw</code>, <code>set_backlight_rate</code>); the levels go in
+the board's backlight table, which its <code>set_backlight</code> maps a percent through.</p>
+<p>The method uses only frequency, duty and time, which any PWM backlight has. How a board makes its PWM (an <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr> timer,
+a PWM chip, an <abbr class="gl" tabindex="0" title="Light-emitting diode: the radio&#x27;s status light." data-more="../user/22-glossary.html#t-led">LED</abbr> driver) is its own; the AT-D878UV's MCU timer is the worked example throughout, marked
+<strong>Example</strong>.</p>
+<h2 id="terms">Terms</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rate</td>
+<td>the <abbr class="gl" tabindex="0" title="Pulse width modulation: a pin switched on and off to give an average level, as for backlight or tone." data-more="../dev/glossary.html#t-pwm">PWM</abbr> frequency, in Hz</td>
+</tr>
+<tr>
+<td>Period</td>
+<td>1 / rate: one on and one off</td>
+</tr>
+<tr>
+<td>Duty</td>
+<td>the part of each period the output is on, 0 to 100 %</td>
+</tr>
+<tr>
+<td>On-time, off-time</td>
+<td>duty x period, and the rest of the period</td>
+</tr>
+<tr>
+<td>CV</td>
+<td>the board's raw setting for duty, in its own steps: 0 is off, the board's maximum (<code>backlight_raw_max</code>) is on through the whole period. Page 1 shows it as <strong>CV</strong>, with its duty and on / off time</td>
+</tr>
+<tr>
+<td>Level</td>
+<td>the CV the board's table gives a brightness setting</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Example: AT-D878UV.</strong> The light is driven by a GD32F30x <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr> timer (TIMER7, channel 1's complementary output) in PWM
+mode 0. The timer counts its input clock, divided by the prescaler, from 0 up to the reload value, then starts over:
+one count past the reload value is one period. The output is on while the count is below the compare value, so CV is
+the compare value, and duty = CV / (reload + 1).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Value</th>
+<th>AT-D878UV</th>
+<th>Set by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Timer clock</td>
+<td>120 MHz</td>
+<td>the MCU clock setup</td>
+</tr>
+<tr>
+<td>Prescaler</td>
+<td>3 (divide by 4)</td>
+<td>firmware; the rate page changes it</td>
+</tr>
+<tr>
+<td>Reload</td>
+<td>4095 (0xFFF): 4096 counts a period</td>
+<td>firmware</td>
+</tr>
+<tr>
+<td>Rate</td>
+<td>120 MHz / (3 + 1) / (4095 + 1) = 7324 Hz</td>
+<td></td>
+</tr>
+<tr>
+<td>One count</td>
+<td>1 / 30 MHz = 33 ns</td>
+<td></td>
+</tr>
+<tr>
+<td>Full</td>
+<td>CV 4096 (reload + 1)</td>
+<td>the timer: a compare value above the reload value holds the output on</td>
+</tr>
+</tbody>
+</table></div>
+<pre><code class="language-latex">rate = \frac{f_{timer}}{(prescaler + 1)(reload + 1)}, \qquad duty = \frac{CV}{reload + 1}
+</code></pre>
+<p>Changing only the prescaler changes the rate and leaves duty for a given CV the same, which is how the rate page
+works there.</p>
+<h2 id="what-to-find">What to find</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Meaning</th>
+<th>Step</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full</td>
+<td>100 %: a CV that holds the output on through the whole period</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Warm-up</td>
+<td>the on-time a pulse needs before any light shows</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Hang</td>
+<td>how long the light stays on after the output turns off</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Rate</td>
+<td>the <abbr class="gl" tabindex="0" title="Pulse width modulation: a pin switched on and off to give an average level, as for backlight or tone." data-more="../dev/glossary.html#t-pwm">PWM</abbr> rate: as slow as the eye allows without flicker, clear of <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> interference</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Floor</td>
+<td>the level for 10 %: the dimmest a user should get, not where the light goes out</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Curve</td>
+<td>the eight levels between floor and full</td>
+<td>6</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="the-test-pages">The test pages</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Controls</th>
+<th>Shows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1, CV</td>
+<td>knob 1; <strong>Up</strong> / <strong>Down</strong> 50 (1 on a knob with end stops); digits type a value (applied at as many digits as the maximum has; <strong>#</strong> applies fewer, <strong>Back</strong> deletes one); <strong>*</strong> the next rate; <strong>OK</strong> held: full and back</td>
+<td>rate, CV; duty and on / off time each period</td>
+</tr>
+<tr>
+<td>2, brightness</td>
+<td>knob, <strong>Up</strong> / <strong>Down</strong>: 0 to 100 % in 10 % steps</td>
+<td>the level</td>
+</tr>
+<tr>
+<td>3, PWM rate</td>
+<td>knob, <strong>Up</strong> / <strong>Down</strong>: the board's rates</td>
+<td>the rate in Hz</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>OK</strong> steps to the next page. Pages the board has no hooks for are left out.</p>
+<h2 id="1-check-full">1. Check full</h2>
+<ul>
+<li>Find, in the <abbr class="gl" tabindex="0" title="Pulse width modulation: a pin switched on and off to give an average level, as for backlight or tone." data-more="../dev/glossary.html#t-pwm">PWM</abbr> hardware's datasheet, what setting holds the output on through the whole period, and what setting
+holds it off. Full must be the first, with no table entry: a setting one step short leaves a short gap every
+period.</li>
+<li>A light driven from a complementary or inverted output: check its polarity on the radio first.</li>
+</ul>
+<p><strong>Example: AT-D878UV.</strong> The GD32F30x user manual (16.1, output PWM function) gives, in PWM mode 0, an output always
+active with the compare value above the reload value, and always inactive at 0. Full is 4096; the old 100 % of
+4095 was off for one count (33 ns) every period.</p>
+<h2 id="2-warm-up-the-first-glow">2. Warm-up: the first glow</h2>
+<p>Page 1, room light kept the same throughout. At each of several rates (<strong>*</strong>), fastest to slowest:</p>
+<ol>
+<li>From CV 0, <strong>Up</strong> until any glow shows, then <strong>Down</strong> once.</li>
+<li>Knob up until the glow first shows. At that level the screen can't be read: press <strong>Up</strong> twice, read the value and
+take off 100. With the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> connected, the value can be read there instead.</li>
+<li>Optional: from 50 above, knob down until the glow goes, for the other edge.</li>
+</ol>
+<p>Read the on-time page 1 shows for each value and look across the rates:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Seen</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The same on-time at every rate</td>
+<td>a warm-up delay of that length</td>
+</tr>
+<tr>
+<td>The same duty at every rate</td>
+<td>the driver averages the <abbr class="gl" tabindex="0" title="Pulse width modulation: a pin switched on and off to give an average level, as for backlight or tone." data-more="../dev/glossary.html#t-pwm">PWM</abbr>: a turn-on level in duty</td>
+</tr>
+<tr>
+<td>The same on-time at slow rates, less at fast ones</td>
+<td>a warm-up delay; at fast rates the gap is too short for the driver to turn off, so duty takes over</td>
+</tr>
+</tbody>
+</table></div>
+<p>A line fit of on-time against period over the slower rates gives the delay (its intercept) and a duty term (its
+slope). At a rate whose period is close to the delay, most of the duty range gives no light.</p>
+<p><strong>Example: AT-D878UV</strong> (variant 1 panel):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Rate</th>
+<th>Glow CV</th>
+<th>Duty</th>
+<th>On-time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>29296 Hz</td>
+<td>2603</td>
+<td>63.5 %</td>
+<td>21.7 µs</td>
+</tr>
+<tr>
+<td>14648 Hz</td>
+<td>2350</td>
+<td>57.4 %</td>
+<td>39.2 µs</td>
+</tr>
+<tr>
+<td>7324 Hz</td>
+<td>1877</td>
+<td>45.8 %</td>
+<td>62.6 µs</td>
+</tr>
+<tr>
+<td>3662 Hz</td>
+<td>1013</td>
+<td>24.7 %</td>
+<td>67.5 µs</td>
+</tr>
+<tr>
+<td>1831 Hz</td>
+<td>515</td>
+<td>12.6 %</td>
+<td>68.7 µs</td>
+</tr>
+</tbody>
+</table></div>
+<p>The same on-time from 7324 Hz down: a warm-up of about 65 µs (fit: 62 µs + 1.3 % duty). At the standard 7324 Hz it
+takes the first 46 % of duty.</p>
+<h2 id="3-hang-the-first-dip">3. Hang: the first dip</h2>
+<p>Page 1. Hold <strong>OK</strong> for full, hold it again to come back, then step down from the top (<strong>Down</strong> coarse, knob fine),
+holding <strong>OK</strong> to compare with full. Find the highest value that looks dimmer than full, and read its off-time.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Seen at two rates</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The same duty</td>
+<td>the eye sees a duty step; the hang is shorter than the smaller off-time</td>
+</tr>
+<tr>
+<td>The same off-time</td>
+<td>a hang of that length: a shorter gap never turns the light off</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Example: AT-D878UV.</strong> The first dip was CV 4064 at 7324 Hz (off 1.07 µs) and 4065 at 29296 Hz (off 0.25 µs): the
+same duty, so the hang is under 0.3 µs.</p>
+<h2 id="4-pick-the-rate">4. Pick the rate</h2>
+<ul>
+<li>Slower gives back the range the warm-up takes, down to where flicker shows: check page 3 at a mid level.</li>
+<li>Check the chosen rate for spurs and desense on <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> and <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> before settling on it. A board can use a second
+rate while transmitting.</li>
+</ul>
+<p><strong>Example: AT-D878UV.</strong> With a 65 µs warm-up, 3662 Hz loses about 25 % of duty and 1831 Hz about 13 %, against 46 %
+at 7324 Hz.</p>
+<h2 id="5-set-the-floor">5. Set the floor</h2>
+<p>Page 1 at the chosen rate: stop where the screen is as dim as anyone should want. Light below it is no reason to move
+it down.</p>
+<p><strong>Example: AT-D878UV.</strong> CV 2137 (52 %) at 7324 Hz, still lit well below it.</p>
+<h2 id="6-fit-the-curve">6. Fit the curve</h2>
+<p>Generate the levels from floor to full once, store them as constants, and look at each neighboring pair on page 2.
+Start from a power curve:</p>
+<pre><code class="language-latex">CV(n) = floor + (full - floor) \cdot t^{\gamma}, \quad t = (n - 1) / 9, \; n = 1 \ldots 10
+</code></pre>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Seen</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Low settings look alike</td>
+<td>lower γ</td>
+</tr>
+<tr>
+<td>High settings look alike</td>
+<td>raise γ</td>
+</tr>
+<tr>
+<td>Both ends look alike</td>
+<td>γ on duty can't fix both: space the on-time above the warm-up instead of the duty</td>
+</tr>
+</tbody>
+</table></div>
+<p>A setting between levels takes the level above (1-10 % is 10 %, 91-100 % is full).</p>
+<p><strong>Example: AT-D878UV.</strong> γ = 2 from 2137 to 4096 gives 2137, 2161, 2234, 2355, 2524, 2742, 3008, 3322, 3685, then
+full. At 7324 Hz, 10 % and 20 % looked close: the warm-up, not γ.</p>
+<h2 id="7-record-it">7. Record it</h2>
+<ul>
+<li>The table and its comment in the board's backlight header, with a host test of the floor, full and the formula.</li>
+<li>Warm-up, hang, rate, floor and curve, with the date, temperature and panel variant, in the radio's bring-up record.</li>
+</ul>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/testing/backlight-curve.md">Ver el código fuente de esta página</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="En esta página">
+		<p class="eyebrow">En esta página</p>
+		<ul><li class="l2"><a href="#terms">Terms</a></li><li class="l2"><a href="#what-to-find">What to find</a></li><li class="l2"><a href="#the-test-pages">The test pages</a></li><li class="l2"><a href="#1-check-full">1. Check full</a></li><li class="l2"><a href="#2-warm-up-the-first-glow">2. Warm-up: the first glow</a></li><li class="l2"><a href="#3-hang-the-first-dip">3. Hang: the first dip</a></li><li class="l2"><a href="#4-pick-the-rate">4. Pick the rate</a></li><li class="l2"><a href="#5-set-the-floor">5. Set the floor</a></li><li class="l2"><a href="#6-fit-the-curve">6. Fit the curve</a></li><li class="l2"><a href="#7-record-it">7. Record it</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

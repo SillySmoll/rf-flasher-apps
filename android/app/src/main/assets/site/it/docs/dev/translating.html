@@ -1,0 +1,654 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="it" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Translating · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Translating · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:url" content="https://radiofoundry.org/it/docs/dev/translating.html">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Le radio su cui gira RadioFoundry, ognuna con una schermata diversa.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/dev/translating.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/dev/translating.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/dev/translating.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/dev/translating.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/dev/translating.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../it/" data-gl-more="Altro">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../it/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principale"><a href="../../../it/radios/index.html">Radio</a><a href="../../../it/features/index.html">Funzioni</a><a href="../../../it/flash/index.html">Installa</a><a href="../../../it/codeplug/index.html">Codeplug</a><a href="../../../it/docs/index.html" aria-current="page">Documenti</a><a href="../../../it/screenshots/index.html">Schermate</a><a href="../../../it/tools/index.html">Strumenti</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Lingua" title="Lingua">IT</summary><nav aria-label="Lingua"><a href="../../../docs/dev/translating.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/dev/translating.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/dev/translating.html" aria-current="true" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/dev/translating.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Passa da chiaro a scuro" title="Passa da chiaro a scuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Guida per sviluppatori">
+		<p class="eyebrow"><a href="../../../it/docs/index.html">Documentazione</a> / Guida per sviluppatori</p>
+		<ul><li><a href="index.html">Developer Documentation</a></li><li><a href="adding-a-mode.html">Adding a Mode</a></li><li><a href="adding-a-radio.html">Adding a Radio</a></li><li><a href="architecture.html">Architecture</a></li><li><a href="board-registry.html">The Board Registry</a></li><li><a href="building.html">Building</a></li><li><a href="ci-runners.html">CI Runners and Images</a></li><li><a href="ci.html">Continuous Integration</a></li><li><a href="codec.html">The Codec</a></li><li><a href="codeplug-editor.html">The Codeplug Editor</a></li><li><a href="contributing.html">Contributing</a></li><li><a href="cps-and-codeplug.html">CPS, Codeplug and Settings</a></li><li><a href="debug-link.html">Debug Link</a></li><li><a href="glossary.html">Developer glossary</a></li><li><a href="manual-pdf.html">The User Manual PDF</a></li><li><a href="release.html">Releases</a></li><li><a href="stack-check.html">Stack Check</a></li><li><a href="testing.html">Testing</a></li><li><a href="translating.html" aria-current="page">Translating</a></li><li><a href="web-flasher.html">The Web Flasher</a></li><li><a href="website.html">The Web Site</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Questa pagina non è ancora tradotta; è mostrata in inglese.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="translating">Translating</h1>
+<p>RadioFoundry has two sets of text to translate: the radio's (firmware) and the web site's (flasher, <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="cps-and-codeplug.html">Codeplug</abbr> Editor,
+tools). They are separate catalogs with separate tools; a language can have one without the other. English is the
+source of both. This page is the how-to; the rules are in <a href="../spec/ui.html#25-languages">ui.md 2.5</a> (radio) and
+<a href="website.html#translating">website.md, Translating</a> (site).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>Radio</th>
+<th>Web site</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Catalog</td>
+<td><code>core/ui/lang/&lt;code&gt;.po</code> (gettext)</td>
+<td><code>site/i18n/&lt;code&gt;.json</code> (flat JSON)</td>
+</tr>
+<tr>
+<td>Language list</td>
+<td>The catalogs that exist</td>
+<td><code>site/i18n/languages.json</code></td>
+</tr>
+<tr>
+<td>Tool</td>
+<td><code>tools/i18n.py</code></td>
+<td><code>python3 -m rfoundrysite.i18n</code> (from <code>site/</code>)</td>
+</tr>
+<tr>
+<td>Build switch</td>
+<td><code>CONFIG_LANG_&lt;CODE&gt;</code>, one per language; <code>CONFIG_LANG_DEFAULT_&lt;CODE&gt;</code> to start in it</td>
+<td>None: every language is on the site</td>
+</tr>
+<tr>
+<td>Missing string</td>
+<td>Shown in English; fails CI</td>
+<td>Shown in English; fails CI</td>
+</tr>
+<tr>
+<td>Characters</td>
+<td><abbr class="gl" tabindex="0" title="The 7-bit character set of plain text." data-more="glossary.html#t-ascii">ASCII</abbr> and Latin-1 (U+00A0 to U+00FF)</td>
+<td>Any Unicode</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="translating-the-radio">Translating the radio</h2>
+<h3 id="how-it-works">How it works</h3>
+<p>The source is English. A string the radio shows is marked where it is written, with a key that names it and its
+English:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Mark</th>
+<th>Where</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TR(KEY, &quot;Text&quot;)</code></td>
+<td>In code</td>
+<td>Returns the text in the language in use</td>
+</tr>
+<tr>
+<td><code>TRN(KEY, &quot;Text&quot;)</code></td>
+<td>Where the text is stored now and shown later: an initializer of a <code>static const</code> array or struct, a field, an event</td>
+<td>A <code>tr_id_t</code> for the text (a name for it, not the text); the code that shows it calls <code>tr()</code> on it</td>
+</tr>
+<tr>
+<td><code>TRX(KEY, &quot;Text&quot;)</code></td>
+<td>In the same places, for text never translated (<code>&quot;RX&quot;</code>, <code>&quot;12.5 kHz&quot;</code>) that sits beside translated text</td>
+<td>A <code>tr_id_t</code> like <code>TRN</code>; no catalog has it</td>
+</tr>
+<tr>
+<td><code>tr(id)</code></td>
+<td>Where a table entry is shown</td>
+<td>The text in the language in use; the English when there is no translation</td>
+</tr>
+<tr>
+<td><code>tr_en(id)</code></td>
+<td>Where the English is needed too (Find matches both)</td>
+<td>The English</td>
+</tr>
+</tbody>
+</table></div>
+<pre><code class="language-c">ui_toast(TR(ZONE_TOAST_FULL, &quot;Zone full&quot;));           // shown right here: TR gives the text
+
+static const tr_id_t modes[] = { TRN(VALUE_OFF, &quot;Off&quot;), TRN(VALUE_AUTO, &quot;Auto&quot;), TRX(WORD_VOX, &quot;VOX&quot;) };
+sb_str(&amp;b, tr(modes[i]));                             // stored first, shown later: TRN or TRX, then tr()
+</code></pre>
+<p><code>TR</code> cannot be used in a <code>static const</code> initializer: it is a function call, and which language is in use is known only
+when the text is shown. That is what <code>TRN</code> is for. <code>TRX</code> exists because every entry of such an array is a <code>tr_id_t</code>,
+so text that is never translated needs one too.</p>
+<p>The key is a C identifier, upper case. One key always has the same English (the tool fails otherwise); the same English
+may have more than one key, where it needs different translations. The English at the mark is the source of truth: a
+catalog entry is the key's (its <code>msgctxt</code>), and the tool reads the English from the mark.</p>
+<h4 id="key-names">Key names</h4>
+<p>A key says where the text is shown and what it is for, not what the English says: <code>AREA_ROLE_MEANING</code>
+(<code>ZONE_TOAST_RENAMED</code>, <code>CHAN_LABEL_BANDWIDTH</code>, <code>DENY_FIX_ADD_CODEC</code>). The English can then change without the name
+going stale, and a translator who reads the key in a catalog knows what kind of text it is.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Area</td>
+<td>The screen or feature the text belongs to, as in the code: <code>HOME</code>, <code>ZONE</code>, <code>CHAN</code>, <code>MSG</code>, <code>SHARE</code>, <code>QUICK</code>, <code>SET</code>, <code>DUAL</code>, <code>APRS</code>, <code>ROAM</code>, ... Reuse one from the catalogs before making a new one. Left out for text several areas share (<code>VALUE_OFF</code>, <code>HINT_OK_PICK_BACK</code>, <code>WHY_SCAN_NOT_IN_BUILD</code>)</td>
+</tr>
+<tr>
+<td>Role</td>
+<td>How the text is shown, from the list below</td>
+</tr>
+<tr>
+<td>Meaning</td>
+<td>What it says, in a few words. Left out when the area has one such text (<code>QUICK_TITLE</code>, <code>GPS_HINT</code>)</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>The text is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TITLE</code></td>
+<td>A screen's title; also on the row that opens that screen</td>
+</tr>
+<tr>
+<td><code>ROW</code></td>
+<td>A list row that does something when picked: an action, a choice, a sub-menu</td>
+</tr>
+<tr>
+<td><code>LABEL</code></td>
+<td>The name beside a value: a settings row, a field, a caption</td>
+</tr>
+<tr>
+<td><code>VALUE</code></td>
+<td>A value shown for a setting or field</td>
+</tr>
+<tr>
+<td><code>HINT</code></td>
+<td>The hint row: what the keys do</td>
+</tr>
+<tr>
+<td><code>TOAST</code></td>
+<td>A short message after a key press</td>
+</tr>
+<tr>
+<td><code>BANNER</code></td>
+<td>A line of a banner (an event from outside)</td>
+</tr>
+<tr>
+<td><code>BODY</code></td>
+<td>Running text on a page, or a piece of it</td>
+</tr>
+<tr>
+<td><code>STATE</code></td>
+<td>A status word a screen shows while something goes on (<code>TALKING</code>)</td>
+</tr>
+<tr>
+<td><code>CHIP</code></td>
+<td>A short tag: the status bar, a list row's right edge</td>
+</tr>
+<tr>
+<td><code>EMPTY</code></td>
+<td>What a list or page shows when it has nothing</td>
+</tr>
+<tr>
+<td><code>WHY</code></td>
+<td>Why something can't be done: a refusal, a missing feature</td>
+</tr>
+<tr>
+<td><code>FIX</code></td>
+<td>What to do about it</td>
+</tr>
+<tr>
+<td><code>ASK</code></td>
+<td>A question to confirm</td>
+</tr>
+<tr>
+<td><code>ERR</code></td>
+<td>A failure reported by a background job</td>
+</tr>
+<tr>
+<td><code>UNIT</code></td>
+<td>A unit joined to a number (<code> channels</code>)</td>
+</tr>
+<tr>
+<td><code>PART</code></td>
+<td>A piece joined to other text, with no role of its own (<code>of</code>)</td>
+</tr>
+<tr>
+<td><code>WORD</code></td>
+<td>A term used as title, label and value alike (<code>VFO</code>, <code>Scan</code>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>A piece of a sentence (<code>&quot;Message from &quot;</code>) takes the role of the sentence. A number in a name is the number in the
+text (<code>VALUE_10_MIN</code>, <code>HINT_1_5_PICK_BACK</code>), never a counter: two texts that would get the same name differ in
+meaning, so say how.</p>
+<p>A <code>tr_id_t</code> is opaque. Code passes it to <code>tr()</code> or <code>tr_en()</code>, or compares it with <code>TR_NONE</code> (none: zero, so a field
+left out of an initializer is none), and nothing else. With a language built it is the key's number (<code>TR_&lt;KEY&gt;</code> in
+the generated <code>tr_keys.h</code>), and <code>tr()</code> reads it from a table: no search. With every language switched off it is the
+English text itself and costs nothing. Code compiles the same either way.</p>
+<p><code>tools/i18n.py</code> reads the marks, keeps the catalogs in step and turns them into the tables the build links in: the
+English of every key, and each language's translations by key.</p>
+<h3 id="adding-a-language">Adding a language</h3>
+<ol>
+<li>
+<p>Start the catalog: <code>python3 tools/i18n.py --new &lt;code&gt; &lt;name&gt;</code>. <code>&lt;code&gt;</code> is the ISO 639-1 code (<code>fr</code>), <code>&lt;name&gt;</code>
+the language's own name (<code>Français</code>). This writes <code>core/ui/lang/&lt;code&gt;.po</code> with every marked string, untranslated.
+A CJK language adds its Latin name: <code>python3 tools/i18n.py --new zh 中文 Chinese</code> (<a href="#chinese-and-other-cjk-languages">below</a>).</p>
+</li>
+<li>
+<p>Add the build switches: <code>CONFIG_LANG_FR</code> builds the language in, <code>CONFIG_LANG_DEFAULT_FR</code> makes it the one the
+radio starts in (for <code>fr</code>):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>File</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>config/features.mk</code></td>
+<td><code>CONFIG_LANG_FR ?= n</code> and <code>CONFIG_LANG_DEFAULT_FR ?= n</code>, next to the others; both in <code>FEATURES</code>; the <code>$(error CONFIG_LANG_DEFAULT_FR=y needs CONFIG_LANG_FR=y)</code> line, as the other languages have</td>
+</tr>
+<tr>
+<td><code>core/config.h</code></td>
+<td>The <code>#ifndef</code> defaults (0) of both, and <code>CONFIG_LANG_FR</code> added to <code>CONFIG_LANG_ANY</code></td>
+</tr>
+<tr>
+<td><code>docs/build-config.md</code></td>
+<td>A row for each in the user interface table</td>
+</tr>
+<tr>
+<td><code>docs/feature-matrix.md</code></td>
+<td>A row for each in the user interface table, with the measured bytes (the default costs none)</td>
+</tr>
+<tr>
+<td><code>tests/hil/features.toml</code></td>
+<td><code>[feature.lang_fr]</code>, <code>switch = &quot;LANG_FR&quot;</code>, and <code>[feature.lang_default_fr]</code>, <code>switch = &quot;LANG_DEFAULT_FR&quot;</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><code>python3 tools/boards.py docs</code> then adds the switches to the generated tables of the feature matrix.</p>
+<p><code>tools/i18n.py --check</code> fails until every one of these is there.</p>
+</li>
+<li>
+<p>Translate (below), then run <code>python3 tools/i18n.py --check</code> and the host tests (<code>make -C tests/host</code>).</p>
+</li>
+<li>
+<p>Look at it: build the gallery in your language (below), or flash a build and pick it in Settings &gt; Display &gt;
+Language.</p>
+</li>
+</ol>
+<p>A new language is off by default. It is turned on by default only when it is widely used and the radios have the
+flash for it (<a href="../build-config.html">build-config.md</a>): Spanish is, Italian isn't. A language that is off is still listed on the
+radio, dimmed, and the web flasher offers to turn it on for a visitor whose browser asks for it. The web flasher also
+asks which language the radio starts in (preset to the page's when the build has it) and sets
+<code>CONFIG_LANG_DEFAULT_&lt;CODE&gt;</code> from it. A language picked there is built in: its <code>CONFIG_LANG_&lt;CODE&gt;</code> goes on with it.</p>
+<h3 id="translating-the-catalog">Translating the catalog</h3>
+<p>Each entry is the English (<code>msgid</code>) and its translation (<code>msgstr</code>). Fill in the empty <code>msgstr</code> lines with any <code>.po</code>
+editor (Poedit, Lokalize) or a text editor. An empty one shows the English, so the radio works with a catalog partly
+done, but CI fails until every string is translated (<a href="#when-the-source-changes">When the source changes</a>). In a text
+editor, write a double quote inside a string as <code>\&quot;</code>, as the <code>msgid</code> does.</p>
+<pre><code>#: core/ui/ui_menus.c
+msgid &quot;Backlight&quot;
+msgstr &quot;Retroiluminación&quot;
+</code></pre>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Keep it short. Most screens are 128 or 160 pixels wide: about 21 characters in the small font, 16 in the list font</td>
+<td>A row too long is cut with an ellipsis; a toast or hint is cut</td>
+</tr>
+<tr>
+<td>Keep leading and trailing spaces, and the colon at the end</td>
+<td>The code glues a number or a name to the text: <code>&quot;Volume &quot;</code> + <code>&quot;5&quot;</code></td>
+</tr>
+<tr>
+<td>Keep <code>{a|b}</code> groups as groups, with the same number of choices</td>
+<td>A text alternate: the radio shows the first choice that fits, longest first. Write each choice shorter than the one before</td>
+</tr>
+<tr>
+<td>Use only ASCII and Latin-1 letters (á é í ó ú ñ ü ç ß ...) and <code>… · → ° ⤒ ⤓</code></td>
+<td>The radio draws one byte a character; <code>--check</code> rejects anything else. A CJK catalog is the exception, and says so (<a href="#chinese-and-other-cjk-languages">below</a>)</td>
+</tr>
+<tr>
+<td>Start every hint group that names the Back key with exactly your translation of <code>&quot;Back&quot;</code></td>
+<td>Hints keep the Back group at the right edge by matching that word: change it and every Back group must change with it</td>
+</tr>
+<tr>
+<td>Status strip words (IDLE, NO TX, SCAN, DUAL, ROAM) and chips (Lock, DMon, Priv) no longer than the English; keep the English when nothing fits</td>
+<td>They sit in fixed slots of the status strip</td>
+</tr>
+<tr>
+<td>Don't translate the standard abbreviations the source leaves unmarked (TG, TS, CC, RX, TX, VFO, DMR, FM)</td>
+<td>Radio operators know them; they aren't in the catalog</td>
+</tr>
+</tbody>
+</table></div>
+<p>Some strings are joined in English word order, a number or name before or after a piece of text (<code>&quot;14m&quot;</code> + <code>&quot; ago&quot;</code>).
+Translate the piece so the joined text reads well (&quot;14m atrás&quot;), even when the usual phrase puts the words the other
+way round.</p>
+<p>To see where a string goes, search for its key (the <code>msgctxt</code> line) in the file its <code>#:</code> line names: <code>grep -n 'BACKLIGHT,' core/ui/ui_menus.c</code>. The comments next to a <code>TR()</code> often say more. A string with a leading or trailing space is
+always such a piece.</p>
+<h3 id="chinese-and-other-cjk-languages">Chinese and other CJK languages</h3>
+<p>The Latin fonts have no glyph for Chinese, so such a catalog is UTF-8 and brings its own face. Everything else works as
+above: one catalog, one switch, the same checks.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The catalog</td>
+<td><code>tools/i18n.py --new zh 中文 Chinese</code> writes it with an <code>X-Glyphs: utf8</code> header and an <code>X-Language-Name-Latin</code> one. A catalog with that header holds UTF-8: <abbr class="gl" tabindex="0" title="The 7-bit character set of plain text." data-more="glossary.html#t-ascii">ASCII</abbr>, <code>font.h</code>'s glyphs, and characters the CJK face has. Two-byte characters (Latin-1 letters with an accent) are not allowed: the text layer decodes only three-byte sequences, so that Latin-1 names, messages and the Spanish catalog keep working in a build with the CJK face. <code>--check</code> lists every character it rejects or the face lacks</td>
+</tr>
+<tr>
+<td>The list</td>
+<td>A build without the CJK face (<code>CONFIG_LANG_ZH</code> off) still lists the language, dimmed: it shows <code>X-Language-Name-Latin</code> (&quot;Chinese&quot;), because the Latin font would draw the UTF-8 name as boxes</td>
+</tr>
+<tr>
+<td>The face</td>
+<td><code>tools/cjkfont.py</code> rasterizes every character the catalogs use into a 16x16 one-bit glyph and writes the table the firmware links. 480 characters are 15.4 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="glossary.html#t-kb">KB</abbr>; with the text, Chinese costs 32,856 bytes. Run it whenever a translation adds a character (<code>--check</code> fails until it does) and commit both</td>
+</tr>
+<tr>
+<td>The font</td>
+<td>One whose license allows embedding bitmaps: an <abbr class="gl" tabindex="0" title="Software in the loop: tests that run the firmware&#x27;s core on the host with a simulated radio." data-more="glossary.html#t-sil">SIL</abbr> OFL font such as Noto Sans CJK SC or Source Han Sans. The generated file carries the font's copyright, its full OFL text and the font file's SHA-256, because that data is under the font's license, not MIT (see the header of <code>core/ui/cjk_font_data.c</code>). Do not use a vendor font that forbids it</td>
+</tr>
+<tr>
+<td>Size</td>
+<td>A CJK character is 16 px wide and 16 tall, the height of the 8x16 font: 8 characters a line on a 128 px screen, 10 on a 160 px one, 15 on a 240 px one. <strong>A line must be at least 16 px high.</strong> A 240 px color radio draws its words in 8x16 (a CJK build moves its text pages up to that font too) and shows Chinese everywhere; a layout whose words use the 5x8 or 6x12 font (a 128x64 display, and the 160x128 class) has no room for 16 px lines, so those boards list <code>LANG_ZH</code> and <code>LANG_DEFAULT_ZH</code> in <code>BOARD_UNSUPPORTED</code>, and CI's maximal build and the flasher leave the language out there</td>
+</tr>
+<tr>
+<td>Cutting</td>
+<td>A string too long for its space is cut at the end, whole characters only (<code>gfx_text_fit_end</code> for a line that keeps its start, <code>gfx_text_fit</code> for a middle cut), because Chinese has no spaces to cut at a middle. A line wraps after any CJK character (<code>wrap_line</code>); Latin words inside it still wrap at their spaces</td>
+</tr>
+<tr>
+<td>Switch</td>
+<td><code>CONFIG_LANG_ZH</code> is off by default. Measure it like any switch and put the bytes in <a href="../feature-matrix.html">the feature matrix</a></td>
+</tr>
+</tbody>
+</table></div>
+<p>The table in this tree comes from Noto Sans CJK SC 2.004 (<a href="https://github.com/notofonts/noto-cjk">noto-cjk</a>), rendered
+with Pillow 12.1. Rebuild it with:</p>
+<pre><code>python3 tools/cjkfont.py --font NotoSansCJK-Regular.ttc --font-index 2 --weight 0 \
+    --font-name &quot;Noto Sans CJK SC 2.004 (NotoSansCJK-Regular.ttc, index 2)&quot; \
+    --copyright &quot;2014-2021 Adobe (http://www.adobe.com/), with Reserved Font Name 'Source'.&quot; \
+    --license LICENSES/OFL-1.1.txt --spdx OFL-1.1 \
+    --po core/ui/lang/zh.po --out-c core/ui/cjk_font_data.c --out-png /tmp/cjk.png
+</code></pre>
+<p><code>--font-index 2</code> picks the Simplified Chinese face of a <code>.ttc</code> (0 is Japanese). The header records the font file's
+SHA-256: a different hash means a different font file, so say which one you used in the pull request. <code>--weight</code> picks
+a variable font's axis; 0 keeps a static face's own weight. A different Pillow can render slightly different bytes;
+commit the table it wrote.</p>
+<h3 id="when-the-source-changes">When the source changes</h3>
+<p><code>python3 tools/i18n.py --sync</code> adds the new keys to every catalog (untranslated) and drops the ones the source no
+longer has. A change that adds or edits a marked string runs it and commits the catalogs with the code.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Case</th>
+<th>What <code>--sync</code> does</th>
+<th>CI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A new key</td>
+<td>Adds it untranslated</td>
+<td>Fails until it is translated in every catalog</td>
+</tr>
+<tr>
+<td>A key's English edited</td>
+<td>Keeps the translation, still in use</td>
+<td>A warning on the pull request: the old and new English and each language's text</td>
+</tr>
+<tr>
+<td>A translation marked <code>#, fuzzy</code> by a translator (in doubt)</td>
+<td>Kept, not used</td>
+<td>Fails until a translator checks it and removes <code>#, fuzzy</code> (and the <code>#|</code> line under it)</td>
+</tr>
+<tr>
+<td>New English under a new key</td>
+<td>A new entry, untranslated; the old key dropped</td>
+<td>Fails until it is translated</td>
+</tr>
+</tbody>
+</table></div>
+<p>An entry follows its key, so an edit of the English never loses a translation. A small edit often leaves the
+translations right, so a key whose English changed while a translation stayed the same is a warning on the pull
+request, not a failure (<code>tools/i18n_changes.py</code>): the old and new English and each language's text. Say in the pull
+request whether each language still fits. When the meaning changes, use a new key: its entry starts untranslated.</p>
+<h4 id="renaming-a-key">Renaming a key</h4>
+<p>The tool matches a catalog entry by its key alone, so a key renamed only at the mark looks like a new key: <code>--sync</code>
+drops the old entry with its translations and adds an empty one. Rename with the tool, which changes the marks and
+the catalogs together:</p>
+<pre><code>python3 tools/i18n.py --rename OLD_KEY NEW_KEY     # one key
+python3 tools/i18n.py --rename names.txt           # many: a line &quot;OLD_KEY NEW_KEY&quot; each
+python3 tools/i18n.py --sync
+</code></pre>
+<p>It rewrites the key at every mark in <code>core/</code>, <code>tests/</code> and <code>sim/</code> and the <code>msgctxt</code> of its entry in every catalog,
+and refuses a name that is taken. The pairs of a file are renamed together, so two keys may swap names. Afterwards
+<code>git diff core/ui/lang</code> shows only <code>msgctxt</code> lines; no <code>msgstr</code> is lost.</p>
+<p>The site's catalogs follow the same rule for edited English: a key whose English changed while a translation didn't
+is a warning.</p>
+<p>A pull request that adds or rewrites text and can't translate it lists it as an open task in its description
+(<code>- [ ] translations: es, it</code>), and the strings are translated before the merge. To build or test with strings still
+untranslated, <code>python3 tools/i18n.py --check --allow-pending</code> skips them; CI doesn't.</p>
+<p><code>python3 tools/i18n.py --stats</code> shows how much of each catalog is translated.</p>
+<h3 id="marking-text-in-new-code">Marking text in new code</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Text</th>
+<th>Mark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A word or sentence the user reads</td>
+<td><code>TR(KEY, &quot;...&quot;)</code>, or <code>TRN(KEY, &quot;...&quot;)</code> in a table and <code>tr()</code> where it is shown</td>
+</tr>
+<tr>
+<td>A screen's title, hint, empty text, a menu row</td>
+<td><code>TRN()</code> in the table: <code>list_draw</code> and the menus translate them</td>
+</tr>
+<tr>
+<td>A hint built when the screen is drawn</td>
+<td><code>SF_HINT_FN</code> and <code>hint_fn</code> in the screen's definition, returning text already in the language in use</td>
+</tr>
+<tr>
+<td>Names, numbers, units, standard abbreviations</td>
+<td>Not marked; in a table of <code>tr_id_t</code> beside marked text, <code>TRX(KEY, &quot;...&quot;)</code></td>
+</tr>
+<tr>
+<td>Debug link names and values, protocol text sent off the radio, log text</td>
+<td>Not marked: tools and tests read them</td>
+</tr>
+<tr>
+<td>Canned text messages</td>
+<td>Marked: the radio sends them in the language in use, so keep them short and plain</td>
+</tr>
+<tr>
+<td>Search words (the second string of a settings row)</td>
+<td>Not marked: Find matches the English words and the shown name</td>
+</tr>
+</tbody>
+</table></div>
+<p>A mark's text is one C literal, or literals and the <code>font.h</code> glyph macros (<code>GLYPH_ELLIPSIS</code>, <code>TEXT_ALT_OPEN</code>, ...)
+next to each other. Not a variable, no <code>\n</code> (write the line break with <code>sb_chr</code>). A macro whose value is a
+<code>TRN(...)</code> is found like any other. Name a new key by <a href="#key-names">Key names</a>; a key in use is reused for the
+same text where the meaning is the same. <code>TR_&lt;KEY&gt;</code> must not be a name the source already uses (the tool says so). <code>python3 tools/i18n.py --rewrite [FILE]</code>
+gives a mark written without a key, <code>TR(&quot;...&quot;)</code>, one made from its English (the same English gets the key it already
+has); rename it before the commit (<code>--rename</code>, below).
+A text that travels between tasks (an event) travels as its <code>tr_id_t</code>, not as text. Build text from pieces
+with <code>sbuf_t</code>, not <code>strcpy</code>/<code>strcat</code>: a translation can be longer than the English, and <code>str_copy</code> and <code>sb_str</code>
+cut it safely. Don't compare shown text with <code>strcmp</code>; compare the state it came from. After marking, run
+<code>--sync</code> and commit the catalogs.</p>
+<h3 id="looking-at-the-result">Looking at the result</h3>
+<p><code>make -C tests/host ui-gallery</code> renders the screens in English. To see a language, build the simulator with that
+language in (<code>UI_LANG</code> on the <code>make</code> line turns its <code>CONFIG_LANG_&lt;CODE&gt;</code> on, for a language that is off by default),
+then render the gallery with <code>UI_LANG</code> set to its code, into a directory outside the repo, and look for text that is cut
+or runs into something:</p>
+<pre><code>make -C tests/host -B uiSim UI_LANG=fr
+cd tests/host &amp;&amp; UI_LANG=fr ./uiSim --gallery /tmp/gallery-fr    # contact sheets in /tmp/gallery-fr/sheets
+</code></pre>
+<p>Commit only the English gallery.</p>
+<h3 id="flash-cost">Flash cost</h3>
+<p>The first language costs the most: the lookup, the English of every key in one table (the literals it replaces, plus
+an offset per 8 keys) and the Latin-1 glyphs of every font. Each further language adds only its text, about the size
+of the catalog's translations, and an offset per 8 keys. Measure a language like any switch
+(<a href="building.html">building.md</a>) and put the bytes in the feature matrix.</p>
+<h2 id="translating-the-web-site">Translating the web site</h2>
+<ol>
+<li>Copy <code>site/i18n/en.json</code> to <code>site/i18n/&lt;code&gt;.json</code> and translate the values. Keep its format (one space of
+indent, UTF-8 as is: <code>json.dumps(data, ensure_ascii=False, indent=1)</code>). A key left out shows the English, but CI
+fails until every key is there (<code>python3 -m rfoundrysite.i18n</code> from <code>site/</code> lists them).</li>
+<li>Add the language to <code>site/i18n/languages.json</code> (<code>code</code>, <code>name</code>, <code>dir</code>, <code>locale</code>), and its catalog to
+<code>tools/generic_allow.txt</code> next to <code>en.json</code>: it carries the same per-radio texts.</li>
+<li>If its plural rule differs from English's, add it to <code>PLURAL_RULES</code> in <code>site/rfoundrysite/i18n.py</code>.</li>
+<li><code>python3 site/build.py --strict</code> checks the catalog. <code>python3 site/build.py --serve</code> and
+<code>http://localhost:8000/&lt;code&gt;/</code> shows it.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Keep <code>{name}</code> placeholders and HTML tags exactly, and anything else in angle brackets (<code>&lt;radio address&gt;</code>)</td>
+<td>The check fails otherwise; the page fills them in</td>
+</tr>
+<tr>
+<td>Plural keys (<code>key.one</code>, <code>key.other</code>, ...): give your language's forms. Most European languages need <code>.one</code> and <code>.other</code>; <code>PLURAL_RULES</code> lists the others</td>
+<td>Picked by the count; <code>.other</code> is the fallback</td>
+</tr>
+<tr>
+<td>Keep product and protocol names (RadioFoundry, DMR, DFU, CPS) and radio model names</td>
+<td>They are names</td>
+</tr>
+</tbody>
+</table></div>
+<p>What the site leaves in English (radio data, error details, logs) is listed in
+<a href="website.html#what-stays-english">website.md, What stays English</a>. Translated documentation pages go in
+<code>docs/i18n/&lt;code&gt;/</code>.</p>
+<h2 id="checks">Checks</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Runs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>python3 tools/i18n.py --check</code></td>
+<td>Every mark has a key, one English per key; catalogs in step with the source, none untranslated or fuzzy, drawable characters, text alternates, spaces, the switch in every file</td>
+</tr>
+<tr>
+<td><code>python3 tools/i18n_test.py</code></td>
+<td>The tool: keys, tables, sync, migration, rewrite, rename</td>
+</tr>
+<tr>
+<td><code>make -C tests/host</code></td>
+<td><code>i18nTest</code>: a key to its translation or its English, <code>tr_en</code>, switching, a language not built; <code>uiFlowTest</code>: the Language screen</td>
+</tr>
+<tr>
+<td><code>python3 site/build.py --strict</code></td>
+<td>The site catalogs: keys, placeholders, tags, <code>languages.json</code></td>
+</tr>
+<tr>
+<td><code>python3 -m rfoundrysite.i18n</code> (from <code>site/</code>)</td>
+<td>The same, and no key missing from a language</td>
+</tr>
+<tr>
+<td><code>tools/i18n_changes.py</code></td>
+<td>Warnings, not failures: English the branch changed while a translation didn't, radio and site</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>tools/ci.sh</code> runs all of them. In a pull request the warnings show as annotations on the changed catalog lines.</p>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/dev/translating.md">Vedi il sorgente di questa pagina</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="In questa pagina">
+		<p class="eyebrow">In questa pagina</p>
+		<ul><li class="l2"><a href="#translating-the-radio">Translating the radio</a></li><li class="l3"><a href="#how-it-works">How it works</a></li><li class="l3"><a href="#adding-a-language">Adding a language</a></li><li class="l3"><a href="#translating-the-catalog">Translating the catalog</a></li><li class="l3"><a href="#chinese-and-other-cjk-languages">Chinese and other CJK languages</a></li><li class="l3"><a href="#when-the-source-changes">When the source changes</a></li><li class="l3"><a href="#marking-text-in-new-code">Marking text in new code</a></li><li class="l3"><a href="#looking-at-the-result">Looking at the result</a></li><li class="l3"><a href="#flash-cost">Flash cost</a></li><li class="l2"><a href="#translating-the-web-site">Translating the web site</a></li><li class="l2"><a href="#checks">Checks</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Unisciti alla comunità RadioFoundry</strong><span class="small muted">Domande, aiuto con la tua radio e novità, su Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Hai trovato un bug? Vuoi che la tua radio sia supportata?</strong><span class="small muted">Apri una segnalazione su GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry ha licenza MIT · <a href="https://github.com/radiofoundry/radiofoundry">Codice sorgente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunità</a> · <a href="../../../it/docs/index.html">Documenti</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Novità</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

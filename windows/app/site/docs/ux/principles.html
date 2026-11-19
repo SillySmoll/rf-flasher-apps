@@ -1,0 +1,209 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UI design principles · RadioFoundry</title>
+<meta name="description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="UI design principles · RadioFoundry">
+<meta property="og:description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:url" content="https://radiofoundry.org/docs/ux/principles.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="The radios RadioFoundry runs on, each showing a different screen.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/ux/principles.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/ux/principles.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/ux/principles.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/ux/principles.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/ux/principles.html">
+<link rel="icon" href="../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../" data-home="../../" data-gl-more="More">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../index.html">
+			<img src="../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Main"><a href="../../radios/index.html">Radios</a><a href="../../features/index.html">Features</a><a href="../../flash/index.html">Install</a><a href="../../codeplug/index.html">Codeplug</a><a href="../../docs/index.html" aria-current="page">Docs</a><a href="../../screenshots/index.html">Screenshots</a><a href="../../tools/index.html">Tools</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Language" title="Language">EN</summary><nav aria-label="Language"><a href="../../docs/ux/principles.html" aria-current="true" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../es/docs/ux/principles.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../it/docs/ux/principles.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../zh/docs/ux/principles.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Switch light and dark" title="Switch light and dark">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="User Experience">
+		<p class="eyebrow"><a href="../../docs/index.html">Documentation</a> / User Experience</p>
+		<ul><li><a href="wireframes/index.html">Wireframes</a></li><li><a href="dual-watch.html">Dual watch</a></li><li><a href="information-architecture.html">Information architecture</a></li><li><a href="principles.html" aria-current="page">UI design principles</a></li><li><a href="survey.html">UI survey: what good radio and device interfaces do</a></li><li><a href="task-flows.html">Task flows</a></li><li><a href="usability-tests.html">Usability test protocol</a></li><li><a href="wireframes/128x64.html">128x64 monochrome</a></li><li><a href="wireframes/160x128.html">160x128 color</a></li><li><a href="wireframes/240x320.html">240x320 color (portrait)</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<h1 id="ui-design-principles">UI design principles</h1>
+<p>Goal: some of the best usability of any radio firmware. These ten principles decide every UI question. Each has rules that are concrete enough to check, and a <strong>Test</strong> line that <code>usability-tests.md</code> turns into a measurement or an automated check in the SDL simulator.</p>
+<p>Words used below:</p>
+<ul>
+<li><strong>Home</strong>: the idle screen (see <code>information-architecture.md</code>).</li>
+<li><strong>Logical action</strong>: a radio-independent input (<code>SELECT</code>, <code>BACK</code>, <code>QUICK</code>, …) that each board maps to its physical keys.</li>
+<li><strong><abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">Talk target</abbr></strong>: where PTT will <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> right now (a <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr>, a private contact, all-call, or an FM channel).</li>
+<li><strong>Press</strong>: one short or long press of a key, or one detent of a knob or encoder.</li>
+</ul>
+<hr />
+<h2 id="1-the-main-tasks-are-one-or-two-presses-from-home">1. The main tasks are one or two presses from Home</h2>
+<p>The top 20 tasks (<code>task-flows.md</code>) each show their first useful result within two presses from Home, and finish within their budget (most within four, none above six).</p>
+<ul>
+<li>Home has direct keys for: change channel, quick settings, actions on the last caller, find anything (type), monitor.</li>
+<li>Top-level destinations are few (seven) and each is a noun the user already knows: Contacts, Messages, Recent, Zones, Channels, Tools, Settings.</li>
+<li>No task requires going through Settings. Settings is for preferences, not for operating the radio.</li>
+</ul>
+<p><strong>Test:</strong> scripted flows in the simulator count presses per task and fail the build if a flow exceeds its budget.</p>
+<h2 id="2-you-always-know-what-ptt-will-do-and-whether-the-radio-is-talking-or-listening">2. You always know what PTT will do, and whether the radio is talking or listening</h2>
+<ul>
+<li>Home always shows the <strong><abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr></strong>, mode (<abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr>/FM), channel and zone, <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr> and <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr> (DMR) or tone (FM), power level, and privacy state.</li>
+<li>A <strong>status strip</strong> at the top of every screen, including menus and lists, shows <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> (red, with the word &quot;TX&quot;), <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> (green, with the word &quot;RX&quot; and the caller), or idle. TX/RX is never hidden by a menu. On the small displays a screen may merge the strip into its title row, but the TX/RX pill stays.</li>
+<li>If the talk target differs from the channel's default (<abbr class="gl" tabindex="0" title="The time after a call during which PTT answers it." data-more="../user/22-glossary.html#t-reply-window">reply window</abbr>, temporary <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">TG</abbr>), Home says so in words (&quot;Reply → TG 3100&quot;, &quot;Temporary TG 91&quot;) and says how to go back.</li>
+<li>PTT works from every screen. If the radio can't transmit (out of band, RX-only channel, no codec for DMR, locked), pressing PTT shows why and what to do, with an error tone.</li>
+<li>Leaving a screen never changes the channel, the talk target or the TX settings unless the user chose that.</li>
+</ul>
+<p><strong>Test:</strong> for every screen in the simulator, a check asserts the status strip is drawn and shows TX within 100 ms of PTT. A list of screens with no status strip must be empty.</p>
+<h2 id="3-every-key-means-one-thing-everywhere">3. Every key means one thing everywhere</h2>
+<ul>
+<li>Inputs go through a <strong>logical action layer</strong>. Screens only see logical actions, never physical keys.</li>
+<li><code>SELECT</code> = do/open the focused thing. <code>BACK</code> = go to where I was. <code>NAV_UP</code>/<code>NAV_DOWN</code> = move focus or change the value that Home is tuned to. <code>QUICK</code> = quick settings for the current context. <code>CONTEXT</code> = actions for the thing in focus (on Home: the last caller). Digits = type (numbers and T9 letters).</li>
+<li><strong>Long press has one fixed meaning per key across all screens</strong>: long <code>BACK</code> = Home, long <code>SELECT</code> = save/confirm the focused change (where a key for <code>QUICK</code> is missing, long <code>SELECT</code> = <code>QUICK</code>), long <code>QUICK</code> (<code>*</code>) = key lock (from Home only: in a menu it doesn't lock mid-task; it unlocks from anywhere), long <code>CONTEXT</code> (<code>#</code>) = the <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr> picker on a <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> channel (<abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">TG</abbr> pick or a typed ID, the <code>#</code> keycap's legend and the AnyTone 868/878/578 convention), long digit on Home = speed-dial slot. Inside a text field the keypad is a typewriter: long digit types the digit itself and long <code>*</code> deletes like a short one; those are the only exceptions. Navigation keys repeat when held. The <code>USER_n</code> keys and the side keys listed in Settings &gt; Keys are the assignable exception: they carry one function per gesture from the assignable list, and a board's <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr>/MR key has fixed ones (short: channel / VFO, long: Copy to VFO).</li>
+<li>Long press never <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmits</abbr>, never deletes, never resets. Long-press threshold is one value (default 600 ms, settable), and a short tick confirms the threshold was reached.</li>
+<li>No double presses, no triple presses, no chords (two keys at once) are required for anything. Chords may exist as optional shortcuts only.</li>
+</ul>
+<p><strong>Test:</strong> the key map table in <code>information-architecture.md</code> is generated from the firmware's action tables; a lint fails if a screen binds a long press to something other than the key's global meaning.</p>
+<h2 id="4-one-back-stack-no-dead-ends">4. One back stack, no dead ends</h2>
+<ul>
+<li>There is one navigation stack. <code>BACK</code> pops one level; at Home, <code>BACK</code> clears temporary state (dismisses a banner, ends a <abbr class="gl" tabindex="0" title="The time after a call during which PTT answers it." data-more="../user/22-glossary.html#t-reply-window">reply window</abbr>), never something harmful.</li>
+<li>One exception, the convention of phones and most radio makers: in text entry <code>BACK</code> deletes the last character, and leaves (without a change) once the field is empty.</li>
+<li>Hold <code>BACK</code> from anywhere = Home, in one press, always.</li>
+<li>Menu depth from Home is at most three levels for anything a user does in the field.</li>
+<li>Incoming events (call, message, alert) show a <strong>banner</strong> that doesn't steal focus or keys, except a <abbr class="gl" tabindex="0" title="A DMR call to one radio." data-more="../user/22-glossary.html#t-private-call">private call</abbr> addressed to the user and emergency, which take the screen but are still dismissed with <code>BACK</code>.</li>
+<li>Modes (<abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr>, network, <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="../spec/sfr.html">SFR</abbr>, scan) are shown on Home and in the status strip and are left with one obvious press (<code>BACK</code> or the same key that started them), never only by power cycling.</li>
+<li>No screen waits for input it doesn't ask for. Every screen shows (or speaks, with voice prompts) its way out.</li>
+</ul>
+<p><strong>Test:</strong> a simulator crawler visits every reachable screen and verifies (a) <code>BACK</code> leaves it, (b) long <code>BACK</code> reaches Home, (c) depth is at most 3 for screens tagged &quot;field use&quot;.</p>
+<h2 id="5-glanceable-one-look-under-two-seconds">5. Glanceable: one look, under two seconds</h2>
+<ul>
+<li>Home is readable at arm's length in one glance: the channel name and <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr> are the two largest text items. Secondary items are smaller and in fixed places.</li>
+<li>Each screen region has one job and always the same position (status strip at top, hint row at bottom, content in between).</li>
+<li>Easy to read beats one more item: fonts are never made smaller and line spacing never squeezed to fit more; a fit problem is fixed with shorter text first (an alternate, a dropped name, an abbreviation). <code>uiSim --layout</code> fails a display class whose list or strip spacing drops below its normal pitch.</li>
+<li>No scrolling text on Home. Long names are shortened from the middle with an ellipsis, not marquee-scrolled.</li>
+<li>Color carries meaning only (<abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> red, <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> green, warning amber, privacy blue); every color cue also has a word or icon, so monochrome and color-blind users get the same information.</li>
+<li>Glance budget follows vehicle HMI guidance: no screen requires a look longer than 2 s to understand, and no common task requires more than 12 s of eyes-on-screen.</li>
+</ul>
+<p><strong>Test:</strong> five-second test (show Home for 2 s, ask &quot;what channel, what will PTT do, is the battery OK?&quot;), target 90% correct answers. Render check: Home's channel and talk target text heights are the two largest on each display class.</p>
+<h2 id="6-find-by-typing-configure-by-intent">6. Find by typing, configure by intent</h2>
+<ul>
+<li>On Home, digits start <strong>Find</strong>: one list that matches channels (by number and name), contacts and <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroups</abbr> (by ID and name via T9), recent callers, and settings. Typing <code>3100</code> offers TG 3100, contact 3100xxx and channel 31; typing <code>7476</code> offers &quot;PIRATE&quot; style T9 name matches.</li>
+<li>A number that isn't in the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> is still usable: typing a TG or ID and pressing PTT (or <code>SELECT</code>) talks to it temporarily.</li>
+<li>Settings are grouped by what the user wants (Sound, Display, Talk &amp; listen, Privacy, Location, Connections, Power, Keys, My radio), never by chip or protocol layer. Settings are also searchable from Find.</li>
+<li>Quick settings hold the handful of settings people change in the field, in fixed positions that map to the keypad (1-9 as a 3x3 grid).</li>
+</ul>
+<p><strong>Test:</strong> for each of 30 named settings, a participant finds it in under 15 s without help; Find returns the intended item in the top 3 for 95% of a test corpus of queries.</p>
+<h2 id="7-temporary-first-save-on-purpose-confirm-only-what-cant-be-undone">7. Temporary first, save on purpose, confirm only what can't be undone</h2>
+<ul>
+<li>Changes made while operating (<abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">TG</abbr>, <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">TS</abbr>, <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">CC</abbr>, power, squelch, tone, privacy on/off) apply immediately and are <strong>temporary</strong>: they last until the channel changes or the user returns to the channel's default. Home marks a changed channel (&quot;edited&quot; dot and the changed field highlighted).</li>
+<li>Making a change permanent is a deliberate act: long <code>SELECT</code> on the changed field, or &quot;Save to channel&quot; in <code>CONTEXT</code>. The <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> is never written silently.</li>
+<li>Defaults are safe: low power on first boot, no auto-transmit features (<abbr class="gl" tabindex="0" title="Voice-operated transmit." data-more="../user/22-glossary.html#t-vox">VOX</abbr>, GPS reports, <abbr class="gl" tabindex="0" title="Automatic Registration Service: a radio tells a presence server it is on the air." data-more="../user/22-glossary.html#t-ars">ARS</abbr>) enabled until the user enables them (the radio-check reply is on: it answers a check another station asked for), privacy off, promiscuous on for <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> only.</li>
+<li>Reversible actions don't ask; they offer <strong>Undo</strong> for 5 s (delete message, remove contact from a list, clear last heard).</li>
+<li>Only destructive, irreversible actions ask for confirmation (factory reset, erase codeplug, delete a whole zone, overwrite calibration). The confirmation names the thing and the consequence (&quot;Erase all 1,024 channels? This can't be undone.&quot;) and defaults to No.</li>
+<li>Emergency is hold-to-activate (about 1.5 s) instead of a confirmation dialog, and cancel is the same hold.</li>
+</ul>
+<p><strong>Test:</strong> count of confirmation dialogs in the firmware is reviewed per release; each must be on the destructive list. Codeplug write counter in the simulator must not change during the &quot;operate only&quot; test script.</p>
+<h2 id="8-every-press-gets-an-answer">8. Every press gets an answer</h2>
+<ul>
+<li>Visual response to every press within 50 ms (focus moves, value changes, or a &quot;not available here&quot; hint). A full redraw may take longer, but something changes at once.</li>
+<li>Key tones are on by default and distinct from protocol tones: key click, invalid key, long-press threshold, talk permit, channel busy, <abbr class="gl" tabindex="0" title="A DMR page that makes another radio ring." data-more="../user/22-glossary.html#t-call-alert">call alert</abbr>, message, low battery, emergency each sound different. Volume is separate from the <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> volume.</li>
+<li>Optional voice prompts announce what the focus moved to and what changed (&quot;Channel 3, Base repeater&quot;, &quot;Power high&quot;, &quot;<abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">Timeslot</abbr> 2&quot;), and on request the full Home state (&quot;Speak status&quot;, on an assignable key, default long press of a side key, and in the Home <code>CONTEXT</code> actions).</li>
+<li>A press that does nothing on the current screen gives the invalid tone and a one-line hint (&quot;Hold * to unlock&quot; when locked).</li>
+</ul>
+<p><strong>Test:</strong> simulator measures press-to-first-pixel latency; on hardware, a high-speed camera test per release. Target p95 below 50 ms, max below 150 ms.</p>
+<h2 id="9-messages-say-what-happened-and-what-to-do">9. Messages say what happened and what to do</h2>
+<ul>
+<li>Every error or refusal says what happened (and why, if known) and what to do, in at most two short lines at the smallest display (about 2 x 20 characters): the pill says NO <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr>, the Activity line &quot;Bands 136-174 400-480 MHz&quot;, the hint &quot;Pick another channel&quot;. A longer explanation goes on an information page or in the manual, never in a toast.</li>
+<li>A feature left out of the build says so the same way everywhere: &quot;Scan: not in this build&quot;.</li>
+<li>No error codes alone, no &quot;Invalid&quot;, no &quot;Error 3&quot;. A code may follow the text for support.</li>
+<li>Input limits are shown before the user hits them (&quot;<abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">TG</abbr> 1 to 16777215&quot;, &quot;Message 0 of 144 characters&quot;).</li>
+<li>Success is confirmed quietly (a tone and a brief banner), failure is never silent (&quot;<abbr class="gl" tabindex="0" title="A DMR request another radio answers automatically, to show it is on and in range." data-more="../user/22-glossary.html#t-radio-check">Radio check</abbr>: no answer from Q1AAA after 3 tries&quot;).</li>
+</ul>
+<p><strong>Test:</strong> a string lint lists all user-facing error strings; each must contain an action verb or a &quot;see&quot; reference. Reviewed per release.</p>
+<h2 id="10-one-design-for-every-radio-and-every-user">10. One design for every radio and every user</h2>
+<ul>
+<li>Layouts are defined per <strong>display class</strong> (240x320 color, 160x128 color, 128x64 mono), not per radio. A new radio picks a class and a key map; it gets no new screens.</li>
+<li>Every logical action is reachable on every supported key set. Radios with few keys get fallbacks (for example long <code>SELECT</code> = <code>QUICK</code>), documented in the key map.</li>
+<li>Works with gloves: no timing-critical presses, no chords required, large hit tolerance on encoders (one detent = one step, no acceleration below 4 detents/s).</li>
+<li>Accessibility is built in, not a setting buried away: voice prompts, large-text mode (Home with two lines: channel and <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr>), high-contrast theme, adjustable long-press time, key-repeat rate, tone volume.</li>
+<li>Text is plain US English, short, no abbreviations beyond the standard radio ones (<abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">TG</abbr>, <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">TS</abbr>, <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">CC</abbr>, ID, FM, <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr>, GPS, SQL, MON, Priv), with translations through string tables.</li>
+</ul>
+<p><strong>Wording rules</strong> (checked in the UI audit of 2026-10-11):</p>
+<ul>
+<li>One term per thing: talkgroup is &quot;TG&quot; before a number (&quot;TG 91&quot;, always with a space) and &quot;talkgroup&quot; in sentences; &quot;contact&quot;, &quot;channel&quot;, &quot;zone&quot;, &quot;talk target&quot;, &quot;hear all&quot; are used the same everywhere.</li>
+<li>Labels start with the action or the noun (&quot;Make channel default&quot;, &quot;Key type&quot;), and don't repeat the menu they are in (Settings &gt; Privacy &gt; &quot;Key&quot;, not &quot;Privacy key&quot;).</li>
+<li>Hint groups are a key and a verb in its plain form: &quot;OK send&quot;, &quot;Back cancel&quot;, &quot;# skip&quot;. A lone &quot;Back&quot; means Back just goes back.</li>
+<li>Values start with a capital (&quot;On&quot;, &quot;Off&quot;, &quot;Here&quot;, &quot;Scanning&quot;); units have a space where they are words (&quot;30 s&quot;, &quot;-71 dBm&quot;, &quot;5 min&quot;) and none in compact radio forms (&quot;5W&quot;, &quot;25k&quot;, &quot;TS1&quot;, &quot;SQ5&quot;). Ages are one style everywhere: &quot;11s ago&quot;, &quot;4m ago&quot;, shortened to &quot;11s&quot;.</li>
+<li>No filler, no chat, no marketing. &quot;For now&quot; only where it means a <abbr class="gl" tabindex="0" title="A change that lasts until the channel changes or you press Back on Home. Hold OK to keep it." data-more="../user/22-glossary.html#t-temporary-change">temporary change</abbr> (&quot;Timeslot 2 for now&quot;), &quot;yet&quot; only where something is expected to come (&quot;No calls heard yet&quot;), never as a promise about the firmware (&quot;not in this build&quot;, not &quot;not in this build yet&quot;).</li>
+</ul>
+<p><strong>Test:</strong> every task flow in <code>task-flows.md</code> is run on all four reference key maps in the simulator; a task that's impossible on any map fails the build. Accessibility pass: the top 10 tasks done blindfolded with voice prompts by at least one tester per release.</p>
+<hr />
+<h2 id="checklist-for-a-new-screen">Checklist for a new screen</h2>
+<ol>
+<li>Which logical actions does it use, and are they the global meanings?</li>
+<li>Does <code>BACK</code> leave it, and does long <code>BACK</code> reach Home?</li>
+<li>Is the status strip visible?</li>
+<li>What does it look like at 128x64?</li>
+<li>What does the voice prompt say on entry and on each focus change?</li>
+<li>Does any change it makes write the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>? If so, is that deliberate?</li>
+<li>Does every error say what to do?</li>
+</ol>
+
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/ux/principles.md">View the source of this page</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="On this page">
+		<p class="eyebrow">On this page</p>
+		<ul><li class="l2"><a href="#1-the-main-tasks-are-one-or-two-presses-from-home">1. The main tasks are one or two presses from Home</a></li><li class="l2"><a href="#2-you-always-know-what-ptt-will-do-and-whether-the-radio-is-talking-or-listening">2. You always know what PTT will do, and whether the radio is talking or listening</a></li><li class="l2"><a href="#3-every-key-means-one-thing-everywhere">3. Every key means one thing everywhere</a></li><li class="l2"><a href="#4-one-back-stack-no-dead-ends">4. One back stack, no dead ends</a></li><li class="l2"><a href="#5-glanceable-one-look-under-two-seconds">5. Glanceable: one look, under two seconds</a></li><li class="l2"><a href="#6-find-by-typing-configure-by-intent">6. Find by typing, configure by intent</a></li><li class="l2"><a href="#7-temporary-first-save-on-purpose-confirm-only-what-cant-be-undone">7. Temporary first, save on purpose, confirm only what can&#x27;t be undone</a></li><li class="l2"><a href="#8-every-press-gets-an-answer">8. Every press gets an answer</a></li><li class="l2"><a href="#9-messages-say-what-happened-and-what-to-do">9. Messages say what happened and what to do</a></li><li class="l2"><a href="#10-one-design-for-every-radio-and-every-user">10. One design for every radio and every user</a></li><li class="l2"><a href="#checklist-for-a-new-screen">Checklist for a new screen</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Join the RadioFoundry community</strong><span class="small muted">Questions, help with your radio and news, on Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Found a bug? Want your radio supported?</strong><span class="small muted">Open an issue on GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry is MIT licensed · <a href="https://github.com/radiofoundry/radiofoundry">Source Code</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Community</a> · <a href="../../docs/index.html">Docs</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Changelog</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

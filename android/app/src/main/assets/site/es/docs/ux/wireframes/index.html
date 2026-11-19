@@ -1,0 +1,137 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wireframes · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Wireframes · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/docs/ux/wireframes/">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/ux/wireframes/">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/ux/wireframes/">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/ux/wireframes/">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/ux/wireframes/">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/ux/wireframes/">
+<link rel="icon" href="../../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../../" data-home="../../../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../../es/index.html">
+			<img src="../../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../../../es/radios/index.html">Radios</a><a href="../../../../es/features/index.html">Funciones</a><a href="../../../../es/flash/index.html">Instalar</a><a href="../../../../es/codeplug/index.html">Codeplug</a><a href="../../../../es/docs/index.html" aria-current="page">Documentación</a><a href="../../../../es/screenshots/index.html">Capturas</a><a href="../../../../es/tools/index.html">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../../../docs/ux/wireframes/index.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../../es/docs/ux/wireframes/index.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../../it/docs/ux/wireframes/index.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../../zh/docs/ux/wireframes/index.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Experiencia de usuario">
+		<p class="eyebrow"><a href="../../../../es/docs/index.html">Documentación</a> / Experiencia de usuario</p>
+		<ul><li><a href="index.html" aria-current="page">Wireframes</a></li><li><a href="../dual-watch.html">Dual watch</a></li><li><a href="../information-architecture.html">Information architecture</a></li><li><a href="../principles.html">UI design principles</a></li><li><a href="../survey.html">UI survey: what good radio and device interfaces do</a></li><li><a href="../task-flows.html">Task flows</a></li><li><a href="../usability-tests.html">Usability test protocol</a></li><li><a href="128x64.html">128x64 monochrome</a></li><li><a href="160x128.html">160x128 color</a></li><li><a href="240x320.html">240x320 color (portrait)</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Esta página aún no está traducida; se muestra en inglés.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="wireframes">Wireframes</h1>
+<p><abbr class="gl" tabindex="0" title="The 7-bit character set of plain text." data-more="../../dev/glossary.html#t-ascii">ASCII</abbr> wireframes of the main screens for the three display classes. They show layout, hierarchy and content, not final pixels.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>File</th>
+<th>Display class</th>
+<th>Grid used in the drawings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>240x320.md</code></td>
+<td>240x320 color, portrait (landscape variant included)</td>
+<td>30 columns x 26 rows of an 8x12 cell; LARGE text = 2x</td>
+</tr>
+<tr>
+<td><code>160x128.md</code></td>
+<td>160x128 color</td>
+<td>20 columns x 10 rows of an 8x12 cell (some rows 8x8)</td>
+</tr>
+<tr>
+<td><code>128x64.md</code></td>
+<td>128x64 monochrome</td>
+<td>21 columns x 8 rows of a 6x8 cell; LARGE = 2x height</td>
+</tr>
+</tbody>
+</table></div>
+<p>Conventions:</p>
+<ul>
+<li><code>[TX]</code> <code>[RX]</code> pills: <abbr class="gl" tabindex="0" title="Transmit." data-more="../../user/22-glossary.html#t-tx">TX</abbr> is red with the word, <abbr class="gl" tabindex="0" title="Receive." data-more="../../user/22-glossary.html#t-rx">RX</abbr> green with the word, idle gray. The word is always present (P5).</li>
+<li><code>▮▮▮▯</code> signal bars, <code>84%</code> battery, <code>✉2</code> unread messages (an envelope icon and the count), <code>⌖</code> GPS fix, <code>🔒</code> the key lock (a padlock icon, on mono too), <code>♦</code> privacy, <code>•</code> marks a <abbr class="gl" tabindex="0" title="A change that lasts until the channel changes or you press Back on Home. Hold OK to keep it." data-more="../../user/22-glossary.html#t-temporary-change">temporary change</abbr>.</li>
+<li>UPPERCASE in a drawing marks the large font, not uppercase text.</li>
+<li>The bottom hint row lists the keys that matter on that screen.</li>
+</ul>
+<p>Region order is identical on every class (status strip, place, <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../../user/22-glossary.html#t-talk-target">talk target</abbr>, activity, hint row), so a user who moves between radios finds things in the same place.</p>
+<p>The drawings are the design intent. What the firmware draws is in <code>../screens/&lt;geometry&gt;/</code> (<code>make -C tests/host ui-gallery</code>), one folder per display: <code>160x120i5</code> the DM-1701 (160x120, the lens hides 5 px left and right; top and bottom are used to the edge), <code>160x128</code> the MD-380 class, <code>240x320i10x5</code> the DM-32 (16 colors, anti-aliased fonts, lists and labels in 9x18; the bezel hides 10 px left and right, 5 px top and bottom), <code>128x64</code> mono, <code>240x320</code> full resolution. <code>../screens/sheets/&lt;geometry&gt;.png</code> shows every screen of a display on one page. Words on the screens follow the firmware, not these sketches (for example &quot;<abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../../user/22-glossary.html#t-talkgroup">TG</abbr> 91&quot; with a space, ages as &quot;2m ago&quot;, hints as <code>Back</code> alone where Back just goes back).</p>
+<h2 id="the-layout-check">The layout check</h2>
+<p><code>uiSim --layout</code> (part of <code>make -C tests/host</code>, so CI) draws every gallery screen, every settings page and a set of worst-case screens at every geometry (in each theme on color ones), once with the usability-test <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../../dev/cps-and-codeplug.html">codeplug</abbr> and once with worst-case content: 16-character channel, zone and contact names, 4-digit channel numbers, 8-digit <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../../user/22-glossary.html#t-talkgroup">talkgroups</abbr>, 7-digit IDs, 31-character <abbr class="gl" tabindex="0" title="A short text, usually a callsign and name, sent along with DMR voice." data-more="../../user/22-glossary.html#t-talker-alias">talker aliases</abbr>, 143-character messages, 80-channel zones, every status mark at once (lock, unread, scan, low battery, hear all, privacy, a 5-character power level). It fails on:</p>
+<ul>
+<li>a text outside the safe area, or cut by its box (a quick settings tile);</li>
+<li>two texts overlapping, or side by side with no space between them;</li>
+<li>a box drawn over part of a text, or an overlay (banner, toast) cutting a line in half;</li>
+<li>a text drawn invisibly: its cells one color after it is drawn (text the color of what is under it, or a blank glyph);</li>
+<li>a text shortened in the middle with an ellipsis on ordinary content (worst-case content may be shortened; a message preview cut at its end is fine).</li>
+</ul>
+<p><code>RFOUNDRY_LAYOUT_SHOTS=DIR uiSim --layout</code> saves every screen it checked; <code>uiSim --ellipsis</code> lists every shortened text.</p>
+<p>Screens drawn in each file: Home idle (<abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../../user/22-glossary.html#t-dmr">DMR</abbr> and FM), <abbr class="gl" tabindex="0" title="Receive." data-more="../../user/22-glossary.html#t-rx">RX</abbr>, <abbr class="gl" tabindex="0" title="Transmit." data-more="../../user/22-glossary.html#t-tx">TX</abbr>, <abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="../../user/22-glossary.html#t-dual-watch">dual watch</abbr> Home, incoming message banner and message view, quick settings, Find (contact search), caller actions, Hub, <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../../user/22-glossary.html#t-talk-target">talk target</abbr> picker.</p>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/ux/wireframes/README.md">Ver el código fuente de esta página</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="En esta página">
+		<p class="eyebrow">En esta página</p>
+		<ul><li class="l2"><a href="#the-layout-check">The layout check</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

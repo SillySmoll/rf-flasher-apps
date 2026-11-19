@@ -1,0 +1,623 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TCP services on the USB network link · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="TCP services on the USB network link · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/spec/tcp-services.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/tcp-services.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/tcp-services.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/tcp-services.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/tcp-services.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/tcp-services.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/spec/tcp-services.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/tcp-services.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/tcp-services.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/tcp-services.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="规范">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 规范</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html" aria-current="page">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">本页尚未翻译，目前显示英文。</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="tcp-services-on-the-usb-network-link">TCP services on the USB network link</h1>
+<p>In the USB network personality (<a href="usb-network.html">usb-network.md</a>) the radio has an address of its own on the link
+(the host's address xor 1, e.g. 12.0.39.20 for <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr> 10005). With <code>CONFIG_NET_TCP</code> it runs a small <abbr class="gl" tabindex="0" title="Transmission Control Protocol: IP connections with ordered, guaranteed delivery." data-more="../dev/glossary.html#t-tcp">TCP</abbr> there and a
+few services on it. TCP never goes over the air: the IP gateway hands the TCP only segments addressed to the radio
+itself, and TCP to other radios' addresses is dropped as before.</p>
+<p>Sources: RFC 9293 (TCP), RFC 6298 (retransmission timer), RFC 5681 3.1 (one segment after a timeout), RFC 5961
+(RST and SYN checks), RFC 1122 4.2.3.6 (keepalive), RFC 6528 (initial sequence numbers).</p>
+<h2 id="1-switches">1. Switches</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Switch</th>
+<th>Default</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CONFIG_NET_TCP</code></td>
+<td>= DMR_IP_GATEWAY</td>
+<td>the <abbr class="gl" tabindex="0" title="Transmission Control Protocol: IP connections with ordered, guaranteed delivery." data-more="../dev/glossary.html#t-tcp">TCP</abbr> (<code>core/net/tcp.c</code>) and its glue to the gateway (<code>core/net/net.c</code>)</td>
+</tr>
+<tr>
+<td><code>CONFIG_NET_KISS</code></td>
+<td>= NET_TCP and <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr></td>
+<td><abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="../user/22-glossary.html#t-kiss">KISS</abbr> over TCP, port 8001 (<code>core/net/kiss_tcp.c</code>, section 4)</td>
+</tr>
+<tr>
+<td><code>CONFIG_NET_HTTP</code></td>
+<td>= NET_TCP</td>
+<td>the HTTP status server, port 80 (<code>core/net/http.c</code>, section 5)</td>
+</tr>
+<tr>
+<td><code>CONFIG_NET_WEBCTL</code></td>
+<td>= NET_HTTP</td>
+<td>web control: the front panel page and its WebSocket <code>/ws</code> (<code>core/net/webctl.c</code>, <code>core/net/ws.c</code>, section 5.1)</td>
+</tr>
+<tr>
+<td><code>CONFIG_NET_RIGCTL</code></td>
+<td>= NET_TCP</td>
+<td>Hamlib's network rig control, port 4532 (<code>core/net/rigctld.c</code>, section 6)</td>
+</tr>
+<tr>
+<td><code>CONFIG_NET_APRSIS</code></td>
+<td>= NET_TCP and APRS</td>
+<td>the radio's own APRS-IS client (<code>core/net/aprsis.c</code>, section 7)</td>
+</tr>
+</tbody>
+</table></div>
+<p>A board without USB runs them over <abbr class="gl" tabindex="0" title="Point-to-point protocol: IP over a serial link." data-more="ppp.html">PPP</abbr> on its host port (<code>ppp.md</code>), with 3 TCP connections instead of 4
+(<code>TCP_CONNS</code> in <code>platform/hrc7000/config.mk</code>). On a flash-tight board they fit only with link time optimization (its
+default; <a href="../feature-matrix.html">feature-matrix.md</a>, &quot;Whole images&quot;). Which radios send and <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> <abbr class="gl" tabindex="0" title="Audio frequency shift keying: data as two audio tones on an FM carrier. APRS at 1200 baud uses it." data-more="../dev/glossary.html#t-afsk">AFSK</abbr>: <code>aprs.md</code> 1.</p>
+<h2 id="2-tcp">2. TCP</h2>
+<p><code>core/net/tcp.c</code>, no <abbr class="gl" tabindex="0" title="Real-time operating system: the scheduler that runs the firmware&#x27;s tasks." data-more="../dev/glossary.html#t-rtos">RTOS</abbr> calls: the host link task feeds it segments from the gateway (<code>ipGatewaySetTCP</code>) and calls
+<code>tcp_poll</code> on every pass in network mode (5 ms); segments go out through <code>ipGatewaySendLocal</code> to the host's MAC
+address, the host being the only neighbor and the router.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Connections</td>
+<td><code>TCP_CONNS</code> (4 by default) in all, TIME_WAIT included; 4 listening ports. A SYN takes a free slot, else the oldest TIME_WAIT, else the oldest FIN_WAIT_2 (reset)</td>
+</tr>
+<tr>
+<td>MSS</td>
+<td>536 (14 + 20 + 20 + 536 = 590 bytes, within the gateway's 600 byte frames); a smaller MSS option from the peer is honored</td>
+</tr>
+<tr>
+<td>Options</td>
+<td>MSS only (sent on SYN); no window scaling, SACK or timestamps</td>
+</tr>
+<tr>
+<td>Transmit</td>
+<td>one buffer per connection, 1072 bytes (two segments) from SND.UNA on; data is sent as soon as it is written (no Nagle: the services write whole messages)</td>
+</tr>
+<tr>
+<td>Receive</td>
+<td>in order only; a segment that doesn't start at RCV.NXT is dropped and answered with an <abbr class="gl" tabindex="0" title="Acknowledgment: the reply that says a message arrived." data-more="../dev/glossary.html#t-ack">ACK</abbr> for RCV.NXT; old data overlapping new data is trimmed. The window offered is what the service can take</td>
+</tr>
+<tr>
+<td>Retransmission</td>
+<td>RFC 6298 RTO, initial 1 s, minimum 200 ms (a USB round trip is about 1 ms), maximum 16 s, doubled per timeout; Karn's rule; after a timeout SND.NXT goes back to SND.UNA and one segment goes at a time until new data is acknowledged; an ACK up to the highest sequence number sent (SND.MAX) is accepted, so a peer that had it all doesn't get it twice; 7 retransmissions, then RST</td>
+</tr>
+<tr>
+<td>SYN</td>
+<td>ours: 4 retries (about 31 s); a peer's repeated SYN gets the same SYN-ACK again</td>
+</tr>
+<tr>
+<td>Zero window</td>
+<td>the persist timer probes with one byte, for as long as the peer answers</td>
+</tr>
+<tr>
+<td>Unknown port or connection</td>
+<td>RST (RFC 9293 3.10.7.1); a SYN while every slot is busy gets nothing (the client tries again a second later)</td>
+</tr>
+<tr>
+<td>RST / SYN on a connection</td>
+<td>RST only at exactly RCV.NXT, else a challenge ACK; a SYN gets a challenge ACK (RFC 5961)</td>
+</tr>
+<tr>
+<td>TIME_WAIT</td>
+<td>2 s; the oldest TIME_WAIT slot is reused for a new SYN; a new SYN on the same ports ends it</td>
+</tr>
+<tr>
+<td>FIN_WAIT_2</td>
+<td>10 s, then the slot is freed</td>
+</tr>
+<tr>
+<td>Keepalive</td>
+<td>after 60 s without a segment from the peer, a probe every 10 s (SND.NXT - 1); 4 unanswered and the connection is reset</td>
+</tr>
+<tr>
+<td>Link down</td>
+<td>every connection dropped without a segment</td>
+</tr>
+<tr>
+<td>Initial sequence numbers</td>
+<td>a salt from the radio's MAC address, the clock (250 per ms) and a counter</td>
+</tr>
+</tbody>
+</table></div>
+<p>Segments to the radio's address are taken from any source, not only the host: replies to the radio's own client
+connections come back through the host when it routes. The checksum is checked; bad segments are counted and dropped.</p>
+<p><abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">Debug link</abbr> view, section <code>net</code>: <code>tcp.open tcp.segs_in tcp.segs_out tcp.retransmits tcp.rst_out tcp.bad_checksum tcp.accepted tcp.refused tcp.no_slot tcp.timeouts net.link_up</code>, and the services' keys below.</p>
+<h2 id="3-the-tnc-pump">3. The TNC pump</h2>
+<p>The <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> engine has one output for the host: <abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="../user/22-glossary.html#t-kiss">KISS</abbr> frames in a ring (<code>aprs_host_output</code>: received packets on <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr>
+builds, SetHardware 'G' lines for APRS-IS), which the host link sends to the serial or <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr> port. While a <abbr class="gl" tabindex="0" title="Transmission Control Protocol: IP connections with ordered, guaranteed delivery." data-more="../dev/glossary.html#t-tcp">TCP</abbr> service
+takes it (<code>net_tnc_taken</code>: a KISS client is connected and the APRS KISS setting is on, or the APRS-IS client is
+logged in), <code>core/net/net.c</code> drains the ring instead, decodes it frame by frame and routes each frame: 'G' lines to
+APRS-IS when it is logged in, everything else to the KISS client. It pulls only while the receivers have room for a
+whole frame (every byte escaped), so nothing is dropped for want of TCP buffer; the ring holds the rest. The host link
+leaves the output alone meanwhile (<code>hostlink.c</code>).</p>
+<h2 id="4-kiss-over-tcp-port-8001">4. KISS over TCP (port 8001)</h2>
+<p>The de facto network <abbr class="gl" tabindex="0" title="Terminal node controller: the modem that turns packet data into audio tones and back." data-more="../dev/glossary.html#t-tnc">TNC</abbr> port of <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> programs (APRSdroid, Xastir, YAAC, Dire Wolf clients). The stream carries <abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="../user/22-glossary.html#t-kiss">KISS</abbr>
+frames as on the serial port (Chepponis and Karn, &quot;The KISS TNC&quot;, 1987; <a href="aprs.html">aprs.md</a> 9): FEND-delimited, FESC
+escapes, a type byte. Frames from the client go to the same handler as the serial port's (<code>aprs_host_kiss_frame</code>):
+port 0 data frames are checked by the APRS engine (our callsign as the source, the amateur frequency, the rate limit)
+and queued for <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr>; SetHardware 'G' and 'N' lines as on the serial port; TXDELAY and the other parameters are ignored.
+The client <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receives</abbr> the engine's output (section 3) exactly as the serial port would.</p>
+<ul>
+<li>One client at a time: a new connection replaces the old one (reset), so a client that vanished without closing
+doesn't hold the port.</li>
+<li>Needs the APRS KISS setting (Tools &gt; APRS &gt; KISS on USB), as on the serial port: without it the engine neither
+takes frames nor produces output.</li>
+<li>On a radio without an APRS receive path (<code>aprs.md</code> 1) only <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> works; a client sees no received packets.</li>
+<li>View keys (<code>net</code> section): <code>kiss.client kiss.conns kiss.frames_in kiss.frames_out kiss.dropped</code>.</li>
+</ul>
+<h2 id="5-http-status-server-port-80">5. HTTP status server (port 80)</h2>
+<p>HTTP/1.0 (RFC 1945): GET and HEAD, one request per connection, <code>Connection: close</code>, <code>Content-Length</code> always, no
+keep-alive or chunking (HTTP/1.1 clients accept a 1.0 answer). The request line may be 95 bytes long (else 414);
+header lines are skipped, except <code>Sec-WebSocket-Key</code> (any case) for <code>/ws</code>; a request not complete within 10 s is reset. Responses carry <code>Cache-Control: no-store</code> and
+<code>Access-Control-Allow-Origin: *</code> (a web page on the host may poll the radio).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/</code> and <code>/&lt;file&gt;</code></td>
+<td>the static files (below); <code>/</code> is <code>index.html</code>, the status as a table and the screen, refreshed every 3 s; with <code>CONFIG_NET_WEBCTL</code> the front panel page (5.1)</td>
+</tr>
+<tr>
+<td><code>/ws</code></td>
+<td>with <code>CONFIG_NET_WEBCTL</code>: the WebSocket upgrade (5.1); 400 without a valid key or for HEAD, 503 while another client has it</td>
+</tr>
+<tr>
+<td><code>/status</code></td>
+<td>JSON: <code>radio version uptime_s state</code> (idle / rx / tx / tx_denied) <code>vfo zone channel_number channel rx_hz tx_hz mode</code> (fm / dmr) <code>bw</code> (&quot;12.5&quot; / &quot;25&quot;) <code>power rssi_dbm squelch battery_pct battery_mv</code> (both left out on a radio without a battery) <code>hotspot</code>, on a <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> channel <code>dmr: {own_id cc ts target private heard}</code>, <code>tcp_open</code>, <code>led_green led_red</code> (the radio's LEDs), <code>backlight</code> (percent), <code>draws</code> (counts screen redraws: fetch the screen when it changes)</td>
+</tr>
+<tr>
+<td><code>/api/view</code></td>
+<td>JSON <code>{&quot;sections&quot;: [...]}</code>: the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>'s view section names (needs <code>CONFIG_DEBUGLINK</code>)</td>
+</tr>
+<tr>
+<td><code>/api/view?section=&lt;name or number&gt;</code></td>
+<td>the section's key=value lines as one flat JSON object; values that are decimal integers are numbers, the rest strings (hex values such as <code>net.host_ip</code> stay strings)</td>
+</tr>
+<tr>
+<td><code>/api/screen.bmp</code></td>
+<td>the frame buffer as a BMP, top-down (negative height), at the panel's depth: 1 bpp with two palette entries (the paper and ink of the UI gallery), 4 bpp with the 16-entry palette (<code>gfx_palette</code>), both the frame buffer's rows as they are; 16 bpp as BI_BITFIELDS (RGB565 masks). About 10 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> on a 160 x 128 4 bpp screen, 38 KB on 240 x 320, 1 KB on 128 x 64 1 bpp; UI redraws are held while it goes out (as the debug link's screenshot does), so it is one frame; the hold ends with the last byte, so a page that polls it does not slow the UI</td>
+</tr>
+<tr>
+<td><code>/api/aprsis</code></td>
+<td>the APRS-IS client's settings and state (section 7)</td>
+</tr>
+<tr>
+<td><code>/api/usb?mode=serial</code></td>
+<td>from the host only (else 403), over the USB network link only (else 400, as for any other query): a short HTML page that closes its tab, and 500 ms later the USB personality switches to serial (<code>hostlink_request_usb_network</code>, <code>usb-network.md</code> 1). For a web page that needs the serial port: it opens this in a tab, at 12.255.255.254 (the radio on this link, <code>usb-network.md</code> 1; every <abbr class="gl" tabindex="0" title="Transmission Control Protocol: IP connections with ordered, guaranteed delivery." data-more="../dev/glossary.html#t-tcp">TCP</abbr> service answers there too). HEAD answers and does not switch. A GET that changes state, because a page can only navigate to it: any page open in a browser on the host can send it too (an image, a no-cors fetch) and take the radio out of network mode until it restarts. Nothing else follows from it</td>
+</tr>
+<tr>
+<td>anything else</td>
+<td>404; another method 405; a malformed request line 400 (errors have an empty body)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Static files: every file in <code>core/net/http_assets/</code> (html, css, js, svg, ...: add one there and it is served at
+<code>/&lt;name&gt;</code>, the type from its extension) is put into a table at build time by <code>tools/gen_http_assets.py</code> (run by make
+into the build's <code>gen/http_assets_gen.h</code>: path, Content-Type, bytes, length, gzip flag). The script minifies each file
+first: comments and the whitespace between tags go, and so does the whitespace in CSS and scripts that the syntax
+doesn't need. Strings, templates and regular expressions are kept as they are, and names are not shortened (that
+would save about 9% of the page's script, at the cost of a node toolchain in the build). With <code>CONFIG_NET_HTTP_GZIP</code>
+(the default with <code>CONFIG_NET_HTTP</code>) the files are stored gzip compressed (level 9, mtime 0: the same bytes on every
+build machine) and served with <code>Content-Encoding: gzip</code>; off, stored and served as they are. A gzip response goes
+whatever the request's <code>Accept-Encoding</code> says: a request without the header accepts any coding (RFC 9110 12.5.3),
+every browser takes gzip, and keeping a plain copy too would cost the flash the compression saves; <code>curl</code> needs
+<code>--compressed</code>. <code>index.html</code> today: 498 bytes, 360 gzip compressed; the web control page (5.1) 19.7 KB, 6.9 KB
+minified and compressed. Host test: <code>httpAssetsTest</code> (the table, gzip and plain, and the web control set decompress to
+the minified sources; with node on the PATH, every minified script still parses), <code>netSvcTest</code> (the bytes and headers
+served).</p>
+<p>Bodies stream into TCP as its buffer frees up: the files from flash and the screen straight from the frame buffer;
+JSON is rendered once into a shared 1.5 KB buffer (a view section's text into its upper part, the JSON written from
+the start never overtakes it), and a second JSON request waits until the first response is all in TCP's buffer.</p>
+<p>View keys: <code>http.requests http.ok http.not_found http.bad http.busy_waits</code>.</p>
+<h3 id="51-web-control-ws">5.1 Web control (<code>/ws</code>)</h3>
+<p>With <code>CONFIG_NET_WEBCTL</code> the page at <code>/</code> is the radio's front panel: its drawing (the site's
+<code>site/static/img/radios/src/&lt;radio&gt;.svg</code>, served as <code>/radio.svg</code>) with the live screen in its display, the LEDs, and
+every key clickable. A mobile's hand microphone (<code>&lt;radio&gt;-mic.svg</code>, served as <code>/mic.svg</code>) is drawn below it, its keys
+clickable too. The knob carries two translucent halves that turn it one detent per click (holding repeats). Each key off
+the front face (side and top keys, marked <code>data-edge</code> in the drawing) also gets a labeled button outside the edge it
+is on, easier to hit than the key; buttons are sized in screen pixels, so they are the same on every radio. A
+drawing wider than tall (a mobile) takes the page's width, with its mic and the controls below it.
+Beside the drawing: the status (state, channel, frequency, signal, battery), a large PTT button, Listen with a volume
+slider, and buttons for the keys the drawings don't show. The page's files are in <code>core/net/webctl_assets/</code> and
+replace <code>core/net/http_assets/</code> files of the same name; <code>tools/gen_webctl_assets.py</code> writes <code>/keys.json</code> (each key's
+name and bit, from the board's <code>KEY_*</code> enum), <code>/radio.svg</code> and <code>/mic.svg</code>. A radio without a drawing gets its keys as
+buttons and the screen as an image. The screen comes over <code>/ws</code> as the rows that changed (below); a page that has
+only the status (another client holds <code>/ws</code>) fetches <code>/api/screen.bmp</code> when <code>draws</code> changes.</p>
+<p>The keyboard presses the same keys (the first of a row's names the radio has; a key held is held on the radio):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Keyboard</th>
+<th>Radio key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-9, <code>*</code>, <code>#</code></td>
+<td>the digit, star, hash (on a mobile, the hand mic's)</td>
+</tr>
+<tr>
+<td>arrows</td>
+<td>up, down; left / right, else P1 / P2 (<code>fn_left</code>, <code>fn_right</code>)</td>
+</tr>
+<tr>
+<td>Enter, M</td>
+<td>green, else MENU</td>
+</tr>
+<tr>
+<td>Esc, Backspace</td>
+<td>red, else BACK</td>
+</tr>
+<tr>
+<td>V, A</td>
+<td><abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr>/MR, A/B</td>
+</tr>
+<tr>
+<td>Space</td>
+<td>PTT, held while the key is</td>
+</tr>
+<tr>
+<td><code>[</code> <code>]</code>, Page Up / Down</td>
+<td>the encoder, one detent back / forward</td>
+</tr>
+</tbody>
+</table></div>
+<p>A focused key takes Enter and Space itself; clicks don't move the focus, so Space stays PTT. Each key's shortcuts are
+in its <code>aria-keyshortcuts</code> and tooltip, and the page lists them under the drawing.</p>
+<p><code>GET /ws</code> with <code>Upgrade: websocket</code> and a <code>Sec-WebSocket-Key</code> gets <code>HTTP/1.1 101</code> and the connection becomes a
+WebSocket (RFC 6455; the accept value from SHA-1 and base64, <code>ws.c</code>). One client at a time; the next one gets 503
+until it goes. The radio's rules:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Client frames</td>
+<td>masked, unfragmented, payload up to 125 bytes; else close 1002 (protocol) or 1009 (too big)</td>
+</tr>
+<tr>
+<td>Binary from the client</td>
+<td>close 1003 (nothing takes it yet)</td>
+</tr>
+<tr>
+<td>Close</td>
+<td>the client's close code is sent back, then the connection closes</td>
+</tr>
+<tr>
+<td>Ping</td>
+<td>one every 5 s; nothing from the client for 15 s and it is dropped</td>
+</tr>
+<tr>
+<td>Status</td>
+<td><code>/status</code>'s JSON as a text frame, rendered every 250 ms and sent when it changed</td>
+</tr>
+<tr>
+<td>Screen</td>
+<td>after <code>s1</code>: binary frames of the rows that changed, the first time every row (below). A row goes out when a redraw changed it and only between UI frames, so the copy is never half drawn; rows that don't fit TCP's buffer wait for the next poll</td>
+</tr>
+<tr>
+<td>Audio</td>
+<td>20 ms binary frames (<code>'A'</code>, a reserved 0, then 160 samples of 8 kHz PCM16 little-endian), while the client asked and the squelch is open; needs <code>CONFIG_NET_USRP</code> (the frames <abbr class="gl" tabindex="0" title="The UDP stream that carries a call&#x27;s audio between RadioFoundry and a network gateway." data-more="../dev/glossary.html#t-usrp">USRP</abbr> reads, <code>usb-audio.md</code>); a frame that doesn't fit in TCP's buffer is dropped. Not while <abbr class="gl" tabindex="0" title="Point-to-point protocol: IP over a serial link." data-more="ppp.html">PPP</abbr> carries the link: its 128 kbit/s doesn't fit a 115200 baud <abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="../dev/glossary.html#t-uart">UART</abbr> (<a href="ppp.html">ppp.md</a> 6), so the hello says <code>audio:false</code> and <code>a1</code> is refused; keys, status and the screen work as on USB</td>
+</tr>
+</tbody>
+</table></div>
+<p>The first frame is the hello:
+<code>{&quot;hello&quot;:1,&quot;control&quot;:true,&quot;audio&quot;:true,&quot;keys&quot;:[0,1,...],&quot;ptt&quot;:21,&quot;encoder&quot;:true,&quot;screen&quot;:[160,128,4,0,0,160,128]}</code>
+(the keymap's bits, the PTT key's bit or -1, whether the radio has an encoder). <code>screen</code> is the panel's width, height
+and bpp, then the visible part inside the insets: left, top, width, height. It is left out when the frame buffer
+can't be sent (as <code>/api/screen.bmp</code>'s 404) or a raw row doesn't fit a frame. Commands are text frames:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>d&lt;bit&gt;</code> / <code>u&lt;bit&gt;</code></td>
+<td>the key down / up, through the input task as an injected key (<code>input_inject_keys</code>): one key at a time, released after 10 s if no <code>u</code> comes</td>
+</tr>
+<tr>
+<td><code>d&lt;ptt bit&gt;</code></td>
+<td>PTT for 4 s; the page repeats it every 2 s while held. Released after 3 minutes whatever the page sends, and not keyed again until a <code>u</code></td>
+</tr>
+<tr>
+<td><code>e&lt;n&gt;</code></td>
+<td>n encoder detents, -127..127 (forward is positive)</td>
+</tr>
+<tr>
+<td><code>a1</code> / <code>a0</code></td>
+<td><abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> audio on / off</td>
+</tr>
+<tr>
+<td><code>s1</code> / <code>s0</code></td>
+<td>the screen on / off; <code>s1</code> sends every row again</td>
+</tr>
+</tbody>
+</table></div>
+<p>A screen frame is <code>'S'</code>, the palette's size n (2 at bpp 1, 16 at bpp 4, 0 at bpp 16), n RGB565 colors (<code>gfx_palette</code>,
+little-endian), then rows. The palette comes with every frame and applies to its rows, as the panel shows them. Each
+row is its y (u16 little-endian) and one of:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>y bit 15</th>
+<th>Row</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>set</td>
+<td>raw: the frame buffer's bytes for the row, <code>(width * bpp + 7) / 8</code> (leftmost pixel in the high bits; RGB565 little-endian at bpp 16)</td>
+</tr>
+<tr>
+<td>clear</td>
+<td>runs, left to right until the row is full: a byte whose high nibble c and low nibble i (the color index) mean c + 1 pixels of i, or for c = 15, 16 plus the next byte</td>
+</tr>
+</tbody>
+</table></div>
+<p>A row is sent raw when its runs would not be shorter, and always at bpp 16. The UI's screens are mostly long runs of
+one color: on the UI gallery a 240 x 320 bpp 4 screen is about 5 KB as runs against 38 KB as a BMP, 160 x 128 about
+2 KB against 10 KB. After the first frame a redraw sends only its rows (a signal bar, a clock digit).</p>
+<p>Keys, PTT and the encoder are taken only from the computer the radio is plugged into (<code>control:false</code> for a client
+beyond it, as <abbr class="gl" tabindex="0" title="Hamlib&#x27;s network rig control protocol, used by loggers and SDR programs." data-more="../user/22-glossary.html#t-rigctld">rigctld</abbr>'s PTT); audio and status go to any client. Everything the client holds is released when it
+closes, its TCP ends, or it is dropped. Unknown commands are counted and ignored.</p>
+<p>View keys: <code>webctl.client</code> (its TCP slot, -1 none) <code>webctl.control webctl.conns webctl.commands webctl.refused</code>
+(control from beyond the host, an unknown key) <code>webctl.busy</code> (another injected key held) <code>webctl.errors webctl.frames_out webctl.audio_out webctl.audio_dropped webctl.screen</code> (the client asked for it) <code>webctl.screen_out</code>
+(screen frames) <code>webctl.ptt webctl.ptt_downs</code>.</p>
+<h2 id="6-rigctld-port-4532">6. rigctld (port 4532)</h2>
+<p>Hamlib's network rig control protocol as the <abbr class="gl" tabindex="0" title="Hamlib&#x27;s network rig control protocol, used by loggers and SDR programs." data-more="../user/22-glossary.html#t-rigctld">rigctld</abbr>(1) and rigctl(1) manual pages describe it, so loggers, <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr>
+programs and satellite trackers can follow and set the radio (<code>rigctl -m 2 -r &lt;radio&gt;:4532</code>, or a program's &quot;Hamlib
+NET rigctl&quot; rig). One command per line (CR ignored), the short form or the backslash long name, arguments separated
+by spaces. A &quot;get&quot; answers its value lines; a &quot;set&quot; answers <code>RPRT 0</code>, an error <code>RPRT -&lt;Hamlib error&gt;</code> (1 invalid
+argument, 4 not implemented, 9 refused, 11 not available). A leading <code>+</code> (or <code>;</code> <code>|</code> <code>,</code>) asks for the extended answer:
+the command's long name with a colon, the values with their labels, then <code>RPRT</code>. A <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> argument right after the
+command (clients started with <code>--vfo</code>) is skipped. A line longer than 63 characters is answered -1 and not run.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Answer / action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>f</code> <code>\get_freq</code></td>
+<td>the <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> frequency in Hz; a frequency just set is reported until the radio shows it (at most 1 s)</td>
+</tr>
+<tr>
+<td><code>F</code> <code>\set_freq &lt;Hz&gt;</code></td>
+<td>the VFO to that frequency (simplex); on a channel the radio moves to the VFO first. Outside the board's bands -1, in <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> mode -9. Requests go at most every 20 ms: a burst of updates (Doppler tracking) ends at its latest value</td>
+</tr>
+<tr>
+<td><code>m</code> <code>\get_mode</code></td>
+<td><code>FM</code> and the passband, 12500 or 25000 (a <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> channel answers FM too: DMR is 4FSK on an FM carrier, and Hamlib has no DMR mode)</td>
+</tr>
+<tr>
+<td><code>M</code> <code>\set_mode FM|FMN &lt;passband&gt;</code></td>
+<td>FM on the channel (a DMR channel turns FM for now) and the bandwidth: 0 / -1 unchanged, up to 12500 narrow, above wide; FMN narrow. Other modes -1</td>
+</tr>
+<tr>
+<td><code>t</code> <code>\get_ptt</code>, <code>T</code> <code>\set_ptt 0-3</code></td>
+<td>PTT; keyed only from the computer the radio is plugged into (else -9), at most 3 minutes per keying (the radio's own <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> time-out may end it sooner), again only 1 s after a release (else -9), released when the connection ends</td>
+</tr>
+<tr>
+<td><code>\get_dcd</code></td>
+<td>1 while the squelch is open</td>
+</tr>
+<tr>
+<td><code>l STRENGTH</code></td>
+<td>dB over S9, S9 = -93 dBm (IARU <abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="../user/22-glossary.html#t-vhf">VHF</abbr> / <abbr class="gl" tabindex="0" title="Ultra high frequency: 300 MHz to 3 GHz. The amateur 70 cm band is UHF." data-more="../user/22-glossary.html#t-uhf">UHF</abbr>); <code>l RFPOWER</code> 0.00-1.00 from the power level; other levels -11</td>
+</tr>
+<tr>
+<td><code>v</code>, <code>V VFOA</code></td>
+<td><code>VFOA</code>; <code>V</code> takes VFOA, currVFO, VFO, Main</td>
+</tr>
+<tr>
+<td><code>s</code>, <code>S 0</code>, <code>i</code></td>
+<td>no split (<code>0</code>, <code>VFOA</code>); <code>i</code> the transmit frequency</td>
+</tr>
+<tr>
+<td><code>_</code> <code>\get_info</code></td>
+<td><code>RadioFoundry &lt;radio&gt;</code></td>
+</tr>
+<tr>
+<td><code>\chk_vfo</code></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>\get_powerstat</code></td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>\dump_state</code></td>
+<td>a minimal protocol 0 state: model 2, ITU region 2, the board's bands as receive ranges (FM, 0x20) and its transmit bands, FM tuning steps and filters, no RIT / XIT / preamp / attenuator, <code>STRENGTH</code> as the only level</td>
+</tr>
+<tr>
+<td><code>q</code> <code>Q</code> <code>\quit</code></td>
+<td>closes the connection</td>
+</tr>
+<tr>
+<td>anything else</td>
+<td><code>RPRT -4</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><code>\dump_state</code> is written from the manual's description and the line layout clients are known to parse; the <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> test
+checks it with Hamlib's own <code>rigctl -m 2</code> where it is installed.</p>
+<p>View keys: <code>rigctl.conns rigctl.commands rigctl.errors rigctl.freq_sets rigctl.ptt rigctl.ptt_downs</code>.</p>
+<h2 id="7-aprs-is-client">7. APRS-IS client</h2>
+<p>The radio connects to an APRS-IS server itself, out through the host, instead of the host helper
+<code>tools/aprs_gate.py</code> doing it over USB (aprs-is.net &quot;Connecting to APRS-IS&quot;, &quot;IGate Design&quot;). It carries lines only;
+the <abbr class="gl" tabindex="0" title="A station that passes APRS packets between the air and the APRS-IS internet network." data-more="../user/22-glossary.html#t-igate">iGate</abbr> rules stay in the <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> engine (<a href="aprs.html">aprs.md</a> 9.1).</p>
+<ul>
+<li>Off until a server address is set (settings <code>aprsis_ip</code>, <code>aprsis_port</code> 0 = 14580, <code>aprsis_range_km</code>) and the APRS
+callsign is. IPv4 addresses only: no DNS client (pick a server's address, e.g. <code>dig +short rotate.aprs2.net</code>, or run
+a local aprsc / aprs_gate-like relay on the host).</li>
+<li>Set over HTTP from the host only (a request from beyond the host gets 403): <code>GET /api/aprsis?server=a.b.c.d[:port]</code>
+(<code>off</code> clears it), <code>&amp;range=&lt;km&gt;</code>; <code>GET /api/aprsis</code> alone answers the state as JSON (<code>state server range_km call connects logins unverified lines_out lines_in</code>).</li>
+<li>Login: <code>user &lt;CALL-SSID&gt; pass &lt;passcode&gt; vers RadioFoundry &lt;version&gt;[ filter m/&lt;km&gt;]</code>, the passcode computed
+from the callsign by the published 15-bit hash (<code>aprsis_passcode</code>, the same as <code>tools/aprs_gate.py</code>). Online once
+the server's <code># logresp ... verified</code> line comes; an &quot;unverified&quot; answer drops the connection and waits 5 minutes.</li>
+<li>Online, the <abbr class="gl" tabindex="0" title="Terminal node controller: the modem that turns packet data into audio tones and back." data-more="../dev/glossary.html#t-tnc">TNC</abbr> pump (section 3) sends it the engine's SetHardware 'G' lines with CR LF: our beacons, status and
+messages as <code>CALL&gt;APRDF?,TCPIP*:...</code> when the APRS settings &quot;<abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="../user/22-glossary.html#t-kiss">KISS</abbr> on USB&quot; and &quot;to APRS-IS&quot; (<code>to_is</code>) are on, and on
+<abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> builds the <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> packets the iGate passes. Server lines that aren't comments go to the engine
+(<code>aprs_host_is_line</code>), whose IS -&gt; RF rules decide (iGate builds; elsewhere they are dropped).</li>
+<li>Reconnects 30 s after a failure, doubling up to 5 minutes; a server silent for 2 minutes (servers comment every
+20 s) or no logresp within 30 s is dropped; a settings or callsign change reconnects at once.</li>
+<li>View keys: <code>aprsis.state aprsis.server aprsis.connects aprsis.logins aprsis.unverified aprsis.lines_out aprsis.lines_in aprsis.drops</code>.</li>
+</ul>
+<h3 id="71-routing-through-the-host">7.1 Routing through the host</h3>
+<p>The radio's address (12.x.y.z, the host's xor 1) is only known to the host, which must forward and NAT it. With
+<code>RADIO=12.0.39.20</code> (the radio's address) and the host's Internet interface <code>en0</code> / <code>eth0</code>:</p>
+<pre><code># macOS
+sudo sysctl -w net.inet.ip.forwarding=1
+echo &quot;nat on en0 from $RADIO to any -&gt; (en0)&quot; | sudo pfctl -ef -
+
+# Linux (usb0: the radio's interface)
+sudo sysctl -w net.ipv4.ip_forward=1
+sudo iptables -t nat -A POSTROUTING -s $RADIO/32 -o eth0 -j MASQUERADE
+sudo iptables -A FORWARD -i usb0 -o eth0 -j ACCEPT
+sudo iptables -A FORWARD -i eth0 -o usb0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+</code></pre>
+<p>The replies come back translated to the radio's address and reach it over the host route the radio's <abbr class="gl" tabindex="0" title="Dynamic Host Configuration Protocol: how a device gets its IP address on a network." data-more="../dev/glossary.html#t-dhcp">DHCP</abbr> gave
+(option 121). A server address inside 12.0.0.0/8 can't be used (the host routes that range to the radio).</p>
+<h2 id="8-changes-in-the-ip-gateway">8. Changes in the IP gateway</h2>
+<p><code>core/dmr/ipGateway.{c,h}</code>: <abbr class="gl" tabindex="0" title="Transmission Control Protocol: IP connections with ordered, guaranteed delivery." data-more="../dev/glossary.html#t-tcp">TCP</abbr> (protocol 6) to the radio's own address goes to the function set with
+<code>ipGatewaySetTCP</code> (NULL by default: dropped, as before), from any source and before the &quot;only what the host itself
+sends&quot; check; any other TCP is dropped and never goes over the air. <code>ipGatewayLocalPayload</code> / <code>ipGatewaySendLocal</code>
+send a packet from the radio's address to any destination through the host's MAC address. The TCP's glue
+(<code>core/net/net.c</code>) waits up to 20 ms for a busy USB IN endpoint before giving a segment up to the retransmission timer.</p>
+<h2 id="9-tests">9. Tests</h2>
+<ul>
+<li>Host: <code>tests/host/tcpTest.c</code>, the <abbr class="gl" tabindex="0" title="Transmission Control Protocol: IP connections with ordered, guaranteed delivery." data-more="../dev/glossary.html#t-tcp">TCP</abbr> against a scripted peer: handshakes both ways, data within the window and the
+MSS, retransmission with backoff, a zero window probed, in-order <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> with trimming, RST for unknown ports,
+RFC 5961 challenge ACKs, closes from either side (simultaneous too), TIME_WAIT reuse, slot exhaustion, keepalive, a
+lost SYN-ACK, a busy IP layer. Every segment goes to <code>tcpTest.pcap</code>, which tshark checks for malformed segments and
+bad checksums. <code>tests/host/hostlinkNetTest.c</code>: TCP through the gateway (RST from the radio's address, a source
+beyond the host, no TCP to the air, the link going down). <code>tests/host/netSvcTest.c</code> (+ <code>netSvcCases.c</code>): the
+services through the real gateway and TCP against a scripted TCP peer, with fakes for the <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> engine and the radio
+core; <abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="../user/22-glossary.html#t-kiss">KISS</abbr>: frames both ways with escapes and split segments, bulk output paced by the client's ACKs, a second
+client replacing the first, the KISS setting off, the client closing. HTTP: the page, HEAD, the status JSON with an
+escaped name, view sections as JSON (numbers, strings, escapes, by name and number, the list, unknown), the screen
+BMP against the frame buffer, 405 / 404 / 400 / 414, a client sending a byte at a time, two JSON requests at once
+(the second waits for the buffer), the 10 s request timeout. Web control: the handshake, the hello, status sent on change, 503 for a second
+client, 400 without a key, keys down and up (busy, refused from beyond the host), the encoder, PTT repeats and the 3
+minute release, pings, the 15 s drop with keys released, audio frames only when asked and the squelch is open, the
+screen at bpp 4 and 1 (every row after <code>s1</code> over more than one frame, runs and raw rows decoded against the frame
+buffer, then only a changed row, nothing during a frame, nothing after <code>s0</code>), the close code echoed, an unmasked frame (1002); <code>wsTest.c</code> checks SHA-1, base64 and frame headers against FIPS 180 and
+RFC 6455. <abbr class="gl" tabindex="0" title="Hamlib&#x27;s network rig control protocol, used by loggers and SDR programs." data-more="../user/22-glossary.html#t-rigctld">rigctld</abbr>: get / set frequency (the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> move, the read
+back before the radio shows it, the request gap, out of band), mode, PTT (the rate limit, the 3 minute limit, the
+release on disconnect, refused from beyond the host), levels, VFO, split, info, chk_vfo, dump_state, extended
+answers, unknown commands, quit. APRS-IS: the passcode, off without a server, settings over HTTP (403 from beyond
+the host, 400 for a bad address), the login line, logresp verified / unverified and the waits, the engine's 'G'
+lines to the server and nothing else, server lines to the engine without comments, a silent server dropped and
+tried again, a callsign change, turned off. <code>netSvcTest.pcap</code> is checked by tshark.</li>
+<li><abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr>: <code>tests/hil/test_tcp_services.py</code> (opt-in, below).</li>
+<li>The host OS stack is the other end in the HIL tests (curl, nc); a tap / utun test on the host would need root and
+is not done.</li>
+</ul>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/tcp-services.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#1-switches">1. Switches</a></li><li class="l2"><a href="#2-tcp">2. TCP</a></li><li class="l2"><a href="#3-the-tnc-pump">3. The TNC pump</a></li><li class="l2"><a href="#4-kiss-over-tcp-port-8001">4. KISS over TCP (port 8001)</a></li><li class="l2"><a href="#5-http-status-server-port-80">5. HTTP status server (port 80)</a></li><li class="l3"><a href="#51-web-control-ws">5.1 Web control (/ws)</a></li><li class="l2"><a href="#6-rigctld-port-4532">6. rigctld (port 4532)</a></li><li class="l2"><a href="#7-aprs-is-client">7. APRS-IS client</a></li><li class="l3"><a href="#71-routing-through-the-host">7.1 Routing through the host</a></li><li class="l2"><a href="#8-changes-in-the-ip-gateway">8. Changes in the IP gateway</a></li><li class="l2"><a href="#9-tests">9. Tests</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>为电台编程 · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="为电台编程 · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/user/04-programming.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/user/04-programming.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/user/04-programming.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/user/04-programming.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/user/04-programming.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/user/04-programming.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/user/04-programming.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/user/04-programming.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/user/04-programming.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/user/04-programming.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="用户手册">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 用户手册</p>
+		<ul><li><a href="index.html">RadioFoundry 用户手册</a></li><li><a href="01-introduction.html">简介</a></li><li><a href="02-installing.html">安装</a></li><li><a href="03-first-boot.html">首次启动</a></li><li><a href="04-programming.html" aria-current="page">为电台编程</a></li><li><a href="05-keys-and-navigation.html">按键与导航</a></li><li><a href="06-home-screen.html">主屏幕</a></li><li><a href="07-channels-zones-vfo.html">信道、区域与 VFO</a></li><li><a href="08-fm.html">FM</a></li><li><a href="09-dmr.html">DMR</a></li><li><a href="10-messages-and-signaling.html">消息、呼叫提示与电台检查</a></li><li><a href="11-emergency.html">紧急</a></li><li><a href="12-scan.html">扫描与双守候</a></li><li><a href="13-aprs.html">APRS</a></li><li><a href="14-hotspot.html">热点模式</a></li><li><a href="15-usb-network.html">USB 网络模式</a></li><li><a href="16-battery-and-power.html">电池与供电</a></li><li><a href="17-settings.html">设置</a></li><li><a href="18-moving-from-stock-md380.html">从原厂 MD-380 固件迁移</a></li><li><a href="19-moving-from-stock-dm32.html">从原厂 DM-32UV 固件迁移</a></li><li><a href="20-troubleshooting.html">故障排查</a></li><li><a href="21-faq.html">常见问题</a></li><li><a href="22-glossary.html">术语表</a></li><li><a href="23-radios.html">电台参考</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<h1 id="programming-the-radio">为电台编程</h1>
+<p>电台频率保存信道、区域、联系人、接收组列表、<abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr> 数据库和你的 DMR ID。请在项目网站 <a href="https://radiofoundry.org/codeplug/index.html">radiofoundry.org</a> 上用<strong>电台频率编辑器</strong>编辑它。它运行在基于 Chromium 的浏览器（Chrome、Edge、Opera）中，无需安装任何东西，并可通过 USB 或编程线与每款 RadioFoundry 电台配合使用。免费电台频率编辑器 <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr> 是另一种选择。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>程序</th>
+<th>运行于</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>电台频率编辑器</td>
+<td>浏览器中</td>
+<td>本页的全部内容。推荐方式</td>
+</tr>
+<tr>
+<td><a href="https://github.com/hmatuschek/qdmr">qdmr</a></td>
+<td>Windows、macOS、Linux</td>
+<td>你已有的 qdmr 电台频率，以及脚本化操作。需要 qdmr 驱动能访问的电台（<a href="#programming-with-qdmr">qdmr</a>）</td>
+</tr>
+<tr>
+<td><code>tools/cps_client.py</code> 与 TFTP</td>
+<td>终端</td>
+<td>原始备份与脚本（<a href="#backups">备份</a>）</td>
+</tr>
+</tbody>
+</table></div>
+<p>它们都使用相同的电台频率格式和电台自带的电台频率接口，因此一个程序写入的电台频率可被其他程序读回。各电台的接线方式见<a href="23-radios.html#programming">电台参考</a>。</p>
+<h2 id="the-codeplug-editor">电台频率编辑器</h2>
+<p>在站点菜单中选择<strong>电台频率编辑器</strong>。它从浏览器读写电台。不会向服务器发送任何内容：文件、电台频率和你的 <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">RadioID</abbr> API 密钥都留在你的电脑上。</p>
+<h3 id="reading-and-writing-the-radio">读取和写入电台</h3>
+<ol>
+<li>在 RadioFoundry 运行时打开电台并连接：有 USB 的电台用 USB 线，否则用编程线。电台必须处于 USB 串口模式，而不是 USB 网络模式。</li>
+<li>选择<strong>从电台读取</strong>。浏览器会列出电台的 USB 口和所有编程线；选择电台的那个。编辑器会从端口判断是哪一个。
+当读取电台的 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> ID 数据库需要 20 秒或更久时（通过编程线传输数兆字节），编辑器会先说明所需时间，并询问是否也读取它。除非你要编辑该数据库或将其保存在文件中，否则跳过：写入时会保持电台的数据库不变。<strong>DMR ID 数据库</strong>标签页可稍后读取。</li>
+<li>编辑电台频率。</li>
+<li>选择<strong>写入电台</strong>。编辑器会比较电台频率与电台中的内容，只写入发生变化的字节。它显示字节数和大致耗时，然后写入并校验。电台无需重启即可载入新的电台频率。</li>
+</ol>
+<p>读取后，编辑器会提示该电台是否有更新的 RadioFoundry 发行版，以及它在读写方面新增了什么（更快的传输、紧凑 ID 数据库）。<strong>更新固件</strong>会在新标签页中打开<a href="02-installing.html#updating-radiofoundry">网页安装器的“更新”</a>，并释放电台端口，以便安装器连接。更新期间，电台频率和设置保留在电台上。</p>
+<h3 id="programming-several-radios">为多台电台编程</h3>
+<p>要把同一份电台频率写入多台电台，请依次写入每一台。每次写入前，编辑器会检查连接的是哪台电台。在编程线上换台后，会先重新读取，再写入，因此写入是与该电台的电台频率比较，而不是上一台的。</p>
+<p>当电台的名称、DMR ID 和启动文字与文件不同时，写入对话框会提供<strong>保留此电台的名称、DMR ID 和启动文字</strong>。开启后，每台电台保留自己的这些信息，其余内容取自文件。编辑器会为下一台电台记住该选择。</p>
+<p>对刚从原厂固件来的电台首次写入时，可能会要求<strong>准备电台</strong>。原厂固件的数据仍在 RadioFoundry 保存设置的区域中，在该区域被擦除之前，电台无法保存电台频率，也无法在关机后保留设置。<a href="02-installing.html">网页安装器</a>在安装 RadioFoundry 时所做的备份之后会自动完成此操作。备份中保存有该数据的副本。校准不会被触碰。</p>
+<p>内存芯片太小、放不下 RadioFoundry 设置区域的电台根本无法保存电台频率。编辑器会说明这一点，而不是去读取它（<a href="23-radios.html">电台</a>列出了可能发生这种情况的型号）。</p>
+<p>当<strong>问题</strong>标签页列出错误时（例如名称过长或频率无效），“写入电台”会被阻止。警告（例如频率超出电台频段，或 DMR 信道没有发射联系人）不会阻止写入。</p>
+<p>浏览器无法访问处于 USB 网络模式的电台。此时选择<strong>保存 &gt; 用于 USB 网络</strong>，并通过 <abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="../spec/tftp.html">TFTP</abbr> 发送文件（<a href="15-usb-network.html#programming-over-the-network">USB 网络</a>）。</p>
+<h3 id="editing">编辑</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>标签页</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>电台</td>
+<td>DMR ID、电台名（呼号）、启动文字、组呼和私密呼叫挂机时间</td>
+</tr>
+<tr>
+<td>信道</td>
+<td>所有信道。铅笔按钮打开完整表单：FM、DMR、扫描与功率、位置、单频中继</td>
+</tr>
+<tr>
+<td>区域</td>
+<td>区域及其信道</td>
+</tr>
+<tr>
+<td>联系人</td>
+<td>通话组和私密呼叫联系人</td>
+</tr>
+<tr>
+<td>接收组列表</td>
+<td>每个信道收听的通话组</td>
+</tr>
+<tr>
+<td>DTMF 联系人、APRS</td>
+<td><abbr class="gl" tabindex="0" title="Dual tone multi frequency: the touch tones a keypad sends, in the audio." data-more="22-glossary.html#t-dtmf">DTMF</abbr> 联系人和 <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr> 配置</td>
+</tr>
+<tr>
+<td>DMR ID 数据库</td>
+<td>不是联系人的 DMR ID 的名称，由 RadioID.net 构建（<a href="#dmr-id-database-and-contacts-from-radioidnet">见下</a>）</td>
+</tr>
+<tr>
+<td>问题</td>
+<td>错误和警告，每项都带指向该记录的链接</td>
+</tr>
+</tbody>
+</table></div>
+<p>在表格中，双击单元格或直接输入即可就地编辑。点击列标题排序，在筛选中输入以缩小行范围。勾选行并选择<strong>批量编辑</strong>可一次设置某个字段（区域和接收列表除外，其成员在各自的对话框中编辑）。<strong>撤销</strong>和<strong>重做</strong>覆盖所有更改，包括导入。</p>
+<p>页面会把工作用的电台频率保存在浏览器中，因此关闭或刷新页面不会丢失编辑。<strong>新建</strong>会重新开始。</p>
+<h3 id="digital-modes-and-systems">文件</h3>
+<p><strong>打开文件</strong>接受：</p>
+<ul>
+<li>由编辑器、<code>tools/cps_client.py read</code> 或 TFTP 读取保存的电台频率文件（<code>.bin</code>）；</li>
+<li>网页安装器的备份（<code>.zip</code>）；</li>
+<li><abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr> 电台频率（<code>.yaml</code>）；</li>
+<li><abbr class="gl" tabindex="0" title="Comma separated values: a table as plain text, as programming software exports it." data-more="22-glossary.html#t-csv">CSV</abbr> 文件，每个文件一张表，或它们的 <code>.zip</code>；</li>
+<li>原厂固件的电台频率，前提是编辑器能读取该电台的格式：安装器备份中的、电台数据闪存转储中的，或厂商 <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="04-programming.html">CPS</abbr> 文件。<a href="23-radios.html#codeplug-files-from-the-original-firmware">电台参考</a>列出了这些。</li>
+</ul>
+<p>安装 RadioFoundry 时所做的备份仍保留原厂固件的电台频率，因为 RadioFoundry 将自己的电台频率保存在不同的布局中。编辑器能识别该电台频率并转换它：信道、区域、联系人、接收组列表、DMR ID、电台名和启动文字。之后它会列出省略的内容，例如扫描列表和被缩短的名称。带有 A、B 两个列表的区域会变成两个区域，“名称 A”和“名称 B”。写入电台前请检查结果。在你写入之前，电台上的电台频率保持原样。编辑器暂时无法打开的 CPS 文件可先用 qdmr 转换（<code>dmrconf decode</code>），再作为 <abbr class="gl" tabindex="0" title="A text file format. qdmr stores its codeplug as YAML." data-more="22-glossary.html#t-yaml">YAML</abbr> 打开。</p>
+<p><strong>保存</strong>会写入电台频率文件、qdmr 电台频率（<code>.yaml</code>）、当前表格的 CSV、所有表格的 CSV <code>.zip</code>，或用于 USB 网络模式的 <code>codeplug.bin</code>。</p>
+<p>CSV 文件有带列名的表头行，并通过名称引用其他记录（信道的发射联系人、区域的信道）。先保存一张表以查看列。导入时先按编号、再按名称匹配现有记录。文件可以只包含部分列；其他列保持原值。文件中缺失的记录会被移除。编辑器无法接受的值会在导入后按行和列列出。</p>
+<p>qdmr 文件会一次性替换信道、区域、联系人、DTMF 联系人、接收组列表、APRS 配置和电台标签页的设置，因此一次<strong>撤销</strong>即可还原。<abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr> 和 DMR ID 数据库保持不变。之后编辑器会列出更改或省略的内容，例如扫描列表、加密密钥和被缩短的名称。保存为 qdmr YAML 时会列出 qdmr 格式无法保存的内容：<abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="../spec/sfr.html">SFR</abbr> 设置、qdmr 没有名称的功率级别，以及位置——位置会被舍入为 6 字符网格定位（约 5 公里）。工具页也可在 qdmr YAML 与电台频率文件之间转换，并将原厂固件电台频率转换为任一格式。</p>
+<h3 id="p25-and-nxdn">DMR ID 数据库与来自 RadioID.net 的联系人</h3>
+<p><strong>DMR ID 数据库</strong>标签页会从 RadioID.net 注册用户中构建数据库或私密呼叫联系人。它从以下任一来源获取用户：</p>
+<ul>
+<li><strong>RadioID 用户文件</strong>：从 RadioID.net 下载 <code>user.csv</code> 并打开。任何地区、任何大小。</li>
+<li><strong>从 RadioID.net 获取</strong>：直接获取几个州或一个小国家的用户。RadioID.net 每次请求返回 200 个用户，因此适合最多几千个用户。你自己的 RadioID API 密钥是可选的。页面把它保存在此浏览器中，仅发送给 RadioID.net。在 RadioID.net 允许来自本站的请求之前，请求会经过一个公共中继服务；密钥绝不会经过它。</li>
+</ul>
+<p>然后选择：</p>
+<ul>
+<li>地区（国家，以及州或省）；</li>
+<li>呼号前缀和 DMR ID 范围；</li>
+<li>每条记录显示的文本，由呼号、姓名、城市和州等字段构成；</li>
+<li>文本长度（16 到 48 个字符）。</li>
+</ul>
+<p>页面会预览记录，并显示数据库大小与电台剩余空间。<strong>写入 ID 数据库</strong>会把它放入电台频率；随后<strong>写入电台</strong>发送它。<strong>添加为联系人</strong>则把用户添加为私密呼叫联系人，跳过已是联系人的 ID。编辑器会在浏览器中记住这些选择。</p>
+<p>联系人只保留你要呼叫的：你的通话组和少数几个私密呼叫对象。电台频率最多保存 1024 个联系人，每个都是“联系人”和通话目标选择器中的一行。其他人都交给 ID 数据库命名：不是联系人的呼叫者会显示数据库中其 ID 对应的名称。</p>
+<p>当前固件读取<strong>紧凑数据库</strong>，大小约为一半，因此同样空间可容纳约两倍的名字。从 RadioID.net 刷新后，写入只发送变化的部分。编辑器在写入时选择格式：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>电台</th>
+<th>编辑器的做法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>读取紧凑格式</td>
+<td>写入它。旧格式的数据库（从电台或旧文件读取）会提示转换：一次完整写入，之后为较小的写入。拒绝后，12 小时后会再次提示</td>
+</tr>
+<tr>
+<td>运行较旧固件</td>
+<td>写入旧格式。如果名称放不下，会说明省略了多少。更新固件可腾出空间</td>
+</tr>
+<tr>
+<td>在紧凑数据库上刷入旧固件</td>
+<td>电台不显示任何名称（绝不会显示错误的名称）。编辑器下次向电台写入时，会以旧格式重新写入数据库</td>
+</tr>
+</tbody>
+</table></div>
+<p>TFTP（USB 网络模式）和其他 CPS 程序使用旧格式。</p>
+<h2 id="files">电台从电台频率中使用什么</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>RadioFoundry 使用的字段</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>常规设置</td>
+<td>你的 <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr>。呼号（电台名，8 个字符，作为通话者别名发送）。组呼和私密呼叫的挂机时间（回复窗口）</td>
+</tr>
+<tr>
+<td>信道（最多 1024 个）</td>
+<td>名称、接收和发射频率、模式（FM 或 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr>）、带宽、收发亚音、功率、仅接收、色码、时隙、通话目标联系人、接收组列表（收听列表）、每信道 DMR ID、强制直通模式、发射超时（电台默认：电台自身的设置，<a href="08-fm.html#transmit-timeout">发射超时</a>）、通话者别名、区域扫描跳过、允许 <abbr class="gl" tabindex="0" title="Voice-operated transmit." data-more="22-glossary.html#t-vox">VOX</abbr>、无提示音、无省电</td>
+</tr>
+<tr>
+<td>区域</td>
+<td>名称和信道列表。没有区域时，电台显示一个包含所有信道的区域</td>
+</tr>
+<tr>
+<td>联系人（最多 1024 个）</td>
+<td>名称、DMR ID 或通话组、私密或组呼、时隙覆盖</td>
+</tr>
+<tr>
+<td>接收组列表</td>
+<td>每个信道收听的通话组</td>
+</tr>
+<tr>
+<td>集群系统（最多 8 个）</td>
+<td><strong>系统</strong>选项卡的所有字段，以及哪些信道是集群信道</td>
+</tr>
+<tr>
+<td>DMR ID 数据库</td>
+<td>不是联系人的 DMR ID 的名称，显示在接收屏幕上</td>
+</tr>
+<tr>
+<td>VFO A</td>
+<td><abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr> 的频率和设置，下次重启后读取</td>
+</tr>
+<tr>
+<td>启动文字</td>
+<td>启动画面上的两行</td>
+</tr>
+</tbody>
+</table></div>
+<p>电台保持电台频率的其他部分不变（启动图像、<abbr class="gl" tabindex="0" title="Dual tone multi frequency: the touch tones a keypad sends, in the audio." data-more="22-glossary.html#t-dtmf">DTMF</abbr> 联系人等），因此编辑器和 <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr> 能读回它们写入的内容，但 RadioFoundry 不会对这些部分起作用。</p>
+<p>在电台上所做的更改（长按 <strong>OK</strong> 保存的信道、永久通话目标）会写入同一份电台频率，因此下次读取时可见。</p>
+<p>电台频率目前还不能设置：</p>
+<ul>
+<li>加密密钥（<a href="09-dmr.html#privacy">DMR</a>）。</li>
+<li>RadioFoundry 自身的设置（<a href="17-settings.html">设置</a>）：它们与电台频率分开保存。电台频率中的快捷键分配会被忽略。</li>
+<li>紧急、<abbr class="gl" tabindex="0" title="Automatic Registration Service: a radio tells a presence server it is on the air." data-more="22-glossary.html#t-ars">ARS</abbr> 和文本消息格式。</li>
+<li>qdmr 中的 <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="../spec/sfr.html">SFR</abbr> 设置。电台频率编辑器会在每个信道上设置它们。</li>
+</ul>
+<h2 id="dmr-id-database-and-contacts-from-radioidnet">用 qdmr 编程</h2>
+<p>电台通过兼容层使用 <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr> 开源固件驱动的协议，并以 qdmr 写入的布局保存电台频率。</p>
+<ol>
+<li>正常开机并连接 USB 线。电台会显示为一个 USB 串口。</li>
+<li>在 qdmr 中从电台读取电台频率。qdmr 通过 RadioFoundry 报告的电台类型来识别电台。<a href="23-radios.html#programming">电台参考</a>列出了每款电台的类型和 qdmr 驱动。</li>
+<li>编辑电台频率并写入电台。</li>
+<li>写入后，电台重启并使用新的电台频率。</li>
+</ol>
+<p>电台在传输期间保持自己的屏幕。电台频率所在位置无法被 qdmr 驱动写入、或没有 USB 口的电台需要其他途径。<a href="23-radios.html#programming">电台参考</a>会说明是哪种。</p>
+<h2 id="what-the-radio-uses-from-the-codeplug">备份</h2>
+<p>更改前先读取并保存电台频率：编辑器中的<strong>保存 &gt; 电台频率文件（.bin）</strong>，或在 <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr> 中保存。原始备份也可以：通过串口执行 <code>tools/cps_client.py read backup.bin</code> 和 <code>tools/cps_client.py write backup.bin</code>，或在 USB 网络模式下使用 <abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="../spec/tftp.html">TFTP</abbr>（<a href="15-usb-network.html#programming-over-the-network">USB 网络</a>）。</p>
+<p>安装时迁移原厂电台频率，见<a href="index.html#moving-from-the-stock-firmware">从原厂固件迁移</a>。</p>
+<h2 id="programming-with-qdmr">限制与说明</h2>
+<ul>
+<li>当电台的设置区域保存着其他固件的数据时，写入会被拒绝。见<a href="20-troubleshooting.html#settings-are-not-kept">故障排查</a>中的“设置未保存”。</li>
+<li>校准区域只接受写入其自身的字节。不要用 <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="04-programming.html">CPS</abbr> 编辑校准。</li>
+</ul>
+
+		<nav class="prev-next"><a class="prev" href="03-first-boot.html">首次启动</a><a class="next" href="05-keys-and-navigation.html">按键与导航</a></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/user/04-programming.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#the-codeplug-editor">电台频率编辑器</a></li><li class="l3"><a href="#reading-and-writing-the-radio">读取和写入电台</a></li><li class="l3"><a href="#programming-several-radios">为多台电台编程</a></li><li class="l3"><a href="#editing">编辑</a></li><li class="l3"><a href="#digital-modes-and-systems">文件</a></li><li class="l3"><a href="#p25-and-nxdn">DMR ID 数据库与来自 RadioID.net 的联系人</a></li><li class="l2"><a href="#files">电台从电台频率中使用什么</a></li><li class="l2"><a href="#dmr-id-database-and-contacts-from-radioidnet">用 qdmr 编程</a></li><li class="l2"><a href="#what-the-radio-uses-from-the-codeplug">备份</a></li><li class="l2"><a href="#programming-with-qdmr">限制与说明</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

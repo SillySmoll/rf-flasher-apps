@@ -1,0 +1,353 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CPS protocol · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="CPS protocol · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/docs/spec/cps-protocol.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/cps-protocol.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/cps-protocol.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/cps-protocol.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/cps-protocol.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/cps-protocol.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../es/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../../es/radios/index.html">Radios</a><a href="../../../es/features/index.html">Funciones</a><a href="../../../es/flash/index.html">Instalar</a><a href="../../../es/codeplug/index.html">Codeplug</a><a href="../../../es/docs/index.html" aria-current="page">Documentación</a><a href="../../../es/screenshots/index.html">Capturas</a><a href="../../../es/tools/index.html">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../../docs/spec/cps-protocol.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/cps-protocol.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/cps-protocol.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/cps-protocol.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Especificaciones">
+		<p class="eyebrow"><a href="../../../es/docs/index.html">Documentación</a> / Especificaciones</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html" aria-current="page">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Esta página aún no está traducida; se muestra en inglés.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<!-- Copyright (c) 2026 The RadioFoundry Authors -->
+<h1 id="cps-protocol">CPS protocol</h1>
+<p>How a PC programs the radio over USB. Section 2 describes the open-firmware shim, which is built. Section 3 drafts a native
+protocol for later. The wire protocol the open-firmware tools speak is described in <code>open-firmware-cps.md</code>. This page says
+only what <em>our</em> radio does with it.</p>
+<h2 id="1-on-the-host-port">1. On the host port</h2>
+<p>The radio has one host port: a USB CDC serial port on radios with USB (the board's <code>board_usb_ids</code>, 1FC9:0094 on
+the <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr> radios), a <abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="../dev/glossary.html#t-uart">UART</abbr> on radios without. The host link
+(<code>core/hostlink</code>) dispatches on the first byte of a burst:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>First byte</th>
+<th>Goes to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0xE0</code></td>
+<td>the <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="mmdvm-protocol.html">MMDVM</abbr> <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> (<code>mmdvm-protocol.md</code>)</td>
+</tr>
+<tr>
+<td><code>0xA5 0x5A</code></td>
+<td>the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> (<code>debuglink.md</code>)</td>
+</tr>
+<tr>
+<td>anything else</td>
+<td>the <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> shim (<code>CONFIG_CPS_OPENFW</code>), or ignored without it</td>
+</tr>
+</tbody>
+</table></div>
+<p>Once a CPS request is seen, the host link stays in CPS mode, and the shim gets every byte and a tick every pass
+(<code>cps_feed(NULL, 0, now)</code>). The session ends at <code>C 5</code> (close) or after 10 s without a byte (<code>CPS_SESSION_MS</code>). A
+debug link frame (<code>A5 5A</code>) arriving between CPS requests is still answered by the debug link, so bench tools can
+watch a CPS transfer. While the shim holds part of a request (<code>cps_mid_request()</code>), a pause is no request boundary,
+so the rest of the request is never taken for a debug or MMDVM frame. Limitation: a request whose length the header
+doesn't give (<code>D</code>, unknown bytes) that pauses for more than 3 ms after a data byte of <code>0xA5</code> may still lose its
+next bytes to a debug frame.</p>
+<h2 id="2-the-open-firmware-shim-corecps-config_cps_openfw">2. The open-firmware shim (<code>core/cps</code>, <code>CONFIG_CPS_OPENFW</code>)</h2>
+<p><code>core/cps/cps_openfw.c</code> is the protocol engine with no <abbr class="gl" tabindex="0" title="Real-time operating system: the scheduler that runs the firmware&#x27;s tasks." data-more="../dev/glossary.html#t-rtos">RTOS</abbr> or USB in it. <code>cps_port.c</code> hooks it to the host link
+and the board's reboot. Host tests drive the engine directly (<code>tests/host/cpsTest.c</code>), and <code>tests/host/cpsSim</code>
+serves it on stdin / stdout for <code>tools/cps_client.py</code>.</p>
+<p>Our own tools can move the same image faster with the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>'s <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">CODEPLUG</abbr> command: 4 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> blocks, CRC-32 sums so
+only changed blocks move, LZ4 both ways and a staged commit (<a href="cps-fast.html">cps-fast.md</a>, <code>CONFIG_CPS_FAST</code>).</p>
+<h3 id="21-request-assembly">2.1 Request assembly</h3>
+<p>USB gives no request boundaries. A request is complete when its header says so:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Request</th>
+<th>Length</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>R</code> area addr32 len16</td>
+<td>8</td>
+</tr>
+<tr>
+<td><code>X</code>/<code>W</code> 1 sector24</td>
+<td>5</td>
+</tr>
+<tr>
+<td><code>X</code>/<code>W</code> 2 addr32 len16 data, <code>X</code>/<code>W</code> 4 / 7 likewise</td>
+<td>8 + len</td>
+</tr>
+<tr>
+<td><code>X</code>/<code>W</code> 3</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>C</code> 2 (text)</td>
+<td>up to the NUL after the text, at most 23</td>
+</tr>
+<tr>
+<td><code>C</code> 6 sub</td>
+<td>3 (<code>C 6 7</code> clock: 7)</td>
+</tr>
+<tr>
+<td>other <code>C</code></td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>D</code></td>
+<td>ended by 3 ms of quiet (<code>CPS_GAP_MS</code>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>A request still short of the length its header gives waits for the rest for up to 50 ms of quiet (<code>CPS_STALL_MS</code>),
+then whatever came is handled (usually <code>-</code>), so a <abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="../dev/glossary.html#t-uart">UART</abbr> host port that delivers a request in pieces doesn't cut it
+short.</p>
+<p>A byte that no request starts with (anything but <code>R</code>, <code>W</code>, <code>X</code>, <code>C</code>, <code>D</code>) is dropped and counted (<code>cps.junk</code>), never
+answered. A programming cable on the microphone / speaker jack now and then delivers a burst
+of noise bytes (<code>0xFC</code>, <code>0xFE</code>) between requests. Answered <code>-</code>, such a burst was read as the reply to the next request.</p>
+<p>A request longer than 2048 bytes (<code>CPS_REQUEST_MAX</code>) is dropped up to the next quiet gap and answered <code>-</code>
+(<code>cps.overflows</code>). Several requests in one USB packet are handled in order. The debug link's <code>cps.openfw_eeprom</code> is
+where the image starts in the flash: what a client adds to its addresses (0 on the <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr> radios, 0x700000 on the
+<abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> ones; <code>tools/cps_client.py --offset</code>).</p>
+<h3 id="22-reads-r">2.2 Reads (<code>R</code>)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> flash at the physical address (the STM32 tools add the +128 KB offset themselves). Up to 32768 bytes per request (2045 in the original firmware, open-firmware-cps.md 2.1). The <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> A record (<abbr class="gl" tabindex="0" title="Electrically erasable programmable read-only memory: a small chip that keeps settings." data-more="../dev/glossary.html#t-eeprom">EEPROM</abbr> 0x7590) is replaced by the live VFO (2.3)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>the 64 KB EEPROM image (<code>openfw_eeprom</code> + addr), same rules</td>
+</tr>
+<tr>
+<td>5</td>
+<td><abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr> <abbr class="gl" tabindex="0" title="Read-only memory: code fixed in the chip." data-more="../dev/glossary.html#t-rom">ROM</abbr> from <code>board.cps-&gt;rom_base</code>, inside <code>rom_size</code> (per radio, table below)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>radio info, 46 bytes, structure version 3 (<code>open-firmware-cps.md</code> 4): radio type from <code>board.cps-&gt;radio_type()</code> (table below), git hash, build date <code>YYYYMMDDhhmmss</code>, flash id <code>0x40 &lt;&lt; 8 | log2(size)</code> (W25Q128: <code>0x4018</code>), features 0</td>
+</tr>
+<tr>
+<td>10</td>
+<td>SPI flash security registers (<code>board.cps-&gt;security_read</code>)</td>
+</tr>
+<tr>
+<td>6, 7, 8, other</td>
+<td><code>-</code> (screen capture, WAV and <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE</abbr> are not offered)</td>
+</tr>
+</tbody>
+</table></div>
+<p>A range that runs off the end of the flash or the EEPROM image is refused with <code>-</code> before any data goes out.</p>
+<p>The board's <code>hal_cps_t</code> (<code>board.cps</code>) supplies the radio-specific answers:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Answer</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>radio_type()</code></td>
+<td>The radio type byte the <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> identifies the radio by. A board may report two values by hardware version</td>
+</tr>
+<tr>
+<td><code>rom_base</code>, <code>rom_size</code></td>
+<td>The internal flash range area 5 reads</td>
+</tr>
+</tbody>
+</table></div>
+<p>Each radio's values are in its hardware spec.</p>
+<h3 id="23-writes-x-w">2.3 Writes (<code>X</code>, <code>W</code>)</h3>
+<p><code>X 1 sector</code> reads the 4 KB sector into the shared storage buffer, <code>X 2 addr len data</code> merges bytes into it and
+<code>X 3</code> writes it through the sector journal (<code>settings-store.md</code> 4). The commit reply comes after the sector is
+written and verified (about 100 ms). Rules:</p>
+<ul>
+<li><strong>Writable</strong>: the EEPROM image (0 to 64 KB) and the open-firmware flash image (<code>openfw_flash</code> to <code>openfw_end</code>). Anything
+else is refused at <code>X 1</code>. That includes the settings ring, the journal and the native area.</li>
+<li><strong>Foreign journal</strong>: while the settings / journal region holds foreign data (<code>settings-store.md</code> 5),
+every <code>X 1</code> is refused, because a commit would erase the journal. Reads still work, so a backup can be taken
+first.</li>
+<li><strong>Quick-key slots</strong> (EEPROM 0x7524-0x7537) hold the key assignment (<code>ui.md</code> 3.1) and are written like any
+other codeplug byte. A CPS that writes back a stale copy (an old codeplug file) brings back that file's keys, the
+same as for channels. Foreign values there are ignored: without RadioFoundry's marker in slot 0 the keys are the
+board's.</li>
+<li><strong>Calibration</strong> (<code>calibration_addr</code>, <code>calibration_size</code> in the board's flash map; for example 512 bytes inside
+a 4 KB sector): only the window's bytes take the CPS's values, and the rest of
+the sector is kept. A board with no calibration window (size 0) takes the sector as plain data. <em>Open decision: refuse calibration writes entirely.</em></li>
+<li><strong>VFO A</strong> (EEPROM 0x7590): a commit whose VFO A record differs from what the radio would show (the CPS edited the
+VFO) is decoded into the settings store's VFO fields. A record written back unchanged is ignored. The VFO
+follows after the next boot or reload.</li>
+<li><code>X 2</code> bytes outside the pending sector are ignored. <code>X 2</code> or <code>X 3</code> without an <code>X 1</code> is refused. <code>X 1</code> while a
+sector is pending drops it and is refused.</li>
+<li><code>X 4</code> (EEPROM write) is acknowledged: the radio emulates the EEPROM in flash, and the tools write it with
+<code>X 1-3</code>. <code>X 7</code> (WAV buffer) is refused.</li>
+<li><code>W 1-4</code> is the STM32 family's &quot;fake write&quot;: acknowledged, nothing done.</li>
+<li>After the session (<code>C 5</code>, or the 10 s time-out), if anything was committed, the codeplug is re-read
+(<code>codeplug_reload</code>, <code>codeplug_serial</code> +1). The radio core re-reads its zone and channel without a reboot.</li>
+</ul>
+<h3 id="24-control-c">2.4 Control (<code>C</code>)</h3>
+<p>Every <code>C</code> request is answered <code>-</code>, which the open-firmware tools treat as &quot;done&quot;.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Request</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>C 0</code> - <code>C 4</code></td>
+<td>programming screen, text, backlight: nothing (the radio keeps its own screen)</td>
+</tr>
+<tr>
+<td><code>C 5</code></td>
+<td>close: drop a pending sector, re-read the codeplug if written</td>
+</tr>
+<tr>
+<td><code>C 6 0</code></td>
+<td>save the settings, then reboot about 500 ms after the reply</td>
+</tr>
+<tr>
+<td><code>C 6 1</code></td>
+<td>reboot without saving</td>
+</tr>
+<tr>
+<td><code>C 6 2</code></td>
+<td>save the settings now (<code>settings_flush</code>)</td>
+</tr>
+<tr>
+<td><code>C 6</code> other</td>
+<td>nothing</td>
+</tr>
+<tr>
+<td>other</td>
+<td>nothing</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>D</code> (the data-service host commands, <code>open-firmware-cps.md</code> 5) is answered <code>D sub 0</code>, meaning failed: there is no
+data service in RadioFoundry yet.</p>
+<h3 id="25-qdmr">2.5 qdmr</h3>
+<p><abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr>'s open-firmware driver opens with <code>C 0</code>, <code>C 1</code>, <code>C 2</code> text, <code>C 3</code>, <code>C 6 3/4</code> and <code>C 6 2</code>. It reads area 9,
+then area 1 in 32-byte blocks over its regions: EEPROM 0x80-0x6060 and 0x7500-0xB000, custom data 0x20000-0x211A0,
+codeplug 0x9B000-0xAEE60. It writes with <code>X 1/2/3</code> per sector and ends with <code>C 5</code> and, for a write, <code>C 6 0</code>.
+<code>tools/cps_client.py</code> does the same (<code>--regions qdmr</code>, the default) and is the test client:</p>
+<pre><code>python3 tools/cps_client.py info
+python3 tools/cps_client.py read backup.bin                  # flat image: file offset = flash address
+python3 tools/cps_client.py verify backup.bin
+python3 tools/cps_client.py write edited.bin [--no-reboot]
+python3 tools/cps_client.py --exec &quot;tests/host/cpsSim --populate&quot; info     # against the simulator
+</code></pre>
+<h3 id="26-counters">2.6 Counters</h3>
+<p>The debug link's <code>storage</code> view section (<code>debuglink.md</code> 3.7) shows <code>cps.requests reads commits refused overflows last session pending</code>.</p>
+<h3 id="27-open-decisions">2.7 Open decisions</h3>
+<ol>
+<li>A board with two radio types for one radio (by panel type, say): qdmr treats both as the same radio.</li>
+<li>Area 1 reads of the settings area expose the privacy keys (<code>settings-store.md</code> 3.1). Should area 1 be limited
+to the open-firmware image?</li>
+<li>Area 10 (security registers) is readable, factory calibration included. Should it be read-only, as now, or
+refused?</li>
+<li>Calibration window writes (2.3).</li>
+<li>A CPS writing VFO A while the user turns the VFO: the user's change wins until the next save, and the CPS's at
+the next reload.</li>
+</ol>
+<h2 id="3-native-protocol-draft-not-built">3. Native protocol (draft, not built)</h2>
+<p>For a future native <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> and a <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr> driver. Same port and same first-byte dispatch, under its own first byte
+(proposed <code>0xC0</code>, unused by <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="mmdvm-protocol.html">MMDVM</abbr>, the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> and the open-firmware protocol).</p>
+<ul>
+<li><strong>Framing</strong>: the debug link's framing (<code>debuglink.md</code> 2): length, command, payload, CRC-16, with a sequence number
+so a lost reply can be retried without doing the operation twice.</li>
+<li><strong>Records, not addresses</strong>: <code>GET type index</code> / <code>PUT type index record</code> / <code>DELETE type index</code> for channel, zone,
+contact, <abbr class="gl" tabindex="0" title="The talkgroups a channel listens to. The codeplug calls it the RX group list." data-more="../user/22-glossary.html#t-listen-list">listen list</abbr>, general settings; <code>LIST type</code> returns the used bitmap. Records are the native records
+(<code>codeplug-native.md</code> 3), versioned per type.</li>
+<li><strong>Transactions</strong>: <code>BEGIN</code> / <code>COMMIT</code> / <code>ABORT</code>. Puts inside a transaction are staged and applied in one pass, so
+a cut cable leaves the old <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>, not half of the new one.</li>
+<li><strong>Settings</strong>: <code>SETTINGS_GET</code> / <code>SETTINGS_PUT</code> by field name, never the privacy keys over a read.</li>
+<li><strong>Info</strong>: the radio info of area 9 plus a capability list: the record types and versions the firmware knows.</li>
+</ul>
+<p>Open: whether the open-firmware shim and the native protocol both stay forever, or the shim goes once qdmr speaks the
+native one.</p>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/cps-protocol.md">Ver el código fuente de esta página</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="En esta página">
+		<p class="eyebrow">En esta página</p>
+		<ul><li class="l2"><a href="#1-on-the-host-port">1. On the host port</a></li><li class="l2"><a href="#2-the-open-firmware-shim-corecps-config_cps_openfw">2. The open-firmware shim (core/cps, CONFIG_CPS_OPENFW)</a></li><li class="l3"><a href="#21-request-assembly">2.1 Request assembly</a></li><li class="l3"><a href="#22-reads-r">2.2 Reads (R)</a></li><li class="l3"><a href="#23-writes-x-w">2.3 Writes (X, W)</a></li><li class="l3"><a href="#24-control-c">2.4 Control (C)</a></li><li class="l3"><a href="#25-qdmr">2.5 qdmr</a></li><li class="l3"><a href="#26-counters">2.6 Counters</a></li><li class="l3"><a href="#27-open-decisions">2.7 Open decisions</a></li><li class="l2"><a href="#3-native-protocol-draft-not-built">3. Native protocol (draft, not built)</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

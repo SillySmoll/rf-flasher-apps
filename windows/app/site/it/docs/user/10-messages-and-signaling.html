@@ -1,0 +1,264 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="it" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Messages, Call Alert and Radio Check · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Messages, Call Alert and Radio Check · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:url" content="https://radiofoundry.org/it/docs/user/10-messages-and-signaling.html">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Le radio su cui gira RadioFoundry, ognuna con una schermata diversa.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/user/10-messages-and-signaling.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/user/10-messages-and-signaling.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/user/10-messages-and-signaling.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/user/10-messages-and-signaling.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/user/10-messages-and-signaling.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../it/" data-gl-more="Altro">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../it/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principale"><a href="../../../it/radios/index.html">Radio</a><a href="../../../it/features/index.html">Funzioni</a><a href="../../../it/flash/index.html">Installa</a><a href="../../../it/codeplug/index.html">Codeplug</a><a href="../../../it/docs/index.html" aria-current="page">Documenti</a><a href="../../../it/screenshots/index.html">Schermate</a><a href="../../../it/tools/index.html">Strumenti</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Lingua" title="Lingua">IT</summary><nav aria-label="Lingua"><a href="../../../docs/user/10-messages-and-signaling.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/user/10-messages-and-signaling.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/user/10-messages-and-signaling.html" aria-current="true" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/user/10-messages-and-signaling.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Passa da chiaro a scuro" title="Passa da chiaro a scuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Manuale utente">
+		<p class="eyebrow"><a href="../../../it/docs/index.html">Documentazione</a> / Manuale utente</p>
+		<ul><li><a href="index.html">RadioFoundry User Manual</a></li><li><a href="01-introduction.html">Introduction</a></li><li><a href="02-installing.html">Installing</a></li><li><a href="03-first-boot.html">First Boot</a></li><li><a href="04-programming.html">Programming the Radio</a></li><li><a href="05-keys-and-navigation.html">Keys and Navigation</a></li><li><a href="06-home-screen.html">The Home Screen</a></li><li><a href="07-channels-zones-vfo.html">Channels, Zones and the VFO</a></li><li><a href="08-fm.html">FM</a></li><li><a href="09-dmr.html">DMR</a></li><li><a href="10-messages-and-signaling.html" aria-current="page">Messages, Call Alert and Radio Check</a></li><li><a href="11-emergency.html">Emergency</a></li><li><a href="12-scan.html">Scan and Dual Watch</a></li><li><a href="13-aprs.html">APRS</a></li><li><a href="14-hotspot.html">Hotspot Mode</a></li><li><a href="15-usb-network.html">USB Network Mode</a></li><li><a href="16-battery-and-power.html">Battery and Power</a></li><li><a href="17-settings.html">Settings</a></li><li><a href="18-moving-from-stock-md380.html">Moving from Stock MD-380 Firmware</a></li><li><a href="19-moving-from-stock-dm32.html">Moving from Stock DM-32UV Firmware</a></li><li><a href="20-troubleshooting.html">Troubleshooting</a></li><li><a href="21-faq.html">FAQ</a></li><li><a href="22-glossary.html">Glossary</a></li><li><a href="23-radios.html">Radio Reference</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Questa pagina non è ancora tradotta; è mostrata in inglese.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="messages-call-alert-and-radio-check">Messages, Call Alert and Radio Check</h1>
+<p><abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> text messages, <abbr class="gl" tabindex="0" title="A DMR page that makes another radio ring." data-more="22-glossary.html#t-call-alert">call alert</abbr> and <abbr class="gl" tabindex="0" title="A DMR request another radio answers automatically, to show it is on and in range." data-more="22-glossary.html#t-radio-check">radio check</abbr> work on DMR channels. <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr> text messages can also be sent over FM on
+builds with an AFSK <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">transmit</abbr> path. The <a href="23-radios.html">Radio reference</a> says which radios have each path verified.
+None of them needs the codec. DMR sending needs a DMR channel you may transmit on and your <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr>; APRS sending
+needs a valid callsign in <strong>Settings &gt; My radio</strong>, an amateur APRS frequency and a board with AFSK transmit.</p>
+<h2 id="receiving-a-message">Receiving a message</h2>
+<p>When a message arrives, the radio shows a banner with the sender and the first words for 8 s. Press <strong>#</strong> while the
+banner is up to open the message. The radio plays a short three-note tone with the banner unless <strong>Settings &gt; Sound &gt;
+Message tone</strong> is off. On a radio with a vibration motor it also vibrates twice, unless <strong>Settings &gt; Sound &gt; Vibrate</strong>
+is off. A <abbr class="gl" tabindex="0" title="A DMR page that makes another radio ring." data-more="22-glossary.html#t-call-alert">call alert</abbr> or a <abbr class="gl" tabindex="0" title="A DMR call to one radio." data-more="22-glossary.html#t-private-call">private call</abbr> to you gives one long vibration, an emergency four.</p>
+<img src="../ux/screens/160x120i5/banner_message.png" width="200" alt="A message banner">
+<p>After the banner, the status line shows &quot;M&quot; and the number of unread messages, and the hub shows &quot;1 new&quot; next to
+Messages.</p>
+<h2 id="reading-messages">Reading messages</h2>
+<ol>
+<li>
+<p>Press <strong>OK</strong>, <strong>2</strong> (Messages). The newest message is first. Unread messages are highlighted.</p>
+</li>
+<li>
+<p>Focus a message and press <strong>OK</strong>. The radio shows the sender, how long ago it arrived and the text. It marks the
+message read.</p>
+</li>
+<li>
+<p>Below the text:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Row</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full message</td>
+<td>Shows the whole text on its own page. <strong>Up</strong> and <strong>Down</strong> scroll it, <strong>Back</strong> returns. Only when the text is too long for the screen, which ends it with &quot;…&quot;</td>
+</tr>
+<tr>
+<td>Reply &quot;OK&quot;</td>
+<td>Sends &quot;OK&quot; to the sender</td>
+</tr>
+<tr>
+<td>Reply &quot;On my way&quot;</td>
+<td>Sends &quot;On my way&quot; to the sender</td>
+</tr>
+<tr>
+<td>Call</td>
+<td>Makes the sender the <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="22-glossary.html#t-talk-target">talk target</abbr> for now</td>
+</tr>
+<tr>
+<td>Delete</td>
+<td>Deletes the message. There is no undo</td>
+</tr>
+</tbody>
+</table></div>
+</li>
+</ol>
+<p><strong>#</strong> on a <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> message opens the actions for its sender. <strong>PTT</strong> in an open DMR message calls the sender. The Call
+action is unavailable for <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr> messages, whose sender is a callsign. <strong>#</strong> on an APRS message opens a composer addressed
+to that callsign.</p>
+<img src="../ux/screens/160x120i5/messages.png" width="200" alt="Messages">
+<img src="../ux/screens/160x120i5/message_view.png" width="200" alt="A message">
+<img src="../ux/screens/160x120i5/message_long.png" width="200" alt="A long message: the Full message row, and its whole text">
+<img src="../ux/screens/160x120i5/message_read.png" width="200" alt="">
+<p>The radio keeps DMR and APRS messages in memory. They are lost when the radio turns off.</p>
+<h2 id="sending-a-message">Sending a message</h2>
+<ol>
+<li>Open the actions for the person or <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="22-glossary.html#t-talkgroup">talkgroup</abbr>. Press <strong>#</strong> on Home for the last caller, or <strong>#</strong> on a contact.</li>
+<li>Press <strong>3</strong> (Message).</li>
+<li>Pick a preset (&quot;OK&quot;, &quot;On my way&quot;, &quot;Call me&quot; or &quot;Can't talk now&quot;), or choose <strong>Write...</strong> to type your own text.
+Press <strong>OK</strong> to send. Presets are sent in the radio's language (Settings &gt; Display &gt; Language).</li>
+</ol>
+<img src="../ux/screens/160x120i5/compose.png" width="200" alt="The message composer">
+<p>The radio shows &quot;Sending to ...&quot; and returns to Home. A message to a person asks for a confirmation. When none comes, the radio tries again, in every format. The result
+comes as a banner:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Banner</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&quot;Delivered to ...&quot;</td>
+<td>The person's radio confirmed the message</td>
+</tr>
+<tr>
+<td>&quot;No answer from ...&quot;, with &quot;Not delivered: send it again&quot;</td>
+<td>No confirmation came. The message isn't kept for a retry. Send it again from the actions</td>
+</tr>
+<tr>
+<td>&quot;Sent to ...&quot;</td>
+<td>A message to a talkgroup has gone out. Talkgroup messages have no confirmation</td>
+</tr>
+</tbody>
+</table></div>
+<p>With confirmed IP data turned off (<code>tools/rfoundry_debug.py data ip-settings auto off</code>), ETSI messages to a person also go
+once, with &quot;Sent to&quot;.</p>
+<p>In <strong>Write...</strong>, use the number keys to enter letters, <strong>#</strong> to switch between ABC, 123 and abc, and <strong>Back</strong> to
+delete. A <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> message can hold up to 143 characters. Messages you send aren't stored in the radio.</p>
+<h3 id="sending-over-aprs">Sending over APRS</h3>
+<ol>
+<li>Open <strong>Messages &gt; New <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr> message</strong> when APRS is built and your callsign is set. You can also open <strong>Stations heard</strong>,
+select a station and choose <strong>Message</strong> to fill its callsign.</li>
+<li>Select <strong>To callsign</strong> and enter the recipient's callsign, with an optional
+SSID (for example, <code>K1ABC-9</code>). Press <strong>OK</strong> to keep it.</li>
+<li>Choose <strong>Request acknowledgment</strong> and <strong>Include position</strong> if needed, then pick a preset or <strong>Write...</strong> and press
+<strong>OK</strong> to send. Both choices apply only to this message. APRS messages hold up to 67 characters. Presets use the
+radio's language; accented letters are sent without accents to keep the AX.25 text printable. The radio queues
+the APRS message on the configured FM frequency. &quot;Sending to ...&quot; means queued, not delivered.</li>
+</ol>
+<p><strong>Request acknowledgment</strong> starts on. The radio retries while waiting for a reply. Turn it off for a <abbr class="gl" tabindex="0" title="A talk target used for one call and its reply window." data-more="22-glossary.html#t-one-shot">one-shot</abbr> message
+that needs no delivery confirmation. <strong>Include position</strong> starts off. When on, the radio adds the current GPS, computer
+or fixed position as decimal coordinates to the message text. It refuses to send if no position is available or the
+text plus coordinates exceeds 67 characters. The position is part of the message body, not a separate position beacon.</p>
+<p>The APRS destination is a callsign, not a <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr>. A new outgoing message replaces one still awaiting an acknowledgment.
+Sending is refused if the callsign or text is invalid or the APRS <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="22-glossary.html#t-rf">RF</abbr> path is unavailable. <strong>Tools &gt; APRS</strong> shows the
+configured frequency and any blocking reason. Received APRS messages appear in Messages; replies go over APRS.</p>
+<h2 id="message-formats">Message formats</h2>
+<p><strong>Settings &gt; Connections &gt; Message format</strong> picks the encoding of new <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> messages. The radio reads all three DMR
+formats, whatever the setting. A reply to a DMR inbox message uses DMR.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Use it for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ETSI (default)</td>
+<td>The standard DMR text message (ETSI IP text). Radios and dispatch software set to &quot;DMR standard&quot; text read it. Delivery to a person is confirmed</td>
+</tr>
+<tr>
+<td>ETSI short</td>
+<td>Radios that only show ETSI short data messages. Delivery is confirmed</td>
+</tr>
+<tr>
+<td>Motorola</td>
+<td><abbr class="gl" tabindex="0" title="Motorola&#x27;s DMR product line. Its extensions (ARS, TMS, LRRP, Capacity Plus) are not in the ETSI standard." data-more="22-glossary.html#t-mototrbo">MOTOTRBO</abbr> radios and dispatch software set to Motorola text messages (<abbr class="gl" tabindex="0" title="Text message service: Motorola&#x27;s text message format on DMR. The standard&#x27;s own short data uses other formats." data-more="22-glossary.html#t-tms">TMS</abbr>). Delivery is confirmed. Not in builds made without Motorola TMS support</td>
+</tr>
+</tbody>
+</table></div>
+<p>If your radio was set up before ETSI became the default and its data settings were saved, it keeps sending Motorola
+messages until you change the setting.</p>
+<h2 id="call-alert">Call alert</h2>
+<p>A <abbr class="gl" tabindex="0" title="A DMR page that makes another radio ring." data-more="22-glossary.html#t-call-alert">call alert</abbr> pages another radio. It rings there, even when that radio's user isn't listening to your <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="22-glossary.html#t-talkgroup">talkgroup</abbr>.</p>
+<ol>
+<li>Open the actions for the person (<strong>#</strong> on Home, or <strong>#</strong> on a contact).</li>
+<li>Press <strong>5</strong> (Call alert). The radio shows &quot;Call alert to ...&quot; and returns to Home.</li>
+<li>The radio tries up to 3 times. The result is a banner: &quot;... answered the alert&quot; or &quot;No answer from ...&quot;.</li>
+</ol>
+<p>When someone sends you a call alert, the radio shows &quot;Call alert from ...&quot; with &quot;PTT replies&quot;. Press <strong>#</strong> while the
+banner is up for the caller's actions. Your radio acknowledges the alert unless <strong>Settings &gt; Connections &gt; Answer call
+alerts</strong> is off.</p>
+<img src="../ux/screens/160x120i5/banner_call_alert.png" width="200" alt="A call alert banner">
+<h2 id="radio-check">Radio check</h2>
+<p>A <abbr class="gl" tabindex="0" title="A DMR request another radio answers automatically, to show it is on and in range." data-more="22-glossary.html#t-radio-check">radio check</abbr> asks another radio to answer, without its user doing anything. It shows whether that radio is on and in
+range.</p>
+<ol>
+<li>Open the actions for the person.</li>
+<li>Press <strong>4</strong> (Radio check). The radio shows &quot;Checking ...&quot;.</li>
+<li>The radio tries up to 3 times. The result is a banner. &quot;... answered (0.8 s)&quot; gives the round-trip time. &quot;...: no
+answer&quot; comes with &quot;Off, out of range or elsewhere&quot;.</li>
+</ol>
+<img src="../ux/screens/160x120i5/banner_radio_check.png" width="200" alt="A radio check result">
+<p>Your radio answers radio checks from others while <strong>Settings &gt; Connections &gt; Answer radio checks</strong> is on, the default.
+An answer is a short transmission the radio makes without you pressing PTT; turn the setting off if you don't want that.</p>
+<h2 id="registration-ars-and-location-lrrp">Registration (ARS) and location (LRRP)</h2>
+<p><abbr class="gl" tabindex="0" title="Automatic Registration Service: a radio tells a presence server it is on the air." data-more="22-glossary.html#t-ars">ARS</abbr> registers the radio with a presence server at power-up and after a channel change. It is off until a server ID is
+set: <strong>Settings &gt; Connections &gt; Data services &gt; ARS server</strong>. Type the server's <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr> and press <strong>OK</strong>; 0 turns ARS
+off. The screen shows the registration: Registering, Registered, Refused or No answer. The ID is saved in the
+<abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>, so the <a href="04-programming.html">Codeplug Editor</a> can set it too.</p>
+<p><abbr class="gl" tabindex="0" title="Location Request and Response Protocol: a dispatcher asks a radio for its position. Motorola&#x27;s position format; the standard has LIP." data-more="22-glossary.html#t-lrrp">LRRP</abbr> answers location requests from a dispatcher. A radio without GPS (<a href="23-radios.html">Radio reference</a>) answers &quot;no
+fix&quot;. <strong>Settings &gt; Location &gt; Answer GPS requests</strong> turns the answers off.</p>
+</div>
+		<nav class="prev-next"><a class="prev" href="09-dmr.html">DMR</a><a class="next" href="11-emergency.html">Emergency</a></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/user/10-messages-and-signaling.md">Vedi il sorgente di questa pagina</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="In questa pagina">
+		<p class="eyebrow">In questa pagina</p>
+		<ul><li class="l2"><a href="#receiving-a-message">Receiving a message</a></li><li class="l2"><a href="#reading-messages">Reading messages</a></li><li class="l2"><a href="#sending-a-message">Sending a message</a></li><li class="l3"><a href="#sending-over-aprs">Sending over APRS</a></li><li class="l2"><a href="#message-formats">Message formats</a></li><li class="l2"><a href="#call-alert">Call alert</a></li><li class="l2"><a href="#radio-check">Radio check</a></li><li class="l2"><a href="#registration-ars-and-location-lrrp">Registration (ARS) and location (LRRP)</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Unisciti alla comunità RadioFoundry</strong><span class="small muted">Domande, aiuto con la tua radio e novità, su Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Hai trovato un bug? Vuoi che la tua radio sia supportata?</strong><span class="small muted">Apri una segnalazione su GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry ha licenza MIT · <a href="https://github.com/radiofoundry/radiofoundry">Codice sorgente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunità</a> · <a href="../../../it/docs/index.html">Documenti</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Novità</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

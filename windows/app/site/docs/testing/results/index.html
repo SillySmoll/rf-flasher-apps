@@ -1,0 +1,245 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bring-up results · RadioFoundry</title>
+<meta name="description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Bring-up results · RadioFoundry">
+<meta property="og:description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:url" content="https://radiofoundry.org/docs/testing/results/">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="The radios RadioFoundry runs on, each showing a different screen.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/testing/results/">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/testing/results/">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/testing/results/">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/testing/results/">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/testing/results/">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../" data-gl-more="More">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Main"><a href="../../../radios/index.html">Radios</a><a href="../../../features/index.html">Features</a><a href="../../../flash/index.html">Install</a><a href="../../../codeplug/index.html">Codeplug</a><a href="../../../docs/index.html" aria-current="page">Docs</a><a href="../../../screenshots/index.html">Screenshots</a><a href="../../../tools/index.html">Tools</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Language" title="Language">EN</summary><nav aria-label="Language"><a href="../../../docs/testing/results/index.html" aria-current="true" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/testing/results/index.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/testing/results/index.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/testing/results/index.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Switch light and dark" title="Switch light and dark">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Testing">
+		<p class="eyebrow"><a href="../../../docs/index.html">Documentation</a> / Testing</p>
+		<ul><li><a href="../index.html">Testing</a></li><li><a href="index.html" aria-current="page">Bring-up results</a></li><li><a href="../backlight-curve.html">Backlight curve</a></li><li><a href="../dm1801pro-bringup.html">DM-1801 Pro bring-up checklist</a></li><li><a href="../dm32-bringup.html">DM-32UV bring-up checklist</a></li><li><a href="../dmr-bench.html">DMR bench testing on the SDR bench</a></li><li><a href="../md380-bringup.html">MD-380 bring-up checklist</a></li><li><a href="../md9600-bringup.html">MD-9600 bring-up checklist</a></li><li><a href="../mduv380-bringup.html">MD-UV380 bring-up checklist</a></li><li><a href="../mmdvm-audit.html">MMDVM implementation audit (2d45a21)</a></li><li><a href="../on-air-coverage.html">On-air test coverage</a></li><li><a href="../power-calibration.html">Transmit power calibration with a wattmeter</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<!-- Copyright (c) 2026 The RadioFoundry Authors -->
+<h1 id="bring-up-results">Bring-up results</h1>
+<p>The records of bring-up runs, one directory per board (<code>&lt;board&gt;/</code>, the id in <code>boards/</code>). Every run record is written
+by <code>tools/bringup.py run --radio &lt;board&gt;</code> (<a href="https://github.com/radiofoundry/radiofoundry/blob/main/tests/hil/README.md#bring-up-mode">tests/hil/README.md</a>). Don't
+write or edit one by hand: a radio's support claims are generated from these records. The one hand-written file is a
+board's seed record (below). Commit a record with the
+change it checks. A record with failures is still a record: the failures are the to-do list.</p>
+<h2 id="file">File</h2>
+<p><code>&lt;board&gt;/&lt;YYYYMMDD-HHMMSS&gt;-&lt;commit&gt;.json</code>, the date in UTC and the first 8 hex digits of the commit. A run of one
+feature (<code>--feature F</code>) adds <code>-&lt;feature&gt;</code>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>format</code></td>
+<td>The record format, 1</td>
+</tr>
+<tr>
+<td><code>kind</code></td>
+<td><code>run</code> (a record without <code>kind</code> is a run)</td>
+</tr>
+<tr>
+<td><code>board</code></td>
+<td>The board id, the same as the directory</td>
+</tr>
+<tr>
+<td><code>commit</code></td>
+<td>The full commit hash the firmware and the tests were run from. Main is squash-merged, so a branch's commit may later be gone from history; the record still holds</td>
+</tr>
+<tr>
+<td><code>dirty</code></td>
+<td><code>true</code> when the tree had uncommitted changes</td>
+</tr>
+<tr>
+<td><code>sources</code></td>
+<td>Feature id to <code>{path: object id}</code>: the git blob or tree id of each of the feature's <code>spec</code> and <code>source</code> paths as run (<code>null</code> for a path that wasn't there). With uncommitted changes, the ids are of the working tree's tracked files</td>
+</tr>
+<tr>
+<td><code>date</code></td>
+<td>The end of the run, ISO 8601 in UTC (<code>2026-10-22T19:01:33Z</code>)</td>
+</tr>
+<tr>
+<td><code>features</code></td>
+<td>The checklist ids the run covered</td>
+</tr>
+<tr>
+<td><code>granted</code></td>
+<td>The needs the run allowed (<code>radio</code>, <code>rf</code>, <code>bench</code> and so on)</td>
+</tr>
+<tr>
+<td><code>tests</code></td>
+<td>One object per test case: <code>id</code> (node id, with parameters), <code>features</code> (those it gates), <code>optional</code> (those it is optional for), <code>required</code>, <code>outcome</code> (<code>passed</code>, <code>failed</code>, <code>skipped</code>), and for a skip <code>skip_kind</code>, <code>excused</code> and <code>reason</code></td>
+</tr>
+<tr>
+<td><code>firmware</code></td>
+<td>The radio's VERSION keys <code>proto</code>, <code>view</code>, <code>git</code>, <code>board</code>, <code>features</code>, <code>codec</code>, <code>display</code></td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td>The run's flags and frequencies (<code>allow-rf</code>, <code>dmr-freq</code> and so on)</td>
+</tr>
+<tr>
+<td><code>tools</code></td>
+<td>The Python and pytest versions</td>
+</tr>
+</tbody>
+</table></div>
+<p>A record holds no serial port, host name or serial number: the reasons are scrubbed before they are written, and
+<code>tools/bringup.py check</code> (in <code>tools/ci.sh</code>) fails on a record that names one. It also fails on a record that doesn't
+parse, lacks a key or sits in the wrong board's directory. A missing or stale record never fails CI: it shows in
+<code>status</code> as &quot;built, not yet recorded&quot; or &quot;needs re-run&quot;.</p>
+<h2 id="seed-record">Seed record</h2>
+<p><code>&lt;board&gt;/seed.json</code> holds the evidence for the board from before its first recorded run: what the spec, the
+hardware page or an earlier test log says works on the radio. It keeps the generated claims from understating a
+board that works but hasn't been through <code>tools/bringup.py run</code>. A board has at most one, and it is the only file here
+written by hand.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>format</code></td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>kind</code></td>
+<td><code>seed</code></td>
+</tr>
+<tr>
+<td><code>board</code></td>
+<td>The board id, the same as the directory</td>
+</tr>
+<tr>
+<td><code>source</code></td>
+<td>The doc the evidence came from, a path in the repository</td>
+</tr>
+<tr>
+<td><code>date</code></td>
+<td>When the seed was written, ISO 8601</td>
+</tr>
+<tr>
+<td><code>features</code></td>
+<td>Feature id to row: <code>result</code> (<code>pass</code> or <code>fail</code>), and optionally <code>commit</code> (the commit the check ran on, where known), <code>source</code> (a doc for this row, when it isn't the record's) and <code>note</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><code>tools/bringup.py check</code> fails on a seed that isn't named <code>seed.json</code>, names a feature the checklist doesn't have, has
+a row without a <code>pass</code> or <code>fail</code> result, or names a doc the repository doesn't have. A row's <code>commit</code> may be one
+the repository no longer has.</p>
+<h2 id="status">Status</h2>
+<p>A feature's status never understates the board. For a feature the board builds:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Status</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pass</code>, <code>fail</code></td>
+<td>The newest run record that ran the feature passed or failed it</td>
+</tr>
+<tr>
+<td><code>partial</code></td>
+<td>That run had excused skips, and no seed row covers the feature</td>
+</tr>
+<tr>
+<td><code>needs re-run</code></td>
+<td>The feature's <code>source</code> paths (<code>tests/hil/features.toml</code>, else the files its switch builds) differ in the tree (tracked files, uncommitted changes included) from the record's <code>sources</code> ids: staleness is by content, not by commit ancestry. The <code>spec</code> is hashed too but not compared: a doc edit doesn't change what ran. The mark isn't downgraded; the feature needs a run</td>
+</tr>
+<tr>
+<td><code>pass (seed)</code>, <code>fail (seed)</code></td>
+<td>No run passed or failed the feature, and the seed record has a row for it</td>
+</tr>
+<tr>
+<td><code>built, not yet recorded</code></td>
+<td>No record covers the feature yet, or it has no <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../../dev/testing.html">HIL</abbr> test</td>
+</tr>
+</tbody>
+</table></div>
+<p>A run's row replaces the seed's row for each feature the run passed or failed. A seed row whose <code>commit</code> the
+repository has needs a re-run when the feature's paths differ from that commit's; a row without a commit, or with
+one that is gone, stands until a run replaces it. Only a failing
+record shows a failure. The feature matrix's <a href="../../feature-matrix.html#checked-on-each-radio">Checked on each radio</a> table is generated from
+these statuses (<code>tools/boards.py docs</code>), so a new record goes with a <code>tools/boards.py docs</code> run. <code>tools/bringup.py list --radio &lt;board&gt;</code> shows one board with details; <code>tools/bringup.py status</code>
+shows every board and feature and marks with <code>*</code> each status that rests on a seed record.</p>
+
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/testing/results/README.md">View the source of this page</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="On this page">
+		<p class="eyebrow">On this page</p>
+		<ul><li class="l2"><a href="#file">File</a></li><li class="l2"><a href="#seed-record">Seed record</a></li><li class="l2"><a href="#status">Status</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Join the RadioFoundry community</strong><span class="small muted">Questions, help with your radio and news, on Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Found a bug? Want your radio supported?</strong><span class="small muted">Open an issue on GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry is MIT licensed · <a href="https://github.com/radiofoundry/radiofoundry">Source Code</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Community</a> · <a href="../../../docs/index.html">Docs</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Changelog</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

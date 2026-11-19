@@ -1,0 +1,570 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Air interface · RadioFoundry</title>
+<meta name="description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Air interface · RadioFoundry">
+<meta property="og:description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:url" content="https://radiofoundry.org/docs/spec/air-interface.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="The radios RadioFoundry runs on, each showing a different screen.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/air-interface.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/air-interface.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/air-interface.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/air-interface.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/air-interface.html">
+<link rel="icon" href="../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../" data-home="../../" data-gl-more="More">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../index.html">
+			<img src="../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Main"><a href="../../radios/index.html">Radios</a><a href="../../features/index.html">Features</a><a href="../../flash/index.html">Install</a><a href="../../codeplug/index.html">Codeplug</a><a href="../../docs/index.html" aria-current="page">Docs</a><a href="../../screenshots/index.html">Screenshots</a><a href="../../tools/index.html">Tools</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Language" title="Language">EN</summary><nav aria-label="Language"><a href="../../docs/spec/air-interface.html" aria-current="true" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../es/docs/spec/air-interface.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../it/docs/spec/air-interface.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../zh/docs/spec/air-interface.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Switch light and dark" title="Switch light and dark">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Specifications">
+		<p class="eyebrow"><a href="../../docs/index.html">Documentation</a> / Specifications</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html" aria-current="page">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<!-- Copyright (c) 2026 The RadioFoundry Authors -->
+<h1 id="air-interface">Air interface</h1>
+<p>The air interface carries channel symbols with time stamps between a radio's modem hardware and the core. It knows
+no mode. A digital mode the core frames itself (P25, <a href="p25.html">p25.md</a>) describes what it needs as a profile, and
+every layer below works from that profile. Built with the modes on it: <code>CONFIG_P25</code>, <code>CONFIG_NXDN</code> (<a href="nxdn.html">nxdn.md</a>,
+<a href="../build-config.html">build-config.md</a>; <code>CONFIG_AIR</code> is derived from them). Which
+radios have a provider: <a href="../feature-matrix.html">feature-matrix.md</a>.</p>
+<p>State: host tested. The <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> provider is also checked on air both ways with C4FM
+(<a href="modem-hrc6000.html">modem-hrc6000.md</a> 10.5). A provider answers a fit with <code>AIR_FIT_UNTESTED</code> until its board says
+it has been checked.</p>
+<h2 id="1-layers">1. Layers</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>File</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mode</td>
+<td><code>core/p25/</code>, <code>core/nxdn/</code></td>
+<td>units, <abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="../dev/glossary.html#t-fec">FEC</abbr>, calls; an <code>air_mode_t</code> (profile, frame geometry, hooks)</td>
+</tr>
+<tr>
+<td>Session</td>
+<td><code>core/air/air_session.c</code></td>
+<td>one mode on one provider: open, close, <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> to the framer, a transmission from the first symbol to its end (section 7)</td>
+</tr>
+<tr>
+<td>Framer</td>
+<td><code>core/air/air_framer.c</code></td>
+<td>sync search, levels, frames cut from the symbol stream, coasting; symbols packed into <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> chunks (section 5)</td>
+</tr>
+<tr>
+<td>Provider</td>
+<td><code>board_t.air</code> (<code>hal/hal_air.h</code>)</td>
+<td>symbols in air order with time stamps (section 3). A modem chip in its physical layer mode, or the soft modem on sample taps</td>
+</tr>
+<tr>
+<td>Soft modem</td>
+<td><code>core/air/air_softmodem.c</code></td>
+<td>discriminator samples to symbols, for a provider that receives through a tap (section 6)</td>
+</tr>
+<tr>
+<td>Sample taps</td>
+<td><code>board_t.baseband</code> (<code>hal/hal_baseband.h</code>)</td>
+<td>the discriminator read by the <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr>, samples from the MCU to the modulator (section 6)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Both <code>board_t.air</code> and <code>board_t.baseband</code> are optional and independent: a board gives the symbol interface, the
+taps, both or neither. The core uses <code>board_t.air</code>; a board whose chip has no symbol pipe for a direction builds its
+provider from the taps and the soft modem.</p>
+<p>FEC shared by the modes is in <code>core/fec/</code> (Reed-Solomon over GF(64), Golay, Hamming, BCH(63,16), the trellis codes, the
+rate 1/2 convolutional codes of constraint length 5 with a Viterbi decoder).</p>
+<h2 id="2-symbols-and-profiles">2. Symbols and profiles</h2>
+<p>A symbol is a dibit everywhere: <code>01</code> = +3, <code>00</code> = +1, <code>10</code> = -1, <code>11</code> = -3, packed four to a byte, the first on air
+in bits 7-6 of byte 0. A 2-level mode uses <code>01</code> and <code>11</code>. Received symbols can carry a soft value each: a signed
+byte, <code>AIR_SOFT_OUTER</code> (96) for a +3 symbol at the profile's deviation.</p>
+<p><code>air_profile_t</code> is everything a provider needs to know about a mode:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sym_rate</code>, <code>levels</code></td>
+<td>symbols per second (4800, 2400, 1200), 2 or 4 levels</td>
+</tr>
+<tr>
+<td><code>shape</code>, <code>shape_param</code></td>
+<td><abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> pulse: root raised cosine, C4FM, Gaussian, square; roll-off or BT x 100</td>
+</tr>
+<tr>
+<td><code>dev_outer_hz</code></td>
+<td>deviation of the outer symbol; the inner one is a third of it</td>
+</tr>
+<tr>
+<td><code>timing</code>, <code>slot_syms</code></td>
+<td>continuous, or <abbr class="gl" tabindex="0" title="Time division multiple access. A DMR channel carries two conversations by alternating them in 30 ms slots." data-more="../dev/glossary.html#t-tdma">TDMA</abbr> with this many symbols per slot</td>
+</tr>
+<tr>
+<td><code>bw</code></td>
+<td>channel bandwidth the mode wants</td>
+</tr>
+<tr>
+<td><code>sync[]</code></td>
+<td>the fixed patterns the mode puts on air, most useful first: symbols, length (8 to 24), errors tolerated, where the frame starts relative to the pattern, whether it is only at the start of a transmission</td>
+</tr>
+<tr>
+<td><code>sync_every_syms</code></td>
+<td>the longest run of symbols between two 24-symbol patterns inside a transmission; 0 when none recurs</td>
+</tr>
+<tr>
+<td><code>sync_any_syms</code></td>
+<td>the longest run between two patterns of any length (a mode whose recurring sync is shorter than 24 symbols); 0 = <code>sync_every_syms</code>. The soft modem holds its timing this long</td>
+</tr>
+<tr>
+<td><code>idle</code></td>
+<td>four dibits a provider sends when a continuous transmission runs dry</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="3-the-provider-hal_air_t">3. The provider (<code>hal_air_t</code>)</h2>
+<p>One session at a time, <code>open</code> to <code>close</code>. The core stops the board's <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> stack before <code>open</code> and starts it again
+after <code>close</code>; the board's <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> side is already tuned and in its digital mode.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Call</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fit(profile)</code></td>
+<td>what the provider gives this profile: <code>AIR_FIT_xxx</code> bits (section 4), 0 = can't</td>
+</tr>
+<tr>
+<td><code>open(profile, cb, ctx)</code></td>
+<td>start receiving; events go to <code>cb</code> at task level, never from an interrupt</td>
+</tr>
+<tr>
+<td><code>close()</code></td>
+<td>back to how the board was: FM and DMR work again without a restart</td>
+</tr>
+<tr>
+<td><code>rx_restart()</code></td>
+<td>drop what the receiver holds and search again (after a retune)</td>
+</tr>
+<tr>
+<td><code>tx_queue(chunk)</code>, <code>tx_space()</code></td>
+<td>queue <code>tx_chunk_syms</code> symbols; how many chunks the queue takes now</td>
+</tr>
+<tr>
+<td><code>tx_begin()</code></td>
+<td>start modulating the oldest queued chunk. At least one chunk is queued and <code>hal_radio_t.tx()</code> was called first</td>
+</tr>
+<tr>
+<td><code>tx_end()</code></td>
+<td>no more chunks will come: the newest queued one is the last</td>
+</tr>
+<tr>
+<td><code>tx_abort()</code></td>
+<td>stop at once and drop the queue</td>
+</tr>
+<tr>
+<td><code>now_us()</code></td>
+<td>the clock of every time stamp here: free running microseconds</td>
+</tr>
+<tr>
+<td><code>slot_clock()</code>, <code>slot_slew()</code></td>
+<td><abbr class="gl" tabindex="0" title="Time division multiple access. A DMR channel carries two conversations by alternating them in 30 ms slots." data-more="../dev/glossary.html#t-tdma">TDMA</abbr> providers: the latest slot boundary, and stretching the next slot</td>
+</tr>
+<tr>
+<td><code>rx_load(work_us, span_us)</code></td>
+<td>optional: what <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> costs the <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr> since <code>open</code>: the time the provider spent turning samples into symbols, and the time of signal they covered. NULL when a chip does that work; false when a chip does it for the profile that is open</td>
+</tr>
+</tbody>
+</table></div>
+<p>Constants a provider states: <code>tx_chunk_syms</code>, <code>tx_queue_depth</code>, <code>tx_lead_ms</code> (how far ahead of the air the queue
+must be kept) and <code>time_accuracy_us</code>.</p>
+<p>Events:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AIR_EV_RX</code></td>
+<td>a chunk of received symbols: time of symbol 0, 1 to 144 symbols, hard dibits, soft values if the fit says so, where the provider's own correlator saw a sync (a hint), flags: a gap before it, timing coasting, no signal, a TDMA slot start</td>
+</tr>
+<tr>
+<td><code>AIR_EV_TX_STARTED</code></td>
+<td>the first queued symbol is on air, with its time</td>
+</tr>
+<tr>
+<td><code>AIR_EV_TX_SPACE</code></td>
+<td>a chunk left the queue</td>
+</tr>
+<tr>
+<td><code>AIR_EV_TX_UNDERRUN</code></td>
+<td>the queue ran dry before the last chunk: idle symbols went out</td>
+</tr>
+<tr>
+<td><code>AIR_EV_TX_DONE</code></td>
+<td>the last chunk has left the air, or the abort is through; receiving again</td>
+</tr>
+<tr>
+<td><code>AIR_EV_SLOT</code></td>
+<td>TDMA: a slot boundary, with its counter and time</td>
+</tr>
+</tbody>
+</table></div>
+<p>A chunk starts wherever the provider's record does, never at a frame boundary. The framer finds the frames.</p>
+<p>What every provider keeps while a session is open:</p>
+<ol>
+<li>Raw receive never reaches the speaker. <code>open</code> fails when the board can't guarantee that.</li>
+<li>The microphone, tones and beeps never reach the modulator.</li>
+<li>It keys the transmitter only inside the core's permission: between <code>hal_radio_t.tx()</code> (the core's inhibit, band
+and power checks) and <code>tx_off()</code>, which the core calls at <code>AIR_EV_TX_DONE</code>. Never by itself.</li>
+<li><code>close</code> restores the board.</li>
+</ol>
+<h2 id="4-fit">4. Fit</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Bit</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AIR_FIT_RX</code>, <code>AIR_FIT_TX</code></td>
+<td>the direction works for this profile</td>
+</tr>
+<tr>
+<td><code>AIR_FIT_SOFT</code></td>
+<td>a soft value per received symbol</td>
+</tr>
+<tr>
+<td><code>AIR_FIT_SHAPE_APPROX</code></td>
+<td>the <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> pulse is the provider's own, not the profile's</td>
+</tr>
+<tr>
+<td><code>AIR_FIT_DEV_APPROX</code></td>
+<td>transmit deviation off by more than a tenth</td>
+</tr>
+<tr>
+<td><code>AIR_FIT_RATE_DOUBLED</code></td>
+<td>the profile runs at half the provider's rate: the framer sends each symbol twice</td>
+</tr>
+<tr>
+<td><code>AIR_FIT_NEEDS_SYNC</code></td>
+<td><abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> starts only at a 24-symbol pattern: no late entry on shorter syncs</td>
+</tr>
+<tr>
+<td><code>AIR_FIT_TDMA</code></td>
+<td>slot clock and per-slot keying</td>
+</tr>
+<tr>
+<td><code>AIR_FIT_FULL_DUPLEX</code></td>
+<td>receives while it transmits</td>
+</tr>
+<tr>
+<td><code>AIR_FIT_UNTESTED</code></td>
+<td>from register facts, never checked on air on this board</td>
+</tr>
+</tbody>
+</table></div>
+<p>A provider with a correlator of its own takes the first patterns of the profile it can use (24 symbols, all outer,
+not start-only). A provider that receives only while it sees such patterns compares <code>sync_every_syms</code> with what it
+can coast.</p>
+<h2 id="5-the-framer">5. The framer</h2>
+<p><abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">Receive</abbr>:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Search</td>
+<td>the last 24 symbols against every pattern of the profile, each within its error limit</td>
+</tr>
+<tr>
+<td>Levels</td>
+<td>with soft values, a least squares fit of the pattern's levels gives the signal's level and offset; a match that does not lie on a line is noise. The frame's symbols are sliced again with those levels</td>
+</tr>
+<tr>
+<td>Head</td>
+<td>a mode with units of different lengths gives a head hook: it sees the first symbols behind a sync, confirms the unit (or says it is none: the search goes on, replaying what it held) and gives its length</td>
+</tr>
+<tr>
+<td>Frames</td>
+<td>a frame is handed over whole, or in pieces when it is longer than the mode's buffer. A pattern may sit inside its frame (a negative start offset): the framer keeps history for it</td>
+</tr>
+<tr>
+<td>Coasting</td>
+<td>a frame whose sync is missed is placed by counting, up to the mode's limit; then the mode is told the signal is lost</td>
+</tr>
+<tr>
+<td>Gaps</td>
+<td>a chunk that says symbols were lost, or no signal, ends the lock</td>
+</tr>
+</tbody>
+</table></div>
+<p><abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">Transmit</abbr>: the mode sends everything on air as symbols, its preamble and end marker included. The framer packs them
+into the provider's chunks, doubles them for <code>AIR_FIT_RATE_DOUBLED</code>, and fills the last chunk with idle symbols
+where the provider needs whole chunks.</p>
+<h2 id="6-sample-taps-and-the-soft-modem">6. Sample taps and the soft modem</h2>
+<p><code>hal_baseband_t</code> describes a board's taps: rate (8 kHz or more), band, scale in counts per kHz when known, start,
+read or write, stop, and the sample clock. The isolation rules of section 3 hold while a tap runs.</p>
+<p><code>air_softmodem</code> turns a <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> tap into the receive half of a provider, for any 2- or 4-level profile the tap's
+band carries (<code>air_softmodem_rx_fit</code>: the band must reach a little past half the symbol rate and, for four levels,
+down to a hundredth of it).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Offset</td>
+<td>a slow average of the input is taken off; it holds while a signal is locked</td>
+</tr>
+<tr>
+<td>Resampling</td>
+<td>a polyphase interpolator (12 phases, 8 taps) to five samples per symbol</td>
+</tr>
+<tr>
+<td>Receive filter</td>
+<td>an integrate and dump over one symbol for C4FM and square pulses, a shorter one otherwise</td>
+</tr>
+<tr>
+<td>Sync fit</td>
+<td>the newest symbol-spaced samples are fitted to each pattern (level and offset, least squares). Where the error passes through a minimum under the limit, that sample is a symbol center; a parabola through the neighbors places it between samples</td>
+</tr>
+<tr>
+<td>Gate</td>
+<td>the fit runs only where a pattern can be: per sample phase the modem keeps one bit per symbol (this sample was above the one a symbol before), and a pattern is fitted when the steps of four levels or more among its last 17 symbols are all there but one. Two missing steps put a fit over the limit whatever the rest does, so the gate changes no output; it removes the fit from all but a few percent of the samples of noise or data</td>
+</tr>
+<tr>
+<td>Output</td>
+<td>symbols leave from the far end of a delay line 26 symbols long, sampled on the latest sync's timing and scaled by its level and offset, so a sync is sampled on the timing it gave</td>
+</tr>
+<tr>
+<td>Level</td>
+<td>a tap of known scale starts at the profile's deviation. A tap of unknown scale follows the input's average magnitude until the first sync gives the level. The averages start fast and slow down; when a 16-sample average of the magnitude is off the slow one by half or double (a signal after an unmodulated carrier, which leaves the discriminator quiet), both start fast again</td>
+</tr>
+</tbody>
+</table></div>
+<p>Between syncs the timing, level and offset hold. Two crystal clocks do not move a fifth of a symbol in a second, so
+a mode whose syncs recur gets every frame on fresh timing. Chunks say <code>AIR_CHUNK_FREE_RUN</code> when no sync was seen
+within the profile's spacing, and <code>AIR_CHUNK_GAP</code> after a hole in the samples (the modem starts over).</p>
+<p>Cost: 3.3 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> of code and about 370 bytes of state, which the provider places. No <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> half is written: a
+provider with a tap for receive only sends through its chip.</p>
+<p>The work is per filtered sample, 24,000 a second at 4800 symbols, so that path decides the load. Its rules are in
+<code>core/dsp/fxp.h</code>, with the kernels the signal code shares (the interpolator's dot product, exact scaling in 32-bit
+steps, 64-bit products for the voice codecs), each in plain C and with a core's own instructions where they help:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No 64-bit product, no divide, no <code>%</code> on a ring index</td>
+<td>a library call or a divide instruction per sample on a core without a long multiply</td>
+</tr>
+<tr>
+<td><code>int</code> or <code>unsigned</code> counters and indexes</td>
+<td>a narrower one costs an extend on every step on some cores</td>
+</tr>
+<tr>
+<td>The input history written twice, a filter's length apart</td>
+<td>the interpolator reads its samples as one run, so a core with paired 16 x 16 multiply-accumulates takes them two at a time</td>
+</tr>
+<tr>
+<td>The fit behind the gate</td>
+<td>it was nine tenths of the work</td>
+</tr>
+</tbody>
+</table></div>
+<p>Measured on the <code>hrc7000</code> platform (no paired multiplies, no long multiply without its HI/LO unit) with an 8 kHz
+tap and the P25 profile, receiving noise: 8.5 % of the <abbr class="gl" tabindex="0" title="Central processing unit." data-more="../dev/glossary.html#t-cpu">CPU</abbr> (<code>rx_load</code>), against 33 % with the fit at every sample,
+a 64-bit gain product and ring indexes by <code>%</code>. The HI/LO unit's multiply-accumulate would save one instruction in
+eight of the dot product and is not used: the context switch does not save HI and LO. Open: a provider that knows
+the channel is empty (<code>AIR_CHUNK_NO_SIGNAL</code>) could stop feeding the modem.</p>
+<h2 id="7-the-session">7. The session</h2>
+<p><code>air_session</code> runs one mode on one provider. Two tasks use it:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The radio core's</td>
+<td>opens and closes; primes a transmission (the mode queues its first symbols), calls <code>hal_radio_t.tx()</code>, then <code>air_session_tx_go</code>; at <code>AIR_TX_DONE</code> calls <code>tx_off()</code> and clears</td>
+</tr>
+<tr>
+<td>The provider's</td>
+<td>delivers events: received chunks go to the framer and on to the mode's hooks; once a transmission runs, <code>tx_fill</code> asks the mode for more symbols whenever a chunk has left the queue</td>
+</tr>
+</tbody>
+</table></div>
+<p>Before <code>air_session_tx_go</code> only the radio core's task touches the <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> side, after it only the provider's.
+A mode that has nothing ready in <code>tx_fill</code> adds nothing and is asked again one chunk later; it must add something
+before the queue falls under the provider's lead, or the provider sends idle symbols and reports an underrun.</p>
+<p>Transmit states: idle, priming, on, ending (the last symbol is queued), done.</p>
+<p>In the radio core each mode on the air interface fills one table of these steps (<code>radio_air_ops_t</code>,
+<code>core/radio/radio_air.h</code>: running, no TX, prepare, go, stop, abort, state, clear), so PTT, the time-out and the
+release are one path for every mode. A mode whose session opened with <code>AIR_FIT_RX</code> and no <code>AIR_FIT_TX</code> refuses PTT
+before anything is queued: <code>tx_deny=air_no_tx</code> (&quot;This mode: <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> only&quot;).</p>
+<h2 id="8-users">8. Users</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>User</th>
+<th>State</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P25 Phase 1 conventional voice</td>
+<td>written, host tested (<a href="p25.html">p25.md</a>)</td>
+</tr>
+<tr>
+<td>NXDN conventional voice, 4800 and 9600 bit/s</td>
+<td>written, host tested, in the radio core (<a href="nxdn.html">nxdn.md</a> 6)</td>
+</tr>
+<tr>
+<td>A DMR engine on symbols</td>
+<td>not written. The interface carries <abbr class="gl" tabindex="0" title="Time division multiple access. A DMR channel carries two conversations by alternating them in 30 ms slots." data-more="../dev/glossary.html#t-tdma">TDMA</abbr> (slot length, slot events, the slot clock, per-slot <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> chunks, syncs inside the burst); today's <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> runs on the modem chip's own layer 2</td>
+</tr>
+<tr>
+<td>2-level modes</td>
+<td>carried (the dibit map, the soft modem's fit)</td>
+</tr>
+<tr>
+<td>AFSK (APRS)</td>
+<td>not a symbol mode: its tones ride the audio band. The sample taps can feed a demodulator for it; nothing uses them for that yet</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="9-bench-access">9. Bench access</h2>
+<p><code>CONFIG_AIR_RAW</code> adds <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> commands that open a session and move raw symbols and tap samples, for bench tests
+(<a href="debuglink.html">debuglink.md</a>). Off by default. While the bench holds the modem, PTT is refused with
+<code>tx_deny=bench</code> (&quot;Air bench: PTT off&quot;).</p>
+<h2 id="10-tests">10. Tests</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tests/host/fecTest.c</code></td>
+<td>the shared codes against the standard's matrices</td>
+</tr>
+<tr>
+<td><code>tests/host/airFramerTest.c</code></td>
+<td>sync search, levels, head hook, pieces, history, coasting, <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> packing</td>
+</tr>
+<tr>
+<td><code>tests/host/airSoftmodemTest.c</code></td>
+<td>the soft modem on a modeled tap: every tap phase, 8 to 48 kHz, scale and offset errors, noise, other pulse shapes, a P25 call end to end; the same output with the gate and with every sample fitted</td>
+</tr>
+<tr>
+<td><code>tests/host/fxpTest.c</code></td>
+<td>the shared fixed-point kernels against wide arithmetic</td>
+</tr>
+<tr>
+<td><code>tests/host/p25EngineTest.c</code></td>
+<td>the session under two P25 engines on made-up providers</td>
+</tr>
+<tr>
+<td><code>tests/host/nxdnEngineTest.c</code></td>
+<td>the session under two NXDN engines; an NXDN call through the soft modem at 2400 symbols/s</td>
+</tr>
+</tbody>
+</table></div>
+
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/air-interface.md">View the source of this page</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="On this page">
+		<p class="eyebrow">On this page</p>
+		<ul><li class="l2"><a href="#1-layers">1. Layers</a></li><li class="l2"><a href="#2-symbols-and-profiles">2. Symbols and profiles</a></li><li class="l2"><a href="#3-the-provider-hal_air_t">3. The provider (hal_air_t)</a></li><li class="l2"><a href="#4-fit">4. Fit</a></li><li class="l2"><a href="#5-the-framer">5. The framer</a></li><li class="l2"><a href="#6-sample-taps-and-the-soft-modem">6. Sample taps and the soft modem</a></li><li class="l2"><a href="#7-the-session">7. The session</a></li><li class="l2"><a href="#8-users">8. Users</a></li><li class="l2"><a href="#9-bench-access">9. Bench access</a></li><li class="l2"><a href="#10-tests">10. Tests</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Join the RadioFoundry community</strong><span class="small muted">Questions, help with your radio and news, on Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Found a bug? Want your radio supported?</strong><span class="small muted">Open an issue on GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry is MIT licensed · <a href="https://github.com/radiofoundry/radiofoundry">Source Code</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Community</a> · <a href="../../docs/index.html">Docs</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Changelog</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

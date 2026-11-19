@@ -1,0 +1,184 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>热点模式 · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="热点模式 · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/user/14-hotspot.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/user/14-hotspot.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/user/14-hotspot.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/user/14-hotspot.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/user/14-hotspot.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/user/14-hotspot.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/user/14-hotspot.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/user/14-hotspot.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/user/14-hotspot.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/user/14-hotspot.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="用户手册">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 用户手册</p>
+		<ul><li><a href="index.html">RadioFoundry 用户手册</a></li><li><a href="01-introduction.html">简介</a></li><li><a href="02-installing.html">安装</a></li><li><a href="03-first-boot.html">首次启动</a></li><li><a href="04-programming.html">为电台编程</a></li><li><a href="05-keys-and-navigation.html">按键与导航</a></li><li><a href="06-home-screen.html">主屏幕</a></li><li><a href="07-channels-zones-vfo.html">信道、区域与 VFO</a></li><li><a href="08-fm.html">FM</a></li><li><a href="09-dmr.html">DMR</a></li><li><a href="10-messages-and-signaling.html">消息、呼叫提示与电台检查</a></li><li><a href="11-emergency.html">紧急</a></li><li><a href="12-scan.html">扫描与双守候</a></li><li><a href="13-aprs.html">APRS</a></li><li><a href="14-hotspot.html" aria-current="page">热点模式</a></li><li><a href="15-usb-network.html">USB 网络模式</a></li><li><a href="16-battery-and-power.html">电池与供电</a></li><li><a href="17-settings.html">设置</a></li><li><a href="18-moving-from-stock-md380.html">从原厂 MD-380 固件迁移</a></li><li><a href="19-moving-from-stock-dm32.html">从原厂 DM-32UV 固件迁移</a></li><li><a href="20-troubleshooting.html">故障排查</a></li><li><a href="21-faq.html">常见问题</a></li><li><a href="22-glossary.html">术语表</a></li><li><a href="23-radios.html">电台参考</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<h1 id="hotspot-mode">热点模式</h1>
+<p>在热点模式中，电台作为 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> 调制解调器，供运行 MMDVMHost、Pi-Star 或类似主机的电脑使用。主机把电台接入 DMR 网络（<abbr class="gl" tabindex="0" title="A worldwide amateur DMR network of linked servers and talkgroups." data-more="22-glossary.html#t-brandmeister">BrandMeister</abbr>、TGIF 等）。电台在一个频率上承载附近电台的收发呼叫。电台通过串口使用 <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="../spec/mmdvm-protocol.html">MMDVM</abbr> 调制解调器协议。有 USB 的电台使用 USB 串口；没有 USB 的电台使用编程线（<a href="23-radios.html">电台参考</a>）。</p>
+<p>有些电台的默认镜像不含热点模式。这些电台上<strong>工具 &gt; 热点</strong>会变暗。<a href="23-radios.html">电台参考</a>列出这些电台，并说明热点模式在哪里已验证。</p>
+<h2 id="what-you-need">你需要什么</h2>
+<ul>
+<li>一台装有 MMDVMHost 的电脑（Linux、macOS），或树莓派上的 Pi-Star 类镜像。</li>
+<li>电台的 USB 线，或没有 USB 的电台的编程线。</li>
+<li>不需要编解码器：电台直接转发 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> 帧，不解码语音。</li>
+<li><strong>设置 &gt; 连接 &gt; 允许热点</strong>开启（默认）。</li>
+</ul>
+<h2 id="setting-up-mmdvmhost">设置 MMDVMHost</h2>
+<p>把 MMDVMHost 的调制解调器指向电台的串口，并作为单工 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> 热点运行。<code>MMDVM.ini</code> 中重要的部分：</p>
+<pre><code>[General]
+Duplex=0
+
+[Info]
+RXFrequency=438800000
+TXFrequency=438800000
+
+[Modem]
+Protocol=uart
+UARTPort=/dev/ttyACM0
+UARTSpeed=115200
+
+[DMR]
+Enable=1
+ColorCode=1
+
+[DMR Network]
+Enable=1
+Slot1=0
+Slot2=1
+</code></pre>
+<ul>
+<li>USB 上，Linux 的端口是 <code>/dev/ttyACM0</code>（或下一个编号），macOS 上是 <code>/dev/cu.usbmodem...</code>。电台的 USB ID 是 1FC9:0094。</li>
+<li>收发使用同一频率，且位于电台频段内（<a href="23-radios.html">电台参考</a>）。</li>
+<li>电台只使用时隙 2：请启用网络时隙 2，禁用时隙 1。</li>
+<li>USB 上忽略波特率。115200 即可。</li>
+<li>关闭其他模式（D-Star、YSF、P25、NXDN、POCSAG、FM）。电台会拒绝它们。POCSAG 会被接受但从不发射。</li>
+</ul>
+<p>在 Pi-Star 类镜像中，选择电台串口上的 USB <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="../spec/mmdvm-protocol.html">MMDVM</abbr> 调制解调器并使用上述设置。</p>
+<p>电台向主机报告自己为“RadioFoundry”、电台型号（例如“RadioFoundry XR-100UV”）以及固件版本。</p>
+<h2 id="starting">启动</h2>
+<p>当主机打开端口并发送第一个 <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="../spec/mmdvm-protocol.html">MMDVM</abbr> 请求时，电台会自行进入热点模式。屏幕切换到热点屏幕。</p>
+<img src="../ux/screens/160x120i5/hotspot.png" width="200" alt="热点屏幕">
+<p>热点屏幕显示：</p>
+<ul>
+<li>状态：STARTING、<abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="14-hotspot.html">HOTSPOT</abbr>、附近电台讲话时的 <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">RX</abbr> <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="22-glossary.html#t-rf">RF</abbr>、网络呼叫发出时的 <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">TX</abbr> NET；</li>
+<li>频率、色码和功率；</li>
+<li>当前或最近一次呼叫，含来源（“RF”或“Net”）、呼叫者和通话组。</li>
+</ul>
+<p><strong>OK</strong>、<strong>6</strong>（工具）、<strong>3</strong>（热点）显示如何启动热点模式。运行期间，该页面有“停止热点”行。</p>
+<h2 id="while-in-hotspot-mode">热点模式期间</h2>
+<ul>
+<li><strong>*</strong> 在热点屏幕和诊断页面之间切换。</li>
+<li><strong>PTT</strong> 不发射（“热点模式：PTT 关闭”）。</li>
+<li>其他任何键显示“热点开启：按 OK 停止”。</li>
+<li>若主机请求 CW 标识，电台会以 FM 在热点频率上发送摩尔斯码，然后回到 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr>。摩尔斯为每分钟 20 词、800 Hz。</li>
+</ul>
+<h2 id="stopping">停止</h2>
+<p>电台在以下情况离开热点模式并返回其信道：</p>
+<ul>
+<li>你按 <strong>OK</strong> 或长按 <strong>返回</strong>（“热点已停止”）；</li>
+<li>主机关闭端口，或 USB 线被拔出；</li>
+<li>主机 20 秒内没有发送任何内容。</li>
+</ul>
+<p>要完全阻止电台进入热点模式，请关闭<strong>设置 &gt; 连接 &gt; 允许热点</strong>。</p>
+<h2 id="mmdvm-sfr-single-frequency-repeater">MMDVM SFR（单频中继）</h2>
+<p>在 <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="../spec/mmdvm-protocol.html">MMDVM</abbr> <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="../spec/sfr.html">SFR</abbr> 中，热点把在时隙 1 听到的呼叫在同一频率的时隙 2 上重发，同时把呼叫发往网络。直通模式下附近的电台能同时听到。并非每款电台都支持（<a href="23-radios.html">电台参考</a>）。</p>
+<p>主机以双工方式运行并令收发频率相同（<code>Duplex=1</code>，<code>RXFrequency</code> = <code>TXFrequency</code>）即可开启 MMDVM SFR。设为 <code>Duplex=0</code> 或不同频率则关闭。</p>
+<p>空中测得的转发时序见<a href="23-radios.html">电台参考</a>。</p>
+<h2 id="standalone-sfr">独立 SFR</h2>
+<p>实验性：通过独立 <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="../spec/sfr.html">SFR</abbr> 的呼叫尚不能可靠接通，某些电台之间完全不通。哪些地方失败、在哪款电台、以及变通方法见<a href="../spec/sfr.html#6-known-issues-by-radio">按电台列出的已知问题</a>。</p>
+<p>信道可以是单频中继，或作为其用户的电台，无需主机。请在电台频率编辑器中设置信道的 SFR 角色。信道必须只有一个频率（收发相同）。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>角色</th>
+<th>电台的行为</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中继（Rpt、Rpt Moto）</td>
+<td>把入向时隙上听到的每个呼叫在另一时隙上延迟 90 ms 重发。PTT 关闭（“中继信道”）。转发时电台显示接收；发送时红色 <abbr class="gl" tabindex="0" title="Light-emitting diode: the radio&#x27;s status light." data-more="22-glossary.html#t-led">LED</abbr> 点亮。发射被禁止、电量严重不足或扫描/双守候运行时，它保持普通信道，条件解除后继续转发。<strong>设置 &gt; 通话与收听 &gt; SFR CW 标识</strong>会使其在有通话后每 5 到 30 分钟以摩尔斯码发送呼号</td>
+</tr>
+<tr>
+<td>用户（User、ERDM）</td>
+<td>在中继台的节拍下于入向时隙通话。播放中继台转发的呼叫副本。<strong>设置 &gt; 通话与收听 &gt; SFR 接收</strong>还可取用通话者自己的副本：先到的那份，或两份都用，每个损坏帧取自另一份（双路接收）</td>
+</tr>
+</tbody>
+</table></div>
+<p>同一频率上的所有电台必须使用相同的入向时隙。入向时隙为 2 的用户在时隙 1 上收听，因此仍能听到设为入向时隙 1 的用户：两种配置不能共用同一频率。SFR 上没有 CACH：用户跟随中继台的时隙同步。<strong>工具 &gt; 单频中继</strong>显示信道角色、时隙以及中继台当前的动作。详情见 <a href="../spec/sfr.html">docs/spec/sfr.md</a>。</p>
+<h2 id="two-radios-as-a-duplex-repeater">两台电台组成双工中继</h2>
+<p>实验性：两台电台各自接在一台电脑的不同端口上，组成一个全双工中继。一台接收，另一台发射。两者的镜像都需要支持分离双工。<a href="../feature-matrix.html">功能矩阵</a>显示哪些电台提供该功能。电脑运行 <code>tools/split_duplex_host.py</code>。时隙编号仍在台架上检查。详情见 <a href="../spec/split-duplex.html">docs/spec/split-duplex.md</a>。</p>
+
+		<nav class="prev-next"><a class="prev" href="13-aprs.html">APRS</a><a class="next" href="15-usb-network.html">USB 网络模式</a></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/user/14-hotspot.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#what-you-need">你需要什么</a></li><li class="l2"><a href="#setting-up-mmdvmhost">设置 MMDVMHost</a></li><li class="l2"><a href="#starting">启动</a></li><li class="l2"><a href="#while-in-hotspot-mode">热点模式期间</a></li><li class="l2"><a href="#stopping">停止</a></li><li class="l2"><a href="#mmdvm-sfr-single-frequency-repeater">MMDVM SFR（单频中继）</a></li><li class="l2"><a href="#standalone-sfr">独立 SFR</a></li><li class="l2"><a href="#two-radios-as-a-duplex-repeater">两台电台组成双工中继</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

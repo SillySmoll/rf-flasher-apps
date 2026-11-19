@@ -1,0 +1,677 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Channels, Zones and the VFO · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Channels, Zones and the VFO · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/docs/user/07-channels-zones-vfo.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/user/07-channels-zones-vfo.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/user/07-channels-zones-vfo.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/user/07-channels-zones-vfo.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/user/07-channels-zones-vfo.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/user/07-channels-zones-vfo.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../es/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../../es/radios/index.html">Radios</a><a href="../../../es/features/index.html">Funciones</a><a href="../../../es/flash/index.html">Instalar</a><a href="../../../es/codeplug/index.html">Codeplug</a><a href="../../../es/docs/index.html" aria-current="page">Documentación</a><a href="../../../es/screenshots/index.html">Capturas</a><a href="../../../es/tools/index.html">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../../docs/user/07-channels-zones-vfo.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/user/07-channels-zones-vfo.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/user/07-channels-zones-vfo.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/user/07-channels-zones-vfo.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Manual del usuario">
+		<p class="eyebrow"><a href="../../../es/docs/index.html">Documentación</a> / Manual del usuario</p>
+		<ul><li><a href="index.html">RadioFoundry User Manual</a></li><li><a href="01-introduction.html">Introduction</a></li><li><a href="02-installing.html">Installing</a></li><li><a href="03-first-boot.html">First Boot</a></li><li><a href="04-programming.html">Programming the Radio</a></li><li><a href="05-keys-and-navigation.html">Keys and Navigation</a></li><li><a href="06-home-screen.html">The Home Screen</a></li><li><a href="07-channels-zones-vfo.html" aria-current="page">Channels, Zones and the VFO</a></li><li><a href="08-fm.html">FM</a></li><li><a href="09-dmr.html">DMR</a></li><li><a href="10-messages-and-signaling.html">Messages, Call Alert and Radio Check</a></li><li><a href="11-emergency.html">Emergency</a></li><li><a href="12-scan.html">Scan and Dual Watch</a></li><li><a href="13-aprs.html">APRS</a></li><li><a href="14-hotspot.html">Hotspot Mode</a></li><li><a href="15-usb-network.html">USB Network Mode</a></li><li><a href="16-battery-and-power.html">Battery and Power</a></li><li><a href="17-settings.html">Settings</a></li><li><a href="18-moving-from-stock-md380.html">Moving from Stock MD-380 Firmware</a></li><li><a href="19-moving-from-stock-dm32.html">Moving from Stock DM-32UV Firmware</a></li><li><a href="20-troubleshooting.html">Troubleshooting</a></li><li><a href="21-faq.html">FAQ</a></li><li><a href="22-glossary.html">Glossary</a></li><li><a href="23-radios.html">Radio Reference</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Esta página aún no está traducida; se muestra en inglés.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="channels-zones-and-the-vfo">Channels, Zones and the VFO</h1>
+<p>A <strong>channel</strong> is a saved frequency with its mode (FM, <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr>, or P25 and NXDN where the radio runs them) and settings. A <strong>zone</strong> is a named list of channels.
+The <strong><abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr></strong> tunes any frequency by hand. Channels and zones come from the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> (<a href="04-programming.html">Programming the radio</a>).</p>
+<h2 id="changing-the-channel">Changing the channel</h2>
+<ul>
+<li>Turn the channel knob, or press <strong>Up</strong> or <strong>Down</strong> on Home, to step through the zone's channels.</li>
+<li>Type the channel's position on Home and press <strong>OK</strong>. For example, <strong>1</strong>, <strong>2</strong>, <strong>OK</strong> goes to channel 12 of the
+zone.</li>
+<li>Type letters of the channel's name on Home (see <a href="05-keys-and-navigation.html#find">Find</a>) and press <strong>OK</strong> on it.</li>
+<li>Press <strong>OK</strong>, <strong>4</strong> (Zones), focus the zone and press <strong>#</strong>. The zone's channels open. Focus one and press <strong>OK</strong>.</li>
+</ul>
+<img src="../ux/screens/160x120i5/zone_channels.png" width="200" alt="A zone's channels">
+<p>Changing the channel ends <abbr class="gl" tabindex="0" title="A change that lasts until the channel changes or you press Back on Home. Hold OK to keep it." data-more="22-glossary.html#t-temporary-change">temporary changes</abbr>, the <abbr class="gl" tabindex="0" title="The time after a call during which PTT answers it." data-more="22-glossary.html#t-reply-window">reply window</abbr>, <abbr class="gl" tabindex="0" title="Playing every talkgroup on the timeslot (promiscuous mode; &quot;hear all&quot; in older RadioFoundry builds)." data-more="22-glossary.html#t-digital-monitor">digital monitor</abbr> and a scan.</p>
+<h2 id="changing-the-zone">Changing the zone</h2>
+<ul>
+<li>Press <strong>Next zone</strong> or <strong>Previous zone</strong> (<a href="23-radios.html#key-roles">Key roles</a> shows which keys these are on your
+radio). The radio shows &quot;Zone:&quot; and the name.</li>
+<li>Or press <strong>OK</strong>, <strong>4</strong> (Zones). The list opens with the current zone focused (&quot;here&quot;). Focus another zone and press
+<strong>OK</strong>. The radio switches to it and returns to Home.</li>
+<li>Or type the zone's name on Home. Find lists zones too.</li>
+</ul>
+<img src="../ux/screens/160x120i5/zones.png" width="200" alt="Zones: the VFO and the zones">
+<p>The Zones list shows the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr> first, then every zone with its number of channels. Type letters to filter it.</p>
+<h2 id="making-a-zone">Making a zone</h2>
+<p><strong>OK</strong>, <strong>4</strong> (Zones), then the last row, <strong>Create New Zone</strong>. Type the name and press <strong>OK</strong>. The radio saves the empty zone
+and focuses it in the list. Press <strong>#</strong> to open it and add channels with <strong>Add channel</strong>. A channel's own page can
+also put it in zones (<strong>Zones</strong> row, <a href="#editing-a-channel">Editing a channel</a>).</p>
+<h2 id="editing-a-zone">Editing a zone</h2>
+<p>A zone's list (<strong>OK</strong>, <strong>4</strong>, focus the zone, <strong>#</strong>) also edits the zone. Each change is saved at once: there is
+nothing to save or discard. On a radio without <strong>#</strong>, hold <strong>OK</strong> wherever this section says <strong>#</strong>.</p>
+<img src="../ux/screens/160x120i5/zone_actions.png" width="200" alt="Channel actions in a zone">
+<ul>
+<li>
+<p><strong>Add channel</strong> (the first row) lists every channel the zone doesn't hold. Type letters or digits to filter it and
+press <strong>OK</strong> on one. It goes after the channel you are on, or at the end of a zone you are not using.</p>
+</li>
+<li>
+<p><strong>#</strong> on a channel opens its actions:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Action</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Move up</td>
+<td>swaps it with the channel above. The menu stays open, so press <strong>1</strong> again to move it on</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Move down</td>
+<td>swaps it with the channel below</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Copy here</td>
+<td>opens a copy at the lowest free channel number, named with &quot; 2&quot; added. Change what differs and hold <strong>OK</strong>: the copy is saved and put after the channel in this zone</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Edit channel</td>
+<td>opens the channel's settings (<a href="#editing-a-channel">Editing a channel</a>)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Share channel to...</td>
+<td>sends the channel to another radio or a <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="22-glossary.html#t-talkgroup">talkgroup</abbr> (<a href="#sharing-a-zone">Sharing a zone</a>)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Remove from zone</td>
+<td>takes it out of this zone. The channel stays in Channels and in any other zone</td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<p><strong>Zone options</strong> (the last row):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Action</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Rename</td>
+<td>type the new name and press <strong>OK</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Copy as new zone</td>
+<td>makes a new zone with the same channels, named with &quot; 2&quot; added</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Share zone to...</td>
+<td>sends the zone to another radio or a talkgroup (<a href="#sharing-a-zone">Sharing a zone</a>)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Delete zone</td>
+<td>asks first, with &quot;No, keep it&quot; focused. The zone's channels stay in Channels</td>
+</tr>
+</tbody>
+</table></div>
+</li>
+</ul>
+<img src="../ux/screens/160x120i5/zone_options.png" width="200" alt="Zone options">
+<p>Moving, adding and removing keep the radio on its channel. Removing the channel you are on moves the radio to the
+next channel in the zone. A zone holds a channel once, and the radio refuses a channel past the zone's size (&quot;Zone
+full&quot;). A radio whose <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> has no zones shows one zone, &quot;All channels&quot;; the first change saves it as a real zone.</p>
+<p>Deleting the zone you are using moves the radio to the zone that comes after it in the list (or the one before, when
+it was last). <abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="22-glossary.html#t-dual-watch">Dual watch</abbr> keeps watching a channel from a deleted zone when another zone holds it, and otherwise
+stops. A zone marked for roaming loses the mark when it is deleted; the other marks stay on their zones.</p>
+<h2 id="sharing-a-zone">Sharing a zone</h2>
+<p>You can send a zone, or one channel, to another radio or a <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="22-glossary.html#t-talkgroup">talkgroup</abbr> over <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr>. Status: sending one channel works on a
+radio; sending a whole zone and receiving are tested only in the host tests so far.</p>
+<p><strong>Send:</strong></p>
+<ol>
+<li>Tune a DMR channel. The zone goes out on it.</li>
+<li>Press <strong>OK</strong>, <strong>4</strong> (Zones). Focus the zone and press <strong>#</strong>. Its channels open.</li>
+<li>For one channel: press <strong>#</strong> on it and pick <strong>5 Share channel to...</strong>, or pick <strong>Share channel to...</strong> in the
+channel's settings. For the whole zone: pick <strong>Zone options</strong> (the last row), then <strong>3 Share zone to...</strong>.</li>
+<li>Pick a contact or talkgroup and press <strong>OK</strong>. For a station that isn't a contact, type its ID: &quot;Private ID ...&quot;
+and &quot;TG ...&quot; appear under the contacts. The radio says where it sends: &quot;Sending to ... via 442.375&quot; (on a
+repeater, its output frequency). A banner says &quot;Sent to ...&quot; when it is out.</li>
+</ol>
+<p>A zone too big for one send goes in part, and the radio says how much (&quot;Sending 40 of 60 channels&quot;). Scan lists,
+group lists and privacy keys are never sent.</p>
+<p><strong><abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">Receive</abbr>:</strong> <strong>Settings &gt; Connections &gt; Accept zone shares</strong> is <strong>On</strong> at first. Nothing is imported until you
+say so. Set it to <strong>Off</strong> to ignore what others send.</p>
+<img src="../ux/screens/160x120i5/zone_offer.png" width="200" alt="Zone Share Received: Import, Preview, Reject">
+<ol>
+<li>A banner says &quot;Zone from ...&quot;. It stays until you press <strong>#</strong> to open it or <strong>Back</strong> to hide it. The offer also waits under <strong>Tools &gt; Zones/Chs Received</strong> for 10 minutes. The screen is titled <strong>Zone Share Received</strong>, or <strong>Channel Share Received</strong> for one channel.</li>
+<li>The offer shows the zone's name, its channels, the sender and how many channels are outside your radio's bands.</li>
+<li>Pick <strong>Preview</strong> to see the channels, <strong>Import</strong> to add them, or <strong>Reject</strong>.</li>
+</ol>
+<p>What an import does:</p>
+<ul>
+<li>The zone is added after your zones. If you have a zone with that name, it gets &quot; 2&quot;.</li>
+<li>Only channels your radio can receive come in. Every one is <strong>receive only</strong>: turn <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">transmit</abbr> on per channel when
+you know you may use it.</li>
+<li>Talkgroups and contacts you already have are used with your names. Missing ones are added.</li>
+<li>The same zone sent again by the same radio updates your copy instead of adding another. It replaces only the
+channels from the earlier import that you left as they were. Channels you added to the zone or changed stay,
+after the new ones.</li>
+<li>A single channel is added to a zone you pick.</li>
+</ul>
+<p>At most 6 offers an hour are shown, one at a time. The format is in <a href="../spec/zone-share.html">zone-share.md</a>.</p>
+<h2 id="every-channel">Every channel</h2>
+<p><strong>OK</strong>, <strong>5</strong> (Channels) lists every channel in the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> by number and name, whichever zones hold it. Each
+row ends with the <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">RX</abbr> frequency and the <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="22-glossary.html#t-talkgroup">talkgroup</abbr> (<abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr>) or FM. A long name stays whole and the row shortens the rest:
+&quot;TG&quot; goes first, then the frequency. The channel you are on is marked. Type letters to filter the list.</p>
+<img src="../ux/screens/160x120i5/channels.png" width="200" alt="Channels: every channel by number">
+<ul>
+<li><strong>OK</strong> on a channel opens its settings, where you can change them (below).</li>
+<li><strong>#</strong> in the list goes to the channel: in the current zone if it holds it, otherwise in the first zone that does.
+A channel in no zone says &quot;Not in any zone&quot;.</li>
+<li>The first row, <strong>New from current</strong>, starts a new channel from what the radio uses now (below).</li>
+</ul>
+<h2 id="editing-a-channel">Editing a channel</h2>
+<p>The channel's page lists every setting: name, mode, <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">RX</abbr> and <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">TX</abbr> frequency, power, RX only, then bandwidth, tones,
+<abbr class="gl" tabindex="0" title="Voice-operated transmit." data-more="22-glossary.html#t-vox">VOX</abbr> and tone burst on FM, or <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="22-glossary.html#t-color-code">color code</abbr>, <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="22-glossary.html#t-timeslot">timeslot</abbr>, TX contact, <abbr class="gl" tabindex="0" title="The talkgroups a channel listens to. The codeplug calls it the RX group list." data-more="22-glossary.html#t-listen-list">RX group list</abbr>, own ID, direct mode, talk permit beeps and talker
+alias on <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr>, then TX time-out, scan, battery saver and the zones that hold it. The list scrolls.</p>
+<img src="../ux/screens/160x120i5/channel.png" width="200" alt="A channel's settings">
+<p>Focus a row and press <strong>OK</strong>:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Row</th>
+<th>What OK does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mode</td>
+<td>steps to the next mode: FM, DMR, then P25 and NXDN on a radio that runs them. Stepping on comes back to the mode the channel had, with its settings as they were</td>
+</tr>
+<tr>
+<td>Two choices (timeslot, bandwidth, RX only, scan, VOX, tone burst, direct mode, beeps, talker alias, battery saver)</td>
+<td>switches to the other one</td>
+</tr>
+<tr>
+<td>Power, RX CTCSS/DCS, TX CTCSS/DCS, color code, TX time-out</td>
+<td>opens a picker: turn the knob (or Up / Down) to the value, <strong>OK</strong> keeps it, <strong>Back</strong> cancels. Color code and time-out also take digits</td>
+</tr>
+<tr>
+<td>RX CTCSS/DCS, TX CTCSS/DCS, typed</td>
+<td>type a <abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="22-glossary.html#t-ctcss">CTCSS</abbr> tone with its tenths digit: <strong>8 8 5</strong> is 88.5, <strong>1 3 1 8</strong> is 131.8. Under 60 the digits are whole Hz: <strong>6 7</strong> is 67.0, <strong>1 0 0</strong> is 100.0. Start with <strong>0</strong> for a <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="22-glossary.html#t-dcs">DCS</abbr> code: <strong>0 2 3</strong> is D023N. <strong>Back</strong> takes the last digit back. For an inverted DCS code, turn the knob one step: each code's I follows its N (D023N, D023I, D025N)</td>
+</tr>
+<tr>
+<td>Zones</td>
+<td>opens every zone, marked &quot;In&quot; where the channel is. <strong>OK</strong> puts the channel in a zone or takes it out, saved at once. A new channel shows the row once saved</td>
+</tr>
+<tr>
+<td>RX, TX, own ID</td>
+<td>type the digits, <strong>OK</strong> keeps them, <strong>Back</strong> takes the last digit back. Digits outside the radio's bands are refused as you type. A new RX moves TX with it, so a repeater keeps its offset. If the new RX is in another band (<abbr class="gl" tabindex="0" title="Ultra high frequency: 300 MHz to 3 GHz. The amateur 70 cm band is UHF." data-more="22-glossary.html#t-uhf">UHF</abbr> to <abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="22-glossary.html#t-vhf">VHF</abbr>), or TX would land outside the band, TX is set to the new RX</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>opens text entry (below)</td>
+</tr>
+<tr>
+<td>TX contact, RX group list</td>
+<td>opens the list of contacts or group lists; type letters to find one</td>
+</tr>
+</tbody>
+</table></div>
+<img src="../ux/screens/160x120i5/channel_power.png" width="200" alt="Picking the power level with the knob">
+<p>A changed row is marked until you save. <strong>Hold OK</strong> anywhere on the page to save, or pick the <strong>Save</strong> row. The radio
+writes the channel in the background and says &quot;Saved channel 3&quot;. <strong>Back</strong> with unsaved changes asks whether to
+discard them; the answer starts on &quot;No, keep editing&quot;. Saving any channel drops the quick-settings changes on the
+channel you are on: the radio reloads it from the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>.</p>
+<p>The radio won't save a channel without a name, with RX outside its bands, with TX where it can't transmit (set RX only
+instead), a DMR channel in the broadcast band or in the air band (on a radio that receives AM there), or a DMR channel
+without a TX contact, unless it is RX only. It says which. A DMR channel where the radio receives but can't transmit
+saves when it is RX only.</p>
+<p><strong>Save as new channel</strong> stores the edited copy at the lowest free number and leaves the original as it was.
+<strong>Tune to this ch</strong> tunes the channel and <strong>Share channel to...</strong> sends it to another radio (<a href="#sharing-a-zone">Sharing a zone</a>);
+save or discard your changes first.</p>
+<h3 id="text-entry">Text entry</h3>
+<p>It works like a phone keypad. Keys <strong>2</strong> to <strong>9</strong> type their letters, then the digit, then the letters in the other
+case: press <strong>2</strong> once for A, twice for B, four times for 2, five times for a. Press the same key again within a
+second for the next character; another key, or a pause, moves on. <strong>1</strong> types punctuation (<code>. - / , ' &amp; ( ) @ _ ! ?</code>
+and 1), <strong>0</strong> a space, 0, <code>+</code>, <code>#</code> and <code>*</code>. The title shows the mode.</p>
+<p><strong>#</strong> switches the mode: ABC (capitals, the start), then 123 (each key types its digit), then abc (lower case), then
+back to ABC. Holding a digit key types the digit in any mode. <strong>Back</strong> deletes the last character (<strong>*</strong> does too).
+<strong>OK</strong> keeps the name. To leave without changing it, press <strong>Back</strong> until the field is empty and once more. Names hold
+up to 16 characters.</p>
+<p>On a radio without a keypad, Up / Down change the last character, <strong>OK</strong> adds another, and holding <strong>OK</strong> keeps the
+name.</p>
+<img src="../ux/screens/160x120i5/channel_name.png" width="200" alt="Typing a channel name">
+<h3 id="new-channel-from-current-settings">New channel from current settings</h3>
+<p><strong>OK</strong>, <strong>5</strong>, then the first row, <strong>New from current</strong>. It opens an unsaved copy of the channel you are on, with any
+quick-settings changes, or of the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr>, at the lowest free channel number. The name gets &quot; 2&quot; added (from the VFO, the
+frequency). Change what differs, then hold <strong>OK</strong> to save it. A new channel is in no zone yet: add it to one with <strong>Add channel</strong> in the
+zone's list (<a href="#editing-a-zone">Editing a zone</a>), or use <strong>Copy here</strong> there to make the copy and add it in one step.</p>
+<h2 id="saving-changes-to-a-channel">Saving changes to a channel</h2>
+<p>Change power, squelch, tone, bandwidth, <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="22-glossary.html#t-timeslot">timeslot</abbr>, <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="22-glossary.html#t-color-code">color code</abbr> or mode with quick settings. Then hold <strong>OK</strong> on Home or
+in quick settings. The radio writes the channel in the background and shows &quot;Saved to channel&quot;. The squelch is saved
+as the radio's default squelch, not in the channel.</p>
+<p>A save that fails shows &quot;Couldn't save: ...&quot; and the change stays for now only.</p>
+<h2 id="the-vfo">The VFO</h2>
+<p>The <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr> is an FM VFO or, on a radio with <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr>, a DMR VFO. It keeps its mode like its frequency. Everything you change in
+the VFO (mode, <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="22-glossary.html#t-color-code">color code</abbr>, <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="22-glossary.html#t-timeslot">timeslot</abbr>, <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="22-glossary.html#t-talk-target">talk target</abbr>) is kept, also when you go to a channel and come back, and after a
+restart.</p>
+<ol>
+<li><strong>OK</strong>, <strong>4</strong> (Zones). The VFO is the first row.</li>
+<li>Press <strong>OK</strong>. Home shows the frequency large, and the radio says &quot;VFO: type a frequency&quot;.</li>
+</ol>
+<p>On a radio with a <strong>VFO/MR</strong> key, press it instead: it goes between the channel and the VFO. <strong>Settings &gt; Keys</strong> can
+give any side key the same job, &quot;VFO/Channel&quot;, on a press or a hold.</p>
+<img src="../ux/screens/160x120i5/home_vfo.png" width="200" alt="Home in the VFO">
+<h3 id="copy-a-channel-to-the-vfo">Copy a channel to the VFO</h3>
+<p>To start from a channel, press <strong>*</strong>, <strong>4</strong> (&quot;To VFO&quot;) on it. The channel's settings become the VFO's and Home shows
+the VFO (&quot;Copied to VFO&quot;). On a radio with a <strong>VFO/MR</strong> key, hold it instead. <strong>Settings &gt; Keys</strong> can give any side
+key &quot;Copy to VFO&quot;, on a press or a hold.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Copied</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RX and TX frequency</td>
+<td>A repeater's offset stays until you step the frequency</td>
+</tr>
+<tr>
+<td>Mode, bandwidth, power</td>
+<td>Power stays &quot;default&quot; if the channel's is</td>
+</tr>
+<tr>
+<td>Tones (FM)</td>
+<td><abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="22-glossary.html#t-ctcss">CTCSS</abbr> or <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="22-glossary.html#t-dcs">DCS</abbr>, <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">RX</abbr> and <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">TX</abbr></td>
+</tr>
+<tr>
+<td>Color code, timeslot, talk target (DMR)</td>
+<td>The talk target is the contact's ID, as a group or <abbr class="gl" tabindex="0" title="A DMR call to one radio." data-more="22-glossary.html#t-private-call">private call</abbr>. A channel with no contact gives what it would send now</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>The VFO gets what is in effect now, so a <abbr class="gl" tabindex="0" title="A change that lasts until the channel changes or you press Back on Home. Hold OK to keep it." data-more="22-glossary.html#t-temporary-change">temporary change</abbr> you made on the channel (a bandwidth, a power level, a
+talk target) is copied too.</li>
+<li>The channel stays as it was. The VFO keeps the values like its other settings, also after a restart.</li>
+<li>Not copied: the <abbr class="gl" tabindex="0" title="The talkgroups a channel listens to. The codeplug calls it the RX group list." data-more="22-glossary.html#t-listen-list">RX group list</abbr>, the privacy key, roaming, the data and emergency settings, and the squelch level.
+The VFO uses the radio's own values for these.</li>
+<li>A channel the VFO can't hold is refused with a short message and nothing changes: a DMR channel on a radio build
+whose VFO is FM only (or the other way round), or a frequency outside the radio's bands.</li>
+<li>In the VFO the same key says &quot;Already in VFO&quot;.</li>
+</ul>
+<h3 id="typing-a-frequency">Typing a frequency</h3>
+<p>On Home in the VFO, type the frequency digits from the hundreds of MHz down, without a decimal point. The radio shows
+what you typed as you go.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Keys</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>4</strong> <strong>4</strong> <strong>6</strong> <strong>0</strong> <strong>0</strong> <strong>0</strong></td>
+<td>446.000 MHz</td>
+</tr>
+<tr>
+<td><strong>1</strong> <strong>4</strong> <strong>6</strong> <strong>5</strong> <strong>2</strong></td>
+<td>146.520 MHz</td>
+</tr>
+<tr>
+<td><strong>4</strong> <strong>3</strong> <strong>8</strong> <strong>2</strong> <strong>6</strong> <strong>2</strong> <strong>5</strong></td>
+<td>438.2625 MHz</td>
+</tr>
+<tr>
+<td><strong>0</strong> <strong>8</strong> <strong>8</strong> <strong>1</strong></td>
+<td>88.100 MHz (below 100 MHz, start with <strong>0</strong>)</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>Type at least the three MHz digits, then press <strong>OK</strong> (or <strong>#</strong> where the radio has that key) to tune.</li>
+<li><strong>Back</strong> deletes the last digit.</li>
+<li>A digit that can't lead to a frequency in the radio's bands is refused, and the radio shows the bands. The bands
+depend on the radio (<a href="23-radios.html">Radio reference</a>).</li>
+<li>Up to eight digits (10 Hz). After 10 s without a key, the entry is dropped.</li>
+</ul>
+<img src="../ux/screens/160x120i5/home_vfo_entry.png" width="200" alt="Typing a VFO frequency">
+<h3 id="stepping">Stepping</h3>
+<p><strong>Up</strong>, <strong>Down</strong> and the channel knob change the VFO frequency by its step. The step is <strong>Settings &gt; Talk &gt; VFO step</strong>. Its
+default, <strong>Auto</strong>, follows the width: 25 kHz at 25K (and in AM) and 12.5 kHz at 12.5K. In the broadcast band the step
+is always the FM broadcast step, whatever the VFO step. The step is in the status strip.</p>
+<h3 id="split-repeater-offset">Split (repeater offset)</h3>
+<p>In the VFO, <strong>*</strong>, <strong>5</strong> (<strong>*</strong>, <strong>6</strong> in the DMR VFO) is <strong>TX freq</strong> (the split): TX against RX, &quot;Off&quot; or the offset (&quot;+600k&quot;,
+&quot;-5M&quot;).</p>
+<img src="../ux/screens/160x120i5/quick_vfo_split.png" width="200" alt="Typing a TX frequency in TX freq">
+<ul>
+<li>
+<p><strong>Up</strong> and <strong>Down</strong> step through the band's usual offsets, at once. <strong>Up</strong> goes +, <strong>Down</strong> goes -, the most common
+first, and stop at the last one:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Band</th>
+<th>Offsets</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2 m (below 200 MHz)</td>
+<td>600 kHz, then 1 MHz</td>
+</tr>
+<tr>
+<td>1.25 m (200-300 MHz)</td>
+<td>1.6 MHz</td>
+</tr>
+<tr>
+<td>70 cm (above 300 MHz)</td>
+<td>5 MHz, then 7.6 MHz, then 1.6 MHz</td>
+</tr>
+</tbody>
+</table></div>
+<p>On 70 cm, <strong>Up</strong> from Off is +5M, again +7.6M, again +1.6M; <strong>Down</strong> from +5M goes back to Off, then -5M.</p>
+</li>
+<li>
+<p>The bottom row says what the keys do (&quot;Up/Dn +/-  0-9 TX freq&quot;) and, while you type, shows the whole TX frequency
+so far (&quot;TX 147.02___&quot;).</p>
+</li>
+<li>
+<p>Any other split (a custom one): type the TX frequency as you type a VFO frequency (<strong>1 4 7 0 0</strong> is 147.000) and
+press <strong>OK</strong>. <strong>Back</strong> takes the last digit back. Any frequency the radio can transmit on is accepted.</p>
+</li>
+<li>
+<p>A new RX frequency keeps the offset within the same band. A move to another band (<abbr class="gl" tabindex="0" title="Ultra high frequency: 300 MHz to 3 GHz. The amateur 70 cm band is UHF." data-more="22-glossary.html#t-uhf">UHF</abbr> to <abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="22-glossary.html#t-vhf">VHF</abbr>, say) makes the VFO simplex.</p>
+</li>
+<li>
+<p>Monitor stays on its key in the VFO, and privacy is for channels.</p>
+</li>
+<li>
+<p>Home shows the TX frequency: on FM after <strong>PTT→</strong>; on DMR in the top row (&quot;TX 147.120&quot;), or as the offset beside the
+power on displays without that row. While you transmit, the large frequency turns red and shows the TX frequency
+(on DMR, the call screen has a &quot;TX&quot; line).</p>
+</li>
+</ul>
+<img src="../ux/screens/160x120i5/home_vfo_dmr_tx.png" width="200" alt="Transmitting from a split DMR VFO">
+<h3 id="dmr-in-the-vfo">DMR in the VFO</h3>
+<p><strong>*</strong>, <strong>4</strong> in the VFO switches it between FM and DMR on the same frequency (&quot;VFO: DMR&quot;), and to P25 and NXDN after DMR on a
+radio that runs them (<a href="#p25-in-the-vfo">P25 in the VFO</a>, <a href="#nxdn-in-the-vfo">NXDN in the VFO</a>). In DMR the quick settings are the DMR ones:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Tile</th>
+<th>What it does in the DMR VFO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>2</strong></td>
+<td>Slot</td>
+<td>Switches the timeslot, 1 or 2</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>Color</td>
+<td>Sets the color code, 0 to 15 (1 at first). Type it or use <strong>Up</strong> and <strong>Down</strong>, then <strong>OK</strong></td>
+</tr>
+<tr>
+<td><strong>8</strong></td>
+<td>Talk to</td>
+<td>Picks or types the talk target, a <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="22-glossary.html#t-talkgroup">talkgroup</abbr> or a person. Both <strong>OK</strong> and holding <strong>OK</strong> keep it for the VFO</td>
+</tr>
+</tbody>
+</table></div>
+<img src="../ux/screens/160x120i5/quick_vfo_dmr.png" width="200" alt="Quick settings in the DMR VFO">
+<ul>
+<li>Pick the color code and timeslot of the repeater or the simplex frequency you use. The radio talks to talkgroup 9 until
+you pick another target, with your own <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr>.</li>
+<li>The VFO has no listen list. It plays calls to its talk target, <abbr class="gl" tabindex="0" title="DMR talkgroup 16777215, heard by every radio on the slot." data-more="22-glossary.html#t-all-call">all calls</abbr> and private calls to you. Other talkgroups
+show as &quot;Other TG: not played&quot;. To hear everything on the slot, turn on <abbr class="gl" tabindex="0" title="Playing every talkgroup on the timeslot (promiscuous mode; &quot;hear all&quot; in older RadioFoundry builds)." data-more="22-glossary.html#t-digital-monitor">digital monitor</abbr>.</li>
+<li>Home shows the frequency, the talk target, the timeslot and the color code. Changes here don't show a dot and
+<strong>Back</strong> doesn't undo them.</li>
+<li>The DMR VFO sends data messages and can start an emergency, as a DMR channel does. It sends no <abbr class="gl" tabindex="0" title="A short text, usually a callsign and name, sent along with DMR voice." data-more="22-glossary.html#t-talker-alias">talker alias</abbr>.</li>
+</ul>
+<img src="../ux/screens/160x120i5/home_vfo_dmr.png" width="200" alt="Home in the DMR VFO">
+<h3 id="p25-in-the-vfo">P25 in the VFO</h3>
+<p>On a radio that runs P25 (<a href="../feature-matrix.html">feature matrix</a>), P25 is one of the VFO's modes: <strong>*</strong>, <strong>4</strong> goes FM, DMR, P25, then FM again
+(&quot;VFO: P25&quot;). The VFO keeps the mode when the radio is switched off.</p>
+<ul>
+<li>It hears clear P25 voice calls on network access code 293, to every talkgroup. Encrypted calls stay silent.</li>
+<li>PTT sends a P25 voice call to talkgroup 1 from your P25 unit ID, or your DMR ID when the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> has none.</li>
+<li>Home shows &quot;P25&quot;, what PTT calls (&quot;TG 1&quot;) and the network access code (&quot;NAC 293&quot;). During a call it shows who calls
+and where (&quot;ID 3101234 &gt; TG 7&quot;), or why the call isn't played (&quot;Encrypted: not played&quot;, &quot;Other TG: not played&quot;).
+FM's tone and width tiles say &quot;FM only: this is a P25 channel&quot;.</li>
+<li>The code, talkgroup and talkaround can be changed only from a computer for now (<code>rfoundry_debug.py radio p25</code>), and the
+change lasts until the radio is switched off.</li>
+</ul>
+<h3 id="p25-channels">P25 channels</h3>
+<p>A P25 channel comes from a codeplug written on a computer (<a href="04-programming.html#p25-and-nxdn">P25 and NXDN in the editor</a>), a zone shared by another radio, the VFO (in P25, open
+<strong>Channels</strong>, <strong>New channel from current settings</strong> and save it), or any channel: press <strong>OK</strong> on its Mode until it
+says P25, set the NAC and save. A channel made P25 starts with NAC 293. The channel keeps the network access codes, the
+talkgroup (when a contact has that talkgroup; else talkgroup 1) and talkaround. A shared one comes in receive only, as
+every shared channel does: turn RX only off in its settings. On a radio without P25 the channel shows as P25 and stays
+silent.</p>
+<ul>
+<li>Home shows it as in the VFO. It hears its talkgroup, calls to everyone and calls to your ID, unless the codeplug
+says to hear every call.</li>
+<li>The channel's settings show &quot;P25&quot; as the mode and only the settings P25 uses. Talkaround is On or Auto (on
+when RX and TX are the same frequency).</li>
+<li><strong>NAC</strong> sets the network access code both ways. Type its hex digits; <strong>Up</strong> and <strong>Down</strong> step the last digit
+through 0-9 and A-F, so for 1A5 type 1, 9, <strong>Up</strong>, 5. F7E receives every NAC. The talk group is <strong>TX contact</strong>, your
+unit ID <strong>Own ID</strong>.</li>
+<li><strong>OK</strong> on Mode steps to NXDN (on a radio that runs it), FM, DMR, then back to P25 with its settings as they were, so
+a slip costs nothing. Saving the channel as another mode removes its P25 settings: the radio asks first (&quot;Save as
+FM?&quot;, &quot;Save as DMR?&quot;, or &quot;Unsaved Changes&quot; for NXDN), and &quot;No, keep editing&quot; is the default. <strong>Save as new channel</strong> leaves the P25 channel as it is.</li>
+<li>Scan stops on P25 channels and holds on a call you would hear there. <abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="22-glossary.html#t-dual-watch">Dual watch</abbr> takes one as A or B.</li>
+</ul>
+<h3 id="p25-trunked-channels">P25 trunked channels</h3>
+<p>On a radio that runs P25 trunking, a channel can belong to a P25 trunked system (Phase 1 voice channels). The system
+(its control channels, its identity, your unit ID) and its channels (one talkgroup each) come from a codeplug written
+on a computer (<a href="04-programming.html#p25-and-nxdn">P25 and NXDN in the editor</a>). A new system is listen only. The channel's settings show &quot;P25T&quot; as the mode.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Home says</th>
+<th>What the radio is doing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Finding system</td>
+<td>Trying the system's control channels in turn</td>
+</tr>
+<tr>
+<td>Control channel</td>
+<td>On the control channel, waiting for a call to the channel's talkgroup</td>
+</tr>
+<tr>
+<td>Following TG 201</td>
+<td>On the voice channel of a call. It goes back to the control channel when the call ends</td>
+</tr>
+<tr>
+<td>Registering</td>
+<td>Transmit is on: registering with the system and joining the talkgroup</td>
+</tr>
+<tr>
+<td>TG 201</td>
+<td>Registered. PTT asks the system for a voice channel</td>
+</tr>
+<tr>
+<td>Wait, Queued</td>
+<td>PTT is held and the request is with the system. Talk when home shows the transmission</td>
+</tr>
+<tr>
+<td>Denied, Reg. denied</td>
+<td>The system refused the request or the registration</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>A system set to listen only, a channel set to RX only, or one without a unit ID or talkgroup never transmits: PTT
+says &quot;RX only&quot;.</li>
+<li>Calls to other talkgroups are followed only when the channel is set to follow every group of the system.</li>
+<li>Calls to one unit, emergency and Phase 2 (TDMA) voice channels are not there yet.</li>
+<li>Scan skips these channels and dual watch doesn't take them: a trunked channel follows its system instead.</li>
+<li>This has run against a test control channel only, not yet on a working system.</li>
+</ul>
+<h3 id="nxdn-in-the-vfo">NXDN in the VFO</h3>
+<p>On a radio that runs NXDN, NXDN is one of the VFO's modes, after P25 (&quot;VFO: NXDN&quot;). It
+is NXDN conventional voice at 9600 bit/s (12.5 kHz) or 4800 bit/s (6.25 kHz), through the radio's DMR voice codec.</p>
+<ul>
+<li>It hears clear voice calls on every radio access number (RAN), to every group. Encrypted calls stay silent.</li>
+<li>PTT sends a voice call to group 1 with RAN 1 at 9600 bit/s, as unit 1 until a computer sets another ID.</li>
+<li>Home shows &quot;NXDN&quot;, what PTT calls (&quot;TG 1&quot;), the RAN sent and the rate (&quot;RAN 1 9600&quot;). During a call it shows who
+calls and where, or why the call isn't played. FM's tone and width tiles say &quot;FM only: this is NXDN&quot;.</li>
+<li>The rate, the RANs, the unit ID and the group can be changed only from a computer for now
+(<code>rfoundry_debug.py radio nxdn</code>), and the change lasts until the radio is switched off.</li>
+<li>Some radios only transmit NXDN or only receive it (<a href="../feature-matrix.html">feature matrix</a>). One that only receives
+says &quot;This mode: receive only&quot; on PTT.</li>
+</ul>
+<h3 id="nxdn-channels">NXDN channels</h3>
+<p>An NXDN channel comes from a codeplug written on a computer (<a href="04-programming.html#p25-and-nxdn">P25 and NXDN in the editor</a>), a zone shared by another radio, the VFO (in NXDN,
+open <strong>Channels</strong>, <strong>New channel from current settings</strong> and save it), or any channel: press <strong>OK</strong> on its Mode until
+it says NXDN, set the RAN and rate, and save. A channel made NXDN starts with RAN 1 at 9600 bit/s. The channel keeps the rate, the RANs, the
+squelch and the group (when a contact has that group; else group 1).</p>
+<ul>
+<li>Home shows it as in the VFO. The channel's settings show &quot;NXDN&quot; as the mode.</li>
+<li><strong>OK</strong> on Mode steps to FM, DMR, P25 (on a radio that runs it), then back to NXDN with its settings as they were.
+Saving the channel as another mode removes its NXDN settings: the radio asks first (&quot;Save as FM?&quot;, &quot;Save as
+DMR?&quot;, or &quot;Unsaved Changes&quot; for P25).</li>
+<li><strong>RAN</strong> (0-63) and <strong>Rate</strong> (9600 or 4800 bit/s) are in the channel's settings, with the group (<strong>TX contact</strong>) and
+your unit ID (<strong>Own ID</strong>, up to 65519). RAN 0 receives every RAN. The squelch can be changed only from a computer.</li>
+<li>Scan stops on NXDN channels and holds on a call you would hear there, at a rate the radio can receive. Dual watch
+takes one as A or B.</li>
+</ul>
+<h3 id="leaving-the-vfo">Leaving the VFO</h3>
+<p>Press <strong>OK</strong>, <strong>4</strong>, then <strong>OK</strong> on the VFO row again (&quot;Back to channels&quot;). Or pick a zone or channel. A <strong>VFO/MR</strong> key
+or a side key set to &quot;VFO/Channel&quot; goes back to the channel you came from.</p>
+<h2 id="air-band-and-fm-broadcast">Air band and FM broadcast</h2>
+<p>Some radios also <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">receive</abbr> the aircraft band in AM and FM broadcast stations (<a href="23-radios.html">Radio reference</a>). There is
+no mode to pick and no menu: the frequency decides.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Tune to</th>
+<th>You hear</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>108 to 137 MHz</td>
+<td>Air band, in AM. Home shows &quot;Air Band AM&quot; and the squelch level, and &quot;AM&quot; in place of &quot;FM&quot;</td>
+</tr>
+<tr>
+<td>The broadcast band (65 to 108 MHz on most receivers)</td>
+<td>FM broadcast, on the radio's broadcast receiver. Home shows &quot;Broadcast FM&quot;</td>
+</tr>
+</tbody>
+</table></div>
+<p>Tune there in the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr> (type <strong>1</strong> <strong>1</strong> <strong>8</strong> <strong>1</strong>, or <strong>0</strong> <strong>8</strong> <strong>8</strong> <strong>1</strong>, and press <strong>OK</strong>). A <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> VFO switches
+to FM there and stays FM; DMR can't be picked in these bands. To keep a station, use <strong>New from current</strong> in the channel
+list (or type the RX frequency in the channel editor): the channel becomes RX only, ready to save. Its Mode reads AM in
+the air band and FM in the broadcast band, and OK on it doesn't switch to DMR; the tone rows are hidden. A channel
+programmed on the frequency in the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> works too, even one stored as DMR. Both bands are receive only: PTT shows
+&quot;Air band: receive only&quot; or &quot;Broadcast: receive only&quot; and the radio doesn't <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">transmit</abbr>. Sub-audio tones are ignored.</p>
+<p>In the Codeplug Editor, a channel whose RX frequency is in one of these bands is set to <strong>RX Only</strong> when you type the
+frequency, its TX frequency follows RX, and its mode shows as &quot;AM (air band)&quot; or &quot;FM broadcast&quot;. The Problems list warns about a channel there that
+isn't RX Only or is DMR.</p>
+<p>In the air band the squelch works as on any FM channel. A broadcast station plays whatever the squelch level, so a
+fading station isn't cut, and the screen shows it is receiving. The <abbr class="gl" tabindex="0" title="Light-emitting diode: the radio&#x27;s status light." data-more="22-glossary.html#t-led">LED</abbr> stays off: a station isn't a call. The squelch only stops a scan on a station:
+while a scan runs, the broadcast band is quiet between stations.</p>
+<p>In the broadcast band the knob and <strong>Up</strong> / <strong>Down</strong> step 200 kHz, landing on the odd tenths (88.1, 88.3 ... 107.9)
+where stations are in the Americas. For 100 kHz steps set <strong>Settings &gt; Talk &amp; listen &gt; FM broadcast step</strong> to 100 kHz.
+Either way you can type any frequency, 90.2 for example. In the air band <strong>Auto</strong> steps 25 kHz; set the VFO step to
+8.33 kHz for the narrow channels.</p>
+<h2 id="channels-the-radio-cant-use">Channels the radio can't use</h2>
+<p>Channels outside the radio's bands don't <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">transmit</abbr> (&quot;Outside ...&quot;). Receive-only channels show &quot;<abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">RX</abbr> only&quot; as the talk
+target.</p>
+</div>
+		<nav class="prev-next"><a class="prev" href="06-home-screen.html">The Home Screen</a><a class="next" href="08-fm.html">FM</a></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/user/07-channels-zones-vfo.md">Ver el código fuente de esta página</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="En esta página">
+		<p class="eyebrow">En esta página</p>
+		<ul><li class="l2"><a href="#changing-the-channel">Changing the channel</a></li><li class="l2"><a href="#changing-the-zone">Changing the zone</a></li><li class="l2"><a href="#making-a-zone">Making a zone</a></li><li class="l2"><a href="#editing-a-zone">Editing a zone</a></li><li class="l2"><a href="#sharing-a-zone">Sharing a zone</a></li><li class="l2"><a href="#every-channel">Every channel</a></li><li class="l2"><a href="#editing-a-channel">Editing a channel</a></li><li class="l3"><a href="#text-entry">Text entry</a></li><li class="l3"><a href="#new-channel-from-current-settings">New channel from current settings</a></li><li class="l2"><a href="#saving-changes-to-a-channel">Saving changes to a channel</a></li><li class="l2"><a href="#the-vfo">The VFO</a></li><li class="l3"><a href="#copy-a-channel-to-the-vfo">Copy a channel to the VFO</a></li><li class="l3"><a href="#typing-a-frequency">Typing a frequency</a></li><li class="l3"><a href="#stepping">Stepping</a></li><li class="l3"><a href="#split-repeater-offset">Split (repeater offset)</a></li><li class="l3"><a href="#dmr-in-the-vfo">DMR in the VFO</a></li><li class="l3"><a href="#p25-in-the-vfo">P25 in the VFO</a></li><li class="l3"><a href="#p25-channels">P25 channels</a></li><li class="l3"><a href="#p25-trunked-channels">P25 trunked channels</a></li><li class="l3"><a href="#nxdn-in-the-vfo">NXDN in the VFO</a></li><li class="l3"><a href="#nxdn-channels">NXDN channels</a></li><li class="l3"><a href="#leaving-the-vfo">Leaving the VFO</a></li><li class="l2"><a href="#air-band-and-fm-broadcast">Air band and FM broadcast</a></li><li class="l2"><a href="#channels-the-radio-cant-use">Channels the radio can&#x27;t use</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

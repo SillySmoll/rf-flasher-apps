@@ -1,0 +1,274 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DMR Tier III in the codeplug · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="DMR Tier III in the codeplug · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/docs/spec/dmr-trunking-codeplug.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/dmr-trunking-codeplug.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/dmr-trunking-codeplug.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/dmr-trunking-codeplug.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/dmr-trunking-codeplug.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/dmr-trunking-codeplug.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../es/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../../es/radios/index.html">Radios</a><a href="../../../es/features/index.html">Funciones</a><a href="../../../es/flash/index.html">Instalar</a><a href="../../../es/codeplug/index.html">Codeplug</a><a href="../../../es/docs/index.html" aria-current="page">Documentación</a><a href="../../../es/screenshots/index.html">Capturas</a><a href="../../../es/tools/index.html">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../../docs/spec/dmr-trunking-codeplug.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/dmr-trunking-codeplug.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/dmr-trunking-codeplug.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/dmr-trunking-codeplug.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Especificaciones">
+		<p class="eyebrow"><a href="../../../es/docs/index.html">Documentación</a> / Especificaciones</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html" aria-current="page">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Esta página aún no está traducida; se muestra en inglés.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<!-- Copyright (c) 2026 The RadioFoundry Authors -->
+<h1 id="dmr-tier-iii-in-the-codeplug">DMR Tier III in the codeplug</h1>
+<p>The stored records of a <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> Tier III trunked system and its channels, on the generic layer of
+<a href="channel-modes.html">channel-modes.md</a>: kind 1 and system type 1. A build with <code>CONFIG_DMR_TRUNK</code> reads them
+(<code>core/radio/radio_trunk_cp.c</code>); what the radio does with them is in <a href="dmr-trunking.html">dmr-trunking.md</a> 12. The
+<abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">Codeplug</abbr> Editor writes them and zone sharing carries them. Little endian throughout. Host test:
+<code>tests/host/t3CodeplugTest.c</code>.</p>
+<p>The radio runs the Tier III systems numbered 0 to <code>RADIO_T3_SYSTEMS</code> - 1 (0 to 7). A Tier III system record at a
+higher number is kept and not run: its channels are unavailable.</p>
+<h2 id="1-system-type-1">1. System (type 1)</h2>
+<p>The generic header (<a href="channel-modes.html">channel-modes.md</a> 7.1), with:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Header field</th>
+<th>Tier III use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Flag bit 0 (needs its secret)</td>
+<td>The system authenticates: usable only with a key (3)</td>
+</tr>
+<tr>
+<td>Flag bit 1 (transmit side)</td>
+<td>Set: the radio registers, affiliates and <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmits</abbr>. Clear: listen only, the radio follows the control channel and never transmits there</td>
+</tr>
+<tr>
+<td>Identity length</td>
+<td>4: network model, NET, category</td>
+</tr>
+<tr>
+<td>Own ID</td>
+<td>The radio's <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr> on the system, 0 = the radio's</td>
+</tr>
+<tr>
+<td>Fallback</td>
+<td>The system's fallback channel and its name check</td>
+</tr>
+</tbody>
+</table></div>
+<p>The type's block:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>Network model: 0 tiny, 1 small, 2 large, 3 huge</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>NET</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+<td>Category: 1 A, 2 B</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1</td>
+<td><abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">Color code</abbr>, 0-15</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2</td>
+<td>Options: 0x0002 follow all-calls, 0x0004 follow emergency calls on any <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr>, 0x0020 follow <abbr class="gl" tabindex="0" title="A DMR call to one radio." data-more="../user/22-glossary.html#t-private-call">private calls</abbr>, 0x0040 register with the talkgroups, 0x0080 accept Ambient Listening, 0x0100 accept a kill, 0x0200 no roaming, 0x0400 accept a stun, 0x1000 off-net IP through the system's IP gateway. 0x0001 and 0x0800 are reserved (written 0, kept): listen only and authentication are the header's flags</td>
+</tr>
+<tr>
+<td>7</td>
+<td>1</td>
+<td>Fallback hold time in seconds, 0 = 30</td>
+</tr>
+<tr>
+<td>8</td>
+<td>4</td>
+<td>Fixed plan: <abbr class="gl" tabindex="0" title="Mobile station: the radio, as opposed to the base station (BS)." data-more="../dev/glossary.html#t-ms">MS</abbr> transmit Hz of the first channel, 0 = no fixed plan</td>
+</tr>
+<tr>
+<td>12</td>
+<td>2</td>
+<td>Fixed plan: the first channel's LCN</td>
+</tr>
+<tr>
+<td>14</td>
+<td>1</td>
+<td>Fixed plan: separation code</td>
+</tr>
+<tr>
+<td>15</td>
+<td>1</td>
+<td>Plan flags: bit 0 MS transmit below MS <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr>; bit 1 don't learn channels from the control channel</td>
+</tr>
+<tr>
+<td>16</td>
+<td>4</td>
+<td>Fixed plan: duplex split Hz</td>
+</tr>
+<tr>
+<td>20</td>
+<td>1</td>
+<td>Weak below this dBm (signed; 0 = the radio's roaming threshold)</td>
+</tr>
+<tr>
+<td>21</td>
+<td>1</td>
+<td>Power save asked for at registration: 0 off, 1-7 = 1:2 to 1:128</td>
+</tr>
+<tr>
+<td>22</td>
+<td>1</td>
+<td>Sites the radio may use: how many, 0 = any</td>
+</tr>
+<tr>
+<td>23</td>
+<td>16</td>
+<td>Those site values, u16 each, 8 at most</td>
+</tr>
+</tbody>
+</table></div>
+<p>A system is <strong>usable</strong> when its block holds at least the 23 octets up to the site count, it has a control channel
+and, if flag bit 0 is set, a key. A block that ends inside the site values names the sites it holds. Option bits a
+<abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> may not set (the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>'s, and the reserved ones) are read as 0.</p>
+<h2 id="2-system-channels">2. System channels</h2>
+<p>Generic entries (<a href="channel-modes.html">channel-modes.md</a> 7.2) of class 0, group 0xFF. Flag bit 0 marks a control
+channel, hunted in entry order. Body: LCN (2), <abbr class="gl" tabindex="0" title="Mobile station: the radio, as opposed to the base station (BS)." data-more="../dev/glossary.html#t-ms">MS</abbr> <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> Hz (4), MS <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> Hz (4), then one octet: the <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr>,
+0xFF = the system's. An entry shorter than this body is skipped. A system takes its first <code>T3_CTRL_MAX</code> control
+channels among its first <code>RADIO_T3_CHANS</code> (8) channels in entry order; the rest are skipped. A system whose only control
+channels come after them has none: it is not usable.</p>
+<h2 id="3-key">3. Key</h2>
+<p>Key 0x0300 + n: K (16 octets, the first the most significant), then the <abbr class="gl" tabindex="0" title="A 3-octet number XORed into the Tier III authentication response when a network uses it." data-more="../dev/glossary.html#t-psn">PSN</abbr> (3 octets, most significant first; absent
+or 0: none). Shorter than 16 octets: no key.</p>
+<h2 id="4-channels-kind-1">4. Channels (kind 1)</h2>
+<p>The channel tag (<a href="channel-modes.html">channel-modes.md</a> 2) names the system. Tag flag bit 0 is <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> allowed
+(a site grants every transmission; set by default). Bit 2 with the fallback fields: the channel's own fallback;
+kind bit 4: no fallback on this channel. No parameter block.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Tag</th>
+<th>The channel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transmit allowed, on a usable system with its transmit side</td>
+<td>registers, affiliates and transmits as the site grants</td>
+</tr>
+<tr>
+<td>Transmit flag clear (a zeroed tag too)</td>
+<td>follows the system and its calls; never registers, affiliates or transmits, and PTT is refused</td>
+</tr>
+<tr>
+<td>On a listen-only system (1)</td>
+<td>the same, whatever the tag says</td>
+</tr>
+<tr>
+<td>No system (0xFF), a system that is absent, of another type, not usable or past the systems the radio runs, or no ID to register with (the record's own ID and the radio's DMR ID both 0)</td>
+<td><strong>unavailable</strong>: nothing starts, the channel is <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> only on its record's frequency and PTT is refused</td>
+</tr>
+</tbody>
+</table></div>
+<p>The base record carries the <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr> (contact: a <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr>, a private contact or the all-call contact) and the RX
+group list (the talkgroups followed), the name, power, TX time-out and <abbr class="gl" tabindex="0" title="A short text, usually a callsign and name, sent along with DMR voice." data-more="../user/22-glossary.html#t-talker-alias">talker alias</abbr>. Its frequencies are the system's
+first control channel's. An all-call contact in the <abbr class="gl" tabindex="0" title="The talkgroups a channel listens to. The codeplug calls it the RX group list." data-more="../user/22-glossary.html#t-listen-list">RX group list</abbr> follows all-calls on that channel only; the system's
+option (1) follows them on all its channels. The talk target's talkgroup is always followed: when the RX group list
+fills the radio's 32 talkgroups, it takes the last place. Another channel of the system running takes its talk target
+and talkgroups without leaving the call or control channel the radio is on.</p>
+<h2 id="5-short-data-poll-and-supplementary-data">5. Short data poll and supplementary data</h2>
+<p>Key 0x0800 + n: system n's short data poll setting: <abbr class="gl" tabindex="0" title="Unified data transport: DMR short data sent as a plain block of bytes." data-more="../dev/glossary.html#t-udt">UDT</abbr> format (1), blocks to ask for (1, 1-4), the reply's octets
+(0-46). Key 0x0900 + n: the supplementary user data offered with each call on system n: UDT format (1), the octets
+(1-46).</p>
+<h2 id="6-sharing">6. Sharing</h2>
+<p>A system's sharing level (<a href="channel-modes.html">channel-modes.md</a> 7.1, <a href="zone-share.html">zone-share.md</a>): identity only
+carries the type, flags and identity; the whole system carries the block, the control channels and the key, the key
+only when the sender turns keys on for that share (a radio has no such switch yet: <a href="zone-share.html">zone-share.md</a>).
+Never carried: the own ID, the poll setting and the supplementary data.</p>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/dmr-trunking-codeplug.md">Ver el código fuente de esta página</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="En esta página">
+		<p class="eyebrow">En esta página</p>
+		<ul><li class="l2"><a href="#1-system-type-1">1. System (type 1)</a></li><li class="l2"><a href="#2-system-channels">2. System channels</a></li><li class="l2"><a href="#3-key">3. Key</a></li><li class="l2"><a href="#4-channels-kind-1">4. Channels (kind 1)</a></li><li class="l2"><a href="#5-short-data-poll-and-supplementary-data">5. Short data poll and supplementary data</a></li><li class="l2"><a href="#6-sharing">6. Sharing</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

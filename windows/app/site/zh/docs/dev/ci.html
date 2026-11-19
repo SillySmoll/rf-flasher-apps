@@ -1,0 +1,546 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Continuous Integration · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Continuous Integration · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/dev/ci.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/dev/ci.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/dev/ci.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/dev/ci.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/dev/ci.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/dev/ci.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/dev/ci.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/dev/ci.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/dev/ci.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/dev/ci.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="开发者指南">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 开发者指南</p>
+		<ul><li><a href="index.html">Developer Documentation</a></li><li><a href="adding-a-mode.html">Adding a Mode</a></li><li><a href="adding-a-radio.html">Adding a Radio</a></li><li><a href="architecture.html">Architecture</a></li><li><a href="board-registry.html">The Board Registry</a></li><li><a href="building.html">Building</a></li><li><a href="ci-runners.html">CI Runners and Images</a></li><li><a href="ci.html" aria-current="page">Continuous Integration</a></li><li><a href="codec.html">The Codec</a></li><li><a href="codeplug-editor.html">The Codeplug Editor</a></li><li><a href="contributing.html">Contributing</a></li><li><a href="cps-and-codeplug.html">CPS, Codeplug and Settings</a></li><li><a href="debug-link.html">Debug Link</a></li><li><a href="glossary.html">Developer glossary</a></li><li><a href="manual-pdf.html">The User Manual PDF</a></li><li><a href="release.html">Releases</a></li><li><a href="stack-check.html">Stack Check</a></li><li><a href="testing.html">Testing</a></li><li><a href="translating.html">Translating</a></li><li><a href="web-flasher.html">The Web Flasher</a></li><li><a href="website.html">The Web Site</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">本页尚未翻译，目前显示英文。</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="continuous-integration">Continuous Integration</h1>
+<p>What runs automatically, when, and how to run each piece by hand. The runners and the container image are in
+<a href="ci-runners.html">ci-runners.md</a>. Every CI job calls the same
+scripts a developer runs locally (<code>tools/ci.sh</code>, <code>tools/coverage.sh</code>), so the <abbr class="gl" tabindex="0" title="A text file format. qdmr stores its codeplug as YAML." data-more="../user/22-glossary.html#t-yaml">YAML</abbr> holds only setup and triggers.
+The workflows are in <code>.github/workflows/</code>; Gitea Actions runs them from there too (there is no <code>.gitea/workflows</code>),
+so one set serves the self-hosted Gitea runner and GitHub.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Workflow</th>
+<th>Runs on</th>
+<th>When</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ci.yml</code></td>
+<td><code>ubuntu-24.04</code></td>
+<td>every push to <code>main</code> that changes source (below); by hand on any branch</td>
+<td>the unit tests (once, with coverage and sanitizers), Python and license checks, every board's default build</td>
+</tr>
+<tr>
+<td><code>pr-tests.yml</code></td>
+<td><code>ubuntu-24.04</code></td>
+<td>every pull request; a fork's after a maintainer approves the run</td>
+<td><code>ci.yml</code>'s jobs and the manual check, for the files the pull request changes; <code>PR checks</code> gates the merge. A branch's only CI</td>
+</tr>
+<tr>
+<td><code>nightly.yml</code></td>
+<td><code>ubuntu-24.04</code></td>
+<td>07:17 UTC daily when a file the firmware builds read changed since the last pass; by hand</td>
+<td>the feature matrix of every board, <code>reuse lint</code></td>
+</tr>
+<tr>
+<td><code>site.yml</code></td>
+<td><code>ubuntu-24.04</code></td>
+<td>a published release; by hand</td>
+<td>asks Cloudflare Pages to build <code>main</code> again, for the new release's images. Pages itself builds every push (<a href="website.html">website.md</a>); pull requests also build the site in the unit tests job</td>
+</tr>
+<tr>
+<td><code>hil.yml</code></td>
+<td><code>rfoundry-hil</code> (the bench Mac)</td>
+<td>by hand; nightly only when <code>RFOUNDRY_HIL_SCHEDULE=true</code></td>
+<td><code>tests/hil</code> against the radio and the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="glossary.html#t-sdr">SDR</abbr> bench</td>
+</tr>
+<tr>
+<td><code>ui-gallery.yml</code></td>
+<td><code>ubuntu-24.04</code></td>
+<td>a pull request that changes the UI (<code>core/ui/</code>, the simulator, <code>uiSim</code>)</td>
+<td>renders the screen gallery at the base and at the pull request, and makes the side-by-side artifact</td>
+</tr>
+<tr>
+<td><code>ui-gallery-comment.yml</code></td>
+<td><code>ubuntu-24.04</code></td>
+<td>when <code>ui-gallery.yml</code> finishes on a pull request</td>
+<td>posts the pull request's gallery comment with the changed screens attached</td>
+</tr>
+<tr>
+<td><code>beep-reel.yml</code></td>
+<td><code>ubuntu-24.04</code></td>
+<td>a pull request that changes the beeps (<code>core/radio/beep.c</code>, <code>beep.h</code>, the reel)</td>
+<td>makes the beep reel with the base's beeps and with the pull request's, and uploads both videos and the changed beeps</td>
+</tr>
+<tr>
+<td><code>manual.yml</code></td>
+<td><code>ubuntu-24.04</code></td>
+<td>docs changes pushed to <code>main</code>, <code>v*</code> tags</td>
+<td>the user manual PDF (<a href="manual-pdf.html">manual-pdf.md</a>)</td>
+</tr>
+<tr>
+<td><code>release.yml</code></td>
+<td><code>ubuntu-24.04</code>, and for rfoundry the hosted macOS / Windows runners</td>
+<td><code>v*</code> tags; pull requests that change rfoundry or this workflow (no release gate; <code>pr-tests.yml</code> runs the firmware packaging)</td>
+<td>release images and rfoundry (<a href="release.html">release.md</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>On GitHub, <code>ci.yml</code> and <code>nightly.yml</code> run only when the repository variable <code>RFOUNDRY_CI_GITHUB</code> is <code>true</code> (on a
+private copy, hosted runners use paid minutes). On Gitea they always run.</p>
+<p>Every job on GitHub runs on GitHub's hosted runners; only <code>hil.yml</code> has a runner of its own
+(<a href="ci-runners.html">runners</a>).</p>
+<p>Each change is checked once. A branch is tested through its pull request (<code>pr-tests.yml</code>), and <code>main</code> again after
+the merge (<code>ci.yml</code>). The unit tests run once per check, with the coverage counters and the sanitizers in the same
+build. The unit tests job's Python step builds the site and runs the flasher's tests, and the release gate runs for a tag.</p>
+<h2 id="on-main-ciyml">On main: <code>ci.yml</code></h2>
+<p>Triggered by changes under <code>boards/</code>, <code>config/</code>, <code>core/</code>, <code>drivers/</code>, <code>hal/</code>, <code>platform/</code>, <code>tests/</code>, <code>tools/</code>,
+<code>third_party/</code> (submodule bumps), the <code>Makefile</code>, <code>AUTHORS</code> (the About page), <code>.gitmodules</code>, <code>LICENSES/</code>,
+<code>REUSE.toml</code>, <code>.github/actions/</code> or the workflow itself, pushed to <code>main</code>; by hand (Actions, CI, Run workflow) on any branch. A docs-only
+push runs only the manual workflow. A newer push cancels the run in progress (<code>concurrency</code>).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Job</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>unit tests</code></td>
+<td><code>SANITIZE=1 tools/coverage.sh</code> (the host tests with the tshark pcap checks, built once with <code>--coverage</code> and ASan / UBSan, and gcovr's report), then the UI screen gallery (<code>uiSim --gallery</code>)</td>
+</tr>
+<tr>
+<td><code>checks</code></td>
+<td><code>tools/ci.sh --steps registry,python,licenses</code> (doc links and the strict web site build among the Python checks; the job installs <code>site/requirements.txt</code> for the site)</td>
+</tr>
+<tr>
+<td><code>firmware (Arm)</code></td>
+<td><code>tools/ci.sh --quick --steps firmware --toolchain arm</code>: every board built with the Arm toolchain, default and maximal (with the stack check), in one job</td>
+</tr>
+<tr>
+<td><code>firmware (C-SKY)</code></td>
+<td><code>tools/ci.sh --quick --steps firmware --toolchain csky</code>, in the csky-elf image (<code>tools/docker/csky-toolchain/run.sh</code>) unless the runner has csky-elf GCC; skipped where the image isn't available</td>
+</tr>
+</tbody>
+</table></div>
+<p>There is one firmware job per toolchain, not one per radio or per platform: a job's checkout and start take longer
+than a radio's build, and a runner has 4 cores, so the two firmware jobs side by side keep an 8-core host busy while
+leaving runners free for other pull requests. The two are one job with a <code>toolchain</code> matrix: the <code>[toolchain] id</code> of
+<code>platform/*/platform.toml</code> (<code>arm</code>, <code>csky</code>) and its <code>name</code> for the job's name. <code>--toolchain</code> takes the boards from the
+registry (<code>tools/boards.py list --toolchain</code>), so a new radio, or a new platform on a toolchain already listed (a
+second Arm <abbr class="gl" tabindex="0" title="System on chip: the processor and its on-chip peripherals." data-more="glossary.html#t-soc">SoC</abbr>, for example), joins CI, the nightly and the release with no workflow edit. Only a new toolchain
+goes in the matrices of <code>ci.yml</code>, <code>pr-tests.yml</code>, <code>nightly.yml</code> and <code>release.yml</code> and gets its set-up in the
+toolchain action (<a href="#toolchains">below</a>). The jobs run in parallel.</p>
+<p>Each firmware job builds with zero warnings, writes the size report (image bytes and free space in the linker's
+application region, also put in the job summary on GitHub) and fails when the application region overflows. The
+images and logs are workflow artifacts (<code>firmware-arm</code>, <code>firmware-csky</code>), as are the unit test logs with the screen gallery
+(<code>host-logs</code>) and the coverage report (<code>coverage-report</code>).</p>
+<p><code>reuse lint</code> is part of the <code>checks</code> job only when the repository variable <code>RFOUNDRY_CI_REUSE</code> is <code>true</code>; it doesn't pass on
+the current tree yet (run it to see the files), and the nightly reports it as a warning meanwhile.</p>
+<h2 id="submodules">Submodules</h2>
+<p>The jobs that build firmware check out without submodules, then run <code>tools/checkout-submodules.sh</code>. On a runner with
+bare clones of the <code>third_party/</code> repositories (<code>RFOUNDRY_GIT_CACHE</code>) the script borrows their objects
+(<code>git submodule update --reference</code>); GitHub's runners have none and take a plain network checkout. Each submodule
+gets three tries, so one dropped connection to GitHub no longer fails the job.</p>
+<p>The nested submodules of FreeRTOS-Kernel (its partner and community ports) aren't checked out: no build uses them,
+since the CK803 port is in <code>platform/hrc7000/freertos/</code>. After a submodule bump, rebuild the runner image to bring the
+clones up to date (<a href="https://github.com/radiofoundry/radiofoundry/blob/main/tools/ci-runner/README.md">tools/ci-runner/README.md</a>); until then the new commits come over
+the network. A new submodule also goes in the Dockerfile's <code>SUBMODULE_URLS</code>.</p>
+<h2 id="pull-request-checks-pr-testsyml">Pull request checks: <code>pr-tests.yml</code></h2>
+<p>Every pull request runs <code>ci.yml</code>'s jobs (<code>unit tests</code>, <code>firmware (Arm)</code> and <code>firmware (C-SKY)</code> for every board
+built with each toolchain) and <code>checks</code> on its merge commit. The first job,
+<code>changes</code>, looks at the files the pull request changes and skips what they don't touch: source changes (<code>ci.yml</code>'s
+paths) run the build and test jobs. When a board's <code>board.toml</code> or <code>board.mk</code>, a <code>platform.toml</code> or the release
+tooling changes, the firmware jobs also run <code>tools/release_build.sh</code>: every stable board packaged as a release tag
+would (<a href="release.html">release.md</a>). <code>checks</code> runs on every pull request: the Python and license checks (doc links
+among them) always, and the PDF manual build (as <code>manual.yml</code> does) when docs change (<code>manual.yml</code>'s paths). The last
+job, <code>PR checks</code>, always runs and fails when any job failed or was canceled. It is the one check the <code>main</code> ruleset
+requires, so a skipped job never holds a pull request up, and a new job only has to be added to its <code>needs</code> list.</p>
+<p>The workflow is a plain <code>pull_request</code> run: the pull request's own copy of it, on its merge commit, on GitHub's
+hosted runners, with a read-only token that isn't stored in the checkout and no secrets. A fork's run waits until a
+maintainer approves it (the repository's fork policy, Settings, Actions: approval for all external contributors).
+<code>ci.yml</code> and <code>manual.yml</code> have no <code>pull_request</code> trigger, and <code>ci.yml</code> doesn't run on a branch's pushes either, so a
+pull request is checked once.</p>
+<p>Because the workflow is the pull request's copy, a pull request can change its own jobs, <code>PR checks</code> included.
+Changes to <code>.github/</code> need the owner's review (<code>.github/CODEOWNERS</code>, with code owner review required in the <code>main</code>
+ruleset): read a workflow change before approving a fork's run, and before merging. Never add secrets, a write
+permission, a self-hosted runner, <code>actions/cache</code> or the pull request's text (title, body, branch name) in a run step
+to <code>pr-tests.yml</code>. It reads no repository variable, since a fork's run may not get them: the C-SKY job pulls the public
+csky-elf image <code>platform/hrc7000/platform.toml</code> names, without logging in.</p>
+<p>A <code>pull_request</code> run's cache scope is the pull request's own: it can read <code>main</code>'s entries but not write them, so
+nothing it does reaches another branch's jobs. Still, nothing that builds firmware, packages a release or holds a
+write permission restores a cache. The toolchains are downloaded and checked against the pin every time
+(<a href="#toolchains">Toolchains</a>). The one cache is the nightly run's <code>nightly-ok-*</code> marker, in a job with a read-only token
+that builds nothing and only decides whether the night's matrix runs.</p>
+<p>Every action is pinned to a commit, with its release in a comment. Dependabot (<code>.github/dependabot.yml</code>) proposes
+newer commits monthly, as pull requests for the owner's review. Use <code>actions/*</code> only, pinned the same way: the
+repository's Actions settings allow GitHub's own actions and require full-length commit SHAs.</p>
+<p>None of <code>main</code>'s workflows runs on a branch's pushes, but a branch that gives its own copy of a workflow a <code>push</code>
+trigger runs it. Only the owner's review keeps a changed workflow off <code>main</code>; it doesn't stop it from running on that
+branch.</p>
+<h2 id="ui-gallery-ui-galleryyml-and-ui-gallery-commentyml">UI gallery: <code>ui-gallery.yml</code> and <code>ui-gallery-comment.yml</code></h2>
+<p>A pull request that touches the UI (<code>core/ui/</code>, <code>core/radio/tones.c</code>, <code>core/codeplug/codeplug_talk.c</code>,
+<code>tests/host/uiSim.c</code>, <code>tests/host/sim/</code>, <code>AUTHORS</code>, the gallery's own tools) gets a comment with its changed screens,
+before and after, side by side. It's advisory: no required check waits on it.</p>
+<ol>
+<li>
+<p><code>ui-gallery.yml</code> (<code>pull_request</code>) builds <code>uiSim</code> from the base commit and from the pull request's merge commit,
+renders <code>--gallery</code> for both, and writes <code>tools/ui_gallery_compare.py</code>'s output: for each display class with a changed
+screen, one composite per eight rows, stacked as before | after pairs (2x, or 1x for a class whose widest row would
+pass 1800 px; labels with both commit ids; a screen that's new or gone gets a gray panel), plus <code>manifest.json</code>. A class with no change
+gets no picture. Classes are ordered monochrome first, then color, each by resolution, and the comment groups them
+under those headings. The render is deterministic, so an unchanged screen never shows up.</p>
+<p>The gallery's color pages are drawn once more in each highlight color the workflow's <code>UI_GALLERY_COLORS</code> names
+(<code>env</code> at the top of <code>ui-gallery.yml</code>: one line, in double quotes, any of <code>red orange yellow teal light_blue purple pink</code>; three for now). Theme pages are also drawn in the light and high-contrast themes (<code>&lt;screen&gt;__light</code>,
+<code>&lt;screen&gt;__high_contrast</code>). When a color page or any of its color or theme shots changed, the comparison shows the
+whole set as one row of the composite: a column per shot, the page first, then its colors in the list's order and
+its themes, before above after, the unchanged ones marked so. Such a row counts as two of the eight.
+<code>make -C tests/host ui-gallery</code> reads the same line, so the committed gallery shows the same colors. Changing the
+list is a pull request that changes the workflow and regenerates the gallery.</p>
+</li>
+<li>
+<p><code>ui-gallery-comment.yml</code> (<code>workflow_run</code>, from main's copy) downloads that artifact and checks it as data (no links,
+file names and sizes, PNG signatures, the pull request and commit it names). It pushes each
+composite to the <code>ui-previews</code> branch (made on first use, one <code>pr-N/</code> folder per pull request holding its newest commit) and
+linked with <code>blob/...?raw=true</code> URLs, which render for signed-in viewers of a private repository (<code>gh --attach</code> needs a
+user session, not the job's token). The branch never grows: every run rebuilds it as one parentless commit and force-pushes it (it holds only
+pictures that can be regenerated), leased on the commit it fetched: a run that loses the race to another pull request's
+fetches again and rebuilds. It keeps the open pull requests, the newest 5 closed without a merge and the newest
+20 merged, among those that have pictures; older folders are dropped, and GitHub collects their objects. A pull
+request's folder holds only its newest commit: the pictures of its earlier commits are removed. It then edits the
+pull request's comment in place, so it stays where it was near the top of the conversation; only if the edit fails
+does it post a new comment and delete the old one. Pictures of a pull request that fell out of the window no longer
+load. A composite of more than 3 rows is folded in a <code>&lt;details&gt;</code> block under its list of changed screens. The
+comment is found by its marker line (<code>&lt;!-- rfoundry-ui-gallery --&gt;</code>) and carries the commit, the UTC time of the update
+and the base commit. A run for a commit the pull request has already moved past posts nothing.</p>
+</li>
+</ol>
+<p>Only the comment job has write permissions (<code>pull-requests: write</code>, and <code>contents: write</code> for <code>ui-previews</code> alone). It runs no code from the pull request or the
+artifact, the same split <code>pr-tests.yml</code> keeps for its status job. An artifact with more than 40 pictures fails the check.</p>
+<p>Nothing else is needed: no branch, no host. Attachments on a private repository are visible to the people who can
+see the pull request; the first run on a UI pull request confirms that and that <code>gh</code> accepts the attachments with the
+job's token. <code>workflow_run</code> runs only from the default branch's copy of the workflow, and Gitea Actions may not
+support it, so check the first run on the Gitea runner before relying on the comment there.</p>
+<h2 id="beep-reel-beep-reelyml">Beep reel: <code>beep-reel.yml</code></h2>
+<p>A pull request that touches <code>core/radio/beep.c</code>, <code>core/radio/beep.h</code>, <code>hal/hal_audio.h</code>, the simulator or the reel
+(<code>tests/host/beepReel.c</code>, <code>tools/beep_reel.py</code>) gets the beep reel before and after as the <code>beep-reel</code> artifact. It's
+advisory: no required check waits on it, and nothing is posted to the pull request.</p>
+<p>Both reels are made with the pull request's tool, simulator and scenes. Only <code>beep.c</code> and <code>beep.h</code> differ: the base
+commit's for the first (<code>--beep-dir base/core/radio --lenient</code>: the scenes may name a beep the base doesn't have),
+the pull request's for the second. GitHub serves the artifact as a zip:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>File</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>before.mp4</code></td>
+<td>the reel with the base commit's beeps</td>
+</tr>
+<tr>
+<td><code>after.mp4</code></td>
+<td>the reel with the pull request's</td>
+</tr>
+<tr>
+<td><code>beeps/&lt;name&gt;.before.wav</code>, <code>beeps/&lt;name&gt;.after.wav</code></td>
+<td>only for a beep whose sound changed: that beep alone, as <code>beep.c</code> made it (one side only for a beep new or gone)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The job summary lists the changed beeps. A video is about 240 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="glossary.html#t-kb">KB</abbr>; a beep's WAV 2 to 17 KB.</p>
+<h2 id="nightly-nightlyyml">Nightly: <code>nightly.yml</code></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Job</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>matrix (Arm)</code></td>
+<td><code>tools/ci.sh --matrix --steps firmware --toolchain arm</code>: for each board, each switch off alone, fm-minimal, maximal</td>
+</tr>
+<tr>
+<td><code>matrix (C-SKY)</code></td>
+<td>the same for every board built with csky-elf GCC, in the csky-elf image unless the runner has csky-elf GCC</td>
+</tr>
+<tr>
+<td><code>reuse</code></td>
+<td><code>reuse lint</code>, a warning until it passes</td>
+</tr>
+</tbody>
+</table></div>
+<p>The maximal build turns on every switch except the board's <code>BOARD_UNSUPPORTED</code> (the hardware can't),
+<code>BOARD_NOT_WRITTEN</code> (the code isn't written for the radio yet) and <code>MAXIMAL_SKIP</code> lists, and <code>CONFIG_AUDIO_PROBE</code>
+(<a href="../build-config.html#unsupported-not-written-unconfirmed">build-config.md</a>). Not-written switches stay off because
+they add code that doesn't run on the radio but still takes its flash and <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="glossary.html#t-ram">RAM</abbr>, so a shared addition could push one
+radio over and fail CI on unrelated pull requests.</p>
+<p>One job per toolchain runs its boards one after another (artifacts <code>matrix-arm</code>, <code>matrix-csky</code>). A job per board would finish each board sooner, but it
+repeats the checkout, the submodules and the toolchain set-up for every board, and a 4-core runner is kept busy by
+one board's builds anyway. Nobody waits on the nightly, so the fewer jobs win.</p>
+<p><code>--matrix</code> leaves out the default builds the per-push run already made. Each build tree is removed once its size is
+recorded and it built clean (the logs and images stay; a configuration that failed keeps its tree), so a run holds one
+tree at a time, not about 65 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="glossary.html#t-kb">MB</abbr> per configuration. <code>RFOUNDRY_CI_PRUNE=0</code> keeps them all.</p>
+<p><strong>Only when something changed.</strong> A successful run saves a cache entry named <code>nightly-ok-&lt;commit&gt;</code> that holds its
+commit. A scheduled run restores the newest such entry and diffs the default branch against that commit:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Changed since the last pass</th>
+<th>Matrix</th>
+<th><code>reuse lint</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nothing (or this commit already passed)</td>
+<td>skipped</td>
+<td>skipped</td>
+</tr>
+<tr>
+<td>Only files the builds don't read (docs, site, tests)</td>
+<td>skipped; this commit is saved as passed</td>
+<td>runs</td>
+</tr>
+<tr>
+<td>A file the builds read: <code>Makefile</code>, <code>.gitmodules</code>, <code>boards/</code>, <code>boot/</code>, <code>config/</code>, <code>core/</code>, <code>drivers/</code>, <code>hal/</code>, <code>platform/</code>, <code>third_party/</code>, <code>tools/</code>, <code>.github/actions/</code>, <code>nightly.yml</code></td>
+<td>runs</td>
+<td>runs</td>
+</tr>
+</tbody>
+</table></div>
+<p>The check costs one short job. It works the same on Gitea and GitHub without an API token or comparing commit
+times against the schedule, and catches up after nights the runner was off. A failing commit is never saved, so
+the next night still diffs against the last pass and builds again until the failure is fixed. If the cache evicts
+an entry, or holds only entries from before this scheme, the cost is one repeated run. A manual run (Actions,
+Nightly, Run workflow, or <code>gh workflow run nightly.yml</code>) always builds.</p>
+<h2 id="running-the-pieces-locally">Running the pieces locally</h2>
+<pre><code>tools/ci.sh                                   # everything (the release gate)
+tools/ci.sh --quick                           # what CI runs, without coverage and sanitizers
+SANITIZE=1 tools/coverage.sh                  # the unit tests job's test run
+tools/ci.sh --steps registry,python,licenses  # the checks job
+tools/ci.sh --quick --steps firmware --board &lt;id&gt;
+tools/ci.sh --quick --steps firmware --toolchain arm         # a firmware CI job: every board on the toolchain
+tools/ci.sh --quick --steps firmware --platform stm32f4      # every board on one platform
+make BOARD=&lt;id&gt; stack-check                  # the stack check alone, after a build (stack-check.md)
+tools/ci.sh --matrix --steps firmware --toolchain arm    # a nightly matrix job
+tools/coverage.sh                             # build/coverage/index.html
+tools/docker/csky-toolchain/run.sh tools/ci.sh --quick --steps firmware --board &lt;id&gt;   # on a host with the image
+</code></pre>
+<p><code>--steps</code> takes any of these, comma separated (default all):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>What it checks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>registry</code></td>
+<td>Every <code>board.toml</code> and <code>platform.toml</code> is well formed and agrees with <code>board.mk</code>, the linker scripts and <code>board_t</code>; <code>tools/rfoundry/rfoundry/registry.json</code> is current; the loader's self-test (<code>tools/boards.py</code>)</td>
+</tr>
+<tr>
+<td><code>host</code></td>
+<td><code>make -C tests/host</code>, with each board's own tests (<code>boards/&lt;b&gt;/tests/host.mk</code>)</td>
+</tr>
+<tr>
+<td><code>python</code></td>
+<td>Every Python file parses, the <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="testing.html">HIL</abbr> test collection, rfoundry's tests, every tool's <code>--self-test</code> (found by searching <code>tools/</code> and <code>stub/</code>, so a new tool needs no ci.sh change), doc links, the glossary, the web site build and the flasher's tests</td>
+</tr>
+<tr>
+<td><code>firmware</code></td>
+<td>Every board whose compiler is installed: the default build, each build option value (<code>board.toml</code> <code>[[build_options]]</code>, such as a band), each <code>[ci] extra</code> configuration, the feature matrix, and the flash <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="glossary.html#t-stub">stubs</abbr> of each built platform (<code>platform.toml</code> <code>stubs</code>)</td>
+</tr>
+<tr>
+<td><code>licenses</code></td>
+<td><code>tools/license_grep.sh</code> and <code>reuse lint</code></td>
+</tr>
+<tr>
+<td><code>similarity</code></td>
+<td><code>tools/similarity_scan.py</code>, only with <code>RFOUNDRY_SIMILARITY_REFS</code> set</td>
+</tr>
+</tbody>
+</table></div>
+<p>Every step but <code>host</code> needs Python 3.11 or later for the registry's TOML. <code>tools/rfoundry_python.sh</code> finds it:
+<code>$RFOUNDRY_PYTHON</code>, else the newest <code>python3.N</code> on <code>PATH</code>. A board whose compiler is missing is skipped with the command
+that installs it (its platform's <code>toolchain.build</code>). <code>--quick</code> builds each board's default and maximal configurations,
+<code>--matrix</code> the feature matrix.</p>
+<p>The <code>python</code> step also checks the HIL tests without a radio:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Fails when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HIL test collection</td>
+<td>pytest can't collect <code>tests/hil</code> (skipped without pytest)</td>
+</tr>
+<tr>
+<td>HIL skips (<code>tools/check_hil_skips.py</code>)</td>
+<td>a skip in <code>tests/hil</code> doesn't name its kind (<code>rfoundry_hil.skip(kind, reason)</code>)</td>
+</tr>
+<tr>
+<td>HIL skip helper tests (<code>tests/hil/test_skip_kinds.py</code>)</td>
+<td>the kinds don't reach the report and the JUnit XML</td>
+</tr>
+<tr>
+<td>Feature checklist (<code>tools/bringup.py check</code>)</td>
+<td>a switch has no entry in <code>tests/hil/features.toml</code>, a test's feature marker names a feature that has none, a <code>manual</code> test has no owner action, an <code>n/a</code> or <code>unsupported</code> state has no reason, a record in <code>docs/testing/results/</code> doesn't parse or lacks a key (a missing or stale record never fails)</td>
+</tr>
+<tr>
+<td>Bring-up mode tests (<code>tests/hil/test_bringup.py</code>)</td>
+<td>a fake radio lacking a feature doesn't fail a bring-up run</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>tools/bringup.py check</code> finds its Python through <code>tools/rfoundry_python.sh</code> like the other steps. Comparing the docs'
+support claims with the records is not checked yet.</p>
+<p><code>--board</code> takes board ids, <code>--platform</code> platform ids and <code>--toolchain</code> toolchain ids (each a comma separated list).
+<code>--board</code> excludes the other two; <code>--platform</code> and <code>--toolchain</code> together select the boards that match both. An
+unknown id fails with exit status 2, so a typo in a workflow never passes with nothing built.</p>
+<p><code>tools/install-arm-toolchain.sh</code> installs the pinned Arm toolchain on Linux x86_64 the way CI does, trimmed to the
+Cortex-M4 multilib (215 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="glossary.html#t-kb">MB</abbr> instead of 1 GB; <code>FULL=1</code> for all of it).</p>
+<h2 id="toolchains">Toolchains</h2>
+<p>Every firmware job (<code>ci.yml</code>, <code>pr-tests.yml</code>, <code>nightly.yml</code>, <code>release.yml</code>) sets up its compiler with the composite
+action <code>.github/actions/toolchain</code>, given the job's toolchain id. A composite action runs as steps of the job, so it
+adds no job. It reads the pin from the <code>[toolchain]</code> table of the <code>platform/*/platform.toml</code> with that <code>id</code>; no
+workflow types a version. Platforms that share a toolchain id must pin the same toolchain (<code>tools/boards.py check</code>).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Toolchain</th>
+<th>Set-up</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>arm</code></td>
+<td><code>tools/install-arm-toolchain.sh</code> copies the pinned toolchain into <code>~/opt</code> out of <code>[toolchain] image</code> (public on ghcr.io, pinned by digest, made by <code>tools/docker/toolchains/build-arm-ci.sh</code>), or downloads Arm's checksummed release when that fails; every time (no cache). A runner that has it already skips both. The build runs on the runner</td>
+</tr>
+<tr>
+<td><code>csky</code></td>
+<td>csky-elf GCC on <code>PATH</code> when the runner has it; otherwise the csky-elf image (<code>[toolchain] image</code>, public on ghcr.io, or <code>RFOUNDRY_CSKY_IMAGE</code>): logged in to only when a workflow passes a registry (<code>RFOUNDRY_CSKY_REGISTRY</code>, for a private copy), pulled, then the job runs its build through <code>tools/docker/csky-toolchain/run.sh</code> (the action's <code>run</code> output)</td>
+</tr>
+</tbody>
+</table></div>
+<p>No workflow builds csky-elf GCC from source. The image is built by <code>tools/docker/csky-toolchain/build.sh</code>
+(<a href="ci-runners.html#the-csky-elf-image">The csky-elf image</a>). Neither is cached
+(Pull request checks, above). When the image isn't available (<code>run.sh</code> exit status 3), a CI or nightly job ends with a notice
+and the release job fails. A new toolchain gets a branch in the action's first step and an entry in each firmware
+matrix.</p>
+<h2 id="coverage">Coverage</h2>
+<p><code>tools/coverage.sh</code> rebuilds the host tests with <code>--coverage</code> (<code>make -C tests/host COVERAGE=1</code>), runs them and
+reads the counters with <a href="https://gcovr.com">gcovr</a>: <code>build/coverage/index.html</code> (every file with its source
+annotated), <code>coverage.xml</code> (Cobertura), <code>summary.txt</code> and <code>summary.md</code> (the totals and the files with the most
+uncovered lines; CI adds it to the job summary). It works with GCC (<code>gcov</code>) and with clang, Apple's included
+(<code>xcrun llvm-cov gcov</code>, picked automatically). Install gcovr with <code>pip install gcovr</code>, <code>pipx install gcovr</code> or the
+<code>gcovr</code> package (Ubuntu 24.04's 7.0 is new enough). <code>COVERAGE_FAIL_UNDER=85 tools/coverage.sh</code> also fails below a
+line percentage; CI doesn't set a threshold yet.</p>
+<p>Counted are the <code>core/</code>, <code>drivers/</code>, <code>hal/</code>, <code>boards/</code> and <code>platform/</code> sources a host test compiles; the tests,
+<code>third_party/</code> and generated headers are not. A file no host test builds isn't in the report at all, so the
+percentage is of the code under host test, not of the whole firmware. The same file built into several tests with
+different switches is merged (<code>--merge-mode-functions=separate</code>).</p>
+<p>The report lists the files with the most uncovered lines. Not built into any host test: the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="debug-link.html">debug link</abbr> commands
+(except the protocol and split parts), <code>hostlink.c</code>, <code>net_services.c</code>, the <abbr class="gl" tabindex="0" title="Real-time operating system: the scheduler that runs the firmware&#x27;s tasks." data-more="glossary.html#t-rtos">RTOS</abbr> task wrappers, the USB device and <abbr class="gl" tabindex="0" title="Network control model: the USB class that makes the radio appear as a network adapter." data-more="glossary.html#t-ncm">NCM</abbr> drivers,
+the display drivers and the <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="../spec/sfr.html">SFR</abbr> glue. The <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="testing.html">HIL</abbr> tests cover most of these on the radio.</p>
+<p>Coverage on the radio itself (gcov counters read out over the debug link after a HIL run) is not set up. Hosted coverage
+services (Codecov, Coveralls) are not used: the repository is private, and the HTML artifact serves the same purpose.</p>
+<h3 id="sanitizers-and-fuzzing">Sanitizers and fuzzing</h3>
+<p><code>make -C tests/host SANITIZE=1</code> builds every host test with AddressSanitizer and UndefinedBehaviorSanitizer (Apple
+clang and GCC; UBSan stops at the first report). CI's unit tests job builds the tests this way and with coverage at
+once (<code>SANITIZE=1 tools/coverage.sh</code>; leak checks off: job containers may not allow ptrace), <code>RFOUNDRY_CI_SANITIZE=1 tools/ci.sh</code> runs it in the host step; build from clean when
+switching (<code>make -C tests/host clean</code>). It isn't optimized, like the plain build: with <code>__OPTIMIZE__</code> glibc's headers
+switch on extern inline and fortified functions, which don't build with the host flags' <code>__attribute__</code> override.
+The parsers of untrusted input (<abbr class="gl" tabindex="0" title="Simple Network Management Protocol: reading a device&#x27;s state over the network." data-more="../spec/snmp.html">SNMP</abbr>, <abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="../spec/tftp.html">TFTP</abbr>, <abbr class="gl" tabindex="0" title="Multicast DNS: finding a device on a local network by a `.local` name." data-more="../spec/mdns.html">mDNS</abbr>, the gateway's Ethernet
+input, <abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="../user/22-glossary.html#t-kiss">KISS</abbr> / HTTP / <abbr class="gl" tabindex="0" title="Hamlib&#x27;s network rig control protocol, used by loggers and SDR programs." data-more="../user/22-glossary.html#t-rigctld">rigctld</abbr>, <abbr class="gl" tabindex="0" title="Location Request and Response Protocol: a dispatcher asks a radio for its position. Motorola&#x27;s position format; the standard has LIP." data-more="../user/22-glossary.html#t-lrrp">LRRP</abbr>, AX.25 / <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr>, <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> data) have seeded mutation fuzz loops (<code>tests/host/fuzz.h</code>)
+that feed exact-size heap buffers, so a read past the end is an ASan report; <code>RFOUNDRY_FUZZ_ITERS=&lt;n&gt;</code> replaces the small
+default counts and <code>RFOUNDRY_FUZZ_SEED=&lt;n&gt;</code> varies the seed, e.g. <code>RFOUNDRY_FUZZ_ITERS=1000000 make -C tests/host SANITIZE=1</code>
+for a long run by hand.</p>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/dev/ci.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#on-main-ciyml">On main: ci.yml</a></li><li class="l2"><a href="#submodules">Submodules</a></li><li class="l2"><a href="#pull-request-checks-pr-testsyml">Pull request checks: pr-tests.yml</a></li><li class="l2"><a href="#ui-gallery-ui-galleryyml-and-ui-gallery-commentyml">UI gallery: ui-gallery.yml and ui-gallery-comment.yml</a></li><li class="l2"><a href="#beep-reel-beep-reelyml">Beep reel: beep-reel.yml</a></li><li class="l2"><a href="#nightly-nightlyyml">Nightly: nightly.yml</a></li><li class="l2"><a href="#running-the-pieces-locally">Running the pieces locally</a></li><li class="l2"><a href="#toolchains">Toolchains</a></li><li class="l2"><a href="#coverage">Coverage</a></li><li class="l3"><a href="#sanitizers-and-fuzzing">Sanitizers and fuzzing</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

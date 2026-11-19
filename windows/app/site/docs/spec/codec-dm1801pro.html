@@ -1,0 +1,489 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DM-1801 Pro: the AMBE+2 codec and how it is called · RadioFoundry</title>
+<meta name="description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="DM-1801 Pro: the AMBE+2 codec and how it is called · RadioFoundry">
+<meta property="og:description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:url" content="https://radiofoundry.org/docs/spec/codec-dm1801pro.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="The radios RadioFoundry runs on, each showing a different screen.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/codec-dm1801pro.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/codec-dm1801pro.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/codec-dm1801pro.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/codec-dm1801pro.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/codec-dm1801pro.html">
+<link rel="icon" href="../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../" data-home="../../" data-gl-more="More">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../index.html">
+			<img src="../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Main"><a href="../../radios/index.html">Radios</a><a href="../../features/index.html">Features</a><a href="../../flash/index.html">Install</a><a href="../../codeplug/index.html">Codeplug</a><a href="../../docs/index.html" aria-current="page">Docs</a><a href="../../screenshots/index.html">Screenshots</a><a href="../../tools/index.html">Tools</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Language" title="Language">EN</summary><nav aria-label="Language"><a href="../../docs/spec/codec-dm1801pro.html" aria-current="true" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../es/docs/spec/codec-dm1801pro.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../it/docs/spec/codec-dm1801pro.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../zh/docs/spec/codec-dm1801pro.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Switch light and dark" title="Switch light and dark">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Specifications">
+		<p class="eyebrow"><a href="../../docs/index.html">Documentation</a> / Specifications</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html" aria-current="page">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<!-- Copyright (c) 2026 The RadioFoundry Authors -->
+<h1 id="dm-1801-pro-the-ambe2-codec-and-how-it-is-called">DM-1801 Pro: the AMBE+2 codec and how it is called</h1>
+<p>Status: research, 2026-10-15. Taken from the radio's complete program flash image (1,048,576 bytes, sha256
+<code>072ece15...9f29e42a</code>). Nothing here has run on a radio.</p>
+<p>The rule of <a href="codec-dm32.html">codec-dm32.md</a> holds: the radio runs the codec it already carries, the user's machine
+carves it from the radio's own flash image or an original update file, and no codec bytes go in this repository or in
+a release.</p>
+<p><strong>Result.</strong> The DM-1801 Pro's codec, its init routine and the wrappers that call it are the DM-32UV 049 build, with
+the data tables and the state blocks at different <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> addresses. RadioFoundry's DM-32UV hosting
+(<a href="codec-dm32.html">codec-dm32.md</a>, <code>platform/hrc7000/vocoder.c</code>) therefore interfaces with it the same way. The changes
+for this board are addresses. One thing in that interface was wrong: the encode flags word
+(<a href="#3-how-the-codec-is-called">section 3</a> and <a href="#5-cross-check-against-an-independent-build">section 5</a>).</p>
+<p>Tags: K = known from the image, I = inferred, ? = not determined.</p>
+<h2 id="1-where-it-is">1. Where it is</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Code, flash</td>
+<td>0xA22F0..0xB68F0 (0x14600 bytes)</td>
+</tr>
+<tr>
+<td>Code, RAM (run address)</td>
+<td>0x00016CDC..0x0002B2DC; the start-up code copies flash 0x9B614.. (0x22918 bytes) to <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> 0x10000</td>
+</tr>
+<tr>
+<td>Signature</td>
+<td>first words 0x152514D8, 0x74C776CD</td>
+</tr>
+<tr>
+<td>Code sha256</td>
+<td><code>8f7641b69a5cdfc946507ec48ddb67febe91d964520d5522bebd707f363f1a42</code></td>
+</tr>
+<tr>
+<td>Tables, flash</td>
+<td>0x68770, 0x2F78 bytes</td>
+</tr>
+<tr>
+<td>Tables, RAM</td>
+<td>0x18000EF0..0x18003E68 (the data image is flash 0x68080 to RAM 0x18000800, 0x43FC bytes)</td>
+</tr>
+<tr>
+<td>Tables sha256</td>
+<td><code>10684c33e3cc8238376e455fd96b1c15a863a864420dbbaa4589803c4eb0b0e1</code>, equal to the DM-32UV 049 tables</td>
+</tr>
+<tr>
+<td>Self-referencing absolute addresses</td>
+<td>the three pool words at RAM 0x187B0, 0x187B4, 0x19B68 hold 0x19540, 0x22754, 0x26CAC, as in the 049 code</td>
+</tr>
+<tr>
+<td>Decoder state D, encoder state E</td>
+<td>D at RAM 0x4885C, E at 0x4B2FC (049 DM-32UV: 0x456C0 and 0x48160, both 0x319C lower)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="against-the-dm-32uv-049-codec">Against the DM-32UV 049 codec</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Identical bytes</td>
+<td>83,298 of 83,456</td>
+</tr>
+<tr>
+<td>Table pointers</td>
+<td>82 literal words point into the tables and are 0x48 higher (the tables start at 0x18000EF0, not 0x18000EA8)</td>
+</tr>
+<tr>
+<td>Non-codec code inside the range</td>
+<td>29 words differ inside the three ranges that are not codec code (RAM 0x17270..0x1732C, 0x1CDBC..0x1D4C8, 0x1E8BC..0x1FE64)</td>
+</tr>
+<tr>
+<td>Everything else</td>
+<td>equal</td>
+</tr>
+</tbody>
+</table></div>
+<p>The whole RAM code block shares 82.7% of its 16-byte chunks with the DM-32UV 049 image. The shared part includes every
+function the codec calls and all the wrappers in section 3. The differences are hardware-specific code (<abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="../dev/glossary.html#t-uart">UART</abbr>, the
+modem and display glue) and addresses.</p>
+<h2 id="2-entry-points">2. Entry points</h2>
+<p>All eight sit at the 049 offsets from the code start and begin with the same prologues.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Offset</th>
+<th><abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr></th>
+<th>Prologue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>decode</td>
+<td>+0x0000</td>
+<td>0x16CDC</td>
+<td><code>push r4-r11, r15</code></td>
+</tr>
+<tr>
+<td>encode</td>
+<td>+0x0260</td>
+<td>0x16F3C</td>
+<td><code>push r4-r10, r15</code></td>
+</tr>
+<tr>
+<td>ECC</td>
+<td>+0x1C60</td>
+<td>0x1893C</td>
+<td><code>push r4-r11, r15</code></td>
+</tr>
+<tr>
+<td>decoder init</td>
+<td>+0x00B4</td>
+<td>0x16D90</td>
+<td><code>push r4-r5, r15</code></td>
+</tr>
+<tr>
+<td>decoder set</td>
+<td>+0x0084</td>
+<td>0x16D60</td>
+<td><code>push r4-r6, r15</code></td>
+</tr>
+<tr>
+<td>encoder init</td>
+<td>+0x0314</td>
+<td>0x16FF0</td>
+<td><code>push r4-r10, r15</code></td>
+</tr>
+<tr>
+<td>encoder set</td>
+<td>+0x02E4</td>
+<td>0x16FC0</td>
+<td><code>push r4-r6, r15</code></td>
+</tr>
+<tr>
+<td>FEC init</td>
+<td>+0x1BF8</td>
+<td>0x188D4</td>
+<td><code>push r4-r5, r15</code></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="3-how-the-codec-is-called">3. How the codec is called</h2>
+<h3 id="init">Init</h3>
+<p>Byte for byte the DM-32UV 049 routine, with D and E at the addresses in section 1. The parameter values and the order
+are those of <a href="codec-dm32.html">codec-dm32.md</a> C: E[0x172C] = 0x1840, E[0x173A] = 0x2000, E[0x173C] = 128, E[0x173E] =
+-20, E[0x1740] = -22, E[0x1742] = 20, E[0x1744] = -10, E[0x1746] = -40, E[0x1748] = 0x4000, E[0x174A] = E[0x174C] =
+3276, E[0x174E] = 1310, E[0x1750] = 10, E[0x1752] = 20, D[0x1152] = 0, D[0x116A] = 128, D[0x116C] = -20. Then:</p>
+<ol>
+<li>encoder init (E, 1, 1)</li>
+<li><abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="../dev/glossary.html#t-fec">FEC</abbr> init (E + 0x16E0, 1)</li>
+<li>encoder set (E, E[0x173C], E[0x173E])</li>
+<li>decoder init (D, 1)</li>
+<li>FEC init (D + 0xFD0, 1)</li>
+<li>decode (D + 0x12AE, 80, D + 0x1354, 0; stack 8, 0, D)</li>
+<li>decoder set (D, D[0x116A], D[0x116C])</li>
+<li>clear the state flags (halfwords and bytes around E + 0x1732..0x1736 and D + 0x1162..0x1168, and the bytes at E + 0x1728..0x19D6 and D + 0x1150..0x1498)</li>
+</ol>
+<p><code>platform/hrc7000/vocoder.c</code> <code>reset()</code> makes the same calls with the same values.</p>
+<h3 id="encode">Encode</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r0</td>
+<td>the output bit buffer</td>
+</tr>
+<tr>
+<td>r1</td>
+<td>E[0x1736]</td>
+</tr>
+<tr>
+<td>r2</td>
+<td>input samples: E + 2 * (E[0x1896] + 2986) * 2</td>
+</tr>
+<tr>
+<td>r3</td>
+<td>80</td>
+</tr>
+<tr>
+<td>sp+0</td>
+<td>the flags word, see below (0x800 in this pattern)</td>
+</tr>
+<tr>
+<td>sp+4</td>
+<td>1 (0 on the first half)</td>
+</tr>
+<tr>
+<td>sp+8</td>
+<td>E[0x173A]</td>
+</tr>
+<tr>
+<td>sp+12</td>
+<td>E</td>
+</tr>
+</tbody>
+</table></div>
+<p>This is the DM-32UV call (<a href="codec-dm32.html">codec-dm32.md</a>, calling convention) and what <code>encode()</code> in <code>platform/hrc7000/vocoder.c</code> passes.</p>
+<p><strong>The flags word (sp+0).</strong> The wrapper has six encode calls in two patterns. Each pattern passes one value on every
+call; none passes 0x1840 first and 0x800 afterwards. Every call is followed by the <abbr class="gl" tabindex="0" title="Exclusive or: a bit operation that flips bits where the other operand has a 1." data-more="../dev/glossary.html#t-xor">XOR</abbr> step and <abbr class="gl" tabindex="0" title="Error correcting code: a code that repairs damaged bits, such as the one a NAND flash needs." data-more="../dev/glossary.html#t-ecc">ECC</abbr>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>sp+0</th>
+<th>Calls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>a literal 0x800</td>
+<td>three (both halves of a frame, and one more path)</td>
+</tr>
+<tr>
+<td>B</td>
+<td>E[0x172E], a copy of E[0x172C] made on the first call of the sequence</td>
+<td>three</td>
+</tr>
+</tbody>
+</table></div>
+<p>E[0x172C] is 0x1840 after init, and the one routine that writes it again has no caller, so pattern B always passes
+0x1840. The wrapper picks the pattern from the bytes E[0x1728] and E[0x172A] and the halfword E[0x1732], which code
+outside the codec sets; which pattern <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> voice takes is <strong>not traced</strong>.</p>
+<p>The two values give different parameter bits (<a href="#5-cross-check-against-an-independent-build">section 5</a>): over 234 frames
+of speech, 0x800 and 0x1840 differ in 174 frames (74%). On speech bit 0x1000 has no effect (0x840 equals 0x1840): it is
+tone detection, which acts on a steady tone or tone pair (<a href="codec-md380.html">codec-md380.md</a>, &quot;Encode flags&quot;). Bits 0x40, 0x80,
+0x100, 0x200 and 0x800 are tested in the parameter stage; 0x800 only counts while E[0x138A] is not 0. Both patterns
+produce frames the decoder accepts.</p>
+<p><strong>What RadioFoundry's hosts do.</strong> <code>platform/hrc7000/vocoder.c</code> (this radio and the DM-32UV) and <code>platform/stm32f4/hrc/vocoder.c</code>
+(the DM-1701 and MD-380) pass one word on every call, from <code>drivers/vocoder/ambe2_flags.h</code>: 0x800, plus
+0x40 for noise reduction, 0x1000 for tone frames and 0x2000 for <abbr class="gl" tabindex="0" title="Automatic gain control: the receiver adjusting itself to the signal level." data-more="../dev/glossary.html#t-agc">AGC</abbr>. The default is 0x1840, pattern B's value
+(<a href="dmr-voice.html">dmr-voice.md</a> 6).</p>
+<p>Afterwards the wrapper XORs the bit buffer with a second buffer 0x90 bytes above it, then calls ECC (0x1893C) with
+r0 = r1 = the bit buffer, r2 = E[0x1738], r3 = the buffer minus 440 bytes. The XOR and the ECC step belong to the
+wrapper's own frame building (72 bits); RadioFoundry takes the 49 parameter bits from the encode call and builds the frame in
+<code>core/dmr/ambe</code>.</p>
+<h3 id="decode">Decode</h3>
+<p>The normal frame path:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r0</td>
+<td>output samples: D + 2 * (D[0x134E] + 2230) + 2</td>
+</tr>
+<tr>
+<td>r1</td>
+<td>80</td>
+</tr>
+<tr>
+<td>r2</td>
+<td>the input bit buffer</td>
+</tr>
+<tr>
+<td>r3</td>
+<td>D[0x1166]</td>
+</tr>
+<tr>
+<td>sp+0</td>
+<td>a flags word, see below</td>
+</tr>
+<tr>
+<td>sp+4</td>
+<td>1</td>
+</tr>
+<tr>
+<td>sp+8</td>
+<td>D</td>
+</tr>
+</tbody>
+</table></div>
+<p>One other call passes sp+4 = 0. <strong>The flags word</strong> is the status the wrapper gets back from a 72-bit error-correcting
+decode of the received frame (<abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> 0x182BC, run on each of the three sub-frames, I). The wrapper stores each result in D
+at 0x1156 + 6 * k (+ 2 for the second and third sub-frame), and the decode call reads one back (the halfword at
+D + 0x1154 + 2 * (3 * k + D[0x1164]) + 2) and ORs in D[0x1154], a copy of D[0x1152] (0 after init). So the wrapper tells
+the codec how damaged the frame was, and the codec can conceal damage itself.</p>
+<p><strong>Measured effect of the flags word</strong> (values 0..0xF, each single bit and random words, clean and noisy input, same on
+the DM-1801 Pro codec and an independent ARM build): bits 0 and 1 change nothing, so 0..3 decode like a good frame; any
+value with bit 2 or 3 set (4..0xF) makes the decoder repeat the previous frame, which is silence when there is none;
+0x4000 replaces the output with a steady noise at a fixed level (RMS about 1190); every other bit does nothing.
+<code>platform/hrc7000/vocoder.c</code> passes 0 and does its own error correction and concealment in <code>core/dmr/ambe</code>. That is right for a
+good frame, and 0 is also the status an error-free decode returns (see <a href="codec-md380.html">codec-md380.md</a>). It gives the
+codec no damage information, so the repeat-previous-frame concealment (4 or 8) never runs and RadioFoundry conceals before the
+codec instead. Whether the two sound the same at the edge of coverage is a hardware question, not an interface error.</p>
+<h3 id="level-setter">Level setter</h3>
+<p><code>set(level, which)</code>. With which = 0: E[0x1736] = D[0x1166] = min(level, 4). With which != 0: E[0x1738] = D[0x1168] =
+min(level, 6). The wrapper calls it from four places and only with which = 1: level 0 twice and level 4 twice. So
+<strong>E[0x1736] and D[0x1166] stay 0</strong> (the host's use of the state's own value is right), and E[0x1738] / D[0x1168], the
+ECC parameter, is 0 or 4 by mode. RadioFoundry never calls ECC, so it doesn't matter unless a later version moves frame building
+into the codec.</p>
+<h3 id="not-part-of-the-interface">Not part of the interface</h3>
+<p>The wrapper's start-up also creates three <abbr class="gl" tabindex="0" title="Real-time operating system: the scheduler that runs the firmware&#x27;s tasks." data-more="../dev/glossary.html#t-rtos">RTOS</abbr> semaphores (names in the data image at RAM 0x18000EA0, 0xEAC, 0xEB8) and
+stops with an error code 1, 2 or 3 if one fails; that is task start-up, not the codec.</p>
+<h2 id="4-how-radiofoundry-hosts-it">4. How RadioFoundry hosts it</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Slot tool</td>
+<td><code>tools/hrc7000_codec.py --board dm1801pro</code> takes a 1 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">MB</abbr> program flash read (offset 0 = 0x03000000), recognizes it by the sha256 of the code window (<code>8f7641b6…</code>), checks the tables' sha256 (<code>10684c33…</code>) and carves the two windows of section 1 into the slot at 0x030E8000, in the DM-32UV slot format. <code>tools/codec_auto.py</code> runs it on <code>make</code> when the read is in <code>codecs/</code></td>
+</tr>
+<tr>
+<td>Host</td>
+<td>The shared <code>platform/hrc7000/vocoder.c</code>, the DM-32UV's. It takes its <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> windows from the linker (<code>__codec_run_lo/hi</code>, <code>__codec_tab_lo/hi</code>) and its profile prefix from <code>RFOUNDRY_BOARD_ID</code> (the board's id), so it reports <code>codec=dm1801pro-049</code></td>
+</tr>
+<tr>
+<td>Linker</td>
+<td><code>boards/dm1801pro/memory.ld</code>: code RAM 0x16CDC..0x2B2DC and table RAM 0x18000EF0..0x18003E68 are left free; RadioFoundry's own RAM starts at 0x2B2DC; the low-RAM state (<code>RFOUNDRY_CPU_RAM_SECTION</code>) goes below 0x16CDC</td>
+</tr>
+<tr>
+<td>Flashing</td>
+<td><code>tools/rfoundry</code> profile <code>dm1801pro-049</code>. Through update mode the slot is merged on every flash, as on the DM-32UV (the updater erases the whole application area). Through the <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr> (<code>stub/stubtool.py --write-app</code>) only the sectors the image covers are written, so an image without the slot keeps the one in the radio</td>
+</tr>
+</tbody>
+</table></div>
+<p>Before the move, RAM was split in two around the codec's vendor addresses.</p>
+<p>Measured on the radio: encode about 12.3 ms per 20 ms frame at the top priority, decode about 2.4 ms, stack use about
+3.9 KB. <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> and <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> voice work on the bench (hardware-dm1801pro.md 5).</p>
+<h2 id="5-cross-check-against-an-independent-build">5. Cross-check against an independent build</h2>
+<p>The DM-1801 Pro codec was run on a host and compared with the MD-380-generation build of the same codec, run in an
+emulator from a running radio's <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> image. The host used the reset sequence of <code>platform/hrc7000/vocoder.c</code> on state blocks at the
+addresses in section 1. Neither is part of this repository.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Decode, 234 frames of a real call, fresh state</td>
+<td>37,440 of 37,440 samples identical</td>
+</tr>
+<tr>
+<td>Decode, flags 0..0xF, each single bit and 12 random words, clean and 10% bit errors, 120 frames each</td>
+<td>identical for all 40 values</td>
+</tr>
+<tr>
+<td>Encode, speech plus tone, noise, full-scale noise, silence, square wave and sweep (1,184 frames), flags 0x1840</td>
+<td>0 frames differ</td>
+</tr>
+<tr>
+<td>Encode, 43 flags values (every single bit, 0x800 and 0x1840, 24 random words), 120 frames each</td>
+<td>identical for 33; the 10 that differ all have bit 0x2000 set</td>
+</tr>
+<tr>
+<td>Code covered by those runs</td>
+<td>83% of the codec's instructions executed; every multiply-accumulate and saturating variant ran thousands of times</td>
+</tr>
+</tbody>
+</table></div>
+<p>What this settles:</p>
+<ul>
+<li>The DM-1801 Pro codec is functionally the same codec as the MD-380 one, for decode and encode with any flags. The
+differences with bit 0x2000 set came from different values in the <abbr class="gl" tabindex="0" title="Automatic gain control: the receiver adjusting itself to the signal level." data-more="../dev/glossary.html#t-agc">AGC</abbr> parameter block (E+0x16A2..0x16B6), not from
+different code (<a href="codec-md380.html">codec-md380.md</a>, &quot;Encode flags&quot;).</li>
+<li>The reset sequence in section 3 and the argument values <code>platform/hrc7000/vocoder.c</code> passes (r1 = E[0x1736], sp+8 = E[0x173A],
+decode r3 = D[0x1166], two 80-sample calls per frame) are right. They produced identical output to a radio that
+had been running.</li>
+<li>The encoder delays its output by one frame: a tone that starts in input frame 10 first changes output frame 11.</li>
+<li>The hosts pass the encode flags word as the wrapper does: one value on every call (section 3).</li>
+</ul>
+<h2 id="6-open">6. Open</h2>
+<ul>
+<li>Which encode flags pattern <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> voice uses (0x800 or 0x1840): what sets E[0x1728], E[0x172A] and E[0x1732] before the
+encode calls. A bench transmission with each value, decoded by a second radio, would also settle it.</li>
+<li>The return value of the error-correcting decode (0x182BC) on this build. The flags measurement above shows 0..3 are
+harmless and 4..0xF repeat the frame; the MD-380 build returns 0 good and 4 for an uncorrectable C0.</li>
+<li>What the <abbr class="gl" tabindex="0" title="Exclusive or: a bit operation that flips bits where the other operand has a 1." data-more="../dev/glossary.html#t-xor">XOR</abbr> step before <abbr class="gl" tabindex="0" title="Error correcting code: a code that repairs damaged bits, such as the one a NAND flash needs." data-more="../dev/glossary.html#t-ecc">ECC</abbr> does with the second buffer.</li>
+<li>Whether this radio has the 046 HRVocoder variant of the codec in some firmware versions. The image is one version of
+the radio's firmware.</li>
+<li>Audio quality and timing on hardware.</li>
+</ul>
+
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/codec-dm1801pro.md">View the source of this page</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="On this page">
+		<p class="eyebrow">On this page</p>
+		<ul><li class="l2"><a href="#1-where-it-is">1. Where it is</a></li><li class="l3"><a href="#against-the-dm-32uv-049-codec">Against the DM-32UV 049 codec</a></li><li class="l2"><a href="#2-entry-points">2. Entry points</a></li><li class="l2"><a href="#3-how-the-codec-is-called">3. How the codec is called</a></li><li class="l3"><a href="#init">Init</a></li><li class="l3"><a href="#encode">Encode</a></li><li class="l3"><a href="#decode">Decode</a></li><li class="l3"><a href="#level-setter">Level setter</a></li><li class="l3"><a href="#not-part-of-the-interface">Not part of the interface</a></li><li class="l2"><a href="#4-how-radiofoundry-hosts-it">4. How RadioFoundry hosts it</a></li><li class="l2"><a href="#5-cross-check-against-an-independent-build">5. Cross-check against an independent build</a></li><li class="l2"><a href="#6-open">6. Open</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Join the RadioFoundry community</strong><span class="small muted">Questions, help with your radio and news, on Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Found a bug? Want your radio supported?</strong><span class="small muted">Open an issue on GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry is MIT licensed · <a href="https://github.com/radiofoundry/radiofoundry">Source Code</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Community</a> · <a href="../../docs/index.html">Docs</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Changelog</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

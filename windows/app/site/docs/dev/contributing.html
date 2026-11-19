@@ -1,0 +1,302 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contributing · RadioFoundry</title>
+<meta name="description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Contributing · RadioFoundry">
+<meta property="og:description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:url" content="https://radiofoundry.org/docs/dev/contributing.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="The radios RadioFoundry runs on, each showing a different screen.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/dev/contributing.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/dev/contributing.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/dev/contributing.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/dev/contributing.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/dev/contributing.html">
+<link rel="icon" href="../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../" data-home="../../" data-gl-more="More">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../index.html">
+			<img src="../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Main"><a href="../../radios/index.html">Radios</a><a href="../../features/index.html">Features</a><a href="../../flash/index.html">Install</a><a href="../../codeplug/index.html">Codeplug</a><a href="../../docs/index.html" aria-current="page">Docs</a><a href="../../screenshots/index.html">Screenshots</a><a href="../../tools/index.html">Tools</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Language" title="Language">EN</summary><nav aria-label="Language"><a href="../../docs/dev/contributing.html" aria-current="true" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../es/docs/dev/contributing.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../it/docs/dev/contributing.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../zh/docs/dev/contributing.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Switch light and dark" title="Switch light and dark">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Developer Guide">
+		<p class="eyebrow"><a href="../../docs/index.html">Documentation</a> / Developer Guide</p>
+		<ul><li><a href="index.html">Developer Documentation</a></li><li><a href="adding-a-mode.html">Adding a Mode</a></li><li><a href="adding-a-radio.html">Adding a Radio</a></li><li><a href="architecture.html">Architecture</a></li><li><a href="board-registry.html">The Board Registry</a></li><li><a href="building.html">Building</a></li><li><a href="ci-runners.html">CI Runners and Images</a></li><li><a href="ci.html">Continuous Integration</a></li><li><a href="codec.html">The Codec</a></li><li><a href="codeplug-editor.html">The Codeplug Editor</a></li><li><a href="contributing.html" aria-current="page">Contributing</a></li><li><a href="cps-and-codeplug.html">CPS, Codeplug and Settings</a></li><li><a href="debug-link.html">Debug Link</a></li><li><a href="glossary.html">Developer glossary</a></li><li><a href="manual-pdf.html">The User Manual PDF</a></li><li><a href="release.html">Releases</a></li><li><a href="stack-check.html">Stack Check</a></li><li><a href="testing.html">Testing</a></li><li><a href="translating.html">Translating</a></li><li><a href="web-flasher.html">The Web Flasher</a></li><li><a href="website.html">The Web Site</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<h1 id="contributing">Contributing</h1>
+<p>Issues and pull requests are welcome. Read this page and <a href="../CLEANROOM.html">docs/CLEANROOM.md</a> first. New issues use
+the forms in <code>.github/ISSUE_TEMPLATE/</code> (bug, feature, new radio), and pull requests open with the checklist in
+<code>.github/PULL_REQUEST_TEMPLATE.md</code>. To use RadioFoundry in another project instead, read
+<a href="https://github.com/radiofoundry/radiofoundry/blob/main/FORKING.md">FORKING.md</a>.</p>
+<h2 id="branches-and-pull-requests">Branches and pull requests</h2>
+<p>All changes reach <code>main</code> through a pull request. Nobody pushes to <code>main</code> directly. For now every pull request goes
+from a feature branch into <code>main</code>; there are no release or develop branches.</p>
+<h3 id="repository-members">Repository members</h3>
+<ol>
+<li>Update <code>main</code>: <code>git switch main &amp;&amp; git pull</code>.</li>
+<li>Make a branch named as below: <code>git switch -c feat/aprs-path-menu</code>.</li>
+<li>Commit, then push the branch to this repository: <code>git push -u origin feat/aprs-path-menu</code>.</li>
+<li>Open the pull request into <code>main</code> (<code>gh pr create --base main</code>).</li>
+<li>When it is merged, delete the branch.</li>
+</ol>
+<h3 id="everyone-else">Everyone else</h3>
+<ol>
+<li>Fork the repository on GitHub.</li>
+<li>In your fork, branch from an up to date <code>main</code> with the same naming rules.</li>
+<li>Push the branch to your fork and open the pull request against <code>main</code> of this repository.</li>
+<li>Keep the branch current by merging or rebasing on this repository's <code>main</code> (add it as the <code>upstream</code> remote).</li>
+</ol>
+<h3 id="branch-names">Branch names</h3>
+<p><code>&lt;type&gt;/&lt;area&gt;-&lt;short-description&gt;</code>: lower case, words joined by hyphens, under about 40 characters, no personal
+names or dates.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>For</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>feat</code></td>
+<td>new behavior</td>
+<td><code>feat/aprs-path-menu</code></td>
+</tr>
+<tr>
+<td><code>fix</code></td>
+<td>a bug fix; add the issue number when there is one</td>
+<td><code>fix/123-dmr-late-entry</code></td>
+</tr>
+<tr>
+<td><code>radio</code></td>
+<td>a new radio, or bring-up of a radio that builds</td>
+<td><code>radio/&lt;id&gt;-bringup</code></td>
+</tr>
+<tr>
+<td><code>test</code></td>
+<td>tests only (host or <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="testing.html">HIL</abbr>)</td>
+<td><code>test/sfr-dedup-cases</code></td>
+</tr>
+<tr>
+<td><code>docs</code></td>
+<td>documentation only</td>
+<td><code>docs/contributing-branches</code></td>
+</tr>
+<tr>
+<td><code>refactor</code></td>
+<td>no change in behavior</td>
+<td><code>refactor/ui-svc-storage</code></td>
+</tr>
+<tr>
+<td><code>tools</code></td>
+<td>host tools, <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr>, scripts</td>
+<td><code>tools/rfoundry-retry</code></td>
+</tr>
+<tr>
+<td><code>ci</code></td>
+<td>the CI workflows and <code>tools/ci.sh</code></td>
+<td><code>ci/nightly-matrix</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>The area is the subsystem, matching the commit subjects: <code>aprs</code>, <code>dmr</code>, <code>fm</code>, <code>sfr</code>, <code>ui</code>, <code>hotspot</code>, <code>net</code>, <code>cps</code>,
+a board id for one radio's code, and so on.</p>
+<h3 id="pull-request-titles">Pull request titles</h3>
+<p>Pull requests are squash merged, so the title becomes the commit subject on <code>main</code>. Write it like a commit
+subject: <code>&lt;Area&gt;: &lt;what changed&gt;</code>, in the present tense, no trailing period.</p>
+<ul>
+<li><code>APRS: a Path row on the APRS page</code></li>
+<li><code>&lt;Model&gt;: FM receive audio for the AFSK demodulator</code> (one radio's change, under its board.toml model)</li>
+<li><code>Fix: SFR repeats a late-entry call's first voice burst</code></li>
+</ul>
+<h3 id="what-a-pull-request-must-have">What a pull request must have</h3>
+<ul>
+<li><strong>Unit test coverage.</strong> Every pull request that changes code includes host tests in <code>tests/host/</code> that exercise
+the change: new behavior gets new tests, a bug fix gets the test that fails without it. The pull request names
+the tests. A change the host tests can't reach (a register write, a board's wiring) says so, covers the logic
+around it with a host test, and adds a HIL test when one can be scripted. Pull requests that change only
+documentation are the only exception.</li>
+<li><code>JOBS=8 tools/ci.sh</code> ending with &quot;all checks passed&quot;.</li>
+<li>One topic. Split unrelated changes into separate pull requests.</li>
+<li>The filled-in template (<code>.github/PULL_REQUEST_TEMPLATE.md</code>).</li>
+</ul>
+<h2 id="license-of-contributions">License of contributions</h2>
+<p>RadioFoundry has no contributor license agreement, and you keep the copyright in what you write. By submitting a
+contribution (a pull request, a patch, or text or code that ends up in the tree), you:</p>
+<ul>
+<li>license it irrevocably under the project's MIT license (<a href="https://github.com/radiofoundry/radiofoundry/blob/main/LICENSE">LICENSE</a>), the same terms everyone
+<abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receives</abbr> it under;</li>
+<li>confirm that you wrote it, or otherwise have the right to submit it under that license (with your employer's
+permission, if your employer owns your work), and that it meets the clean-room rules below;</li>
+<li>agree that it is credited to &quot;The RadioFoundry Authors&quot;. Your name is in the git history at once and in
+<a href="https://github.com/radiofoundry/radiofoundry/blob/main/CONTRIBUTORS">CONTRIBUTORS</a> from the next release. <a href="https://github.com/radiofoundry/radiofoundry/blob/main/AUTHORS">AUTHORS</a> lists the maintainers only.
+To change how your name appears, add a line to <code>.mailmap</code>.</li>
+</ul>
+<p>Your copyright covers the code you wrote. It doesn't extend to the rest of the project, to other contributors' work
+or to the RadioFoundry name. The maintainers decide what is merged and released.</p>
+<h2 id="clean-room">Clean room</h2>
+<p>RadioFoundry is MIT licensed and must stay free of code it may not use. The rules are in <a href="../CLEANROOM.html">docs/CLEANROOM.md</a>.
+The short version:</p>
+<ul>
+<li>Write code from the prose specs in <code>docs/spec/</code>, datasheets, public standards (<abbr class="gl" tabindex="0" title="European Telecommunications Standards Institute, which publishes the DMR standard." data-more="glossary.html#t-etsi">ETSI</abbr> <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">TS</abbr> 102 361, the <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="../spec/mmdvm-protocol.html">MMDVM</abbr> protocol)
+and permissively licensed libraries. Never from another radio firmware's source.</li>
+<li>Don't open, copy or paraphrase <abbr class="gl" tabindex="0" title="GNU General Public License. RadioFoundry does not use GPL code." data-more="glossary.html#t-gpl">GPL</abbr> or non-commercial firmware, vendor SDKs or disassembly while writing code
+for this repository. If you have read them, write specs (facts, not code) and let someone else implement.</li>
+<li>Never add the <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="codec.html">AMBE</abbr> codec, a stock firmware image, a bootloader key or a memory dump to the repository.</li>
+<li>Every file carries an SPDX header (<code>SPDX-License-Identifier: MIT</code> and the copyright line, in the style of its
+neighbors). <code>reuse lint</code> must not report your files (the whole tree doesn't pass yet, <a href="ci.html">CI</a>).</li>
+<li>Test vectors come from standards or from your own captures.</li>
+</ul>
+<p>The checks, all in <code>tools/ci.sh</code>: <code>tools/license_grep.sh</code> (markers of foreign code), <code>reuse lint</code> (when installed),
+and before a release a similarity scan against the reference trees (only when <code>RFOUNDRY_SIMILARITY_REFS</code> is set; run by
+the project lead, never in public CI).</p>
+<h2 id="code">Code</h2>
+<ul>
+<li><code>core/</code> stays radio independent. Radio differences go through <code>board_t</code> and the <code>hal_*</code> interfaces
+(<a href="architecture.html">Architecture</a>).</li>
+<li>Anything that costs flash goes behind a <code>CONFIG_</code> switch (<a href="building.html">Building</a>).</li>
+<li>A fact about a radio that the build doesn't need goes in its <code>board.toml</code>, once (<a href="board-registry.html">The board registry</a>).
+Tools, tests and docs read the boards from the registry; none keeps a list of radios.</li>
+<li>C11 (gnu11) with <code>-Wall -Wextra -Wshadow -Wdouble-promotion</code>. Zero warnings in every configuration.</li>
+<li>Follow the style of the file you edit. Comments say why, not what.</li>
+<li>Keep <abbr class="gl" tabindex="0" title="Real-time operating system: the scheduler that runs the firmware&#x27;s tasks." data-more="glossary.html#t-rtos">RTOS</abbr> calls and blocking waits out of the UI's behavior code and the protocol engines, so the host tests can run them.</li>
+<li>Read the section of <a href="../spec/gotchas.html">gotchas.md</a> for the subsystem you change.</li>
+</ul>
+<h2 id="tests">Tests</h2>
+<ul>
+<li>Host tests (<a href="#what-a-pull-request-must-have">What a pull request must have</a>): new behavior gets one, a bug fix gets the test that would have caught it.</li>
+<li>A UI change updates the gallery (<code>make -C tests/host ui-gallery</code>) and commits the PNGs it meant to change.</li>
+<li>A parser of outside input gets a fuzz loop (<code>tests/host/fuzz.h</code>); run it under <code>SANITIZE=1</code> (<a href="testing.html">Testing</a>).</li>
+<li>A change that touches hardware gets a <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="testing.html">HIL</abbr> test when it can be scripted (<a href="testing.html">Testing</a>).</li>
+<li>A HIL test skips with <code>rfoundry_hil.skip(kind, reason)</code>, never <code>pytest.skip</code>. The kind says why (<code>not_built</code>, <code>no_hw</code>,
+<code>state</code>, <code>opt_in</code>, <code>bench</code>, <code>other_board</code>; <a href="https://github.com/radiofoundry/radiofoundry/blob/main/tests/hil/README.md#skip-kinds">tests/hil/README.md</a>), and
+<code>tools/check_hil_skips.py</code> fails on a skip without one.</li>
+</ul>
+<h3 id="the-feature-checklist">The feature checklist</h3>
+<p><code>tests/hil/features.toml</code> has one entry per feature, no radio columns and no test lists: each HIL test names its
+feature with <code>@pytest.mark.feature(&quot;&lt;id&gt;&quot;)</code> (<a href="https://github.com/radiofoundry/radiofoundry/blob/main/tests/hil/README.md#bring-up-mode">tests/hil/README.md</a>).
+<code>tools/bringup.py check</code> (in <code>tools/ci.sh</code>) fails when an entry is missing or a test marks a feature that has none.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Change</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A new switch or feature</td>
+<td>Add a <code>[feature.&lt;id&gt;]</code> table: <code>switch</code>, <code>spec</code>, and <code>source</code> when the Makefile's files for the switch aren't the right ones. A feature may have no tests yet; <code>tools/bringup.py status</code> then shows &quot;built, not yet recorded&quot;</td>
+</tr>
+<tr>
+<td>A new HIL test</td>
+<td>Mark it <code>@pytest.mark.feature(&quot;&lt;id&gt;&quot;)</code>, with <code>optional=True</code> when it shouldn't gate, <code>owner=&quot;...&quot;</code> when it asks a person for something, and <code>gate=True</code> on the one test that checks the radio offers a feature that needs hardware glue (its capability gate). Its needs come from its markers and fixtures. A required test not written yet goes in the feature's <code>planned_tests</code></td>
+</tr>
+<tr>
+<td>A radio lacks a feature</td>
+<td>Add the switch to the board's <code>BOARD_UNSUPPORTED</code> in <code>config.mk</code>, one a line with the reason: <code>BOARD_UNSUPPORTED += AM_RX  # no air band receiver</code> (state <code>n/a</code>), only when the hardware can't. When the hardware could but the code isn't written for the radio yet: <code>CONFIG_X ?= n</code> and <code>BOARD_NOT_WRITTEN += X  # &lt;what is missing&gt;</code> (state <code>not written</code>). Built but known not to work yet: <code>board.toml</code> <code>[features] &lt;id&gt; = { state = &quot;unsupported&quot;, reason = &quot;...&quot; }</code>. <a href="../build-config.html#unsupported-not-written-unconfirmed">The rule</a></td>
+</tr>
+<tr>
+<td>A new radio</td>
+<td>Nothing here: its states resolve from its build data</td>
+</tr>
+</tbody>
+</table></div>
+<p>To record a bring-up run, the owner (or someone at the bench) runs <code>tools/bringup.py list --radio &lt;id&gt;</code> for the
+checklist and owner actions, then <code>tools/bringup.py run --radio &lt;id&gt; -- &lt;HIL options&gt;</code> with the radio on the debug
+link. The run takes the radio lock, counts unexcused skips as failures and writes a record to
+<code>docs/testing/results/&lt;id&gt;/</code>. Commit the record. Failures are allowed in a record: they are the to-do list.</p>
+<h2 id="text-the-radio-or-the-site-shows">Text the radio or the site shows</h2>
+<p>The radio and the site are translated (<a href="translating.html">Translating</a>). Text a user reads is marked (<code>TR(KEY, &quot;...&quot;)</code>,
+<code>TRN(KEY, &quot;...&quot;)</code> on the radio, the key named by <a href="translating.html#key-names">Key names</a>; a catalog key on the site),
+and the code works when its translation is missing: the English shows.</p>
+<ul>
+<li>Mark new text, run <code>python3 tools/i18n.py --sync</code>, and commit the catalogs with the code.</li>
+<li>Translate new and rewritten strings into every language when you can (radio <code>core/ui/lang/*.po</code>, site
+<code>site/i18n/*.json</code>). When you can't, list them as an open task in the pull request
+(<code>- [ ] translations: es, it</code>); CI fails on a missing translation, and they are done before the merge.</li>
+<li>English you changed while a translation stayed the same is a CI warning, not a failure: check each language and
+update it when the meaning changed.</li>
+</ul>
+<h2 id="documentation">Documentation</h2>
+<ul>
+<li>A behavior change updates its spec in <code>docs/spec/</code> and, if users see it, the user manual in <code>docs/user/</code>.</li>
+<li>A new setting goes into the user manual's settings reference (<a href="../user/index.html">docs/user/</a>) with its default and status.</li>
+<li>A new <abbr class="gl" tabindex="0" title="A CONFIG_ option that turns a feature&#x27;s code in or out of the build." data-more="../build-config.html">feature switch</abbr> goes into <a href="../build-config.html">build-config.md</a> and <a href="../feature-matrix.html">feature-matrix.md</a>.</li>
+<li>Docs use US English, short sentences and tables. Links are relative so they work on GitHub and in the PDF.</li>
+<li><code>python3 tools/check_doc_links.py</code> checks every relative link, image and anchor in the docs (ci.sh runs it).</li>
+<li><code>python3 tools/check_keys.py</code> checks that a <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="cps-and-codeplug.html">codeplug</abbr> settings area key is listed the same way in the spec, the
+firmware and the Codeplug Editor (<a href="../spec/codeplug-settings.html">codeplug-settings.md</a> 3; ci.sh runs it).</li>
+</ul>
+<h2 id="before-you-open-a-pull-request">Before you open a pull request</h2>
+<pre><code>JOBS=8 tools/ci.sh
+</code></pre>
+<p>It must end with &quot;all checks passed&quot;. Skips (a missing compiler, <code>reuse</code> not installed) are reported; install what you
+can. CI runs the quick part on every push and the feature matrix nightly (<a href="ci.html">CI</a>); run the whole gate before you
+open the pull request. Commit in small steps with messages that say what changed and why. Then open the pull request
+into <code>main</code> as <a href="#branches-and-pull-requests">Branches and pull requests</a> describes.</p>
+
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/dev/contributing.md">View the source of this page</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="On this page">
+		<p class="eyebrow">On this page</p>
+		<ul><li class="l2"><a href="#branches-and-pull-requests">Branches and pull requests</a></li><li class="l3"><a href="#repository-members">Repository members</a></li><li class="l3"><a href="#everyone-else">Everyone else</a></li><li class="l3"><a href="#branch-names">Branch names</a></li><li class="l3"><a href="#pull-request-titles">Pull request titles</a></li><li class="l3"><a href="#what-a-pull-request-must-have">What a pull request must have</a></li><li class="l2"><a href="#license-of-contributions">License of contributions</a></li><li class="l2"><a href="#clean-room">Clean room</a></li><li class="l2"><a href="#code">Code</a></li><li class="l2"><a href="#tests">Tests</a></li><li class="l3"><a href="#the-feature-checklist">The feature checklist</a></li><li class="l2"><a href="#text-the-radio-or-the-site-shows">Text the radio or the site shows</a></li><li class="l2"><a href="#documentation">Documentation</a></li><li class="l2"><a href="#before-you-open-a-pull-request">Before you open a pull request</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Join the RadioFoundry community</strong><span class="small muted">Questions, help with your radio and news, on Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Found a bug? Want your radio supported?</strong><span class="small muted">Open an issue on GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry is MIT licensed · <a href="https://github.com/radiofoundry/radiofoundry">Source Code</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Community</a> · <a href="../../docs/index.html">Docs</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Changelog</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

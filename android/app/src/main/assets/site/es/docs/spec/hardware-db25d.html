@@ -1,0 +1,2860 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radioddity DB25-D PRO hardware · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Radioddity DB25-D PRO hardware · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/docs/spec/hardware-db25d.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/hardware-db25d.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/hardware-db25d.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/hardware-db25d.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/hardware-db25d.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/hardware-db25d.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../es/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../../es/radios/index.html">Radios</a><a href="../../../es/features/index.html">Funciones</a><a href="../../../es/flash/index.html">Instalar</a><a href="../../../es/codeplug/index.html">Codeplug</a><a href="../../../es/docs/index.html" aria-current="page">Documentación</a><a href="../../../es/screenshots/index.html">Capturas</a><a href="../../../es/tools/index.html">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../../docs/spec/hardware-db25d.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/hardware-db25d.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/hardware-db25d.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/hardware-db25d.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Especificaciones">
+		<p class="eyebrow"><a href="../../../es/docs/index.html">Documentación</a> / Especificaciones</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html" aria-current="page">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Esta página aún no está traducida; se muestra en inglés.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="radioddity-db25-d-pro-hardware">Radioddity DB25-D PRO hardware</h1>
+<p>This page holds the facts a firmware needs to bring up the DB25-D PRO mobile: <abbr class="gl" tabindex="0" title="System on chip: the processor and its on-chip peripherals." data-more="../dev/glossary.html#t-soc">SoC</abbr>, memory, pins,
+the two <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> chips, display, storage, calibration, the PC link and the update path. The survey entry, with sources for
+the model and FCC facts, is in <a href="radios.html">radios.md</a>. The <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> itself (UARTs, timers, <abbr class="gl" tabindex="0" title="Analog to digital converter." data-more="../dev/glossary.html#t-adc">ADC</abbr>, <abbr class="gl" tabindex="0" title="Digital to analog converter." data-more="../dev/glossary.html#t-dac">DAC</abbr>, PIC, <abbr class="gl" tabindex="0" title="General purpose input/output: a pin the firmware can read or drive." data-more="../dev/glossary.html#t-gpio">GPIO</abbr>) is in
+<a href="hardware-dm32.html">hardware-dm32.md</a> and its modem in <a href="modem-hrc7000.html">modem-hrc7000.md</a>; this page only says
+where the DB25-D differs.</p>
+<p>Values marked <code>(measured)</code> were checked on a DB25-D PRO (firmware 909E.D6x.EARSAB.020) on 2026-10-16 or later, or on the
+<abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench. <code>(datasheet)</code> is from a chip data sheet or the HR_C7000 user guide. <code>(unverified)</code> is not confirmed on a
+radio or in a datasheet.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1-2</td>
+<td>Models, memory, clocks</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pin map: buses, RF switching, keys, hand microphone</td>
+</tr>
+<tr>
+<td>4</td>
+<td>RF chain: the two RF chips, register values, <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> and <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> sequences, <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> path</td>
+</tr>
+<tr>
+<td>5-6</td>
+<td>Display, storage, calibration</td>
+</tr>
+<tr>
+<td>7</td>
+<td>PC link, update and recovery</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Codec</td>
+</tr>
+<tr>
+<td>9-10</td>
+<td>How RadioFoundry uses it, open questions</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="1-models-and-batches">1. Models and batches</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Finding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SoC</td>
+<td>One <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> (CK803S core), marked &quot;HR_C7000 D56323MP1&quot;</td>
+</tr>
+<tr>
+<td>Boards (PRO)</td>
+<td>Control &quot;CDR300UV-MCU-BT-AI-TDA-1.0&quot;, display &quot;C7DR300UV-TFT-51M-FD-2.0&quot;, <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> &quot;C7DR300UV-RX-BT-AD-3.0&quot;, <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> &quot;C7DR300UV-TX-RD35-BT-AD-3.5&quot;</td>
+</tr>
+<tr>
+<td>One image for every board</td>
+<td>The firmware identifies both <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> chips at boot (section 4.2) and writes two letters after the &quot;D&quot; of its version string</td>
+</tr>
+<tr>
+<td>Batch codes</td>
+<td>D64, D66, D6T: FD6818 main transceiver (2021-2023), LO 0x7813, FD6818 or AT1141 (4.8). <strong>DBB: two BK4819, the PRO</strong></td>
+</tr>
+<tr>
+<td>Minimum vendor firmware on a PRO</td>
+<td>The 2024-05-09 build is the first that knows the BK4819. Older vendor firmware must never be loaded on a PRO</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="2-memory-and-image">2. Memory and image</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Finding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Program flash</td>
+<td><abbr class="gl" tabindex="0" title="Execute in place: running code straight from flash." data-more="../dev/glossary.html#t-xip">XIP</abbr> at 0x03000000. Boya, 2 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">MB</abbr> (JEDEC ID 68 40 15), 4 KB sectors. QE (status register 2 bit 1) is set: the application sets it before it switches the controller to quad mode (measured)</td>
+</tr>
+<tr>
+<td>Loader</td>
+<td>0x03000000-0x0300BFFF (48 KB, 36 KB used), the vendor IAP loader. It's never in an update package (measured)</td>
+</tr>
+<tr>
+<td>Application</td>
+<td>Linked at <strong>0x0300C000</strong>; the loader jumps to its first byte. Raw image: no header, no checksum, no encryption. On a normal power-on the loader starts it only if its first 4 bytes are <strong>2C 11 01 C0</strong> (the entry of the vendor application, <code>lrw r1, ...; mtcr r1, psr</code>), else it stays in update mode; right after an update it starts it without looking (measured)</td>
+</tr>
+<tr>
+<td>RadioFoundry's layout</td>
+<td>The first stage (boot/db25d, <a href="https://github.com/radiofoundry/radiofoundry/blob/main/boot/README.md">boot/README.md</a>) in the 4 KB sector at 0x0300C000, carrying that signature; the application from 0x0300D000 (measured)</td>
+</tr>
+<tr>
+<td>Clocks</td>
+<td>The loader leaves the <abbr class="gl" tabindex="0" title="Phase locked loop: the circuit that holds the radio&#x27;s synthesizer on its frequency." data-more="../dev/glossary.html#t-pll">PLL</abbr> at 72 MHz (24 MHz × 24 / 2 / 4), APB 36 MHz, on both paths into the application. The vendor application never writes the clock manager, so it runs on those. RadioFoundry re-programs the PLL to the DM-32's 168 MHz <abbr class="gl" tabindex="0" title="Central processing unit." data-more="../dev/glossary.html#t-cpu">CPU</abbr> / 84 MHz APB (section 2.1) (measured)</td>
+</tr>
+<tr>
+<td>Start-up state</td>
+<td>PSR 0x80000100, SP 0x50000, VBR 0x10000, cache set as on the DM-32</td>
+</tr>
+<tr>
+<td>SRAM</td>
+<td>0x10000-0x57FFF as on the DM-32. The vendor application uses 0x10000-0x525E0</td>
+</tr>
+<tr>
+<td>Modem SRAM</td>
+<td>The vendor application copies its modem and <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">vocoder</abbr> tables to 0x18000800-0x18004F90</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="21-clocks-in-radiofoundry">2.1 Clocks in RadioFoundry</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Setting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Switch</td>
+<td><code>DB25D_FULL_CLOCK=1</code> (default, <code>board.mk</code>): CPU / AHB 168 MHz, APB 84 MHz as on the DM-32 (hardware-dm32.md 1.1). <code>DB25D_FULL_CLOCK=0</code>: no PLL change, 72 / 36 MHz as the loader leaves them. Both builds define <code>HRC_LOADER_CPU_HZ</code> = 72 MHz, which the <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr> hand-over uses (measured)</td>
+</tr>
+<tr>
+<td>Limits</td>
+<td>The user guide (4.2.2.2) gives CPU and AHB up to 192 MHz, APB up to 96 MHz (typical 120 / 60). 168 / 84 is inside them. The <abbr class="gl" tabindex="0" title="The flash chip type that holds large data, such as the codeplug and contacts, in some radios." data-more="../dev/glossary.html#t-nand">NAND</abbr> takes 133 MHz, the ST7735S writes at up to 15 MHz (datasheet)</td>
+</tr>
+<tr>
+<td>Start-up</td>
+<td>The loader runs the CPU from the BPLL, which must not be reprogrammed under it. <code>hrc_clock_init</code> (<abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> code, interrupts off, before the vector table is set up) saves CLK_MGR 0x010 / 0x024 / 0x028, sets the <abbr class="gl" tabindex="0" title="System on chip: the processor and its on-chip peripherals." data-more="../dev/glossary.html#t-soc">SoC</abbr> clock select (CLK_MGR_CTRL bit 3) to the oscillator, clears the BPLL configure bit (bit 1), writes the 24 MHz / 1 × 28 / 2 / 2 word, USB / SDIO dividers and AHB:APB = 1:2 as the DM-32 does, sets bit 1 again, waits 100 us for the lock flag, then clears bit 3. The APLL (modem clock, bit 0) is left alone. If the PLL never locks within 2 s, the saved words go back. The XIP flash is switched to quad mode at divider 2 before, as on the DM-32; its SCLK follows the AHB clock (measured)</td>
+</tr>
+<tr>
+<td>Timers, UART, SSI</td>
+<td>All derive from <code>HRC_APB_HZ</code> at build time: timer 2 (microseconds), the tick, the <abbr class="gl" tabindex="0" title="A talk target used for one call and its reply window." data-more="../user/22-glossary.html#t-one-shot">one-shots</abbr>, <abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="../dev/glossary.html#t-uart">UART</abbr> divisor 46 for 115200 (0.9 % slow; 20 at 36 MHz is 2.3 % slow), NAND SPI0 divider 4 (21 MHz, 9 MHz at 36), display SPI2 divider 6 (14 MHz, 6 MHz at 36) (measured)</td>
+</tr>
+<tr>
+<td>Bit-banged display</td>
+<td>Each phase of the clock line is written <code>hrc_bitbang_repeat(APB)</code> times (3 at 84 MHz, 2 at 36), so the phases stay over about 30 ns. Used only when the <abbr class="gl" tabindex="0" title="Analog to digital converter." data-more="../dev/glossary.html#t-adc">ADC</abbr> 2 strap reads 50 or more (3.1) (measured)</td>
+</tr>
+<tr>
+<td>Not clock dependent</td>
+<td>The BK4819 3-wire bus, key scan, APC ramp and <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> settling use <code>hal_delay_us</code> (timer 2). ADC conversions run from the 24 MHz oscillator (user guide clock tree: oscillator / 10); the ADC and UART wait loops are counted, and are shorter in wall time at 168 MHz, still several ms (measured)</td>
+</tr>
+<tr>
+<td>Modem</td>
+<td>The modem and codec clocks come from the APLL and the oscillator, not the BPLL (user guide clock tree), and <code>hrc_clock_init</code> doesn't touch them; the <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> code's assumptions are the DM-32's, which are 168 / 84 (datasheet)</td>
+</tr>
+<tr>
+<td>Hand-over</td>
+<td><code>enter_stub</code> and <code>hrc_restart</code> (the REBOOT path) call <code>hrc_clock_restore_loader()</code> first: SoC clock to the oscillator, the saved CLK_MGR words back, lock, SoC clock to the PLL, so the loader (which finds the clock manager as it left it, a soft reset only resets the CPU side) and the runtime stub see the clocks they expect (the universal stub measures timer 2 anyway and gets the rates in CONFIG, 7; it measured 35.6 MHz). Before it the UART drains; after it the divisor is set for 36 MHz (20). A power cycle resets the clock manager (hard reset), and the first stage (boot/db25d) runs before any RadioFoundry code, so the power-on stage catch always sees the loader's clocks even if RadioFoundry hangs at 168 MHz (measured)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Check the clock on a radio: the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>'s <code>uptime_ms</code> has to advance one second per second (timer 2 counts APB cycles, so a
+wrong APB shows at once) and the host link has to answer at 115200 (the UART divisor assumes 84 MHz).</p>
+<h2 id="3-pin-map">3. Pin map</h2>
+<p><abbr class="gl" tabindex="0" title="General purpose input/output: a pin the firmware can read or drive." data-more="../dev/glossary.html#t-gpio">GPIO</abbr> index as on the DM-32: 0-31 PTA, 32-63 PTB, 64-95 PTC. Levels are &quot;high = on&quot; unless stated.</p>
+<h3 id="31-buses">3.1 Buses</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Bus</th>
+<th>Pins</th>
+<th>Protocol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Display</td>
+<td>PTC2 (66) reset, PTC3 (67) CS, PTC4 (68) SCL, PTC6 (70) D/C (low = command); data on PTC7 (71) or PTC8 (72)</td>
+<td>4-wire serial, 8 bits <abbr class="gl" tabindex="0" title="Most significant bit (or byte): the first, highest-value one." data-more="../dev/glossary.html#t-msb">MSB</abbr> first, data set while SCL is low and taken on the rising edge. <abbr class="gl" tabindex="0" title="Analog to digital converter." data-more="../dev/glossary.html#t-adc">ADC</abbr> channel 2 is a board strap. Reading ≥ 50: bit-banged GPIO, data on PTC7. Below 50: the SPI2 controller (0x140E0000), SCLK on PTC4 (IO_DIPLEX2 [6:5] = 1) and MOSI on <strong>PTC8</strong> (IO_DIPLEX2 [12:11] = 1); CS, D/C and reset stay GPIO.  The owner's radio reads about 2 (SPI2) (measured)</td>
+</tr>
+<tr>
+<td>SPI NAND</td>
+<td>SPI0 (0x140A0000), CS PTA18 (18) by GPIO</td>
+<td>Mode 0, 8-bit frames, BAUDR 4 (21 MHz)</td>
+</tr>
+<tr>
+<td>RF chips</td>
+<td>SCLK PTB16 (48), SDIO PTB24 (56) bidirectional, SEN main PTB25 (57), SEN LO PTC20 (84)</td>
+<td>3-wire, as the DM-32's FD6818: 8-bit address (bit 7 = read), 16 data bits, MSB first. One lock around every access</td>
+</tr>
+<tr>
+<td>RF chip lines</td>
+<td>PTB27 (59) input with interrupt; PTB26 (58) input</td>
+<td>? (interrupt / sub-audio detect, status)</td>
+</tr>
+<tr>
+<td>FM broadcast (RDA5802N)</td>
+<td>Bit-banged <abbr class="gl" tabindex="0" title="Inter-integrated circuit: a 2-wire bus for small chips such as the RF transceiver." data-more="../dev/glossary.html#t-i2c">I2C</abbr>, SCL PTA7 (7), SDA PTA8 (8), 7-bit address 0x11</td>
+<td></td>
+</tr>
+<tr>
+<td>RTC</td>
+<td><abbr class="gl" tabindex="0" title="System on chip: the processor and its on-chip peripherals." data-more="../dev/glossary.html#t-soc">SoC</abbr> I2C2, address 0x70</td>
+<td></td>
+</tr>
+<tr>
+<td>PC link</td>
+<td><strong>UART1</strong> (0x14040000), RXD PTA9 (9), TXD PTA10 (10), 115200 8N1. The vendor application's debug output goes to the same port.  RadioFoundry's host port, where a <abbr class="gl" tabindex="0" title="Central processing unit." data-more="../dev/glossary.html#t-cpu">CPU</abbr> fault's trace lines appear (<a href="crash-log.html">crash-log.md</a> 2.3)</td>
+<td></td>
+</tr>
+<tr>
+<td>GPS</td>
+<td>UART2 (0x14050000, interrupt source 11), 9600 8N1 <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> only; RXD pad PTA11 (IO_DIPLEX0 bit 11 = 0, <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> user guide 4.4.4.4); power PTB17 (49), <strong>high = on</strong>, confirmed on the radio 2026-10-17 (RadioFoundry's single constant is <code>GPS_POWER_ON_LEVEL</code> in <code>boards/db25d/pins.h</code>). Module: the green daughter board (CC1157G)</td>
+<td>(measured)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The DM-32's programming cable is on UART0. The DB25-D never uses UART0.</p>
+<h3 id="32-rf-switching-and-the-pa">3.2 RF switching and the PA</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Pin</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PTC19 (83)</td>
+<td>RX front end, on in both RX paths</td>
+</tr>
+<tr>
+<td>PTB4 (36) / PTA25 (25)</td>
+<td>RX path <abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="../user/22-glossary.html#t-vhf">VHF</abbr> / <abbr class="gl" tabindex="0" title="Ultra high frequency: 300 MHz to 3 GHz. The amateur 70 cm band is UHF." data-more="../user/22-glossary.html#t-uhf">UHF</abbr></td>
+</tr>
+<tr>
+<td>PTB3 (35) / PTA26 (26)</td>
+<td><abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> path (<abbr class="gl" tabindex="0" title="Power amplifier: the stage that boosts the transmit signal to the output power." data-more="../dev/glossary.html#t-pa">PA</abbr> select) VHF / UHF</td>
+</tr>
+<tr>
+<td>PTA23 (23)</td>
+<td>High in RX, low in TX</td>
+</tr>
+<tr>
+<td>PTB2 (34), PTA27 (27)</td>
+<td>Low in RX. TX supply, <strong>one pin per band</strong>, raised 200 us into TX: UHF PTA27 high with PTB2 driven low, VHF PTB2 high with PTA27 driven low</td>
+</tr>
+<tr>
+<td>DAC A</td>
+<td>RX front-end tuning: the calibration value for the RX frequency, written at each receive set-up (6.4)</td>
+</tr>
+<tr>
+<td>DAC B</td>
+<td>PA power control. Ramped over 180 steps of 4 us at the start and end of each burst</td>
+</tr>
+<tr>
+<td>DAC C</td>
+<td>1762 (0x06E2) at init, as on the DM-32; 1780 at each receive set-up</td>
+</tr>
+<tr>
+<td>DAC init</td>
+<td>IO_DIPLEX2 bits 27–29 cleared (all three outputs on their pins), PD_MODE_EN = 0, PD_CTRL = 0 (all channels on), every data register 0, then <abbr class="gl" tabindex="0" title="Digital to analog converter." data-more="../dev/glossary.html#t-dac">DAC</abbr> C</td>
+</tr>
+</tbody>
+</table></div>
+<p>To TX: RX paths off, 50 us, tune, the page's TX-on delay, PA select of the band (UHF PTA26 high and PTB3 low, VHF the
+reverse) with PTA23 low, 200 us, the band's TX supply, then the PA ramp up (4.4). To RX: the main chip to its RX state, the page's TX-off delay, the ramp down, both supplies and both PA selects low, PTA23 high, 300 us, the retune, the RX path of
+the band, the band flags (4.3, register 0x33), 200 us.</p>
+<p>Transmitter safe state (<code>board_rf_safe</code>, <a href="crash-log.html">crash-log.md</a> 8), at every fault, reset and <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr> entry and first
+in <code>main()</code>: TX supplies PTA27 and PTB2 low, PA selects PTA26 and PTB3 low, DAC B 0 and powered down, PTA23 high; on
+the fault and reset paths also the modem's FM_PTT and LAYER2_TXRX_CTRL 0. The first stage (<code>boot/db25d</code>) drives the
+same pins (not the DAC) right after the power latch; <code>boards/db25d/tests/bootDb25dTest.c</code> (<code>test_tx_off</code>) tests it. The BK4819s keep their state until the next start. Found on the
+radio (2026-10-21): a fault while transmitting, then the soft reset, left the PA keyed at about 15 W of supply draw with
+the radio stopped before the display was lit, until a power cycle; that fault is why <code>board_rf_safe</code> exists. The fault trace goes out on UART1, and was checked on the radio on 2026-10-21. A watchdog restart reports the cause <code>warm</code>.</p>
+<h3 id="33-keys-encoder-power-leds-audio">3.3 Keys, encoder, power, LEDs, audio</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Pin</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PTB18, PTB20, PTB21, PTB22, PTB23 (50, 52-55)</td>
+<td>Key matrix drive lines, idle high, driven low one at a time</td>
+</tr>
+<tr>
+<td>PTB9, PTB10, PTB11 (41-43)</td>
+<td>Key matrix sense lines, low = closed. PTB9 and PTB10 also carry one key each wired straight to ground (low with every drive line high)</td>
+</tr>
+<tr>
+<td>PTA9 (9)</td>
+<td>Also read as a GPIO by the key code: the mic connector's line that carries PTT and the radio's RXD. RadioFoundry counts a low PTA9 as PTT only 50 ms or more after the last good <abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="../dev/glossary.html#t-uart">UART</abbr> byte and held low that way for 20 ms (<code>drivers/input/sharedptt</code>, <a href="gotchas.html">gotchas</a> 16.2), then on three scans in a row; the diagnostics line <code>mic</code> ends with <code>ign N</code>, the low scans ignored. The three-scan filter alone let <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> polling key the radio; with the gate, 30 s of polling gave <code>ign 5</code> and no PTT press (2026-10-19, measured)</td>
+</tr>
+<tr>
+<td>PTC11 (75)</td>
+<td>Hand mic PTT: high at idle, low while held. With no mic in the front jack it reads low from power-on and never changes (0 edges in 25 s, cable in or out), which keyed the radio at every start without a mic (issue #230). RadioFoundry counts a low PTC11 as PTT only once the line has read high for 100 ms since power-on, a mic plugged in (<code>drivers/input/plugptt</code>); the diagnostics line <code>mic</code> ends with <code>mic</code> once armed, <code>nomic</code> before. Plugging the mic in later arms it then. Pulling the mic out while armed reads as a held PTT, which the transmit timeout ends (with TX timeout Off, nothing ends it until power-off). On the radio (2026-10-27): no mic at power-on, no key-up (<code>nomic</code>); mic plugged in, <code>mic</code>, PTT keys and releases. The mic's digit and P keys change neither PTA9 nor PTC11 at a 10 ms scan; how they reach the radio is open (measured)</td>
+</tr>
+<tr>
+<td>PTB5 / PTB8 (37 / 40)</td>
+<td>Rotary encoder A / B, GPIO B interrupt. The key scan watches it for a lost interrupt and serves the bank itself if one is lost (<code>platform/hrc7000/gpio_watch.c</code>, <a href="gotchas.html">gotchas.md</a> 16.4; state in the debug link view, <a href="debuglink.html">debuglink.md</a> 3.7)</td>
+</tr>
+<tr>
+<td>PTB12 (44)</td>
+<td>Power key sense, low = pressed</td>
+</tr>
+<tr>
+<td>PTB13 (45)</td>
+<td>Power latch: set at start-up, cleared to switch off</td>
+</tr>
+<tr>
+<td>PTA16 (16)</td>
+<td><abbr class="gl" tabindex="0" title="Liquid crystal display: the radio&#x27;s screen." data-more="../user/22-glossary.html#t-lcd">LCD</abbr> backlight: PWM1 output (IO_DIPLEX0 bit 18 clear) (datasheet)</td>
+</tr>
+<tr>
+<td>PTA17 (17)</td>
+<td>Unused, set high at init</td>
+</tr>
+<tr>
+<td>PTB0, PTB1 (32, 33)</td>
+<td>Status LEDs, high = on: PTB0 green, PTB1 red (measured)</td>
+</tr>
+<tr>
+<td>PTB14, PTB15 (46, 47)</td>
+<td>Audio path selects: audio on = PTB14 high, PTB15 low; off = PTB14 low, PTB15 high</td>
+</tr>
+<tr>
+<td>PTA15, PTA24 (15, 24)</td>
+<td>Speaker enables, low = on: PTA24 the body speaker, PTA15 the mic speaker. Both high when audio is off. IO_DIPLEX1 bits 11 and 12 set (GPIO). <strong>PTA15 low also darkens the LCD backlight</strong> on the owner's radio, so RadioFoundry keeps it high and drives the body speaker only (measured)</td>
+</tr>
+<tr>
+<td>PTC18 (82)</td>
+<td>Speaker source: high next to every main-chip AF on and side tone (analog squelch open, tone burst), low for the modem's audio (<abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> call start, beeps, call end). Taken to select the main chip's AF (high) or the modem's line out (low) for the amplifier. RadioFoundry drives it low in DMR, high otherwise</td>
+</tr>
+<tr>
+<td>PTA19 (19)</td>
+<td>FM broadcast audio enable</td>
+</tr>
+<tr>
+<td>ADC 2</td>
+<td>Board ID: display bus mode</td>
+</tr>
+<tr>
+<td>ADC 6</td>
+<td><abbr class="gl" tabindex="0" title="Received signal strength indicator: how strong the received signal is, in dBm." data-more="../user/22-glossary.html#t-rssi">RSSI</abbr> (squelch and channel busy)</td>
+</tr>
+<tr>
+<td>ADC 0, ADC 7</td>
+<td>Neither is shown to be the supply, and no supply-voltage read is known. ADC 7 is a hysteresis input that drives an output of the LO chip (register 0x33, 4.3): below 465 the output goes high, above 527 low, in between it stays. The pin is 2 on a BK4819 LO, 4 on the FD6818 and AT1141. What ADC 7 measures and what the output drives are unknown (unverified). At a 13.5 V supply: ADC 0 reads 0, ADC 2 about 0, ADC 6 594 (no signal), ADC 7 742 (measured). ADC 7 follows the transmitter's load, not a slow temperature curve: keyed into a dummy load at the lowest power it fell from 726 to 559 in 1 s, below 465 in 3 s and to 425 by 10 s, and was back at 670 about 1 s after the transmission ended (measured). RadioFoundry reads it at every status poll, transmitting too (<code>radio_db25d.c</code>, <code>db25d_lo_aux</code>)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Speaker volume.</strong> The BK4819 init (table in 4.3) writes register 0x48 as 0xB3BF and then 0xB3B3 near the end, so the AF
+DAC gain nibble ends at 3. Neither ADC 0 nor ADC 7 is a volume knob, and the VOL/SQL key may be a squelch key rather than
+volume (unverified). RadioFoundry gives the radio a volume of its own: 16 steps (<code>RADIO_VOLUME_MAX</code>) on the AF DAC gain nibble (bits 3:0, the public BK4819 meaning), with the other fields of 0x48 left at 0xB3B3's upper bits. Step 0 is mute (register 0x47 to its mute word, and the chip's output off); steps 1..16 give nibble 0..15, the table being <code>nibble = (step - 1) * DB25D_VOL_GAIN_TOP / 15</code> in <code>radio_db25d.c</code> (<code>DB25D_VOL_GAIN_TOP</code> is 15; lower it if the top steps distort). Nibble 3 is step 4; the default step 8 gives nibble 7. The dB per nibble step, and whether the top steps distort the speaker, are not measured (unverified). The debug link can set a step (<code>radio-features.md</code> 4.2). In DMR the chip's
+output is the modem's input (4.5): it gets the digital gain word 0xB174 (nibble 4) and the volume step comes back when the radio
+returns to FM. DMR voice and beeps leave the modem's codec line out instead (4.5), so the same step also sets the HR_C7000 line out
+gain (GCR_DACL, <code>hrc7000_volume_db</code>): 0 dB at the default step 8, 3 dB less a step below it (step 1 is -21 dB) and up to
+<code>DB25D_PCM_VOL_TOP_DB</code> (12 dB) at step 16; step 0 keeps the amplifier off. The radio sets <code>volume_pcm</code>, so beeps play at
+<code>beep_level</code> and the volume scales them on the way out. The dB at the speaker is not measured (unverified).</p>
+<p>Switching the amplifier on (PTA24 low) pops, whatever the order of the other speaker pins (measured). So the board
+gives the radio core an amplifier hang (<code>hal_audio_t.speaker_warm</code>, <code>speaker_hang_s</code> 5 s, <code>radio-features.md</code> 4):
+after a key, PTT, reception or beep, PTA24 stays low with the source muted (PTB15 high) for 5 s, and the beeps and
+calls in that time play without the enable's pop. Only the first sound after a quiet spell still pops. On the radio
+the debug link's <code>beep.warm</code> went to 1 on a key and on a beep and back to 0 after 5 s, and the warm beeps carried no
+pop at the amplifier's turn-on (measured; <code>test_speaker_beeps</code>, a microphone at the speaker).</p>
+<p>The front keys are power (PTB12), P1, P2, P3, VOL/SQL, TONE/T.SEL, B/E and the encoder push; there's no separate
+Menu/OK key (measured). Their matrix positions, found by pressing each key on the radio, with the key code the vendor firmware uses
+for the same position:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Drive \ sense</th>
+<th>PTB9</th>
+<th>PTB10</th>
+<th>PTB11</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PTB18</td>
+<td>- (9)</td>
+<td>- (10)</td>
+<td>- (11)</td>
+</tr>
+<tr>
+<td>PTB20</td>
+<td>- (15)</td>
+<td>- (16)</td>
+<td>- (17)</td>
+</tr>
+<tr>
+<td>PTB21</td>
+<td>- (27)</td>
+<td>P1 (24)</td>
+<td>P2 (25)</td>
+</tr>
+<tr>
+<td>PTB22</td>
+<td>P3 (26)</td>
+<td>VOL/SQL (28)</td>
+<td>TONE/T.SEL (29)</td>
+</tr>
+<tr>
+<td>PTB23</td>
+<td>B/E (6)</td>
+<td>Encoder push (5)</td>
+<td>- (17)</td>
+</tr>
+<tr>
+<td>Direct (every drive line high)</td>
+<td>- (25)</td>
+<td>- (24)</td>
+<td>none</td>
+</tr>
+</tbody>
+</table></div>
+<p>Row PTB18 appears twice in the key scan, so key codes 12-14 can't occur.
+The hand mic's keys don't use the matrix (3.4).</p>
+<h3 id="34-hand-microphone">3.4 Hand microphone</h3>
+<p>The 16-key hand mic has its own <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr>. Its PTT is a plain contact on PTC11 (3.3). Its keys are serial: while a key
+is held the mic sends three <abbr class="gl" tabindex="0" title="The 7-bit character set of plain text." data-more="../dev/glossary.html#t-ascii">ASCII</abbr> bytes, &quot;K&quot; and the key number as two digits, on PTA9 at 115200 baud 8N1, every few
+milliseconds (a frame takes about 300 us). Nothing is sent when the key is let go. PTA9 is also the PC link's RXD, so
+the host UART receives the frames, and the mic and the PC cable can't be used at the same time (measured).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>0-9</th>
+<th>* (DWN)</th>
+<th># (UP)</th>
+<th>P4</th>
+<th>P5</th>
+<th>P6</th>
+<th>P7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Number</td>
+<td>00-09</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+<td>13</td>
+<td>14</td>
+<td>18</td>
+</tr>
+</tbody>
+</table></div>
+<p>Numbers 15-17 weren't seen (measured).</p>
+<h2 id="4-rf-chain">4. RF chain</h2>
+<h3 id="41-architecture-pro">4.1 Architecture (PRO)</h3>
+<p>Superheterodyne with a <strong>51.550 MHz IF</strong> (manual section 18.2). One BK4819 is the receiver and transmitter
+(&quot;main&quot;), the other is the local oscillator (&quot;LO&quot;):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>State</th>
+<th>Main BK4819</th>
+<th>LO BK4819</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RX on f</td>
+<td>Tuned to 51.550 MHz, <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> state</td>
+<td>Synthesizer at <strong>f + 51.550 MHz</strong> (high side): frequency in 0x38 / 0x39, state 0x30 = <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> enable value so its output stage drives the mixer, level in 0x36</td>
+</tr>
+<tr>
+<td>TX on f</td>
+<td>Tuned to f, TX state</td>
+<td>Off (0x30 = 0, 0x37 = 0x1D00)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Analog FM is modulated and demodulated by the main BK4819, not by the <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr>, which stays out of its FM modem mode.</p>
+<h3 id="42-chip-identification">4.2 Chip identification</h3>
+<p>The firmware reads register 0 of each chip at boot and writes the letters into its version string:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Register 0</th>
+<th>Main transceiver (letter)</th>
+<th>LO (letter)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x6818 (FD6818)</td>
+<td>'6'</td>
+<td>'6'</td>
+</tr>
+<tr>
+<td>0x7813 (seen only as the LO, 4.8)</td>
+<td>'4'</td>
+<td>'4'</td>
+</tr>
+<tr>
+<td>0x1846</td>
+<td>'A'</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0x1100 (AT1141 PLL)</td>
+<td>-</td>
+<td>'T'</td>
+</tr>
+<tr>
+<td>0x4819 (BK4819)</td>
+<td>'B'</td>
+<td>'B'</td>
+</tr>
+<tr>
+<td>other</td>
+<td>soft reset and read again</td>
+<td>same</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="43-bk4819-registers-address-value-in-order">4.3 BK4819 registers (address: value, in order)</h3>
+<p>The register meanings are the BK4819's public ones; the values are what the vendor firmware writes.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Register</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00</td>
+<td>bit 15 soft reset</td>
+</tr>
+<tr>
+<td>0x30</td>
+<td>Enables. <strong>Main chip</strong> (bit 9 set in every state): 0x0200 idle, 0xBFF1 RX, 0xC3FE TX (<abbr class="gl" tabindex="0" title="Voltage controlled oscillator: the oscillator in a synthesizer, tuned by a voltage." data-more="../dev/glossary.html#t-vco">VCO</abbr> calibration, <abbr class="gl" tabindex="0" title="Phase locked loop: the circuit that holds the radio&#x27;s synthesizer on its frequency." data-more="../dev/glossary.html#t-pll">PLL</abbr> / VCO, <abbr class="gl" tabindex="0" title="Power amplifier: the stage that boosts the transmit signal to the output power." data-more="../dev/glossary.html#t-pa">PA</abbr> gain, mic <abbr class="gl" tabindex="0" title="Analog to digital converter." data-more="../dev/glossary.html#t-adc">ADC</abbr>, TX <abbr class="gl" tabindex="0" title="Digital signal processor: a chip, or a processor core, that does the audio and modem math." data-more="../dev/glossary.html#t-dsp">DSP</abbr>), 0xC3FA TX with the mic ADC (bit 2) off for a tone, 0x0302 during init. <strong>LO chip</strong> (bit 9 never set): 0x0000 idle, 0xC1FE its carrier-only transmitter stage</td>
+</tr>
+<tr>
+<td>0x33</td>
+<td><abbr class="gl" tabindex="0" title="General purpose input/output: a pin the firmware can read or drive." data-more="../dev/glossary.html#t-gpio">GPIO</abbr> outputs: bits 14:8 disable an output, bits 6:0 its level. Pin p is bits 14 - p and 6 - p; written only when the value changes. The band flags, high for <abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="../user/22-glossary.html#t-vhf">VHF</abbr> (as GPIO3 on the older batches, 4.8): <strong>LO chip pin 1 is the RX band</strong> (bits 13 and 5), set before every LO tune; <strong>main chip pin 2 is the TX band</strong> (bits 12 and 4), set at every receive set-up and TX prepare. With the LO flag low, VHF receive is about 45 dB deaf: builds that never drove it read -124 dBm on 2 m with <abbr class="gl" tabindex="0" title="Ultra high frequency: 300 MHz to 3 GHz. The amateur 70 cm band is UHF." data-more="../user/22-glossary.html#t-uhf">UHF</abbr> working (issue #299). On the bench a VHF carrier read -119 dBm without the LO flag and -75 dBm with it, and the VHF noise floor rose from -124 to -105 dBm (UHF, unchanged, -53 dBm from the same source). The main flag alone changed nothing on receive. RadioFoundry: <code>db25d_lo_tune</code>, <code>db25d_main_band</code></td>
+</tr>
+<tr>
+<td>0x36</td>
+<td>PA bias and gain. Both chips: 0xBF (level 15 of 15), written once at detection / init and never changed, in TX too: the main chip drives the PA at 0xBF</td>
+</tr>
+<tr>
+<td>0x37</td>
+<td>Power-up of the LDOs, bandgap and crystal (0x1D0F normal, 0x1D00 off)</td>
+</tr>
+<tr>
+<td>0x38 / 0x39</td>
+<td>Frequency, 10 Hz units, low / high 16 bits</td>
+</tr>
+<tr>
+<td>0x43</td>
+<td>Receive filter bandwidth: 0x3028 and 0x4048 (wide / narrow) (unverified). The channel set writes 0x30 = 0x0200, 0x52 = 0x028F, then 0x43 and 0x4F together: 0x3028 with 0x3332, or 0x4048 with 0x3D3C</td>
+</tr>
+<tr>
+<td>0x47</td>
+<td>AF output select. The vendor word is 0x6042 | select &lt;&lt; 8 | (1 on a digital channel): 0x6042 muted, 0x6142 FM audio on, 0x6342 side tone, 0x6143 AF on in digital. RadioFoundry's FM uses 0x6140 (bit 1 clear, heard working)</td>
+</tr>
+<tr>
+<td>0x65 / 0x67</td>
+<td>Noise / <abbr class="gl" tabindex="0" title="Received signal strength indicator: how strong the received signal is, in dBm." data-more="../user/22-glossary.html#t-rssi">RSSI</abbr> indicators (as the FD6818, <a href="hardware-dm32.html">hardware-dm32.md</a> 8.4)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Main chip init:</strong> 00:8000, 00:0000, 33:0003, 34:0000, 35:0000, 37:1D0F, 47:6042, 13:03BE, 12:037B, 11:027B,
+10:007A, 14:0019, 49:2A38, 7B:8420, 7D:E950, 48:B3BF, 1F:5454, 3E:A037, 3F:07EE, 2A:4F18, 28:6B00, 53:C074, 40:352A,
+29:AB24, 4B:7126, 4E:6F15, 4F:3332, 27:A430, 48:B3B3, 37:1D9F, 30:0302, 47:6042, 30:0200, 33:0000, 30:0200, 47:6042,
+30:0200, 37:1D0F, 7D:E34A.</p>
+<p><strong>LO chip init:</strong> the same up to 37:1D9F, except 4F:2F2E; then 30:0302, 47:6042, 30:0000, 33:0000, 30:0000, 47:6042,
+30:0000, 37:1D0F, 51:0000, 40:0000, 73 |= 0x0010 (read, bit 4 set, written back: <abbr class="gl" tabindex="0" title="Automatic frequency control: following a transmitter that is slightly off frequency." data-more="../dev/glossary.html#t-afc">AFC</abbr> off), 47:6943,
+7E:3006, 43:4048, 47:6042, then <strong>36:00BF</strong>: an output level of 15 on a 0-15 scale, written as level x 63 / 15 with
+bit 7 set.</p>
+<p><strong>LO tune to f_LO:</strong> 30:0000, 38 / 39 = f_LO / 10 Hz, 37:1D0F, 30:0000, 30:C1FE.</p>
+<p><strong>LO off</strong> (in TX, and while idle): 30:0000 only. 0x37, 0x36 and the frequency stay.</p>
+<p><strong>Analog mode set, main chip</strong> (on entering an analog channel): 2A:4F18, 73 bit 4 cleared (AFC on; a digital channel sets it), 47 select 0
+(6042), 7E:302E, 2B:C000, 50:3B18. The mode set doesn't restore 0x27, 0x40, 0x43, 0x48 or 0x51 after a digital channel; the channel set
+rewrites 0x43 / 0x4F, the TX and sub-audio set 0x40 / 0x51, and 0x27 = 0x0430 and 0x48 = 0xB174 stay. RadioFoundry puts back the values it had.</p>
+<p><strong>Digital mode set, main chip</strong> (on entering a digital channel, 4.5): 2A:4711, 51:0000, 73 bit 4 set (AFC off), 52:028F, 47:6943,
+7E:3006, 43:4444, 40:0000, 27:0430, 2B:8707, 48:B174, 47:6143.</p>
+<h3 id="44-fm-transmit">4.4 FM transmit</h3>
+<p>The main chip transmits on f itself (4.1). The <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> record carries the PA drive, the modulation pair
+and the two TX delays per frequency (6.4); only the PA drive and the delays act on the BK4819 path. The modulation
+pair and the TX center go to the C7000 modem's <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> registers, and the modem is never in FM mode
+(4.1), so analog deviation on this board comes from the chip's own registers: 0x40 (written before each transmission,
+0x34D0 or 0x34A8 with a sub-audio tone), microphone gain 0x7D = 0xE34A, the same for 12.5 and 25 kHz (unverified).</p>
+<p>TX on f (the order the radio's firmware uses; RadioFoundry differs where noted):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Still receiving: main chip 0x40 = 0x34D0 and 0x51 = 0x1050 with no sub-audio; with <abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-ctcss">CTCSS</abbr> 0x40 = 0x34A8, 0x51 = 0x9045 and 0x07 = Hz x 20.64888 truncated (100.0 Hz = 2064); with <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-dcs">DCS</abbr> 0x40 = 0x34A8, 0x07 = 0x0AD7, 0x51 and the code (4.7)</td>
+</tr>
+<tr>
+<td>1</td>
+<td>RadioFoundry only: main chip AF muted, then the &quot;audio off&quot; pins: PTB14 low, PTB15 high, PTA24 high (3.3). The first RadioFoundry build raised PTB14 here and the speaker popped at key-up (measured); whether this order removes the pop and still passes the microphone is not yet checked</td>
+</tr>
+<tr>
+<td>2</td>
+<td>RX front end (PTC19), UHF RX (PTA25) and VHF RX (PTB4) off</td>
+</tr>
+<tr>
+<td>3</td>
+<td>50 us</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Main chip: 38 / 39 = f / 10 Hz (truncated), 37:1D0F, 30:0200, 30:C3FE (RadioFoundry writes the idle word before the frequency, not after). Then the LO chip 30:0000 only. 0x36 stays 0xBF</td>
+</tr>
+<tr>
+<td>5</td>
+<td>The page's TX-on delay for f (1 us UHF, 1000 us VHF on the first unit). There is no other wait. RadioFoundry adds 3 ms (<code>TX_SETTLE_MS</code>) for the VCO calibration: no measurement says it can go, and a PA that comes up before the PLL has settled puts a carrier off frequency</td>
+</tr>
+<tr>
+<td>6</td>
+<td><abbr class="gl" tabindex="0" title="Digital to analog converter." data-more="../dev/glossary.html#t-dac">DAC</abbr> B powered up at 0 (powered only for a transmission), PA select of the band (UHF PTA26 high, PTB3 low; VHF PTB3 high, PTA26 low), PTA23 low, 200 us, the band's single TX supply (UHF PTA27 high, PTB2 low; VHF PTB2 high, PTA27 low). DMR bursts: PTA23 low 200 us before the first drive, the PA select 30 us before it, the TX supply with it (4.5)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>DAC B ramps from 0 to the drive in 180 steps of 4 us</td>
+</tr>
+</tbody>
+</table></div>
+<p>TX end: the main chip to its RX state on the TX frequency (47:6042, 50:3B18, 70:0, 37:1D0F, 30:0200, 30:BFF1), the page's
+TX-off delay (1700 us UHF, 1600 us VHF), the ramp back down, DAC B 0, both TX supplies and both PA selects low, PTA23
+high, 300 us. Then the receive set-up (4.1): the main chip back to the IF, the LO re-enabled (37:1D0F, 30:0000,
+30:C1FE, its frequency not rewritten), 300 us, the RX path of the band, 200 us. RadioFoundry then powers DAC B down. 0x36 and 0x40 stay as they
+are (0x40 only matters in TX, unverified).</p>
+<p>The ramp is a 180-entry table in the radio's firmware; RadioFoundry uses a smoothstep over the same 180
+steps. <code>DB25D_TX_DRIVE_PCT</code> defaults to 100 (the page's value, the PA measured working); the high and low power levels are table
+0x045 and 0x056.</p>
+<p>Five power levels: 2 (&quot;L&quot;) is table 0x056 and 4 (&quot;H&quot;) table 0x045. Levels 0 and 1 are 75 % and 87 % of the low
+table's drive, level 3 is halfway between the tables. Drafts, to be set with a wattmeter
+(<a href="../testing/power-calibration.html">power-calibration.md</a>). On the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench at 445 MHz (DMR bursts, relative to &quot;L&quot;,
+drive 999): drive 750 gave -12.9 dB and 600 gave -21.9 dB. Level 1 and level 3 are not measured.</p>
+<p><strong>FM TX tone</strong> (<code>tx_tone</code> / <code>tx_tone_key</code>: the 1750 Hz burst, roger beep, <abbr class="gl" tabindex="0" title="A station&#x27;s callsign sent in Morse code. A standalone SFR repeater channel sends one in FM every few minutes after traffic (Settings &gt; Talk &amp; listen &gt; SFR CW ID)." data-more="../user/14-hotspot.html">CW ID</abbr>, a test tone). Single tone, in TX
+with the main chip at 0xC3FE:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Registers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tone on</td>
+<td>47:6342 (AF select 3, the side tone), 70:B000 (tone 1 on, gain 0x30 in bits 14:8), 50:BB18, 37:1D0F, 30:0200, 30:C3FA (microphone ADC off), 71 = Hz x 10.3244 truncated (1750 Hz = 18067), 50:3B18</td>
+</tr>
+<tr>
+<td>Key up (silent carrier)</td>
+<td>70:0; the chip stays at 0xC3FA, so the microphone is still out (RadioFoundry's choice, unverified)</td>
+</tr>
+<tr>
+<td>Key down</td>
+<td>70 as for tone on (RadioFoundry's choice, unverified)</td>
+</tr>
+<tr>
+<td>Tone off</td>
+<td>47:6042, 50:3B18, 70:0, 37:1D0F, 30:0200, 30:C3FE, 40:34A8</td>
+</tr>
+<tr>
+<td>End of the transmission</td>
+<td>The same without 30:C3FE: it ends in 30:BFF1 (TX end above), so a tone never survives a transmission</td>
+</tr>
+</tbody>
+</table></div>
+<p>0x50 bit 15 is not left set after the sequence; whether that bit mutes the tone as well as the microphone is
+unverified, so RadioFoundry doesn't keep it.</p>
+<p><strong><abbr class="gl" tabindex="0" title="Dual tone multi frequency: the touch tones a keypad sends, in the audio." data-more="../user/22-glossary.html#t-dtmf">DTMF</abbr></strong> (<code>tx_dtmf</code>, <code>radio-features.md</code> 3.7; <code>bk4819_dtmf_start</code>). One digit: as tone on, with 70:9090
+(tone 1 and tone 2 on, gain 0x10 each), 71 = the low tone's word and 72 = the high tone's (Hz x
+10.32444 rounded, 1633 Hz = 16860) and 40:348A, at 0xC3FA. RadioFoundry retunes 71 / 72 for the next digit without
+leaving 0xC3FA; tone off is the single tone's (40 back to 34A8). On air (SDR bench): about 1.6 kHz peak deviation at
+12.5 kHz and 3.3 kHz at 25 kHz; the tones go through the microphone's pre-emphasis, so the high tone reads 3.6 to 7.0 dB
+over the low one on the carrier and +0.7 to +2.3 dB after a receiver's de-emphasis (<code>radio-features.md</code> 3.7).</p>
+<p>The level is <code>DB25D_TX_TONE_GAIN</code> (radio_db25d.c, default 0x30). Measure the deviation of the 1750 Hz
+burst on the SDR bench (<code>rfoundry_debug.py burst on</code>, FM channel) and scale the gain; the target is about 60 % of the nominal
+deviation (1.5 kHz on 12.5 kHz). The first on-air run of the earlier sequence (0xC1FE, 0x50 bit 15 set) gave no modulation;
+the corrections above are not yet measured on air.</p>
+<h3 id="45-dmr-the-main-chip-and-the-modem">4.5 DMR: the main chip and the modem</h3>
+<p>RadioFoundry's DMR (<code>CONFIG_DMR=y</code>, on by default; <code>boards/db25d/dmr_db25d.c</code>) receives and transmits (<code>DB25D_DMR_TX</code>, on by default, below). The HR_C7000 runs the DMR layer 2 as on
+the DM-32UV (<a href="modem-hrc7000.html">modem-hrc7000.md</a>). This section is the main chip's digital set-up and what RadioFoundry does.</p>
+<p><strong>Channel type.</strong> Byte 6 of the channel record: 2 is digital (the BK4819 digital set below, no bandwidth, sub-audio or squelch,
+the modem's WORK_MODE bit 7 cleared, the DMR microphone gain from the settings), 1 is analog (bandwidth, sub-audio, squelch)
+(names unverified).</p>
+<p><strong>Sequence for a digital channel</strong> (the receive set-up of 6.4, in order):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>DAC B 0, both TX supplies low, RX path pins (3.2)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Modem SIG_CENTER and RF_MOD_BIAS_CTRL from the page (4.6), DAC A = RX tune, DAC C = 1780</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Main chip: 30:0200, 52:028F, then <strong>the digital mode set</strong> (only when the previous channel was analog): 2A:4711, 51:0000, 73 bit 4 set (AFC off), 52:028F, 47:6943, 7E:3006, 43:4444, 40:0000, 27:0430, 2B:8707, 48:B174, 47:6143</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Main chip RX tune as for FM: 38 / 39 = 51.55 MHz, 37:1D0F, 30:0200, 30:BFF1</td>
+</tr>
+<tr>
+<td>5</td>
+<td>LO band flag, LO tune to f + 51.55 MHz (4.3), RX path of the band, the main chip's band flag (0x33, 4.3)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Nothing on the LO chip changes for digital. No switch pin moves for receive; the only audio pins are the speaker ones below.</p>
+<p><strong>Modem.</strong> The DMR initialization runs once, at start-up, in every mode. The vendor firmware's values and RadioFoundry's:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Register</th>
+<th>Vendor firmware</th>
+<th>RadioFoundry</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RF_MODE (0x104)</td>
+<td>Built by read-modify-write from the reset value 0x10E0: b7 cleared, b25 and b24 set (AF receive with averaging), <strong>AF gain 0x4C</strong> (4.75) in b23:16, TX mode 3, RX mode 0, b15 = a flag the RF record build sets (the LO is high side; the start-up builds a record before this, so b15 = 1), b11 set (dual receive; cleared only for a channel value of 2 or 3, unverified), b31 / b29 only in a test mode. Result <strong>0x034C9860</strong></td>
+<td>Same word (<code>DB25D_DMR_RF_MODE</code>). The DM-32UV's is 0x03269860: only the gain differs</td>
+</tr>
+<tr>
+<td>RF_CONTROL (0x110)</td>
+<td>Reset 0x00040A0A ORed with 0x1512: 0x00041F1A</td>
+<td>Same</td>
+</tr>
+<tr>
+<td>DAC_CONTROL (0x070)</td>
+<td>Reset ORed with b31, b5 cleared: 0x80000016</td>
+<td>0x8000001B (b2 and the reserved b3 / b0 differ)</td>
+</tr>
+<tr>
+<td>ADC_CONTROL, 0x168, RF_RECV_DELAY, RX / TX_IF_FREQ, THRESHOLD, sync words, CRC masks, LAYER2_SLOT_PRE, interrupt mask</td>
+<td>As modem-hrc7000.md 4 (0x41C3 ORed, 0x14, 0x36B0, 0xBB800, 0x0978786F, ...)</td>
+<td>Same</td>
+</tr>
+<tr>
+<td>Sync enables (b31 of the sync words)</td>
+<td><abbr class="gl" tabindex="0" title="Mobile station: the radio, as opposed to the base station (BS)." data-more="../dev/glossary.html#t-ms">MS</abbr> and <abbr class="gl" tabindex="0" title="Base station: the repeater or modem side of a DMR link, as opposed to the radio (MS)." data-more="../dev/glossary.html#t-bs">BS</abbr>; <abbr class="gl" tabindex="0" title="Time division multiple access. A DMR channel carries two conversations by alternating them in 30 ms slots." data-more="../dev/glossary.html#t-tdma">TDMA</abbr> 1 / 2 only for the direct-mode channel value</td>
+<td>All four</td>
+</tr>
+<tr>
+<td>DEV_LIMITER</td>
+<td>Never written</td>
+<td>Its reset value</td>
+</tr>
+</tbody>
+</table></div>
+<p>No other AF level, DC offset or deviation register is written for receive.</p>
+<p><strong>The modem's input.</strong> The main chip's AF output (0x47 select 1, AF DAC gain 0x48) goes to the modem's AF ADC (the only AF
+left on in digital; nothing mutes 0x47 on a digital channel, unverified). AF level: 0x48 = 0xB174 (nibble 4, RX gain field
+0x17), the AF filters 0x2B = 0x8707.</p>
+<p><strong>Speaker.</strong> Decoded voice leaves the modem's codec line out. The call start drives PTC18 low and runs the audio-on pins (PTB14
+high, PTB15 low, speaker enables, 3.3); the call end runs audio off. The CPU-fed speaker buffer is not used; beeps go through the prompt path (AUDIO_CONTROL b7). PTC18 is high for the main chip's audio (3.3).</p>
+<p>RadioFoundry (<code>bk4819_dmr_rx_enter</code>, <code>db25d_dmr_enter</code>, tests/host/bk4819Test.c):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>RadioFoundry</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Main chip</td>
+<td>The digital set (4.3), in its order, on entering DMR. Leaving: the analog set, then 0x27 and 0x48 as they were</td>
+</tr>
+<tr>
+<td>AF gain</td>
+<td><code>DB25D_DMR_AF_GAIN</code> (default 4) over the 0xB174 word, whatever the volume step. A volume of 0 entering DMR left the modem with no input before this</td>
+</tr>
+<tr>
+<td>AF output</td>
+<td>0x47 = 0x6143 for as long as the radio is in DMR</td>
+</tr>
+<tr>
+<td>RF_MODE</td>
+<td><code>DB25D_DMR_RF_MODE</code> (default 0x034C9860), written after the DMR entry</td>
+</tr>
+<tr>
+<td>PTC18</td>
+<td>Low in DMR, high in FM; <code>DB25D_DMR_SPK_SWITCH=1</code> keeps it high</td>
+</tr>
+<tr>
+<td>Speaker in DMR</td>
+<td>The <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> stream (<code>db25d_speaker_pcm</code>, from the modem's playback callback) turns the amplifier on and PTC18 low, as <code>audio()</code> does for an open squelch. The radio core never opens the squelch path for DMR voice, so before this every call played into a muted amplifier; beeps went silent the same way</td>
+</tr>
+<tr>
+<td>Voice-access slot</td>
+<td><code>HRC7000_RX_NEXT_SLOT_XOR=0</code> (the driver's default since 2026-10-22; it was 1): the flag (modem-hrc7000.md 5.3) belongs on the slot LAYER2_STATUS b30 shows at this board's RX <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr> interrupt. With 1 the chip never wrote received voice to its voice <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr>: every frame was the same stale bytes, decoded to silence (peak 6 of 32767) with every counter clean. With 0, bench speech decodes with peaks near 16,000 (measured, 2026-10-17)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Radio results before the digital set (bench MS voice, the test frequency, <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">CC</abbr> 2): RF_MODE 0x03269860 gave no sync; 0x03261860 (b15 clear) gave
+sync, the right color code and slot, but no usable burst; a larger AF gain held sync on noise. The PHASE_OUT range read exactly 32 times
+the RF_MODE gain field (saturated), so on this board it doesn't measure the AF level (measured).</p>
+<p>With the set and word above (2026-10-16, same bench call, 191 bursts): 180 voice bursts, 8 <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr> headers, 3 terminators, CC 2,
+no <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> errors, the call decoded (source, the test <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr>, group), and 540 of 540 <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE</abbr> frames with none lost or concealed (measured). With
+the BK4819 digital set, b15 set is right; b15 clear (0x034C1860) syncs but deframes no usable burst.</p>
+<p>The diagnostics page (CONFIG_DIAG) lists the modem counters after the TX line 11 and the storage lines 12-15 (from line 12 when
+<code>CONFIG_NAND_STORAGE</code> is off): ticks, slot interrupts, bursts by type, CRC errors, and last the codec in the slot with the AF phase
+range (HR_C7000 PHASE_OUT, 0x128).</p>
+<p><strong>DMR transmit.</strong> On by default (<code>DB25D_DMR_TX=1</code>); <code>DB25D_DMR_TX=0</code> builds receive only, and then <code>tx()</code> refuses in DMR
+mode. Checked on the SDR bench 2026-10-16 (measured): a 3 s key-up on the test frequency, low power into a dummy load, decoded by the
+bench modem as one call from the radio's ID to the test talkgroup (3 LC headers, 54 voice bursts, terminator, 162 AMBE frames with 12 <abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="../dev/glossary.html#t-fec">FEC</abbr>
+bits corrected); the diagnostics line showed 57 bursts keyed and ended, each ended by the RF RX interrupt, none late. Analog FM transmit is 4.4. How a burst is keyed:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Sequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4FSK path</td>
+<td><strong>Single-point modulation on the reference oscillator.</strong> The modem runs in two-point mode (RF_MODE b6:5 = 3) but only its MOD1 output is used: RF_MOD_BIAS_CTRL b15:8 (MOD2 amplitude) is 0, b7:0 (MOD1 amplitude) is the page's modulation byte for the TX frequency (6.4), and MOD1 drives the control pin of the <abbr class="gl" tabindex="0" title="Temperature compensated crystal oscillator: the stable clock the radio&#x27;s frequency is derived from." data-more="../dev/glossary.html#t-tcxo">TCXO</abbr> both BK4819s run from (the DC level of 4.6). The HR_C7000 user guide describes this case (single-point modulation with an RF chip that has no modulation input). The deviation therefore scales with the carrier frequency, which is why the page holds the modulation byte per frequency point (datasheet)</td>
+</tr>
+<tr>
+<td>RF_MODE</td>
+<td>Built bit by bit at DMR set-up: bit 7 (TX symbol mapping inverted) <strong>cleared</strong>, bits 25 and 24 set (AF receive with averaging), AF gain field 0x4C, TX mode 3, RX mode 0, bit 15 (RX IQ inverted) set when the LO is on the high side (always here), bit 11 (dual receive) set except for two values of a setting. With the reset value 0x10E0 that gives 0x034C9860. The DM-32UV's 0x03269860 has bit 7 set and AF gain 0x26 (datasheet)</td>
+</tr>
+<tr>
+<td>RF_CONTROL</td>
+<td>The reset value (0x00040A0A) OR-ed with 0x1500 and 0x12: 0x00041F1A, the DM-32UV's value (RF TX interrupt 3.1 ms before the burst, RF RX interrupt 2.6 ms before the next slot). With one value of a setting byte, 0x00041A1A instead (datasheet)</td>
+</tr>
+<tr>
+<td>Main chip, digital channel</td>
+<td>The channel set (0x30 = 0x0200, 0x52 = 0x028F) calls the mode routine with &quot;digital&quot; when the channel's type is 2: 0x2A = 0x4711, 0x51 = 0, 0x73 bit 4 set (AFC off), 0x52 = 0x028F, 0x47 = 0x6943, 0x7E = 0x3006, 0x43 = 0x4444, <strong>0x40 = 0x0000 (TX deviation off)</strong>, 0x27 = 0x0430, 0x2B = 0x8707, 0x48 = 0xB174, 0x47 = 0x6143 (AF on, bit 0 = digital). Only on a change of mode. The receive table above is the same set</td>
+</tr>
+<tr>
+<td>Main chip in TX</td>
+<td>0x30 = 0xC3FE (microphone ADC on), 0x36 = 0xBF as always. With 0x40 = 0 the microphone doesn't reach the carrier: the BK4819 sends a plain carrier that the TCXO modulates</td>
+</tr>
+<tr>
+<td>Per-burst switch</td>
+<td><strong>Every burst runs the whole analog TX sequence.</strong> The RF TX and RF RX interrupt handlers only post to a task (&quot;rfint&quot;, priority 15 of the <abbr class="gl" tabindex="0" title="Real-time operating system: the scheduler that runs the firmware&#x27;s tasks." data-more="../dev/glossary.html#t-rtos">RTOS</abbr>) and record which one fired. On a digital channel the task runs TX on (3.2: RX paths off, 50 us, main chip to f, LO 0x30 = 0, the page's TX-on delay, PA select, 200 us, TX supply, DAC B ramp up) at the RF TX interrupt, and TX off (the page's TX-off delay, ramp down, supplies and PA selects off, PTA23 high, 300 us, main chip to the IF and the LO on again, 300 us, the RX path, 200 us) at the RF RX interrupt. So the radio receives between its bursts, on the RX frequency</td>
+</tr>
+<tr>
+<td>Burst timing</td>
+<td>TX on starts 3.1 ms before the slot; with the UHF page values (1 us TX-on delay) the PA is fully up about 1.1 ms later. TX off starts at the RF RX interrupt, 30.5 ms after the RF TX interrupt; with the page's 1700 us TX-off delay (UHF) the ramp down starts 32.2 ms after the RF TX interrupt and ends about 0.2 ms before the next slot. Waits of 50 us and more are timer waits that let other tasks run; shorter ones spin</td>
+</tr>
+<tr>
+<td>Retune per burst</td>
+<td>Main chip: 0x38 / 0x39 = f, 0x37 = 0x1D0F, 0x30 = 0x0200, 0x30 = 0xC3FE; back: 0x38 / 0x39 = 51.55 MHz, 0x37, 0x30 = 0x0200, 0x30 = 0xBFF1. LO: 0x30 = 0 at TX on; 0x37 = 0x1D0F, 0x30 = 0, 0x30 = 0xC1FE at TX off, its frequency not rewritten</td>
+</tr>
+<tr>
+<td>PA keying</td>
+<td>DAC B ramp (180 steps of 4 us) and the band's single TX supply pin inside the burst sequence, from the page's PA table for the power level. No PA timer: the timer the DM-32UV uses for its PA <abbr class="gl" tabindex="0" title="A talk target used for one call and its reply window." data-more="../user/22-glossary.html#t-one-shot">one-shot</abbr> isn't used for that here</td>
+</tr>
+<tr>
+<td>Modem bias</td>
+<td>SIG_CENTER and RF_MOD_BIAS_CTRL as in 4.6 and 6.4, written at every receive set-up from the channel's RF record, which holds the modulation byte for the TX frequency</td>
+</tr>
+<tr>
+<td>Mic and vocoder</td>
+<td>The microphone reaches the modem's codec ADC with no pin to switch: PTB14 / PTB15 appear only in the audio on / off routines (3.3), never in a TX path. Mic gain (GCR_ADCL) on a digital channel comes from a setting (0 dB when unset); an analog channel sets +12 dB. WORK_MODE bit 7 cleared (DMR modulator)</td>
+</tr>
+<tr>
+<td>Analog PTT routine</td>
+<td>Not used for a digital channel: the RF follows the bursts only (unverified)</td>
+</tr>
+</tbody>
+</table></div>
+<p>RadioFoundry (<code>boards/db25d/dmr_db25d.c</code>, <code>radio_db25d.c</code> on the shared RF-burst task, <a href="modem-hrc7000.html">modem-hrc7000.md</a> 3.1a; tests in <code>tests/host/bk4819Test.c</code> and <code>boards/db25d/tests/db25dCalTest.c</code>):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>RadioFoundry</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tx()</code> in DMR mode</td>
+<td>Checks band and page as FM does, keeps the TX plan (PA drive, TX-on and TX-off delays), writes RF_MOD_BIAS_CTRL with the modulation byte for the TX frequency, main chip 0x40 = 0 and 0x51 = 0 (<code>bk4819_dmr_tx_prepare</code>), powers DAC B at 0, clears RF_MODE bit 7 (<code>make DB25D_DMR_TX_INVERT=1</code> sets it, to try the other 4FSK polarity), sets the RF TX interrupt's lead (RF_CONTROL b13:8, <code>db25d_dmr_rf_tx_lead</code>: 1.5 ms with the UHF page, below) and arms. The RF stays receiving until the first burst</td>
+</tr>
+<tr>
+<td>RF TX interrupt</td>
+<td>The glue (the board's sequences in <code>hrc_dmr_board_t.burst</code>) records the time and wakes the RF task (priority above every other task), which runs the TX on sequence (<code>db25d_burst_on</code>). The page's TX-on delay counts from the interrupt, and a late interrupt is timed from the frame grid (modem-hrc7000.md 3.1a)</td>
+</tr>
+<tr>
+<td>End of a burst</td>
+<td>Woken by the modem's RF RX interrupt (enabled while armed) or by the engine's <code>rf_switch(false)</code> at the first slot tick 20 ms after the RF TX interrupt, whichever comes first. The task then waits for the burst's last symbol, lead + 0.85 ms + 27.5 ms after the RF TX interrupt (<code>hrc_rfburst_hold_us</code>), and runs the TX off sequence (<code>db25d_burst_off</code>) without the stock's 300, 300 and 200 us waits. A wake-up after that point ramps down at once and counts as late</td>
+</tr>
+<tr>
+<td>Waits</td>
+<td>Below 50 us a spin; from 50 us TIMER_BOARD (timer 5) while the task sleeps</td>
+</tr>
+<tr>
+<td><code>tx_off()</code>, <code>rx()</code>, leaving DMR</td>
+<td>Disarm: TX off at once (no hold) if a burst is on, wait for the task, DAC B powered down, then the normal receive set-up</td>
+</tr>
+<tr>
+<td>End of a DMR transmission (<code>hrc_dmr_board_t.tx_end</code>)</td>
+<td>Disarm as above; on the same channel and trim the receiver stays as the last burst's TX off left it (modem-hrc7000.md 5.2a)</td>
+</tr>
+<tr>
+<td>PA one-shot</td>
+<td>The glue still arms it per burst; the board's hook does nothing</td>
+</tr>
+<tr>
+<td>Diagnostics</td>
+<td>The line after the codec line: <code>b&lt;on&gt;/&lt;off&gt; rx&lt;RF RX interrupts&gt; &lt;R/T/A&gt; L&lt;late&gt;/&lt;last late us&gt;</code>. R, T or A says what woke the last TX off. <code>rx</code> that stays at 0 while transmitting means the RF RX interrupt doesn't fire in TX, and the slot tick ends the bursts; L counts the ramp downs that started after that point. The line after it: <code>up w&lt;largest wake&gt; u&lt;PA up, smallest&gt;..&lt;largest&gt; g&lt;largest grid error&gt;/&lt;bursts timed from the grid&gt;</code>, in us after the RF TX interrupt, since the key-up</td>
+</tr>
+</tbody>
+</table></div>
+<p>Answered by the bench check above: 0x40 = 0 with the rest of the analog set gives a carrier the modem's 4FSK decodes,
+the polarity with RF_MODE bit 7 clear is right, and the RF RX interrupt ends every TX burst. Deviation with the
+page's modulation byte (2026-10-17, the test frequency, low power, SDR bench, instantaneous frequency inside the bursts): the
+four symbol levels at -1970, -653, +676 and +1970 Hz around the carrier, so the outer deviation is 101 % of the
+standard's 1944 Hz and the outer / inner ratio 2.97 (3.00 ideal); carrier 187 Hz high (0.4 <abbr class="gl" tabindex="0" title="Parts per million: a frequency error as a fraction of the frequency. At 450 MHz, 1 ppm is 450 Hz." data-more="../dev/glossary.html#t-ppm">ppm</abbr>) (measured).</p>
+<p>The receive and transmit checks are at the end of section 9.</p>
+<p><strong>Burst timing for receiving between bursts (<abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="sfr.html">SFR</abbr>).</strong> The stock timing above keeps the receiver off from 3.95 ms
+before our burst's first symbol to 1 ms or more into the next slot's burst: an SFR repeater lost 10-13 of the
+inbound call's 72 voice frames. Measured on the SDR bench (a UHF test frequency, low power, into a dummy load), against
+our first symbol:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Point</th>
+<th>Original firmware (lead 3.1 ms)</th>
+<th>RadioFoundry (lead 1.5 ms)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RF TX interrupt, receiver off</td>
+<td>-3.95 ms</td>
+<td>-2.35 ms</td>
+</tr>
+<tr>
+<td>First carrier (main chip in TX, PA supply off)</td>
+<td>-3.0 ms</td>
+<td>-2.0..-1.45 ms</td>
+</tr>
+<tr>
+<td>PA fully up (1 dB below the plateau)</td>
+<td>-1.5 ms</td>
+<td>-0.58..-0.25 ms (117 bursts)</td>
+</tr>
+<tr>
+<td>Ramp down starts</td>
+<td>+28.25 ms</td>
+<td>+27.5 ms (the last symbol)</td>
+</tr>
+<tr>
+<td>Carrier gone</td>
+<td>+30.0 ms</td>
+<td>+28.55..28.95 ms (median +28.67)</td>
+</tr>
+<tr>
+<td>Receiver back (from the sequence: the 0.72 ms ramp, the waits, the register writes)</td>
+<td>about +29.6 ms</td>
+<td>about +28.0 ms</td>
+</tr>
+</tbody>
+</table></div>
+<p>The inbound bursts lie from -32.5 to -2.5 ms and from +30.0 ms on (about 0.2 ms later in practice: our bursts sit
+0.15-0.24 ms behind the inbound grid). The first symbol comes 0.85 ms after the lead. After the RF TX interrupt plus
+the page's TX-on delay the PA is within 1 dB at 1.7-2.1 ms (the analog ramp varies from burst to burst; 0.94-1.6 ms
+from the first carrier), so the lead is the shortest 100 us step that has the PA up 0.2 ms ahead of the first symbol:
+<code>db25d_dmr_rf_tx_lead</code> = (2.3 ms + the page's TX-on delay - 0.85 ms), rounded up (1.5 ms UHF; 2.5 ms with the VHF
+page's 1000 us, which gives the VHF figures in the table below). At 1.3 ms (a 2.1 ms model) one burst in 114 had the 1 dB point only 0.04 ms ahead. AMBE errors don't tell the two leads apart: on the SDR bench, 12 key-ups each gave 0 uncorrectable frames in 3024 at both 1.3 and 1.5 ms (0.002 and 0.0003 corrected bits a frame). The
+ramp's 180 steps of 4 us take 0.72 ms plus the level's arithmetic, which is 32-bit (<code>core/radio/apc_ramp.h</code>): a 64-bit
+divide per step made the ramp 0.3 ms longer, and the lead was 1.6 ms with it. The page's TX-on delay counts from the
+RF TX interrupt, and a late interrupt (up to 0.12 ms, a few bursts per key-up) is timed from the frame grid
+(modem-hrc7000.md 3.1a). The SFR counts below were measured with the 1.6 ms lead. The same timing serves every DMR transmission (simplex, split, <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr>,
+SFR).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Measurement (SDR bench, bench talker at low level, 4-superframe call)</th>
+<th>Stock timing</th>
+<th>RadioFoundry</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SFR repeater, inbound frames lost per 72</td>
+<td>10-13 (5 calls)</td>
+<td>0 (8 calls)</td>
+</tr>
+<tr>
+<td>SFR repeater, inbound AMBE bits corrected per 72 (first / second / third frame of each burst)</td>
+<td>155-200 (97-117 / 24-40 / 34-58)</td>
+<td>170-194 (98-120 / 22-30 / 48-54)</td>
+</tr>
+<tr>
+<td>The same call received without transmitting (TX inhibit, plain receive)</td>
+<td>29-37</td>
+<td>-</td>
+</tr>
+<tr>
+<td>The 1.5 ms lead with a RadioFoundry radio as the talker (lowest power, 198 frames a call, 10 calls): frames lost / AMBE bits corrected</td>
+<td>-</td>
+<td>18-33 / 341-472</td>
+</tr>
+<tr>
+<td>Our idle bursts: symbol error, sync errors, carrier vs the bench</td>
+<td>0.10, 0, +15..20 Hz</td>
+<td>0.05-0.12, 0, +13 Hz</td>
+</tr>
+<tr>
+<td>Plain simplex call (<code>test_dmr_tx_off_air</code>): burst on-time, ramps up / down</td>
+<td>32.76-33.27 ms, 1.62 / 1.65 ms, carrier after the call</td>
+<td>29.67-30.12 ms, 1.31-1.54 / 1.02-1.15 ms (5 calls, 1.5 ms lead, the 32-bit ramp), none</td>
+</tr>
+<tr>
+<td>The same on the VHF page (2 m, lowest power, 2.5 ms lead)</td>
+<td>-</td>
+<td>29.58-30.09 ms, 0.77 / 0.73 ms (52 bursts), none</td>
+</tr>
+<tr>
+<td>VHF page, the call's content (SDR decode of the same calls)</td>
+<td>-</td>
+<td>three voice LC headers, embedded LC in every superframe, voice A-F in order, terminator; AMBE FEC: 240 frames in two calls, 0 corrected (UHF: 396 frames, 0)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The key-up ramp (1.31-1.54 ms; 1.56-1.62 ms before the ramp's 32-bit math) is at the edge of the 1.5 ms ramp regions of
+the <abbr class="gl" tabindex="0" title="European Telecommunications Standards Institute, which publishes the DMR standard." data-more="../dev/glossary.html#t-etsi">ETSI</abbr> power mask (TS 102 361-1 clause 10.2.3.1.1, figure 10.3), and over it in some calls; it comes from the TX on
+sequence, not the burst timing. <code>board.toml</code> <code>[hil.limits]</code> holds this radio to 1.75 ms in the bench's check until the
+ramp stays under 1.5 ms. The VHF page's key-up ramp is about half as long (0.77 ms, table above), inside the mask. The SDR bench's DMR modem covers
+UHF only: on 2 m it split each of these calls in two, lost the terminator and corrected 72-142 AMBE bits, while the
+SDR's own decode of the same transmissions found every frame clean, so <code>test_dmr_tx_off_air</code>'s bench modem checks fail
+there and its waveform checks are the ones to read.</p>
+<p><strong>Key-up constants</strong> (<code>radio/pa_keyup.h</code>, <a href="pa-keyup.html">pa-keyup.md</a>; <code>tools/bench/pa_cal.py</code> into a dummy load at
+each band's center, every level):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Band</th>
+<th>dead_pm</th>
+<th>knee_us</th>
+<th>slope_us</th>
+<th>window_us</th>
+<th>settle_us</th>
+<th>pa_us</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VHF</td>
+<td>0</td>
+<td>205</td>
+<td>261</td>
+<td>1250</td>
+<td>300</td>
+<td>with the drive</td>
+</tr>
+<tr>
+<td>UHF</td>
+<td>196</td>
+<td>333</td>
+<td>117</td>
+<td>1250</td>
+<td>0</td>
+<td>with the drive</td>
+</tr>
+</tbody>
+</table></div>
+<p>No level is boosted on either band: each comes up on its own drive, written 0.4 ms (the top level) to 0.85 ms (the
+lowest) before the first symbol. Measured, every level: the −3 dB point 0.25 to 0.29 ms before the first symbol, no
+overshoot, on the air (within 20 dB) 0.35 to 0.62 ms before it, so nothing before the slot's start.</p>
+<p><strong>PA select per burst.</strong> Selected, the PA passes the carrier before any drive: 15 dB under the lowest UHF level, 31
+dB under the top one, whether the TX supply is on or not. With the select at the TX on sequence's end, 0.4-0.6 ms
+ahead of the drive, every level rose in two steps (a flat step at that level, then the drive's rise) and the lowest
+level was on the air at -15 dB from 0.15 ms before the slot's start. So a DMR burst selects the PA 30 us before its
+first drive and turns the TX supply on with it; PTA23 still goes low 200 us before the supply. Measured into the
+dummy load, every level then rises once from under -57 dB: at 146 MHz its -3 dB point 0.25-0.33 ms before the first
+symbol with 0.2 dB of overshoot, at 445 MHz 0.24-0.29 ms (the lowest level by its edge, below). The carrier is down
+0.40-0.73 ms after the last symbol on both bands.</p>
+<p>UHF, the lowest level: the output is within 6 dB 0.4 ms after the drive is written, then gains its last 3 dB over
+milliseconds. More lead buys about 0.15 dB per 0.1 ms at the first symbol (3.6 dB under the settled level with 0.8 ms
+of lead, 2.5 dB with 1.5 ms), and a boost before the level's drive buys nothing: with boosts of 4 to 30 % held for 0.3
+to 1.2 ms the output was back at 3 dB under 0.5 ms after the boost's end. So this level is timed by its edge (6 dB
+under 0.43 ms before the first symbol) and its first symbol is 3.3 to 3.7 dB under the settled level. The two levels
+above it creep the same way by less (2.3 and 1.2 dB under at the first symbol). An earlier set keyed the lowest level
+from a 1.5 ms window with a boost: it was 10 dB under its level at the slot's start, 0.25 ms into the slot before.</p>
+<p>Tried and dropped (no change in the inbound counts): keeping the LO chip running through TX, a ramp down 0.45 ms before
+the last symbol (16 bits fewer per 72 frames, our last symbols at reduced power), and shorter waits in the TX on
+sequence. The modem's RF_MODE b25 phase averaging off made it worse (51 of 72 frames decoded). The extra errors stay in
+the first and third frame of each burst, at about 3 bits a burst, whatever the switch points: the receive chain settling
+after the retune, not the switch timing.</p>
+<p>The bench's talker keeps its carrier up through both slots during its call, so our repeat inside the call can't be
+judged off air (the SDR sees the sum of both); the repeat's terminator and the hang's idle bursts after it can.</p>
+<p>TX data advance (<code>hrc7000_t.tx_pre_on</code>, RF_CONTROL b20:16) <strong>0.6 ms</strong>, not the chip's 0.4 ms. Through a repeater, the
+inbound burst against the outbound (burst start from the sync correlation, alone on TS2, BENCH 2026-10-29,
+<a href="modem-hrc7000.html">modem-hrc7000.md</a> 2.1):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>tx_pre_on</th>
+<th>Inbound vs outbound</th>
+<th>Bursts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4 (before the four-batch RF driver)</td>
+<td>+0.166 ms</td>
+<td>142</td>
+</tr>
+<tr>
+<td>6</td>
+<td>+0.000 ms median, -0.006 ms mean</td>
+<td>136, all decoded</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="46-frequency-reference-the-modems-bias">4.6 Frequency reference: the modem's bias</h3>
+<p>On the owner's radio both receive and transmit read 23 ppm low (10.6 kHz near 461 MHz) and DAC C changes nothing. The
+C7000 modem's DC bias registers are written at every receive set-up, in FM as well as DMR: SIG_CENTER
+0x11000108 and RF_MOD_BIAS_CTRL 0x11000114 as in 6.4. The BK4819s have no VCO input, so the modem's two-point modulation
+puts its low-frequency half on the TCXO's control pin and this DC level sets the TCXO frequency; both chips share that TCXO,
+so receive and transmit move together (unverified; matches the measurement). The factory tunes the TX center byte with the radio transmitting, and
+nothing else on the page trims the frequency. RadioFoundry powers the modem
+(<code>hrc7000_power_on_init</code>) at init in every build and writes both words at init and at every <code>rx()</code>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Page TX center c (0x43F)</th>
+<th>m</th>
+<th>0x11000108</th>
+<th>0x11000114 (mod byte 0x21 at the test frequency)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>106 (owner's radio)</td>
+<td>489 (0x1E9)</td>
+<td>0x6A6AE9E9</td>
+<td>0x01E90021</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>make BOARD=db25d DB25D_TX_CENTER=N</code> replaces c, to sweep it on the radio: a few ppm per step is expected.</p>
+<p>The user's reference trim (<a href="radio-features.html">radio-features.md</a> 6.1) leaves this bias alone: it is the factory's tune
+and the DMR modulation rides on it. RadioFoundry retunes the BK4819s instead. Receive: the LO at f x (1 + trim) + IF,
+which leaves the signal on the main chip's IF. Transmit: the main chip at f x (1 + trim), FM and every DMR burst. The next
+tune applies a new trim. Measured on the SDR bench (2026-10-30): +5.0 ppm moved the carrier +5.004 Hz per MHz and
+-5.0 ppm -5.008 Hz per MHz (5.000 expected). The trim covers +-10 ppm, less than the 23 ppm this radio read before the bias
+was set, so a radio that far off needs the bias first.</p>
+<p>A key-up now and then restarts the radio (<code>reset.cause</code> warm, no fault trace): a supply dip at TX on, also without the
+trim (1 of 3 plain key-ups on 2026-10-30). The <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> trim test waits 3 s after each trim before it keys, and may need a rerun.</p>
+<h3 id="47-dcs">4.7 DCS</h3>
+<p>The main chip sends and detects DCS itself, with the code as the 23-bit Golay word (code bits first,
+<code>subaudio_dcs_word</code>) in two writes to 0x08:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Register</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x07</td>
+<td>0x0AD7 (the 134.4 bit/s rate) while the code is set; 0x4AD7 after it on receive</td>
+</tr>
+<tr>
+<td>0x08</td>
+<td>word bits 11:0, then bits 22:12 with bit 15 set (D023: 0x0813, 0x8763; D754: 0x09EC, 0x820F)</td>
+</tr>
+<tr>
+<td>0x51</td>
+<td>0x8030 normal, 0xA030 inverted (bit 15 on, bit 13 invert, bit 12 = 0 selects DCS, the rest the gain)</td>
+</tr>
+<tr>
+<td>0x40</td>
+<td>0x34A8 on transmit, as with CTCSS</td>
+</tr>
+<tr>
+<td>0x0C</td>
+<td>received: bit 14 the code as set, bit 15 its inverse (bit 10 CTCSS)</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Order</th>
+<th>Steps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TX (4.4 step 0)</td>
+<td>0x40, 0x07 = 0x0AD7, 0x51, 0x08 twice</td>
+</tr>
+<tr>
+<td>RX</td>
+<td>0x07 = 0x0AD7, 0x51, 0x08 twice, 0x07 = 0x4AD7</td>
+</tr>
+</tbody>
+</table></div>
+<p>The receive chain inverts the audio: the LO sits above the signal (f + 51.55 MHz, 4.1), so the IF spectrum is turned
+over and the deviation's sign flips. A normal code arrives as its inverse. RadioFoundry sets 0x51 for the code as sent and
+reads 0x0C's other bit: a normal code sets bit 15, an inverted one bit 14 (<code>bk4819_t.rx_inverted</code>).  On the SDR bench another radio's
+D023N and D023I opened the matching setting only, and D754 and CTCSS settings stayed shut; the radio's D023N went out
+as D023N (measured). The diagnostics page's <code>rssi</code> line shows 0x0C as <code>c</code> (hex), polled with the RSSI.</p>
+<p>At the end of a DCS transmission 0x52 = 0x828F is written, then, after 300 ms, 0x028F.
+0x52 bit 15 is the sub-audio tail generator (as on the FD6818, datasheet): the chip sends 134.4 Hz in place of the code, the
+DCS turn-off. RadioFoundry does the same through the core's tail (<code>radio-features.md</code> 3.3a; <code>bk4819_tx_tail_start</code> / <code>_end</code>;
+the end of the transmission writes 0x028F back if a tail is still on). On the SDR bench: D023N, then 134.4 Hz for
+0.30 s up to the carrier's end (measured).</p>
+<h3 id="48-older-batches-fd6818-main-three-lo-kinds">4.8 Older batches: FD6818 main, three LO kinds</h3>
+<p>D64, D66 and D6T have an FD6818 as the main transceiver and differ in the LO. The architecture is the PRO's (4.1): the
+same 51.55 MHz IF, the LO above the signal, the same 3-wire bus and pins (3.1). The values here are what the
+2023-07-06 vendor build writes; the 2022 builds differ only where noted. RadioFoundry drives every batch from one
+image (<code>drivers/rf/fd6818/fd6818sh.c</code>, <code>drivers/rf/at1141/at1141.c</code>): untested on an FD6818 radio.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Batch</th>
+<th>Main</th>
+<th>LO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DBB</td>
+<td>BK4819</td>
+<td>BK4819 (4.1-4.7)</td>
+</tr>
+<tr>
+<td>D64</td>
+<td>FD6818</td>
+<td>0x7813, a part of the FD6818 family (same bus, page select and state register)</td>
+</tr>
+<tr>
+<td>D66</td>
+<td>FD6818</td>
+<td>FD6818</td>
+</tr>
+<tr>
+<td>D6T</td>
+<td>FD6818</td>
+<td>AT1141 PLL synthesizer</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Main FD6818 registers.</strong> The map is the datasheet's, not the DM-32's (<code>fd6818.h</code> drives the part through another
+map, <a href="hardware-dm32.html">hardware-dm32.md</a> 8). Page select 0x7F (1 = page 1).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Register</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x03</td>
+<td>State: 0x0000 idle, 0xBFF1 RX, 0xC3FE TX, 0xC3FA TX with the microphone ADC off (tones), 0xC1FA an LO's output. Every change goes through 0x0000</td>
+</tr>
+<tr>
+<td>0x1A</td>
+<td>Band word by the integer MHz: the first edge at or above it of 23 33 46 66 93 132 185 263 371 560 740 1120, words DF21 6F41 CF22 5F42 BF24 4F44 AF28 3F48 9F30 2F50 0000 1F80; above 1120: 0. The IF gives 5F42, VHF AF28, UHF 2F50</td>
+</tr>
+<tr>
+<td>0x38 / 0x39</td>
+<td>Frequency in 10 Hz units (truncated), low and high word</td>
+</tr>
+<tr>
+<td>0x40</td>
+<td>TX deviation, by the same band index and whether the transmission has sub-audio: VHF 0x375C (none) / 0x3732 (with), UHF 0x39D0 / 0x3998. The bandwidth doesn't change it</td>
+</tr>
+<tr>
+<td>0x43</td>
+<td>Bandwidth: 25 kHz 0x3028; 12.5 kHz 0x6648 and 0x4D = 0x348D</td>
+</tr>
+<tr>
+<td>0x07 / 0x08</td>
+<td>Sub-audio words. CTCSS: <code>subaudio_ctcss_word</code>, truncated, in slot 0, then 0x2000 | 0x0470 (55 Hz, the tail tone) in slot 1. DCS: 0x0AD7 (134.4 Hz) in both slots, then the code in two 0x08 writes as on the BK4819 (4.7)</td>
+</tr>
+<tr>
+<td>0x51</td>
+<td>Sub-audio control: 0x90C5 CTCSS, 0x80B8 DCS, 0xA0B8 DCS inverted, 0x1050 a transmission without sub-audio, 0 before a mode set</td>
+</tr>
+<tr>
+<td>0x52</td>
+<td>0x028F normal; 0x828F the tail (bit 15)</td>
+</tr>
+<tr>
+<td>0x28</td>
+<td>PA gain: <code>(v &gt;&gt; 3 ? 0x38 : 0) | (v &amp; 7)</code>, v 0..15 from the calibration (0x09B, 6.3)</td>
+</tr>
+<tr>
+<td>0x47</td>
+<td>AF output: 0x7040 mute, 0x7140 FM receive, 0x6140 DMR receive, 0x7840 the sidetone (a tone)</td>
+</tr>
+<tr>
+<td>0x53</td>
+<td>Volume: <code>(T[v] &lt;&lt; 5) | (v &lt; 9 ? 0x941D : 0xF41D)</code>, T = 0 1 3 6 10 14 17 19 21 4 7 9 11 13 15 17 19 21 23 25; 0x957D in the digital set</td>
+</tr>
+<tr>
+<td>0x70 / 0x71 / 0x72</td>
+<td>Tones: 0x70 = 0x8000 | gain &lt;&lt; 8 (one tone) or 0x8989 (DTMF), 0x71 / 0x72 = <code>subaudio_tone_word</code> (truncated for one tone, rounded for DTMF)</td>
+</tr>
+<tr>
+<td>0x25 / 0x26 / 0x27</td>
+<td>GPIO outputs; output selects, a nibble per pin</td>
+</tr>
+<tr>
+<td>0x65 / 0x67</td>
+<td>Noise / RSSI, as on the BK4819 (4.3)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Mode sets.</strong> Each leaves the chip at the IF (<code>1a</code>, <code>38</code>, <code>39</code>, then <code>03</code> = 0, 0xBFF1).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Set</th>
+<th>Writes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Analog</td>
+<td>0x73 = 0x4E42, 0x04 = 0x0300, page 1 0x1C = 0x04D7 0x1D = 0x39FD 0x27 = 0x885B, 0x50 = 0x073C, 0x70 = 0, 0x7E = 0x341E, 0x44 = 0x4ACC, microphone page 1 0x17 = 0x3006, 0x18 = 0x2125, then the bandwidth</td>
+</tr>
+<tr>
+<td>Digital (DMR)</td>
+<td>0x73 = 0x4E52, microphone page 1 0x17 = 0x1B06, 0x18 = 0x2125, 0x51 = 0x1050, 0x04 = 0x0300, page 1 0x1C = 0x04D3 0x1D = 0x29A1 0x27 = 0x891B, 0x50 = 0x073C, 0x70 = 0, 0x7E = (0x7E after init) | 0x0080, 0x43 = 0x7E48, 0x40 = 0, 0x44 = 0x52CC, 0x53 = 0x957D</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Sequences.</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Main</th>
+<th>LO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Channel set (receive)</td>
+<td>Mode set, at the IF; GPIO3 = the TX band (high = VHF)</td>
+<td>GPIO3 = the RX band (high = VHF); tune to f + 51.55 MHz and run</td>
+</tr>
+<tr>
+<td>FM TX prepare</td>
+<td>0x40, then the TX sub-audio (or 0x51 = 0x1050), 0x28</td>
+<td>-</td>
+</tr>
+<tr>
+<td>TX</td>
+<td><code>1a</code>, <code>38</code>, <code>39</code>, <code>03</code> = 0, 0xC3FE (DMR: <code>28</code> before <code>38</code>)</td>
+<td>Off</td>
+</tr>
+<tr>
+<td>Back to RX</td>
+<td><code>1a</code> = 0x5F42, IF <code>38</code> / <code>39</code>, <code>03</code> = 0, 0xBFF1</td>
+<td>Running again, not retuned</td>
+</tr>
+<tr>
+<td>FM TX end</td>
+<td>0x51 = 0x90C5, 0x52 = 0x828F (the tail), 150 + 200 ms, 0x03 = 0, 0x52 = 0x028F</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Tone</td>
+<td>0x71, 0x70, 0x03 = 0xC3FA, 0x47 = 0x7840; stop 0x70 = 0, 0x47 = 0x7040</td>
+<td>-</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>LO kinds.</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>LO</th>
+<th>Tune</th>
+<th>Off</th>
+<th>Running again</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FD6818</td>
+<td><code>1a</code> by LO MHz, <code>38</code> / <code>39</code>, <code>03</code> = 0, 0xC1FA</td>
+<td><code>03</code> = 0</td>
+<td><code>03</code> = 0, 0xC1FA</td>
+</tr>
+<tr>
+<td>0x7813</td>
+<td>0x3A = 0x00E0, 0x40 = 0x38D0, 0x43 = 0x5009, 0x4D = 0x347D, page 1 0x16 = 0x02FE; a VCO section (below); <code>38</code> / <code>39</code>; 0x40 = 0; <code>03</code> = 0, 0xC1FA</td>
+<td><code>03</code> = 0</td>
+<td><code>03</code> = 0, 0xC1FA</td>
+</tr>
+<tr>
+<td>AT1141</td>
+<td>Band split and PLL words (<code>at1141.h</code>), 0x30 = 0x4006, 0x4046</td>
+<td>0x30 = 0x4006</td>
+<td>0x30 = 0x4006, 0x4046, no wait</td>
+</tr>
+</tbody>
+</table></div>
+<p>The 0x7813's section is the first of 32 44 63 88 126 176 251 353 at or above the LO's integer MHz (else 8); each
+writes 0x3C, 0x3D, 0x40, 0x1A, 0x2A:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Section</th>
+<th>0x3C</th>
+<th>0x3D</th>
+<th>0x40</th>
+<th>0x1A</th>
+<th>0x2A</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1009</td>
+<td>D89E</td>
+<td>34DA</td>
+<td>1F41</td>
+<td>62F2</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1007</td>
+<td>6276</td>
+<td>345C</td>
+<td>1F22</td>
+<td>C2F2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1004</td>
+<td>EC4F</td>
+<td>35D0</td>
+<td>1F42</td>
+<td>52F2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1003</td>
+<td>B13B</td>
+<td>355C</td>
+<td>1F24</td>
+<td>B2F2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1002</td>
+<td>7627</td>
+<td>36D0</td>
+<td>1F44</td>
+<td>42F2</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1001</td>
+<td>D89E</td>
+<td>366C</td>
+<td>1F28</td>
+<td>A2F2</td>
+</tr>
+<tr>
+<td>6 (VHF LO)</td>
+<td>1001</td>
+<td>3B14</td>
+<td>37D0</td>
+<td>1F48</td>
+<td>32F2</td>
+</tr>
+<tr>
+<td>7</td>
+<td>1000</td>
+<td>EC4F</td>
+<td>375C</td>
+<td>1F30</td>
+<td>92F2</td>
+</tr>
+<tr>
+<td>8 (UHF LO)</td>
+<td>1000</td>
+<td>9D8A</td>
+<td>38D0</td>
+<td>1F50</td>
+<td>22F2</td>
+</tr>
+</tbody>
+</table></div>
+<p>FD6818 and 0x7813 LOs end their init with 0x40 = 0, 0x51 = 0x1050, 0x73 = 0x4E52, 0x28 = 0x003F, GPIO3 and GPIO4 low.
+The AT1141's GPIO3 is the same RX band flag. The 2022 builds use 0xC1FE for an LO's output and 0xC3FE for a tone.</p>
+<p><strong>Sub-audio detect.</strong> The FD6818 has no found bits in 0x0C. The vendor firmware routes the code stream to GPIO0 (output
+select 5), which reaches PTB27, and decodes it in software. RadioFoundry selects the chip's own compare result instead
+(output select 4) and reads PTB27 as the tone-heard flag (<code>PIN_RF_CSS</code>): high = the tone or code set for receive is
+heard (untested).</p>
+<p><strong>PA gain.</strong> 0x09B (6.3) holds the FD6818's PA gain per point. The value for a frequency is the entry of the last
+calibration point at or below it (point 1's below the first), not interpolated, capped at 15. The BK4819 batch doesn't
+use it.</p>
+<h2 id="5-display">5. Display</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Finding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Panel</td>
+<td>1.77&quot; color TFT, ST7735S-class controller, 160 x 128 landscape (MADCTL 0x60)</td>
+</tr>
+<tr>
+<td>Reset</td>
+<td>high 10 ms, low 10 ms, high 130 ms</td>
+</tr>
+<tr>
+<td>Init</td>
+<td>ST7735 frame-rate and power commands as RadioFoundry's <code>st7735</code> type 1 except VCOM (C5 = 0x12) and the first positive gamma pair (E0: 04 22 ...)</td>
+</tr>
+<tr>
+<td>Backlight</td>
+<td>PWM1 (0x140C0020) on PTA16 at 1 kHz: PER = 24,000, FP = on-time. Which clock the <abbr class="gl" tabindex="0" title="Pulse width modulation: a pin switched on and off to give an average level, as for backlight or tone." data-more="../dev/glossary.html#t-pwm">PWM</abbr> counts is not established: the user guide says only &quot;system clock&quot; and a 54 MHz maximum, so 24,000 is 1 kHz from a 24 MHz clock and 1.5 kHz from the loader's APB; RadioFoundry keeps PER = 24,000, so the rate is 1 kHz to 3.5 kHz whichever it is. Levels 0-6 give 10, 25, 40, 55, 70, 85, 100 % duty; 0 only when switched off. Set-up: CFG bits 5, 8, 9, RPT 5, PER, FP, then CFG bit 2 (load) and bit 0 (enable). The light also needs PTA15 high (3.3) (measured)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="6-storage-and-calibration">6. Storage and calibration</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Finding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NAND</td>
+<td>Kioxia TC58CVG1S3HRAIJ, 2 Gbit <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> <abbr class="gl" tabindex="0" title="The flash chip type that holds large data, such as the codeplug and contacts, in some radios." data-more="../dev/glossary.html#t-nand">NAND</abbr>: 2 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> pages, 128 KB blocks. Standard SPI NAND opcodes (0x9F ID, 0x13 page read, 0x06, 0x84, 0x0F / 0xC0 status, 0xD8 erase). The vendor firmware builds a bad-block table at boot (6.5) (datasheet)</td>
+</tr>
+<tr>
+<td>Calibration</td>
+<td>A 2 KB page at <strong>NAND 0x280000</strong> (block 20) starting with &quot;TUNE&quot;, and a copy in program flash at 0x031FE000 (4 KB sector). The vendor firmware repairs one copy from the other at boot</td>
+</tr>
+<tr>
+<td>Calibration layout</td>
+<td>6.1 – 6.4</td>
+</tr>
+<tr>
+<td>Vendor firmware NAND areas</td>
+<td>0x40000, 0x110000, 0x3C0000, 0x1100000, 0x2980000 (<abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> and databases, unverified)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Rule:</strong> RadioFoundry reads both calibration copies and never writes them. It never writes program flash at 0x031FE000 or NAND
+block 20.</p>
+<p>The flashing tools enforce this from <code>boards/db25d/board.toml</code> <code>[[flash.protect]]</code>
+(<a href="../dev/board-registry.html#protected-regions">board-registry.md</a>):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Memory</th>
+<th>Range</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Program flash</td>
+<td>0x1FE000-0x1FEFFF (0x031FE000)</td>
+<td>The calibration copy (6.1)</td>
+</tr>
+<tr>
+<td>NAND</td>
+<td>Block 0 (0x0-0x1FFFF)</td>
+<td>The vendor firmware's bad-block table (6.5)</td>
+</tr>
+<tr>
+<td>NAND</td>
+<td>Blocks 20-22 (0x280000-0x2DFFFF)</td>
+<td>The calibration page wherever the bad-block table puts it (6.5)</td>
+</tr>
+<tr>
+<td>NAND</td>
+<td>Blocks 1998-2047 (0xF9C0000 up)</td>
+<td>The vendor's reserve of the 10 highest good blocks (6.5, 6.6)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="61-page-header-and-the-two-copies">6.1 Page header and the two copies</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Size</th>
+<th>Field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x000</td>
+<td>4</td>
+<td>Magic &quot;TUNE&quot;</td>
+</tr>
+<tr>
+<td>0x004</td>
+<td>4</td>
+<td>Save counter, u32 little-endian. The vendor tuning mode adds 1 on every save</td>
+</tr>
+</tbody>
+</table></div>
+<p>At boot the vendor firmware reads 8 bytes of each copy. If both carry &quot;TUNE&quot;, the copy with the higher counter wins and
+is copied over the other. If only one does, it's copied over the other. If neither does, the radio runs untuned (&quot;No
+tune&quot;). There's no checksum. RadioFoundry applies the same choice when it reads, without writing anything back.</p>
+<h3 id="62-bands-and-frequency-points">6.2 Bands and frequency points</h3>
+<p>The page has two 1 KB halves with the same layout: <strong>0x000–0x3FF for <abbr class="gl" tabindex="0" title="Ultra high frequency: 300 MHz to 3 GHz. The amateur 70 cm band is UHF." data-more="../user/22-glossary.html#t-uhf">UHF</abbr> and 0x400–0x7FF for <abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="../user/22-glossary.html#t-vhf">VHF</abbr></strong>. The half
+is picked from the band of the frequency in use. Offsets below are UHF; add 0x400 for VHF. The few
+fields that exist only once are marked.</p>
+<p>Most tables hold one value per <strong>frequency point</strong>, 8 points per band:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Point</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UHF (MHz)</td>
+<td>403.175</td>
+<td>414.175</td>
+<td>425.175</td>
+<td>436.625</td>
+<td>447.775</td>
+<td>458.775</td>
+<td>469.825</td>
+<td>478.825</td>
+</tr>
+<tr>
+<td>VHF (MHz)</td>
+<td>136.125</td>
+<td>142.125</td>
+<td>146.125</td>
+<td>152.125</td>
+<td>156.125</td>
+<td>162.125</td>
+<td>166.125</td>
+<td>173.125</td>
+</tr>
+</tbody>
+</table></div>
+<p>A per-point table is one leading byte, then 8 entries in point order, so entry p (1–8) of size n starts at
+table + 1 + n·(p − 1). The leading byte isn't used by any per-point lookup.</p>
+<p><strong>Interpolation:</strong> for f at or below point 1, use point 1. Otherwise take the first point p ≥ 2 at or above f
+and interpolate linearly between points p − 1 and p, rounding half up. Above point 8 (478.825–480 MHz, 173.125–174
+MHz), the vendor firmware reads past the table into the next one. RadioFoundry uses point 8 there instead.</p>
+<p>The squelch table works by <strong>segment</strong>: 8 segments per band. VHF: below 142, 142–146, 146–152, 152–156, 156–162,
+162–166, 166–173, from 173 MHz. UHF: below 410, then 10 MHz steps (410–420 … 460–470), from 470 MHz. A segment's
+upper edge belongs to the next segment.</p>
+<h3 id="63-fields">6.3 Fields</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Offset (UHF)</th>
+<th>Size</th>
+<th>Content</th>
+<th>Used for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x02C</td>
+<td>1 + 8 × u16</td>
+<td><abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> front-end tuning, per point</td>
+<td><abbr class="gl" tabindex="0" title="Digital to analog converter." data-more="../dev/glossary.html#t-dac">DAC</abbr> A, written when the receiver is set up for a frequency. The tuning voltage of the receive band-pass filter (unverified)</td>
+</tr>
+<tr>
+<td>0x43E (VHF half only)</td>
+<td>7</td>
+<td>Global bytes, both bands. Byte 0x43F is the <strong><abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> center</strong> (128 = mid-scale, as on the DM-32); the other six aren't traced</td>
+<td>Modem SIG_CENTER and RF_MOD_BIAS_CTRL, 6.4</td>
+</tr>
+<tr>
+<td>0x045</td>
+<td>1 + 8 × u16</td>
+<td><strong><abbr class="gl" tabindex="0" title="Power amplifier: the stage that boosts the transmit signal to the output power." data-more="../dev/glossary.html#t-pa">PA</abbr> drive, power level 1</strong> (H, unverified), per point. DAC B value: the APC ramp's end value</td>
+<td>TX power</td>
+</tr>
+<tr>
+<td>0x056</td>
+<td>1 + 8 × u16</td>
+<td><strong>PA drive, every other power level</strong> (L, unverified), per point</td>
+<td>TX power</td>
+</tr>
+<tr>
+<td>0x067</td>
+<td>1 + 8 × (u8, u8) + 1</td>
+<td>Modulation, per point. The first byte of each pair goes to the modem (6.4). The second is read but then cleared before use</td>
+<td>TX modulation level</td>
+</tr>
+<tr>
+<td>0x09B</td>
+<td>1 + 8 × u8</td>
+<td>Per point, capped at 15: the FD6818's PA gain (register 0x28), looked up, not interpolated (4.8). The leading byte is read on its own and kept with the channel's <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> parameters</td>
+<td>FD6818 batches: PA gain</td>
+</tr>
+<tr>
+<td>0x0AE</td>
+<td>1 + 8 × (u16, u16)</td>
+<td>TX timing in µs, per point: the delay between tuning the transmitter and selecting the PA, and the delay at TX end before the ramp down. A value above 2000 counts as 0</td>
+<td>TX switching</td>
+</tr>
+<tr>
+<td>0x0CF</td>
+<td>1 + 8 × 9 × u16</td>
+<td><strong>Squelch</strong>, per segment: one value for each squelch level 1–9 (level 0 doesn't use the table)</td>
+<td>RF chip squelch, 6.4</td>
+</tr>
+<tr>
+<td>0x160, 0x1B1</td>
+<td>1 + 8 × 5 × u16 each</td>
+<td>Five values for each of 8 ranges: up to point 2, then between points (2–3 … 7–8), then above point 8. No interpolation. Two variants chosen by channel mode (use not traced)</td>
+<td>?</td>
+</tr>
+<tr>
+<td>0x202 / 0x206 / 0x207 / 0x208 / 0x20B</td>
+<td>4 / 1 / 1 / 3 / ?</td>
+<td>Small items the tuning mode reads and writes. 0x20B is in the UHF half only (use not traced)</td>
+<td>?</td>
+</tr>
+</tbody>
+</table></div>
+<p>The tuning mode moves each table as a unit (the sizes above), plus 198 bytes from the start of each half. Everything
+not listed is unused.</p>
+<h3 id="64-what-the-values-drive">6.4 What the values drive</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Output</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PA drive (DAC B, 12 bit)</td>
+<td>The interpolated 0x045 or 0x056 value for the TX frequency, chosen by power level. The APC ramp runs up to it at TX start and down from it at TX end, as on the DM-32</td>
+</tr>
+<tr>
+<td>RX front end (DAC A)</td>
+<td>The interpolated 0x02C value for the RX frequency</td>
+</tr>
+<tr>
+<td>DAC C</td>
+<td>1780 when receive is set up, not from the page. It has no effect on the frequency (measured); the <abbr class="gl" tabindex="0" title="Temperature compensated crystal oscillator: the stable clock the radio&#x27;s frequency is derived from." data-more="../dev/glossary.html#t-tcxo">TCXO</abbr> trim is the modem bias below (4.6) (measured)</td>
+</tr>
+<tr>
+<td>SIG_CENTER (modem 0x108)</td>
+<td>Written at every receive set-up, FM and <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> (4.6). (c &lt;&lt; 24) or (c &lt;&lt; 16) or ((m &amp; 0xFF) &lt;&lt; 8) or (m &amp; 0xFF), with c = the TX center byte and m below</td>
+</tr>
+<tr>
+<td>RF_MOD_BIAS_CTRL (modem 0x114)</td>
+<td>((m &amp; 0x3FF) &lt;&lt; 16) or a. m = round((1.228 + c × 0.422 / 128) × 1023 / 3.3): 381 at c = 0, 512 at c = 128, close to the DM-32's c + 384. a = the interpolated first byte of 0x067</td>
+</tr>
+<tr>
+<td>BK4819 squelch (reg 0x78)</td>
+<td>For level n (1–9), v = low byte of entry n of the segment's 0x0CF table: v is the open threshold in dB below 0 dBm at the main chip. Register = (o &lt;&lt; 8) or (o − 4), o = 2 × (160 − v), i.e. open at −v dBm and close 2 dB lower. Level 0 uses v = 136</td>
+</tr>
+<tr>
+<td>Untuned radio</td>
+<td>No page: the vendor firmware keeps running, values unknown</td>
+</tr>
+</tbody>
+</table></div>
+<p>RadioFoundry's use: the reader (<code>boards/db25d/calibration_db25d.c</code>) copies the chosen page into <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> at boot and never writes
+either copy. The program-flash copy is memory-mapped, so it's read directly: it is a plain
+byte copy from 0x031FE000. The NAND copy is read through the SPI NAND driver (6.5): its 8-byte header first, the
+whole page only when it wins, and a NAND page that can't be read gives way to the flash copy. Interpolation is the
+shared calibration curve (<code>core/radio/cal_curve.h</code>). Receive sets DAC A and DAC C from it now. TX power comes from 0x045 (&quot;H&quot;) or 0x056 (&quot;L&quot;), and
+TX refuses when the page is missing or the PA value for the frequency is 0 or above the DAC's range. On the first
+unit's page, table 0x045 is the higher DAC value on both bands (UHF 1430-2001 against 999-1193, VHF 916-1512 against
+590-928), so it is the high level; that a higher DAC B value is more output depends on the APC loop and isn't measured
+(unverified). The <abbr class="gl" tabindex="0" title="Received signal strength indicator: how strong the received signal is, in dBm." data-more="../user/22-glossary.html#t-rssi">RSSI</abbr> that RadioFoundry shows stays the chip's own reading: the page has no RSSI
+offset, only squelch thresholds (unverified).</p>
+<h3 id="65-nand-access">6.5 NAND access</h3>
+<p>How the NAND is driven (RadioFoundry's read side follows this) and what the
+data sheet adds:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Sequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bus</td>
+<td>SPI0, IO_DIPLEX1 bits 3–8 cleared (SCLK / MOSI / MISO to the SPI master), CS PTA18 by <abbr class="gl" tabindex="0" title="General purpose input/output: a pin the firmware can read or drive." data-more="../dev/glossary.html#t-gpio">GPIO</abbr>, CTRLR0 7, BAUDR 4</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>0x9F, one dummy byte, then 0x98 (Kioxia), 0xEB (device), 0x40 (organization: 2 KB pages, 128 KB blocks) (datasheet)</td>
+</tr>
+<tr>
+<td>Organization</td>
+<td>(2048 + 64) bytes × 64 pages × 2048 blocks. At least 2008 good blocks over the chip's life; blocks 0–7 are good when shipped (datasheet)</td>
+</tr>
+<tr>
+<td>Page read</td>
+<td>0x13 and a 3-byte page number (17 bits), then 0x0F 0xC0 (status) until bit 0 (busy) clears: 180 µs at most. The vendor firmware remembers the last page read and doesn't read it again</td>
+</tr>
+<tr>
+<td>Read from cache</td>
+<td>0x03, a 2-byte column (12 bits; the vendor firmware masks 13), one dummy byte, then data. Byte address = page × 2048 + column (datasheet)</td>
+</tr>
+<tr>
+<td>Status (0xC0)</td>
+<td>Bit 0 busy, 1 write enabled, 2 erase failed, 3 program failed. Bits 4–5 <abbr class="gl" tabindex="0" title="Error correcting code: a code that repairs damaged bits, such as the one a NAND flash needs." data-more="../dev/glossary.html#t-ecc">ECC</abbr>: 0 clean, 1 corrected, 2 uncorrectable, 3 corrected at or above the bit-flip threshold (feature 0x10) (datasheet)</td>
+</tr>
+<tr>
+<td>ECC</td>
+<td>On by default (feature 0xB0 bit 4): 8 bits corrected per 512 + 16 bytes. Spare bytes 2048–2111 are readable, the parity at 2112–2175 isn't (datasheet)</td>
+</tr>
+<tr>
+<td>Block lock</td>
+<td>Every block locked at power-up (feature 0xA0); reads don't need it cleared, program and erase do (datasheet)</td>
+</tr>
+<tr>
+<td>ID pages</td>
+<td>Feature 0xB0 bit 6 (IDR_E) set, then a page read: page 0 is the unique ID, page 1 the parameter page (data sheet 4.12, 4.14); clear the bit after. The vendor firmware reads 256 bytes of page 0 at boot (the unique ID) (datasheet)</td>
+</tr>
+<tr>
+<td>Unique ID</td>
+<td>Page 0 with IDR_E: 16 copies of 32 bytes, each the 16-byte ID followed by its complement. RadioFoundry reads it at boot (<code>spi_nand_read_uid</code>, the first copy whose complement matches) as the radio's UID for the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>'s INFO_CHIP (<a href="debuglink.html">debuglink.md</a> 3.9) (datasheet)</td>
+</tr>
+<tr>
+<td>Spare bytes</td>
+<td>The vendor firmware keeps its own block marks at spare offset 4 (column 2052)</td>
+</tr>
+<tr>
+<td>Bad blocks</td>
+<td>Factory-bad blocks read 0x00 in every page; the mark is judged from the data whatever the ECC status says (datasheet)</td>
+</tr>
+<tr>
+<td>Vendor bad-block skip</td>
+<td>The vendor firmware builds a bad-block list at boot and, for some address ranges, skips bad blocks when it maps an address to a page. Which ranges, and whether that ever moves block 20, is unverified</td>
+</tr>
+<tr>
+<td>Vendor bad-block table</td>
+<td>Inferred from the vendor's stock NAND driver, unverified on this radio: the table sits in physical block 0 (&quot;LUT0&quot; and a bitmap). Logical block L is physical block L + 1 + the bad blocks at or below it, so logical 0x280000 (block 20) is physical 0x2A0000 (block 21) with no bad block, one block higher for each. The 10 highest good blocks are a reserve pool</td>
+</tr>
+</tbody>
+</table></div>
+<p>The write side, from the data sheet:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Sequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unlock</td>
+<td>0x1F 0xA0 0x00 before a program or erase; 0x1F 0xA0 0x38 (every block locked, the power-up value) after it (datasheet)</td>
+</tr>
+<tr>
+<td>Program</td>
+<td>0x06 (write enable), 0x02 and a 2-byte column with data (clears the rest of the buffer to 0xFF), 0x10 and the 3-byte page number, then 0x0F 0xC0 until not busy: 500 µs at most. Pages of a block are programmed in order (datasheet)</td>
+</tr>
+<tr>
+<td>Internal data move</td>
+<td>0x13 of the source page, then 0x06, 0x84 and a column with data (keeps the rest of the buffer), 0x10 to the new page. Needs feature 0xB0 bit 1 (HSE) clear. The page's ECC parity is computed again (datasheet)</td>
+</tr>
+<tr>
+<td>Erase</td>
+<td>0x06, 0xD8 and the 3-byte page number of the block, then status until not busy: 7 ms at most (datasheet)</td>
+</tr>
+<tr>
+<td>Partial programs</td>
+<td>The chip allows 4 per page, but with ECC on each 512 + 16 byte unit takes one; RadioFoundry programs every page once (datasheet)</td>
+</tr>
+<tr>
+<td>While busy</td>
+<td>Only 0x0F (status) and the reset commands may be sent (datasheet)</td>
+</tr>
+<tr>
+<td>Vendor configuration</td>
+<td>The vendor firmware writes feature 0xB0 = 0x14</td>
+</tr>
+</tbody>
+</table></div>
+<p>RadioFoundry's driver is <code>drivers/flash/spi_nand</code> (generic). It takes the geometry from the board and treats a block whose
+first page's first spare byte isn't 0xFF as bad. The DB25-D reads the calibration copy at its physical address: if a
+skip ever moved it, its header won't say &quot;TUNE&quot; and the program-flash copy is used. With <code>CONFIG_NAND_STORAGE</code> the
+driver also programs and erases: at probe it writes feature 0xB0 = 0x10 (ECC on, HSE off for the internal data move)
+and 0xA0 = 0x38, unlocks only around each operation, and refuses any program or erase outside RadioFoundry's range (6.6). One
+lock serializes every NAND user (calibration read, storage).</p>
+<h3 id="66-radiofoundry-storage-on-the-nand">6.6 RadioFoundry storage on the NAND</h3>
+<p>RadioFoundry keeps its own data in physical blocks <strong>1920-1951</strong> (32 blocks, 4 MB), through <code>drivers/flash/nand_sectors</code>
+(<a href="nand-sectors.html">nand-sectors.md</a>), which turns the region into 4 KB sectors that behave like <abbr class="gl" tabindex="0" title="The flash chip type that holds code and can run it in place." data-more="../dev/glossary.html#t-nor">NOR</abbr> flash. Why these
+blocks are safe from the vendor firmware and the calibration:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Calibration</td>
+<td>Block 20</td>
+</tr>
+<tr>
+<td>Vendor data (codeplug, contacts, resources)</td>
+<td>Logical addresses up to about 0x5000000: block 640, a few blocks higher after the bad-block skip</td>
+</tr>
+<tr>
+<td>Vendor scratch blocks</td>
+<td>The top 10 good blocks of the chip: 2038-2047 on a chip with no bad blocks, never below about 1998 with the most bad blocks the data sheet allows (40) (datasheet)</td>
+</tr>
+<tr>
+<td>RadioFoundry</td>
+<td>1920-1951: far above the vendor data, below the lowest place the scratch blocks can reach (unverified)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The vendor firmware's use of this range is unverified: only its logical data area and its scratch blocks are known. What makes the range safe is the layer's foreign-data guard
+(<a href="nand-sectors.html">nand-sectors.md</a> 4): a block whose first or last page reads back clean, isn't erased and carries no
+RadioFoundry record makes the mount fail. Then nothing in the range is programmed or erased, the radio runs without stored
+settings, and the diagnostics page names the block. Clearing it is the owner's call. RadioFoundry never programs or erases
+outside the range, and never touches the factory bad blocks in it. The layer uses spare bytes 8-23 of each page and
+leaves 0-7 alone (the factory mark and the vendor marks at 4-5). A block the vendor firmware marked bad at bytes 4-5
+counts as foreign.</p>
+<p>Logical map (the core's <code>storage_map_t</code>, <a href="settings-store.html">settings-store.md</a>): 608 sectors, 2.375 MB.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Logical address</th>
+<th>Size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Open-firmware codeplug, EEPROM part</td>
+<td>0x000000</td>
+<td>64 KB</td>
+</tr>
+<tr>
+<td>Settings ring</td>
+<td>0x011000</td>
+<td>32 KB</td>
+</tr>
+<tr>
+<td>Sector journal</td>
+<td>0x019000</td>
+<td>4 KB</td>
+</tr>
+<tr>
+<td>Open-firmware codeplug, flash part</td>
+<td>0x020000</td>
+<td>1 MB</td>
+</tr>
+<tr>
+<td>Native codeplug</td>
+<td>0x120000</td>
+<td>1 MB</td>
+</tr>
+<tr>
+<td>Staging</td>
+<td>0x220000</td>
+<td>256 KB</td>
+</tr>
+<tr>
+<td>Calibration</td>
+<td>None: read from block 20 and the program flash (6.1)</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Codeplug writes (<code>CONFIG_CPS_OPENFW</code>, section 9): the <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> shim commits one 4 KB sector at a time with
+<code>hal_flash_t.replace</code> (<code>nand_sectors_replace</code>): one record of two pages, atomic, with no journal and no erase first.
+The core's journaled rewrite (<code>core/storage</code>, <a href="settings-store.html">settings-store.md</a> 4) written for NOR would take
+about 11 page programs per sector here. The host test (<code>tests/host/nandSectorsTest.c</code>) counts them:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Write</th>
+<th>Page programs</th>
+<th>Block erases (32-block region)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>One sector, <code>replace</code></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>One sector, journaled erase and program</td>
+<td>10.9</td>
+<td></td>
+</tr>
+<tr>
+<td>What qdmr transfers (33 sectors: EEPROM 0x80-0x6060 and 0x7500-0xB000, custom data, codeplug 0x9B000-0xAEE60)</td>
+<td>66</td>
+<td>about 1</td>
+</tr>
+<tr>
+<td>The whole open-firmware image (the 64 KB EEPROM part and the 1 MB flash part, 271 sectors)</td>
+<td>542</td>
+<td>8 to 10, with garbage collection</td>
+</tr>
+</tbody>
+</table></div>
+<p>A sector whose content doesn't change programs nothing. The calibration can't be reached: the layer works only inside
+blocks 1920-1951, so neither NAND block 20 nor the program flash copy is ever written, and the CPS window in the image
+(flash image 0x10000, wire 0x30000) is plain stored data that nothing reads. Speed on the radio is not measured; the
+<abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="../dev/glossary.html#t-uart">UART</abbr> (115200 baud, 32-byte blocks) is the limit, not the NAND: a <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr> write is about 20 s.</p>
+<p>The region holds the device twice over (each sector can need two copies while garbage collection runs) plus the
+reserve. RAM: 2 bytes per sector and 6 per block, about 1.5 KB in all, no page buffer. The mount reads every
+programmed page's spare area and the data of every current record, so it takes longer as more data is stored.</p>
+<p>The diagnostics page (<code>CONFIG_DIAG</code>) shows the storage on lines 12-15, after the TX line 11 and before any DMR lines:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Shows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nst u&lt;used&gt; f&lt;free&gt; bad&lt;bad&gt;</code></td>
+<td>Blocks holding data, free, bad. <code>nst foreign &lt;block&gt; n&lt;count&gt;</code>: the physical block holding data RadioFoundry didn't write, and how many such blocks; nothing was touched and the radio runs without stored settings. <code>nst none</code>: no storage for another reason (line 13 says which)</td>
+</tr>
+<tr>
+<td><code>nst w&lt;writes&gt; e&lt;erases&gt; gc&lt;blocks&gt; x&lt;verify fails&gt;</code></td>
+<td>Records written, block erases, blocks emptied by garbage collection, pages that read back wrong</td>
+</tr>
+<tr>
+<td><code>nst st&lt;status&gt;</code></td>
+<td>Without storage, line 13 shows this instead: the mount status (0 never mounted, no NAND; 2 bad set-up; 3 foreign data)</td>
+</tr>
+<tr>
+<td><code>nst t&lt;torn&gt; r&lt;retired&gt; #&lt;seq&gt;</code></td>
+<td>Torn pages the mount set aside, blocks retired this session, the next sequence number</td>
+</tr>
+<tr>
+<td><code>set &lt;state&gt; #&lt;seq&gt; s&lt;saves&gt; f&lt;failures&gt;</code></td>
+<td>Where the settings came from (<code>ram</code>, <code>dflt</code>, <code>load</code>, <code>upgr</code>, <code>frgn</code>), the settings record's sequence, saves and failed saves this session</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="7-pc-link-update-and-recovery">7. PC link, update and recovery</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Finding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Connectors</td>
+<td>RJ-45 mic: 1 power off, 2 PTT / radio RXD, 3 mic, 4 shield, 5 radio TXD, 6 ground, 7 +8 V, 8 speaker. 3.3 V logic. The side K1 jack carries the same serial pair</td>
+</tr>
+<tr>
+<td>Cable</td>
+<td>USB-serial (Prolific PL2303 originally; FTDI accepted from firmware 909E.D4.EARSAB.018)</td>
+</tr>
+<tr>
+<td>Vendor PC protocol</td>
+<td>UART1, 115200. Identifies as &quot;+DRS-300UV&quot; / &quot;+136-480MHZ+&quot;. 2 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> packets with an additive checksum</td>
+</tr>
+<tr>
+<td>IAP loader entry</td>
+<td>Radio off, cable in, hold P1 and press power: red <abbr class="gl" tabindex="0" title="Light-emitting diode: the radio&#x27;s status light." data-more="../user/22-glossary.html#t-led">LED</abbr>, blank display with backlight. The vendor &quot;IAP&quot; tool sends the raw .bin; the radio turns off when done. The loader also stays in update mode when the application lacks the signature (2) (measured)</td>
+</tr>
+<tr>
+<td>IAP protocol</td>
+<td>UART1, 115200. The loader prints its <abbr class="gl" tabindex="0" title="The flash chip type that holds large data, such as the codeplug and contacts, in some radios." data-more="../dev/glossary.html#t-nand">NAND</abbr> state and &quot;IAPReady&quot;. Host: <code>Erase      </code> (Erase + 6 spaces) + u32 BE address 0 + u32 BE N = length / 2048; the loader answers its version string, then &quot;Erase ok&quot; about 1.5 s later. Then N + 1 raw 2048-byte pages, the last padded with 0xFF, each answered &quot;kyd&quot;. About 1.4 s after the last page: <code>ChecksumI</code> + u32 BE additive sum of every byte sent, and the loader starts the application at once. It erases only as far as the image reaches (measured)</td>
+</tr>
+<tr>
+<td>Stuck in update mode</td>
+<td>White (blank, backlit) screen and a solid red LED at every power-on without P1 held: the application at 0x0300C000 no longer starts with 2C 11 01 C0 (RadioFoundry's first stage was overwritten, or a write was interrupted), so the loader stays in update mode. Nothing answers the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>, USMART or the first stage's window. The loader still answers the IAP protocol: <code>Flash Read </code> + address 0 + count 1 gives its version string (&quot;Read_2M_V1.08B...&quot;), a page, <code>ChecksumR</code> and &quot;IAPReady&quot;, and changes nothing. The web flasher uses that as a read-only probe (never Erase). Fix: write the install image (<code>rfoundry_db25d_install.bin</code>, stage and application, starts 2C 11 01 C0) through the IAP route; the checksum matches and the radio starts RadioFoundry. No P1 is needed in this state; holding P1 at power-on also reaches it (measured)</td>
+</tr>
+<tr>
+<td>Loader reads</td>
+<td><code>Flash Read </code> + u32 BE address + u32 BE page count, then one <code>Read</code> per 2048-byte page and one more for <code>ChecksumR</code> + u32 BE: reads the <strong>NAND</strong>, not the program flash (measured)</td>
+</tr>
+<tr>
+<td>Update loader family</td>
+<td>Not the serial update protocol keyed by a model string that other <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> radios use (<code>tools/serial_loader.py --probe</code> checks for it without writing; <a href="hardware-dm32.html">hardware-dm32.md</a> 13.2); the loader speaks the IAP protocol above instead (measured)</td>
+</tr>
+<tr>
+<td>Loader rewrite</td>
+<td>The vendor application accepts writes to program flash at 0x03000000 / 0x03001000 (the vendor &quot;.flash&quot; loader update). A bad transfer there can erase the loader</td>
+</tr>
+<tr>
+<td>JTAG</td>
+<td>PTA0-PTA4 are the <abbr class="gl" tabindex="0" title="System on chip: the processor and its on-chip peripherals." data-more="../dev/glossary.html#t-soc">SoC</abbr>'s <abbr class="gl" tabindex="0" title="A debug and test port of many processors." data-more="../dev/glossary.html#t-jtag">JTAG</abbr> pins; the pads are unverified</td>
+</tr>
+<tr>
+<td>ROM serial boot</td>
+<td>The HR_C7000 boot <abbr class="gl" tabindex="0" title="Read-only memory: code fixed in the chip." data-more="../dev/glossary.html#t-rom">ROM</abbr> offers a download on UART0 at reset. Where UART0 goes on this board is unverified</td>
+</tr>
+<tr>
+<td>Open-firmware CPS</td>
+<td>The same UART1 link speaks the open-firmware <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> protocol (<a href="open-firmware-cps.html">open-firmware-cps.md</a>, <code>core/cps</code>) next to the debug link; the host link sorts them by the first byte (<code>docs/dev/cps-and-codeplug.md</code>). Section 9 (measured)</td>
+</tr>
+<tr>
+<td>Web flasher</td>
+<td><code>site/static/js/flasher/usmart.js</code>, <code>iap.js</code> and <code>iapui.js</code> load the universal <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr> through the vendor firmware's USMART console (Stub from the vendor firmware, below), then back up and install through the stub as on a radio that runs RadioFoundry. The IAP loader above is the recovery route: a reinstall, or a backup put back, when nothing answers on the cable. The vendor firmware has no boot ROM window (that exists only once RadioFoundry's first stage is installed) (measured)</td>
+</tr>
+<tr>
+<td>Hardware batch check</td>
+<td>The batch (variant) is the code after <code>909E.</code> in the version string the firmware fills in at boot (4.2). Only the <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> copy, the Version screen and the identify reply carry it; the program flash holds the placeholder <code>909E.D6x</code>, so a flash read can't tell the batch. Builds, addresses and the routes the web flasher takes: 7.1. The IAP loader can't tell it either (its banner <code>Read_2M_V1.08B</code>, Jun 30 2023, carries no batch) (measured on a PRO)</td>
+</tr>
+<tr>
+<td>Web flasher profile</td>
+<td><code>boards/db25d/board.toml</code>: update family <code>serial-iap</code> (the IAP loader above), <code>stock_console = &quot;usmart&quot;</code> for the vendor builds it knows (018 and 020), a 2 MB program flash, its data memory the NAND (a backup reads the whole NAND through the stub's NAND path), and the calibration's two copies (<code>calibration</code>: program flash 0x1FE000, NAND 0x280000 before the stock bad-block remap, which the flasher follows by looking a block later each time, &quot;TUNE&quot;), the first stage's size and signature from <code>board.mk</code> (<code>BOOT_SIZE</code>, <code>BOOT_SIGNATURE</code>). The first stage is the only way into the stub from a radio that runs RadioFoundry without answering. In the IAP recovery route the page installs the first stage, RadioFoundry and the codec slot (<code>rfoundry_db25d_install.bin</code> with the slot merged in), which must start with the first stage's signature, or restores a backup's application area and slot. The site's tests (<code>site/tests/iap.test.mjs</code>) run the console stub load and the IAP write against simulated radios (measured on a radio: the sequences in this table)</td>
+</tr>
+<tr>
+<td>USMART console</td>
+<td>UART1, the same port. A command is one frame in one write: <code>@AT</code>, one filler byte (not CR or LF), the text, CR LF; each byte must follow within 20 ms, and an unframed line is ignored. <code>read_addr(0xADDR)</code> answers <code>read_addr(0XADDR)=0XVALUE;</code>, <code>write_addr(0xADDR,0xVALUE)</code> echoes <code>write_addr(0XADDR,0XVALUE);</code>; the application's own log lines follow on the same port. The console's command table is copied to RAM 0x18000840 at boot; its <code>cmd_rec</code> entry (+8, 0x18000848) is called through the table for every frame except <code>01</code> and <code>DMRCALL</code>. The version string <code>EARSAB.0NN</code> is at 0x03079F3D (018) and 0x0307DCCD (020)</td>
+</tr>
+<tr>
+<td>Stub at power-on</td>
+<td>RadioFoundry's first stage offers the boot ROM's handshake on UART1 for about 0.5 s at every power-on and takes blocks below 0x4E000. The universal stub loads at 0x10000 there as on the other radios: <code>stubtool PORT --wait 120 --board db25d --write-app IMAGE</code>, then a power cycle (older stubs: add <code>--legacy-stub --load-base 0x30000</code>). The radio programming utility's Recover at Power-On does the same (boot/README.md) (measured)</td>
+</tr>
+<tr>
+<td>Stub from a running RadioFoundry</td>
+<td>CONFIG_STUB_ENTRY is on: <code>stubtool --rfoundry-enter</code> asks the firmware for its stub span (debug link STUB INFO) and loads the universal stub there (RadioFoundry restores the loader's clocks before the jump, section 2.1). The span is 0x30000-0x4FFFF in a build without <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> (<code>HRC_STUB_BASE</code> in <code>config.mk</code>; boards/db25d/fm_only.ld keeps RadioFoundry's RAM below it), 0x1D000-0x2EFFF with <code>CONFIG_DMR=y</code> (8). The stub copies itself from the load address to 0x30000 and runs there (in a DMR build from 0x1D000; in a build without DMR it is already there), so one command (<code>stub/db25d_update.sh IMAGE PORT</code>) installs a DMR or a non-DMR image from either kind of build. The tool reads <code>board=</code> from VERSION and sends the DB25-D profile in CONFIG (power latch PTB13, power key PTB12, UART1 only, NAND), and checks the echo before writing. <code>--legacy-stub</code> and <code>--rfoundry-stub FILE</code> load a position-dependent stub instead, refused if linked for another span; the power-on stage catch recovers a hang. <code>--boot reset</code> restarts into RadioFoundry: the soft reset leaves the power latch on, and the loader goes through the stage again. No keys or power cycle for an update (measured)</td>
+</tr>
+<tr>
+<td>Stub RAM</td>
+<td>The universal stub runs at 0x30000-0x37978 on every route (image 7,004 B, <code>.bss</code> to 0x36974, 4 KB stack; <code>stub/README.md</code>, RAM placement). Deepest stack use measured on this radio: 252 B, NAND reads included. Its <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> NAND reads are read only: <code>stubtool --nand F --nand-range A:B</code>, <code>--verify-nand F</code> (measured). A sector whose <abbr class="gl" tabindex="0" title="Error correcting code: a code that repairs damaged bits, such as the one a NAND flash needs." data-more="../dev/glossary.html#t-ecc">ECC</abbr> fails answers status 0x0D to a read or checksum; the tools read its pages raw (0x13, 0x0F 0xC0, 0x03) instead. On one radio 96 sectors did, three whole blocks at 0x1740000, 0xC000000 and 0xC020000, reading all 0x00 (measured)</td>
+</tr>
+<tr>
+<td>Stub from the vendor firmware (018, 020)</td>
+<td>Run on a radio with 018 (2026-10-18): stub loaded and started, 2 MB program flash read in 68 s; 020 not yet. RAM at the hand-over: 018 code and data 0x10000-0x345C4, <code>.bss</code> to 0x525E0, interrupt stack to 0x535E0, heap to 0x53DE0; 020 <code>.bss</code> to 0x4F150, interrupt stack to 0x50150, heap to 0x50950. Both: VBR 0x10000, start-up stack top 0x50000, modem tables and the console's state in the modem <abbr class="gl" tabindex="0" title="Static RAM: the processor&#x27;s fast working memory." data-more="../dev/glossary.html#t-sram">SRAM</abbr> at 0x18000800 and up. The free window both share is 0x54000-0x58000. The console writes the universal stub there word by word (<code>write_addr</code>, little endian, unpatched), checks it with <code>read_addr</code>, and starts it by writing 0x00054000 to <code>cmd_rec</code> (0x18000848) and sending one more frame; that word is never read back, since the read would start it too. The stub masks interrupts, hands the program flash back from execute-in-place, and copies itself to 0x30000 (the vendor <code>.bss</code>, dead once interrupts are off; the 7,004-byte source at 0x54000 doesn't overlap). Then <code>stubtool PORT --attach --board db25d</code>. The vendor firmware leaves the loader's clocks and uses UART1 as RadioFoundry does, so the same profile applies; the host measures the clock. An address inside the interrupt stack (020: 0x4F150-0x50150) is not safe for the load</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="71-vendor-builds-and-the-hardware-variant">7.1 Vendor builds and the hardware variant</h3>
+<p>Every vendor build has the USMART console and the identify handler below. The version string's word in the program flash
+(<code>at</code>, four words read through <code>read_addr</code> tell the build) and its RAM copy (<code>ram</code>, the variant filled in) per build,
+from static analysis of the vendor files:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Build</th>
+<th>Date</th>
+<th><code>at</code></th>
+<th><code>ram</code></th>
+<th>Heap end</th>
+<th>Stub window</th>
+<th><code>cmd_rec</code> (hijack)</th>
+<th>Stub load</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>018</td>
+<td>2025-01-21</td>
+<td>0x03079F3C</td>
+<td>0x18000AF4</td>
+<td>0x53DE0</td>
+<td>0x54000, 16 KB</td>
+<td>0x18000848</td>
+<td>Measured</td>
+</tr>
+<tr>
+<td>020</td>
+<td>2026-01-10</td>
+<td>0x0307DCCC</td>
+<td>0x18000B74</td>
+<td>0x50950</td>
+<td>0x54000, 16 KB</td>
+<td>0x18000848</td>
+<td>Same window and table as 018 (7)</td>
+</tr>
+<tr>
+<td>018</td>
+<td>2024-09-23</td>
+<td>0x03079C64</td>
+<td>0x18000AFC</td>
+<td>0x54130</td>
+<td>0x55000, 12 KB</td>
+<td>0x18000848</td>
+<td>Offered as a try</td>
+</tr>
+<tr>
+<td>018</td>
+<td>2024-05-09</td>
+<td>0x030797A0</td>
+<td>0x18000AF8</td>
+<td>0x54290</td>
+<td>0x55000, 12 KB</td>
+<td>0x18000848</td>
+<td>Offered as a try</td>
+</tr>
+<tr>
+<td>018</td>
+<td>2023-07-06</td>
+<td>0x03075AAC</td>
+<td>0x18000A74</td>
+<td>0x54990 (interrupt stack top 0x54190)</td>
+<td>0x55000, 12 KB</td>
+<td>0x18000840</td>
+<td>Offered as a try</td>
+</tr>
+<tr>
+<td>018</td>
+<td>2022-11-23</td>
+<td>0x030759EC</td>
+<td>0x18000A64</td>
+<td>0x554A0</td>
+<td>0x56000, 8 KB</td>
+<td>0x18000840</td>
+<td>Offered as a try</td>
+</tr>
+<tr>
+<td>017</td>
+<td>2022-10-21</td>
+<td>0x030759E8</td>
+<td>0x18000A60</td>
+<td>0x553C0</td>
+<td>0x56000, 8 KB</td>
+<td>0x18000840</td>
+<td>Offered as a try</td>
+</tr>
+<tr>
+<td>Unknown</td>
+<td></td>
+<td></td>
+<td>found in 0x18000A00-0x18000BFF</td>
+<td></td>
+<td>0x56000, 8 KB</td>
+<td>0x18000848</td>
+<td>Offered as a try</td>
+</tr>
+</tbody>
+</table></div>
+<p>The heap is the 2 KB above the interrupt stack, which sits above <code>.bss</code>; the <abbr class="gl" tabindex="0" title="Real-time operating system: the scheduler that runs the firmware&#x27;s tasks." data-more="../dev/glossary.html#t-rtos">RTOS</abbr> task stacks are static in <code>.bss</code>.
+In five builds the heap reaches above 0x54000, so the proven window would overwrite it there: each build has its own
+window above its heap, and SRAM ends at 0x58000. The 2022-2023 console structure has no pad word, so <code>cmd_rec</code> is its
+first table entry (seen in the 2022-11-23 frame handler, which calls the word 8 bytes after 0x18000838; the others by
+the same function spacing). The table holds code addresses in every build: before an untried load the page reads the
+hijack word and writes nothing unless it holds an application address. The values of the untried builds are from
+static analysis; <abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="../dev/glossary.html#t-uart">UART</abbr> <abbr class="gl" tabindex="0" title="Direct memory access: moving data between memory and a peripheral without the processor." data-more="../dev/glossary.html#t-dma">DMA</abbr> set up at run time was not traced.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Finding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Version in RAM</td>
+<td>The <code>.data</code> copy of the version string. The boot code finds its first <code>.</code> and writes the main chip's letter 2 bytes after it and the LO's 3 bytes after it (4.2). Six words cover the string and its terminator</td>
+</tr>
+<tr>
+<td>Identify</td>
+<td>The vendor programming software sends <code>Flash Read </code> + u32 BE 0x3C + u32 BE 0x37 + 12 zero bytes; the IAP probe's 19-byte <code>Flash Read </code> + 0 + 1 has the same prefix. The application answers <code>  Read_2M_</code>, a NUL, a few binary bytes, then the RAM version string, its build date and time and <code>+DRS-300UV+136-480MHZ+</code>. The loader's answer starts <code>Read_2M_V1.08B</code> instead. The screen then shows &quot;Flash Read&quot; and the console stays silent until a power cycle. Read only (measured with the vendor software on a PRO; the reply to the 19-byte form is unverified)</td>
+</tr>
+<tr>
+<td>Variants in the registry</td>
+<td><code>[hardware] variants</code> in <code>board.toml</code>: DBB supported; D64, D66 and D6T run the same image at <code>testing</code>: their chips are driven (4.8), untested on a radio</td>
+</tr>
+<tr>
+<td>Web flasher</td>
+<td>Console answers on a build with a proven stub load: the variant from <code>ram</code>, then the backup and install. Other builds: the variant from <code>ram</code>; an unknown build, or a <code>ram</code> that doesn't read as a version: found by reading 0x18000A00-0x18000BFF (never the identify, which silences the console). The page then offers three ways: try the stub load anyway (refused before any write unless the build's hijack word, table above, holds an application address; a failure is reported as expected, and a power cycle recovers it), update the vendor firmware to a proven build first, or install through the IAP loader without a backup. A backup made by the try offers its program memory read to the project with a problem report, from the install's check step and the backup task's done screen alike. Console silent: the identify. Only the IAP loader answers: the user picks the variant from the Version screen, or says it can't be read. A variant no image runs stops an install before any write; the backup task goes on, since it only reads</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="8-codec">8. Codec</h2>
+<p>The <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">vocoder</abbr> library (V1.9.6) runs AMBE+2 in software on the CK803S and the frames pass
+through the <abbr class="gl" tabindex="0" title="Central processing unit." data-more="../dev/glossary.html#t-cpu">CPU</abbr>. RadioFoundry hosts it as on the DM-32UV (<a href="codec-dm32.html">codec-dm32.md</a>): the user's
+machine carves the codec out of the vendor firmware file or the radio's program flash into a slot in the image, and the firmware
+copies it to the board's codec window at the top of <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> at boot and moves the addresses its codec map lists
+(<a href="codec-placement.html">codec-placement.md</a>). No codec bytes are in the repository or in a release.</p>
+<h3 id="81-vendor-firmware-files">8.1 Vendor firmware files</h3>
+<p>The 2024-05-09 build is the first a PRO can run (1), and older images must never be loaded on one, so no profile exists
+for loading them. The tool only carves the codec out of an older file and never writes the old image, so the
+2023-07-06 file is a codec source (8.4). Four 018 files are supported, all plain images linked at 0x0300C000 (no header,
+no container, no key), and the 020 build from a read of the radio's program flash. The four 018 files carry the same
+codec code, built from the same library, with different literal pool words.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>File</th>
+<th>Size</th>
+<th>sha256</th>
+<th>Profile id</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DB25-D PRO 909E.Dx.EARSAB.018_2025-01-21.bin</code></td>
+<td>846,700</td>
+<td><code>341536cbac0c1b2471f8198ebc456946e5fe026d96d153df14d6aa5566304f8b</code></td>
+<td><code>db25d-2501</code></td>
+</tr>
+<tr>
+<td><code>DB25-D PRO 909E.Dx.EARSAB.018_2024-09-23.bin</code></td>
+<td>845,900</td>
+<td><code>f2a4b214720b971b58cdadcc53d44695e1462b75296afc41f2a0b53a704d36b4</code></td>
+<td><code>db25d-2409</code></td>
+</tr>
+<tr>
+<td>2024-05-09 build (<code>909E.D6x.EARSAB.018</code>)</td>
+<td>843,944</td>
+<td><code>9e199f54cd6545d153d39542ca5be3ac1076ee215eb93ca630a83cbdbbff4606</code></td>
+<td><code>db25d-2405</code></td>
+</tr>
+<tr>
+<td><code>DB25-D_909E.Dx.EARSAB.018_2023-07-06.bin</code> (untested on a radio)</td>
+<td>808,292</td>
+<td><code>03f3ddfe1c4117ddf4ed64eaa1f72cd24783d5d0de8933ce53651e02b4fe2e68</code></td>
+<td><code>db25d-2307</code></td>
+</tr>
+<tr>
+<td>909E.DBB.EARSAB.020, a 1 MB program flash read (<code>stub/stubtool.py --progmem</code>)</td>
+<td>1,048,576</td>
+<td>none: found by the codec's own hashes</td>
+<td><code>db25d-020</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>The 020 build carries a different compile of the codec, and its profile works from a read of the radio's program flash. A radio can run any supported codec whatever its own firmware version, because
+the codec is plain code and tables. The 020 build:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>020</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Code start (the two signature words)</td>
+<td>flash 0x030C142C</td>
+</tr>
+<tr>
+<td>Code</td>
+<td>Another compile: 32 of the 19,144 words match 018's at the same offset. Most 32-byte runs of the 018 code are there, shifted by 0x4F0, 0x430 and other amounts</td>
+</tr>
+<tr>
+<td>Code run address</td>
+<td>0x180B8, inferred: the RAM image starts at flash 0x030B9374 (its first 256 bytes are 018's, and occur once), and 020's start-up copy is in the 4 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> the read lacks</td>
+</tr>
+<tr>
+<td>Tables</td>
+<td>Byte-identical to 018's (same sha256), at flash 0x0307E760</td>
+</tr>
+</tbody>
+</table></div>
+<p>0x180B8 lay inside RadioFoundry's RAM in the layout from before the move. With the codec copied to the board's window (8.3), the
+run address only sets the offset added to the three words its codec map lists. The 020 code is 78,172 bytes, the
+largest of the four builds, and sizes the window.</p>
+<p>The web flasher finds the codec by content: the two signature words, then the SHA-256 of the code and the tables against
+every profile, wherever an image or a backup holds them. A vendor firmware file not known by its own SHA-256 is placed as the
+radio would hold it and searched the same way, so a re-release that carries a known codec unchanged works. When the
+signature is there but no profile matches, the page says that the radio's codec is a build RadioFoundry can't use and asks for
+a supported file; the backup is not affected.</p>
+<h3 id="82-where-the-codec-is">8.2 Where the codec is</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>2025-01-21</th>
+<th>2024-09-23</th>
+<th>2024-05-09</th>
+<th>2023-07-06</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Code: file offset / flash address</td>
+<td>0xB5C58 / 0x030C1C58</td>
+<td>0xB592C / 0x030C192C</td>
+<td>0xB5130 / 0x030C1130</td>
+<td>0xAB9D4 / 0x030B79D4</td>
+</tr>
+<tr>
+<td>Code: length</td>
+<td>0x12B20 (76,576)</td>
+<td>same</td>
+<td>same</td>
+<td>same</td>
+</tr>
+<tr>
+<td>Code: run address (RAM)</td>
+<td>0x1CEB0</td>
+<td>0x1CEB0</td>
+<td>0x1CEB0</td>
+<td>0x1795C</td>
+</tr>
+<tr>
+<td>Tables: flash address</td>
+<td>0x0307A8EC</td>
+<td>0x0307A614</td>
+<td>0x0307A150</td>
+<td>0x030760E4</td>
+</tr>
+<tr>
+<td>Tables: length</td>
+<td>0x2D50 (11,600)</td>
+<td>same</td>
+<td>same</td>
+<td>same</td>
+</tr>
+<tr>
+<td>Tables: run address (modem SRAM)</td>
+<td>0x180014AC</td>
+<td>0x180014B4</td>
+<td>0x180014B0</td>
+<td>0x180010B4</td>
+</tr>
+<tr>
+<td>First two code words</td>
+<td>0x152514D8, 0x74C776CD</td>
+<td>same</td>
+<td>same</td>
+<td>same</td>
+</tr>
+<tr>
+<td>sha256 of the carved tables</td>
+<td><code>e1e4358224...</code></td>
+<td>same</td>
+<td>same</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Layout facts:</p>
+<ul>
+<li>The codec is the code and two table groups (752 + 10,844 bytes, as in <a href="codec-dm32.html">codec-dm32.md</a>); the tables are
+byte-identical in all three 018 files and sit 4 bytes apart here. All 58 distinct modem <abbr class="gl" tabindex="0" title="Static RAM: the processor&#x27;s fast working memory." data-more="../dev/glossary.html#t-sram">SRAM</abbr> addresses the codec's
+literal pools hold lie inside the table window.</li>
+<li>The code ends at RAM 0x2F9D0 (run address 0x1CEB0 plus the length), and no function reachable from the entry points
+calls anything outside the window.</li>
+<li>The entry points, as offsets from the code start, are the DM-32 046 build's except the <abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="../dev/glossary.html#t-fec">FEC</abbr> init: decode 0x0, encode
+0x260, decoder init 0xB4, decoder set 0x84, encoder init 0x314, encoder set 0x2E4, FEC init 0x1DCC. The init sequence
+(the state offsets, the 14 encoder parameters, the order of the calls, the first decode) is the one
+<code>platform/hrc7000/vocoder.c</code> runs.</li>
+<li>A read of the radio's program flash lacks the first 4 KB; that doesn't matter here, because the 018 codec lies far above
+it and the 020 codec is a separate profile (above).</li>
+</ul>
+<p>The code's literal pools hold three absolute codec addresses and 58 table addresses, so the code runs only at these
+addresses (as the DM-32UV's). The build reserves them. The codec window is one block at the top of RAM (<a href="codec-placement.html">codec-placement.md</a>), so the 020 build's run address, which
+would lie inside RadioFoundry's RAM, is no obstacle.</p>
+<h3 id="83-build-and-flash">8.3 Build and flash</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Codec file</td>
+<td>Put one of the files above in <code>codecs/</code> (any name; the build recognizes it by sha256)</td>
+</tr>
+<tr>
+<td>Build</td>
+<td><code>make BOARD=db25d</code>. Next to <code>rfoundry_db25d_install.bin</code> (first stage + application) it writes <code>build/db25d/rfoundry_db25d_codec.bin</code>: the same, padded with 0xFF to 0x030E8000, then the 128-byte slot header, the code and the tables. With no supported file in <code>codecs/</code> the build says so and writes only the plain images</td>
+</tr>
+<tr>
+<td>Slot</td>
+<td>0x030E8000..0x03100000 (96 KB; 88,316 bytes used for 018, 89,912 for 020): the version 2 header of <code>platform/hrc7000/codec_slot.h</code>, the code and tables as the vendor firmware has them, and the relocation list. <code>tools/hrc7000_codec.py --board db25d --stock FILE</code> writes it from a vendor firmware file or a program flash read</td>
+</tr>
+<tr>
+<td>Flash</td>
+<td>The merged image goes where <code>_install.bin</code> goes (the loader's update mode or <code>stubtool --write-app</code>, 7): it is the stage, the application and the slot in one file. The loader writes as far as the image reaches, about 1 MB, so the first flash takes a while; <code>stubtool --write-app</code> writes only the sectors that changed</td>
+</tr>
+<tr>
+<td>Check</td>
+<td>The <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>'s VERSION reports <code>codec=db25d-2501</code> (or <code>-2409</code>, <code>-2405</code>, <code>-020</code>) when the slot is valid, <code>absent</code> when it's built with <code>CONFIG_DMR=y</code> and the slot is missing, damaged or version 1</td>
+</tr>
+<tr>
+<td>RAM</td>
+<td><code>CONFIG_DMR=y</code> links <code>boards/db25d/memory.ld</code>: one region for RadioFoundry, 0x10000..0x44E00 (216,576 B: the vectors, the slot engine, the core's CPU state, data, bss with the <abbr class="gl" tabindex="0" title="Real-time operating system: the scheduler that runs the firmware&#x27;s tasks." data-more="../dev/glossary.html#t-rtos">RTOS</abbr> heap, the start-up stack), and the codec window 0x44E00..0x58000 (78,336 B) at the top. The tables go to modem SRAM 0x180010B4..0x18004360, which the script leaves out. The runtime <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr> window is 0x45000..0x58000 (inside the codec window, after the codec is parked; <code>HRC_STUB_BASE</code> in <code>config.mk</code>). The universal stub loads there and copies itself to 0x30000, which is RadioFoundry's RAM and dead after the jump (7). Without <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> the span is 0x30000 (<code>boards/db25d/fm_only.ld</code>)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="84-codec-data-stays-where-stock-put-it-open-item">8.4 Codec data stays where stock put it (open item)</h3>
+<p>The merge moves the codec's code into RadioFoundry's codec window, but not its tables. They are copied to the modem
+SRAM address the stock build linked them to, because the code's literal pools hold 58 absolute table addresses and
+the slot's relocation list rewrites only the three code addresses (<a href="codec-placement.html">codec-placement.md</a>). So the
+board reserves the union of its builds' table windows (<code>__codec_tab_lo..hi</code> in <code>boards/db25d/memory.ld</code>), and the
+firmware refuses a slot whose tables lie outside it.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Build</th>
+<th>Tables run at</th>
+<th>Window start</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>018 2025-01-21, 2024-09-23, 2024-05-09, 020</td>
+<td>0x180014AC..0x18001610</td>
+<td>0x180014AC</td>
+</tr>
+<tr>
+<td>018 2023-07-06</td>
+<td>0x180010B4</td>
+<td>0x180010B4 (lowered for it)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Gotcha: a build whose tables run below the window can't be added by writing a map and a profile. The map is fine and
+<code>hrc7000_codec.py --self-test</code> fails (&quot;tables inside the table window&quot;). The window start has to drop to the build's
+table address first. That reserves more modem SRAM for every DB25-D image. Nothing in the tree uses
+0x180010B4..0x180014AC (the microphone <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> buffers are at 0x18000000, the crash record at the top), but stock keeps its
+console state at 0x18000840 and up, so check a new window against the build's <code>ram</code> and heap addresses in 7.</p>
+<p>The 2022-11-23 and 2022-10-25 C7000 Ham files carry 020's compile (entry offsets as 020, FEC init +0x1EB8, code
+78,308 bytes) with tables at 0x18001104 and 0x18001118. They are not supported: the same widening would cover them,
+but nothing has run their code and they are a different compile. A static map for each was made and is not in the
+repository. Their table window is 0x2D50 bytes, as in every build: a carve past the end had made it look longer.</p>
+<p>To look into later, moving the codec's data along with its code:</p>
+<ul>
+<li>The maps already list the 69 <code>table_refs</code> sites per build and the objects and groups they point into, so the
+rewrite is the code move's: add (board window start - build's table address) to each site and keep each group's
+distance. With that the window could stay at 0x180014AC and every older build would fit.</li>
+<li>The slot loader and <code>hrc7000_codec.py</code> apply <code>self_refs</code> only. They would need to apply <code>table_refs</code> too (the slot
+header carries the tables' RAM address already, <code>tab_ram</code>).</li>
+<li>Unknown: whether the HR_C7000 hardware or its <abbr class="gl" tabindex="0" title="Read-only memory: code fixed in the chip." data-more="../dev/glossary.html#t-rom">ROM</abbr> expects the tables at those modem SRAM addresses, or only stock put
+them there. A voice <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> and <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> test on a radio with moved tables answers it. Until then the tables stay put.</li>
+</ul>
+<h2 id="9-how-radiofoundry-uses-it-make-boarddb25d">9. How RadioFoundry uses it (<code>make BOARD=db25d</code>)</h2>
+<p>State on a radio:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>State</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Platform</td>
+<td><code>platform/hrc7000</code>, image at 0x0300C000 behind the IAP loader; the host port on UART1</td>
+</tr>
+<tr>
+<td>RF</td>
+<td><code>drivers/rf/bk4819</code>: main and LO on one 3-wire bus. FM <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> by the main chip at the IF with the LO at f + 51.55 MHz. RX sub-audio: <abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-ctcss">CTCSS</abbr> and <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-dcs">DCS</abbr> from the chip's detector (4.7)</td>
+</tr>
+<tr>
+<td>Calibration</td>
+<td>Both copies are read at boot, the higher save counter wins (6.1, 6.4); <abbr class="gl" tabindex="0" title="Digital to analog converter." data-more="../dev/glossary.html#t-dac">DAC</abbr> A and DAC C are set from it for receive. The diagnostics page shows the copy used, its save counter and the <abbr class="gl" tabindex="0" title="Power amplifier: the stage that boosts the transmit signal to the output power." data-more="../dev/glossary.html#t-pa">PA</abbr> values at 446 and 146 MHz, and a line with the PA drive for the tuned frequency</td>
+</tr>
+<tr>
+<td>NAND</td>
+<td><code>drivers/flash/spi_nand</code> on SPI0 (6.5). Programs and erases only inside RadioFoundry's range (6.6). The diagnostics page shows its ID and the page reads <abbr class="gl" tabindex="0" title="Error correcting code: a code that repairs damaged bits, such as the one a NAND flash needs." data-more="../dev/glossary.html#t-ecc">ECC</abbr> had to correct</td>
+</tr>
+<tr>
+<td>TX</td>
+<td>Analog FM (4.4) and <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> (4.5), both measured on the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench with the frequency trim of 4.6. Refused without a valid calibration page or outside the bands. The diagnostics page shows the PA drive for the tuned frequency, low / high</td>
+</tr>
+<tr>
+<td>Display</td>
+<td><code>st7735</code> on a 4-wire serial bus: SPI2 or bit-banged, chosen by the <abbr class="gl" tabindex="0" title="Analog to digital converter." data-more="../dev/glossary.html#t-adc">ADC</abbr> 2 strap</td>
+</tr>
+<tr>
+<td>Power</td>
+<td>No battery (<code>CAP_NO_BATTERY</code>): a mobile on a fixed 13.8 V supply with no supply reading (3.3). The core shows no battery icon, percentage, Tools &gt; Battery page, Battery saver or Low battery warning setting, and has no battery monitor, so it never warns or refuses to <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> for the battery. <code>hal_power_t</code> has no <code>battery_mv</code> or <code>battery_pct</code>. The diagnostics page shows the raw ADC channels</td>
+</tr>
+<tr>
+<td>Keys</td>
+<td>Matrix and encoder positions checked on the radio. VOL/SQL is <code>ACT_VOLUME</code>: the volume screen, then the encoder (<code>radio-features.md</code> 4.2)</td>
+</tr>
+<tr>
+<td>Volume</td>
+<td>No knob (<code>hal_power_t.volume()</code> is -1): the stored step (0..16) goes to <code>hal_radio_t.volume()</code> and sets the BK4819 AF DAC gain (3.3) for FM and the <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> line out gain for DMR voice and beeps; the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> sets it too (op 30). Checked on the radio in FM: the steps change the level and step 0 is silent. DMR: not yet checked on the radio</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td><code>CONFIG_NAND_STORAGE</code> (on): settings kept in <abbr class="gl" tabindex="0" title="The flash chip type that holds large data, such as the codeplug and contacts, in some radios." data-more="../dev/glossary.html#t-nand">NAND</abbr> blocks 1920-1951 through <code>drivers/flash/nand_sectors</code> (6.6). On the owner's radio the region mounted clean (no foreign data, no bad blocks) and the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> frequency survived a chip reset</td>
+</tr>
+<tr>
+<td>Codeplug over the cable</td>
+<td><code>CONFIG_CPS_OPENFW</code> (on): the open-firmware <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> on the host link (UART1, 115200) over the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> areas of 6.6, at the <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr> radios' addresses (<abbr class="gl" tabindex="0" title="Electrically erasable programmable read-only memory: a small chip that keeps settings." data-more="../dev/glossary.html#t-eeprom">EEPROM</abbr> part at 0, flash part at 0x20000, no <code>--offset</code>). Radio info reports type 6; no <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr> <abbr class="gl" tabindex="0" title="Read-only memory: code fixed in the chip." data-more="../dev/glossary.html#t-rom">ROM</abbr> or flash security register area; no calibration window. <code>tools/cps_client.py --port /dev/ttyUSB1 read / write / verify</code>, <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr> should work as well (not tried). The channels and zones come from the stored codeplug (<code>core/codeplug</code>), which the radio re-reads at the end of a session. Host-tested on a simulated NAND with power cuts; read, write and verify run on the owner's radio (read 63 s, write 76 s). <code>CONFIG_APRS_RX</code> and <code>CONFIG_APRS_IGATE</code> are off (no FM receive <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> on this radio)</td>
+</tr>
+<tr>
+<td>Codec</td>
+<td>Profiles for three 018 vendor firmware files and the 020 program flash read (8); <code>make</code> merges one into <code>rfoundry_db25d_codec.bin</code> when its file is in <code>codecs/</code>. On the owner's radio (2026-10-19), with the code moved to the codec window: the 020 read and the 2024-09-23 file each give VERSION <code>codec=db25d-020</code> / <code>db25d-2409</code> and decode a bench voice call with every one of its 234 <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE</abbr> frames</td>
+</tr>
+<tr>
+<td>DMR</td>
+<td><code>CONFIG_DMR=y</code> (default on): the shared HR_C7000 glue of the DM-32UV with the main BK4819's digital set (4.5). Receive works on the radio: a bench voice call decodes with every AMBE frame, and a bench <abbr class="gl" tabindex="0" title="Short message service: text messages. On DMR, short data carries them." data-more="../user/22-glossary.html#t-sms">SMS</abbr> arrives (4.5). Speaker audio for DMR not yet heard. Transmit (<code>DB25D_DMR_TX=1</code>, default on): the per-burst TX sequence from an <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> task (4.5), checked on the SDR bench; <code>DB25D_DMR_TX=0</code> builds receive only. Builds clean with every DMR feature, the network ones included (the next rows)</td>
+</tr>
+<tr>
+<td>Hotspot</td>
+<td><code>CONFIG_HOTSPOT=y</code> (default on): the <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="mmdvm-protocol.html">MMDVM</abbr> host port on UART1, simplex. The core's <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> drives the same <code>hal_dmr_modem_t</code> as a call (<code>tx_begin</code>, <code>tx_queue</code>, <code>tx_end</code>) and keys through <code>hal_radio_t.tx()</code> in DMR mode, so it runs on the per-burst TX path of 4.5 (the <code>dmrrf</code> RF task) with nothing added to the board: whole calls and data go out as the host sends them, and a retune (<code>rx()</code>) disarms the keying until the hotspot arms it again. A split RX / TX frequency pair works as a call's does (each burst tunes to the TX frequency, then back). Not offered: the split-duplex roles (<code>CONFIG_HOTSPOT_SPLIT=n</code>: the driver has no continuous <abbr class="gl" tabindex="0" title="Base station: the repeater or modem side of a DMR link, as opposed to the radio (MS)." data-more="../dev/glossary.html#t-bs">BS</abbr> outbound, so the core would refuse the role). <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="sfr.html">SFR</abbr> (<code>CONFIG_SFR</code>, on) runs on the burst timing of 4.5: <code>test_hotspot_sfr.py</code> on the radio (2026-10-25, a <abbr class="gl" tabindex="0" title="Ultra high frequency: 300 MHz to 3 GHz. The amateur 70 cm band is UHF." data-more="../user/22-glossary.html#t-uhf">UHF</abbr> test frequency) passes the mode test; the repeat test passed 1 of 4 runs. A passing run sent the call up and repeated it (24 bursts, 0 of 54 frames lost, about 130 bits corrected, the repeat on the received slot grid); two runs failed the SDR's check for the repeat's <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr> on <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">TS2</abbr>, and one sent only 7 of 18 voice frames up. Not chased yet. Checked on the radio against the SDR bench modem (the test frequency, <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr> 2): GET_VERSION, SET_FREQ, SET_CONFIG, SET_MODE and GET_STATUS answer (status DMR, TS2 space 22); all 13 cases pass (<code>rf_voice8</code>, <code>rf_late</code>, <code>rf_long</code>, <code>rf_lost</code>, <code>rf_b2b</code>, <code>rf_csbk</code>, <code>rf_data_unconf</code>, <code>rf_data_conf</code> for uplink frames; <code>net_voice</code>, <code>net_voice_ctl</code>, <code>net_data</code>, <code>net_data_conf</code>, <code>net_b2b</code> for calls sent from the host and heard on air). The radio is back on its channel within 25 s of the last frame</td>
+</tr>
+<tr>
+<td>DMR VFO</td>
+<td><code>CONFIG_VFO_DMR=y</code> follows the default: the core's DMR VFO (<code>dmr-voice.md</code> 2.1; the VFO quick menu's Mode tile switches it FM / DMR). On the radio (2026-10-17, debug link): mode, color code, slot and a group or private target set and kept across leaving the VFO and a restart; on the test frequency, CC 2, TS 1 and the test <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr> a bench call received with every voice burst (120 voice, 8 headers, 3 terminators), and a 4 s key-up decoded by the bench modem as a group call to the test talkgroup (72 voice bursts, 216 AMBE frames). A record written by an older build keeps the color code its FM VFO stored (often 0) until the user sets one</td>
+</tr>
+<tr>
+<td>P25 and NXDN</td>
+<td><code>CONFIG_P25</code>, <code>CONFIG_P25_TRUNK</code> and <code>CONFIG_NXDN</code> (default on): <code>board.air</code> and <code>board.baseband</code> are the HR_C7000's provider and receive tap (<a href="modem-hrc7000.html">modem-hrc7000.md</a> 10), as on the DM-32UV; a session runs in DMR with the main BK4819's digital set, and the glue keys the transmitter once for the whole transmission. The radio reports fits for both NXDN rates; the mode switch and settings tests pass on the radio. Receive works on the SDR bench: P25 and NXDN at both rates. Transmit keys once and holds for the whole transmission (the RF-burst task's <code>b</code> counters); the SDR bench didn't hear it at the lowest power into the dummy load, FM included, so transmit on air is unconfirmed (the fits say untested)</td>
+</tr>
+<tr>
+<td>IP link</td>
+<td><code>CONFIG_NET_PPP=y</code> (default on): <abbr class="gl" tabindex="0" title="Point-to-point protocol: IP over a serial link." data-more="ppp.html">PPP</abbr> on the host port's UART1 (<code>board_t.netif</code> is <code>hostlink_ppp_netif</code>, as on the DM-32UV), and with it <code>CONFIG_DMR_IP_GATEWAY</code> and the services on it: <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr> compression, DMR <abbr class="gl" tabindex="0" title="DMR packet data the receiving radio acknowledges. What didn&#x27;t arrive is sent again." data-more="../user/22-glossary.html#t-confirmed-data">confirmed data</abbr>, <abbr class="gl" tabindex="0" title="Transmission Control Protocol: IP connections with ordered, guaranteed delivery." data-more="../dev/glossary.html#t-tcp">TCP</abbr> (3 connections, <code>TCP_CONNS</code>), <abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="../user/22-glossary.html#t-kiss">KISS</abbr>, HTTP (gzip), rigctl, APRS-IS, <abbr class="gl" tabindex="0" title="Multicast DNS: finding a device on a local network by a `.local` name." data-more="mdns.html">mDNS</abbr>, <abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="tftp.html">TFTP</abbr>, <abbr class="gl" tabindex="0" title="Simple Network Management Protocol: reading a device&#x27;s state over the network." data-more="snmp.html">SNMP</abbr> and the <abbr class="gl" tabindex="0" title="A radio a dispatch program on a computer uses to reach the fleet over the air." data-more="../user/22-glossary.html#t-control-station">control station</abbr>. <abbr class="gl" tabindex="0" title="The UDP stream that carries a call&#x27;s audio between RadioFoundry and a network gateway." data-more="../dev/glossary.html#t-usrp">USRP</abbr> is off (<code>CONFIG_NET_USRP=n</code>): its 8 kHz 16-bit PCM is 128 kbit/s plus headers, more than the 115200 baud host port carries, and a heard call started the stream. Checked on the radio with pppd and <code>tools/rfoundry_ppp.sh</code>: <abbr class="gl" tabindex="0" title="A MOTOTRBO system of several Capacity Plus sites joined by a network." data-more="../dev/glossary.html#t-linked-capacity-plus">LCP</abbr> and IPCP come up, ping 30 ms, 5/5; HTTP 200 (also gzip); rigctl <code>f</code> answers the channel frequency over TCP 4532; SNMP <code>sysName.0</code> answers; the debug link over UDP answers; 48 HTTP requests in six parallel loops all succeed with no PPP errors and no TCP retransmits (six clients against three connection slots: <code>tcp.no_slot</code> counted 7 SYNs that found no slot, and curl retried them); <code>rfoundry_ppp.sh --stop</code> sends the LCP Terminate and the debug link answers on the serial port again. Found on the radio: with the USRP stream on, a bench DMR call heard while PPP was up wedged the host link task (<code>send_rx()</code> in <code>core/usbaudio/usrp_net.c</code> never left its loop, because a frame takes 30 ms to clock out of the <abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="../dev/glossary.html#t-uart">UART</abbr> and holds 20 ms of audio); the radio stopped answering LCP and the debug link until a power cycle. <code>send_rx()</code> now gives up after 20 ms of sending per poll (host test <code>usrpNetTest</code>). Not checked: mDNS, TFTP, APRS-IS, KISS and the control station; a DMR call heard while PPP is up, after the fix</td>
+</tr>
+<tr>
+<td>RAM</td>
+<td>Main <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> (above the codec window, 165,424 B) was 139,952 B used with DMR alone and is 150,080 B with the network and hotspot, USRP off (15.3 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> free; 155,704 B with USRP, 9.5 KB free); RAM_LO (52,912 B) went from 19,024 B to 28,584 B used (24 KB free). The network's buffers sit in RAM_LO (<code>.ram_lo</code>, as <code>RFOUNDRY_CPU_RAM</code> marks them). The <abbr class="gl" tabindex="0" title="Real-time operating system: the scheduler that runs the firmware&#x27;s tasks." data-more="../dev/glossary.html#t-rtos">RTOS</abbr> heap is 40 KB, the DM-32UV's, and holds the task stacks. Costs from the ci builds: IP gateway and PPP 15.0 KB main + 6.7 KB RAM_LO; TCP 5.0 KB + 3.4 KB; USRP 5.6 KB; SNMP 3.2 KB; HTTP 2.5 KB; hotspot 2.6 KB + 2.8 KB; roaming 2.2 KB + 0.9 KB; the rest under 1 KB each</td>
+</tr>
+<tr>
+<td>GPS</td>
+<td><code>CAP_GPS</code>, reported once the module is heard. <code>platform/hrc7000/gps_hrc.c</code> (shared with the DM-32UV, <a href="hardware-dm32.html">hardware-dm32.md</a> 12) powers it in <code>board_init</code>, listens 5 s on UART2 for one checksum-valid sentence, feeds every sentence to the <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> position source, and powers it off again when nothing is heard. Once heard, the module is powered only while Settings &gt; Location &gt; GPS is on (<code>board_t.gps</code> = <code>hrc_gps</code>, applied at start-up and on each change). The diagnostics page line <code>gps yes</code> (or <code>gps no</code>) `GOOD/BAD bBYTES on</td>
+</tr>
+<tr>
+<td>SFR</td>
+<td><code>CONFIG_SFR</code>, <code>CONFIG_SFR_DUALPATH_RX</code> and <code>CONFIG_SFR_CWID</code> follow the default (on). Standalone SFR on the SDR bench (2026-10-25, a UHF test frequency, CC 2): <code>test_sfr_standalone.py</code> repeater quality (0 inbound frames lost per 72, 170-194 bits), TX inhibit, <abbr class="gl" tabindex="0" title="A station&#x27;s callsign sent in Morse code. A standalone SFR repeater channel sends one in FM every few minutes after traffic (Settings &gt; Talk &amp; listen &gt; SFR CW ID)." data-more="../user/14-hotspot.html">CW ID</abbr> and user receive modes pass; dual-path RX receive mode not run on air. Burst timing and measurements: 4.5</td>
+</tr>
+<tr>
+<td>Left off</td>
+<td><code>CONFIG_APRS_RX</code> and <code>CONFIG_APRS_IGATE</code> (no FM receive PCM), USB and USB network (no data port), broadcast FM (not wired), air band AM (no air band receive), <code>FONT_XL</code> and <code>AUDIO_PROBE</code></td>
+</tr>
+<tr>
+<td>Older batches (FD6818 main)</td>
+<td>Driven from the same image (4.8): the chips are identified at start-up and the diagnostics page shows the batch code. Untested on a radio</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>DMR receive check</strong> (passed on the owner's radio, 4.5): build with the vendor firmware file in <code>codecs/</code> and <code>make BOARD=db25d</code>; flash <code>rfoundry_db25d_codec.bin</code>; with a DMR repeater or the SDR bench's DMR source on a channel of the zone, read the
+diagnostics page. In order: the codec line shows <code>db25d-...</code> and a non-zero tag; the sync counters move (the AF phase range isn't a level check on this board, 4.5; if nothing syncs, try the AF gain
+and RF_MODE knobs of 4.5); <code>ts</code> and <code>si</code> climb (the modem has slot timing); then V / H / T counts rise on a talk burst.
+Voice and the speaker route come last. <code>stubtool --rfoundry-enter</code> loads the <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr> into a DMR build's 0x1D000 span by itself (7).</p>
+<p><strong>DMR transmit check</strong> (passed on the owner's radio, 4.5; on a dummy load or into the SDR bench): key a
+DMR channel on the low power level. On the diagnostics page <code>b</code> (bursts keyed) and its pair (bursts ended) climb by 16
+or 17 a second and stay equal after the key-up; <code>L</code> stays 0 or small. On the SDR bench: bursts in one timeslot, carrier
+on frequency, the ramp ending before the other slot, then sync and the voice header decoded. No sync with a clean
+carrier: try <code>DB25D_DMR_TX_INVERT=1</code>. Low deviation: compare the page's modulation byte (6.3, 0x067) with the value for the same frequency in the radio's own calibration.</p>
+<h2 id="10-open-questions">10. Open questions</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Question</th>
+<th>Needs the radio?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Firmware version in Device Info (expect 909E.DBB...)</td>
+<td>Yes, menu only</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Program flash part and size; <abbr class="gl" tabindex="0" title="A debug and test port of many processors." data-more="../dev/glossary.html#t-jtag">JTAG</abbr> and UART0 pads</td>
+<td>Yes, photos of the control board</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Panel size and which bus mode the PRO uses (<abbr class="gl" tabindex="0" title="Analog to digital converter." data-more="../dev/glossary.html#t-adc">ADC</abbr> 2)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Calibration page: the 0x160 / 0x1B1 / 0x2xx items (6.3). Real values are known: 0x045 is the higher <abbr class="gl" tabindex="0" title="Digital to analog converter." data-more="../dev/glossary.html#t-dac">DAC</abbr> value, so the high level; that this is more output needs a power measurement</td>
+<td>A power meter or the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Can the vendor <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> read back the calibration page (a backup path)?</td>
+<td>Yes, serial capture of a CPS read</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Any model check in the IAP loader (the protocol is in 7)</td>
+<td>A foreign image sent through it</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Hand-mic key protocol on RJ-45 pin 2</td>
+<td>Yes, logic analyzer</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Hand mic key numbers 15-17, if any</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Band assignment of the <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> switch pins (<abbr class="gl" tabindex="0" title="Ultra high frequency: 300 MHz to 3 GHz. The amateur 70 cm band is UHF." data-more="../user/22-glossary.html#t-uhf">UHF</abbr> = PTB3 / PTB4 is by analogy)</td>
+<td>No, then a meter</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Supply voltage: no ADC channel known (3.3). ADC 7 read at two supply voltages would show whether it follows the supply</td>
+<td>No, then a meter</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Which <abbr class="gl" tabindex="0" title="The flash chip type that holds large data, such as the codeplug and contacts, in some radios." data-more="../dev/glossary.html#t-nand">NAND</abbr> address ranges the vendor bad-block skip covers (6.5)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Answered (4.5): the digital set with RF_MODE 0x034C9860 decodes every frame</td>
+<td>-</td>
+</tr>
+<tr>
+<td>13</td>
+<td>The modem's input is the main chip's AF output (4.5, decodes on the radio). The voice output's speaker route (PTC18 low) still needs a listen</td>
+<td>Yes, a listen</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Answered (4.5): single-point modulation on the <abbr class="gl" tabindex="0" title="Temperature compensated crystal oscillator: the stable clock the radio&#x27;s frequency is derived from." data-more="../dev/glossary.html#t-tcxo">TCXO</abbr>, the per-burst sequence, decoded on the SDR bench; deviation 101 % of nominal</td>
+<td>-</td>
+</tr>
+<tr>
+<td>15</td>
+<td>The 020 codec's windows, entry points and a <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> layout for its run address (a separate compile at 0x030C142C, 8.1)</td>
+<td>A 020 vendor firmware file, or a read of 0x0300C000-0x0300CFFF</td>
+</tr>
+<tr>
+<td>16</td>
+<td>The FD6818 batches (4.8) on a radio: FM <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> and <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr>, the PTB27 tone-heard flag, the <abbr class="gl" tabindex="0" title="Power amplifier: the stage that boosts the transmit signal to the output power." data-more="../dev/glossary.html#t-pa">PA</abbr> gain from 0x09B, <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr></td>
+<td>Yes, a D64, D66 or D6T radio</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="receive-past-the-rated-bands">Receive past the rated bands</h2>
+<p>18-136, 174-400 and 480-660 MHz: what both fitted chips cover, the BK4819 (18-660 MHz in its data sheet) and the FD6818. <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">Receive</abbr> only, FM, off by default (<a href="radio-features.html">radio-features.md</a> 6.2). Not measured on the radio.</p>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/hardware-db25d.md">Ver el código fuente de esta página</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="En esta página">
+		<p class="eyebrow">En esta página</p>
+		<ul><li class="l2"><a href="#1-models-and-batches">1. Models and batches</a></li><li class="l2"><a href="#2-memory-and-image">2. Memory and image</a></li><li class="l3"><a href="#21-clocks-in-radiofoundry">2.1 Clocks in RadioFoundry</a></li><li class="l2"><a href="#3-pin-map">3. Pin map</a></li><li class="l3"><a href="#31-buses">3.1 Buses</a></li><li class="l3"><a href="#32-rf-switching-and-the-pa">3.2 RF switching and the PA</a></li><li class="l3"><a href="#33-keys-encoder-power-leds-audio">3.3 Keys, encoder, power, LEDs, audio</a></li><li class="l3"><a href="#34-hand-microphone">3.4 Hand microphone</a></li><li class="l2"><a href="#4-rf-chain">4. RF chain</a></li><li class="l3"><a href="#41-architecture-pro">4.1 Architecture (PRO)</a></li><li class="l3"><a href="#42-chip-identification">4.2 Chip identification</a></li><li class="l3"><a href="#43-bk4819-registers-address-value-in-order">4.3 BK4819 registers (address: value, in order)</a></li><li class="l3"><a href="#44-fm-transmit">4.4 FM transmit</a></li><li class="l3"><a href="#45-dmr-the-main-chip-and-the-modem">4.5 DMR: the main chip and the modem</a></li><li class="l3"><a href="#46-frequency-reference-the-modems-bias">4.6 Frequency reference: the modem&#x27;s bias</a></li><li class="l3"><a href="#47-dcs">4.7 DCS</a></li><li class="l3"><a href="#48-older-batches-fd6818-main-three-lo-kinds">4.8 Older batches: FD6818 main, three LO kinds</a></li><li class="l2"><a href="#5-display">5. Display</a></li><li class="l2"><a href="#6-storage-and-calibration">6. Storage and calibration</a></li><li class="l3"><a href="#61-page-header-and-the-two-copies">6.1 Page header and the two copies</a></li><li class="l3"><a href="#62-bands-and-frequency-points">6.2 Bands and frequency points</a></li><li class="l3"><a href="#63-fields">6.3 Fields</a></li><li class="l3"><a href="#64-what-the-values-drive">6.4 What the values drive</a></li><li class="l3"><a href="#65-nand-access">6.5 NAND access</a></li><li class="l3"><a href="#66-radiofoundry-storage-on-the-nand">6.6 RadioFoundry storage on the NAND</a></li><li class="l2"><a href="#7-pc-link-update-and-recovery">7. PC link, update and recovery</a></li><li class="l3"><a href="#71-vendor-builds-and-the-hardware-variant">7.1 Vendor builds and the hardware variant</a></li><li class="l2"><a href="#8-codec">8. Codec</a></li><li class="l3"><a href="#81-vendor-firmware-files">8.1 Vendor firmware files</a></li><li class="l3"><a href="#82-where-the-codec-is">8.2 Where the codec is</a></li><li class="l3"><a href="#83-build-and-flash">8.3 Build and flash</a></li><li class="l3"><a href="#84-codec-data-stays-where-stock-put-it-open-item">8.4 Codec data stays where stock put it (open item)</a></li><li class="l2"><a href="#9-how-radiofoundry-uses-it-make-boarddb25d">9. How RadioFoundry uses it (make BOARD=db25d)</a></li><li class="l2"><a href="#10-open-questions">10. Open questions</a></li><li class="l2"><a href="#receive-past-the-rated-bands">Receive past the rated bands</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

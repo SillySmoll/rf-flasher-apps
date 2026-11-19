@@ -1,0 +1,722 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>设置 · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="设置 · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/user/17-settings.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/user/17-settings.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/user/17-settings.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/user/17-settings.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/user/17-settings.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/user/17-settings.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/user/17-settings.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/user/17-settings.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/user/17-settings.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/user/17-settings.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="用户手册">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 用户手册</p>
+		<ul><li><a href="index.html">RadioFoundry 用户手册</a></li><li><a href="01-introduction.html">简介</a></li><li><a href="02-installing.html">安装</a></li><li><a href="03-first-boot.html">首次启动</a></li><li><a href="04-programming.html">为电台编程</a></li><li><a href="05-keys-and-navigation.html">按键与导航</a></li><li><a href="06-home-screen.html">主屏幕</a></li><li><a href="07-channels-zones-vfo.html">信道、区域与 VFO</a></li><li><a href="08-fm.html">FM</a></li><li><a href="09-dmr.html">DMR</a></li><li><a href="10-messages-and-signaling.html">消息、呼叫提示与电台检查</a></li><li><a href="11-emergency.html">紧急</a></li><li><a href="12-scan.html">扫描与双守候</a></li><li><a href="13-aprs.html">APRS</a></li><li><a href="14-hotspot.html">热点模式</a></li><li><a href="15-usb-network.html">USB 网络模式</a></li><li><a href="16-battery-and-power.html">电池与供电</a></li><li><a href="17-settings.html" aria-current="page">设置</a></li><li><a href="18-moving-from-stock-md380.html">从原厂 MD-380 固件迁移</a></li><li><a href="19-moving-from-stock-dm32.html">从原厂 DM-32UV 固件迁移</a></li><li><a href="20-troubleshooting.html">故障排查</a></li><li><a href="21-faq.html">常见问题</a></li><li><a href="22-glossary.html">术语表</a></li><li><a href="23-radios.html">电台参考</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<h1 id="settings">设置</h1>
+<p>用 <strong>OK</strong>、<strong>7</strong>，或 <strong>*</strong>、<strong>0</strong> 打开设置。设置按用途分组。数字键直接打开某个分组。查找也能按名称找到每项设置：在主屏幕输入其开头字母。</p>
+<img src="../ux/screens/160x120i5/settings.png" width="200" alt="设置">
+<img src="../ux/screens/160x120i5/settings_display.png" width="200" alt="设置，显示">
+<h2 id="changing-a-setting">更改设置</h2>
+<p>每行显示当前值。</p>
+<ul>
+<li>开关和列表设置用 <strong>OK</strong> 更改：每按一次切换到下一个值。</li>
+<li>数字设置在按 <strong>OK</strong> 时打开编辑器。用 <strong>上</strong> 和 <strong>下</strong>（或信道旋钮）更改数值，或用数字键输入，按 <strong>OK</strong> 保留，按 <strong>返回</strong> 保持不变。输入超出范围或位于步进之间的值不会被接受：电台显示“未更改”及范围。</li>
+<li>设置一更改就生效并保存，没有单独的保存步骤。</li>
+</ul>
+<img src="../ux/screens/160x120i5/settings_editor.png" width="200" alt="编辑数字设置">
+<p>有些设置在其背后的功能存在之前就在菜单中，或对本电台不适用。它们会变暗。在变暗的行上按 <strong>OK</strong> 会说明原因。各表的状态列表示：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>状态</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>有效</td>
+<td>立即生效，并在关机后保留</td>
+</tr>
+<tr>
+<td>有效，不保留</td>
+<td>立即生效，关机后恢复默认</td>
+</tr>
+<tr>
+<td>变暗</td>
+<td>尚未构建，或本电台没有。按 <strong>OK</strong> 说明原因</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="reference">参考</h2>
+<h3 id="sound-key-1">声音（按键 1）</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>设置</th>
+<th>取值</th>
+<th>默认</th>
+<th>作用</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>按键音</td>
+<td>开、关</td>
+<td>开</td>
+<td>每次按键时短促提示音</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>音量</td>
+<td>0 到 16</td>
+<td>8</td>
+<td>扬声器音量，仅用于没有音量旋钮的电台（其他电台不显示该行）。0 为静音。<strong>音量</strong>键打开一个可更快调节的屏幕（<a href="23-radios.html#key-roles">电台参考</a>）</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>提示音音量</td>
+<td>0 到 10</td>
+<td>5</td>
+<td>电台提示音的最大音量。提示音跟随扬声器音量，直到此级别，因此调低音量也会使其变轻</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>允许发射提示音</td>
+<td>开、关</td>
+<td>开</td>
+<td><abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> 发射开始时的提示音（<a href="09-dmr.html">DMR</a>）</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>语音提示</td>
+<td>开、关</td>
+<td>关</td>
+<td>语音播报。尚无录制语音</td>
+<td>变暗</td>
+</tr>
+<tr>
+<td>消息提示音</td>
+<td>开、关</td>
+<td>开</td>
+<td>收到文本消息时的三音提示</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>振动</td>
+<td>开、关</td>
+<td>开</td>
+<td>收到文本消息、呼叫提示、发给你的私密呼叫以及听到紧急时振动。仅用于有振动马达的电台（<a href="23-radios.html">电台参考</a>）</td>
+<td>有效</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="display-key-2">显示（按键 2）</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>设置</th>
+<th>取值</th>
+<th>默认</th>
+<th>作用</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>亮度</td>
+<td>10% 到 100%，步进 10</td>
+<td>100%</td>
+<td>背光亮度。快速设置中也有，磁贴 9</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>背光变暗/关闭</td>
+<td>5s/20s、10s/40s、30s/2m、1m/4m、2m/8m、从不</td>
+<td>30s/2m</td>
+<td>无按键时，背光在第一个时间后变暗到五分之一，第二个时间后关闭</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>主题</td>
+<td>深色、浅色、高对比度</td>
+<td>深色</td>
+<td>屏幕配色。单色屏电台没有</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>高亮色</td>
+<td>默认、红、橙、黄、青、浅蓝、紫、粉</td>
+<td>默认</td>
+<td>选中行或磁贴以及主屏幕信道编号的颜色。单色屏电台没有</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>状态栏填充</td>
+<td>开、关</td>
+<td>开</td>
+<td>用高亮色填充顶部状态行（默认为浅灰，高对比度主题为白色），文字画成黑色。单色屏电台没有</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>大字体</td>
+<td>开、关</td>
+<td>关</td>
+<td>主屏幕只显示状态行、信道和通话目标，且为大号</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>提示行</td>
+<td>开、关</td>
+<td>开</td>
+<td>带按键提示的底行</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>语言</td>
+<td>English、Español、Italiano</td>
+<td>English，或网页安装器中选择的电台语言</td>
+<td>菜单和消息的语言。恢复出厂设置会回到该默认值。列表显示 RadioFoundry 的所有语言；固件中没有的语言会变暗。用网页刷机安装时选择它即可获得（<a href="02-installing.html">安装</a>）。名称、呼号和标准电台缩写（<abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="22-glossary.html#t-talkgroup">TG</abbr>、<abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="22-glossary.html#t-color-code">CC</abbr>、<abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr>）保持不变</td>
+<td>有效</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="talk--listen-key-3">通话与收听（按键 3）</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>设置</th>
+<th>取值</th>
+<th>默认</th>
+<th>作用</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>回复窗口</td>
+<td>0 到 30 秒</td>
+<td>电台频率的挂机时间，否则 10 秒</td>
+<td><strong>PTT</strong> 应答最近呼叫的时长（<a href="09-dmr.html#replying">DMR</a>）。0 表示关闭</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>发射超时</td>
+<td>关、30 秒、1、2、3、5、10 分钟</td>
+<td>3 分钟</td>
+<td>最长发射时间，用于电台频率中没有自己超时的信道</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>默认静噪</td>
+<td>0 到 9</td>
+<td>5</td>
+<td>信道未设置时的 FM 静噪级别</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>VFO 步进</td>
+<td>自动、2.5、5、6.25、8.33、10、12.5、20、25、50、100 kHz</td>
+<td>自动</td>
+<td>VFO 中上、下和旋钮的步进。自动在带宽 25K 和 AM 中为 25 kHz，否则 12.5 kHz。仅用于有 VFO 的电台</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>调频广播步进</td>
+<td>200 kHz、100 kHz</td>
+<td>200 kHz</td>
+<td>广播频段中的 VFO 步进。200 kHz 落在奇数十分位（88.1、88.3），即美洲的电台位置。仍可输入任何频率。仅用于有广播接收机的电台（<a href="07-channels-zones-vfo.html#air-band-and-fm-broadcast">航空波段与调频广播</a>）</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>麦克风增益</td>
+<td>0 到 10</td>
+<td>5</td>
+<td>麦克风电平，每步 2 dB。5 为电台正常电平。设置 DMR，以及在麦克风路径中设置电平的电台的 FM（<a href="23-radios.html">电台参考</a>）。更改从下次发射起生效。麦克风 AGC 开启时显示“AGC”且不可更改</td>
+<td>有效（DMR）；FM 未在空中验证</td>
+</tr>
+<tr>
+<td>麦克风 AGC</td>
+<td>开、关</td>
+<td>关</td>
+<td>在 DMR 上均衡你的电平：轻声提高、大声降低，因此无需设置麦克风增益。开启期间麦克风增益保持 5。语音编解码器不支持的电台此项变暗</td>
+<td>需要空中验证（DMR）</td>
+</tr>
+<tr>
+<td>麦克风降噪</td>
+<td>开、关</td>
+<td>开</td>
+<td>减少你在 DMR 上发送内容中的稳定背景噪声（风扇、发动机、风），词间也有效。若想保留的稳定声音被切掉，请关闭。语音编解码器不支持的电台此项变暗</td>
+<td>需要空中验证（DMR）</td>
+</tr>
+<tr>
+<td>默认数字监听</td>
+<td>开、关</td>
+<td>关</td>
+<td>每次选择 DMR 信道时开启数字监听（DMR：所有通话组，混杂模式）。在主屏幕按 <strong>返回</strong> 会关闭它，直到下一个信道</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>显示主叫别名</td>
+<td>开、关</td>
+<td>开</td>
+<td>在呼叫者 ID 下显示收到的通话者别名（名称）</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>双守候回话</td>
+<td>开、关</td>
+<td>关</td>
+<td>关：另一信道上的呼叫绝不移动 <strong>PTT</strong>。开：另一信道上的呼叫结束时，该信道成为选中信道 10 秒（每次回复和该处的呼叫重新计时），因此 <strong>PTT</strong> 在那里应答（<a href="12-scan.html#talk-back">双守候</a>）</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>双守候延时</td>
+<td>0.5、1、1.5、2、3、5 秒</td>
+<td>1 秒</td>
+<td>呼叫结束后双守候在信道上停留多久以等待回复。期间它查看另一信道并在那里显示<strong>忙</strong>（<a href="12-scan.html#the-wait-after-a-call">双守候</a>）</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>SFR 接收</td>
+<td>中继、首个副本、双路接收</td>
+<td>中继</td>
+<td>实验性。单频中继用户播放什么（<a href="14-hotspot.html#standalone-sfr">独立 SFR</a>）。中继：只播放中继台的副本。首个副本：通话者或中继台的副本，以先到者为准。双路接收：两份都用，每个损坏的语音帧取自另一份。不含该功能的构建缺少双路接收</td>
+<td>有效（中继）。首个副本和双路接收取决于电台：有些一次只能听到一份副本（<a href="23-radios.html">电台参考</a>）</td>
+</tr>
+<tr>
+<td>SFR CW 标识</td>
+<td>关、5、10、15、30 分钟</td>
+<td>关</td>
+<td>实验性。单频中继信道多久以摩尔斯码发送一次呼号（<a href="14-hotspot.html#standalone-sfr">独立 SFR</a>）。呼号是电台名的第一个词（空格、<code>-</code> 或 <code>/</code> 之前），且必须像呼号：4 到 7 个字母和数字，两者至少各一个。否则不发送。中继台承载过通话并安静 2 秒后，标识以 FM 在信道上发出，每个间隔最多一次。不含该功能的构建缺少此项</td>
+<td>有效</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="privacy-key-4">加密（按键 4）</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>设置</th>
+<th>取值</th>
+<th>默认</th>
+<th>作用</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>密钥类型</td>
+<td>关、Motorola、Anytone</td>
+<td>关</td>
+<td>基础加密密钥的种类（<a href="09-dmr.html#privacy">DMR</a>）。关会移除密钥</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>密钥</td>
+<td>Motorola 1 到 255，Anytone 0 到 65535</td>
+<td></td>
+<td>密钥值，用数字键输入。选择类型前变暗</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>自动锁键</td>
+<td>关、30 秒、1 分钟、5 分钟</td>
+<td>关</td>
+<td>一段时间无按键后锁定按键</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>锁定时 PTT</td>
+<td>开、关</td>
+<td>开</td>
+<td>按键锁定时 <strong>PTT</strong> 是否可用。关：解锁前 <strong>PTT</strong> 无效</td>
+<td>有效</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="location-key-5">位置（按键 5）</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>设置</th>
+<th>取值</th>
+<th>默认</th>
+<th>作用</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPS</td>
+<td>开、关</td>
+<td>开</td>
+<td>GPS 接收机，用于有该模块的电台（<a href="23-radios.html">电台参考</a>）。关闭会切断模块电源，电台无定位（<abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr> 和 DMR 使用电脑或固定位置）；更改立即生效。没有 GPS 时该行变暗并显示“本电台无 GPS”</td>
+<td>无 GPS 时变暗</td>
+</tr>
+<tr>
+<td>位置格式</td>
+<td>度、度分秒、网格</td>
+<td>度</td>
+<td>位置的显示方式</td>
+<td>无 GPS 时变暗</td>
+</tr>
+<tr>
+<td>发送位置</td>
+<td>关、1 分钟、5 分钟、15 分钟</td>
+<td>关</td>
+<td>按此间隔发送你的位置</td>
+<td>无 GPS 时变暗</td>
+</tr>
+<tr>
+<td>应答 GPS 请求</td>
+<td>开、关</td>
+<td>开</td>
+<td>应答 <abbr class="gl" tabindex="0" title="Location Request and Response Protocol: a dispatcher asks a radio for its position. Motorola&#x27;s position format; the standard has LIP." data-more="22-glossary.html#t-lrrp">LRRP</abbr> 位置请求（查找也能以“position”找到）。没有 GPS 时回答“无定位”</td>
+<td>有效</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="position">连接（按键 6）</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>设置</th>
+<th>取值</th>
+<th>默认</th>
+<th>作用</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>允许热点</td>
+<td>开、关</td>
+<td>开</td>
+<td>允许 USB 上的热点主机把电台置于热点模式（<a href="14-hotspot.html">热点</a>）</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>应答电台检查</td>
+<td>开、关</td>
+<td>开</td>
+<td>应答其他电台的电台检查（<a href="10-messages-and-signaling.html#radio-check">电台检查</a>）</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>应答呼叫提示</td>
+<td>开、关</td>
+<td>开</td>
+<td>确认呼叫提示，使呼叫者知道寻呼已到达</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>TFTP 写入电台频率</td>
+<td>开、关</td>
+<td>开</td>
+<td>允许电脑在 USB 网络模式下经 <abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="../spec/tftp.html">TFTP</abbr> 写入电台频率（<a href="15-usb-network.html#programming-over-the-network">USB 网络</a>）。读取始终可用</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>消息格式</td>
+<td>ETSI、ETSI 短、Motorola</td>
+<td>ETSI</td>
+<td>你发送的文本消息格式（<a href="10-messages-and-signaling.html#message-formats">消息</a>）。任何格式的消息都能接收</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>接受区域共享</td>
+<td>开、关</td>
+<td>开</td>
+<td>开：显示其他电台发来的区域或信道，供导入或拒绝（<a href="07-channels-zones-vfo.html#sharing-a-zone">共享区域</a>）。关：忽略</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>启动时 USB 网络</td>
+<td>开、关</td>
+<td>关</td>
+<td>电台以 USB 网卡而不是串口启动（<a href="15-usb-network.html#starting-in-network-mode">USB 网络</a>）</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>PC 应答数据</td>
+<td>开、关</td>
+<td>关</td>
+<td>控制站模式：电脑在 USB 网络模式下连接时，由它应答发往电台的数据，而不是电台（<a href="15-usb-network.html#control-station-for-dispatch-software">USB 网络</a>）</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>USB 地址</td>
+<td>按 <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr>、192.168.10.x</td>
+<td>按 DMR ID</td>
+<td>USB 网络链路的地址：由你的 DMR ID 得出，或固定的一对 192.168.10.1（电台）和 192.168.10.2（电脑）</td>
+<td>有效</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="connections-key-6">电源（按键 7）</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>设置</th>
+<th>取值</th>
+<th>默认</th>
+<th>作用</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>省电</td>
+<td>开、关</td>
+<td>关</td>
+<td>空闲 FM 信道上接收机在短暂收听窗口之间休眠（<a href="16-battery-and-power.html">电池与供电</a>）</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>自动关机</td>
+<td>关、30 分钟、1 小时、2 小时</td>
+<td>关</td>
+<td>一段时间未使用后关机（<a href="16-battery-and-power.html#auto-power-off">电池与供电</a>）</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>低电量提示</td>
+<td>5% 到 30%，步进 5</td>
+<td>15%</td>
+<td>电量降到该级别时提示（<a href="16-battery-and-power.html">电池与供电</a>）</td>
+<td>有效</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="power-saving-key-7">按键（按键 8）</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>设置</th>
+<th>取值</th>
+<th>默认</th>
+<th>作用</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>长按时间</td>
+<td>400 到 1200 ms，步进 100</td>
+<td>600 ms</td>
+<td>长按需要按住多久</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>按键重复</td>
+<td>60 到 300 ms，步进 20</td>
+<td>120 ms</td>
+<td>按住 <strong>上</strong> 和 <strong>下</strong> 时的重复速率</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>主页上下键</td>
+<td>信道、区域、通话目标</td>
+<td>信道</td>
+<td>主屏幕上 <strong>上</strong> 和 <strong>下</strong> 更改什么。通话目标在 DMR 信道上在信道联系人和收听列表间步进。FM 信道上它们切换信道</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>每个键一行，名称与电台一致（SK1、SK2……）</td>
+<td>默认、无、监听、通话目标、功率级别、下一区域、上一区域、扫描、按键锁、主区域、复制到 VFO、回拨</td>
+<td>默认</td>
+<td>短按该键的作用。默认值见<a href="23-radios.html#key-roles">按键角色</a>。监听在 FM 上按住时打开静噪，在 DMR 上开或关数字监听。按键锁锁定和解锁按键。回拨与最后听到的呼叫通话。主区域转到电台频率的第一个区域：请在 <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="04-programming.html">CPS</abbr> 中把常用区域放在最前。复制到 VFO 把信道复制到 VFO 并打开（<a href="07-channels-zones-vfo.html#copy-a-channel-to-the-vfo">VFO</a>）；已在 VFO 中时显示“已在 VFO 中”。有 VFO 的电台才提供该项</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>键名加“长按”（SK1 长按……）</td>
+<td>默认、无、通话目标、功率级别、下一区域、上一区域、扫描、紧急、按键锁、主区域、复制到 VFO、回拨</td>
+<td>默认</td>
+<td>长按该键的作用。紧急需要按住 1.5 秒。短按为监听时，长按在 DMR 信道上生效；FM 上按住该键会保持静噪打开（要持续打开静噪，请用 <strong>*</strong>、<strong>5</strong>）</td>
+<td>有效</td>
+</tr>
+</tbody>
+</table></div>
+<p>菜单不需要的每个键都有一对行；<a href="23-radios.html#key-roles">电台的列表</a>说明是哪些。按键设置也在电台频率中，因此写入电台的电台频率可以设置它们，而此处的更改也会写入电台频率。</p>
+<h3 id="keys-key-8">我的电台（按键 9）</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>设置</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DMR ID 和名称</td>
+<td>先显示电台型号，然后是你的 DMR ID、电台名和两行启动文字，均按电台频率中的存储显示。在 <strong>DMR ID</strong> 上用数字键输入新 ID（最大 16776415；更大的 ID 预留给网络）并按 <strong>OK</strong>：电台会写入电台频率并立即使用，电台频率编辑器或 <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr> 下次读取时可见。<strong>返回</strong> 收回最后一位，全部收回后 ID 保持不变。在<strong>电台名</strong>、<strong>启动 1</strong> 或 <strong>启动 2</strong> 上，<strong>OK</strong> 打开文本输入（<a href="07-channels-zones-vfo.html#text-entry">文本输入</a>）；其中的 <strong>OK</strong> 保存，最多 16 个字符</td>
+</tr>
+<tr>
+<td>关于</td>
+<td>固件版本、其日期和电台型号：与<strong>设置 &gt; 高级 &gt; 关于</strong>相同（见下文）</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="key-lock-key-9">高级（按键 0）</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>关于</td>
+<td>每行一项：固件（“RadioFoundry”）、发行版（发行版名称，例如 v26.11；发行版之间的构建不显示）、构建（构建所用的提交）、日期（提交日期；有本地更改的构建则为构建日期）和电台（电台型号）。然后是 RadioFoundry 的许可证（MIT）、维护者及贡献者名单的位置，以及其他各部分的许可证：第三方库和 <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE+2</abbr> 编解码器。编解码器显示为“原厂”：它来自你电台自己的固件，不属于 RadioFoundry。该页面为小字文本，不截断任何内容，也没有状态栏。通话期间状态栏会回来。<strong>上</strong>、<strong>下</strong> 或旋钮可滚动超过一屏的页面</td>
+</tr>
+<tr>
+<td>电台频率</td>
+<td>信道来源（内置或来自 CPS）、区域数和信道数</td>
+</tr>
+<tr>
+<td>诊断</td>
+<td>诊断页面（也是 <strong>OK</strong>、<strong>6</strong>、<strong>7</strong>）</td>
+</tr>
+<tr>
+<td>恢复出厂设置</td>
+<td>把所有设置恢复默认（<a href="#factory-reset">见下</a>）</td>
+</tr>
+<tr>
+<td>崩溃日志</td>
+<td>上次崩溃留下的记录，以及发送给开发者（<a href="#crash-log">见下</a>）</td>
+</tr>
+<tr>
+<td>频率微调</td>
+<td>同时移动电台的收发频率，用于频率偏移的电台。测量误差（频率计、服务监视器或热点的 BER 测试），并以相反符号输入。页面显示该微调在 440 MHz 和 144 MHz 下折算的 Hz：在 440 MHz 偏高 2 kHz 的电台约需 -4.5 ppm（-1980 Hz）。页面用大号字显示微调量，下面是 -10 到 +10 的滑块，显示屏有空间时其下显示“+ 为提高频率”。上、下（或旋钮）步进 0.1 ppm，# 切换符号，数字键输入（# 4 5 OK 为 -4.5 ppm）。停止更改后生效。仅用于支持该功能的电台（<a href="../feature-matrix.html">哪些电台</a>）。范围 -10.0 到 +10.0 ppm，步进 0.1 ppm，默认 0</td>
+</tr>
+</tbody>
+</table></div>
+<img src="../ux/screens/160x120i5/about.png" width="200" alt="设置 > 高级 > 关于">
+<img src="../ux/screens/160x120i5/settings_advanced.png" width="200" alt="设置，高级">
+<h2 id="my-radio-key-0">恢复出厂设置</h2>
+<p><strong>设置 &gt; 高级 &gt; 恢复出厂设置</strong>会询问“将所有设置恢复为出厂默认？信道保留。此操作无法撤销。”焦点从“不，保留设置”开始。聚焦“是，重置”并按 <strong>OK</strong>。</p>
+<img src="../ux/screens/160x120i5/factory_reset.png" width="200" alt="恢复出厂设置确认">
+<p>重置会把每项设置恢复默认（亮度、电台设置、加密密钥、信道位置），擦除 RadioFoundry 自己的数据区，并重启电台。电台频率和校准保留。</p>
+<h2 id="advanced-last-row">崩溃日志</h2>
+<p>固件崩溃时，电台会保留一份简短记录，说明发生位置和原因，然后重启。停止响应约 3 秒的电台也算崩溃：记录显示“挂起”。<strong>设置 &gt; 高级 &gt; 崩溃日志</strong>显示该记录：发生了什么、连续崩溃次数、电台运行了多久以及固件构建。没有记录时显示“无崩溃记录。”关机可能会丢失记录：请先查看再关机。</p>
+<img src="../ux/screens/160x120i5/crash_log.png" width="200" alt="设置 > 高级 > 崩溃日志">
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>发送报告</td>
+<td>在当前信道上经 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> 把记录发送到“发送至”联系人。空中需要几秒；随后显示“崩溃报告已发送”或“崩溃报告未发送”</td>
+</tr>
+<tr>
+<td>发送至</td>
+<td>报告发往的联系人，私密或组呼：从联系人中选择（输入以查找）</td>
+</tr>
+<tr>
+<td>崩溃后</td>
+<td>关：重启时什么都不做。询问：电台询问是否发送报告。自动：不询问直接发送。默认关</td>
+</tr>
+<tr>
+<td>清除</td>
+<td>忘记该记录</td>
+</tr>
+</tbody>
+</table></div>
+<img src="../ux/screens/160x120i5/crash_send_to.png" width="200" alt="崩溃日志，发送至">
+<p><strong>崩溃后</strong>为“询问”时，电台在重启后询问一次：</p>
+<img src="../ux/screens/160x120i5/crash_prompt.png" width="200" alt="崩溃后的问题">
+<p>询问和自动需要“发送至”联系人，以及电台可发射的 DMR 信道。报告最多约 150 字节，不含音频、消息或位置：只有崩溃记录和固件构建。空中没有任何内容确认它已到达。</p>
+<h2 id="signaling-tones">没有菜单的设置</h2>
+<p>电台中有一些设置尚未出现在菜单中：</p>
+<ul>
+<li>忙信道锁定和 roger beep；</li>
+<li>扫描的恢复模式和时序；</li>
+<li><abbr class="gl" tabindex="0" title="Voice-operated transmit." data-more="22-glossary.html#t-vox">VOX</abbr> 灵敏度；</li>
+<li><abbr class="gl" tabindex="0" title="Automatic Registration Service: a radio tells a presence server it is on the air." data-more="22-glossary.html#t-ars">ARS</abbr> 服务器和紧急设置；</li>
+<li>IP 数据设置（头压缩、确认数据）和 <abbr class="gl" tabindex="0" title="Simple Network Management Protocol: reading a device&#x27;s state over the network." data-more="../spec/snmp.html">SNMP</abbr> 团体名；</li>
+<li>漫游阈值、迟滞和定期搜索；</li>
+<li><abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="../spec/sfr.html">SFR</abbr> 空闲信标。</li>
+</ul>
+<p>开发者通过调试链路更改它们（<code>tools/rfoundry_debug.py radio set ...</code>、<code>data settings ...</code>、<code>data ip-settings ...</code>、<code>snmp ...</code>）。电台会保留它们。漫游测量和信标设置在<strong>工具 &gt; 漫游</strong>中（<a href="09-dmr.html#roaming">DMR</a>）。</p>
+<p>没有设置菜单的构建（<code>CONFIG_UI_SETTINGS=n</code>）改为显示“请用 <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr> 设置”，并保留已存值。</p>
+
+		<nav class="prev-next"><a class="prev" href="16-battery-and-power.html">电池与供电</a><a class="next" href="18-moving-from-stock-md380.html">从原厂 MD-380 固件迁移</a></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/user/17-settings.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#changing-a-setting">更改设置</a></li><li class="l2"><a href="#reference">参考</a></li><li class="l3"><a href="#sound-key-1">声音（按键 1）</a></li><li class="l3"><a href="#display-key-2">显示（按键 2）</a></li><li class="l3"><a href="#talk--listen-key-3">通话与收听（按键 3）</a></li><li class="l3"><a href="#privacy-key-4">加密（按键 4）</a></li><li class="l3"><a href="#location-key-5">位置（按键 5）</a></li><li class="l3"><a href="#position">连接（按键 6）</a></li><li class="l3"><a href="#connections-key-6">电源（按键 7）</a></li><li class="l3"><a href="#power-saving-key-7">按键（按键 8）</a></li><li class="l3"><a href="#keys-key-8">我的电台（按键 9）</a></li><li class="l3"><a href="#key-lock-key-9">高级（按键 0）</a></li><li class="l2"><a href="#my-radio-key-0">恢复出厂设置</a></li><li class="l2"><a href="#advanced-last-row">崩溃日志</a></li><li class="l2"><a href="#signaling-tones">没有菜单的设置</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

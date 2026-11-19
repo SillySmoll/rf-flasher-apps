@@ -1,0 +1,270 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting · RadioFoundry</title>
+<meta name="description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Troubleshooting · RadioFoundry">
+<meta property="og:description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:url" content="https://radiofoundry.org/docs/user/20-troubleshooting.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="The radios RadioFoundry runs on, each showing a different screen.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/user/20-troubleshooting.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/user/20-troubleshooting.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/user/20-troubleshooting.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/user/20-troubleshooting.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/user/20-troubleshooting.html">
+<link rel="icon" href="../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../" data-home="../../" data-gl-more="More">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../index.html">
+			<img src="../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Main"><a href="../../radios/index.html">Radios</a><a href="../../features/index.html">Features</a><a href="../../flash/index.html">Install</a><a href="../../codeplug/index.html">Codeplug</a><a href="../../docs/index.html" aria-current="page">Docs</a><a href="../../screenshots/index.html">Screenshots</a><a href="../../tools/index.html">Tools</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Language" title="Language">EN</summary><nav aria-label="Language"><a href="../../docs/user/20-troubleshooting.html" aria-current="true" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../es/docs/user/20-troubleshooting.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../it/docs/user/20-troubleshooting.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../zh/docs/user/20-troubleshooting.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Switch light and dark" title="Switch light and dark">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="User Manual">
+		<p class="eyebrow"><a href="../../docs/index.html">Documentation</a> / User Manual</p>
+		<ul><li><a href="index.html">RadioFoundry User Manual</a></li><li><a href="01-introduction.html">Introduction</a></li><li><a href="02-installing.html">Installing</a></li><li><a href="03-first-boot.html">First Boot</a></li><li><a href="04-programming.html">Programming the Radio</a></li><li><a href="05-keys-and-navigation.html">Keys and Navigation</a></li><li><a href="06-home-screen.html">The Home Screen</a></li><li><a href="07-channels-zones-vfo.html">Channels, Zones and the VFO</a></li><li><a href="08-fm.html">FM</a></li><li><a href="09-dmr.html">DMR</a></li><li><a href="10-messages-and-signaling.html">Messages, Call Alert and Radio Check</a></li><li><a href="11-emergency.html">Emergency</a></li><li><a href="12-scan.html">Scan and Dual Watch</a></li><li><a href="13-aprs.html">APRS</a></li><li><a href="14-hotspot.html">Hotspot Mode</a></li><li><a href="15-usb-network.html">USB Network Mode</a></li><li><a href="16-battery-and-power.html">Battery and Power</a></li><li><a href="17-settings.html">Settings</a></li><li><a href="18-moving-from-stock-md380.html">Moving from Stock MD-380 Firmware</a></li><li><a href="19-moving-from-stock-dm32.html">Moving from Stock DM-32UV Firmware</a></li><li><a href="20-troubleshooting.html" aria-current="page">Troubleshooting</a></li><li><a href="21-faq.html">FAQ</a></li><li><a href="22-glossary.html">Glossary</a></li><li><a href="23-radios.html">Radio Reference</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<!-- Copyright (c) 2026 Open25-DM32 Authors -->
+<h1 id="troubleshooting">Troubleshooting</h1>
+<h2 id="installing">Installing</h2>
+<p>The web installer's &quot;Select the Symptom&quot; step covers most of these on screen. The rows below also apply to the <code>rfoundry</code> command line.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Cause and fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&quot;no radio bootloader found&quot;</td>
+<td>The radio isn't in its bootloader, or the cable is charge-only. Turn the radio off. Hold the radio's bootloader keys (<a href="23-radios.html">Radio reference</a>, your radio's &quot;Installing&quot; section) and turn it on; the screen stays dark. Try another USB port or cable. Windows: the bootloader's driver may be missing (<a href="02-installing.html#windows-the-bootloader-driver">steps</a>)</td>
+</tr>
+<tr>
+<td>&quot;access denied&quot;</td>
+<td>Linux: add the udev rule rfoundry prints, then unplug and replug. Windows: install the bootloader's driver with Zadig (<a href="02-installing.html#windows-the-bootloader-driver">steps</a>)</td>
+</tr>
+<tr>
+<td>&quot;the bootloader is busy&quot;</td>
+<td>Another program has it open (a <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="04-programming.html">CPS</abbr>, a virtual machine with USB passthrough). Close it and replug</td>
+</tr>
+<tr>
+<td>The web installer says the radio's port or USB connection is in use</td>
+<td>Close the other program or browser tab that uses the radio (a CPS, <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr>, a <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="14-hotspot.html">hotspot</abbr> host, a second installer tab), then try again. Windows: the bootloader's driver (<a href="02-installing.html#windows-the-bootloader-driver">steps</a>). Linux: your user needs access to the device</td>
+</tr>
+<tr>
+<td>The web installer can't use a firmware file</td>
+<td>It says why: another radio's file, not the manufacturer's file, a version without a recipe yet, a damaged download. <a href="02-installing.html#when-the-installer-cant-use-a-file">What each one means</a></td>
+</tr>
+<tr>
+<td>The radio stays in update mode after an interrupted backup or install, and the power switch does nothing</td>
+<td>Choose <strong>Radio Stuck in Update Mode</strong> in the web installer, pick the radio (and the cable, if it asks), and it restarts the radio into normal mode or says how (<a href="02-installing.html#if-something-goes-wrong">details</a>). If the loader does not answer, take the battery out for a few seconds</td>
+</tr>
+<tr>
+<td>The screen stays dark after flashing</td>
+<td>The radio is still in its bootloader. Turn it off and on again without holding any key</td>
+</tr>
+<tr>
+<td>A white, backlit screen and a solid red LED at every power-on, and the radio never starts</td>
+<td>The radio is stuck in its factory update mode because the application is missing or incomplete. Nothing else is damaged. Install again with the web installer (<a href="23-radios.html">Radio reference</a>, your radio's &quot;Installing&quot; section says whether this applies)</td>
+</tr>
+<tr>
+<td>&quot;Preparing the radio failed&quot;, or the radio does not respond on its programming cable</td>
+<td>Push the cable plug fully in and try again, or try a cable with an FTDI, CP210x or PL2303 chip. Slow cable mode is always on now: there is no separate button. If it still fails, select <strong>Use Factory Update Mode</strong>: hold the radio's update mode keys while you turn it on (<a href="23-radios.html">Radio reference</a>, your radio's &quot;Installing&quot; section). It needs the stock firmware file or a program memory backup for the codec (<a href="02-installing.html#if-something-goes-wrong">Installing</a>)</td>
+</tr>
+<tr>
+<td>The web installer reports &quot;Cable Problem Detected&quot;</td>
+<td>The programming cable itself is at fault, not the radio: it sends data nobody asked for, it dropped off the computer's USB, its adapter stopped responding, or the radio <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">receives</abbr> nothing through it. Unplug it from the computer, wait a few seconds, plug it straight into the computer (no hub), push the plug fully into the radio and select <strong>Try Again</strong>. If it returns, replace the cable with a better one, preferably one with an FTDI chip (<a href="02-installing.html#if-something-goes-wrong">Installing</a>)</td>
+</tr>
+<tr>
+<td>Flashing stopped half way</td>
+<td>Put the radio in its bootloader and run the same command again. rfoundry never erases the bootloader</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="command-line-installs-advanced">Command line installs (advanced)</h2>
+<p>The web installer shows these on screen and walks through the fixes. They apply when you install with <code>rfoundry</code>,
+also from the installer's <a href="02-installing.html#install-from-the-command-line-with-a-kit">manual install kit</a>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Cause and fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&quot;unknown stock file ... not a supported codec source&quot;</td>
+<td>rfoundry knows the stock files by SHA-256. Download the exact file <a href="02-installing.html">Installing</a> names for your radio</td>
+</tr>
+<tr>
+<td>&quot;... is an official Baofeng/TYT firmware file, not a RadioFoundry image&quot;</td>
+<td>You gave the stock file as the image. Give the RadioFoundry image (or <code>--release</code>) and the stock file with <code>--stock</code></td>
+</tr>
+<tr>
+<td>&quot;rfoundry can't tell whether the radio holds the codec&quot;</td>
+<td>Start the radio with RadioFoundry and run <code>rfoundry probe</code>, or give <code>--stock</code> so rfoundry writes the codec</td>
+</tr>
+<tr>
+<td>&quot;no libusb found&quot; (running from source)</td>
+<td>Install libusb (<code>brew install libusb</code>, or <code>apt install libusb-1.0-0</code>), or use the rfoundry executable, which carries it</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="everyday-use">Everyday use</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Cause and fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DMR calls show but there is no audio, &quot;No codec: voice off&quot;</td>
+<td>The radio has no usable codec. See <a href="02-installing.html#no-codec-no-codec-voice-off">Installing, no codec</a></td>
+</tr>
+<tr>
+<td>A DMR call shows &quot;Other TG: not played&quot;</td>
+<td>Its <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="22-glossary.html#t-talkgroup">talkgroup</abbr> isn't the <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="22-glossary.html#t-talk-target">talk target</abbr>, in the <abbr class="gl" tabindex="0" title="The talkgroups a channel listens to. The codeplug calls it the RX group list." data-more="22-glossary.html#t-listen-list">listen list</abbr> or the reply target. Press <strong>Monitor</strong> (<abbr class="gl" tabindex="0" title="Playing every talkgroup on the timeslot (promiscuous mode; &quot;hear all&quot; in older RadioFoundry builds)." data-more="22-glossary.html#t-digital-monitor">digital monitor</abbr>), or add the talkgroup to the channel's <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">RX</abbr> group list in <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr>. A parrot's playback of your own call (your own ID as the source) plays like any other call</td>
+</tr>
+<tr>
+<td>&quot;Encrypted: not played&quot;</td>
+<td>The call uses <abbr class="gl" tabindex="0" title="A fixed voice scrambling from Motorola and Anytone radios. Not encryption." data-more="22-glossary.html#t-basic-privacy">basic privacy</abbr> and the radio has no matching key, or stronger encryption the radio can't play</td>
+</tr>
+<tr>
+<td>&quot;No DMR ID in codeplug&quot; when transmitting</td>
+<td>Write a <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> with your <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr> (<a href="04-programming.html">Programming the radio</a>)</td>
+</tr>
+<tr>
+<td>&quot;Channel busy&quot;</td>
+<td>Someone is talking on the <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="22-glossary.html#t-timeslot">timeslot</abbr>. Wait for the call to end</td>
+</tr>
+<tr>
+<td>&quot;No repeater answered&quot;</td>
+<td>The repeater didn't respond. Check the frequency, the <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="22-glossary.html#t-color-code">color code</abbr>, the timeslot and your distance to the repeater</td>
+</tr>
+<tr>
+<td>No audio on FM</td>
+<td>The squelch is closed or the channel needs a tone. Hold <strong>Monitor</strong> to open the squelch. Check the tone with <strong>*</strong>, <strong>3</strong></td>
+</tr>
+<tr>
+<td>A key does nothing and the screen says &quot;Keys locked&quot;</td>
+<td>Hold <strong>*</strong> to unlock. Check <strong>Settings &gt; Key lock &gt; Auto lock</strong></td>
+</tr>
+<tr>
+<td>&quot;Not used here&quot;</td>
+<td>That key has no function on this screen</td>
+</tr>
+<tr>
+<td>&quot;...: not in this build&quot;</td>
+<td>The feature is switched off in this build, or isn't built yet</td>
+</tr>
+<tr>
+<td>The radio is stuck on the hotspot screen</td>
+<td>A host has the serial port open. Press <strong>OK</strong>, or stop the host program. Turn <strong>Settings &gt; Connections &gt; <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="14-hotspot.html">Hotspot</abbr> allowed</strong> off to prevent it</td>
+</tr>
+<tr>
+<td>Zone or channel changed by itself</td>
+<td>A scan is running (SCAN in the status line). Press <strong>Back</strong> on Home</td>
+</tr>
+<tr>
+<td>qdmr, rfoundry or a hotspot host doesn't find the radio's serial port</td>
+<td>USB is in network mode. Switch back in <strong>Tools &gt; USB network</strong>, or turn off <strong>Settings &gt; Connections &gt; USB network at start</strong> and restart. The debug link and <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="../spec/mmdvm-protocol.html">MMDVM</abbr> also answer on UDP port 3334 (<a href="15-usb-network.html#serial-tools-in-network-mode">USB network</a>)</td>
+</tr>
+<tr>
+<td>In network mode the computer gets no address</td>
+<td>The radio goes back to serial when the computer doesn't set the adapter up within 10 s. Check that the computer shows a new network adapter, then switch again</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="settings-are-not-kept">Settings are not kept</h2>
+<p>If settings go back to their defaults after a restart, and <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr> writes fail, the radio has found another firmware's
+data in the flash area where RadioFoundry keeps its settings. RadioFoundry doesn't erase it, so you don't lose data by accident. The
+radio runs on the defaults in memory.</p>
+<p>To give the area to RadioFoundry (developers, over the debug link):</p>
+<pre><code>tools/rfoundry_debug.py storage info     # shows region=foreign
+tools/rfoundry_debug.py storage claim --out ~/rfoundry-backup    # saves a copy of the area, then erases it for RadioFoundry
+</code></pre>
+<p><code>storage claim</code> saves the area's old contents and the calibration copy to files in the <code>--out</code> directory before it
+erases anything. It refuses to save inside a git work tree.</p>
+<p>Some settings are &quot;not kept&quot; by design today: see the Status column in <a href="17-settings.html">Settings</a>.</p>
+<h2 id="diagnostics">Diagnostics</h2>
+<p><strong>OK</strong>, <strong>6</strong>, <strong>7</strong> (Tools &gt; Diagnostics) shows raw readings for bench checks: keys, receiver levels, the <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr>
+modem's state and counters, battery, the board's own lines. <strong>*</strong> pages through them. <strong>Back</strong> leaves.</p>
+<img src="../ux/screens/160x120i5/diagnostics.png" width="200" alt="The diagnostics page">
+<p>Developers get the same and more over USB with <code>tools/rfoundry_debug.py diag</code> and <code>tools/rfoundry_debug.py view</code>.</p>
+<h2 id="getting-help">Getting help</h2>
+<p>Ask in the <a href="https://www.facebook.com/groups/radiofoundry/">RadioFoundry community group</a> on Facebook: other users and
+the developers answer questions there, help with installs and post news. The web installer links the group and the
+GitHub issues under every error message.</p>
+<h2 id="reporting-a-problem">Reporting a problem</h2>
+<p>Open an issue in the <a href="https://github.com/radiofoundry/radiofoundry/issues/new/choose">project repository</a>. Include the firmware version (<strong>Settings &gt; My radio &gt; About</strong>), the radio
+model, what you did, what you expected and what happened. A screenshot helps: <code>tools/rfoundry_debug.py screenshot -o screen.png</code> saves one over USB.</p>
+<p>If the radio restarted by itself, look at <strong>Settings &gt; Advanced &gt; Crash log</strong> (<a href="17-settings.html#crash-log">Settings</a>)
+and copy its lines into the issue. Developers get the whole record with <code>tools/rfoundry_debug.py crash</code>.</p>
+<p>For gaps in received digital speech, include the mode, signal strength and whether they occur throughout the call or
+only at its beginning or end.</p>
+
+		<nav class="prev-next"><a class="prev" href="19-moving-from-stock-dm32.html">Moving from Stock DM-32UV Firmware</a><a class="next" href="21-faq.html">FAQ</a></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/user/20-troubleshooting.md">View the source of this page</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="On this page">
+		<p class="eyebrow">On this page</p>
+		<ul><li class="l2"><a href="#installing">Installing</a></li><li class="l2"><a href="#command-line-installs-advanced">Command line installs (advanced)</a></li><li class="l2"><a href="#everyday-use">Everyday use</a></li><li class="l2"><a href="#settings-are-not-kept">Settings are not kept</a></li><li class="l2"><a href="#diagnostics">Diagnostics</a></li><li class="l2"><a href="#getting-help">Getting help</a></li><li class="l2"><a href="#reporting-a-problem">Reporting a problem</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Join the RadioFoundry community</strong><span class="small muted">Questions, help with your radio and news, on Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Found a bug? Want your radio supported?</strong><span class="small muted">Open an issue on GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry is MIT licensed · <a href="https://github.com/radiofoundry/radiofoundry">Source Code</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Community</a> · <a href="../../docs/index.html">Docs</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Changelog</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

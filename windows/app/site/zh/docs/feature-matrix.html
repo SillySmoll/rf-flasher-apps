@@ -1,0 +1,3682 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Feature matrix · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Feature matrix · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/feature-matrix.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/feature-matrix.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/feature-matrix.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/feature-matrix.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/feature-matrix.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/feature-matrix.html">
+<link rel="icon" href="../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../" data-home="../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../zh/index.html">
+			<img src="../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../zh/radios/index.html">电台</a><a href="../../zh/features/index.html">功能</a><a href="../../zh/flash/index.html">安装</a><a href="../../zh/codeplug/index.html">电台频率</a><a href="../../zh/docs/index.html" aria-current="page">文档</a><a href="../../zh/screenshots/index.html">屏幕截图</a><a href="../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../docs/feature-matrix.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../es/docs/feature-matrix.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../it/docs/feature-matrix.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../zh/docs/feature-matrix.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="项目">
+		<p class="eyebrow"><a href="../../zh/docs/index.html">文档</a> / 项目</p>
+		<ul><li><a href="index.html">Documentation</a></li><li><a href="CLEANROOM.html">Clean-room rules</a></li><li><a href="build-config.html">Build configuration</a></li><li><a href="feature-matrix.html" aria-current="page">Feature matrix</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">本页尚未翻译，目前显示英文。</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="feature-matrix">Feature matrix</h1>
+<p>Every feature, the <abbr class="gl" tabindex="0" title="A CONFIG_ option that turns a feature&#x27;s code in or out of the build." data-more="build-config.html">build switch</abbr> it sits behind (<code>CONFIG_&lt;switch&gt;</code> in <code>config/features.mk</code>,
+<a href="build-config.html">build-config.md</a>), what it costs in flash on the ARM radios, and where it's built by default.</p>
+<ul>
+<li><strong>Bytes</strong> = default image minus the image with that switch off (<code>tools/ci.sh</code> builds each switch off), flash bytes.
+A parent switch's figure includes its children (turning <code>FM</code> off also drops <abbr class="gl" tabindex="0" title="Voice-operated transmit." data-more="user/22-glossary.html#t-vox">VOX</abbr>, <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="user/13-aprs.html">APRS</abbr>, ...).</li>
+<li>Figures from tools/ci.sh at 3ec14e3 (2026-10-11).
+<ul>
+<li>DM-1701: plain build (<abbr class="gl" tabindex="0" title="Link-time optimization: the compiler optimizes across files. It shrinks the firmware." data-more="dev/glossary.html#t-lto">LTO</abbr> off), default image 340,680 B of 344,064 B (3,384 free). Since <abbr class="gl" tabindex="0" title="The UDP stream that carries a call&#x27;s audio between RadioFoundry and a network gateway." data-more="dev/glossary.html#t-usrp">USRP</abbr> (2026-10-13) the
+default build uses link time optimization: 330,824 B (13,240 free). The per-feature figures stay the plain ones.</li>
+<li>MD-380: link time optimization on (<code>LTO=1 LTO_3P=1</code>, its default), default image 279,444 B of 281,668 B, the
+region it had then. With LTO a switch also changes what gets inlined elsewhere, so small MD-380 figures are
+approximate. Since the codec moved the region is 464 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="dev/glossary.html#t-kb">KB</abbr>, and since every codec window moved into sector 11
+848 KB; the switches that were off for flash are on. The per-feature figures stay the 2026-10-11 ones.</li>
+<li><code>*</code> = off by default; measured by turning it on in the DM-1701 build (main c0022b4).</li>
+</ul>
+</li>
+<li><strong>Radios:</strong> which switches each radio builds by default is in
+<a href="#built-by-default-on-each-radio">Built by default on each radio</a>, generated from the build. A — in a bytes column
+means not built there, so not measured.</li>
+<li><strong>A mark in the Built by default table is not a statement that the feature works.</strong> ● means the switch is on in
+that radio's default image, nothing more. A feature can be built in and still do nothing on a radio, or never have been tried on
+it. What has actually been checked on each radio is in <a href="#checked-on-each-radio">Checked on each radio</a> below.</li>
+<li>The DM-32UV builds with csky-elf GCC; its sizes aren't in the per-feature tables (ARM only for now); its whole images are
+at the end.</li>
+</ul>
+<h2 id="checked-on-each-radio">Checked on each radio</h2>
+<p>Generated from the bring-up records in <a href="testing/results/index.html">testing/results/</a>, by the status rule of
+<code>tools/bringup.py status</code>. &quot;pass&quot; means a recorded run (<code>tools/bringup.py run</code>) passed the feature's required tests.
+&quot;(seed)&quot; means the evidence is the board's seed record: a check the docs recorded before the board's first run.
+&quot;needs re-run&quot; means the feature's spec or source files changed since that check; the result shown is the old one.
+&quot;not recorded&quot; means no record covers the feature on that radio: it is built in and host tested, and should be
+treated as unverified. &quot;off&quot; is off in the default build, ✕ not available. A radio's checklist with the required tests
+is <code>tools/bringup.py list --radio &lt;id&gt;</code>.</p>
+<!-- generated: tools/boards.py docs checked; edit docs/testing/results/<board>/ (tools/bringup.py run) -->
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th style="text-align:center">DM-32UV</th>
+<th style="text-align:center">DM-1701</th>
+<th style="text-align:center">DM-1801 Pro</th>
+<th style="text-align:center">DB25-D PRO</th>
+<th style="text-align:center">MD-380</th>
+<th style="text-align:center">MD-UV380</th>
+<th style="text-align:center">MD-9600</th>
+<th style="text-align:center">RT10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fm</code></td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">partial, needs re-run</td>
+<td style="text-align:center">partial, needs re-run</td>
+</tr>
+<tr>
+<td><code>ref_trim</code></td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">partial, needs re-run</td>
+</tr>
+<tr>
+<td><code>subtone</code></td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">partial, needs re-run</td>
+</tr>
+<tr>
+<td><code>fm_tx_tones</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not written</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">partial, needs re-run</td>
+</tr>
+<tr>
+<td><code>tone_burst_key</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">partial, needs re-run</td>
+</tr>
+<tr>
+<td><code>dtmf</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not written</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>vox</code></td>
+<td style="text-align:center">not written</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not written</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">not written</td>
+</tr>
+<tr>
+<td><code>battery_save</code></td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">partial, needs re-run</td>
+</tr>
+<tr>
+<td><code>am_rx</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>bcast_fm</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not written</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>rx_ext</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not written</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not written</td>
+<td style="text-align:center">not recorded</td>
+</tr>
+<tr>
+<td><code>p25</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not written</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">partial, needs re-run</td>
+</tr>
+<tr>
+<td><code>p25_trunk</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not written</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+</tr>
+<tr>
+<td><code>nxdn</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not written</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">partial</td>
+</tr>
+<tr>
+<td><code>dmr_voice</code></td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">partial, needs re-run</td>
+<td style="text-align:center">partial, needs re-run</td>
+</tr>
+<tr>
+<td><code>dmr_privacy</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">partial, needs re-run</td>
+</tr>
+<tr>
+<td><code>dmr_data_privacy</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+</tr>
+<tr>
+<td><code>dmr_talker_alias</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">pass, needs re-run</td>
+</tr>
+<tr>
+<td><code>dmr_gps</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">off</td>
+</tr>
+<tr>
+<td><code>dmr_emergency</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass</td>
+<td style="text-align:center">pass</td>
+</tr>
+<tr>
+<td><code>dmr_roaming</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">pass, needs re-run</td>
+</tr>
+<tr>
+<td><code>dmr_trunk</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+</tr>
+<tr>
+<td><code>dmr_trunk_tx</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+</tr>
+<tr>
+<td><code>dmr_trunk_supl</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+</tr>
+<tr>
+<td><code>dmr_trunk_gw</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+</tr>
+<tr>
+<td><code>voice_capture</code></td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+</tr>
+<tr>
+<td><code>dmr_signaling</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">pass, needs re-run</td>
+</tr>
+<tr>
+<td><code>vfo</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>vfo_fm</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">partial, needs re-run</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>vfo_dmr</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>channel_list</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>channel_edit</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>zone_edit</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>contact_edit</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>volume_bar</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+</tr>
+<tr>
+<td><code>volume_lock</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+</tr>
+<tr>
+<td><code>key_assign</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+</tr>
+<tr>
+<td><code>scan</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">partial, needs re-run</td>
+</tr>
+<tr>
+<td><code>dual_watch</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">partial, needs re-run</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>beep</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">partial, needs re-run</td>
+<td style="text-align:center">partial, needs re-run</td>
+</tr>
+<tr>
+<td><code>signaling_tones</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+</tr>
+<tr>
+<td><code>vibrate</code></td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>gps</code></td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass</td>
+</tr>
+<tr>
+<td><code>dmr_data_rx</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">pass, needs re-run</td>
+</tr>
+<tr>
+<td><code>dmr_sms</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>dmr_tms</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>dmr_ars</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+</tr>
+<tr>
+<td><code>dmr_lrrp</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">off</td>
+</tr>
+<tr>
+<td><code>dmr_udp_compress</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">partial, needs re-run</td>
+</tr>
+<tr>
+<td><code>dmr_confirmed</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass</td>
+<td style="text-align:center">partial</td>
+</tr>
+<tr>
+<td><code>sfr</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">partial</td>
+</tr>
+<tr>
+<td><code>sfr_dualpath_rx</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+</tr>
+<tr>
+<td><code>sfr_cwid</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">pass, needs re-run</td>
+</tr>
+<tr>
+<td><code>aprs</code></td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">partial, needs re-run</td>
+</tr>
+<tr>
+<td><code>aprs_afsk</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">partial, needs re-run</td>
+</tr>
+<tr>
+<td><code>aprs_dmr</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">partial, needs re-run</td>
+</tr>
+<tr>
+<td><code>aprs_rx</code></td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not written</td>
+<td style="text-align:center">not written</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass</td>
+<td style="text-align:center">partial</td>
+</tr>
+<tr>
+<td><code>aprs_igate</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not written</td>
+<td style="text-align:center">not written</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">partial, needs re-run</td>
+</tr>
+<tr>
+<td><code>gps_sky</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>usb</code></td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>hostlink</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+</tr>
+<tr>
+<td><code>hotspot</code></td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">off</td>
+</tr>
+<tr>
+<td><code>split_duplex</code></td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">not written</td>
+<td style="text-align:center">not written</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">partial, needs re-run</td>
+<td style="text-align:center">not written</td>
+</tr>
+<tr>
+<td><code>debuglink</code></td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass</td>
+<td style="text-align:center">partial</td>
+</tr>
+<tr>
+<td><code>task_stacks</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass</td>
+<td style="text-align:center">pass</td>
+</tr>
+<tr>
+<td><code>cps_openfw</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">pass</td>
+</tr>
+<tr>
+<td><code>cps_fast</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+</tr>
+<tr>
+<td><code>stub_entry</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+</tr>
+<tr>
+<td><code>crash_log</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass</td>
+<td style="text-align:center">pass</td>
+</tr>
+<tr>
+<td><code>crash_screen</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>crash_report</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>watchdog</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass</td>
+<td style="text-align:center">pass</td>
+</tr>
+<tr>
+<td><code>fault_trace</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">not recorded</td>
+</tr>
+<tr>
+<td><code>usb_network</code></td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>usb_serial_request</code></td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">off</td>
+</tr>
+<tr>
+<td><code>dmr_ip_gateway</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">off</td>
+</tr>
+<tr>
+<td><code>dmr_tx_spacing</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">partial, needs re-run</td>
+</tr>
+<tr>
+<td><code>zone_share</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">partial, needs re-run</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>dmr_control_station</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">off</td>
+</tr>
+<tr>
+<td><code>net_tcp</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">off</td>
+</tr>
+<tr>
+<td><code>net_kiss</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">off</td>
+</tr>
+<tr>
+<td><code>net_http</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">off</td>
+</tr>
+<tr>
+<td><code>net_http_gzip</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">off</td>
+</tr>
+<tr>
+<td><code>net_webctl</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">off</td>
+</tr>
+<tr>
+<td><code>net_rigctl</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">off</td>
+</tr>
+<tr>
+<td><code>net_usrp</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not written</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">not written</td>
+</tr>
+<tr>
+<td><code>net_aprsis</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">off</td>
+</tr>
+<tr>
+<td><code>mdns</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">off</td>
+</tr>
+<tr>
+<td><code>tftp</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">off</td>
+</tr>
+<tr>
+<td><code>tftp_iddb</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">off</td>
+</tr>
+<tr>
+<td><code>dmr_iddb</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>iddb_compact</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">pass, needs re-run</td>
+</tr>
+<tr>
+<td><code>snmp</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">off</td>
+</tr>
+<tr>
+<td><code>net_ppp</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+</tr>
+<tr>
+<td><code>ui_navigation</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">pass, needs re-run</td>
+</tr>
+<tr>
+<td><code>key_lock</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>channel_knob</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass</td>
+<td style="text-align:center">pass</td>
+</tr>
+<tr>
+<td><code>ui_settings</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">partial, needs re-run</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>diag</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>backlight_test</code></td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>ui_color</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>font_xl</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>font_aa</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>font_big</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>lang_es</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>lang_it</code></td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>lang_fr</code></td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+</tr>
+<tr>
+<td><code>lang_zh</code></td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>lang_default_es</code></td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>lang_default_it</code></td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>lang_default_fr</code></td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+</tr>
+<tr>
+<td><code>lang_default_zh</code></td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>radio_controls</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">partial, needs re-run</td>
+</tr>
+<tr>
+<td><code>settings_store</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass (seed)</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">pass, needs re-run</td>
+</tr>
+<tr>
+<td><code>codeplug_foreign</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">pass, needs re-run</td>
+</tr>
+<tr>
+<td><code>nand_storage</code></td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>codec_check</code></td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">not recorded</td>
+<td style="text-align:center">pass, needs re-run</td>
+<td style="text-align:center">pass, needs re-run</td>
+</tr>
+<tr>
+<td><code>air_raw</code></td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+</tr>
+<tr>
+<td><code>audio_probe</code></td>
+<td style="text-align:center">not written</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">not written</td>
+<td style="text-align:center">not written</td>
+<td style="text-align:center">not written</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">off</td>
+<td style="text-align:center">not written</td>
+</tr>
+</tbody>
+</table></div>
+<!-- end generated -->
+<p>What the records don't hold yet: limits and known problems from the bring-up pages.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Radio</th>
+<th>Known limits and problems</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DM-1701</td>
+<td>Not yet checked: <abbr class="gl" tabindex="0" title="Transmitting on one frequency and receiving on another at the same time. Repeaters do, and so does the duplex hotspot setup." data-more="spec/split-duplex.html">split duplex</abbr> with a real pair of radios, standalone <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="spec/sfr.html">SFR</abbr>, roaming to a repeater, IP over <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="user/22-glossary.html#t-dmr">DMR</abbr> end to end, <abbr class="gl" tabindex="0" title="Voice-operated transmit." data-more="user/22-glossary.html#t-vox">VOX</abbr> with a voice, privacy scrambling against another radio</td>
+<td><a href="testing/on-air-coverage.html">on-air-coverage</a></td>
+</tr>
+<tr>
+<td>DM-32UV</td>
+<td>GPS data seen, no fix yet. The <abbr class="gl" tabindex="0" title="Transmit." data-more="user/22-glossary.html#t-tx">transmit</abbr> half of a split duplex pair not checked. FM transmit deviation at 12.5 kHz, both slots through a duplex <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="user/14-hotspot.html">hotspot</abbr>. A DMR <abbr class="gl" tabindex="0" title="Receive." data-more="user/22-glossary.html#t-rx">receive</abbr> fault after hours of uptime (2026-10-16, cause unknown). USB not available</td>
+<td><a href="testing/dm32-bringup.html">dm32-bringup</a></td>
+</tr>
+<tr>
+<td>DM-1801 Pro</td>
+<td>The receive half of a split duplex pair, <abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="user/22-glossary.html#t-vhf">VHF</abbr> transmit, VOX and <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="user/13-aprs.html">APRS</abbr> receive not checked</td>
+<td><a href="spec/hardware-dm1801pro.html">hardware-dm1801pro</a></td>
+</tr>
+<tr>
+<td>DB25-D PRO</td>
+<td>The older FD6818 batches (D64, D66, D6T) are driven by the same image, untested on a radio. Split duplex not built. Standalone and <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="spec/mmdvm-protocol.html">MMDVM</abbr> SFR checked on the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="dev/glossary.html#t-sdr">SDR</abbr> bench (experimental). DMR audio from the speaker, a GPS fix and settings kept across power off not confirmed</td>
+<td><a href="spec/hardware-db25d.html">hardware-db25d</a></td>
+</tr>
+<tr>
+<td>MD-380</td>
+<td>Fully operational (<abbr class="gl" tabindex="0" title="Ultra high frequency: 300 MHz to 3 GHz. The amateur 70 cm band is UHF." data-more="user/22-glossary.html#t-uhf">UHF</abbr>)¹. <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="user/22-glossary.html#t-dcs">DCS</abbr>, the VHF image, tone deviation and data from a DMR <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="user/22-glossary.html#t-vfo">VFO</abbr> not checked. Split duplex and SFR not available (HR_C5000)</td>
+<td><a href="testing/md380-bringup.html">md380-bringup</a></td>
+</tr>
+</tbody>
+</table></div>
+<p>¹ Frequency accuracy depends on each radio's factory calibration: confirm it against an external reference (frequency counter, service monitor, or a hotspot's MMDVMCal <abbr class="gl" tabindex="0" title="Bit error rate: the share of received bits that were wrong. A measure of how clean a signal is." data-more="dev/glossary.html#t-ber">BER</abbr> test). Two MD-380s measured 2-2.5 kHz high, outside an MMDVM hotspot's decode window; Settings &gt; Advanced &gt; Freq trim corrects receive and transmit together (<a href="spec/radio-features.html">radio-features</a> 6.1, <a href="spec/hardware-md380.html">hardware-md380</a>). The <code>ref_trim</code> row above lists the radios that have the trim.</p>
+<h2 id="built-by-default-on-each-radio">Built by default on each radio</h2>
+<p>● on in the radio's default image · ○ off by default (it builds when switched on) · ✕ the radio's hardware can't do
+it: the board or its platform lists it in <code>BOARD_UNSUPPORTED</code> with the reason (<code>config.mk</code>) · … the hardware can, but
+the radio's driver or glue isn't written yet (<code>BOARD_NOT_WRITTEN</code>) · ? off, and no source says yet whether the radio
+has the part it needs (<code>board.toml</code> <code>[hardware] unconfirmed</code>). The rule:
+<a href="build-config.html#unsupported-not-written-unconfirmed">build-config.md</a>. From each board's <code>make print-config</code>. A switch
+that needs hardware some radios lack (<code>hardware</code> in <code>tests/hil/features.toml</code>) is never ○. The last two rows are not
+switches. Voltage reading: what the radio measures, its battery, its DC input (Supply) or none (<code>board_volts()</code> in
+<code>hal/board.h</code>). Clock: whether the radio's real-time clock keeps time through power-off (<code>board.toml</code> <code>[hardware] clock</code>; ? = not known yet). No driver reads the clock yet (<a href="spec/radio-features.html">radio-features.md</a> 5.6).</p>
+<!-- generated: tools/boards.py docs feature-defaults; edit config/features.mk and boards/*/config.mk -->
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Feature switch</th>
+<th style="text-align:center">DM-32UV</th>
+<th style="text-align:center">DM-1701</th>
+<th style="text-align:center">DM-1801 Pro</th>
+<th style="text-align:center">DB25-D PRO</th>
+<th style="text-align:center">MD-380</th>
+<th style="text-align:center">MD-UV380</th>
+<th style="text-align:center">MD-9600</th>
+<th style="text-align:center">RT10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>USB_SERIAL_REQUEST</code></td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">○</td>
+</tr>
+<tr>
+<td><code>FM</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>SUBTONE</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>DMR</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>DMR_PRIVACY</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>DMR_TALKER_ALIAS</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>DMR_GPS</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">○</td>
+</tr>
+<tr>
+<td><code>DMR_SMS</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>DMR_TMS</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>DMR_ARS</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>DMR_LRRP</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">○</td>
+</tr>
+<tr>
+<td><code>DMR_SIGNALING</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>DMR_EMERGENCY</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>DMR_ROAMING</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>DMR_TRUNK</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>DMR_TRUNK_TX</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>DMR_TRUNK_SUPL</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>DMR_TRUNK_GW</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>VOICE_CAPTURE</code></td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+</tr>
+<tr>
+<td><code>DMR_IP_GATEWAY</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">○</td>
+</tr>
+<tr>
+<td><code>ZONE_SHARE</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>DMR_UDP_COMPRESS</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>NET_TCP</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">○</td>
+</tr>
+<tr>
+<td><code>NET_KISS</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">○</td>
+</tr>
+<tr>
+<td><code>NET_HTTP</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">○</td>
+</tr>
+<tr>
+<td><code>NET_HTTP_GZIP</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">○</td>
+</tr>
+<tr>
+<td><code>NET_WEBCTL</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">○</td>
+</tr>
+<tr>
+<td><code>NET_RIGCTL</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">○</td>
+</tr>
+<tr>
+<td><code>NET_APRSIS</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">○</td>
+</tr>
+<tr>
+<td><code>NET_USRP</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">…</td>
+</tr>
+<tr>
+<td><code>MDNS</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">○</td>
+</tr>
+<tr>
+<td><code>TFTP</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">○</td>
+</tr>
+<tr>
+<td><code>TFTP_IDDB</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">○</td>
+</tr>
+<tr>
+<td><code>IDDB_COMPACT</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>DMR_CONTROL_STATION</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">○</td>
+</tr>
+<tr>
+<td><code>SNMP</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">○</td>
+</tr>
+<tr>
+<td><code>SFR</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>SFR_DUALPATH_RX</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>SFR_CWID</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>TASK_STACKS</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>USB</code></td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>HOSTLINK</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>USB_NETWORK</code></td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>NET_PPP</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+</tr>
+<tr>
+<td><code>HOTSPOT</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">○</td>
+</tr>
+<tr>
+<td><code>HOTSPOT_SPLIT</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">…</td>
+</tr>
+<tr>
+<td><code>DEBUGLINK</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>CPS_OPENFW</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>CPS_FAST</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>VFO</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>VFO_FM</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>VFO_DMR</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>DIAG</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>BACKLIGHT_TEST</code></td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>FONT_XL</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>FONT_AA</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>FONT_BIG</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>LANG_ES</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>LANG_IT</code></td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>LANG_FR</code></td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+</tr>
+<tr>
+<td><code>LANG_ZH</code></td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>LANG_DEFAULT_ES</code></td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>LANG_DEFAULT_IT</code></td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>LANG_DEFAULT_FR</code></td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+</tr>
+<tr>
+<td><code>LANG_DEFAULT_ZH</code></td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>UI_COLOR</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>UI_SETTINGS</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>SCAN</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>DUAL_WATCH</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>BEEP</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>SIG_TONES</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>FM_TX_TONES</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>DTMF</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>RX_EXT</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>VOX</code></td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">…</td>
+</tr>
+<tr>
+<td><code>REF_TRIM</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>BATTERY_SAVE</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>VIBRATE</code></td>
+<td style="text-align:center">?</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>GPS</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>AUDIO_PROBE</code></td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">…</td>
+</tr>
+<tr>
+<td><code>STUB_ENTRY</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>NAND_STORAGE</code></td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>CRASH_LOG</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>CRASH_SCREEN</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>CRASH_REPORT</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>WATCHDOG</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>FAULT_TRACE</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>AM_RX</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>BCAST_FM</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>APRS</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>APRS_AFSK</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>APRS_DMR</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>APRS_RX</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>APRS_IGATE</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>GPS_SKY</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>KEY_ASSIGN</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>CHANNEL_LIST</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>CHANNEL_EDIT</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>ZONE_EDIT</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>CONTACT_EDIT</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">✕</td>
+</tr>
+<tr>
+<td><code>VOLUME_BAR</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>P25</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>P25_TRUNK</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>NXDN</code></td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+<td style="text-align:center">●</td>
+</tr>
+<tr>
+<td><code>AIR_RAW</code></td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+<td style="text-align:center">○</td>
+</tr>
+<tr>
+<td>Voltage reading (board, no switch)</td>
+<td style="text-align:center">Battery</td>
+<td style="text-align:center">Battery</td>
+<td style="text-align:center">Battery</td>
+<td style="text-align:center">None</td>
+<td style="text-align:center">Battery</td>
+<td style="text-align:center">Battery</td>
+<td style="text-align:center">Supply</td>
+<td style="text-align:center">Battery</td>
+</tr>
+<tr>
+<td>Clock kept through power-off (board, no switch)</td>
+<td style="text-align:center">Yes</td>
+<td style="text-align:center">?</td>
+<td style="text-align:center">Yes</td>
+<td style="text-align:center">?</td>
+<td style="text-align:center">?</td>
+<td style="text-align:center">?</td>
+<td style="text-align:center">?</td>
+<td style="text-align:center">No (only while on)</td>
+</tr>
+</tbody>
+</table></div>
+<!-- end generated -->
+<h2 id="radio-and-voice">Radio and voice</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Switch</th>
+<th style="text-align:right">Bytes DM-1701</th>
+<th style="text-align:right">Bytes MD-380</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Analog FM receive and transmit</td>
+<td><code>FM</code></td>
+<td style="text-align:right">29,296</td>
+<td style="text-align:right">28,056</td>
+<td>Includes its children (tones, <abbr class="gl" tabindex="0" title="Voice-operated transmit." data-more="user/22-glossary.html#t-vox">VOX</abbr>, <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="user/13-aprs.html">APRS</abbr>, FM <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="user/22-glossary.html#t-vfo">VFO</abbr>)</td>
+</tr>
+<tr>
+<td>CTCSS / DCS encode and decode</td>
+<td><code>SUBTONE</code></td>
+<td style="text-align:right">904</td>
+<td style="text-align:right">3,292*</td>
+<td>MD-380: software decode (<abbr class="gl" tabindex="0" title="Analog to digital converter." data-more="dev/glossary.html#t-adc">ADC</abbr>) and <abbr class="gl" tabindex="0" title="Pulse width modulation: a pin switched on and off to give an average level, as for backlight or tone." data-more="dev/glossary.html#t-pwm">PWM</abbr> encode; <abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="user/22-glossary.html#t-ctcss">CTCSS</abbr> 100.0 Hz works on air both ways (2026-10-19), <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="user/22-glossary.html#t-dcs">DCS</abbr> not yet checked</td>
+</tr>
+<tr>
+<td>FM TX tones: roger beep, 1750 Hz burst</td>
+<td><code>FM_TX_TONES</code></td>
+<td style="text-align:right">568</td>
+<td style="text-align:right">—</td>
+<td>MD-380: <abbr class="gl" tabindex="0" title="Transmit." data-more="user/22-glossary.html#t-tx">TX</abbr> tone path not written</td>
+</tr>
+<tr>
+<td>DTMF transmit from the keys</td>
+<td><code>DTMF</code></td>
+<td style="text-align:right">920</td>
+<td style="text-align:right">—</td>
+<td>MD-380: TX tone path not written</td>
+</tr>
+<tr>
+<td>FM VOX</td>
+<td><code>VOX</code></td>
+<td style="text-align:right">496</td>
+<td style="text-align:right">1,064</td>
+<td></td>
+</tr>
+<tr>
+<td>Receiver battery saver</td>
+<td><code>BATTERY_SAVE</code></td>
+<td style="text-align:right">296</td>
+<td style="text-align:right">740</td>
+<td></td>
+</tr>
+<tr>
+<td>Frequency trim, Settings &gt; Advanced</td>
+<td><code>REF_TRIM</code></td>
+<td style="text-align:right">2,156</td>
+<td style="text-align:right">2,232</td>
+<td>Figures from tools/ci.sh (2026-10-30); the hook on each radio, the page and the setting</td>
+</tr>
+<tr>
+<td>Air band AM receive (108-137 MHz)</td>
+<td><code>AM_RX</code></td>
+<td style="text-align:right">408*</td>
+<td style="text-align:right">—</td>
+<td>Needs a receiver that does AM; DM-32 board glue not written yet, so nothing runs</td>
+</tr>
+<tr>
+<td>Broadcast FM receiver</td>
+<td><code>BCAST_FM</code></td>
+<td style="text-align:right">~0*</td>
+<td style="text-align:right">—</td>
+<td>Needs a second receiver chip (DM-32's RDA5807M); glue not written yet</td>
+</tr>
+<tr>
+<td>Receive past the rated bands, Settings &gt; Advanced</td>
+<td><code>RX_EXT</code></td>
+<td style="text-align:right">484</td>
+<td style="text-align:right">—</td>
+<td><abbr class="gl" tabindex="0" title="Receive." data-more="user/22-glossary.html#t-rx">Receive</abbr> only, FM, off by default; ranges from each receiver chip's documents. MD-380: no receiver range in its chip documents</td>
+</tr>
+<tr>
+<td>DMR Tier II voice (modem, call stack, AMBE FEC, vocoder)</td>
+<td><code>DMR</code></td>
+<td style="text-align:right">175,856</td>
+<td style="text-align:right">134,308</td>
+<td>Includes every <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="user/22-glossary.html#t-dmr">DMR</abbr> feature and everything on IP over DMR</td>
+</tr>
+<tr>
+<td>P25 Phase 1 conventional: the air interface (framer, soft modem, shared FEC), the engine, the P25 channel mode and the full-rate voice decoder on the MBE core</td>
+<td><code>P25</code></td>
+<td style="text-align:right">43,300*</td>
+<td style="text-align:right">24,640*</td>
+<td>Needs a board with an air interface provider (<code>board.air</code>); without one nothing runs (<a href="spec/air-interface.html">air-interface.md</a>). Off on the MD-380 until receive is written (<a href="spec/hardware-md380.html">hardware-md380.md</a> 4.11). Receive and transmit checked on air against the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="dev/glossary.html#t-sdr">SDR</abbr> bench on the DM-32UV and the DM-1701, receive, zone scan and <abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="user/22-glossary.html#t-dual-watch">dual watch</abbr> on the MD-9600; the VFO's mode tile, the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="dev/debug-link.html">debug link</abbr> or a stored P25 channel sets it (<a href="spec/p25.html">p25.md</a>). <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="dev/glossary.html#t-ram">RAM</abbr>: 6,640 B on the DM-1701, 424 B on the MD-380</td>
+</tr>
+<tr>
+<td>NXDN conventional voice, 4800 and 9600 bit/s: the frame codec, receive, the call layer, the engine and the NXDN mode in the radio core</td>
+<td><code>NXDN</code></td>
+<td style="text-align:right">27,300*</td>
+<td style="text-align:right">—</td>
+<td>Needs <code>DMR</code> (its voice goes through the DMR <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="dev/codec.html">vocoder</abbr> path) and a board with an air interface provider (<code>board.air</code>); where the provider only receives a rate, PTT is refused at that rate. The VFO's mode tile, the debug link or a stored NXDN channel sets it (<a href="spec/nxdn.html">nxdn.md</a> 6, <a href="spec/nxdn-codeplug.html">nxdn-codeplug.md</a>). On the DM-1701 and the DM-32UV transmit is checked off air at both rates and receive with a bench transmitter, speech frames through the vocoder included (DM-1701); the sound at the speaker is untested (<a href="spec/modem-hrc6000.html">modem-hrc6000.md</a> 10.6). RAM: 2,184 B on the DM-1701; with <code>P25</code> also on it shares P25's engine memory (9,464 B flash, 256 B RAM on top of P25)</td>
+</tr>
+<tr>
+<td>Basic privacy (Motorola / Anytone BP)</td>
+<td><code>DMR_PRIVACY</code></td>
+<td style="text-align:right">1,936</td>
+<td style="text-align:right">1,992</td>
+<td></td>
+</tr>
+<tr>
+<td>Talker alias receive and send</td>
+<td><code>DMR_TALKER_ALIAS</code></td>
+<td style="text-align:right">984</td>
+<td style="text-align:right">1,300</td>
+<td></td>
+</tr>
+<tr>
+<td>ETSI GPS Info in the embedded LC</td>
+<td><code>DMR_GPS</code></td>
+<td style="text-align:right">2,208</td>
+<td style="text-align:right">2,152</td>
+<td></td>
+</tr>
+<tr>
+<td>DMR emergency (alarm, emergency call, hot mic)</td>
+<td><code>DMR_EMERGENCY</code></td>
+<td style="text-align:right">3,296</td>
+<td style="text-align:right">3,188</td>
+<td></td>
+</tr>
+<tr>
+<td>Repeater roaming</td>
+<td><code>DMR_ROAMING</code></td>
+<td style="text-align:right">11,952</td>
+<td style="text-align:right">12,380</td>
+<td></td>
+</tr>
+<tr>
+<td>CSBK signaling: call alert, radio check</td>
+<td><code>DMR_SIGNALING</code></td>
+<td style="text-align:right">592</td>
+<td style="text-align:right">752</td>
+<td></td>
+</tr>
+<tr>
+<td>Tier III trunked systems: control channel, registration, following calls</td>
+<td><code>DMR_TRUNK</code></td>
+<td style="text-align:right">37,540</td>
+<td style="text-align:right">38,176</td>
+<td>Includes its children. Off, a trunked channel is shown as a mode not in this build (<a href="spec/dmr-trunking.html">dmr-trunking</a>). The four trunking figures are from the default builds they were added to</td>
+</tr>
+<tr>
+<td>Trunked calls and services: voice, status, short data, packet data, authentication</td>
+<td><code>DMR_TRUNK_TX</code></td>
+<td style="text-align:right">11,548</td>
+<td style="text-align:right">11,876</td>
+<td>Needs <code>DMR_TRUNK</code>. Includes its children. Off, the radio follows a system and never transmits there</td>
+</tr>
+<tr>
+<td>Trunked supplementary data and the short data poll</td>
+<td><code>DMR_TRUNK_SUPL</code></td>
+<td style="text-align:right">724</td>
+<td style="text-align:right">684</td>
+<td>Needs <code>DMR_TRUNK_TX</code></td>
+</tr>
+<tr>
+<td>Trunked calls through a system's telephone, line and dispatcher gateways: dialed digits sent with the call</td>
+<td><code>DMR_TRUNK_GW</code></td>
+<td style="text-align:right">1,552</td>
+<td style="text-align:right">1,732</td>
+<td>Needs <code>DMR_TRUNK_TX</code></td>
+</tr>
+<tr>
+<td>P25 channels in the codeplug: the conventional codec</td>
+<td><code>P25</code></td>
+<td style="text-align:right">56</td>
+<td style="text-align:right">—</td>
+<td>The codec only: a P25 channel is shown as a mode not in this build (<a href="spec/p25-codeplug.html">p25-codeplug.md</a>). A stored P25 channel runs on its own parameters (<a href="spec/p25.html">p25.md</a> 7)</td>
+</tr>
+<tr>
+<td>P25 trunked systems in the codeplug: the codec</td>
+<td><code>P25_TRUNK</code></td>
+<td style="text-align:right">13,300*</td>
+<td style="text-align:right">—</td>
+<td>Needs <code>P25</code>; on top of it. Off on the MD-380 with <code>P25</code>. A trunked channel hunts its system's control channel and follows voice grants for its talk group; where the system allows transmit it registers, affiliates, asks for a voice channel on PTT and transmits on the grant (<a href="spec/p25-trunking.html">p25-trunking.md</a>). Run on the DM-1701 and the DM-32UV against a control channel the SDR bench plays, not on a live system. RAM: 1,232 B on the DM-1701</td>
+</tr>
+<tr>
+<td>VFO (hand-tuned frequency)</td>
+<td><code>VFO</code></td>
+<td style="text-align:right">656</td>
+<td style="text-align:right">516</td>
+<td>Includes the DMR VFO; <code>VFO</code> and <code>VFO_DMR</code> re-measured 2026-10-17 (DM-1701 plain build, MD-380 with <abbr class="gl" tabindex="0" title="Link-time optimization: the compiler optimizes across files. It shrinks the firmware." data-more="dev/glossary.html#t-lto">LTO</abbr>). Copy to VFO (<a href="spec/dmr-voice.html">dmr-voice.md</a> 2.2) is on top of that figure, behind the same switch: about 630 B on the DM-1701 and 730 B on the MD-380 (default builds, LTO as each has it), 750 B on the C-SKY radios</td>
+</tr>
+<tr>
+<td>FM VFO</td>
+<td><code>VFO_FM</code></td>
+<td style="text-align:right">504</td>
+<td style="text-align:right">452</td>
+<td></td>
+</tr>
+<tr>
+<td>DMR VFO (color code, slot, talk target typed in; mode change FM / DMR)</td>
+<td><code>VFO_DMR</code></td>
+<td style="text-align:right">144</td>
+<td style="text-align:right">104</td>
+<td>The VFO's mode, <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="user/22-glossary.html#t-color-code">color code</abbr>, slot and <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="user/22-glossary.html#t-talk-target">talk target</abbr> are settings of the VFO, kept across power cycles (<a href="spec/dmr-voice.html">dmr-voice.md</a> 2.1)</td>
+</tr>
+<tr>
+<td>Channels list: every channel by number, a channel's settings (hub 5)</td>
+<td><code>CHANNEL_LIST</code></td>
+<td style="text-align:right">1,536</td>
+<td style="text-align:right">2,140</td>
+<td></td>
+</tr>
+<tr>
+<td>Channel editor: edit a channel, New channel from current settings, text entry</td>
+<td><code>CHANNEL_EDIT</code></td>
+<td style="text-align:right">4,656</td>
+<td style="text-align:right">4,252</td>
+<td>Needs <code>CHANNEL_LIST</code>. Without it a channel's settings are read only. Measured 2026-10-17</td>
+</tr>
+<tr>
+<td>Zone editor: move, add, copy and remove channels in a zone; rename, copy and delete a zone</td>
+<td><code>ZONE_EDIT</code></td>
+<td style="text-align:right">6,580</td>
+<td style="text-align:right">6,928</td>
+<td>Needs <code>CHANNEL_EDIT</code>. Measured 2026-10-24 on the default builds, LTO as each has it; also about 1.3 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="dev/glossary.html#t-kb">KB</abbr> of RAM</td>
+</tr>
+<tr>
+<td>Contact editor: a new contact from Find or a call's actions (name, ID, type, timeslot)</td>
+<td><code>CONTACT_EDIT</code></td>
+<td style="text-align:right">1,580</td>
+<td style="text-align:right">1,580</td>
+<td>Needs <code>CHANNEL_EDIT</code> and <code>DMR</code>. Measured 2026-10-30 on the default builds</td>
+</tr>
+<tr>
+<td>Volume bar when a knob the MCU reads turns (#354)</td>
+<td><code>VOLUME_BAR</code></td>
+<td style="text-align:right">496</td>
+<td style="text-align:right">428</td>
+<td>Measured 2026-11-08 on the default builds; shows only on a radio with such a knob. Off, the volume screen keeps the segment drawing it now shares (about 90 bytes)</td>
+</tr>
+<tr>
+<td>Key assignment (Settings &gt; Keys, codeplug)</td>
+<td><code>KEY_ASSIGN</code></td>
+<td style="text-align:right">2,120</td>
+<td style="text-align:right">2,188</td>
+<td>Up to 9 keys. Measured 2026-10-24</td>
+</tr>
+<tr>
+<td>Scan, band scan, dual watch, nuisance delete</td>
+<td><code>SCAN</code></td>
+<td style="text-align:right">2,576</td>
+<td style="text-align:right">3,032</td>
+<td></td>
+</tr>
+<tr>
+<td>Dual watch: A and B in any zone or the VFO, PTT on the selected one, its screens, talk back</td>
+<td><code>DUAL_WATCH</code></td>
+<td style="text-align:right">10,864</td>
+<td style="text-align:right">11,456</td>
+<td>Needs <code>SCAN</code>. Without it, only the debug link's dual watch (two channels of one zone). Measured 2026-10-21 on the dual watch branch, default builds</td>
+</tr>
+<tr>
+<td>Beeps and alert tones</td>
+<td><code>BEEP</code></td>
+<td style="text-align:right">1,552</td>
+<td style="text-align:right">1,800</td>
+<td></td>
+</tr>
+<tr>
+<td>Signaling tone chains (Settings &gt; Signaling tones)</td>
+<td><code>SIG_TONES</code></td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td>Needs <code>BEEP</code>. Not measured yet: no C-SKY or ARM compiler in the session that wrote it</td>
+</tr>
+<tr>
+<td>Vibration alerts (Settings &gt; Sound &gt; Vibrate)</td>
+<td><code>VIBRATE</code></td>
+<td style="text-align:right">520*</td>
+<td style="text-align:right">—</td>
+<td>Needs a vibration motor (<code>hal_power_t.vibrate</code>): none of these radios has one RadioFoundry drives. On for the DM-1801 Pro. Measured 2026-10-16 with <code>CONFIG_SNMP=n</code>; 236 B with LTO</td>
+</tr>
+<tr>
+<td>GPS receiver: the module driver and its NMEA input (Settings &gt; Location &gt; GPS)</td>
+<td><code>GPS</code></td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">1,196</td>
+<td>Needs a GPS receiver. Off, DMR GPS Info, <abbr class="gl" tabindex="0" title="Location Request and Response Protocol: a dispatcher asks a radio for its position. Motorola&#x27;s position format; the standard has LIP." data-more="user/22-glossary.html#t-lrrp">LRRP</abbr> and APRS send the fixed position when one is set (<a href="spec/position.html">position</a>). MD-380 measured 2026-10-22 (LTO, 58f2cebe). The DM-1701 has none from the factory but listens for an owner-fitted one (1,308 B, LTO)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="dmr-data">DMR data</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Switch</th>
+<th style="text-align:right">Bytes DM-1701</th>
+<th style="text-align:right">Bytes MD-380</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Text messages (ETSI IP text by default)</td>
+<td><code>DMR_SMS</code></td>
+<td style="text-align:right">2,640</td>
+<td style="text-align:right">5,072</td>
+<td>Includes the <abbr class="gl" tabindex="0" title="Text message service: Motorola&#x27;s text message format on DMR. The standard&#x27;s own short data uses other formats." data-more="user/22-glossary.html#t-tms">TMS</abbr> format. Individual <abbr class="gl" tabindex="0" title="European Telecommunications Standards Institute, which publishes the DMR standard." data-more="dev/glossary.html#t-etsi">ETSI</abbr> IP texts go confirmed (&quot;Delivered to&quot;)</td>
+</tr>
+<tr>
+<td>Motorola TMS text format</td>
+<td><code>DMR_TMS</code></td>
+<td style="text-align:right">784</td>
+<td style="text-align:right">740</td>
+<td>Optional format next to ETSI IP text</td>
+</tr>
+<tr>
+<td>ARS registration</td>
+<td><code>DMR_ARS</code></td>
+<td style="text-align:right">1,112</td>
+<td style="text-align:right">1,324</td>
+<td></td>
+</tr>
+<tr>
+<td>LRRP location</td>
+<td><code>DMR_LRRP</code></td>
+<td style="text-align:right">8,548</td>
+<td style="text-align:right">2,048</td>
+<td></td>
+</tr>
+<tr>
+<td>Compressed UDP/IP headers on transmit (SAP 3)</td>
+<td><code>DMR_UDP_COMPRESS</code></td>
+<td style="text-align:right">408</td>
+<td style="text-align:right">356</td>
+<td>Auto: not for ports 4000-4099 or ETSI IP text</td>
+</tr>
+<tr>
+<td>Zone and channel sharing: send a zone or a channel, import an offered one</td>
+<td><code>ZONE_SHARE</code></td>
+<td style="text-align:right">12,240</td>
+<td style="text-align:right">12,388</td>
+<td>Includes its screens and the import; about 4 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="dev/glossary.html#t-kb">KB</abbr> of <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="dev/glossary.html#t-ram">RAM</abbr>. Received shares are offered by default, imported only when the user says so (<a href="spec/zone-share.html">zone-share.md</a>). Measured 2026-10-24 with <abbr class="gl" tabindex="0" title="Link-time optimization: the compiler optimizes across files. It shrinks the firmware." data-more="dev/glossary.html#t-lto">LTO</abbr>, on the zone share branch</td>
+</tr>
+<tr>
+<td>Single frequency repeater: MMDVM SFR, and the standalone SFR (experimental)</td>
+<td><code>SFR</code></td>
+<td style="text-align:right">6,884</td>
+<td style="text-align:right">—</td>
+<td>MD-380: HR_C5000 lacks what the <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="spec/sfr.html">SFR</abbr> glue uses</td>
+</tr>
+<tr>
+<td>Experimental: SFR user receive &quot;dual-path RX&quot;: a voice frame whose FEC failed comes from the other copy</td>
+<td><code>SFR_DUALPATH_RX</code></td>
+<td style="text-align:right">696</td>
+<td style="text-align:right">—</td>
+<td>Needs <code>SFR</code>. DM-1701 figure with LTO (2026-10-22)</td>
+</tr>
+<tr>
+<td>Experimental: standalone SFR repeater's periodic CW ID (callsign in Morse, FM)</td>
+<td><code>SFR_CWID</code></td>
+<td style="text-align:right">900</td>
+<td style="text-align:right">—</td>
+<td>Needs <code>SFR</code>. DM-1701 figure with LTO (2026-10-22)</td>
+</tr>
+<tr>
+<td>APRS: AFSK positions, status, messages; DMR positions; KISS TNC</td>
+<td><code>APRS</code></td>
+<td style="text-align:right">26,568</td>
+<td style="text-align:right">26,628</td>
+<td>Includes <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="user/13-aprs.html">APRS</abbr> <abbr class="gl" tabindex="0" title="Receive." data-more="user/22-glossary.html#t-rx">receive</abbr>, <abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="user/22-glossary.html#t-kiss">KISS</abbr> over <abbr class="gl" tabindex="0" title="Transmission Control Protocol: IP connections with ordered, guaranteed delivery." data-more="dev/glossary.html#t-tcp">TCP</abbr> and APRS-IS where built. MD-380: <abbr class="gl" tabindex="0" title="Audio frequency shift keying: data as two audio tones on an FM carrier. APRS at 1200 baud uses it." data-more="dev/glossary.html#t-afsk">AFSK</abbr> <abbr class="gl" tabindex="0" title="Transmit." data-more="user/22-glossary.html#t-tx">TX</abbr> needs the tone path (not written), <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="user/22-glossary.html#t-dmr">DMR</abbr> positions work</td>
+</tr>
+<tr>
+<td>APRS on FM: AX.25 / AFSK packets, messages, KISS TNC</td>
+<td><code>APRS_AFSK</code></td>
+<td style="text-align:right">21,876</td>
+<td style="text-align:right">11,872</td>
+<td>Needs APRS and FM. Includes APRS receive, KISS over TCP and APRS-IS where built. Off, APRS sends positions over DMR only. Measured with LTO</td>
+</tr>
+<tr>
+<td>APRS over DMR: LRRP or UDT positions to a gateway ID</td>
+<td><code>APRS_DMR</code></td>
+<td style="text-align:right">692</td>
+<td style="text-align:right">1,380</td>
+<td>Needs APRS and DMR. Off, APRS is FM only. Measured with LTO</td>
+</tr>
+<tr>
+<td>APRS receive: demodulator, station list, digipeater</td>
+<td><code>APRS_RX</code></td>
+<td style="text-align:right">8,892</td>
+<td style="text-align:right">—</td>
+<td>DM-1701: FM receive audio on the <abbr class="gl" tabindex="0" title="Inter-IC sound: the bus audio samples travel on between chips." data-more="dev/glossary.html#t-i2s">I2S</abbr> stream, squelch gated (<a href="spec/aprs.html">aprs</a> 5.3). MD-380: not written</td>
+</tr>
+<tr>
+<td>GPS screen: sky plot, signal bars, grid locator (Tools &gt; Position)</td>
+<td><code>GPS_SKY</code></td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">5,244</td>
+<td>Needs GPS. 176 B of RAM. MD-380 measured 2026-10-29 (LTO)</td>
+</tr>
+<tr>
+<td>APRS iGate rules (with tools/aprs_gate.py)</td>
+<td><code>APRS_IGATE</code></td>
+<td style="text-align:right">1,820*</td>
+<td style="text-align:right">—</td>
+<td>Needs APRS receive. DM-1701: off by default</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="host-link-and-usb">Host link and USB</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Switch</th>
+<th style="text-align:right">Bytes DM-1701</th>
+<th style="text-align:right">Bytes MD-380</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USB device</td>
+<td><code>USB</code></td>
+<td style="text-align:right">127,300</td>
+<td style="text-align:right">87,848</td>
+<td>DM-32 has no USB (host link on the programming cable's <abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="dev/glossary.html#t-uart">UART</abbr>). Includes everything on USB</td>
+</tr>
+<tr>
+<td>Host link: hotspot, CPS, debug link on the host port</td>
+<td><code>HOSTLINK</code></td>
+<td style="text-align:right">115,640</td>
+<td style="text-align:right">77,644</td>
+<td>Includes its children</td>
+</tr>
+<tr>
+<td>MMDVM hotspot</td>
+<td><code>HOTSPOT</code></td>
+<td style="text-align:right">34,196</td>
+<td style="text-align:right">~12,400</td>
+<td>Includes <abbr class="gl" tabindex="0" title="Transmitting on one frequency and receiving on another at the same time. Repeaters do, and so does the duplex hotspot setup." data-more="spec/split-duplex.html">split duplex</abbr> and <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="spec/mmdvm-protocol.html">MMDVM</abbr> <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="spec/sfr.html">SFR</abbr> where built. MD-380: size estimated</td>
+</tr>
+<tr>
+<td>Split duplex repeater (two radios, one duplex modem)</td>
+<td><code>HOTSPOT_SPLIT</code></td>
+<td style="text-align:right">12,584</td>
+<td style="text-align:right">—</td>
+<td>MD-380: HR_C6000-only glue. DM-1701, DM-32UV, DM-1801 Pro: each half checked alone on the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="dev/glossary.html#t-sdr">SDR</abbr> bench; one pair (DM-1801 Pro <abbr class="gl" tabindex="0" title="Transmit." data-more="user/22-glossary.html#t-tx">TX</abbr>, DM-32UV <abbr class="gl" tabindex="0" title="Receive." data-more="user/22-glossary.html#t-rx">RX</abbr>) with a subscriber: 29 of 31 calls on the right slot</td>
+</tr>
+<tr>
+<td>Debug link</td>
+<td><code>DEBUGLINK</code></td>
+<td style="text-align:right">32,376</td>
+<td style="text-align:right">29,084</td>
+<td></td>
+</tr>
+<tr>
+<td>Task stacks in the debug link view</td>
+<td><code>TASK_STACKS</code></td>
+<td style="text-align:right">536</td>
+<td style="text-align:right">560</td>
+<td>Each task's least free stack, the <code>tasks</code> view section (<a href="spec/debuglink.html">debuglink</a> 3.7)</td>
+</tr>
+<tr>
+<td>Open-firmware CPS protocol (qdmr)</td>
+<td><code>CPS_OPENFW</code></td>
+<td style="text-align:right">3,064</td>
+<td style="text-align:right">3,008</td>
+<td></td>
+</tr>
+<tr>
+<td>Fast codeplug protocol (debug link CODEPLUG)</td>
+<td><code>CPS_FAST</code></td>
+<td style="text-align:right">3,732</td>
+<td style="text-align:right">3,948*</td>
+<td>Changed 4 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="dev/glossary.html#t-kb">KB</abbr> blocks only, LZ4 both ways, staged commit (<a href="spec/cps-fast.html">cps-fast.md</a>). DM-1701 figure with <abbr class="gl" tabindex="0" title="Link-time optimization: the compiler optimizes across files. It shrinks the firmware." data-more="dev/glossary.html#t-lto">LTO</abbr> (2026-10-18)</td>
+</tr>
+<tr>
+<td>Loader hand-over (stub entry, command 0x1A)</td>
+<td><code>STUB_ENTRY</code></td>
+<td style="text-align:right">768*</td>
+<td style="text-align:right">—</td>
+<td>Updates and backups over the radio's own link without the bootloader key press: the web flasher and <code>stub/stubtool.py</code>. On by default on every radio, with or without the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="dev/debug-link.html">debug link</abbr> (<a href="spec/stub-entry.html">stub-entry.md</a>); on the <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="dev/glossary.html#t-stm32">STM32</abbr> radios a <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="dev/glossary.html#t-ram">RAM</abbr> flash <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="dev/glossary.html#t-stub">stub</abbr> that also takes 8 KB of RAM (<a href="spec/stub-stm32f4.html">stub-stm32f4.md</a>) (the DM-1701's RAM is 95 % used with it on)</td>
+</tr>
+<tr>
+<td>Crash log</td>
+<td><code>CRASH_LOG</code></td>
+<td style="text-align:right">1,572</td>
+<td style="text-align:right">1,756</td>
+<td>A fault, stack overflow, heap exhaustion or failed assertion keeps a record across the restart; the debug link shows it (<a href="spec/crash-log.html">crash-log.md</a>)</td>
+</tr>
+<tr>
+<td>Hardware watchdog</td>
+<td><code>WATCHDOG</code></td>
+<td style="text-align:right">932</td>
+<td style="text-align:right">856</td>
+<td>Fed by the idle task; a hang or a starved system resets the radio. Timeout about 5 s on the STM32 radios, 4 s on the <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="dev/glossary.html#t-hr-c7000">HR_C7000</abbr> radios (<a href="spec/watchdog.html">watchdog.md</a>)</td>
+</tr>
+<tr>
+<td>Fault trace on the host UART</td>
+<td><code>FAULT_TRACE</code></td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td>A <abbr class="gl" tabindex="0" title="Central processing unit." data-more="dev/glossary.html#t-cpu">CPU</abbr> fault's registers in three framed lines before the restart, about 600 B (<a href="spec/crash-log.html">crash-log.md</a> 2.3). The STM32 radios' host port is USB</td>
+</tr>
+<tr>
+<td>Crash log screen</td>
+<td><code>CRASH_SCREEN</code></td>
+<td style="text-align:right">1,024</td>
+<td style="text-align:right">1,408*</td>
+<td>Settings &gt; Advanced &gt; Crash log: the record's summary and Clear</td>
+</tr>
+<tr>
+<td>Crash report over DMR</td>
+<td><code>CRASH_REPORT</code></td>
+<td style="text-align:right">1,440</td>
+<td style="text-align:right">1,712*</td>
+<td>Sends the crash record as one <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="dev/glossary.html#t-udp">UDP</abbr> datagram to a <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="dev/cps-and-codeplug.html">codeplug</abbr> contact, from the menu or after the restart (Off, Ask, Auto) (<a href="spec/crash-log.html">crash-log.md</a> 5). Needs the screen</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="network-usb-network-adapter-and-ip-over-dmr">Network (USB network adapter and IP over DMR)</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Switch</th>
+<th style="text-align:right">Bytes DM-1701</th>
+<th style="text-align:right">Bytes MD-380</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USB network adapter (CDC-NCM)</td>
+<td><code>USB_NETWORK</code></td>
+<td style="text-align:right">48,344</td>
+<td style="text-align:right">47,468</td>
+<td>Includes everything below</td>
+</tr>
+<tr>
+<td>Leave network mode from a web page</td>
+<td><code>USB_SERIAL_REQUEST</code></td>
+<td style="text-align:right">644</td>
+<td style="text-align:right">696</td>
+<td>The web flasher and editor take a radio in USB network mode back to serial mode, with no key press on the radio (endpoint 0 request, <code>/api/usb</code>, <abbr class="gl" tabindex="0" title="Transmission Control Protocol: IP connections with ordered, guaranteed delivery." data-more="dev/glossary.html#t-tcp">TCP</abbr> at 12.255.255.254). Follows <code>USB_NETWORK</code></td>
+</tr>
+<tr>
+<td>IP over DMR gateway</td>
+<td><code>DMR_IP_GATEWAY</code></td>
+<td style="text-align:right">44,128</td>
+<td style="text-align:right">43,220</td>
+<td>Includes the radio's own services below</td>
+</tr>
+<tr>
+<td>Control station mode (boot as network, PC answers data, fixed link)</td>
+<td><code>DMR_CONTROL_STATION</code></td>
+<td style="text-align:right">288</td>
+<td style="text-align:right">484</td>
+<td></td>
+</tr>
+<tr>
+<td>Minimal TCP</td>
+<td><code>NET_TCP</code></td>
+<td style="text-align:right">16,240</td>
+<td style="text-align:right">15,656</td>
+<td>Includes <abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="user/22-glossary.html#t-kiss">KISS</abbr>, HTTP, <abbr class="gl" tabindex="0" title="Hamlib&#x27;s network rig control protocol, used by loggers and SDR programs." data-more="user/22-glossary.html#t-rigctld">rigctld</abbr>, APRS-IS. About 4.5 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="dev/glossary.html#t-kb">KB</abbr> <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="dev/glossary.html#t-ram">RAM</abbr></td>
+</tr>
+<tr>
+<td>KISS over TCP, port 8001</td>
+<td><code>NET_KISS</code></td>
+<td style="text-align:right">700</td>
+<td style="text-align:right">752</td>
+<td></td>
+</tr>
+<tr>
+<td>HTTP status page and JSON, port 80</td>
+<td><code>NET_HTTP</code></td>
+<td style="text-align:right">4,796</td>
+<td style="text-align:right">4,860</td>
+<td></td>
+</tr>
+<tr>
+<td>HTTP static files stored and served gzip compressed</td>
+<td><code>NET_HTTP_GZIP</code></td>
+<td style="text-align:right">-19,456</td>
+<td style="text-align:right">-18,572</td>
+<td>Negative: saves flash, nearly all of it on web control's files. MD-380: web control follows this switch (<a href="spec/hardware-md380.html">hardware-md380.md</a> 19)</td>
+</tr>
+<tr>
+<td>Web control: the front panel page, keys, status and receive audio over <code>/ws</code></td>
+<td><code>NET_WEBCTL</code></td>
+<td style="text-align:right">9,620</td>
+<td style="text-align:right">9,332</td>
+<td>The page and the radio's drawing included (about 6 KB gzip compressed); 1 KB RAM (<a href="spec/tcp-services.html">tcp-services.md</a> 5.1)</td>
+</tr>
+<tr>
+<td>rigctld, port 4532</td>
+<td><code>NET_RIGCTL</code></td>
+<td style="text-align:right">3,852</td>
+<td style="text-align:right">3,728</td>
+<td></td>
+</tr>
+<tr>
+<td>Audio linking (USRP over UDP, port 34001)</td>
+<td><code>NET_USRP</code></td>
+<td style="text-align:right">4,552</td>
+<td style="text-align:right">4,888</td>
+<td>DM-1701: <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="user/22-glossary.html#t-dmr">DMR</abbr> and FM both ways. MD-380: DMR only (FM audio doesn't reach the processor yet). DM-32UV: DMR only until its board code has the FM audio paths</td>
+</tr>
+<tr>
+<td>APRS-IS client</td>
+<td><code>NET_APRSIS</code></td>
+<td style="text-align:right">2,856</td>
+<td style="text-align:right">2,720</td>
+<td>Needs NAT on the host</td>
+</tr>
+<tr>
+<td>mDNS / DNS-SD (rfoundry-<id>.local)</td>
+<td><code>MDNS</code></td>
+<td style="text-align:right">6,744</td>
+<td style="text-align:right">6,504</td>
+<td></td>
+</tr>
+<tr>
+<td>TFTP codeplug read / write</td>
+<td><code>TFTP</code></td>
+<td style="text-align:right">6,356</td>
+<td style="text-align:right">6,412</td>
+<td>Without the ID database below</td>
+</tr>
+<tr>
+<td>DMR ID database over TFTP (<code>iddb.bin</code>, combined <code>codeplug.bin</code>)</td>
+<td><code>TFTP_IDDB</code></td>
+<td style="text-align:right">2,184</td>
+<td style="text-align:right">2,264</td>
+<td>Follows <code>TFTP</code></td>
+</tr>
+<tr>
+<td>Compact DMR ID database (format C) read beside format N</td>
+<td><code>IDDB_COMPACT</code></td>
+<td style="text-align:right">988</td>
+<td style="text-align:right">992</td>
+<td>Follows <code>DMR</code> (<a href="spec/iddb-compact.html">iddb-compact.md</a>)</td>
+</tr>
+<tr>
+<td>SNMP v2c agent and traps (USB and over the air)</td>
+<td><code>SNMP</code></td>
+<td style="text-align:right">8,460</td>
+<td style="text-align:right">8,036</td>
+<td></td>
+</tr>
+<tr>
+<td>PPP on the serial host port (IPv4 into the gateway)</td>
+<td><code>NET_PPP</code></td>
+<td style="text-align:right">4,368*</td>
+<td style="text-align:right">3,816*</td>
+<td>Interop tested with pppd; checked on the DB25-D PRO and the DM-1801 Pro (<code>docs/spec/ppp.md</code> 8). Fits neither default image as it is when measured (DM-1701 688 B short, MD-380 1,588 B short of its 275 KB then; DM-1701 with <abbr class="gl" tabindex="0" title="Link-time optimization: the compiler optimizes across files. It shrinks the firmware." data-more="dev/glossary.html#t-lto">LTO</abbr>: +3,948, fits). DM-32: its only IP link, on by default with the gateway and every service (Whole images, DM-32UV)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="user-interface">User interface</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Switch</th>
+<th style="text-align:right">Bytes DM-1701</th>
+<th style="text-align:right">Bytes MD-380</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Settings menu on the radio</td>
+<td><code>UI_SETTINGS</code></td>
+<td style="text-align:right">5,304</td>
+<td style="text-align:right">5,640</td>
+<td></td>
+</tr>
+<tr>
+<td>Diagnostics page</td>
+<td><code>DIAG</code></td>
+<td style="text-align:right">3,752</td>
+<td style="text-align:right">3,532</td>
+<td></td>
+</tr>
+<tr>
+<td>Backlight test pages</td>
+<td><code>BACKLIGHT_TEST</code></td>
+<td style="text-align:right">1,536</td>
+<td style="text-align:right">1,552</td>
+<td>Off by default; bench work (<a href="testing/backlight-curve.html">backlight-curve.md</a>)</td>
+</tr>
+<tr>
+<td>Color screen settings (theme, highlight color, filled status bar)</td>
+<td><code>UI_COLOR</code></td>
+<td style="text-align:right">672</td>
+<td style="text-align:right">608</td>
+<td>Off on the DM-1801 Pro (monochrome screen; 628 B there). Measured 2026-10-17; DM-1701 with <abbr class="gl" tabindex="0" title="Link-time optimization: the compiler optimizes across files. It shrinks the firmware." data-more="dev/glossary.html#t-lto">LTO</abbr> 612 B</td>
+</tr>
+<tr>
+<td>16x32 font</td>
+<td><code>FONT_XL</code></td>
+<td style="text-align:right">6,352*</td>
+<td style="text-align:right">—</td>
+<td>Only useful at 240 px and wider (MD-380 is 160 px). Anti-aliased on the DM-32 (7.4 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="dev/glossary.html#t-kb">KB</abbr> of glyphs)</td>
+</tr>
+<tr>
+<td>Anti-aliased fonts</td>
+<td><code>FONT_AA</code></td>
+<td style="text-align:right">3,004*</td>
+<td style="text-align:right">—</td>
+<td>Smooth text on color panels (measured 2026-10-17); the DM-32's image grew 9.5 KB with it and <code>FONT_XL</code></td>
+</tr>
+<tr>
+<td>Larger text</td>
+<td><code>FONT_BIG</code></td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td>9x18 lists and labels on 240 px color panels (needs <code>FONT_AA</code>); 3,588 B on the DM-32 (measured 2026-10-17)</td>
+</tr>
+<tr>
+<td>Spanish on the radio</td>
+<td><code>LANG_ES</code></td>
+<td style="text-align:right">28,456</td>
+<td style="text-align:right">28,348</td>
+<td>The first language brings the lookup and the accented letters of every font (about 7.5 KB); the rest is its text. Measured 2026-10-31</td>
+</tr>
+<tr>
+<td>Italian on the radio</td>
+<td><code>LANG_IT</code></td>
+<td style="text-align:right">17,304</td>
+<td style="text-align:right">17,304</td>
+<td>Off by default; measured with Spanish on (its text, and the hashes of strings Spanish leaves untranslated). Alone it costs about as much as Spanish</td>
+</tr>
+<tr>
+<td>French on the radio</td>
+<td><code>LANG_FR</code></td>
+<td style="text-align:right">15,540</td>
+<td style="text-align:right">15,528</td>
+<td>Off by default; measured with Spanish on, as Italian</td>
+</tr>
+<tr>
+<td>Chinese on the radio</td>
+<td><code>LANG_ZH</code></td>
+<td style="text-align:right">32,856</td>
+<td style="text-align:right">32,856</td>
+<td>Off by default. Not the text alone: 15,360 B of 16x16 glyphs (480 characters, <code>core/ui/cjk_font_data.c</code>) and about 17 KB of UTF-8 text, with the text layer's decoder. Needs a 16 px line height: a 240 px color radio draws its words in 8x16 and shows Chinese on every screen, while a layout whose words use the 5x8 or 6x12 font (128x64, 160x128) has no room for it and must not build it. Measured with Spanish on, 2026-11-04</td>
+</tr>
+<tr>
+<td>Start in Spanish</td>
+<td><code>LANG_DEFAULT_ES</code></td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td>The language the radio starts in until the user picks one (needs <code>LANG_ES</code>); the web flasher sets it from its Radio language choice</td>
+</tr>
+<tr>
+<td>Start in Italian</td>
+<td><code>LANG_DEFAULT_IT</code></td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td>As <code>LANG_DEFAULT_ES</code> (needs <code>LANG_IT</code>)</td>
+</tr>
+<tr>
+<td>Start in French</td>
+<td><code>LANG_DEFAULT_FR</code></td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td>As <code>LANG_DEFAULT_ES</code> (needs <code>LANG_FR</code>)</td>
+</tr>
+<tr>
+<td>Start in Chinese</td>
+<td><code>LANG_DEFAULT_ZH</code></td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td>As <code>LANG_DEFAULT_ES</code> (needs <code>LANG_ZH</code>)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="storage">Storage</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Switch</th>
+<th style="text-align:right">Bytes DM-1701</th>
+<th style="text-align:right">Bytes MD-380</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Settings and codeplug storage on SPI NAND</td>
+<td><code>NAND_STORAGE</code></td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td>For radios whose data flash is <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="dev/glossary.html#t-spi">SPI</abbr> <abbr class="gl" tabindex="0" title="The flash chip type that holds large data, such as the codeplug and contacts, in some radios." data-more="dev/glossary.html#t-nand">NAND</abbr>: on for the DB25-D (about 6.6 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="dev/glossary.html#t-kb">KB</abbr> flash, 1.5 KB <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="dev/glossary.html#t-ram">RAM</abbr>), not in these columns. These radios have SPI <abbr class="gl" tabindex="0" title="The flash chip type that holds code and can run it in place." data-more="dev/glossary.html#t-nor">NOR</abbr> and don't use it (<a href="spec/nand-sectors.html">nand-sectors</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="bench">Bench</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Switch</th>
+<th style="text-align:right">Bytes DM-1701</th>
+<th style="text-align:right">Bytes MD-380</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Audio path probe (debug link 0x10)</td>
+<td><code>AUDIO_PROBE</code></td>
+<td style="text-align:right">1,176*</td>
+<td style="text-align:right">—</td>
+<td>Bench only, never in a release</td>
+</tr>
+<tr>
+<td>Air interface bench: raw symbols and tap samples (debug link 0x24)</td>
+<td><code>AIR_RAW</code></td>
+<td style="text-align:right">2,780*</td>
+<td style="text-align:right">—</td>
+<td>Bench only, never in a release (<a href="spec/debuglink.html">debuglink.md</a> 3.28)</td>
+</tr>
+<tr>
+<td>Voice capture for receive tests: the next 32 voice frames received, read over the debug link</td>
+<td><code>VOICE_CAPTURE</code></td>
+<td style="text-align:right">256*</td>
+<td style="text-align:right">344*</td>
+<td>Bench only, never in a release (<a href="spec/debuglink.html">debuglink</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="whole-images">Whole images</h2>
+<h3 id="dm-1701-and-md-380">DM-1701 and MD-380</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Build</th>
+<th style="text-align:right">DM-1701</th>
+<th style="text-align:right">MD-380</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default</td>
+<td style="text-align:right">332,532 (<abbr class="gl" tabindex="0" title="Link-time optimization: the compiler optimizes across files. It shrinks the firmware." data-more="dev/glossary.html#t-lto">LTO</abbr> on)</td>
+<td style="text-align:right">320,236 (2026-10-19)</td>
+</tr>
+<tr>
+<td>Maximal (every compatible switch on)</td>
+<td style="text-align:right">340,396 (LTO on)</td>
+<td style="text-align:right">327,064 (2026-10-19)</td>
+</tr>
+<tr>
+<td>FM only, minimal</td>
+<td style="text-align:right">123,300</td>
+<td style="text-align:right">109,488</td>
+</tr>
+</tbody>
+</table></div>
+<p>Link time optimization is on by default on both radios. The DM-1701 has run with it since 2026-10-13 (the <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="dev/testing.html">HIL</abbr> suite
+passed); <code>LTO_3P=1</code> would take another 3 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="dev/glossary.html#t-kb">KB</abbr> or so off by optimizing the third-party code too.</p>
+<p>The MD-380's app region is sectors 3-10, 0x0800C000..0x080DFFFF, 868,352 bytes (848 KB). The codec runs in place in
+sector 11 (<a href="spec/codec-md380.html">codec-md380.md</a>). With link time optimization, its default:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>MD-380 build</th>
+<th style="text-align:right">Flash</th>
+<th style="text-align:right">Free</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default (UHF)</td>
+<td style="text-align:right">472,036</td>
+<td style="text-align:right">396,316</td>
+</tr>
+<tr>
+<td>Maximal (every switch it supports, PPP and Italian included)</td>
+<td style="text-align:right">500,956</td>
+<td style="text-align:right">367,396</td>
+</tr>
+</tbody>
+</table></div>
+<p>Until the codec first moved, the region was 281,668 bytes and the default image fit only with link time optimization
+and the <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="user/14-hotspot.html">hotspot</abbr> off. Until every codec window moved into sector 11 it was 475,136 bytes (sectors 3-7).</p>
+<h3 id="dm-32uv">DM-32UV</h3>
+<p>The DM-32UV has 880 KB of code space, so <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="dev/glossary.html#t-ram">RAM</abbr> limits it: 165,612 bytes above the stock codec's RAM window and 27,868
+below it (RAM_LO). Its network is <abbr class="gl" tabindex="0" title="Point-to-point protocol: IP over a serial link." data-more="spec/ppp.html">PPP</abbr> on the programming cable (<code>NET_PPP</code>), on by default with the IP gateway and
+every service, <code>TCP_CONNS=3</code> (<code>boards/dm32/config.mk</code>). It fits because the state the core marks <code>RFOUNDRY_CPU_RAM</code> lives
+in RAM_LO (<a href="spec/hardware-dm32.html">hardware-dm32.md</a> 17.1). Measured with csky-elf GCC 14 (bytes of the image, RAM
+of the linker's regions; the <abbr class="gl" tabindex="0" title="Real-time operating system: the scheduler that runs the firmware&#x27;s tasks." data-more="dev/glossary.html#t-rtos">RTOS</abbr> heap, 40 KB with every task stack, is inside the used part):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>DM-32UV build</th>
+<th style="text-align:right">Image</th>
+<th style="text-align:right">RAM (165,612 B)</th>
+<th style="text-align:right">RAM_LO (27,868 B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>before the network (<code>RFOUNDRY_CPU_RAM</code> in main RAM)</td>
+<td style="text-align:right">313,804</td>
+<td style="text-align:right">153,740 (11,872 free)</td>
+<td style="text-align:right">8,800</td>
+</tr>
+<tr>
+<td>default (PPP, gateway, every service, 3 TCP connections)</td>
+<td style="text-align:right">365,236</td>
+<td style="text-align:right">154,428 (11,184 free)</td>
+<td style="text-align:right">24,392 (3,476 free)</td>
+</tr>
+<tr>
+<td>default, <code>TCP_CONNS=4</code></td>
+<td style="text-align:right">365,236</td>
+<td style="text-align:right">155,956 (9,656 free)</td>
+<td style="text-align:right">24,392</td>
+</tr>
+<tr>
+<td>default, <code>TCP_CONNS=2</code></td>
+<td style="text-align:right">365,276</td>
+<td style="text-align:right">152,892 (12,720 free)</td>
+<td style="text-align:right">24,392</td>
+</tr>
+<tr>
+<td>maximal (also <code>AUDIO_PROBE</code>, <code>FONT_XL</code>)</td>
+<td style="text-align:right">372,856</td>
+<td style="text-align:right">155,740 (9,872 free)</td>
+<td style="text-align:right">24,392</td>
+</tr>
+</tbody>
+</table></div>
+<p>The margin kept, about 11 KB of main RAM, is what the image had before the network went in. RAM_LO has 3.5 KB left
+for the RAM code (<code>.ramfunc</code>) and the core's <code>RFOUNDRY_CPU_RAM</code> state to grow.</p>
+<p>Flash each network switch costs on the DM-32UV (default minus the build with it off): the gateway with PPP and every
+service 51,428 (<code>NET_PPP</code> or <code>DMR_IP_GATEWAY</code> off), <abbr class="gl" tabindex="0" title="Transmission Control Protocol: IP connections with ordered, guaranteed delivery." data-more="dev/glossary.html#t-tcp">TCP</abbr> and what runs on it 17,028, <abbr class="gl" tabindex="0" title="Simple Network Management Protocol: reading a device&#x27;s state over the network." data-more="spec/snmp.html">SNMP</abbr> 9,116, <abbr class="gl" tabindex="0" title="Multicast DNS: finding a device on a local network by a `.local` name." data-more="spec/mdns.html">mDNS</abbr> 7,220, <abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="spec/tftp.html">TFTP</abbr>
+6,584, HTTP 5,076, <abbr class="gl" tabindex="0" title="Hamlib&#x27;s network rig control protocol, used by loggers and SDR programs." data-more="user/22-glossary.html#t-rigctld">rigctld</abbr> 4,020, APRS-IS 2,964, <abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="user/22-glossary.html#t-kiss">KISS</abbr> 688, <abbr class="gl" tabindex="0" title="A radio a dispatch program on a computer uses to reach the fleet over the air." data-more="user/22-glossary.html#t-control-station">control station</abbr> 272. Each TCP connection is about 1.5 KB
+of RAM (TCP, HTTP, rigctld).</p>
+<h3 id="db25-d-pro">DB25-D PRO</h3>
+<p>Same <abbr class="gl" tabindex="0" title="System on chip: the processor and its on-chip peripherals." data-more="dev/glossary.html#t-soc">SoC</abbr> and glue as the DM-32UV, with 876 KB of code space and 165,424 bytes of main RAM above the codec window plus
+52,912 in RAM_LO (<code>boards/db25d/memory.ld</code>). The network buffers stay in RAM_LO. Left off: <abbr class="gl" tabindex="0" title="Transmitting on one frequency and receiving on another at the same time. Repeaters do, and so does the duplex hotspot setup." data-more="spec/split-duplex.html">split duplex</abbr>, <abbr class="gl" tabindex="0" title="The UDP stream that carries a call&#x27;s audio between RadioFoundry and a network gateway." data-more="dev/glossary.html#t-usrp">USRP</abbr> (<abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="dev/glossary.html#t-pcm">PCM</abbr> does not fit the 115200 baud host port), <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="spec/sfr.html">SFR</abbr>, <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="user/13-aprs.html">APRS</abbr> <abbr class="gl" tabindex="0" title="Receive." data-more="user/22-glossary.html#t-rx">receive</abbr> and
+<abbr class="gl" tabindex="0" title="A station that passes APRS packets between the air and the APRS-IS internet network." data-more="user/22-glossary.html#t-igate">iGate</abbr>, USB, broadcast FM, air band AM, <code>FONT_XL</code>, <code>AUDIO_PROBE</code> (<code>boards/db25d/config.mk</code>).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>DB25-D build</th>
+<th style="text-align:right">Image</th>
+<th style="text-align:right">RAM (165,424 B)</th>
+<th style="text-align:right">RAM_LO (52,912 B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DMR only (hotspot, VFO and network off)</td>
+<td style="text-align:right">295,460</td>
+<td style="text-align:right">139,952 (25,472 free)</td>
+<td style="text-align:right">19,024 (33,888 free)</td>
+</tr>
+<tr>
+<td>default (hotspot, PPP, gateway, every service but USRP, 3 TCP connections; no split duplex)</td>
+<td style="text-align:right">362,364</td>
+<td style="text-align:right">150,080 (15,344 free)</td>
+<td style="text-align:right">28,584 (24,328 free)</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/feature-matrix.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#checked-on-each-radio">Checked on each radio</a></li><li class="l2"><a href="#built-by-default-on-each-radio">Built by default on each radio</a></li><li class="l2"><a href="#radio-and-voice">Radio and voice</a></li><li class="l2"><a href="#dmr-data">DMR data</a></li><li class="l2"><a href="#host-link-and-usb">Host link and USB</a></li><li class="l2"><a href="#network-usb-network-adapter-and-ip-over-dmr">Network (USB network adapter and IP over DMR)</a></li><li class="l2"><a href="#user-interface">User interface</a></li><li class="l2"><a href="#storage">Storage</a></li><li class="l2"><a href="#bench">Bench</a></li><li class="l2"><a href="#whole-images">Whole images</a></li><li class="l3"><a href="#dm-1701-and-md-380">DM-1701 and MD-380</a></li><li class="l3"><a href="#dm-32uv">DM-32UV</a></li><li class="l3"><a href="#db25-d-pro">DB25-D PRO</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capabilities · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Capabilities · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/docs/spec/capabilities.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/capabilities.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/capabilities.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/capabilities.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/capabilities.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/capabilities.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../es/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../../es/radios/index.html">Radios</a><a href="../../../es/features/index.html">Funciones</a><a href="../../../es/flash/index.html">Instalar</a><a href="../../../es/codeplug/index.html">Codeplug</a><a href="../../../es/docs/index.html" aria-current="page">Documentación</a><a href="../../../es/screenshots/index.html">Capturas</a><a href="../../../es/tools/index.html">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../../docs/spec/capabilities.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/capabilities.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/capabilities.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/capabilities.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Especificaciones">
+		<p class="eyebrow"><a href="../../../es/docs/index.html">Documentación</a> / Especificaciones</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html" aria-current="page">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Esta página aún no está traducida; se muestra en inglés.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="capabilities">Capabilities</h1>
+<p>What a user can expect a RadioFoundry radio to do, by area, and the <abbr class="gl" tabindex="0" title="A CONFIG_ option that turns a feature&#x27;s code in or out of the build." data-more="../build-config.html">build switch</abbr> and spec behind each. Which radios have
+a capability, what it costs in flash and what has been checked on each radio are in
+<a href="../feature-matrix.html">feature-matrix.md</a>; the switches are in <a href="../build-config.html">build-config.md</a>. This page names the
+areas and says nothing about menus, screens or keys: the UI is designed in <code>docs/ux/</code>.</p>
+<h2 id="analog-fm">Analog FM</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Switch</th>
+<th>Spec</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FM voice, 12.5 and 25 kHz, squelch, monitor, repeater reverse</td>
+<td><code>FM</code></td>
+<td><a href="radio-features.html">radio-features.md</a></td>
+</tr>
+<tr>
+<td>CTCSS and DCS encode and decode, tone scan</td>
+<td><code>SUBTONE</code></td>
+<td><a href="radio-features.html">radio-features.md</a></td>
+</tr>
+<tr>
+<td>1750 Hz burst, roger beep; DTMF digits from the keys</td>
+<td><code>FM_TX_TONES</code>, <code>DTMF</code></td>
+<td><a href="radio-features.html">radio-features.md</a></td>
+</tr>
+<tr>
+<td>VOX</td>
+<td><code>VOX</code></td>
+<td><a href="radio-features.html">radio-features.md</a></td>
+</tr>
+<tr>
+<td>Air band AM receive, broadcast FM receive</td>
+<td><code>AM_RX</code>, <code>BCAST_FM</code></td>
+<td><a href="airband-and-broadcast.html">airband-and-broadcast.md</a></td>
+</tr>
+<tr>
+<td>APRS: AFSK positions, status, messages, receive, digipeater, iGate, KISS TNC</td>
+<td><code>APRS</code>, <code>APRS_RX</code>, <code>APRS_IGATE</code></td>
+<td><a href="aprs.html">aprs.md</a></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="dmr">DMR</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Switch</th>
+<th>Spec</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tier II voice, direct mode and through repeaters, color code and slot per channel, talk groups, private calls, late entry, talker alias</td>
+<td><code>DMR</code>, <code>DMR_TALKER_ALIAS</code></td>
+<td><a href="dmr-voice.html">dmr-voice.md</a></td>
+</tr>
+<tr>
+<td>Basic Privacy</td>
+<td><code>DMR_PRIVACY</code></td>
+<td><a href="dmr-voice.html">dmr-voice.md</a></td>
+</tr>
+<tr>
+<td>Text messages, call alert, radio check, ARS, LRRP, confirmed data, compressed headers</td>
+<td><code>DMR_SMS</code>, <code>DMR_SIGNALING</code>, <code>DMR_ARS</code>, <code>DMR_LRRP</code>, <code>DMR_UDP_COMPRESS</code></td>
+<td><a href="dmr-data.html">dmr-data.md</a></td>
+</tr>
+<tr>
+<td>Emergency alarm, emergency call, hot mic</td>
+<td><code>DMR_EMERGENCY</code></td>
+<td><a href="dmr-emergency.html">dmr-emergency.md</a></td>
+</tr>
+<tr>
+<td>Repeater roaming by position</td>
+<td><code>DMR_ROAMING</code></td>
+<td><a href="dmr-roaming.html">dmr-roaming.md</a></td>
+</tr>
+<tr>
+<td>ETSI GPS information</td>
+<td><code>DMR_GPS</code></td>
+<td><a href="dmr-data.html">dmr-data.md</a></td>
+</tr>
+<tr>
+<td>IP over DMR, USB network adapter, TCP services, mDNS, TFTP, SNMP, PPP, USRP</td>
+<td><code>DMR_IP_GATEWAY</code>, <code>USB_NETWORK</code>, <code>NET_*</code>, <code>MDNS</code>, <code>TFTP</code>, <code>SNMP</code></td>
+<td><a href="usb-network.html">usb-network.md</a> and the pages it links</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="hotspot-and-repeater">Hotspot and repeater</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Switch</th>
+<th>Spec</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MMDVM hotspot, simplex and MMDVM single frequency repeater</td>
+<td><code>HOTSPOT</code>, <code>SFR</code></td>
+<td><a href="mmdvm-protocol.html">mmdvm-protocol.md</a>, <a href="sfr.html">sfr.md</a></td>
+</tr>
+<tr>
+<td>Split duplex repeater from two radios</td>
+<td><code>HOTSPOT_SPLIT</code></td>
+<td><a href="split-duplex.html">split-duplex.md</a></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="radio-power-and-ui">Radio, power and UI</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Switch</th>
+<th>Spec</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Zones and channels, VFO, scan, dual watch, channel, zone and contact editors, key assignment</td>
+<td><code>VFO</code>, <code>SCAN</code>, <code>DUAL_WATCH</code>, <code>CHANNEL_LIST</code>, <code>CHANNEL_EDIT</code>, <code>ZONE_EDIT</code>, <code>CONTACT_EDIT</code>, <code>KEY_ASSIGN</code></td>
+<td><a href="ui.html">ui.md</a></td>
+</tr>
+<tr>
+<td>Power levels, TX time-out, battery saver, battery display, calibration</td>
+<td><code>BATTERY_SAVE</code></td>
+<td><a href="radio-features.html">radio-features.md</a></td>
+</tr>
+<tr>
+<td>GPS receiver, fixed position</td>
+<td><code>GPS</code></td>
+<td><a href="radio-features.html">radio-features.md</a></td>
+</tr>
+<tr>
+<td>Settings menu, color themes, fonts</td>
+<td><code>UI_SETTINGS</code>, <code>UI_COLOR</code>, <code>FONT_*</code></td>
+<td><a href="ui.html">ui.md</a></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="programming-update-and-diagnostics">Programming, update and diagnostics</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Switch</th>
+<th>Spec</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Codeplug programming with qdmr (open-firmware CPS) and the Codeplug Editor</td>
+<td><code>CPS_OPENFW</code>, <code>CPS_FAST</code></td>
+<td><a href="cps-protocol.html">cps-protocol.md</a>, <a href="cps-fast.html">cps-fast.md</a></td>
+</tr>
+<tr>
+<td>Firmware update and backup from the web installer or <code>rfoundry</code></td>
+<td><code>STUB_ENTRY</code></td>
+<td><a href="../user/02-installing.html">../user/02-installing.md</a></td>
+</tr>
+<tr>
+<td>Debug link, crash log and report, watchdog</td>
+<td><code>DEBUGLINK</code>, <code>CRASH_LOG</code>, <code>WATCHDOG</code></td>
+<td><a href="debuglink.html">debuglink.md</a>, <a href="crash-log.html">crash-log.md</a>, <a href="watchdog.html">watchdog.md</a></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="not-built">Not built</h2>
+<ul>
+<li>Trunking (<abbr class="gl" tabindex="0" title="A MOTOTRBO single-site trunking mode in which the radios share a pool of repeater channels." data-more="../dev/glossary.html#t-capacity-plus">Capacity Plus</abbr>, <abbr class="gl" tabindex="0" title="A MOTOTRBO multi-site trunking system with a central controller." data-more="../dev/glossary.html#t-connect-plus">Connect Plus</abbr>, Tier III): not built.</li>
+<li>Encryption beyond <abbr class="gl" tabindex="0" title="A fixed voice scrambling from Motorola and Anytone radios. Not encryption." data-more="../user/22-glossary.html#t-basic-privacy">Basic Privacy</abbr> (ARC4, AES).</li>
+<li><abbr class="gl" tabindex="0" title="Dual tone multi frequency: the touch tones a keypad sends, in the audio." data-more="../user/22-glossary.html#t-dtmf">DTMF</abbr> decode and stored DTMF codes (<a href="radio-features.html">radio-features.md</a>).</li>
+</ul>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/capabilities.md">Ver el código fuente de esta página</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="En esta página">
+		<p class="eyebrow">En esta página</p>
+		<ul><li class="l2"><a href="#analog-fm">Analog FM</a></li><li class="l2"><a href="#dmr">DMR</a></li><li class="l2"><a href="#hotspot-and-repeater">Hotspot and repeater</a></li><li class="l2"><a href="#radio-power-and-ui">Radio, power and UI</a></li><li class="l2"><a href="#programming-update-and-diagnostics">Programming, update and diagnostics</a></li><li class="l2"><a href="#not-built">Not built</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

@@ -1,0 +1,416 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PPP on the serial host link · RadioFoundry</title>
+<meta name="description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="PPP on the serial host link · RadioFoundry">
+<meta property="og:description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:url" content="https://radiofoundry.org/docs/spec/ppp.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="The radios RadioFoundry runs on, each showing a different screen.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/ppp.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/ppp.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/ppp.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/ppp.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/ppp.html">
+<link rel="icon" href="../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../" data-home="../../" data-gl-more="More">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../index.html">
+			<img src="../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Main"><a href="../../radios/index.html">Radios</a><a href="../../features/index.html">Features</a><a href="../../flash/index.html">Install</a><a href="../../codeplug/index.html">Codeplug</a><a href="../../docs/index.html" aria-current="page">Docs</a><a href="../../screenshots/index.html">Screenshots</a><a href="../../tools/index.html">Tools</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Language" title="Language">EN</summary><nav aria-label="Language"><a href="../../docs/spec/ppp.html" aria-current="true" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../es/docs/spec/ppp.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../it/docs/spec/ppp.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../zh/docs/spec/ppp.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Switch light and dark" title="Switch light and dark">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Specifications">
+		<p class="eyebrow"><a href="../../docs/index.html">Documentation</a> / Specifications</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html" aria-current="page">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<h1 id="ppp-on-the-serial-host-link">PPP on the serial host link</h1>
+<p>IPv4 over <abbr class="gl" tabindex="0" title="Point-to-point protocol: IP over a serial link." data-more="ppp.html">PPP</abbr> on the radio's serial host port, into the same IP gateway and services as the USB network adapter
+(<code>usb-network.md</code>). It is the IP link of radios whose only computer link is a USB-serial cable on a <abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="../dev/glossary.html#t-uart">UART</abbr> at 115200 baud. On radios
+with USB it can also run on the USB serial port, as a fallback when a host doesn't bring up the network adapter.</p>
+<p>Switch <code>CONFIG_NET_PPP</code> (<code>docs/build-config.md</code>), on for boards without USB (their only IP link, with the gateway and
+every service) and off on the USB radios (<a href="../feature-matrix.html">feature-matrix.md</a>): host tested, interop tested with pppd, and run on radios (section 8). It needs <code>CONFIG_HOSTLINK</code> and <code>CONFIG_DMR_IP_GATEWAY</code>; the gateway needs a link to
+the host, <code>CONFIG_USB_NETWORK</code> or <code>CONFIG_NET_PPP</code>, and follows PPP by default.</p>
+<p>Written from RFC 1661 (PPP, <abbr class="gl" tabindex="0" title="A MOTOTRBO system of several Capacity Plus sites joined by a network." data-more="../dev/glossary.html#t-linked-capacity-plus">LCP</abbr>), RFC 1662 (HDLC-like framing) and RFC 1332 (IPCP) only.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>File</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>core/net/ppp.c</code>, <code>ppp.h</code></td>
+<td>framing, LCP and IPCP; no <abbr class="gl" tabindex="0" title="Real-time operating system: the scheduler that runs the firmware&#x27;s tasks." data-more="../dev/glossary.html#t-rtos">RTOS</abbr> calls, no hardware</td>
+</tr>
+<tr>
+<td><code>core/hostlink/hostlink_ppp.c</code></td>
+<td>the netif (<code>board_t.netif</code>) between PPP and the gateway, the engine's I/O</td>
+</tr>
+<tr>
+<td><code>core/hostlink/hostlink.c</code></td>
+<td>PPP as a personality of the host port: entering, feeding, leaving</td>
+</tr>
+<tr>
+<td><code>tests/host/pppTest.c</code></td>
+<td>host test and fuzz loop; <code>tests/host/pppPeer.c</code> the same code on a pseudo-terminal</td>
+</tr>
+<tr>
+<td><code>tools/rfoundry_ppp.sh</code></td>
+<td>host side: pppd on the radio's serial port, routes</td>
+</tr>
+<tr>
+<td><code>tools/rfoundry_ppp_interop.sh</code></td>
+<td>interop test against pppd (Linux, root)</td>
+</tr>
+</tbody>
+</table></div>
+<p>A board with PPP sets <code>board.netif = &amp;hostlink_ppp_netif</code>. Without it the link still negotiates, but the gateway's
+answers go nowhere. The view key <code>net.netif</code> shows whether the board has a netif.</p>
+<h2 id="1-framing-rfc-1662">1. Framing (RFC 1662)</h2>
+<ul>
+<li>Flag <code>0x7E</code> before and after every frame (one flag between back-to-back frames is enough on <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr>; we always send
+a leading flag). Control escape <code>0x7D</code>, the next byte <abbr class="gl" tabindex="0" title="Exclusive or: a bit operation that flips bits where the other operand has a 1." data-more="../dev/glossary.html#t-xor">XOR</abbr> <code>0x20</code>. <code>0x7D 0x7E</code> aborts a frame.</li>
+<li>ACCM both ways. We send every control character escaped until the peer's ACCM is known, and <abbr class="gl" tabindex="0" title="A MOTOTRBO system of several Capacity Plus sites joined by a network." data-more="../dev/glossary.html#t-linked-capacity-plus">LCP</abbr> always so (RFC 1662
+7.1). We ask the peer for ACCM 0; until LCP is open, and when the peer rejects the option, a bare control character
+from the peer is line noise and is dropped.</li>
+<li>FCS-16, computed bit by bit: 3,204 B of code for the whole engine on the Cortex-M4 against 3,704 B with the 512 B
+table. At 115200 baud the bitwise loop costs well under 1% of the <abbr class="gl" tabindex="0" title="Central processing unit." data-more="../dev/glossary.html#t-cpu">CPU</abbr>.</li>
+<li>Address and Control are always <code>FF 03</code> and the Protocol field always two bytes: we reject PFC and ACFC, so a frame
+without <code>FF 03</code> is an error.</li>
+<li>A frame longer than MRU + 4 + 2 is dropped. A frame that stops for 500 ms is dropped: the next byte starts a new
+one. Bad FCS, aborted, too long and bad header all count in <code>ppp.rx_errors</code>.</li>
+<li>Receive is in place in a buffer of <code>PPP_RX_BUFFER</code> (602) bytes, 14 bytes of headroom in front of the information
+field so the netif can put an Ethernet header there. The host link lends <abbr class="gl" tabindex="0" title="Point-to-point protocol: IP over a serial link." data-more="ppp.html">PPP</abbr> the USB network adapter's receive
+buffer (<code>hostlink_net_frame()</code>), unused while PPP runs: PPP's own <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> is about 90 bytes.</li>
+</ul>
+<h2 id="2-lcp-rfc-1661">2. LCP (RFC 1661)</h2>
+<p>The option negotiation automaton of RFC 1661 4 for <abbr class="gl" tabindex="0" title="A MOTOTRBO system of several Capacity Plus sites joined by a network." data-more="../dev/glossary.html#t-linked-capacity-plus">LCP</abbr> and IPCP: Closed, Stopped, Closing, Stopping, Req-Sent,
+Ack-Rcvd, Ack-Sent, Opened (Initial and Starting collapse: the layer below is the serial port, always up). Restart
+timer 3 s, Max-Configure 10, Max-Terminate 2, Max-Failure 5 (then Nak'd options are rejected).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>We ask for</th>
+<th>We take from the peer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 MRU</td>
+<td>584 (<code>PPP_MRU</code>: the gateway's 600 byte frames); a Nak'd value from 68 to 584 is asked for instead</td>
+<td>any; our packets longer than it are dropped</td>
+</tr>
+<tr>
+<td>2 ACCM</td>
+<td>0 (a Nak'd map is asked for instead)</td>
+<td>any</td>
+</tr>
+<tr>
+<td>5 Magic-Number</td>
+<td>a number from the start time and <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr></td>
+<td>any but 0 and ours (Nak'd: a looped-back line)</td>
+</tr>
+<tr>
+<td>3 Authentication, 4 Quality, 7 PFC, 8 ACFC, others</td>
+<td>(none)</td>
+<td>Configure-Reject</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>The MRU we announce is the link MTU the peer takes for its interface (pppd sets it from the MRU). The air's MTU (596,
+<a href="dmr-data.html">dmr-data.md</a> 12.8) is above it, so every datagram the peer sends for the air goes in one transmission
+(<a href="usb-network.html">usb-network.md</a> 3.2; the gateway's input is shared).
+A peer that Naks our MRU with a value from 68 (<code>PPP_MIN_MRU</code>, the smallest IPv4 MTU, RFC 791) up to ours gets it
+asked for in the next request (RFC 1661 5.3); a bigger or smaller one is ignored and ours asked for again, until
+Max-Failure. A Reject drops the option: the default 1500 then applies (RFC 1661 6.1), and our <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> buffer still
+takes only 584, so longer frames are dropped. View keys (section <code>net_link</code>) <code>ppp.mru</code> (what we receive: the MRU asked for, 1500 when
+rejected) and <code>ppp.peer_mru</code> (the peer's, 1500 when it gave none).</li>
+<li>Echo-Request answered with our magic number while open. Echo-Reply and Discard-Request are taken quietly.</li>
+<li>Terminate-Request: Terminate-Ack, IP down at once, the link ends one restart time later (the Stopping state, so
+retransmitted requests are answered).</li>
+<li>Code-Reject for an unknown code. Protocol-Reject (inside LCP) for an unknown protocol while LCP is open: IPv6CP,
+CCP and anything else. A Protocol-Reject of IPCP ends the link.</li>
+<li>Before LCP is open every other protocol is discarded silently, as is IPv4 before IPCP is open.</li>
+</ul>
+<h2 id="3-ipcp-rfc-1332">3. IPCP (RFC 1332)</h2>
+<p>Only option 3, IP-Address. The radio knows both ends, the same pair the USB network adapter's <abbr class="gl" tabindex="0" title="Dynamic Host Configuration Protocol: how a device gets its IP address on a network." data-more="../dev/glossary.html#t-dhcp">DHCP</abbr> hands out
+(<code>core/dmr/ipGateway.h</code>): the radio is <code>ipGatewayRadioIP()</code>, the host <code>ipGatewayHostIP()</code> (12.<DMR ID>, or the
+<abbr class="gl" tabindex="0" title="A radio a dispatch program on a computer uses to reach the fleet over the air." data-more="../user/22-glossary.html#t-control-station">control station</abbr>'s fixed link, <code>usb-network.md</code> 5.3). So the gateway, the services and the addressing rules behave
+exactly as on the adapter.</p>
+<ul>
+<li>Our request carries our address. The peer's request is Ack'd when it carries the host's address and Nak'd to it
+otherwise (pppd's <code>noipdefault</code> asks for 0.0.0.0). With no address yet (no <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr>) the option is rejected.</li>
+<li>VJ compression (option 2), the old IP-Addresses (1), the DNS and NBNS options are rejected.</li>
+<li>We don't adopt a Nak of our own address: don't give pppd a remote address.</li>
+</ul>
+<p>pppd installs a host route to the radio only. The radio IDs (12.0.0.0/8) and <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroups</abbr> (225.0.0.0/8) need routes
+through the <abbr class="gl" tabindex="0" title="Point-to-point protocol: IP over a serial link." data-more="ppp.html">PPP</abbr> interface, as the adapter's DHCP option 121 gives: <code>tools/rfoundry_ppp.sh</code> adds them.</p>
+<h2 id="4-ppp-as-a-personality-of-the-host-port">4. PPP as a personality of the host port</h2>
+<p>The host link (<code>core/hostlink/hostlink.h</code>) dispatches the port's bytes to one protocol at a time (idle, <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr>, <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr>,
+<abbr class="gl" tabindex="0" title="Terminal node controller: the modem that turns packet data into audio tones and back." data-more="../dev/glossary.html#t-tnc">TNC</abbr>, and the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> beside them). <abbr class="gl" tabindex="0" title="Point-to-point protocol: IP over a serial link." data-more="ppp.html">PPP</abbr> isn't one more of those modes: it is a personality of the serial port, as
+the network adapter is of the USB one. While PPP has the port, the protocols run over <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr> serial with their own
+modes, exactly as on the adapter, so MMDVMHost over UDP gets hotspot mode while the port carries PPP.</p>
+<p><strong>Entering.</strong></p>
+<ul>
+<li>Passive: a request that starts with <code>0x7E</code> in idle mode. pppd's first frame is an <abbr class="gl" tabindex="0" title="A MOTOTRBO system of several Capacity Plus sites joined by a network." data-more="../dev/glossary.html#t-linked-capacity-plus">LCP</abbr> Configure-Request,
+<code>7E FF 7D 23 C0 21 ...</code> (or <code>7E FF 03 C0 21 ...</code> with a narrower ACCM); no other protocol on the port starts a
+request with <code>0x7E</code> (<abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="mmdvm-protocol.html">MMDVM</abbr> <code>0xE0</code>, debug link <code>0xA5</code>, CPS <abbr class="gl" tabindex="0" title="The 7-bit character set of plain text." data-more="../dev/glossary.html#t-ascii">ASCII</abbr> letters, <abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="../user/22-glossary.html#t-kiss">KISS</abbr> <code>0xC0</code>, <abbr class="gl" tabindex="0" title="The text format GPS receivers use to report position and time." data-more="../user/22-glossary.html#t-nmea">NMEA</abbr> <code>$</code>). LCP starts in the
+Stopped state and answers the peer's request.</li>
+<li>Active: debug link radio op 28 with 1 (<code>rfoundry_debug.py radio ppp on</code>), after its reply has gone out. Our
+Configure-Request goes out at once and every 3 s, ten times. Not needed with pppd, which starts PPP itself; useful
+with a peer that waits for the other end. Refused (ignored) while the USB network adapter is the personality.</li>
+</ul>
+<p><strong>While in it.</strong> Every byte from the port goes to PPP; no debug link frame is looked for on the port. The network
+personality is in use (<code>hostlink_network_mode()</code>): the gateway, the radio's services, and the serial protocols over
+UDP 3334 (<code>usb-network.md</code> 1), so <code>rfoundry_debug.py --port udp:&lt;radio IP&gt;</code>, MMDVMHost over UDP and the HTTP / <abbr class="gl" tabindex="0" title="Simple Network Management Protocol: reading a device&#x27;s state over the network." data-more="snmp.html">SNMP</abbr> / <abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="tftp.html">TFTP</abbr>
+/ <abbr class="gl" tabindex="0" title="Multicast DNS: finding a device on a local network by a `.local` name." data-more="mdns.html">mDNS</abbr> services work as over the adapter. UDP serial bytes never reach PPP, whatever they start with. The view
+section <code>hotspot</code> shows <code>usb.network=1</code> and <code>usb.net_up</code> (IPCP open), section <code>net_link</code> the <code>ppp.*</code> keys; <code>hostlink</code>
+is the mode of the protocols over UDP.</p>
+<p><strong>Leaving</strong> gives the port back to the serial protocols in idle mode; a hotspot session over UDP ends with the link,
+as when the USB personality switches.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Cause</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LCP Terminate from the peer</td>
+<td>pppd hanging up (<code>kill</code>, Ctrl-C): Terminate-Ack, then idle 3 s later</td>
+</tr>
+<tr>
+<td>Our Terminate</td>
+<td>debug link radio op 28 with 0 (over UDP while PPP runs): Terminate-Request, idle on the Terminate-Ack or after 2 tries</td>
+</tr>
+<tr>
+<td>Negotiation timed out</td>
+<td>after an active start, 10 Configure-Requests 3 s apart without an answer</td>
+</tr>
+<tr>
+<td>Dead peer</td>
+<td>60 s without a good frame. An open link quiet for 15 s sends an LCP Echo-Request, again every 15 s; pppd always answers them, so only a peer that went away hits this</td>
+</tr>
+<tr>
+<td>Another protocol</td>
+<td>a frame that starts (the first byte after a flag) with a byte another protocol starts a request with: the debug link's <code>0xA5</code>, MMDVM's <code>0xE0</code> (hotspot allowed), the TNC's bytes, an ASCII letter (CPS). PPP frames always start with <code>FF</code>. The bytes from there on go to that protocol at once, so a CPS or the debug link on the serial port works right after pppd went away without hanging up</td>
+</tr>
+</tbody>
+</table></div>
+<p>A lone <code>0x7E</code> (line noise) enters passive PPP; the next request of any other protocol leaves it again, and with no
+frames it ends after 60 s. Losing exactly the <code>FF 03 00 21</code> of an IPv4 frame starting with <code>45</code> ('E') would look like
+a CPS request: possible on a lossy line, harmless (the link ends; pppd's echo or retry brings it back).</p>
+<p>No &quot;+++&quot; escape: the first-byte rule covers it without a guard time.</p>
+<h2 id="5-the-host-side">5. The host side</h2>
+<p><code>tools/rfoundry_ppp.sh PORT</code> runs pppd on the radio's serial port (root, for the interface) and adds the routes:</p>
+<pre><code>sudo tools/rfoundry_ppp.sh /dev/ttyUSB0                   # Linux
+sudo tools/rfoundry_ppp.sh /dev/cu.usbserial-XXXX         # macOS (/usr/sbin/pppd)
+</code></pre>
+<p>It runs, in effect:</p>
+<pre><code>pppd PORT 115200 noauth local nocrtscts noipdefault nodefaultroute novj noccp \
+     lcp-echo-interval 10 lcp-echo-failure 3 unit 7 updetach
+route: 12.0.0.0/8 and 225.0.0.0/8 through ppp7
+</code></pre>
+<p><code>local</code> and <code>nocrtscts</code>: the programming cable has no modem lines. <code>noccp</code>, <code>novj</code>: we refuse them anyway (pppd
+copes with the rejects; the options save a round trip). Then, with the radio at 12.0.39.20 (<abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr> 10005):</p>
+<pre><code>ping 12.0.39.20
+tools/rfoundry_debug.py --port udp:12.0.39.20 view
+curl http://12.0.39.20/
+python3 tools/rfoundry_snmp.py get 12.0.39.20 sysName.0
+python3 tools/tftp_client.py ...                     # tftp.md
+</code></pre>
+<p><code>sudo kill $(cat /var/run/ppp7.pid)</code> hangs up (<abbr class="gl" tabindex="0" title="A MOTOTRBO system of several Capacity Plus sites joined by a network." data-more="../dev/glossary.html#t-linked-capacity-plus">LCP</abbr> Terminate); the radio goes back to the serial protocols.</p>
+<h2 id="6-throughput-at-115200-baud">6. Throughput at 115200 baud</h2>
+<p>The <abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="../dev/glossary.html#t-uart">UART</abbr> carries 11,520 bytes/s each way. With ACCM 0 a frame costs 8 bytes (flags, <code>FF 03</code>, protocol, FCS) plus an
+escape for each <code>0x7E</code> / <code>0x7D</code> (0.8% of random data; with the default ACCM every control character too, 12.5%).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Traffic</th>
+<th>On the wire</th>
+<th>Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ping, 56 data bytes</td>
+<td>92 B each way</td>
+<td>about 16 ms round trip on the line</td>
+</tr>
+<tr>
+<td>TCP, MSS 536</td>
+<td>584 B a segment</td>
+<td>about 10.5 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr>/s of payload one way (ACKs use the other direction)</td>
+</tr>
+<tr>
+<td>TFTP, 512 B blocks in lock step</td>
+<td>548 B a block + 38 B <abbr class="gl" tabindex="0" title="Acknowledgment: the reply that says a message arrived." data-more="../dev/glossary.html#t-ack">ACK</abbr></td>
+<td>about 9 KB/s: a 100 KB <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> in about 11 s</td>
+</tr>
+<tr>
+<td>HTTP screenshot (BMP, at the panel's depth)</td>
+<td>1 KB (128 x 64, 1 bpp), 10 KB (160 x 128, 4 bpp), 38 KB (240 x 320, 4 bpp)</td>
+<td>about 0.1 s, 1 s, 4 s</td>
+</tr>
+<tr>
+<td>Web control screen (rows as runs, 5.1)</td>
+<td>about 2 KB (160 x 128, 4 bpp) and 5 KB (240 x 320) the first time; a redraw sends only the rows it changed, often under 200 B</td>
+<td>about 0.2 s, 0.5 s</td>
+</tr>
+<tr>
+<td>Web control receive audio (8 kHz PCM16)</td>
+<td>16 KB/s</td>
+<td>doesn't fit: not offered over <abbr class="gl" tabindex="0" title="Point-to-point protocol: IP over a serial link." data-more="ppp.html">PPP</abbr> (<a href="tcp-services.html">tcp-services.md</a> 5.1)</td>
+</tr>
+</tbody>
+</table></div>
+<p>On a board whose UART sends by polling, the host link task is busy for the length of each frame it sends (51 ms for
+a full one). The board's <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> ring must hold one full frame while that happens.</p>
+<h2 id="7-cost">7. Cost</h2>
+<p>Flash and <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> of <code>CONFIG_NET_PPP=y</code> against the default image (measured with <code>SOURCE_DATE_EPOCH</code> fixed so the default images compare byte for byte). The USB radios already have the gateway and its services, so the
+figure is <abbr class="gl" tabindex="0" title="Point-to-point protocol: IP over a serial link." data-more="ppp.html">PPP</abbr> alone; on a radio without USB the gateway comes with it.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Board, build</th>
+<th style="text-align:right">Flash</th>
+<th style="text-align:right">RAM</th>
+<th>Fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STM32 board with an HR_C6000, LTO off (default)</td>
+<td style="text-align:right">+4,368</td>
+<td style="text-align:right">+88</td>
+<td>no: 3,680 B free, 688 B short</td>
+</tr>
+<tr>
+<td>same board, <code>LTO=1 LTO_3P=1</code></td>
+<td style="text-align:right">+3,948</td>
+<td style="text-align:right">+104</td>
+<td>yes: 20,424 B left</td>
+</tr>
+<tr>
+<td>STM32 board with an HR_C5000 (its default, <code>LTO=1 LTO_3P=1</code>)</td>
+<td style="text-align:right">+3,816</td>
+<td style="text-align:right">+88</td>
+<td>no: 2,228 B free, 1,588 B short</td>
+</tr>
+<tr>
+<td>HR_C7000 board, PPP and the IP gateway, no services</td>
+<td style="text-align:right">+10,736</td>
+<td style="text-align:right">+4,080</td>
+<td>yes: RAM 95.3%, 7,792 B left</td>
+</tr>
+</tbody>
+</table></div>
+<p>PPP itself is about 3.9 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> flash (<code>ppp.o</code> 3,386, <code>hostlink_ppp.o</code> 480) and 90 B RAM; the rest of the <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> row's figure is the gateway, its air side and the network personality (<code>hostlink_net*.c</code>, 1.6 KB RAM each, the gateway's
+600 B frame). Per-service costs and its default network build are in
+<a href="../feature-matrix.html">feature-matrix.md</a>, &quot;Whole images&quot;.</p>
+<h2 id="8-tests">8. Tests</h2>
+<ul>
+<li><code>tests/host/pppTest.c</code> (<code>make -C tests/host run-ppp</code>): the FCS check value; passive negotiation with pppd's
+options (PFC, ACFC, PAP rejected; our ACCM Nak'd and our magic number rejected, the next request changed; a stale
+Ack ignored; the looped-back magic number Nak'd); IPCP with VJ and DNS rejected, 0.0.0.0 Nak'd to the host address;
+Max-Failure; Echo; Protocol-Reject of IPv6CP; Code-Reject; ping, <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr> serial both ways, UDP to a <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr> and back
+from the air through the real gateway; the ACCM both ways with line noise; byte-by-byte input, back-to-back flags,
+bad FCS, abort, no <code>FF 03</code>, too long, a stalled frame; Terminate both ways; the negotiation time-out, the dead
+peer, a live peer answering echoes, another protocol's request; renegotiation on an open link; the MRU Nak'd to a
+smaller value, a too big and a too small one ignored, Rejected (<code>test_mru</code>); the air MTU over <abbr class="gl" tabindex="0" title="Point-to-point protocol: IP over a serial link." data-more="ppp.html">PPP</abbr>, the largest UDP
+datagram PPP takes, DF set, to the air whole (<code>test_air_mtu</code>). Then a seeded fuzz
+loop (<code>RFOUNDRY_FUZZ_ITERS</code>, default 3,000): mutated whole sessions in random pieces, and single packets with a good
+FCS mutated inside (<abbr class="gl" tabindex="0" title="A MOTOTRBO system of several Capacity Plus sites joined by a network." data-more="../dev/glossary.html#t-linked-capacity-plus">LCP</abbr>, IPCP, IPv4, IPv6CP), every frame the radio sends checked. Clean under
+<code>make -C tests/host SANITIZE=1</code> with 30,000 iterations.</li>
+<li><code>tools/rfoundry_ppp_interop.sh</code>: <code>tests/host/pppPeer</code> (PPP, the gateway, <abbr class="gl" tabindex="0" title="Transmission Control Protocol: IP connections with ordered, guaranteed delivery." data-more="../dev/glossary.html#t-tcp">TCP</abbr> with a one-line HTTP server, the <abbr class="gl" tabindex="0" title="Simple Network Management Protocol: reading a device&#x27;s state over the network." data-more="snmp.html">SNMP</abbr>
+engine, the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>'s PING and VERSION on UDP 3334) on a pseudo-terminal, pppd 2.4.9 on the other side
+(Ubuntu 24.04 container on the CI VM, <code>--cap-add NET_ADMIN --device /dev/ppp</code>). Passes passive and <code>--active</code>:
+ping, a 500 byte ping with <code>7E 7D 11 13</code> in it, HTTP, SNMP get (<code>tools/rfoundry_snmp.py</code>), <code>rfoundry_debug.py --port udp:</code>
+ping and version, IPv6CP and CCP Protocol-Rejected, pppd's hang-up ending the link cleanly.</li>
+<li>On a radio, 2026-10-21: pppd 2.5.2 on Linux (<code>tools/rfoundry_ppp.sh</code>) over the programming cable at
+115200 baud. LCP and IPCP open, the host gets 12.<ID> and the routes. Ping (56 and 500 bytes, no loss), the debug
+link over UDP 3334, HTTP 200 and an SNMP get work. Two UDP datagrams, one to a <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr> (225.x.y.z) and one to a
+radio ID (12.x.y.z), went out as <abbr class="gl" tabindex="0" title="Service access point: the field in a DMR data header that says what the payload is (IP, short data, GPS and so on)." data-more="../dev/glossary.html#t-sap">SAP</abbr> 3 data, and the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench decoded the preamble <abbr class="gl" tabindex="0" title="Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control." data-more="dmr-data.html">CSBKs</abbr> (our source ID, the right
+destination), the data headers and the blocks, <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">CC</abbr> 2, no <abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="../dev/glossary.html#t-fec">FEC</abbr> failures. <code>rfoundry_ppp.sh --stop</code> hangs up; the debug link
+answers on the cable right after. <code>ppp.rx_errors</code> stayed 0. A board without USB runs the network services over PPP too.</li>
+<li><code>test_gateway_has_netif</code> (<code>tests/hil/test_dmr_ip.py</code>, radio only): a build with the gateway reports <code>net.netif=1</code>.
+One board first set no <code>board.netif</code>. LCP and IPCP still opened, but nothing the gateway sent reached
+the host (no ping reply). This test catches that without root or pppd.</li>
+<li><code>test_ppp_link</code> (<code>tests/hil/test_ppp_link.py</code>, radio only): a PPP peer in user space (<code>tests/hil/ppp_client.py</code>, no
+pppd, no root) on the debug link's serial port. LCP and IPCP open with the host at 12.<DMR ID>, a 56 and a 500 byte
+ping (every byte value, so the escapes both ways) come back, the debug link answers over UDP 3334 through the link
+with <code>ppp.lcp</code> and <code>ppp.ipcp</code> at 9, <code>usb.net_up=1</code> and no <code>ppp.rx_errors</code>, and after LCP Terminate the serial debug
+link answers again with <code>ppp.running=0</code>. Over the same link: HTTP <code>/status</code> and a 404 (the client's own minimal
+TCP), an SNMP get of <code>sysName.0</code> and <code>sysDescr.0</code>, a <abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="tftp.html">TFTP</abbr> read of <code>info.txt</code> (<code>test_ppp_http</code>, <code>test_ppp_snmp</code>,
+<code>test_ppp_tftp_read</code>). The tests share one link and send nothing on the serial port while it runs: a debug link
+frame there ends PPP. All pass on a board without USB.</li>
+<li>Not tried yet: macOS pppd (it needs root).</li>
+</ul>
+
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/ppp.md">View the source of this page</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="On this page">
+		<p class="eyebrow">On this page</p>
+		<ul><li class="l2"><a href="#1-framing-rfc-1662">1. Framing (RFC 1662)</a></li><li class="l2"><a href="#2-lcp-rfc-1661">2. LCP (RFC 1661)</a></li><li class="l2"><a href="#3-ipcp-rfc-1332">3. IPCP (RFC 1332)</a></li><li class="l2"><a href="#4-ppp-as-a-personality-of-the-host-port">4. PPP as a personality of the host port</a></li><li class="l2"><a href="#5-the-host-side">5. The host side</a></li><li class="l2"><a href="#6-throughput-at-115200-baud">6. Throughput at 115200 baud</a></li><li class="l2"><a href="#7-cost">7. Cost</a></li><li class="l2"><a href="#8-tests">8. Tests</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Join the RadioFoundry community</strong><span class="small muted">Questions, help with your radio and news, on Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Found a bug? Want your radio supported?</strong><span class="small muted">Open an issue on GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry is MIT licensed · <a href="https://github.com/radiofoundry/radiofoundry">Source Code</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Community</a> · <a href="../../docs/index.html">Docs</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Changelog</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

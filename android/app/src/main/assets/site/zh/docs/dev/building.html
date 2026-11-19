@@ -1,0 +1,263 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Building · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Building · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/dev/building.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/dev/building.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/dev/building.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/dev/building.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/dev/building.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/dev/building.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/dev/building.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/dev/building.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/dev/building.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/dev/building.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="开发者指南">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 开发者指南</p>
+		<ul><li><a href="index.html">Developer Documentation</a></li><li><a href="adding-a-mode.html">Adding a Mode</a></li><li><a href="adding-a-radio.html">Adding a Radio</a></li><li><a href="architecture.html">Architecture</a></li><li><a href="board-registry.html">The Board Registry</a></li><li><a href="building.html" aria-current="page">Building</a></li><li><a href="ci-runners.html">CI Runners and Images</a></li><li><a href="ci.html">Continuous Integration</a></li><li><a href="codec.html">The Codec</a></li><li><a href="codeplug-editor.html">The Codeplug Editor</a></li><li><a href="contributing.html">Contributing</a></li><li><a href="cps-and-codeplug.html">CPS, Codeplug and Settings</a></li><li><a href="debug-link.html">Debug Link</a></li><li><a href="glossary.html">Developer glossary</a></li><li><a href="manual-pdf.html">The User Manual PDF</a></li><li><a href="release.html">Releases</a></li><li><a href="stack-check.html">Stack Check</a></li><li><a href="testing.html">Testing</a></li><li><a href="translating.html">Translating</a></li><li><a href="web-flasher.html">The Web Flasher</a></li><li><a href="website.html">The Web Site</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">本页尚未翻译，目前显示英文。</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="building">Building</h1>
+<h2 id="toolchains">Toolchains</h2>
+<p>A board's platform is <code>PLATFORM</code> in its <code>board.mk</code>; <code>tools/boards.py list --platform &lt;p&gt;</code> lists the boards on one. The
+pinned version of each toolchain is in <code>platform/&lt;p&gt;/platform.toml</code> <code>[toolchain]</code> (<a href="board-registry.html#platformtoml">The board registry</a>).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Compiler</th>
+<th>Where it comes from</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>stm32f4</code></td>
+<td><code>arm-none-eabi-gcc</code></td>
+<td>Arm GNU Toolchain; <code>tools/install-arm-toolchain.sh</code> installs the pinned release on Linux x86_64. The Makefile looks in <code>~/opt/arm-gnu-toolchain-*-arm-none-eabi/bin/</code> first, then <code>/usr/bin/</code>; <code>CROSS=</code> overrides</td>
+</tr>
+<tr>
+<td><code>hrc7000</code></td>
+<td><code>csky-elf-gcc</code></td>
+<td>Build it once with <code>tools/build-csky-toolchain.sh</code> (into <code>~/toolchains/csky-elf</code>, about 45 minutes), or use the Docker image: <code>tools/docker/csky-toolchain/run.sh make BOARD=&lt;board&gt;</code> (<a href="ci-runners.html#the-csky-elf-image">CI</a>). The Makefile looks in <code>~/toolchains/csky-elf/bin/</code>, then <code>PATH</code></td>
+</tr>
+<tr>
+<td>Host tests</td>
+<td>the host's <code>cc</code> and zlib</td>
+<td>Xcode command line tools or the distribution's compiler</td>
+</tr>
+</tbody>
+</table></div>
+<p>You also need make, git and Python 3. Clone with submodules: <code>git submodule update --init</code> fetches FreeRTOS, TinyUSB
+and ST's <abbr class="gl" tabindex="0" title="Hardware abstraction layer: the interfaces the core uses instead of touching a chip." data-more="architecture.html">HAL</abbr> and CMSIS into <code>third_party/</code>.</p>
+<h2 id="make-targets">Make targets</h2>
+<p><code>&lt;b&gt;</code> is the board directory under <code>boards/</code> (<code>tools/boards.py list</code> lists them).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>make BOARD=&lt;b&gt;</code></td>
+<td>Builds <code>build/&lt;b&gt;/rfoundry_&lt;b&gt;.{elf,bin,map}</code>, plus <code>rfoundry_&lt;b&gt;_codec.bin</code> when <code>codecs/</code> holds the radio's stock file and the board has a codec tool (below). There is no default board: <code>make</code> alone lists them</td>
+</tr>
+<tr>
+<td><code>make BOARD=&lt;b&gt; BAND=vhf</code></td>
+<td>A build option (<code>board.toml</code> <code>[[build_options]]</code>) on a board that has one: the <abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="../user/22-glossary.html#t-vhf">VHF</abbr> image, in <code>build/&lt;b&gt;-vhf</code> (one image per band)</td>
+</tr>
+<tr>
+<td><code>make BOARD=&lt;b&gt; size</code></td>
+<td>Section sizes and the space left before the codec</td>
+</tr>
+<tr>
+<td><code>make BOARD=&lt;b&gt; stack-check</code></td>
+<td>Each task's worst-case stack depth against its stack (<a href="stack-check.html">stack-check.md</a>)</td>
+</tr>
+<tr>
+<td><code>make test</code></td>
+<td>The host tests (the same as <code>make -C tests/host</code>); needs no <code>BOARD</code></td>
+</tr>
+<tr>
+<td><code>make BOARD=&lt;b&gt; print-config</code></td>
+<td>The <abbr class="gl" tabindex="0" title="A CONFIG_ option that turns a feature&#x27;s code in or out of the build." data-more="../build-config.html">feature switches</abbr> this board builds with, as <code>NAME=y/n</code></td>
+</tr>
+<tr>
+<td><code>make BOARD=&lt;b&gt; print-cc</code></td>
+<td>The compiler the board uses (ci.sh checks it is installed)</td>
+</tr>
+<tr>
+<td><code>make BOARD=&lt;b&gt; print-unsupported</code>, <code>print-not-written</code>, <code>print-maximal-vars</code></td>
+<td><code>BOARD_UNSUPPORTED</code>, <code>BOARD_NOT_WRITTEN</code> and <code>MAXIMAL_VARS</code> from the board's <code>config.mk</code>, for ci.sh's maximal build</td>
+</tr>
+<tr>
+<td><code>make BOARD=&lt;b&gt; clean</code></td>
+<td>Removes <code>build/&lt;b&gt;</code></td>
+</tr>
+<tr>
+<td><code>make BOARD=&lt;b&gt; BUILD=dir</code></td>
+<td>Builds into another directory (ci.sh does this for each configuration)</td>
+</tr>
+<tr>
+<td><code>make ... OPT=-O0</code></td>
+<td>Changes the optimization level (default <code>-Os</code>)</td>
+</tr>
+<tr>
+<td><code>make ... LTO=1 [LTO_3P=1]</code></td>
+<td>Link time optimization, third-party code too with <code>LTO_3P</code> (a board's <code>config.mk</code> or <code>board.mk</code> turns it on; <a href="../build-config.html#board-build-variables">build-config.md</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Every <code>*.c</code> and <code>*.S</code> file in the directories a build lists is compiled, so a new file needs no Makefile change. The
+directories are the core's (some only with their switch), the platform's (<code>platform/&lt;p&gt;/platform.mk</code>) and the
+board's (<code>BOARD_DIRS</code> in <code>boards/&lt;b&gt;/board.mk</code>). A few single files of <code>core/dmr</code> are added by their own switch.</p>
+<p>The build stamps the image with the commit (<code>RFOUNDRY_GIT</code>), plus <code>-dirty</code> when tracked files differ or untracked sources sit
+in the built directories, and with the release name when the commit carries a release tag (<code>RFOUNDRY_RELEASE</code>,
+<a href="release.html#release-names">release.md</a>). Changing the compile flags (a switch, a value) rebuilds everything. See
+<a href="../testing/index.html">docs/testing/README.md</a>, &quot;The firmware version&quot;.</p>
+<h2 id="feature-switches">Feature switches</h2>
+<p>Every switch, its default, what it depends on and what it costs is in <a href="../build-config.html">docs/build-config.md</a>.
+In short:</p>
+<ul>
+<li><code>config/features.mk</code> lists every switch with its project default. Sub-features follow their parent
+(<code>CONFIG_DMR=n</code> turns off every <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> feature); asking for a sub-feature without its parent is a build error.</li>
+<li><code>platform/&lt;p&gt;/config.mk</code> changes the defaults for every radio on a platform, and <code>boards/&lt;b&gt;/config.mk</code> for one
+radio, both with <code>?=</code> so the command line still wins. The board's file is read first, so it wins over the platform's.</li>
+<li>The command line has the last word: <code>make BOARD=&lt;b&gt; CONFIG_HOTSPOT=n CONFIG_SFR=y</code>.</li>
+<li>Each switch reaches C as <code>CONFIG_X=0/1</code> (<code>core/config.h</code> gives defaults for the host tests). Test it with
+<code>#if CONFIG_X</code>, never <code>#ifdef</code>.</li>
+<li>A new feature that costs flash gets a switch: the steps are in <a href="../build-config.html#adding-a-feature">build-config.md, &quot;Adding a feature&quot;</a>.
+ci.sh then builds each board with it off alone (when on by default) and with every switch on.</li>
+</ul>
+<h2 id="hardware-build-options">Hardware build options</h2>
+<p>Some radios come in hardware versions that one image can't serve, such as a <abbr class="gl" tabindex="0" title="Ultra high frequency: 300 MHz to 3 GHz. The amateur 70 cm band is UHF." data-more="../user/22-glossary.html#t-uhf">UHF</abbr> and a <abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="../user/22-glossary.html#t-vhf">VHF</abbr> board. Each such
+choice is a build option:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Where</th>
+<th>What it holds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>boards/&lt;b&gt;/board.mk</code></td>
+<td><code>BUILD_OPTIONS</code> names the options; <code>&lt;NAME&gt;_VALUES</code> lists each one's values, the default first (<code>BAND_VALUES := uhf vhf</code>)</td>
+</tr>
+<tr>
+<td><code>boards/&lt;b&gt;/board.toml</code> <code>[[build_options]]</code></td>
+<td>The words people read: a title and help for the option, a title, a text and the reported board name for each value. <code>tools/boards.py check</code> fails when its values differ from <code>board.mk</code></td>
+</tr>
+<tr>
+<td>C</td>
+<td><code>RFOUNDRY_&lt;NAME&gt;_&lt;VALUE&gt;</code> is 1 for the chosen value and 0 for the others (<code>#if RFOUNDRY_BAND_VHF</code>)</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>make BOARD=&lt;b&gt; BAND=vhf</code> builds the VHF image. A value the board doesn't list stops the build with the list. A
+non-default value is part of the build directory and the image name (<code>build/&lt;b&gt;-vhf/rfoundry_&lt;b&gt;-vhf.bin</code>), and of the
+release file (<code>rfoundry-&lt;b&gt;-vhf-&lt;version&gt;.bin</code>). <code>tools/ci.sh</code> builds every value. The release manifest records the
+values (<code>build_options</code>). rfoundry takes them from the board name a running radio reports (<code>&lt;name&gt; VHF</code>), or from
+<code>--option BAND=vhf</code>, and refuses an image built for other hardware than the radio's.</p>
+<p>Prefer one image that detects the hardware at run time when that is possible. Build options are separate from release
+variants (<code>VARIANT=</code>, <a href="../build-config.html">build-config.md</a>), which choose features, not hardware.</p>
+<h2 id="image-size">Image size</h2>
+<p>Each board's code space and the codec sectors that end it are in <a href="release.html#sector-maps">release.md, &quot;Sector maps&quot;</a>.</p>
+<p>The linker's application region ends before the codec, so an image that grows into it fails to link. The current figures and each feature's cost are in
+<a href="../feature-matrix.html">feature-matrix.md</a>. <code>tools/ci.sh</code> writes every configuration's size and free space to
+<code>build/ci/size-report.md</code>.</p>
+<h2 id="flashing">Flashing</h2>
+<p>Users flash with the web installer or <code>rfoundry</code>: <a href="../user/02-installing.html">Installing</a>. From a build tree:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Flash</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>stm32f4</code></td>
+<td><code>rfoundry flash build/&lt;b&gt;/rfoundry_&lt;b&gt;.bin --board &lt;b&gt; [--stock FILE]</code> (<a href="https://github.com/radiofoundry/radiofoundry/blob/main/tools/rfoundry/README.md">tools/rfoundry</a>): keeps the radio's codec or merges it from the stock file, erases only the sectors it needs. The older two-step route still works: <code>tools/codec_extract.py --stock FILE</code>, then <code>tools/stm32_dfu.py IMAGE --model &lt;b&gt; --key &lt;key file&gt;</code>, which erases every application sector. Moving a radio from stock with its <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="cps-and-codeplug.html">codeplug</abbr>: <code>tools/&lt;id&gt;_migrate.py</code> where a board has one (<a href="../spec/index.html#migrating-from-stock">the migration specs</a>)</td>
+</tr>
+<tr>
+<td><code>hrc7000</code></td>
+<td><code>tools/hrc7000_codec.py</code> merges the codec; <code>tools/serial_loader.py IMAGE</code> writes it through the vendor bootloader over the programming cable (<code>--wrap</code> makes the vendor file for the vendor's updater), or <code>rfoundry</code> over the serial route (<a href="release.html#the-serial-route-hr_c7000-radios">release.md</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Without a codec the firmware runs, with FM only. See <a href="codec.html">The codec</a>.</p>
+<p>With the radio's stock firmware file in <code>codecs/</code>, <code>make</code> also writes <code>&lt;image&gt;_codec.bin</code>, the image with the codec
+merged in (<code>tools/codec_auto.py</code> picks the stock file by SHA-256 and runs the board's codec tool). Flash that file with
+any route above. Git ignores everything in <code>codecs/</code> except its <a href="https://github.com/radiofoundry/radiofoundry/blob/main/codecs/README.md">README</a>.</p>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/dev/building.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#toolchains">Toolchains</a></li><li class="l2"><a href="#make-targets">Make targets</a></li><li class="l2"><a href="#feature-switches">Feature switches</a></li><li class="l2"><a href="#hardware-build-options">Hardware build options</a></li><li class="l2"><a href="#image-size">Image size</a></li><li class="l2"><a href="#flashing">Flashing</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

@@ -1,0 +1,1391 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="it" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Everyday radio features · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Everyday radio features · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:url" content="https://radiofoundry.org/it/docs/spec/radio-features.html">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Le radio su cui gira RadioFoundry, ognuna con una schermata diversa.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/radio-features.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/radio-features.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/radio-features.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/radio-features.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/radio-features.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../it/" data-gl-more="Altro">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../it/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principale"><a href="../../../it/radios/index.html">Radio</a><a href="../../../it/features/index.html">Funzioni</a><a href="../../../it/flash/index.html">Installa</a><a href="../../../it/codeplug/index.html">Codeplug</a><a href="../../../it/docs/index.html" aria-current="page">Documenti</a><a href="../../../it/screenshots/index.html">Schermate</a><a href="../../../it/tools/index.html">Strumenti</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Lingua" title="Lingua">IT</summary><nav aria-label="Lingua"><a href="../../../docs/spec/radio-features.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/radio-features.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/radio-features.html" aria-current="true" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/radio-features.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Passa da chiaro a scuro" title="Passa da chiaro a scuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Specifiche">
+		<p class="eyebrow"><a href="../../../it/docs/index.html">Documentazione</a> / Specifiche</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html" aria-current="page">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Questa pagina non è ancora tradotta; è mostrata in inglese.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="everyday-radio-features">Everyday radio features</h1>
+<p>Scan, the FM <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> extras, beeps and power management in the radio core. Code: <code>core/radio/scan.c</code> (the scan
+engine, pure), <code>core/radio/beep.c</code> (beep patterns and synthesis), <code>core/radio/vibe.c</code> (vibration patterns),
+<code>core/radio/battery.c</code> (battery levels, the backlight helper), all glued into <code>core/radio/radio_sm.c</code>; board hooks in
+<code>hal/hal_radio.h</code> (<code>tx_tone</code>, <code>tx_dtmf</code>, <code>rx_sleep</code>, <code>mic_gain</code>, <code>ref_trim</code>) and <code>hal/hal_power.h</code> (<code>mic_level</code>, <code>vibrate</code>). Build switches: <code>docs/build-config.md</code>. <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">Debug link</abbr>: the <code>features</code> view section
+and RADIO ops 20-24 (<code>docs/spec/debuglink.md</code> 3.7, 3.8). Host tests: <code>tests/host/radioFeaturesTest.c</code>; <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> tests:
+<code>tests/hil/test_radio_features.py</code>.</p>
+<h2 id="1-settings">1. Settings</h2>
+<p>The radio core keeps one <code>radio_settings_t</code> (<code>core/radio/radio.h</code>). It loads it from the settings store at
+start-up (the <code>rs_*</code> fields, <code>settings-store.md</code> 3) and saves every change made with <code>radio_set_settings()</code>, so the
+settings screen hands the whole struct over on a change and reads it back with <code>radio_get_settings()</code>. The debug
+link's SETTING op goes through <code>radio_set_settings()</code> too, so its changes are saved.</p>
+<p>Every caller reads the struct, changes its own fields and sets it again. The settings screen reads it afresh for each
+change, so a change made elsewhere (the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>, a host, the radio core) is kept. Until the radio task has taken
+in the last <code>radio_set_settings()</code>, <code>radio_get_settings()</code> answers with those settings, not the ones in force. A run of
+quick changes therefore never reads back a value from before its own last change.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tot_s</code></td>
+<td>180</td>
+<td>the radio's <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> time-out, for channels whose own (<abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>) value is 0; 0 = none</td>
+</tr>
+<tr>
+<td><code>tot_warn_s</code></td>
+<td>10</td>
+<td>warning beep this long before the time-out; 0 = none</td>
+</tr>
+<tr>
+<td><code>bcl</code></td>
+<td>off</td>
+<td>busy channel lockout on FM: off, carrier (anything heard), wrong tone (a carrier without our <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> tone)</td>
+</tr>
+<tr>
+<td><code>roger_beep</code></td>
+<td>off</td>
+<td>FM: a 1200 Hz + 900 Hz tone pair (100 ms each) at the end of each transmission (the default of the end tone, 4.3)</td>
+</tr>
+<tr>
+<td><code>tx_inhibit</code></td>
+<td>off</td>
+<td>refuse every transmission (<code>tx_deny=inhibit</code>)</td>
+</tr>
+<tr>
+<td><code>scan_resume</code></td>
+<td>carrier</td>
+<td>time (move on after <code>scan_hold_s</code> on a signal, or when it ends), carrier (move on <code>scan_delay_ms</code> after it ends), stop (the scan ends on the first signal)</td>
+</tr>
+<tr>
+<td><code>scan_hold_s</code></td>
+<td>5</td>
+<td>time mode's hold</td>
+</tr>
+<tr>
+<td><code>scan_delay_ms</code></td>
+<td>2000</td>
+<td>wait after a signal ends before moving on (a pause between overs)</td>
+</tr>
+<tr>
+<td><code>scan_dwell_ms</code></td>
+<td>150</td>
+<td>listen time per channel with nothing heard (at least 50)</td>
+</tr>
+<tr>
+<td><code>scan_priority</code></td>
+<td>off</td>
+<td>zone scan: the start channel again after every 2 others</td>
+</tr>
+<tr>
+<td><code>scan_beep</code></td>
+<td>off</td>
+<td>a short beep when the scan stops on a signal</td>
+</tr>
+<tr>
+<td><code>dual_delay_ms</code></td>
+<td>1000</td>
+<td><abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="../user/22-glossary.html#t-dual-watch">dual watch</abbr> on one receiver: its wait after a signal ends, in place of <code>scan_delay_ms</code> (0-10000; section 2.1)</td>
+</tr>
+<tr>
+<td><code>beep_level</code></td>
+<td>50</td>
+<td>0 (silent) to 100: the loudest a beep gets (section 4)</td>
+</tr>
+<tr>
+<td><code>key_beep</code></td>
+<td>on</td>
+<td><code>radio_req_beep(BEEP_KEY)</code> sounds</td>
+</tr>
+<tr>
+<td><code>talk_permit</code></td>
+<td>on</td>
+<td><abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr>: the talk permit tone when the voice goes on air, or just before on boards with <code>CAP_BEEP_NOT_ON_AIR</code> (4) (stored as <code>SETTINGS_RS_NO_TALK_PERMIT</code> in <code>rs_flags</code>, 0 = on)</td>
+</tr>
+<tr>
+<td><code>sig_dmr[3]</code>, <code>sig_fm[3]</code></td>
+<td>default</td>
+<td>signaling tones (4.3): where the start of transmission, end of transmission and reception end tones sound, in DMR and in FM: default, off, speaker, on air, speaker + air</td>
+</tr>
+<tr>
+<td><code>sig_hz[3][10]</code>, <code>sig_ms[3][10]</code></td>
+<td>none</td>
+<td>signaling tones: each event's chain of ten steps, a frequency in Hz (a multiple of 10) and a length in 10 ms (a step of length 0 ends the chain; no step = the event's standard sound)</td>
+</tr>
+<tr>
+<td><code>vox</code></td>
+<td>off</td>
+<td>off, on channels whose codeplug entry allows it, on every FM channel (CONFIG_VOX)</td>
+</tr>
+<tr>
+<td><code>vox_level</code></td>
+<td>5</td>
+<td>sensitivity 1 (loud voice needed) to 10</td>
+</tr>
+<tr>
+<td><code>vox_tail_ms</code></td>
+<td>1500</td>
+<td>stays keyed this long after the voice stops</td>
+</tr>
+<tr>
+<td><code>rx_save</code></td>
+<td>0 (off)</td>
+<td>receiver battery saving: sleep 200, 400 or 800 ms per 100 ms awake (1-3)</td>
+</tr>
+<tr>
+<td><code>rx_save_idle_s</code></td>
+<td>10</td>
+<td>battery saving starts after this long without activity</td>
+</tr>
+<tr>
+<td><code>battery_off_s</code></td>
+<td>0 (never)</td>
+<td>switch off after this long with the battery critical</td>
+</tr>
+<tr>
+<td><code>backlight_dim_s</code>, <code>backlight_off_s</code></td>
+<td>30, 120</td>
+<td>for the UI's backlight policy (<code>radio_backlight_pct</code>, 5.3)</td>
+</tr>
+</tbody>
+</table></div>
+<p>TX time-out: one implementation for FM and DMR. A channel's codeplug <code>tot_s</code> wins; 0 there means the radio's
+<code>tot_s</code>. The value in effect is <code>tot_s</code> in the core view, and the DMR call stack gets the same value. Open-firmware
+codeplugs that wrote 0 for &quot;no time-out&quot; now get the radio's.</p>
+<h2 id="2-scan-config_scan">2. Scan (CONFIG_SCAN)</h2>
+<p>Requests: <code>radio_req_scan(cmd)</code> with stop, zone, <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr>, dual, cancel, nuisance or toggle; <code>radio_req_scan_vfo(lo, hi)</code>;
+<code>radio_req_scan_dual(pos)</code>; <code>radio_req_dual(ref, sel)</code> (2.1). The view shows <code>scan</code> (off / zone / vfo / dual), <code>scan_phase</code> and <code>scan_skipped</code>; the
+tuned channel or frequency is the core view's as usual.</p>
+<ul>
+<li><strong>Zone scan</strong> visits the current zone's channels in order, from the one it started on, skipping empty positions and
+channels marked &quot;zone skip&quot; in the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>. FM, <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr>, P25 and NXDN channels mix freely: each stop tunes the
+channel as a channel change would (P25, NXDN: the engine starts there). Left out: parked channels, P25 trunked
+channels, and NXDN channels at a rate the board can't <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> (<a href="p25.html">p25.md</a> 7.1, <a href="nxdn.html">nxdn.md</a> 6.4).</li>
+<li><strong>VFO scan</strong> steps the VFO frequency by its step from <code>lo</code> to <code>hi</code> and wraps. Without a range it sweeps the board
+band the VFO frequency is in. Both ends must be in one band, at least one step apart.</li>
+<li><strong><abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="../user/22-glossary.html#t-dual-watch">Dual watch</abbr></strong> alternates between two channels, skip flags ignored (2.1). <code>radio_req_scan_dual(pos)</code> (the debug
+link's) watches the current channel and position <code>pos</code> of the current zone. The UI on top of it (A and B, the
+screens, the keys) is in <a href="../ux/dual-watch.html">dual-watch.md</a>.</li>
+<li><strong>Priority</strong> (zone scan): the start channel again after every 2 others.</li>
+</ul>
+<p>Each stop: 50 ms settle (readings from the previous frequency are ignored), then <code>scan_dwell_ms</code> listening. A signal
+is &quot;active&quot; when FM squelch opens (with the RX tone if the channel needs one) or DMR plays a call (<code>dmr.state</code> rx).
+A carrier that isn't active yet earns a probe: 350 ms on FM channels that need a tone (<abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-ctcss">CTCSS</abbr> detection takes 100 to
+250 ms), 700 ms on DMR; other FM channels move on at once. On DMR a carrier is the noise reading at the squelch level
+or the signal strength at the DMR scale (level 1 above -112 dBm, 3 dB a level: -100 dBm at the default level; some
+receivers' noise reading doesn't follow a DMR signal, <a href="gotchas.html">gotchas</a> 17.3). Level 1 is also at least 6 dB above
+the floor: the lowest strength read past the settle on the last 8 stops (the first stop has none), since a strength
+reading that isn't calibrated can sit above the scale on an empty channel (<a href="gotchas.html">gotchas</a> 17.4). A carrier seen in the last 150 ms still counts (direct
+mode is on air 30 ms in every 60, and the noise reading drops between bursts), and once the modem delivers bursts with
+the channel's <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr> since the stop's settle (&quot;sync&quot;, from <code>dmr_call_last_activity</code>, a late entry still waiting for
+its <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr> included) the probe lasts up to 1.5 s: a call already in progress is taken from its embedded LC, which needs the
+next complete superframe at best and the one after it when the modem's sticky LC equals this call's (about 1.1 s from
+the retune). Each DMR stop on a new frequency restarts the modem's receiver, so it searches from the retune and not on the
+last transmitter's slot timing (<a href="gotchas.html">gotchas</a> 17.2). A call known not to be for us (another <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr>) ends
+the probe. P25 and NXDN stops read a carrier as DMR does, probe up to 700 ms for a call of the channel's NAC or RAN,
+up to 1.5 s while its squelch waits for a field (a late entry's talk group or group), hold on a call that plays and
+move on from one that doesn't (<a href="p25.html">p25.md</a> 7.1). <abbr class="gl" tabindex="0" title="Playing every talkgroup on the timeslot (promiscuous mode; &quot;hear all&quot; in older RadioFoundry builds)." data-more="../user/22-glossary.html#t-digital-monitor">Digital monitor</abbr> on when a zone or VFO scan starts (the hear-all latch, <a href="dmr-voice.html">dmr-voice.md</a> 1) stays on
+at every stop (<code>hear_all_latch</code> in the view), so a call to any talkgroup is played and holds the scan; the channel the
+scan ends on, by STOP, CANCEL or PTT, keeps it latched. Toggling it during the scan turns it on or off for the rest of
+the scan. Dual watch doesn't carry it. Empty channels still move on after the dwell.</p>
+<p><strong>A mixed frequency.</strong> A zone may hold an FM channel and digital channels (DMR, P25, NXDN) on one receive frequency.
+A digital signal can open the FM squelch, and a scan that held the FM stop would sit through the call there and never
+reach the channel that plays it. So before an FM stop holds, the scan checks the zone's digital channels on that
+frequency in zone order, each as a stop with its usual probe (<code>scan_mixed</code> in <code>radio_sm.c</code>). A call there holds it.
+A stop that heard its own mode (a call not for us included) ends the check, and the sweep goes on from where it was.
+When none heard its mode, the signal was FM: the scan goes back to the FM stop, which holds this time. Trunked
+channels are not stops (above), so they are never checked.
+The view counts the stops probed (<code>scan_probes</code>) and those with sync (<code>scan_synced</code>) for each scan. Active: the scan holds
+(<code>scan_phase=hold</code>), then follows <code>scan_resume</code>; after the signal ends it waits <code>scan_delay_ms</code> (<code>resume</code>) and picks
+up again if the signal comes back. MONITOR held pauses the scan (<code>paused</code>).</p>
+<p>Stopping: STOP stays where the scan is. CANCEL goes back to the starting channel or frequency. PTT on a held signal
+stops there and talks back on it; PTT while still searching goes back to the start channel and <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmits</abbr> there. A
+channel, zone, VFO or frequency change by the user ends the scan where the user put it. <strong>Nuisance delete</strong> skips
+the current channel (VFO: frequency, up to 8) until the scan ends, and moves on (not in dual watch). A scan starts
+only when there is another channel to go to; it does not run in <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> mode or while transmitting.</p>
+<h3 id="21-dual-watch">2.1 Dual watch</h3>
+<p>On a radio with one receiver, dual watch alternates it between two channels with the scan's timing (a pseudo dual
+watch). A radio with a second receiver (2.2) hears both at once. <code>radio_req_dual(ref, sel)</code> names the two, A and B: each a
+channel (zone index and position, any zone) or a VFO with its own settings. <code>ref[sel]</code> is the selected channel.
+<code>NULL</code> stops the watch on the selected channel. The view shows <code>scan=dual</code>, and the tuned channel as usual: its
+<code>zone_index</code>, <code>zone_pos</code> and zone name, or <code>vfo=1</code> and <code>vfo_index</code>, so the screens can tell which of the two the
+receiver is on.</p>
+<p>There are two VFOs, so each channel can have its own: a VFO ref's <code>pos</code> says which (0 or 1). The radio core keeps
+the one in use in <code>vfo_ch</code> and the other in <code>vfo_other</code>; a hop to a VFO pane swaps them first. Both are saved, with
+the one in use (<code>settings-store.md</code> 3, second VFO). Outside dual watch the VFO key opens the one last used. Copy to
+VFO during the watch copies into a VFO the other channel isn't on: the one last used, else the other.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Event</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start</td>
+<td>Refused when both name the same channel, or one can't be read (an empty position, no such zone, a build without a VFO). The receiver listens where it is when that is one of the two, else it tunes the selected one</td>
+</tr>
+<tr>
+<td>The same pair again</td>
+<td>Only the selection changes: no retune, the stop goes on (cheap; the UI asks again on every change)</td>
+</tr>
+<tr>
+<td>A new pair</td>
+<td>The receiver stays where it is when that channel is still one of the two (a call it holds too), else it tunes the selected one</td>
+</tr>
+<tr>
+<td>A signal</td>
+<td>Holds the receiver as in a scan, then the wait (<code>dual_delay_ms</code>, below). Resume mode stop counts as carrier: a signal never ends the watch</td>
+</tr>
+<tr>
+<td>The wait after a signal</td>
+<td>The receiver stays on that channel for the reply, and after each dwell there looks at the other channel for one dwell (squelch shut). A signal found there sets its bit in the view's <code>dual_busy</code> (the pane shows Busy) and is not played or held: the receiver goes back and the wait goes on. A look starts only if a look and a dwell back fit in what is left of the wait. When the wait ends the watch alternates again, so a busy channel is held then. A look that hears nothing clears the bit, as does the watch's own hop to that channel and a stop. A hold (a signal, the DMR <abbr class="gl" tabindex="0" title="The time after a call during which PTT answers it." data-more="../user/22-glossary.html#t-reply-window">reply window</abbr>) has no looks</td>
+</tr>
+<tr>
+<td>DMR reply window</td>
+<td>Holds the selected channel while it runs (PTT talks there). On the other channel it doesn't</td>
+</tr>
+<tr>
+<td>PTT</td>
+<td>Tunes the selected channel first if the receiver is on the other, and transmits there. The watch goes on: after the transmission (DMR: after its tail) the selected channel waits (<code>dual_delay_ms</code>, with looks at the other), and a reply holds it</td>
+</tr>
+<tr>
+<td>Monitor down</td>
+<td>Tunes the selected channel first if the receiver is on the other, then acts as without the watch (FM: squelch open; DMR: digital monitor on the release). The watch pauses there while the key is held</td>
+</tr>
+<tr>
+<td>Power, squelch, Clear changes, a talk target or hear all (<code>RREQ_POWER</code>, <code>_SQUELCH</code>, <code>_CLEAR_TEMP</code>, <code>_DMR_TARGET</code>, <code>_DMR_CONTACT</code>, <code>_DMR_CALL_BACK</code>, <code>_DMR_TARGET_CLEAR</code>, <code>_DMR_HEAR_ALL</code>)</td>
+<td>Tunes the selected channel first if the receiver is on the other, then applies the change there. The watch goes on</td>
+</tr>
+<tr>
+<td>Each hop</td>
+<td>The channel the receiver leaves keeps its changes for now (power, squelch, bandwidth, mode, color code, <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr>, tones, the manual <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr>, hear all; <code>dual_keep[]</code>), and the channel it tunes gets its own back. A pair with a new channel drops that channel's; a stop drops both</td>
+</tr>
+<tr>
+<td>A channel, zone, VFO, tone, bandwidth, mode, timeslot or color code change</td>
+<td>Ends the watch on the selected channel, then applies the change there. The UI then asks for the watch again with the new channel (dual-watch.md 5)</td>
+</tr>
+<tr>
+<td>Hotspot mode</td>
+<td>Ends it where the receiver is</td>
+</tr>
+<tr>
+<td><code>radio_req_scan</code> stop, cancel or toggle (the debug link)</td>
+<td>Ends it on the selected channel and counts it in the view's <code>dual_stops</code>: the UI takes it as the user's stop and doesn't start the watch again. The radio has stopped already, so the UI asks for nothing and takes on a watch started right after it at once</td>
+</tr>
+<tr>
+<td><code>radio_req_dual</code> with the same pair and the other selected (the debug link's select)</td>
+<td>The view's <code>dual_sel</code> changes; the UI follows a change it didn't ask for, so the next channel, zone or VFO request changes that channel</td>
+</tr>
+<tr>
+<td>A VFO request, a frequency or Copy to VFO with a channel selected</td>
+<td>The selected channel goes into a VFO the other channel isn't on: the one last used, else the other one</td>
+</tr>
+<tr>
+<td>Typed frequency on a selected VFO pane</td>
+<td>OK or # commits it to that pane, even while the receiver listens on the other pane. # opens the dual watch actions only when no frequency is being typed</td>
+</tr>
+<tr>
+<td>Power off</td>
+<td>The saved position is the selected channel's, wherever the receiver is: the radio powers up there</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>radio_get_dual()</code> returns the pair, the selected one and the one the receiver is on (the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>'s <code>dual.a dual.b dual.sel dual.at</code>, <a href="debuglink.html#37-get_view">debuglink.md 3.7</a>); the view's <code>dual_busy</code> is <code>dual.busy</code>. <code>radio_get_vfo(index)</code> returns a VFO's settings while something else is tuned (a VFO pane). Built without <code>CONFIG_DUAL_WATCH</code>
+only the debug link's dual watch is left: two channels of the current zone, and PTT ends it as it ends any scan.</p>
+<p>A P25 or NXDN channel (a stored one, or the VFO in that mode) can be either side. The scan's rules apply to it (2): it
+is one only where the board receives that mode at the channel's rate, never as a trunked channel, and a look there
+starts its engine, probes a carrier for up to 700 ms and holds for a call that plays. The air interface runs one engine
+at a time, so with P25 on one side and NXDN on the other each hop stops one engine and starts the other. The UI
+refuses a trunked channel at once; a mode the board can't receive is refused by the radio core, and the watch doesn't
+start. The panes name the mode and show no tone or bandwidth for it, and don't show the caller of a P25 or NXDN call.</p>
+<h3 id="22-a-second-receiver">2.2 A second receiver</h3>
+<p>A board with a second receiver sets <code>board.rx2</code> (<code>hal/hal_rx2.h</code>; the GD-88's second <abbr class="gl" tabindex="0" title="System on chip: the processor and its on-chip peripherals." data-more="../dev/glossary.html#t-soc">SoC</abbr>, over the link in
+<a href="rx2-link.html">rx2-link.md</a>). In dual watch the main receiver then stays on the selected channel and the second one gets
+the other. Nothing alternates, and the scan's hold and resume timing aren't used. It takes FM and DMR only: when the
+channel not selected is P25 or NXDN, the main receiver alternates as in 2.1. The view's <code>rx2</code> is 1 while this is
+so (the debug link's <code>dual.both</code>).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Event</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start, a new pair, a new selection</td>
+<td>The second receiver gets the channel not selected: its frequency, mode, bandwidth, RX tone and the squelch level; DMR: color code, timeslot, our ID, the talk group and the <abbr class="gl" tabindex="0" title="The talkgroups a channel listens to. The codeplug calls it the RX group list." data-more="../user/22-glossary.html#t-listen-list">RX group list</abbr>'s groups (up to 16). The main receiver tunes the selected one</td>
+</tr>
+<tr>
+<td>Its settings change (a codeplug edit, the squelch)</td>
+<td>Sent again every 2 s; the link drops repeats</td>
+</tr>
+<tr>
+<td>Audio</td>
+<td>The selected channel's always wins. The second receiver has the speaker only while the main one plays nothing (FM squelch closed, no DMR call) and the radio isn't transmitting</td>
+</tr>
+<tr>
+<td>PTT</td>
+<td>On the selected channel, where the main receiver already is. The second receiver keeps listening; its audio is muted while the radio transmits</td>
+</tr>
+<tr>
+<td>It doesn't answer, or isn't on its settings 1.5 s after them</td>
+<td>The core falls back to alternating the main receiver (2.1) and tries the second receiver again every 10 s</td>
+</tr>
+<tr>
+<td>The watch ends</td>
+<td>The second receiver stops and its audio goes off</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>ui_svc_receivers()</code> is 2 on such a radio, and <code>ui_svc_dual_rx(pane)</code> reports each pane's own receiver while the
+second one has its channel: the dual watch screens then show a call on each pane at once.</p>
+<h2 id="3-fm-transmit-extras">3. FM transmit extras</h2>
+<h3 id="31-busy-channel-lockout-and-tx-inhibit">3.1 Busy channel lockout and TX inhibit</h3>
+<p><code>tx_check</code> refuses PTT, before keying: <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> inhibit (<code>inhibit</code>), a critical battery (<code>battery</code>, 5.2), busy channel
+lockout (<code>busy</code>; carrier = squelch open or noise below the open threshold; wrong tone = that, while the channel's <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr>
+tone is not decoded). The deny beep sounds, except for <code>busy</code>; the state is <code>tx_denied</code> until PTT is released. A
+busy refusal is quiet so the call being received is heard in full: no deny beep (FM and <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr>), and on FM a reception
+that was playing plays on while PTT is held (<code>deny_rx</code>), until the squelch would have closed. After the release it is
+an ordinary reception again, its RX tone still counted as heard.</p>
+<p>The test TX limit (<code>core/radio/tx_limit.h</code>, built with <code>CONFIG_DEBUGLINK</code>) is a limit a test harness sets over the
+<abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> (RADIO op 35, <a href="debuglink.html">debuglink.md</a> 3.8): block every transmission, or allow only a list of up to 10
+frequencies. It lives in <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> and is never saved, so a restart clears it; the TX inhibit setting is saved and is left
+alone. The radio core checks it wherever it keys the transmitter (<code>key_tx</code>: PTT, DMR data and replies, roaming probes,
+<abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> beacons, the <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="sfr.html">SFR</abbr> repeater role, the <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr>, the <abbr class="gl" tabindex="0" title="A station&#x27;s callsign sent in Morse code. A standalone SFR repeater channel sends one in FM every few minutes after traffic (Settings &gt; Talk &amp; listen &gt; SFR CW ID)." data-more="../user/14-hotspot.html">CW ID</abbr>), against the frequency it is about to key on. PTT is denied
+as by the TX inhibit (<code>inhibit</code>); what the radio sends by itself is not keyed and counted (<code>txlim.refused</code>). A
+transmission already on air when the limit is set goes on until it ends. The <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> harness uses it to keep each test on
+the rig's transmit frequencies (<code>tests/hil/README.md</code>, &quot;Transmit frequencies&quot;).</p>
+<h3 id="32-time-out-warning">3.2 Time-out warning</h3>
+<p><code>tot_warn_s</code> before the time-out the <abbr class="gl" tabindex="0" title="Transmit timeout: the longest transmission the radio allows." data-more="../user/22-glossary.html#t-tot">TOT</abbr> warning beep sounds once in the speaker (FM and DMR; the view's
+<code>tot_warning=1</code>). At the time-out the transmitter goes off, <code>tx_deny=timeout</code> until PTT is released.</p>
+<h3 id="33-roger-beep-and-1750-hz-burst-config_fm_tx_tones">3.3 Roger beep and 1750 Hz burst (CONFIG_FM_TX_TONES)</h3>
+<p>Both go out over the air through the board's <code>tx_tone(hz)</code> hook: an audio tone into the modulator in place of the
+microphone. Roger beep: at PTT release the radio stays keyed for 1200 Hz then 900 Hz, 100 ms each (<code>roger=1</code>), then
+unkeys; PTT again during the beep cancels it and the transmission goes on. Tone burst: <code>radio_req_tone_burst(true, max_ms)</code>
+keys up if needed and sends 1750 Hz until <code>false</code> or until <code>max_ms</code> has passed (repeater access); <code>tone_burst=1</code> in
+the view. The debug link always gives a limit (at most <code>INPUT_INJECT_MAX_MS</code>), so a lost &quot;off&quot; unkeys as the &quot;off&quot;
+would; 0 means no limit but the TX time-out. A board without
+<code>tx_tone</code> gets neither.
+The debug link's <code>DL_OP_TONE_BURST</code> now gives the error beep when refused on a DMR channel, in hotspot mode or
+without <code>tx_tone</code>, instead of silently doing nothing.
+A debug-link burst requested during the roger beep tail after PTT release now re-keys, cancels the roger beep and
+owns the transmission until burst off, the host deadline or the TX time-out.</p>
+<p>The <strong>Tone burst</strong> side-key press function sends raw down/up requests (<code>radio_req_tone_burst_key</code>). The core starts
+1750 Hz on down and holds it for at least <code>RADIO_BURST_MIN_MS</code> (1000 ms). A tap releases at that minimum; a longer
+hold ends on up. The 10 ms radio tick ends a released timed burst. From receive it keys and unkeys through the usual
+TX checks (including TX inhibit and RX-only); DMR, hotspot and boards without <code>tx_tone</code> refuse with an error beep.
+During PTT it replaces the mic, then restores it while PTT keeps the transmitter keyed. Releasing PTT during the
+burst stops the tone and unkeys, without a roger beep. PTT pressed during a burst takes over the transmission.
+There is no duration setting or host deadline for the side key; the TX time-out still applies.
+The debug link's explicit on/off request keeps its <code>max_ms</code> limit. A new burst starts with only its own timing;
+an on/down request while a burst is already sounding does not restart it or change its deadline.
+A side-key up releases only its own burst or TX denial; down/up during a host burst leaves that burst running.
+Power-off cancels a held or timed burst and unkeys without a roger beep before shutdown waits.
+<abbr class="gl" tabindex="0" title="Voice-operated transmit." data-more="../user/22-glossary.html#t-vox">VOX</abbr> cannot release during a burst; its full quiet tail starts after the burst ends.</p>
+<p>A channel can send the burst by itself (<code>channel_t.tone_burst</code>, the channel editor's <strong>Tone burst</strong> row; stored in SFR
+byte B bit 6, <a href="open-firmware-cps.html">open-firmware-cps.md</a> 7.3.3). Each PTT key-up on it opens with one timed burst,
+as the side key pressed during PTT: 1750 Hz for <code>RADIO_BURST_MIN_MS</code>, then the mic. Only a PTT press that keys the
+transmitter starts one: not a press during a transmission, not VOX, the side key or the debug link. FM channels
+only, never the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr>, DMR or hotspot mode, and nothing on a board without <code>tx_tone</code>. A board whose <code>tx_tone</code> refuses
+the tone gives the error beep and the transmission goes on.</p>
+<p>Why 1 s: the <a href="https://www.ukrepeater.net/access.htm">UK repeater access standard</a> accepts 1750 Hz +/- 25 Hz
+after 200-400 ms, and some decoders need 500 ms; a 1 s minimum exceeds both. Once open, a repeater stays open on
+carrier through its <abbr class="gl" tabindex="0" title="How long after a call a repeater or radio keeps the call&#x27;s talkgroup ready for a reply." data-more="../user/22-glossary.html#t-hang-time">hang time</abbr>, so one burst opens a contact.</p>
+<p>The board restores the microphone path on <code>tx_tone(0)</code> and on every return to receive. An <abbr class="gl" tabindex="0" title="The RF transceiver chip that sets the frequency, deviation and power of many handheld DMR radios. Programmed over I2C." data-more="../dev/glossary.html#t-at1846s">AT1846S</abbr> board makes the
+tone with the voice source select (tone 1, tone 2 or both) in place of the microphone. Verified on air on an <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> + AT1846S board (HIL 2026-10-10): the burst, the roger beep and APRS
+<abbr class="gl" tabindex="0" title="Audio frequency shift keying: data as two audio tones on an FM carrier. APRS at 1200 baud uses it." data-more="../dev/glossary.html#t-afsk">AFSK</abbr> (<code>docs/testing/on-air-coverage.md</code>).</p>
+<h3 id="33a-dcs-turn-off-tail-config_subtone">3.3a DCS turn-off tail (CONFIG_SUBTONE)</h3>
+<p>A <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-dcs">DCS</abbr> transmission ends with the turn-off code: 134.4 Hz (the DCS bit rate) as a steady tone in place of the code.
+Receivers set to the code close their squelch on it while the carrier is still up, so they don't play the noise burst
+of the carrier dropping.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PTT release (after the roger beep, if on)</td>
+<td>the core calls the board's <code>tx_tail(true)</code>. True: the radio stays keyed <code>RADIO_SUBTONE_TAIL_MS</code> (300 ms), then <code>tx_tail(false)</code> and unkeys. False (no DCS, or no tail on the radio): unkeys at once</td>
+</tr>
+<tr>
+<td>PTT again during the tail</td>
+<td><code>tx_tail(false)</code>: the code again, the transmission goes on</td>
+</tr>
+<tr>
+<td>Time-out during the tail</td>
+<td>the tail ends with the transmission</td>
+</tr>
+</tbody>
+</table></div>
+<p>The board maps the hook to its chip; the core owns the timing.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Chip</th>
+<th>Tail</th>
+<th>Measured (<abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench, D023N, 12.5 kHz)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BK4819</td>
+<td>0x52 bit 15</td>
+<td>134.4 Hz for 0.30 s</td>
+</tr>
+<tr>
+<td>HR_C7000</td>
+<td>FM_PTT off with FM_MOD b9 (<code>modem-hrc7000.md</code> 8.2)</td>
+<td>134.4 Hz for 0.20 s, then 0.10 s of carrier without modulation (one board measured)</td>
+</tr>
+<tr>
+<td>AT1846S</td>
+<td>TX select from CDCSS to <abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-ctcss">CTCSS</abbr>, 0x4A already 134.4 Hz</td>
+<td>not yet measured</td>
+</tr>
+<tr>
+<td>software (PWM), HR_C5000 boards</td>
+<td>the generator's 134.4 Hz sine (<code>subaudio_tx_tail</code>)</td>
+<td>not yet measured</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>tools/sdr_fm_check.py</code> reports the tail on every DCS segment (&quot;sub-audio tail: 134.4 Hz for 0.30 s, ...&quot;);
+<code>test_fm_tx_dcs</code> requires at least 0.15 s.</p>
+<h3 id="34-vox-config_vox-the-vox-setting-is-off-by-default">3.4 VOX (CONFIG_VOX; the <code>vox</code> setting is off by default)</h3>
+<p>On FM channels (all, or those with the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> VOX flag) the microphone level (<code>mic_level()</code>, 0-100 logarithmic) at
+or above <code>100 - 8 x vox_level</code> for 2 polls (50 ms) keys up; below it for <code>vox_tail_ms</code> unkeys (with the roger beep
+if on). Received audio, MONITOR, and 500 ms after a reception never key VOX (the speaker into the microphone). PTT
+works as usual and wins. The level comes from the board's <code>board.power-&gt;mic_level</code> hook; a board without it has no
+VOX. Boards put their reading on the hal's scale with <code>miclevel_log()</code> in <code>drivers/audio/miclevel/miclevel.h</code> (100 / 12
+steps per bit, about 0.72 dB per step), so a threshold <code>100 - 8 x vox_level</code> sits <code>(8 x vox_level) x 0.72</code> dB below
+the top of the scale: about 6 dB at sensitivity 1, 29 dB at 5, 58 dB at 10.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Board kind</th>
+<th>Where the level comes from</th>
+<th>Checked</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STM32 boards with an analog level tap</td>
+<td>an <abbr class="gl" tabindex="0" title="Analog to digital converter." data-more="../dev/glossary.html#t-adc">ADC</abbr> channel on the microphone level, 12 bits, passed straight in</td>
+<td>in silence only (<code>test_vox_quiet</code>)</td>
+</tr>
+<tr>
+<td>HR_C7000 boards</td>
+<td>the codec ADC's mic <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr>, 80 samples every 10 ms (<code>platform/hrc7000/audio_pcm.c</code>, <code>drivers/audio/miclevel</code>): the peak of each half from its mean, 100 = a full-scale 16-bit peak; the level follows a louder half at once and falls 4 steps per half. These radios have no analog level tap. The first <code>mic_level()</code> call starts the meter (AUDIO_CONTROL b4 and the PCM interrupt, shared with the PCM stream) and returns 0; 1 s without a call stops it. The meter's interrupt clears b4 itself, so every AUDIO_CONTROL update in the driver (FM receive, transmit and idle, DMR entry) runs with interrupts off (<code>hrc7000_set_crit</code>, set by <code>hrc_audio_pcm_attach</code>). Needs <code>CONFIG_DMR</code> (the PCM stream); without it there is no hook</td>
+<td>not on the bench</td>
+</tr>
+</tbody>
+</table></div>
+<p>The debug link's <code>vox.level</code> (features section) calls the hook on FM channels outside hotspot mode, so the level can
+be read with VOX off.</p>
+<p>The Quick VOX tile (FM) turns the <code>vox</code> setting to all or off; <code>vox_on</code> in the view says whether VOX is armed on
+the current channel. On a board without the hook the tile refuses to turn it on (&quot;VOX: not on this radio yet&quot;)
+rather than show &quot;VOX on&quot; for a VOX that never keys.</p>
+<h3 id="35-squelch-tail-elimination">3.5 Squelch tail elimination</h3>
+<p>No reverse burst or tone-loss signal from the other station is acted on yet; closing early on CTCSS loss conflicts
+with the tone debounce (8 polls) that keeps fades from chopping audio.</p>
+<p>The noise squelch shortens the tail itself. It closes after <code>RADIO_SQL_CLOSE_POLLS</code> (2) polls over the close line
+(open threshold + <code>RADIO_SQL_HYST_DB</code>), 50 ms, but after one poll when the noise is <code>RADIO_SQL_FAST_CLOSE_DB</code> (12 dB)
+or more over it: a carrier that goes takes the noise far over the line at once, while a fade crosses it by a little.
+Squelch level 0 (always open) and the APRS hold (<code>RADIO_SQL_CLOSE_POLLS_APRS</code>) keep their own timing. On one board
+(BK4819 receiver) the tail at the speaker went from 55 ms to 15-35 ms in three calls (measured,
+<code>test_fm_rx_speaker</code>); what is left is the poll and the chip's noise reading lag.</p>
+<h3 id="36-mic-gain">3.6 Mic gain</h3>
+<p>Settings &gt; Talk &amp; listen &gt; Mic gain: a step 0-10, 2 dB a step, 5 = the board's own levels (<code>core/radio/mic_gain.c</code>).
+The UI stores it (<code>settings_t.mic_gain</code>) and applies it at start-up and on each change with <code>radio_set_mic_gain()</code>;
+the debug link's SETTING op 29 sets it in RAM only.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Board</th>
+<th>FM</th>
+<th>DMR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>with <code>hal_radio_t.mic_gain</code> (HR_C7000 boards)</td>
+<td>the board's FM level for the channel bandwidth plus (step - 5) x 2 dB, written into the modem's mic gain at each FM transmit start</td>
+<td>the board's DMR level plus the same offset, at each DMR entry and DMR transmit start; the samples to the <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">vocoder</abbr> are not scaled</td>
+</tr>
+<tr>
+<td>without it</td>
+<td>not changed</td>
+<td>the mic samples are scaled before the vocoder (<code>ambeVoiceSetMicGain</code>, with saturation)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The board only stores the offset in the hook; a change takes effect at the next transmission. On an <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> radio
+the register is clamped to 0-42 dB (<code>hrc7000_mic_db</code>). The VOX meter reads the same codec ADC, so on these radios
+the mic gain also moves the VOX level. Without <code>CONFIG_DMR</code> and without the hook the row is dimmed.</p>
+<h3 id="37-dtmf-transmit-config_dtmf">3.7 DTMF transmit (CONFIG_DTMF)</h3>
+<p>Touch tones on FM while PTT is held (#54, step 1: manual digits). Stored <abbr class="gl" tabindex="0" title="Dual tone multi frequency: the touch tones a keypad sends, in the audio." data-more="../user/22-glossary.html#t-dtmf">DTMF</abbr> codes and DTMF decode are not built.</p>
+<p><strong>Keys.</strong> With PTT held on an FM channel, 0-9, * and # (the QUICK and CONTEXT keys on keypad radios) send their DTMF
+pair for as long as the key is held. A key map entry names its digit (<code>keymap_entry_t.dtmf</code>); a digit key's is its
+own digit. A microphone with extra keys (P4-P7) sends A-D. The input engine hands these keys' down and up edges to the input task
+before any gesture. When the radio core's <code>dtmf_ready</code> is set (<code>radio_dtmf_ready()</code>), the input task sends the edge
+to the radio core (<code>radio_req_dtmf(digit, down)</code>), as it does for PTT, and the engine sends none of that hold's
+gestures: no Find, Quick settings or key lock under the TX screen, and the tone follows the key, not the UI. Locked
+keys send nothing (<code>input_set_dtmf_block</code>, from the UI's key lock). On DMR the digits stay inert during TX, and * and</p>
+<h1 id="keep-their-usual-meaning">keep their usual meaning.</h1>
+<p><strong>Accepted</strong> only while <code>dtmf_ready</code>: state <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> on an FM channel, PTT held (the radio's key or the host's), no roger
+beep or 1750 Hz burst on the air, no host audio (<abbr class="gl" tabindex="0" title="The UDP stream that carries a call&#x27;s audio between RadioFoundry and a network gateway." data-more="../dev/glossary.html#t-usrp">USRP</abbr>), not a <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr>, and a board with <code>tx_dtmf</code>. Anything else is
+ignored, never queued. PTT release and the time-out end a digit still sounding before the roger beep and the <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-dcs">DCS</abbr>
+turn-off tail (3.3a) start, so a digit never sounds over either; PTT is up during the tail, so keys send nothing then.</p>
+<p><strong>Timing</strong> (radio core, every poll):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shortest tone</td>
+<td><code>RADIO_DTMF_MIN_MS</code> 100 ms</td>
+<td>a quick tap still decodes (decoders want 40 ms or more)</td>
+</tr>
+<tr>
+<td>Shortest gap between two digits</td>
+<td><code>RADIO_DTMF_GAP_MS</code> 60 ms</td>
+<td>the same digit twice decodes as two (decoders want a 40 ms pause)</td>
+</tr>
+<tr>
+<td>A key pressed while a tone sounds or within the gap</td>
+<td>waits (one digit); the sounding tone ends once it has had its shortest length, the next starts after the gap</td>
+<td>rollover from a fast thumb</td>
+</tr>
+<tr>
+<td>PTT released, time-out, any end of TX</td>
+<td>the tone stops with the transmitter</td>
+<td>no tone outlives the transmission</td>
+</tr>
+</tbody>
+</table></div>
+<p>The microphone is muted while a tone sounds and comes back between digits. The speaker plays no sidetone; the TX
+screen's second line shows &quot;<abbr class="gl" tabindex="0" title="Dual tone multi frequency: the touch tones a keypad sends, in the audio." data-more="../user/22-glossary.html#t-dtmf">DTMF</abbr>&quot; and the last digits sent in this transmission instead of the time left.</p>
+<p><strong>View</strong> (<abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> <code>features</code> section): <code>dtmf_ready</code> and, only while they are not at rest (the view is near the reply's size cap), <code>dtmf</code> (the digit
+sounding), <code>dtmf_sent</code> (digits sent since start-up) and <code>dtmf_digits</code> (the last 8 of this transmission). The RADIO op <code>DTMF</code> (<code>docs/spec/debuglink.md</code>
+3.8) presses and releases a digit as a key would, including A-D, which no key gives.</p>
+<p><strong>Board hook</strong> <code>hal_radio_t.tx_dtmf(digit)</code>: <code>'0'</code>-<code>'9'</code>, <code>'*'</code>, <code>'#'</code>, <code>'A'</code>-<code>'D'</code> on, 0 = off (the microphone
+again); false when the board can't (not in FM TX). The pairs (<code>hal/hal_dtmf.h</code>, ITU-T Q.23):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Low \ high</th>
+<th>1209 Hz</th>
+<th>1336 Hz</th>
+<th>1477 Hz</th>
+<th>1633 Hz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>697 Hz</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>A</td>
+</tr>
+<tr>
+<td>770 Hz</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>B</td>
+</tr>
+<tr>
+<td>852 Hz</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>C</td>
+</tr>
+<tr>
+<td>941 Hz</td>
+<td>*</td>
+<td>0</td>
+<td>#</td>
+<td>D</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Chip</th>
+<th>How</th>
+<th>Deviation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HR_C7000</td>
+<td>the DTMF sender as for <code>tx_tone</code> (<code>modem-hrc7000.md</code> 8.3): the low tone's step in FM_TONE1's high half, the high tone's in FM_TONE3's, digit &quot;1&quot; sent; TONE_SEND_CTRL b6 = 0 mutes the microphone</td>
+<td>SUBVOICE_COEF b15:8 as for the 1750 Hz burst (<code>hrc7000_dtmf_dev</code>)</td>
+</tr>
+<tr>
+<td>AT1846S</td>
+<td>tone1 = low, tone2 = high, voice_sel 011 (both tones), the <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> microphone input muted</td>
+<td>reg 0x59 bits 15:6 = <code>DTMF_DEV</code></td>
+</tr>
+<tr>
+<td>BK4819</td>
+<td>tone 1 and tone 2 on (0x70), frequencies in 0x71 / 0x72, microphone <abbr class="gl" tabindex="0" title="Analog to digital converter." data-more="../dev/glossary.html#t-adc">ADC</abbr> off</td>
+<td>levels 0x70 = 0x9090, 0x40 = 0x348A</td>
+</tr>
+<tr>
+<td>HR_C5000 boards</td>
+<td>none: no FM TX tone path yet</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Twist</strong> (the high tone's level over the low tone's) is judged on the audio a receiver hears, after its de-emphasis
+(6 dB per octave, 750 us), where the usual DTMF receiver limits apply: the high tone -8 to +4 dB from the low one (the
+North American telephone criteria; other countries' are similar or wider). A tone that goes through the transmitter's
+pre-emphasis reads 3 to 7 dB higher on the carrier than it is received. Measured on the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench (2026-10-21 and -22,
+12.5 and 25 kHz; <code>sdr_fm_check.py --dtmf</code> prints both; digits 1, #, 5, D, 0):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Chip</th>
+<th>On the carrier</th>
+<th>Received</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AT1846S</td>
+<td>-0.1 to +0.2 dB</td>
+<td>-4.6 to -2.8 dB</td>
+<td>equal tones, injected after the pre-emphasis. &quot;A&quot; (697 + 1633 Hz) would be about -7 dB</td>
+</tr>
+<tr>
+<td>HR_C7000</td>
+<td>+5.0 dB, every digit</td>
+<td>+0.4 to +2.1 dB</td>
+<td>the chip's DTMF sender sets the low tone below the high one by design (<code>modem-hrc7000.md</code> 8.3), after the pre-emphasis</td>
+</tr>
+<tr>
+<td>BK4819</td>
+<td>+3.6 to +7.0 dB</td>
+<td>+0.7 to +2.3 dB</td>
+<td>equal tones (0x70 = 0x9090) through the microphone's pre-emphasis, as a DTMF microphone's would be</td>
+</tr>
+</tbody>
+</table></div>
+<p>None of them needs a correction in the driver. The <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> test (<code>test_fm_tx_dtmf</code>) checks the received twist;
+<code>test_fm_tx_dtmf_stop</code> checks on air that a held digit ends with the carrier at PTT release and at the time-out.</p>
+<h2 id="4-beeps-config_beep">4. Beeps (CONFIG_BEEP)</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Beep</th>
+<th>Sound</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>1000 Hz 25 ms</td>
+<td><code>radio_req_beep(BEEP_KEY)</code> from the UI, if <code>key_beep</code></td>
+</tr>
+<tr>
+<td>error</td>
+<td>400 Hz 150 ms</td>
+<td>UI errors</td>
+</tr>
+<tr>
+<td>TX permit</td>
+<td>1600 Hz 50 ms twice</td>
+<td><abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr>: the channel is granted (unless the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> channel has &quot;no beep&quot;, or <code>talk_permit</code> is off: Settings &gt; Sound &gt; Talk permit tone)</td>
+</tr>
+<tr>
+<td>TX permit, before keying</td>
+<td>1600 Hz 80 ms</td>
+<td>The <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> permit on boards with <code>CAP_BEEP_NOT_ON_AIR</code>, whose beeps can't sound while DMR transmits: once the call is admitted, the stack holds the key-up (<code>dmr_call_config_t.permit_hold_ms</code>, <code>permit_busy</code>) while the radio still <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receives</abbr> and this tone plays. It keys once the tone and the driver's buffers have played out (<code>hal_audio_t.spk_pending</code>): at least 40 ms, at most 400 ms (<code>DMR_CALL_PERMIT_MAX_MS</code>). The same conditions as the TX permit</td>
+</tr>
+<tr>
+<td>TX deny</td>
+<td>300 Hz 400 ms</td>
+<td>any TX refusal but a busy channel (3.1), unless Settings &gt; Sound &gt; TX denied tone is off (settings area key 0x0006)</td>
+</tr>
+<tr>
+<td>call end</td>
+<td>1200 Hz 50 ms, 900 Hz 70 ms</td>
+<td>DMR: a played call ended (unless &quot;no beep&quot;, or Settings &gt; Sound &gt; Call end tone is off: settings area key 0x0003)</td>
+</tr>
+<tr>
+<td>TOT warning</td>
+<td>1000 Hz 100 ms twice</td>
+<td>3.2, unless Settings &gt; Sound &gt; <abbr class="gl" tabindex="0" title="Transmit timeout: the longest transmission the radio allows." data-more="../user/22-glossary.html#t-tot">TOT</abbr> warning tone is off (settings area key 0x0004)</td>
+</tr>
+<tr>
+<td>battery low</td>
+<td>800 Hz, 600 Hz</td>
+<td>entering low, then every 2 min, unless Settings &gt; Sound &gt; Battery tone is off (settings area key 0x0005)</td>
+</tr>
+<tr>
+<td>battery critical</td>
+<td>600 Hz three times</td>
+<td>entering critical, then every 30 s; the same setting as battery low</td>
+</tr>
+<tr>
+<td>custom</td>
+<td>up to 10 steps, 900 ms</td>
+<td>a signaling tone on the speaker (4.3); not a fixed pattern: it has no entry in the pattern table or the beep reel</td>
+</tr>
+<tr>
+<td>scan hold</td>
+<td>1400 Hz 40 ms</td>
+<td>the scan stops on a signal, if <code>scan_beep</code> (Settings &gt; Sound &gt; Scan stop tone, off by default)</td>
+</tr>
+<tr>
+<td>emergency</td>
+<td>1500 / 900 Hz warble, 6 x 160 ms</td>
+<td>someone's emergency heard (alarm or emergency call), if the emergency setting's tone is on (Settings &gt; Sound &gt; Emergency tone, <code>dmr-emergency.md</code>)</td>
+</tr>
+<tr>
+<td>message</td>
+<td>1000, 1300, 1700 Hz rising, 60-90 ms each</td>
+<td>a text message arrived: the UI asks for it (<code>radio_req_beep(BEEP_MESSAGE)</code>) when Settings &gt; Sound &gt; Message tone is on</td>
+</tr>
+<tr>
+<td>system back</td>
+<td>1000 Hz, 1400 Hz, 60 ms each</td>
+<td>a trunked system found again from its fallback channel (<a href="dmr-trunking.html">dmr-trunking.md</a> 12.5)</td>
+</tr>
+<tr>
+<td>sweep</td>
+<td>400 ms silence, then 150 Hz to 3.8 kHz over 4 s, phase continuous</td>
+<td>the speaker test, from the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> only (op 22, which can delay it); <code>test_speaker_sweep</code> measures the speaker's response and whether the audio path plays it whole</td>
+</tr>
+</tbody>
+</table></div>
+<p>The four tones with a settings area key (<code>radio_tone_rows</code> in <code>core/radio/radio_keys.h</code>,
+<a href="codeplug-settings.html">codeplug-settings.md</a> 3) are silenced in <code>beep()</code> by <code>radio_settings_t.tones_off</code>, saved with
+the radio core's settings (<code>sound_flags</code> bits 4..7). A key that is present holds over it: the radio core applies the keys at
+start, on a codeplug reload, when <code>codeplug_kv_serial()</code> moves on and on every settings change (codeplug-settings.md
+5.2). Every request for those beeps is
+silenced, the debug link's (<code>RREQ_BEEP</code>) too.</p>
+<p>Synthesis: a 64-entry sine table with linear interpolation, 2 ms fades (no clicks); level 100 is about half of full
+scale so a beep mixed over voice doesn't clip. Beeps follow the radio's volume up to <code>beep_level</code>. A radio with an analog
+knob (no <code>hal_radio_t.volume</code>) and one whose volume hook also scales the <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> path (<code>volume_pcm</code>: an <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr>
+board's RX gain, an <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr> board's line out gain) play the beep at <code>beep_level</code>, and the volume acts on it in the
+speaker path. On a radio where the <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr> sets the volume somewhere the PCM path doesn't pass, the core plays each beep at the
+volume percent last given to the board, capped at <code>beep_level</code> (<code>radio_beep_level</code>): volume 0 gives no beep. When the DMR voice stream runs, the beep is mixed into it (<code>ambeVoiceSetMixer</code>). A DMR call
+leaves that stream running until the radio leaves DMR, so most beeps on a DMR channel are mixed. A mixed beep the
+amplifier isn't ready for (more than one lead-in block, below) gets the same lead-in as silence mixed in with the speaker
+routed; otherwise its tone starts in the first block. Without the voice stream the beep
+starts the board's PCM audio stream itself, routes the speaker for silent lead-in blocks before the tone (one 20 ms
+block, or <code>hal_audio_t.speaker_lead_ms</code> rounded up to blocks, at most 200 ms, for an amplifier that unmutes slowly), holds
+the route for four silent blocks after the pattern, and then stops the stream. A beep in that hold plays at once, with no
+lead-in. A board with <code>speaker_hang_s</code> (a mobile on a supply; 0 on battery radios) keeps its amplifier powered and
+silent (<code>speaker_warm</code>) from any key, PTT, reception or beep until that many seconds after the last one, so a key click
+or the DMR talk permit tone plays at once: while it is warm, beeps take the one-block lead-in. If that stream delivers no
+block for 200 ms (8 radio polls), its clock has stopped: the beep stops the stream, gives the speaker route back and
+drops the pattern, so a codec that goes quiet can't leave the analog receive audio muted. A start that fails (no codec
+clock) is stopped the same way, in case a block already ran. Counters in the view:
+<code>beep.played</code> (started), <code>beep.no_stream</code> (no audio stream could be started: on a board that can't stream PCM in FM
+mode this counts instead), <code>beep.blocks</code> (audio blocks with beep in them), <code>beep.stalls</code> (streams given up that way),
+<code>beep.busy</code>; in the <code>audio</code> section, <code>beep.shared</code> (patterns mixed into the voice stream), <code>beep.leads</code> (lead-in blocks
+played), <code>beep.warm</code> (1: the amplifier is held warm) and <code>beep.warms</code> (times it was powered up for that).</p>
+<p>To hear the beeps in context, <code>tools/beep_reel.py</code> makes a video of the UI simulator's screen in which every beep sounds
+in a scene that sounds it on a radio, captioned (<code>build/beep-reel/beep_reel.mp4</code>; needs ffmpeg built with libass). It
+uses <code>beep.c</code> only through <code>beep_init</code>, <code>beep_play</code> and <code>beep_service</code>, so the patterns and their synthesis can change
+freely. The scenes are in <code>tests/host/beepReel.c</code>; a new beep needs one there, or the host tests fail. A pull request
+that changes the beeps gets the reel before and after (<code>beep-reel.yml</code>, <a href="../dev/ci.html">ci.md</a> &quot;Beep reel&quot;).</p>
+<h3 id="41-vibration-config_vibrate">4.1 Vibration (CONFIG_VIBRATE)</h3>
+<p>On a radio with a vibration motor (<code>hal_power_t.vibrate</code> not NULL), the alerts that already reach the user also
+vibrate. The UI decides, as it does for the message tone: <code>handle_event</code> (<code>core/ui/ui_app.c</code>) calls
+<code>ui_svc_vibrate()</code> for each event below when Settings &gt; Sound &gt; Vibrate is on, and <code>ui_svc_radio.c</code> passes it to the
+radio core as <code>radio_req_vibrate()</code> (<code>RREQ_VIBRATE</code>).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Pulses</th>
+<th>When (UI event)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>message</td>
+<td>150 ms, 150 ms rest, 150 ms</td>
+<td>a text message arrived (<code>UI_EV_MESSAGE</code>)</td>
+</tr>
+<tr>
+<td>call</td>
+<td>500 ms</td>
+<td>a <abbr class="gl" tabindex="0" title="A DMR page that makes another radio ring." data-more="../user/22-glossary.html#t-call-alert">call alert</abbr> (<code>UI_EV_CALL_ALERT</code>) or a <abbr class="gl" tabindex="0" title="A DMR call to one radio." data-more="../user/22-glossary.html#t-private-call">private call</abbr> to us (<code>UI_EV_PRIVATE_CALL</code>)</td>
+</tr>
+<tr>
+<td>emergency</td>
+<td>400 ms four times, 200 ms rests</td>
+<td>someone's emergency heard (<code>UI_EV_EMERGENCY</code>, <code>dmr-emergency.md</code>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The board's <code>vibrate(ms)</code> runs the motor for one pulse and returns at once (the board stops it, from a timer). <code>vibe.c</code> times the pattern from the radio poll (25 ms): each pulse starts when the previous one's on and rest
+times have passed, measured from that pulse's start, so the timing doesn't drift with the poll. A new pattern replaces
+one still running and starts at the next poll. A vibration request is not user activity: it doesn't reset the battery
+save idle time, abort an <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> transmission or cancel a roaming search, like a beep. On a radio without a motor the
+pattern is dropped at the next poll.</p>
+<p>The setting is <code>SETTINGS_UI_NO_VIBRATE</code> in <code>settings_t.ui_flags</code> (<code>settings-store.md</code> 3), on by default: an &quot;off&quot; bit,
+so records saved before it existed keep it on. The Settings row is in Sound when the image has <code>CONFIG_VIBRATE</code>, and
+is dimmed (&quot;This radio has no vibration motor&quot;) when the board has no motor (<code>UI_FEAT_VIBRATE</code>, reported by
+<code>ui_svc_feat_radio</code>). <code>CONFIG_VIBRATE</code> is off by default and on in the config of radios with a motor
+(<a href="../build-config.html">build-config.md</a>). The debug link shows <code>vibe.built vibe.motor vibe.played vibe.busy</code> in the
+<code>features</code> view and plays a pattern with RADIO op 29 (<code>debuglink.md</code> 3.7, 3.8), whatever the setting.</p>
+<h3 id="42-speaker-volume">4.2 Speaker volume</h3>
+<p>Where the MCU can set the speaker level, the radio core owns it. The board gives it a <code>hal_radio_t.volume(percent)</code>
+hook; <code>hal_power_t.volume()</code> says where the level comes from (<code>radio_volume_src_t</code>, the <code>volume.src</code> view key):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th><code>volume.src</code></th>
+<th>Board</th>
+<th>Level in force</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>none</code></td>
+<td>No hook (the volume control works in analog hardware, after the chip)</td>
+<td>Not set by RadioFoundry. The debug link operation answers &quot;unavailable&quot;</td>
+</tr>
+<tr>
+<td><code>knob</code></td>
+<td>A hook and a knob the MCU reads</td>
+<td>The knob's 0..100 %</td>
+</tr>
+<tr>
+<td><code>soft</code></td>
+<td>A hook and no knob (<code>hal_power_t.volume()</code> = -1); <code>radio_volume_soft()</code>, reported to the UI as <code>UI_FEAT_VOLUME</code></td>
+<td>The stored step</td>
+</tr>
+<tr>
+<td><code>override</code></td>
+<td>As <code>knob</code>, with the debug link's level in force</td>
+<td>The step the debug link set, whatever the knob does</td>
+</tr>
+<tr>
+<td><code>hold</code></td>
+<td>As <code>knob</code>, with the keys locked and Settings &gt; Key lock &gt; Knob when locked Off</td>
+<td>The level in force when the hold began, whatever the knob does</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Steps</td>
+<td>0 (mute) to <code>RADIO_VOLUME_MAX</code> (16), default <code>RADIO_VOLUME_DEFAULT</code> (8). The step count is that one constant: the stored form, the screen bar, Settings, the debug link, and the boards' maps follow it</td>
+</tr>
+<tr>
+<td>Percent</td>
+<td>The hook gets round(step * 100 / <code>RADIO_VOLUME_MAX</code>) (<code>radio_volume_percent</code>): step 1 is 6 %, step 8 is 50 %, step 16 is 100 %. The board decides what a percent means; step 0 must be silent</td>
+</tr>
+<tr>
+<td>Stored</td>
+<td><code>settings_t.volume</code> (<code>settings-store.md</code> 3): 0 = the default, else <code>0x80 | (step + 1)</code>; a byte 1..11 from the first version (steps 0..10) reads as round(step * 16 / 10). Settings &gt; Sound &gt; Volume (<code>UI_SET_VOLUME</code>) and the volume screen write it, <code>soft</code> radios only</td>
+</tr>
+<tr>
+<td>To the board</td>
+<td><code>follow_volume</code> (radio poll) calls <code>hal_radio_t.volume(percent)</code> at start-up and after each change (the knob's changes of 2 % or more, and its ends); the same level twice calls nothing</td>
+</tr>
+<tr>
+<td>A change</td>
+<td><code>ui_svc_setting_set(UI_SET_VOLUME)</code> saves the step and posts <code>RREQ_VOLUME</code> (<code>radio_req_volume</code>), so it is in force at once. The request counts as neither user activity nor an interruption: a transmission or a roaming search goes on</td>
+</tr>
+<tr>
+<td>Override</td>
+<td><code>radio_req_volume_override(step)</code> (<code>RREQ_VOLUME_OVERRIDE</code>) holds a level over the knob until <code>-1</code>; <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> only, so a restart gives the knob back. Without a knob there is nothing to override, and the request changes nothing</td>
+</tr>
+<tr>
+<td>Hold</td>
+<td><code>radio_req_volume_hold(true)</code> (<code>RREQ_VOLUME_HOLD</code>, from the UI's key lock through <code>ui_svc_volume_hold</code>) keeps the level in force and ignores the knob; <code>false</code> follows the knob again, and its level goes out at once. RAM only; ignored without a knob or under an override</td>
+</tr>
+<tr>
+<td>Knob position</td>
+<td><code>radio_view_t.volume_knob</code>: the knob's 0..100 % with the same 2 % filter, in force or not (also while held), -1 without a knob the MCU reads. While held, a change shows the unlock hint, as a key does. <code>radio_volume_knob()</code> (<code>UI_FEAT_VOLUME_KNOB</code>) says whether the board has such a knob; Settings &gt; Key lock &gt; Knob when locked (<code>UI_SET_KNOB_WHEN_LOCKED</code>) is shown only then</td>
+</tr>
+<tr>
+<td>Beeps</td>
+<td>Key and status tones keep their own level (Tone volume, 4) and are mixed at the board's speaker path as before</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Debug link.</strong> RADIO op 30 (<code>debuglink.md</code> 3.8) sets a step 0..16, or <code>0xFF</code> for &quot;back to the knob&quot;. On a <code>soft</code> radio
+it stores the step as the UI does (<code>0xFF</code> stores the default); on a <code>knob</code> radio it sets the override; on a radio with
+<code>volume.src=none</code> it answers unavailable. The <code>features</code> view shows <code>volume.src</code>, <code>volume.max</code>, <code>volume.step</code> (the
+stored step), <code>volume.override</code> (-1 = none), <code>volume.sent</code> (the percent last given to the board, -1 = none yet) and
+<code>volume.soft</code>. <code>rfoundry_debug.py volume [N|knob]</code> prints them and sets.</p>
+<p>The volume screen (<code>SCR_VOLUME</code>) opens on <code>ACT_VOLUME</code>, a board key map entry (a radio with a knob answers with a
+toast). Up, Down and the encoder change the step by one and save it on each step; OK, Back or the same key close it,
+and so does 3 s without a key. The screen shows the step as a large number over a bar of 16 segments (7 px pitch at
+the smallest display, 5 px filled). On the radio without the feature the setting is left out of Settings.</p>
+<p><strong>The knob's bar</strong> (#354). On a <code>knob</code> radio, when the level the radio core passed on changes (<code>radio_view_t.volume</code>,
+with <code>volume_src</code> <code>knob</code> before and after), the UI shows the same 16-segment bar, the label and the step over whatever
+screen is open, for 3 s after the last change (<code>VOLUME_MS</code>); no screen is pushed, so a call or a menu goes on. It
+takes a row no screen puts its content in: the hint row's place when the frame drew a hint row (<code>ui_hint_draws</code>),
+else the status strip's (Quick's tiles at 160x128, a list with the hint row off), so nothing is cut. The step is <code>radio_volume_step_of(percent)</code>: 0 only at 0 %, at least 1 above it, 100 % is 16. The
+first level after start-up and a change of source (the override set or given back) show nothing, and a bar that is
+showing goes when the override takes over; nor does a <code>soft</code>
+radio, whose volume screen does the job. The bar asks for the backlight (<code>ui_app_take_wake</code>): turning the knob is using
+the radio. No new view field: <code>follow_volume</code> already filters the knob (2 %, the ends). Tests: <code>uiFlowTest</code>
+(<code>volume_bar_checks</code>, every display class, a seeded property run), <code>radioCoreTest</code> (<code>test_volume_step_of</code>), gallery
+<code>volume_bar</code>, <code>volume_bar_call</code>.</p>
+<h3 id="43-signaling-tones-config_sig_tones">4.3 Signaling tones (CONFIG_SIG_TONES)</h3>
+<p>Short tone sequences at three events, on the speaker, on air or both, set separately for DMR and for FM
+(<code>core/radio/sigtone.h</code>, Settings &gt; Sound). Each sequence is up to 10 steps of <code>{Hz, ms}</code> (<code>SIG_STEPS</code>), at most 900 ms in
+all (<code>SIG_MAX_MS</code>), a pause being a step of 0 Hz: the shape of the rows of a <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> alert tone page.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Where it fires</th>
+<th>Default (the output setting 0)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>start (<code>SIG_EV_BEGIN</code>)</td>
+<td>DMR: the talk permit's place. FM: when the transmitter keys</td>
+<td>DMR: the talk permit (<code>talk_permit</code>). FM: none</td>
+</tr>
+<tr>
+<td>end (<code>SIG_EV_END</code>)</td>
+<td>DMR: our transmission is over. FM: PTT released</td>
+<td>DMR: none. FM: the roger beep, if <code>roger_beep</code> is on</td>
+</tr>
+<tr>
+<td>idle (<code>SIG_EV_IDLE</code>)</td>
+<td>DMR: a call heard ended. FM: the squelch closed after a reception</td>
+<td>DMR: the call end beep. FM: none</td>
+</tr>
+</tbody>
+</table></div>
+<p>Output (<code>sig_out_t</code>): <em>default</em> leaves the row above as it was and an older settings record reads it, <em>off</em> silences
+the event (the talk permit, the call end beep and the roger beep included), <em>speaker</em>, <em>on air</em> and <em>speaker + air</em>
+replace it with the sequence. The idle event has no on air copy: <code>clamp_settings</code> maps it to what the speaker can do. The FM start tone
+on air plays right after the transmitter keys (<code>fm_lead_start</code>, on the <code>roger_seg</code> chain through <code>tx_tone</code>) and the
+microphone goes live when it ends; releasing the PTT during it cancels it. A board without <code>tx_tone</code> sends none. A channel with &quot;no beep&quot; has none of
+the speaker or on air copies. The tones on the speaker are the <code>BEEP_CUSTOM</code> pattern of <code>beep.c</code> (<code>beep_play_custom</code>:
+two copies of the steps alternate, so a pattern still playing is not rewritten), and a <em>default</em> output keeps the fixed
+beeps and their Settings &gt; Sound switches (the FM roger beep has none: <code>roger_beep</code> is set over the debug link). The sound is the event's chain (<code>sig_chain</code>): up to <code>SIG_STEPS</code> (10) steps, each a frequency (0 = a pause, up to
+<code>SIG_HZ_MAX</code>, 3400 Hz, a multiple of <code>SIG_HZ_UNIT</code>, 10 Hz) and a length (multiples of 10 ms), the same shape as the Frequency / Period rows of a CPS alert
+tone page. A step of length 0 ends the chain, and the whole chain is cut to <code>SIG_MAX_MS</code> (900 ms: on air the call stack holds the over open for three superframes, about 1.08 s). A chain with no step
+is the event's standard sound (the permit beep at the start, the call end beep otherwise). Settings &gt; Signaling tones
+edits the three chains in <code>settings_t</code> (the <code>sig-chain</code> screen, <a href="ui.html">ui.md</a> 2): nothing is built in beyond that standard
+sound.</p>
+<p>The three events are also keys of the codeplug's settings area (0x0007-0x0009, <a href="codeplug-settings.html">codeplug-settings.md</a>
+3.3): the outputs and the chain of an event, as one record. A key that is present holds over the radio's own copy, and a
+change from the menu writes the event's record (one write for a step's frequency and length) as every keyed setting
+does (5.2). A record with a value the setting can't take reads as absent. Without <code>CONFIG_SIG_TONES</code> the keys are kept
+and carried but do nothing.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>On air</th>
+<th>How</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DMR start</td>
+<td><code>ambeVoiceTxTone</code> is asked for as PTT goes down; the encoder sends the sequence in place of the microphone from the transmission's first block, after the headers. The encoder waits for room in its queue (<code>AMBE_VOICE_QUEUE</code>, 8 frames) before each block of the tone, so none of it is lost to an overflow</td>
+</tr>
+<tr>
+<td>DMR end</td>
+<td>asked for as PTT is let go while on air, with the microphone muted after it (<code>final</code>). The call stack holds the over open while the source is busy (<code>dmr_voice_source_t.busy</code>: the tone not yet pulled), one superframe at a time, at most <code>DMR_CALL_TX_TAIL_HOLDS</code> (3, about 1.1 s). A time-out ends the over at once</td>
+</tr>
+<tr>
+<td>FM end</td>
+<td><code>roger_poll</code> steps through the sequence with <code>hal_radio_t.tx_tone</code>, from each step's own start (a step begins at the first poll, <code>RADIO_POLL_MS</code>, after its time), then unkeys. The default is the two step roger beep. A board with no <code>tx_tone</code> sends none</td>
+</tr>
+</tbody>
+</table></div>
+<p>The tone is encoded as a tone frame (<code>VOCODER_OPT_TONE_FRAMES</code>) with the noise reduction off while it plays, and the
+options are put back after it. <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE</abbr> is a speech codec: a steady tone passes, a sequence of steps shorter than about
+60 ms is two or three frames each and may sound rough, and what another make's radio does with a tone frame is not
+specified here. A start tone is sent with the host's audio (<abbr class="gl" tabindex="0" title="The UDP stream that carries a call&#x27;s audio between RadioFoundry and a network gateway." data-more="../dev/glossary.html#t-usrp">USRP</abbr>) never, and a start tone longer than the encoder queue
+can hold waits for the call stack, which delays the voice that much. The tone counts in the TX time-out.</p>
+<p>The DMR on air copy carries <code>SIG_AIR_GUARD_MS</code> (60 ms) of silence on its outer side before a start tone and <code>SIG_AIR_END_GUARD_MS</code> (100 ms) after an end tone, which a receiver slow to close its audio cut now and then at 60. A
+link that drops the first or last frames of a transmission (a <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr>, a repeater that opens late) then loses the
+silence and not the tone. The guard counts in the tone's length for the tail hold: 900 ms and the longer guard (1000 ms) are inside the
+three superframes (1080 ms) the over is held for.</p>
+<p>On the speaker the start tone follows the board: a board with <code>CAP_BEEP_NOT_ON_AIR</code> plays a DMR start tone before keying,
+in the talk permit's hold (<code>permit_before_key</code>), and plays the FM start tone on the speaker as it keys (only the DMR engine closes the audio path). A board with <code>hal_radio_t.tx_tone_side</code> (the modem's sidetone) hears an FM start tone set to speaker + air from the tone sent on air: the core turns the sidetone on with the tone and off when it ends, and plays no separate beep. The end
+tone plays once the transmitter is off, and on a board whose audio path is closed while the DMR engine sends its last burst
+(<code>hal_audio_t.speaker_blocked</code>) a little after that: audio queued while the path is closed is dropped when it opens, so the
+core waits for it, at most <code>DMR_END_WAIT_MS</code> (400 ms), and then plays it whole.</p>
+<h2 id="5-power">5. Power</h2>
+<h3 id="51-battery">5.1 Battery</h3>
+<p>The radio core reads <code>battery_mv</code> every second (not while transmitting nor for 3 s after: the sag under <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> is not the
+battery's state) and shows <code>battery_mv</code>, <code>battery_pct</code> (the board's) and <code>battery</code> (ok / low / critical). Thresholds
+are per board (<code>board.battery_low_mv</code>, <code>battery_critical_mv</code>; 0 means no warnings; values in each radio's hardware
+page). Three readings in a row
+below a threshold lower the level; it goes back up 200 mV above it.</p>
+<p>A board with <code>CAP_NO_BATTERY</code> (a mobile on a fixed supply) has no battery monitor. The core never reads
+<code>battery_mv</code>, the level stays ok, <code>battery_pct</code> and <code>battery_mv</code> stay 0, and nothing warns or refuses a transmission
+for the battery. The UI shows no battery icon, percentage, Tools &gt; Battery page, Battery saver setting or Low battery
+warning setting. The <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> reports <code>battery=none</code> (with <code>battery_pct=0</code> and <code>battery_mv=0</code>), <code>/status</code> leaves
+<code>battery_pct</code> and <code>battery_mv</code> out, and <abbr class="gl" tabindex="0" title="Simple Network Management Protocol: reading a device&#x27;s state over the network." data-more="snmp.html">SNMP</abbr> reports rfoundryBatteryVoltage 0, rfoundryBatteryPercent 0 and rfoundryBatteryState
+ok(1) without ever sending rfoundryLowBattery.</p>
+<p>Such a board may measure its DC input instead: it sets <code>hal_power_t.supply_mv</code>, and <code>board_volts()</code> (<code>hal/board.h</code>)
+says <code>BOARD_VOLTS_SUPPLY</code>. The radio core reads it once a second, outside transmissions like the battery, into the
+view's <code>supply_mv</code>. Nothing acts on it: no level, percentage, warning, TX refusal or power off, since no supply
+thresholds are defined yet. The UI's last tool is then Supply, showing the reading in volts (13.8 V), with no battery
+settings. The debug link has <code>supply_mv</code> in place of <code>battery_pct</code> and <code>battery_mv</code>, <code>/status</code> has <code>supply_mv</code>, and
+SNMP reports as for no battery. The feature matrix and the web site show each radio's reading: Battery, Supply or
+None.</p>
+<h3 id="52-low-and-critical">5.2 Low and critical</h3>
+<p>Low: the battery low beep, again every 2 minutes; the backlight is capped at 30 % (5.3). Critical: the critical beep
+every 30 s, every transmission refused (<code>tx_deny=battery</code>), and with <code>battery_off_s</code> set the radio core asks for
+power off after that long (<code>power_off=1</code>, <code>radio_power_off_wanted()</code>); <code>core/app/app.c</code> then powers off as with the
+switch.</p>
+<h3 id="53-backlight">5.3 Backlight</h3>
+<p><code>radio_backlight_pct(brightness, idle_ms)</code>: the UI's brightness, dimmed to a fifth (at least 5 %) after
+<code>backlight_dim_s</code> without input, off after <code>backlight_off_s</code>, capped at 30 % while the battery is low or critical.
+The UI owns the backlight and calls it; the radio core doesn't drive the backlight itself.</p>
+<p>Either time 0 means never: <code>backlight_dim_s</code> 0 never dims, <code>backlight_off_s</code> 0 never turns the backlight off, so a
+dim time with off 0 dims and stays on. The UI's setting (<code>UI_SET_BACKLIGHT_S</code>, Settings &gt; Display &gt; Backlight
+Dim/Off) carries both in one value: a time T &gt; 0 dims after T and goes off after 4T, 0 is always on, and -T dims after
+T and never goes off (the &quot;T/dim&quot; choices).</p>
+<p>Idle time restarts on input and while <code>radio_view_wakes(view)</code> holds: something the user would want to see.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>State</th>
+<th>Wakes</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RS_TX</code>, <code>tx_auto</code> 0</td>
+<td>yes</td>
+<td>the user's PTT (or <abbr class="gl" tabindex="0" title="Voice-operated transmit." data-more="../user/22-glossary.html#t-vox">VOX</abbr>)</td>
+</tr>
+<tr>
+<td><code>RS_TX</code>, <code>tx_auto</code> 1</td>
+<td>no</td>
+<td>the radio's own: a data list (<abbr class="gl" tabindex="0" title="Automatic Registration Service: a radio tells a presence server it is on the air." data-more="../user/22-glossary.html#t-ars">ARS</abbr>, <abbr class="gl" tabindex="0" title="Acknowledgment: the reply that says a message arrived." data-more="../dev/glossary.html#t-ack">ACK</abbr>, <abbr class="gl" tabindex="0" title="Location Request and Response Protocol: a dispatcher asks a radio for its position. Motorola&#x27;s position format; the standard has LIP." data-more="../user/22-glossary.html#t-lrrp">LRRP</abbr> answer, IP), a roaming probe, an <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> beacon</td>
+</tr>
+<tr>
+<td><code>RS_TX_DENIED</code></td>
+<td>yes</td>
+<td>PTT held: the screen says why</td>
+</tr>
+<tr>
+<td><code>RS_RX</code>, FM</td>
+<td>yes</td>
+<td>the squelch opened: something plays</td>
+</tr>
+<tr>
+<td><code>RS_RX</code>, DMR, <code>dmr.state</code> <code>RDMR_RX</code></td>
+<td>yes</td>
+<td>a call that plays</td>
+</tr>
+<tr>
+<td><code>RS_RX</code>, DMR, otherwise</td>
+<td>no</td>
+<td>data heard (ARS ACK, others' <abbr class="gl" tabindex="0" title="Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control." data-more="dmr-data.html">CSBKs</abbr>), a call not played (other <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr>, encrypted)</td>
+</tr>
+<tr>
+<td><code>RS_RX</code>, <code>bcast</code></td>
+<td>no</td>
+<td>a broadcast program plays continuously</td>
+</tr>
+<tr>
+<td><code>hotspot</code></td>
+<td>no</td>
+<td>the host's traffic</td>
+</tr>
+</tbody>
+</table></div>
+<p>What does reach the user (a message, <abbr class="gl" tabindex="0" title="A DMR page that makes another radio ring." data-more="../user/22-glossary.html#t-call-alert">call alert</abbr>, <abbr class="gl" tabindex="0" title="A DMR call to one radio." data-more="../user/22-glossary.html#t-private-call">private call</abbr>, <abbr class="gl" tabindex="0" title="A DMR request another radio answers automatically, to show it is on and in range." data-more="../user/22-glossary.html#t-radio-check">radio check</abbr> result, emergency) comes as a UI banner
+or screen, and the UI wakes the backlight for it (<code>ui_app_take_wake</code>). <code>last_tx_ms</code> in the view records when the
+last transmission began, so an unattended one can be placed afterwards (debuglink.md 3.7).</p>
+<h3 id="54-receiver-battery-save-config_battery_save-rx_save-off-by-default">5.4 Receiver battery save (CONFIG_BATTERY_SAVE, <code>rx_save</code> off by default)</h3>
+<p>On an idle FM channel after <code>rx_save_idle_s</code> without activity (keys, requests, receptions, PTT), the receiver sleeps
+200 / 400 / 800 ms and listens 100 ms (<code>rx_sleeping</code> in the view). Any signal in the listen window keeps it awake;
+anything else (a key, a request, MONITOR, scan, VOX, <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> channel, <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr>, a channel with the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> &quot;no eco&quot; flag,
+APRS <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> listening on the APRS frequency, <code>aprs.md</code> 5.3) stops it. The board's <code>rx_sleep</code> hook turns the receiver off and back on. A board that sets <code>rx_sleep_dmr</code> also lets a
+trunked system's power save use it on a DMR channel (<code>dmr-trunking.md</code> 7.13). On air
+on an <abbr class="gl" tabindex="0" title="The RF transceiver chip that sets the frequency, deviation and power of many handheld DMR radios. Programmed over I2C." data-more="../dev/glossary.html#t-at1846s">AT1846S</abbr> board since 2026-10-10 (<code>test_battery_save*</code>: cycles when idle, MONITOR and a call wake it); the setting stays off by default.</p>
+<h3 id="55-power-switch">5.5 Power switch</h3>
+<p>On boards with a volume knob that has a switch, the switch doesn't cut the supply: the <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr> holds its own with the power
+latch, and the switch only breaks the battery sense line, so the unfiltered battery reading drops to about 0 V the
+moment the knob turns off. <code>core/radio/power_switch.c</code> turns that
+into the board's <code>switch_on()</code>: three readings in a row below 5.5 V, at least 10 ms apart, mean off; one low reading
+doesn't. The boards ignore it for the first 1.5 s after power-up while the readings settle. <code>core/app/app.c</code> polls
+<code>switch_on()</code> and powers off (settings saved, latch released). 5.5 V sits well under a flat 2S pack (critical
+6.0 V), so a weak battery never reads as the switch.</p>
+<p>Boards with a power key instead (mobiles) feed the key's level to <code>core/radio/power_key.c</code> from their <code>switch_on()</code>.
+The press that switched the radio on is usually still held at start-up, so the key counts only once it has been seen
+released; then 20 polls held in a row (2 s at the 100 ms poll) mean off. A shorter press doesn't count toward the next.</p>
+<h3 id="56-time-of-day">5.6 Time of day</h3>
+<p>RadioFoundry keeps no wall clock. <code>hal_time.h</code> gives only time since start-up, and that is what every record uses: the crash
+log's <code>uptime_ms</code>, messages (<code>ui_msg_t.age_ms</code>), call history and the APRS station list (&quot;14m ago&quot;). Nothing on the screen shows a time of day, so a
+radio never shows a made-up one after power-on.</p>
+<p>The only time of day is the UTC time a GPS or host <abbr class="gl" tabindex="0" title="The text format GPS receivers use to report position and time." data-more="../user/22-glossary.html#t-nmea">NMEA</abbr> fix carries. It travels with that position into DMR GPS and
+LRRP reports. A fixed position carries none, and the reports leave the time out (<code>utc_hms</code> 0xFFFFFFFF, date 0).</p>
+<p>Some radios have a real-time clock, and some keep it running through power-off. <code>board.toml</code> <code>[hardware] clock</code>
+records which, with its source (<code>backed</code>, <code>unbacked</code>, <code>none</code>, or <code>unknown</code>), and the feature matrix and the site show
+it. A clock driver arrives behind a hardware switch (<code>CONFIG_RTC</code>, <code>hardware</code> in <code>tests/hil/features.toml</code>). Until GPS,
+the network or the user sets it, the radio shows &quot;no time&quot;, and records keep using uptime or mark the time unknown.</p>
+<h3 id="57-leds">5.7 LEDs</h3>
+<p>The radio core drives the board's red and green LEDs (<code>board.power-&gt;led</code>); <code>view.leds</code> (debug link <code>leds</code>) is what it
+drives. Red: transmitting. Green: a reception that plays (FM squelch open, a DMR call played), but not a broadcast station. Two timed signals go
+over that (<code>radio_sm.c</code> <code>led_signals</code>, the times in <code>radio_sm.h</code>), for radios without a screen above all:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Signal</th>
+<th>LEDs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Waking a repeater (DMR, PTT through a repeater that isn't up)</td>
+<td>red once per wake-up burst sent, <code>RADIO_LED_WAKE_MS</code> (100 ms) each, dark while the radio listens for the answer. The call stack counts the bursts (<code>dmr_call_view_t.wake_sent</code>)</td>
+</tr>
+<tr>
+<td>A TX deny, every reason (<code>RS_TX_DENIED</code>), and a repeater that didn't wake after a short press was let go</td>
+<td>red, green, red, green, red, green, <code>RADIO_LED_DENY_STEP_MS</code> (100 ms) each, once, with the deny tone (none for a busy channel, 3.1); then what the state shows. A transmission that starts during it ends it</td>
+</tr>
+<tr>
+<td>The PTT line stuck low, which only a power cycle releases (<a href="gotchas.html">gotchas.md</a> 16.5)</td>
+<td>red and green in turn, 125 ms each, until the power cycle</td>
+</tr>
+</tbody>
+</table></div>
+<p>Once the repeater answers and the voice goes out, red is solid as for any transmission. The tick and the poll keep
+calling <code>outputs()</code> while a signal runs, so it keeps time when nothing else changes.</p>
+<h2 id="6-tx-power-calibration-band-limits">6. TX power, calibration, band limits</h2>
+<p>Checked, unchanged: the board clamps the power level, uses the calibration table's drive value for the band and level,
+and refuses a <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> frequency outside the board's bands (<code>tx_deny=band</code>). Without a calibration the board either drives
+a low fixed value or refuses to transmit; the board's hardware page says which. While a hardware option is pending
+(<code>board_hwopt_pending</code>, <code>hal/hal_hwopt.h</code>: unset, or stored and waiting for a restart) the core refuses PTT itself with
+<code>tx_deny=hwopt</code> (the screen names the option), before the board is asked: a board may still key while a restart is
+due. When the board's <code>tx</code> refuses a frequency inside its bands, the reason is <code>tx_deny=hwopt</code> while an option is
+pending, else <code>tx_deny=refused</code> (&quot;Radio refused to send&quot;); never <code>band</code>.</p>
+<h3 id="61-reference-trim">6.1 Reference trim</h3>
+<p>Settings &gt; Advanced &gt; Freq trim: a fraction of the reference, -10.0 to +10.0 <abbr class="gl" tabindex="0" title="Parts per million: a frequency error as a fraction of the frequency. At 450 MHz, 1 ppm is 450 Hz." data-more="../dev/glossary.html#t-ppm">ppm</abbr> in 0.1 ppm steps, 0 by default
+(<code>core/radio/ref_trim.c</code>). It is for a radio whose reference oscillator is off even with its calibration: it moves
+<abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> and transmit together, FM and <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr>. A fraction of the reference moves every carrier by the same fraction, so
+one value holds on every band; the Hz it comes to grows with the frequency.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Trim</th>
+<th>At 440 MHz</th>
+<th>At 144 MHz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1 ppm (one step)</td>
+<td>44 Hz</td>
+<td>14.4 Hz</td>
+</tr>
+<tr>
+<td>4.5 ppm</td>
+<td>1980 Hz</td>
+<td>648 Hz</td>
+</tr>
+<tr>
+<td>10.0 ppm (the limit)</td>
+<td>4.4 kHz</td>
+<td>1.44 kHz</td>
+</tr>
+</tbody>
+</table></div>
+<p>The value is held in parts per billion (ppb, 100 a step), an int16: <code>hal_radio_t.ref_trim</code>, <code>settings_t.ref_trim_ppb</code>,
+the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>. The UI stores it and applies it at start-up and on each change with <code>radio_set_ref_trim()</code>, which
+clamps, rounds to the step and calls <code>hal_radio_t.ref_trim</code> when the value differs from the one the board has (the
+board starts at 0, so a start-up with no trim calls nothing). The debug link's SETTING op 35 sets it in <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> only.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Board</th>
+<th>Trim</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>with a reference control (<code>hal_radio_t.ref_trim</code> sets it)</td>
+<td>adds the trim to the control its calibration sets, at every tune; its hardware page gives the scale</td>
+</tr>
+<tr>
+<td>with synthesizers only (<code>hal_radio_t.ref_trim</code> keeps the value)</td>
+<td>programs each <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> chip at f x (1 + trim) instead of f, at every tune and burst (<code>ref_trim_tune_hz</code>). A superhet's LO takes f x (1 + trim) + IF and its IF stays as it is: both chips run from one reference, so the IF's share of the error cancels</td>
+</tr>
+<tr>
+<td>without the hook, or built with <code>CONFIG_REF_TRIM=n</code></td>
+<td>the row is hidden; nothing changes</td>
+</tr>
+</tbody>
+</table></div>
+<p>The hook returns whether the board takes the trim at the next tune. A board that applies it at once returns false;
+one that applies it when it tunes returns true, and the caller (the UI, the debug link) then asks the radio task to
+tune again (<code>radio_req_retune</code>, the <code>RREQ_RETUNE</code> request). A tune ends a reception in progress, so the radio task tunes
+once the trim has held still <code>RADIO_RETUNE_SETTLE_MS</code> (400 ms), not at each step: when idle, after an <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr>
+transmission, or at the end of a transmission or the <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr>. Until then the hotspot or a transmission in progress
+keeps the trim it started with on receive. The RF chips' bus stays the radio task's.</p>
+<p>The value is a correction to enter by hand: measure the carrier against a reference (a frequency counter, a service
+monitor, or a hotspot's MMDVMCal <abbr class="gl" tabindex="0" title="Bit error rate: the share of received bits that were wrong. A measure of how clean a signal is." data-more="../dev/glossary.html#t-ber">BER</abbr> test) and enter the error with its sign reversed. A radio 2 kHz high at 448.7 MHz
+is 4.5 ppm high and takes -4.5 ppm. <a href="../feature-matrix.html">feature-matrix.md</a> lists which radios have the hook.</p>
+<h3 id="62-receive-past-the-band-table-config_rx_ext">6.2 Receive past the band table (CONFIG_RX_EXT)</h3>
+<p>A board may list receive-only ranges past its rated bands: the last <code>board_t.rx_ext_count</code> entries of <code>bands</code>, with
+<code>tx</code> false. They count only while <code>*board_t.rx_ext_on</code> is set.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Setting</td>
+<td>Settings &gt; Advanced &gt; RX past bands, off by default. Stored in <code>settings_t.cp_flags</code>, cleared by a factory reset. Hidden on a board with no range.</td>
+</tr>
+<tr>
+<td>Table</td>
+<td>Everything that reads the bands uses <code>board_band_count()</code>: the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr>'s tuning and wrap, the keypad entry, VFO scan, the channel editor, <code>rigctld</code> and the debug link's <code>bands=</code>.</td>
+</tr>
+<tr>
+<td>Transmit</td>
+<td>Never: <code>board_in_band(hz, true)</code> skips the entries, so PTT gives <code>TXDENY_BAND</code>.</td>
+</tr>
+<tr>
+<td>Modes</td>
+<td>FM only, as in any receive-only band: the channel editor refuses DMR there.</td>
+</tr>
+<tr>
+<td>Turning it off</td>
+<td>The radio core reloads. A VFO past the table returns to a band; a channel there stays stored and doesn't tune.</td>
+</tr>
+</tbody>
+</table></div>
+<p>A board's ranges come from its receiver chip's documents. Nothing past the rated bands is
+measured: front-end filters may cut sensitivity well inside the chip's range, and spurs aren't specified.
+A radio's ranges are on its hardware page.</p>
+<h2 id="7-verification-status">7. Verification status</h2>
+<p>Host-tested (<code>radioFeaturesTest</code>): scan engine and glue (zone, skip flags, nuisance, resume modes,
+priority, <abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="../user/22-glossary.html#t-dual-watch">dual watch</abbr> with its wait and looks and the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>'s requests during it, <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> band scan, mixed FM / <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr>, a DMR call already in progress with a <abbr class="gl" tabindex="0" title="DMR radio to radio on one frequency, with no repeater. The standard calls it DMO." data-more="../dev/glossary.html#t-direct-mode">direct mode</abbr> carrier and a
+late entry at every superframe phase, PTT and retune behavior), battery levels and power off, beep
+patterns and mixing, vibration patterns and their timing through the radio core, <abbr class="gl" tabindex="0" title="Transmit timeout: the longest transmission the radio allows." data-more="../user/22-glossary.html#t-tot">TOT</abbr> warning, BCL, inhibit, roger beep, burst, <abbr class="gl" tabindex="0" title="Dual tone multi frequency: the touch tones a keypad sends, in the audio." data-more="../user/22-glossary.html#t-dtmf">DTMF</abbr> timing and refusals (<code>inputTest</code> for the key routing), <abbr class="gl" tabindex="0" title="Voice-operated transmit." data-more="../user/22-glossary.html#t-vox">VOX</abbr>, battery save, DMR permit / call-end beeps.
+On the radio (<code>docs/testing/on-air-coverage.md</code>, <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> 2026-10-10): zone scan stopping for DMR calls, VFO scan, dual
+watch, the battery saver, the 1750 Hz burst and the roger beep on air; <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> inhibit and the TOT warning on the radio's
+state; VOX only in silence (the <code>mic_level</code> hook is unverified); whether <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> beeps play in FM mode is still open
+(<code>beep.no_stream</code> / <code>beep.blocks</code> answer that).</p>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/radio-features.md">Vedi il sorgente di questa pagina</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="In questa pagina">
+		<p class="eyebrow">In questa pagina</p>
+		<ul><li class="l2"><a href="#1-settings">1. Settings</a></li><li class="l2"><a href="#2-scan-config_scan">2. Scan (CONFIG_SCAN)</a></li><li class="l3"><a href="#21-dual-watch">2.1 Dual watch</a></li><li class="l3"><a href="#22-a-second-receiver">2.2 A second receiver</a></li><li class="l2"><a href="#3-fm-transmit-extras">3. FM transmit extras</a></li><li class="l3"><a href="#31-busy-channel-lockout-and-tx-inhibit">3.1 Busy channel lockout and TX inhibit</a></li><li class="l3"><a href="#32-time-out-warning">3.2 Time-out warning</a></li><li class="l3"><a href="#33-roger-beep-and-1750-hz-burst-config_fm_tx_tones">3.3 Roger beep and 1750 Hz burst (CONFIG_FM_TX_TONES)</a></li><li class="l3"><a href="#33a-dcs-turn-off-tail-config_subtone">3.3a DCS turn-off tail (CONFIG_SUBTONE)</a></li><li class="l3"><a href="#34-vox-config_vox-the-vox-setting-is-off-by-default">3.4 VOX (CONFIG_VOX; the vox setting is off by default)</a></li><li class="l3"><a href="#35-squelch-tail-elimination">3.5 Squelch tail elimination</a></li><li class="l3"><a href="#36-mic-gain">3.6 Mic gain</a></li><li class="l3"><a href="#37-dtmf-transmit-config_dtmf">3.7 DTMF transmit (CONFIG_DTMF)</a></li><li class="l2"><a href="#4-beeps-config_beep">4. Beeps (CONFIG_BEEP)</a></li><li class="l3"><a href="#41-vibration-config_vibrate">4.1 Vibration (CONFIG_VIBRATE)</a></li><li class="l3"><a href="#42-speaker-volume">4.2 Speaker volume</a></li><li class="l3"><a href="#43-signaling-tones-config_sig_tones">4.3 Signaling tones (CONFIG_SIG_TONES)</a></li><li class="l2"><a href="#5-power">5. Power</a></li><li class="l3"><a href="#51-battery">5.1 Battery</a></li><li class="l3"><a href="#52-low-and-critical">5.2 Low and critical</a></li><li class="l3"><a href="#53-backlight">5.3 Backlight</a></li><li class="l3"><a href="#54-receiver-battery-save-config_battery_save-rx_save-off-by-default">5.4 Receiver battery save (CONFIG_BATTERY_SAVE, rx_save off by default)</a></li><li class="l3"><a href="#55-power-switch">5.5 Power switch</a></li><li class="l3"><a href="#56-time-of-day">5.6 Time of day</a></li><li class="l3"><a href="#57-leds">5.7 LEDs</a></li><li class="l2"><a href="#6-tx-power-calibration-band-limits">6. TX power, calibration, band limits</a></li><li class="l3"><a href="#61-reference-trim">6.1 Reference trim</a></li><li class="l3"><a href="#62-receive-past-the-band-table-config_rx_ext">6.2 Receive past the band table (CONFIG_RX_EXT)</a></li><li class="l2"><a href="#7-verification-status">7. Verification status</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Unisciti alla comunità RadioFoundry</strong><span class="small muted">Domande, aiuto con la tua radio e novità, su Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Hai trovato un bug? Vuoi che la tua radio sia supportata?</strong><span class="small muted">Apri una segnalazione su GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry ha licenza MIT · <a href="https://github.com/radiofoundry/radiofoundry">Codice sorgente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunità</a> · <a href="../../../it/docs/index.html">Documenti</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Novità</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

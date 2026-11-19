@@ -1,0 +1,674 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DMR · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="DMR · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/user/09-dmr.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/user/09-dmr.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/user/09-dmr.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/user/09-dmr.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/user/09-dmr.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/user/09-dmr.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/user/09-dmr.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/user/09-dmr.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/user/09-dmr.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/user/09-dmr.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="用户手册">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 用户手册</p>
+		<ul><li><a href="index.html">RadioFoundry 用户手册</a></li><li><a href="01-introduction.html">简介</a></li><li><a href="02-installing.html">安装</a></li><li><a href="03-first-boot.html">首次启动</a></li><li><a href="04-programming.html">为电台编程</a></li><li><a href="05-keys-and-navigation.html">按键与导航</a></li><li><a href="06-home-screen.html">主屏幕</a></li><li><a href="07-channels-zones-vfo.html">信道、区域与 VFO</a></li><li><a href="08-fm.html">FM</a></li><li><a href="09-dmr.html" aria-current="page">DMR</a></li><li><a href="10-messages-and-signaling.html">消息、呼叫提示与电台检查</a></li><li><a href="11-emergency.html">紧急</a></li><li><a href="12-scan.html">扫描与双守候</a></li><li><a href="13-aprs.html">APRS</a></li><li><a href="14-hotspot.html">热点模式</a></li><li><a href="15-usb-network.html">USB 网络模式</a></li><li><a href="16-battery-and-power.html">电池与供电</a></li><li><a href="17-settings.html">设置</a></li><li><a href="18-moving-from-stock-md380.html">从原厂 MD-380 固件迁移</a></li><li><a href="19-moving-from-stock-dm32.html">从原厂 DM-32UV 固件迁移</a></li><li><a href="20-troubleshooting.html">故障排查</a></li><li><a href="21-faq.html">常见问题</a></li><li><a href="22-glossary.html">术语表</a></li><li><a href="23-radios.html">电台参考</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<h1 id="dmr">DMR</h1>
+<p><a href="23-radios.html">电台参考</a>说明哪些电台的 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> 已验证。DMR 语音需要编解码器（<a href="02-installing.html">安装</a>）以及电台频率中的 <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr>。</p>
+<h2 id="terms">术语</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>术语</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>通话组（TG）</td>
+<td><abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> 组号，可带名称</td>
+</tr>
+<tr>
+<td>联系人</td>
+<td>一个人：<abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr>、名称、呼号</td>
+</tr>
+<tr>
+<td>通话目标</td>
+<td><strong>PTT</strong> 当前的去向：通话组、个人或全呼</td>
+</tr>
+<tr>
+<td>收听列表</td>
+<td>信道收听的通话组（电台频率中的接收组列表）</td>
+</tr>
+<tr>
+<td>最近</td>
+<td>听到的台站和发起的呼叫，最新的在前</td>
+</tr>
+<tr>
+<td>数字监听</td>
+<td>播放此时隙上的所有通话组（混杂模式）</td>
+</tr>
+<tr>
+<td>时隙（TS）</td>
+<td>DMR 信道的两个时隙之一</td>
+</tr>
+<tr>
+<td>色码（CC）</td>
+<td>DMR 信道使用的 0 到 15 的数字，类似 FM 上的亚音</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="who-you-hear">你会听到谁</h2>
+<p>当以下任一条件成立时，电台会播放组呼：</p>
+<ul>
+<li>其通话组是通话目标的通话组，或该呼叫为全呼；</li>
+<li>其通话组在信道的收听列表中；</li>
+<li>在回复窗口期间它是回复目标（<a href="#replying">见下文</a>）；</li>
+<li>数字监听已开启。</li>
+</ul>
+<p>电台会播放发往你的 <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr> 的私密呼叫。时隙上的其他所有呼叫都会显示为“其他通话组：不播放”，并在其持续期间把信道视为忙。</p>
+<h2 id="who-you-talk-to">你会与谁通话</h2>
+<p><strong>PTT</strong> 依次发送到：</p>
+<ol>
+<li>列表中处于焦点的通话组或个人，仅一次（一次性）。</li>
+<li>回复窗口运行期间的回复目标。</li>
+<li>临时选择的通话目标。</li>
+<li>电台频率中该信道的通话目标。没有通话目标的信道会与其接收组列表中的第一个通话组通话，连列表也没有时使用通话组 9。</li>
+</ol>
+<p>主屏幕在“PTT→”之后显示结果。</p>
+<h2 id="choosing-a-talk-target">选择通话目标</h2>
+<p>在 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> 信道上长按 <strong>#</strong> 打开通话目标选择器：信道默认、回复目标、接收组列表中的通话组、最近的通话组，以及“输入号码……”以手动拨号 ID 或通话组。<strong>通话目标</strong>侧键打开同一个选择器。</p>
+<p>通话目标有三种存活期。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>存活期</th>
+<th>方式</th>
+<th>持续时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一次</td>
+<td>在任意列表（联系人、最近、查找、选择器、操作）中聚焦通话组或个人并按 <strong>PTT</strong></td>
+<td>本次呼叫及其回复窗口</td>
+</tr>
+<tr>
+<td>临时</td>
+<td>聚焦并按 <strong>OK</strong>。电台显示“正在通话……”</td>
+<td>直到你切换信道或在主屏幕按 <strong>返回</strong></td>
+</tr>
+<tr>
+<td>永久</td>
+<td>聚焦并长按 <strong>OK</strong>。电台显示“……现为默认”</td>
+<td>写入信道</td>
+</tr>
+</tbody>
+</table></div>
+<p>永久通话目标必须是电台频率中的联系人。输入的号码仅临时使用。电台显示“非已存联系人：仅临时”。</p>
+<h3 id="the-talk-target-picker">通话目标选择器</h3>
+<p>在 DMR 信道上按<strong>通话目标</strong>（或 <strong>*</strong>、<strong>8</strong>）。选择器按顺序列出：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>行</th>
+<th>标记</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>信道的通话目标</td>
+<td>默认</td>
+</tr>
+<tr>
+<td>最后听到的呼叫：其通话组，私密呼叫时则为呼叫者</td>
+<td>回复</td>
+</tr>
+<tr>
+<td>信道收听列表中的通话组</td>
+<td>收听</td>
+</tr>
+<tr>
+<td>来自“最近”的通话组</td>
+<td>最近</td>
+</tr>
+<tr>
+<td>输入号码……</td>
+<td></td>
+</tr>
+<tr>
+<td>选择联系人……</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>有回复行时，焦点从该行开始。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>按键</th>
+<th>对焦点行的作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PTT</strong></td>
+<td>与其通话一次</td>
+</tr>
+<tr>
+<td><strong>OK</strong></td>
+<td>临时使用它</td>
+</tr>
+<tr>
+<td>长按 <strong>OK</strong></td>
+<td>设为该信道的默认</td>
+</tr>
+<tr>
+<td><strong>#</strong></td>
+<td>打开其操作</td>
+</tr>
+</tbody>
+</table></div>
+<p>“输入号码……”打开查找。输入通话组或 ID，聚焦所需行并按 <strong>PTT</strong> 或 <strong>OK</strong>。</p>
+<p>“选择联系人……”打开<a href="#contacts">联系人</a>，即电台频率中的所有联系人和通话组。转动旋钮，或按 <strong>上</strong> 和 <strong>下</strong> 浏览，或输入名称字母、ID 数字来查找。按键属于选择器。在顶部按 <strong>上</strong> 会跳到最后一个联系人。</p>
+<img src="../ux/screens/160x120i5/talk_target_picker.png" width="200" alt="通话目标选择器">
+<p>在 FM 信道上，<strong>通话目标</strong>显示“通话目标：仅 DMR 信道”。</p>
+<h3 id="typing-a-talkgroup-or-id">输入通话组或 ID</h3>
+<p>在主屏幕输入数字。查找会列出“通话到 <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="22-glossary.html#t-talkgroup">TG</abbr> 3100”和“私密呼叫 3100”（该 ID 是联系人时带名称）。聚焦一项，按 <strong>PTT</strong> 通话一次，或按 <strong>OK</strong> 临时使用。</p>
+<p>在集群信道上，查找还会在最后列出“电话 5551234”：在该项上按 <strong>PTT</strong> 通过系统的电话网关拨打该号码（系统没有电话网关时会拒绝）。来自电话网络的呼叫显示主叫号码；系统未发送号码时显示“电话”。</p>
+<h2 id="replying">回复</h2>
+<p>电台播放某个呼叫后，回复窗口打开。窗口期间 <strong>PTT</strong> 应答该呼叫。组呼在同一通话组上应答，私密呼叫则回复呼叫者。你自己呼叫之后，<strong>PTT</strong> 会再次发往同一目标。主屏幕显示“回复→”、目标和倒计时。</p>
+<img src="../ux/screens/160x120i5/home_reply.png" width="200" alt="回复窗口期间的主屏幕">
+<p>窗口持续多久由<strong>设置 &gt; 通话与收听 &gt; 回复窗口</strong>决定（0 到 30 秒）。0 表示关闭。该设置保持起始值时，适用电台频率中的挂机时间。电台频率中没有挂机时间时，窗口持续 10 秒。在主屏幕按 <strong>返回</strong> 结束窗口（“回复已结束”）。</p>
+<h2 id="calling-back-later">稍后回拨</h2>
+<p>在主屏幕按 <strong>#</strong> 打开当前或最近呼叫者的操作。数字键选择操作。</p>
+<img src="../ux/screens/160x120i5/caller_actions.png" width="200" alt="最近呼叫者的操作">
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>操作</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>通话对象</td>
+<td>临时在他们被听到的通话组上通话。私密呼叫之后则与他们通话。在此行按 <strong>PTT</strong> 通话一次</td>
+</tr>
+<tr>
+<td>2</td>
+<td>私密呼叫</td>
+<td>临时私密呼叫他们。在此行按 <strong>PTT</strong> 呼叫一次</td>
+</tr>
+<tr>
+<td>3</td>
+<td>消息</td>
+<td>打开消息编辑（<a href="10-messages-and-signaling.html">消息</a>）</td>
+</tr>
+<tr>
+<td>4</td>
+<td>电台检查</td>
+<td>检查他们的电台是否开机且在范围内</td>
+</tr>
+<tr>
+<td>5</td>
+<td>呼叫提示</td>
+<td>寻呼他们的电台</td>
+</tr>
+<tr>
+<td>6</td>
+<td>位置</td>
+<td>尚未构建</td>
+</tr>
+<tr>
+<td>7</td>
+<td>存为联系人</td>
+<td>用其 ID 和名称打开新建联系人（<a href="#contacts">联系人</a>）。已是联系人时显示“已在联系人中”</td>
+</tr>
+<tr>
+<td>8</td>
+<td>语音状态</td>
+<td>尚未构建</td>
+</tr>
+<tr>
+<td>9</td>
+<td>保存到信道</td>
+<td>仅在信道有临时更改时显示</td>
+</tr>
+<tr>
+<td>最后</td>
+<td>请求数据</td>
+<td>仅在集群信道上显示。向对方电台请求其短数据；回复以消息形式到达。没有回复时显示“请求：无数据”</td>
+</tr>
+</tbody>
+</table></div>
+<p>对通话组而言，操作是“通话对象”“设为默认信道”和“消息”，不是联系人时还有“4 存为联系人”。</p>
+<p>尚未听到任何呼叫时，<strong>#</strong> 显示“暂无通话记录”。</p>
+<h2 id="recent">最近</h2>
+<p><strong>OK</strong>、<strong>3</strong>。“最近”列出最后听到的 12 个台站和发起的呼叫，最新的在前。你发起的呼叫以箭头开头。发给你的呼叫会高亮，私密呼叫显示“你”或“私密”。最近保存在内存中，重启后为空。</p>
+<img src="../ux/screens/160x120i5/recent.png" width="200" alt="最近">
+<p><strong>PTT</strong> 与焦点条目通话（台站被听到时所在的通话组）。<strong>OK</strong> 临时使用它。长按 <strong>OK</strong> 使其永久。<strong>#</strong> 打开其操作。</p>
+<h2 id="contacts">联系人</h2>
+<p><strong>OK</strong>、<strong>1</strong> 列出电台频率中的所有联系人和通话组。输入名称字母或 ID 数字可筛选。联系人用于你要呼叫的通话组和人；<a href="04-programming.html#dmr-id-database-and-contacts-from-radioidnet">ID 数据库</a>为其他所有人命名。<strong>OK</strong> 临时与焦点条目通话。长按 <strong>OK</strong> 使其成为信道默认。<strong>PTT</strong> 与其通话一次。<strong>#</strong> 打开其操作。</p>
+<img src="../ux/screens/160x120i5/contacts.png" width="200" alt="联系人">
+<img src="../ux/screens/160x120i5/contact_actions.png" width="200" alt="联系人的操作">
+<h3 id="new-contact">新建联系人</h3>
+<p>可在电台上从联系人、号码或呼叫创建联系人：</p>
+<ul>
+<li>在联系人（<strong>OK</strong>、<strong>1</strong>）中，第一行是<strong>新建联系人</strong>。按 <strong>OK</strong>，然后输入名称和 ID 并选择类型。</li>
+<li>在主屏幕输入 ID 或通话组。没有联系人使用该号码时，查找的最后一行是“创建联系人 3100”。按 <strong>OK</strong>。最多 6 位数字作为通话组，7 位及以上作为个人。</li>
+<li>在呼叫者或通话组的操作（<strong>#</strong>）中选择<strong>存为联系人</strong>。</li>
+</ul>
+<img src="../ux/screens/160x120i5/contact_edit.png" width="200" alt="新建联系人">
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>行</th>
+<th><strong>OK</strong> 的作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>名称</td>
+<td>用键盘输入名称（<a href="07-channels-zones-vfo.html#text-entry">文本输入</a>）</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>输入 ID。<strong>返回</strong> 收回一位数字，<strong>OK</strong> 保留</td>
+</tr>
+<tr>
+<td>类型</td>
+<td>通话组或私密</td>
+</tr>
+<tr>
+<td>时隙</td>
+<td>信道、<abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="22-glossary.html#t-timeslot">TS</abbr> 1 或 TS 2</td>
+</tr>
+<tr>
+<td>保存</td>
+<td>保存。在任意行长按 <strong>OK</strong> 也会保存</td>
+</tr>
+</tbody>
+</table></div>
+<p>电台会拒绝已存在的联系人（“已是联系人：……”）。编辑或删除已存储的联系人尚未构建：请使用 <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr>。从 <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="04-programming.html">CPS</abbr> 写入电台频率会替换你在电台上创建的联系人，因此请先把电台频率读入 CPS。</p>
+<h2 id="private-calls">私密呼叫</h2>
+<ul>
+<li>从联系人：<strong>OK</strong>、<strong>1</strong>，找到那个人，<strong>#</strong>、<strong>2</strong>（私密呼叫），然后 <strong>PTT</strong>。或聚焦该人并按 <strong>PTT</strong>。</li>
+<li>按 ID：在主屏幕输入 ID，聚焦“私密呼叫……”并按 <strong>PTT</strong>。</li>
+<li>要应答私密呼叫，请在回复窗口期间按 <strong>PTT</strong>。</li>
+</ul>
+<p>通话时顶行显示“私密”，屏幕显示联系人名称（<a href="06-home-screen.html#transmitting">发射</a>）。</p>
+<h2 id="timeslot-and-color-code">时隙与色码</h2>
+<p>在 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> 信道上，<strong>*</strong> 打开这些磁贴：</p>
+<img src="../ux/screens/160x120i5/quick_dmr.png" width="200" alt="DMR 信道上的快速设置">
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>按键</th>
+<th>磁贴</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td>功率</td>
+<td>在电台的最低档、默认档和最高档之间步进（<a href="16-battery-and-power.html#transmit-power">功率级别</a>）</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>时隙</td>
+<td>临时在时隙 1 和 2 之间切换</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>颜色</td>
+<td>打开色码编辑器</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>模式</td>
+<td>显示 DMR。按下可临时在同一频率上以 FM 收听和通话</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>数字监听</td>
+<td>开或关数字监听</td>
+</tr>
+<tr>
+<td><strong>6</strong></td>
+<td>加密</td>
+<td>开或关加密。在 <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr> 中此磁贴为发射频率（<a href="07-channels-zones-vfo.html#split-repeater-offset">分离</a>）</td>
+</tr>
+<tr>
+<td><strong>7</strong></td>
+<td>双守候</td>
+<td>开或关双守候</td>
+</tr>
+<tr>
+<td><strong>8</strong></td>
+<td>通话对象</td>
+<td>打开通话目标选择器</td>
+</tr>
+<tr>
+<td><strong>9</strong></td>
+<td>亮度</td>
+<td>打开亮度编辑器</td>
+</tr>
+<tr>
+<td><strong>0</strong></td>
+<td></td>
+<td>打开设置</td>
+</tr>
+</tbody>
+</table></div>
+<p>要更改色码，按 <strong>*</strong>、<strong>3</strong>。按 <strong>上</strong> 或 <strong>下</strong>，或输入代码（0 到 15）。按 <strong>OK</strong> 应用。新色码在编辑器关闭时生效。</p>
+<img src="../ux/screens/160x120i5/quick_cc_editor.png" width="200" alt="编辑色码">
+<p>时隙和色码是临时的。发射时无法更改。长按 <strong>OK</strong> 可将它们保存到信道。在 VFO 中它们是 VFO 自身的设置并会保留（<a href="07-channels-zones-vfo.html#dmr-in-the-vfo">VFO</a>）。</p>
+<h2 id="waking-a-repeater">唤醒中继台</h2>
+<p>空闲的中继台在承载你的呼叫前可能需要唤醒。在中继信道（收发频率不同）上，按下 <strong>PTT</strong> 时电台会发送唤醒，然后等待中继台应答。短按即可：松开 <strong>PTT</strong> 后电台会继续尝试，直到通常的尝试次数。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>听到</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>允许发射提示音（若已开启）</td>
+<td>中继台已应答。若你仍按住 <strong>PTT</strong>，呼叫开始；若已松开，则不再发送，你可以再按 <strong>PTT</strong></td>
+</tr>
+<tr>
+<td>低声错误音</td>
+<td>中继台无应答。请检查色码和距离</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="the-talk-permit-tone">通话许可音</h2>
+<p>通话许可音告诉你电台已占用信道，可以讲话了。在<strong>设置 &gt; 声音 &gt; 通话许可音</strong>中可为所有信道关闭它，或用信道的<strong>通话许可音</strong>字段为单个信道关闭。</p>
+<p>多数电台在你的语音开始发射时播放两声短促的提示音。提示音会被发射出去的电台改为在发射前播放一声短促的提示音（<a href="23-radios.html">电台说明</a>）：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>屏幕</th>
+<th>发生什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>唤醒中继</td>
+<td>在中继信道上，电台唤醒中继台（见上）</td>
+</tr>
+<tr>
+<td>已准许</td>
+<td>信道归你使用：提示音在电台仍在接收时播放</td>
+</tr>
+<tr>
+<td>通话中</td>
+<td>电台正在发射。开始讲话</td>
+</tr>
+</tbody>
+</table></div>
+<p>等待提示音的时间不到半秒。在此期间松开 <strong>PTT</strong> 会取消呼叫。</p>
+<p>你听到的呼叫结束时的提示音是呼叫结束音。信道的<strong>通话许可音</strong>字段也会关闭它。</p>
+<h2 id="digital-monitor">数字监听</h2>
+<p>数字监听会播放此频率、时隙和色码上的所有通话组。</p>
+<ul>
+<li>在 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> 信道上按<strong>监听</strong>（短按，松开时生效）。电台显示“数字监听开”，标签显示“数字监听”。再按一次关闭。在 FM 信道上，同一键在按住期间打开静噪。</li>
+<li>或 <strong>*</strong>、<strong>5</strong>。</li>
+</ul>
+<p>数字监听会一直保持，直到你关闭它、切换信道或模式，或在主屏幕按 <strong>返回</strong>。开启期间，回复窗口允许你用 <strong>PTT</strong> 应答听到的任何呼叫。</p>
+<h2 id="privacy">加密</h2>
+<p>RadioFoundry 支持两种基础加密：Motorola 基础加密（密钥 1 到 255）和 Anytone 16 位基础加密。基础加密是对语音的固定置乱。它能挡住随意收听者，但不是加密。该置乱尚未与其他电台对照验证（<a href="23-radios.html">电台参考</a>）。</p>
+<ul>
+<li>电台只有持有匹配密钥时才会播放加密呼叫。没有密钥时，呼叫显示为“已加密：不播放”。</li>
+<li>使用更强加密的呼叫（发送 <abbr class="gl" tabindex="0" title="A DMR header that announces encryption with a changing key. RadioFoundry never plays such calls." data-more="22-glossary.html#t-pi-header">PI</abbr> 头）绝不会播放。</li>
+<li>短信和其他数据也使用该密钥。使用 Motorola 密钥时，数据以同样方式置乱，电台也能读取用其密钥置乱的数据。<strong>ETSI 短</strong>格式的消息无法置乱，因此使用 Motorola 密钥时会失败：请使用 <strong>ETSI</strong> 或 <strong>Motorola</strong>（<a href="10-messages-and-signaling.html">消息</a>）。Anytone 基础加密没有数据形式，因此使用 Anytone 密钥时电台不发送短信或其他数据：你发送的短信会失败。电台无法读取的置乱数据不会显示。</li>
+<li><strong>*</strong>、<strong>6</strong> 为你的呼叫打开加密（“临时开启加密”）。主屏幕显示“加密”。在主屏幕按 <strong>返回</strong> 会再次关闭。</li>
+</ul>
+<p>要在电台上设置密钥，请打开<strong>设置 &gt; 加密</strong>（<strong>OK</strong>、<strong>7</strong>、<strong>4</strong>）。</p>
+<ol>
+<li>在<strong>密钥类型</strong>上按 <strong>OK</strong>，直到显示 Motorola 或 Anytone。</li>
+<li>在<strong>密钥</strong>上按 <strong>OK</strong>。用数字键以十进制输入密钥（Motorola 1 到 255，Anytone 0 到 65535）。再按 <strong>OK</strong>。</li>
+</ol>
+<p>电台会在重启后保留密钥。把类型设回“关”会移除密钥并关闭加密。电台频率目前无法保存加密密钥。开发者也可用调试工具通过 USB 载入密钥：</p>
+<pre><code>tools/rfoundry_debug.py radio privacy moto 5          # Motorola 基础加密，密钥 5
+tools/rfoundry_debug.py radio privacy anytone 4660    # Anytone 基础加密，密钥 4660
+tools/rfoundry_debug.py radio privacy off
+</code></pre>
+<p>没有密钥时，加密磁贴显示“无加密密钥：在设置 &gt; 加密 中设置”。密钥在电台闪存中未加保护地保存。</p>
+<h2 id="position-in-calls">呼叫中的位置</h2>
+<p>有些 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> 电台会在语音呼叫中发送位置（ETSI GPS Info）。呼叫者发送时，接收屏幕会显示距离和方向，例如“12.3 km 东北”。电台不知道你自己的位置时，会显示呼叫者的坐标。“最近”会随呼叫保留距离。</p>
+<p>当<strong>工具 &gt; <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr> &gt; DMR 呼叫中的位置</strong>开启（默认关闭）且电台知道自己的位置时（见 <a href="13-aprs.html#position">APRS</a>），你的位置会随呼叫发送。每隔一个超帧携带它，与你的通话者别名轮流。</p>
+<h2 id="talker-alias">通话者别名</h2>
+<p>接收屏幕会显示其他电台发来的通话者别名，随到随显。<strong>设置 &gt; 通话与收听 &gt; 显示主叫别名</strong>可关闭。当电台频率中信道的通话者别名设置要求时，电台会把电台频率中的呼号（8 个字符）作为自己的别名发送。</p>
+<h2 id="roaming">漫游</h2>
+<p>在由多个站点承载相同通话组的 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> 中继系统中，当前中继台信号变弱时，电台可以自行转到更好的中继台。漫游按区域开启。</p>
+<ol>
+<li>把同一系统的中继信道放入一个区域，每个都设为相同联系人。</li>
+<li>选择其中一个，然后打开<strong>工具 &gt; 漫游</strong>并开启<strong>在此区域漫游</strong>。</li>
+</ol>
+<p>空闲时，电台监视所在中继台的信号。信号持续低于阈值时，电台会收听区域内其他站点，并转到能听到的最强站点。在呼叫、扫描或热点使用期间，在你发射时，以及呼叫结束后 3 秒内（可能收到回复）绝不切换。主屏幕在中继台标签旁显示 <code>Roam</code>，当前站点较弱时显示琥珀色 <code>Roam?</code>。搜索期间状态条显示 <code>ROAM</code>。toast 会显示“已移动到”和新信道名称。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>行</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>在此区域漫游</td>
+<td>为当前区域开启或关闭漫游</td>
+</tr>
+<tr>
+<td>立即漫游</td>
+<td>立即搜索各站点</td>
+</tr>
+<tr>
+<td>锁定到此站点</td>
+<td>停留在当前中继台，直到你解锁（主屏幕显示 <code>Lock</code>）</td>
+</tr>
+<tr>
+<td>站点测量</td>
+<td>中继台信标的对齐方式：同步（默认）、按站点、关闭</td>
+</tr>
+<tr>
+<td>信标间隔</td>
+<td>中继台发送信标的频率：60 秒（默认）、2/5/10 分钟、10 到 30 秒，或无</td>
+</tr>
+<tr>
+<td>信标长度</td>
+<td>每个信标持续多久：1 到 10 秒（默认 4 秒）</td>
+</tr>
+<tr>
+<td>唤醒探测</td>
+<td>开：电台会短暂发射以测量安静的中继台。这会发射。默认关闭</td>
+</tr>
+</tbody>
+</table></div>
+<p>许多中继系统让每个中继台在空闲时短暂发射。这就是“信标”，例如每分钟 4 秒，所有站点同一时刻。电台会学习中继台信标的到来时间。每个信标期间，它会跳到其他几个站点，每个不到一秒，测量后返回。屏幕仍显示你的中继台。按键、<strong>PTT</strong> 或被测站点上的呼叫会让它立即返回。电台离开期间在你中继台上开始的呼叫最多会晚约 3 秒加入，因此有通话后电台会暂停测量一段时间。你的中继台变弱时，电台会在下一个信标时检查测得的最佳站点并转过去，通常在一分钟内。把<strong>信标间隔</strong>和<strong>信标长度</strong>设为与系统一致（可询问其运营者）。若各中继台按自己的时间表发送信标，选择<strong>按站点</strong>。若它们不发送信标，选择<strong>无</strong>：电台将依赖听到的呼叫。在电台了解时间表之前，屏幕显示“信标：学习中”，之后显示“信标：测量中”。</p>
+<p>站点是区域中与你所选信道具有相同联系人的中继信道（收发频率不同）。当区域中任何信道设置了电台频率的漫游标志时，只有带标志的信道才是站点。至少需要两个站点。你自己切换信道或区域会使新信道成为当前站点。</p>
+<p>阈值（默认 -105 dBm）、迟滞（6 dB）以及可选的定期搜索其他站点目前通过调试链路设置（<a href="../spec/dmr-roaming.html">dmr-roaming</a> 第 5.1 节）。调试链路还设置运行 <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="../spec/mmdvm-protocol.html">MMDVM</abbr> <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="../spec/sfr.html">SFR</abbr> 的热点可为漫游电台发送的空闲信标（<code>rpt_beacon</code>，默认关闭）。</p>
+<h2 id="trunked-systems">集群系统</h2>
+<p><abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> Tier III 集群系统为每次呼叫分配一个信道。电台停留在系统的控制信道上，在那里注册，然后转到系统分配的信道。每次呼叫的频率、时隙和色码由系统决定，因此集群信道自己没有这些参数。</p>
+<p>每款电台上已检查的项目见<a href="../feature-matrix.html#checked-on-each-radio">功能矩阵</a>。</p>
+<h3 id="setting-one-up">设置</h3>
+<p>在电台频率编辑器中（<a href="04-programming.html#digital-modes-and-systems">编程</a>）：</p>
+<ol>
+<li>在<strong>系统</strong>选项卡上添加一个类型为 T3 的系统。输入它的网络模型、NET、类别和色码，并在<strong>信道和站点</strong>下输入它的控制信道。这些数值由系统的运营者提供。</li>
+<li>新建一个信道，把它的<strong>模式</strong>设为 T3 并选择该系统。它的联系人是你通话的对象；它的接收组列表是你能听到的通话组。</li>
+<li>把该信道和其他信道一起放进一个区域。</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>设置</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>仅收听</td>
+<td>电台跟随系统及其呼叫，但绝不在那里注册或发射。在运营者启用你的电台 ID 之前使用它</td>
+</tr>
+<tr>
+<td>需要密钥</td>
+<td>用于对电台进行鉴权的系统。在<strong>密钥</strong>下设置密钥；没有密钥时该信道无法使用</td>
+</tr>
+<tr>
+<td>本系统上的电台 ID</td>
+<td>你在该系统上的 ID，当它不是电台的 <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr> 时填写</td>
+</tr>
+<tr>
+<td>备用信道</td>
+<td>找不到系统时使用的常规信道（见下）。信道可以指定自己的备用信道，或不设</td>
+</tr>
+</tbody>
+</table></div>
+<p>在编辑器中设为仅接收的信道在系统上仍然仅接收：电台只收听，并拒绝 PTT。</p>
+<h3 id="on-the-air">通联</h3>
+<p>选择该信道。主屏幕显示系统的名称以及电台在那里的状态，取代时隙和色码：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>主屏幕显示</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>搜索中</td>
+<td>正在寻找系统的控制信道</td>
+</tr>
+<tr>
+<td>正在注册</td>
+<td>已找到；正在向系统注册</td>
+</tr>
+<tr>
+<td>就绪</td>
+<td>在控制信道上。按住 <strong>PTT</strong> 发起呼叫</td>
+</tr>
+<tr>
+<td>通话中</td>
+<td>在系统分配的信道上通话</td>
+</tr>
+<tr>
+<td>已拒绝</td>
+<td>系统拒绝了注册。PTT 被拒绝</td>
+</tr>
+<tr>
+<td>备用信道</td>
+<td>未找到控制信道：在备用信道上</td>
+</tr>
+<tr>
+<td>系统未设置</td>
+<td>信道的系统不存在、没有控制信道或缺少密钥。该信道仅接收</td>
+</tr>
+</tbody>
+</table></div>
+<p>按住 <strong>PTT</strong>：电台向系统请求一个信道，系统分配后即可讲话。系统拒绝或不应答时，PTT 被拒绝。通话目标是信道的联系人，或像在任何 DMR 信道上一样由你选择的目标（<a href="#choosing-a-talk-target">选择通话目标</a>）。</p>
+<p>区域和信道列表在原本显示频率的位置显示集群信道的系统名称。系统未设置的信道会变暗，切换信道时会跳过它。扫描会跳过集群信道。</p>
+<h3 id="fallback">备用信道</h3>
+<p>电台在保持时间内（30 秒，除非系统另有设置）找不到控制信道时，会转到备用信道，并像在任何信道上一样工作。该信道安静时，它每 10 秒重新寻找一次系统。找到后它会返回，发出提示音并显示“已回到”和系统的名称。</p>
+<h3 id="stun-and-kill">遥晕与遥毙</h3>
+<p>系统可以禁用它不再信任的电台。两者默认关闭，除非你为该系统打开（<strong>接受遥晕</strong>、<strong>接受遥毙</strong>）。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>发生什么</th>
+<th>如何解除</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>遥晕</td>
+<td>电台留在系统上，但不能在那里呼叫或跟随呼叫。关机后仍然保持</td>
+<td>系统的复活命令，或恢复出厂设置</td>
+</tr>
+<tr>
+<td>遥毙</td>
+<td>所有 DMR 功能停止，包括每个信道和热点。FM 仍然可用。只接受来自电台持有其密钥的系统的遥毙</td>
+<td>只能恢复出厂设置</td>
+</tr>
+</tbody>
+</table></div>
+<p>在没有密钥的系统上，遥晕命令按收到的内容直接执行，任何发出该命令的发射机都能使它生效：在这样的系统上请保持<strong>接受遥晕</strong>关闭。</p>
+
+		<nav class="prev-next"><a class="prev" href="08-fm.html">FM</a><a class="next" href="10-messages-and-signaling.html">消息、呼叫提示与电台检查</a></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/user/09-dmr.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#terms">术语</a></li><li class="l2"><a href="#who-you-hear">你会听到谁</a></li><li class="l2"><a href="#who-you-talk-to">你会与谁通话</a></li><li class="l2"><a href="#choosing-a-talk-target">选择通话目标</a></li><li class="l3"><a href="#the-talk-target-picker">通话目标选择器</a></li><li class="l3"><a href="#typing-a-talkgroup-or-id">输入通话组或 ID</a></li><li class="l2"><a href="#replying">回复</a></li><li class="l2"><a href="#calling-back-later">稍后回拨</a></li><li class="l2"><a href="#recent">最近</a></li><li class="l2"><a href="#contacts">联系人</a></li><li class="l3"><a href="#new-contact">新建联系人</a></li><li class="l2"><a href="#private-calls">私密呼叫</a></li><li class="l2"><a href="#timeslot-and-color-code">时隙与色码</a></li><li class="l2"><a href="#waking-a-repeater">唤醒中继台</a></li><li class="l2"><a href="#the-talk-permit-tone">通话许可音</a></li><li class="l2"><a href="#digital-monitor">数字监听</a></li><li class="l2"><a href="#privacy">加密</a></li><li class="l2"><a href="#position-in-calls">呼叫中的位置</a></li><li class="l2"><a href="#talker-alias">通话者别名</a></li><li class="l2"><a href="#roaming">漫游</a></li><li class="l2"><a href="#trunked-systems">集群系统</a></li><li class="l3"><a href="#setting-one-up">设置</a></li><li class="l3"><a href="#on-the-air">通联</a></li><li class="l3"><a href="#fallback">备用信道</a></li><li class="l3"><a href="#stun-and-kill">遥晕与遥毙</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

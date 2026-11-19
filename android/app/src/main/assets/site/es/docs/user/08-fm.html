@@ -1,0 +1,237 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FM · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="FM · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/docs/user/08-fm.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/user/08-fm.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/user/08-fm.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/user/08-fm.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/user/08-fm.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/user/08-fm.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../es/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../../es/radios/index.html">Radios</a><a href="../../../es/features/index.html">Funciones</a><a href="../../../es/flash/index.html">Instalar</a><a href="../../../es/codeplug/index.html">Codeplug</a><a href="../../../es/docs/index.html" aria-current="page">Documentación</a><a href="../../../es/screenshots/index.html">Capturas</a><a href="../../../es/tools/index.html">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../../docs/user/08-fm.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/user/08-fm.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/user/08-fm.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/user/08-fm.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Manual del usuario">
+		<p class="eyebrow"><a href="../../../es/docs/index.html">Documentación</a> / Manual del usuario</p>
+		<ul><li><a href="index.html">RadioFoundry User Manual</a></li><li><a href="01-introduction.html">Introduction</a></li><li><a href="02-installing.html">Installing</a></li><li><a href="03-first-boot.html">First Boot</a></li><li><a href="04-programming.html">Programming the Radio</a></li><li><a href="05-keys-and-navigation.html">Keys and Navigation</a></li><li><a href="06-home-screen.html">The Home Screen</a></li><li><a href="07-channels-zones-vfo.html">Channels, Zones and the VFO</a></li><li><a href="08-fm.html" aria-current="page">FM</a></li><li><a href="09-dmr.html">DMR</a></li><li><a href="10-messages-and-signaling.html">Messages, Call Alert and Radio Check</a></li><li><a href="11-emergency.html">Emergency</a></li><li><a href="12-scan.html">Scan and Dual Watch</a></li><li><a href="13-aprs.html">APRS</a></li><li><a href="14-hotspot.html">Hotspot Mode</a></li><li><a href="15-usb-network.html">USB Network Mode</a></li><li><a href="16-battery-and-power.html">Battery and Power</a></li><li><a href="17-settings.html">Settings</a></li><li><a href="18-moving-from-stock-md380.html">Moving from Stock MD-380 Firmware</a></li><li><a href="19-moving-from-stock-dm32.html">Moving from Stock DM-32UV Firmware</a></li><li><a href="20-troubleshooting.html">Troubleshooting</a></li><li><a href="21-faq.html">FAQ</a></li><li><a href="22-glossary.html">Glossary</a></li><li><a href="23-radios.html">Radio Reference</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Esta página aún no está traducida; se muestra en inglés.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="fm">FM</h1>
+<p>FM works on every radio. The <a href="23-radios.html">Radio reference</a> says which radios have FM verified. Radios that can't send touch tones or detect tones are listed there too.</p>
+<h2 id="quick-settings-on-an-fm-channel">Quick settings on an FM channel</h2>
+<p>Press <strong>*</strong> on Home. The tiles are laid out like the keypad. A number key acts on its tile directly.</p>
+<img src="../ux/screens/160x120i5/quick_fm.png" width="200" alt="Quick settings on an FM channel">
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Tile</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td>Power</td>
+<td>Steps through the radio's lowest level, its default and its highest (<a href="16-battery-and-power.html#transmit-power">power levels</a>)</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>Squelch</td>
+<td>Opens the squelch editor</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>Tone</td>
+<td>Opens the tone editor</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>Mode</td>
+<td>Shows FM. Press it to listen and talk in <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> on the same frequencies, for now</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>Monitor</td>
+<td>Latches the squelch open, or closes it again. In the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr> this tile is <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">TX</abbr> freq (<a href="07-channels-zones-vfo.html#split-repeater-offset">Split</a>)</td>
+</tr>
+<tr>
+<td><strong>6</strong></td>
+<td><abbr class="gl" tabindex="0" title="Voice-operated transmit." data-more="22-glossary.html#t-vox">VOX</abbr></td>
+<td>Voice-operated transmit on or off</td>
+</tr>
+<tr>
+<td><strong>7</strong></td>
+<td>Dual</td>
+<td><abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="22-glossary.html#t-dual-watch">Dual watch</abbr> on or off</td>
+</tr>
+<tr>
+<td><strong>8</strong></td>
+<td>Width</td>
+<td>Bandwidth 12.5 or 25 kHz (also in the VFO)</td>
+</tr>
+<tr>
+<td><strong>9</strong></td>
+<td>Bright</td>
+<td>Opens the brightness editor</td>
+</tr>
+<tr>
+<td><strong>0</strong></td>
+<td></td>
+<td>Opens Settings</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Up</strong> and <strong>Down</strong> move between the tiles. <strong>OK</strong> acts on the focused one. Press <strong>*</strong> or <strong>Back</strong> to close. Every
+change is temporary. Hold <strong>OK</strong> to save it to the channel.</p>
+<p>On radios with a <strong>Power level</strong> key, that key also steps the power on Home, one level per press through all of the
+radio's levels.</p>
+<h2 id="squelch">Squelch</h2>
+<ol>
+<li><strong>*</strong>, <strong>2</strong>. The squelch editor opens.</li>
+<li>Press <strong>Up</strong> or <strong>Down</strong>, or a number key from <strong>0</strong> to <strong>9</strong>. The change is live, so you hear it.</li>
+<li>Press <strong>OK</strong>, <strong>*</strong> or <strong>Back</strong> to close.</li>
+</ol>
+<p>The squelch level shows on Home as &quot;SQ&quot; and a number. The radio-wide default is in <strong>Settings &gt; Talk &amp; listen &gt;
+Default squelch</strong> (5 unless changed).</p>
+<img src="../ux/screens/160x120i5/quick_fm_squelch.png" width="200" alt="Editing the squelch">
+<h2 id="monitor">Monitor</h2>
+<ul>
+<li>Hold <strong>Monitor</strong> to open the squelch while you hold it. The status line shows <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">RX</abbr> and MON, and the <abbr class="gl" tabindex="0" title="Light-emitting diode: the radio&#x27;s status light." data-more="22-glossary.html#t-led">LED</abbr> is green.</li>
+<li><strong>*</strong>, <strong>5</strong> latches the monitor on until you turn it off with <strong>*</strong>, <strong>5</strong> again.</li>
+</ul>
+<h2 id="tones-ctcss-and-dcs">Tones (CTCSS and DCS)</h2>
+<ol>
+<li><strong>*</strong>, <strong>3</strong>. The tone editor opens on the <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">transmit</abbr> tone. The radio shows &quot;Up/Dn tone  # TX/RX&quot;.</li>
+<li>Press <strong>Up</strong> or <strong>Down</strong> to step through the <abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="22-glossary.html#t-ctcss">CTCSS</abbr> tones and <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="22-glossary.html#t-dcs">DCS</abbr> codes. The change is live.</li>
+<li>Press <strong>#</strong> to choose which tone you edit: both <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">receive</abbr> and transmit, transmit only, or receive only. The editor
+starts on both when they are the same.</li>
+<li>Press <strong>OK</strong> or <strong>*</strong> to close.</li>
+</ol>
+<p>With a DCS code, the radio stays on the air for 0.3 s after you release PTT and sends the DCS turn-off tone.
+Radios set to the same code close their squelch on it, so they don't hear a noise burst at the end.</p>
+<p>Home shows the tone as a chip, for example &quot;T100.0&quot;.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Chip</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T</td>
+<td>A transmit tone that differs from the receive tone</td>
+</tr>
+<tr>
+<td>R</td>
+<td>A receive tone without a transmit tone</td>
+</tr>
+<tr>
+<td>No tone</td>
+<td>No tone</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="bandwidth">Bandwidth</h2>
+<p><strong>*</strong>, <strong>8</strong> switches between 12.5 and 25 kHz. Home shows &quot;12.5k&quot; or &quot;25k&quot;.</p>
+<h2 id="to-vfo">To VFO</h2>
+<p><strong>*</strong>, <strong>4</strong> copies the channel to the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr> and opens it (&quot;Copied to VFO&quot;). A channel has no temporary mode change. To
+try a frequency as <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr>, copy it to the VFO and switch the VFO's mode there (<a href="07-channels-zones-vfo.html#copy-a-channel-to-the-vfo">the VFO</a>).</p>
+<h2 id="vox">VOX</h2>
+<p><strong>*</strong>, <strong>6</strong> turns <abbr class="gl" tabindex="0" title="Voice-operated transmit." data-more="22-glossary.html#t-vox">VOX</abbr> on for FM channels (&quot;VOX on: speak to <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">transmit</abbr>&quot;). The radio transmits when you speak and
+stops 1.5 s after you stop. Received audio never keys it, and <strong>PTT</strong> works as usual. The sensitivity has no menu
+item yet. Which radios have VOX is in the <a href="../feature-matrix.html">feature matrix</a>.</p>
+<h2 id="busy-channel-lockout-roger-beep-tone-burst">Busy channel lockout, roger beep, tone burst</h2>
+<p>The radio core has busy channel lockout and a roger beep; developers set them over the debug link. The 1750 Hz tone
+burst for repeater access has a side key (<strong>Tone burst</strong>, <a href="17-settings.html">Settings</a>) and a per-channel setting: with
+<strong>Tone burst</strong> on in a channel's settings (<a href="07-channels-zones-vfo.html#editing-a-channel">Editing a channel</a>), every PTT
+on it starts with 1 s of 1750 Hz, then the microphone.</p>
+<h2 id="transmit-timeout">Transmit timeout</h2>
+<p>The radio stops transmitting after the <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">transmit</abbr> timeout and shows &quot;TX time-out reached&quot;. A channel's own timeout from
+the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> wins. When it is 0, <strong>Settings &gt; Talk &amp; listen &gt; TX timeout</strong> applies (3 minutes unless changed). A
+warning beep sounds 10 s before the timeout.</p>
+<h2 id="touch-tones-dtmf">Touch tones (DTMF)</h2>
+<p>Hold <strong>PTT</strong> on an FM channel and press <strong>0</strong> to <strong>9</strong>, <strong>*</strong> or <strong>#</strong>: the radio sends that key's touch tone for as
+long as you hold the key, and at least 0.1 s for a quick tap. The microphone is muted while a tone plays. Keys pressed
+quickly one after another each send their own tone with a short pause between them. The second line of the <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">transmit</abbr>
+screen shows &quot;<abbr class="gl" tabindex="0" title="Dual tone multi frequency: the touch tones a keypad sends, in the audio." data-more="22-glossary.html#t-dtmf">DTMF</abbr>&quot; and the last digits sent.</p>
+<ul>
+<li>A radio with extra keypad keys can send A to D (<a href="23-radios.html">Radio reference</a>).</li>
+<li>Locked keys send nothing.</li>
+<li>On a <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> channel the keys do nothing while you transmit.</li>
+<li>During a 1750 Hz burst or the roger beep the keys do nothing.</li>
+<li>When the radio transmits on its own (an <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr> beacon), or refuses to transmit (&quot;NO TX&quot;), the keys work as usual.</li>
+</ul>
+<p>Stored DTMF codes and touch tone decoding are not built yet.</p>
+</div>
+		<nav class="prev-next"><a class="prev" href="07-channels-zones-vfo.html">Channels, Zones and the VFO</a><a class="next" href="09-dmr.html">DMR</a></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/user/08-fm.md">Ver el código fuente de esta página</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="En esta página">
+		<p class="eyebrow">En esta página</p>
+		<ul><li class="l2"><a href="#quick-settings-on-an-fm-channel">Quick settings on an FM channel</a></li><li class="l2"><a href="#squelch">Squelch</a></li><li class="l2"><a href="#monitor">Monitor</a></li><li class="l2"><a href="#tones-ctcss-and-dcs">Tones (CTCSS and DCS)</a></li><li class="l2"><a href="#bandwidth">Bandwidth</a></li><li class="l2"><a href="#to-vfo">To VFO</a></li><li class="l2"><a href="#vox">VOX</a></li><li class="l2"><a href="#busy-channel-lockout-roger-beep-tone-burst">Busy channel lockout, roger beep, tone burst</a></li><li class="l2"><a href="#transmit-timeout">Transmit timeout</a></li><li class="l2"><a href="#touch-tones-dtmf">Touch tones (DTMF)</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

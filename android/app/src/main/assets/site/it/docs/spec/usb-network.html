@@ -1,0 +1,653 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="it" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>USB network personality and the IP gateway · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="USB network personality and the IP gateway · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:url" content="https://radiofoundry.org/it/docs/spec/usb-network.html">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Le radio su cui gira RadioFoundry, ognuna con una schermata diversa.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/usb-network.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/usb-network.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/usb-network.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/usb-network.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/usb-network.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../it/" data-gl-more="Altro">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../it/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principale"><a href="../../../it/radios/index.html">Radio</a><a href="../../../it/features/index.html">Funzioni</a><a href="../../../it/flash/index.html">Installa</a><a href="../../../it/codeplug/index.html">Codeplug</a><a href="../../../it/docs/index.html" aria-current="page">Documenti</a><a href="../../../it/screenshots/index.html">Schermate</a><a href="../../../it/tools/index.html">Strumenti</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Lingua" title="Lingua">IT</summary><nav aria-label="Lingua"><a href="../../../docs/spec/usb-network.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/usb-network.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/usb-network.html" aria-current="true" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/usb-network.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Passa da chiaro a scuro" title="Passa da chiaro a scuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Specifiche">
+		<p class="eyebrow"><a href="../../../it/docs/index.html">Documentazione</a> / Specifiche</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html" aria-current="page">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Questa pagina non è ancora tradotta; è mostrata in inglese.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="usb-network-personality-and-the-ip-gateway">USB network personality and the IP gateway</h1>
+<p>The radio can be a USB network adapter instead of a serial port, and route IPv4 between the host and other radios
+over <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> packet data. Switches: <code>CONFIG_USB_NETWORK</code> (the adapter), <code>CONFIG_DMR_IP_GATEWAY</code> (the gateway on top of
+it) and <code>CONFIG_DMR_CONTROL_STATION</code> (section 5), on wherever the radio has USB and DMR (<code>docs/build-config.md</code>). On
+the link the radio also runs its own services: <abbr class="gl" tabindex="0" title="Multicast DNS: finding a device on a local network by a `.local` name." data-more="mdns.html">mDNS</abbr> (<code>mdns.md</code>), a <abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="tftp.html">TFTP</abbr> server for the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> (<code>tftp.md</code>) and the
+<abbr class="gl" tabindex="0" title="Transmission Control Protocol: IP connections with ordered, guaranteed delivery." data-more="../dev/glossary.html#t-tcp">TCP</abbr> services (<code>tcp-services.md</code>). The same gateway and services also run over <abbr class="gl" tabindex="0" title="Point-to-point protocol: IP over a serial link." data-more="ppp.html">PPP</abbr> on the serial host port, for radios
+without USB (<code>ppp.md</code>).</p>
+<h2 id="1-one-personality-at-a-time">1. One personality at a time</h2>
+<p>CDC-ACM needs two IN endpoints (notification, bulk IN) and <abbr class="gl" tabindex="0" title="Network control model: the USB class that makes the radio appear as a network adapter." data-more="../dev/glossary.html#t-ncm">CDC-NCM</abbr> needs two. The USB cores in the radios with USB
+have three IN endpoints besides EP0 (the <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32F405</abbr>'s <abbr class="gl" tabindex="0" title="USB On-The-Go: the controller can act as the host or the device." data-more="../dev/glossary.html#t-otg">OTG_FS</abbr>), so a
+composite ACM + NCM device does not fit: the radio is either a serial port (<code>board_usb_ids.pid_serial</code>) or a network
+adapter (<code>pid_network</code>), with their own descriptors. Switching drops the D+ pull-up for
+100 ms, so the host sees an unplug and enumerates the other personality.</p>
+<ul>
+<li>
+<p>Boot is serial unless the stored setting <code>usb_mode</code> is 1 (Settings &gt; Connections &gt; USB network at start, <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>
+radio op 27, view key <code>usb.boot_network</code>): then the personality is chosen before the USB stack starts, and the radio
+enumerates as the adapter straight away. At run time the switch is a request: debug link radio op 25
+(<code>rfoundry_debug.py radio usb network</code>) or Tools &gt; USB network, carried out after its reply has gone out; it doesn't
+change the stored setting.</p>
+</li>
+<li>
+<p>In network mode the serial protocols stay reachable over <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr>: datagrams to the radio's own address, port 3334,
+carry the same byte stream as the serial port (debug link, <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="mmdvm-protocol.html">MMDVM</abbr>, <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr>), and the replies go back to the address and
+port that last sent there, in datagrams of at most 512 bytes. <code>rfoundry_debug.py --port udp:&lt;radio IP&gt;</code> uses it, and so
+can MMDVMHost (<code>Protocol=udp</code>, <code>ModemAddress=&lt;radio IP&gt;</code>, <code>ModemPort=3334</code>). The MMDVM session's DTR rule does not
+apply (there is no DTR); the 20 s idle timeout does.</p>
+</li>
+<li>
+<p>The tools find a radio in network mode by themselves when no serial port (1FC9:0094) is there
+(<code>tools/rfoundry/rfoundry/debuglink.py</code> <code>find_network_radios</code>): from each of the host's addresses the radio's is
+worked out (individual addressing: the host's address xor 1; a fixed link: the host's address - 1, section 5.3) and
+the one that answers the debug link's VERSION on UDP 3334 is used as <code>udp:&lt;address&gt;</code>. <code>rfoundry_debug.py</code>,
+<code>cps_client.py</code>, the <code>rfoundry</code> installer and the <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> take it without <code>--port</code>. <code>stubtool.py --rfoundry-enter</code> with no
+port loads the <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr> over UDP; the stub enumerates as the serial port, and the write ends with a reset, after which
+the radio starts in the personality its stored setting says. Nothing is changed or restored in the settings.
+A host without a radio in network mode is not probed: on Linux only the addresses of an adapter with the radio's
+USB identity (1FC9:0096) count; elsewhere only a host address in 12.0.0.0/8, so a fixed link there needs
+<code>--port udp:&lt;address&gt;</code>. With a serial radio plugged in the search doesn't run at all.</p>
+</li>
+<li>
+<p>A web page can send neither UDP nor, from an https page, plain http requests, and the OS network driver holds the
+adapter's interfaces. Two requests (switch <code>CONFIG_USB_SERIAL_REQUEST</code>, on with <code>CONFIG_USB_NETWORK</code>; the <abbr class="gl" tabindex="0" title="Transmission Control Protocol: IP connections with ordered, guaranteed delivery." data-more="../dev/glossary.html#t-tcp">TCP</abbr> address
+below belongs to it too) ask the radio for the serial personality at run time (the same switch as op 25:
+the stored setting stays, a restart brings the adapter back), and the pages use them
+(<code>site/static/js/flasher/netmode.js</code>):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Request</th>
+<th>From</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Endpoint 0: vendor, to the device, no data (<code>bmRequestType</code> 0x40, <code>bRequest</code> 0x53 <code>USB_REQ_SERIAL_MODE</code>, <code>wValue</code> and <code>wIndex</code> 0)</td>
+<td>WebUSB</td>
+<td>Acknowledged, then carried out from the adapter's tick. Only where the browser can open a device whose interfaces a kernel driver holds: not on Windows (no WinUSB function), not on Linux without a udev rule</td>
+</tr>
+<tr>
+<td><code>GET http://12.255.255.254/api/usb?mode=serial</code> (<a href="tcp-services.html">tcp-services.md</a> 5)</td>
+<td>a browser tab the page opens (a navigation is allowed where a fetch is not)</td>
+<td>Needs <code>CONFIG_NET_HTTP</code> and the link up. The switch follows the answer by 500 ms</td>
+</tr>
+</tbody>
+</table></div>
+<p>12.255.255.254 (<code>IPGW_ANY_RADIO_IP</code>) is the radio on this link, whatever its <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr> or link addressing: TCP to it
+is the radio's own, answered from that address. A page can't know the radio's own address, and a sandboxed browser
+(Flatpak, Snap) resolves no <code>.local</code> name. It is reached by the route to the individual range the radio's <abbr class="gl" tabindex="0" title="Dynamic Host Configuration Protocol: how a device gets its IP address on a network." data-more="../dev/glossary.html#t-dhcp">DHCP</abbr>
+gives (option 121 / 249, section 5.3), so not from a host that ignores that option or routes the address
+elsewhere: the tab then shows the browser's error and nothing changes. Only TCP: UDP and ICMP to the address go
+the way they always did. No <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> ID has it (it is the radio's address on a shared link, section 3.1).</p>
+<p>After the job a page sends op 25 (network) over the serial port, or leaves it: a restart, as at the end of a
+firmware update, puts the radio back in network mode when the stored setting is on.</p>
+</li>
+<li>
+<p>Windows 10 binds NCM through Microsoft OS 1.0 descriptors (string 0xEE &quot;MSFT100&quot;, vendor code 0x47, extended compat
+ID &quot;WINNCM&quot; for interface 0); Windows 11, Linux and macOS bind it by class.</p>
+</li>
+<li>
+<p>The link is up while the host has the adapter configured and the bus isn't suspended (<code>hal_netif_t.up</code>, view key
+<code>usb.net_up</code>). The STM32 radios run without VBUS sensing, so a pulled cable reads only as the bus going idle
+(suspend): the link goes down at once, and comes back with the configuration after the cable is plugged in again.</p>
+</li>
+<li>
+<p>macOS sometimes never activates the link after a cold boot in network mode: with the device configured and no frame
+from the host within 5 s, the radio re-enumerates once.</p>
+</li>
+<li>
+<p>A host that never configures the network personality at all (seen on macOS 26, Apple Silicon, 2026-10-10: the
+device shows unmatched, no interfaces) would leave no serial port and no debug link to switch back. After a switch
+to network mode, at run time or by the power-on setting, the radio goes back to serial when the host hasn't
+configured it within 10 s of its bus reset (<code>usb_ncm.c</code>, <code>switch_fallbacks</code>). The time counts only while a host is
+on the bus (<code>tud_connected</code>), so a radio switched on away from a computer still comes up as the adapter when it is
+plugged in later. The fallback lasts for that boot only: the setting stays, and the UI (Settings &gt; Connections) or
+the debug link over the serial port it fell back to turns it off.</p>
+</li>
+</ul>
+<h2 id="2-frames">2. Frames</h2>
+<p>TinyUSB's <abbr class="gl" tabindex="0" title="Network control model: the USB class that makes the radio appear as a network adapter." data-more="../dev/glossary.html#t-ncm">NCM</abbr> class (NTB16): OUT NTBs up to 2048 bytes, IN NTBs one datagram each. Frames from the host are copied in
+the USB task into a ring of 4 slots (3 frames waiting) of at most 600 bytes (the gateway's limit); longer frames are
+dropped and counted (<code>usb_ncm_stats_t</code>). A frame that finds the ring full is held: the <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> callback refuses it,
+the class driver keeps it and its NTB (and takes nothing more from the host meanwhile: USB flow control), and gives it
+again once the consumer frees a slot and asks for a renew (<code>usbNcmReceive</code>, with <code>usbNcmTick</code> as a backstop). Hosts
+pack back-to-back frames into one NTB (Linux does, macOS too in a burst); dropping them lost all but the first 3 of a
+burst. One frame to the host is in flight at a time; a second send reports busy and the caller retries. The class
+driver is touched only from the USB task (<code>usbd_defer_func</code>). The interface reaches the core as <code>board_t.netif</code>
+(<code>hal/hal_netif.h</code>).</p>
+<p>MAC addresses are locally administered and derived from the chip's unique ID: the host adapter's (the descriptor's
+iMACAddress) ends in an even byte, the radio's side of the link is the same address with the low bit set.</p>
+<h2 id="3-the-gateway-coredmripgatewayc-corehostlinkhostlink_netc">3. The gateway (core/dmr/ipGateway.c, core/hostlink/hostlink_net.c)</h2>
+<p>Addressing, ARP, <abbr class="gl" tabindex="0" title="Dynamic Host Configuration Protocol: how a device gets its IP address on a network." data-more="../dev/glossary.html#t-dhcp">DHCP</abbr>, ping and the raw and monitor ports are as <code>core/dmr/ipGateway.h</code> describes: the host gets
+12.<DMR ID>/32 by DHCP, the radio is that address xor 1, radios are 12.x.y.z and <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroups</abbr> 225.x.y.z. <abbr class="gl" tabindex="0" title="A radio a dispatch program on a computer uses to reach the fleet over the air." data-more="../user/22-glossary.html#t-control-station">Control station</abbr>
+mode can replace the link pair with a fixed one (5.3).</p>
+<ul>
+<li>Host to air: IP for a radio ID or talkgroup, with a gateway ID any other unicast address (3.1), and datagrams to
+the raw port, go to the air ops registered with <code>hostlink_net_set_air()</code> (radio ID, IP to air, raw data as <abbr class="gl" tabindex="0" title="Service access point: the field in a DMR data header that says what the payload is (IP, short data, GPS and so on)." data-more="../dev/glossary.html#t-sap">SAP</abbr> 10).
+They are called from the host link task and must not block. The default ones (<code>core/hostlink/hostlink_net_air.c</code>,
+registered by the radio core's data service glue in <code>radio_sm.c</code>) copy the packet, with its addresses and TTL, into
+the data service's <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> queue (<code>dmr-data.md</code> 12.6) and return false when it has no room. At the radio task's data
+tick the oldest IP packet goes to the data service (<code>dmrDataServiceSendIP</code>), which builds it (rate 1/2, 2 preamble <abbr class="gl" tabindex="0" title="Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control." data-more="dmr-data.html">CSBKs</abbr>):
+<abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr> with the compressed UDP/IPv4 header (SAP 3) when <code>udpCompress</code> allows it (default auto: ports outside
+4000-4099), else the full IPv4 header (SAP 4); <abbr class="gl" tabindex="0" title="DMR packet data the receiving radio acknowledges. What didn&#x27;t arrive is sent again." data-more="../user/22-glossary.html#t-confirmed-data">confirmed data</abbr> with retries when a confirmed rule names the
+destination radio or a UDP port, else unconfirmed (<code>dmr-data.md</code> 11, 12). The packet stays at the head of the
+queue until the service is done with it (on air; confirmed: ACKed or failed after its tries); packets the host sends
+meanwhile queue behind it. Unconfirmed IP packets queued back to back for the same destination go in one transmission
+(chaining, <code>dmr-data.md</code> 12.6.2); separate transmissions are spaced by the guard (12.6.3). Raw data is built here as an unconfirmed
+SAP 10 packet for <code>dmrDataServiceSendBursts</code>. A service that can't take the packet (another one going, not a <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr>
+channel, <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> only) is tried again on every tick for up to 2 s, then the packet is dropped, as is one still queued after 10 s; one it
+took and
+couldn't deliver counts as <code>net.air_failed</code>. The host's address follows the radio's <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr>. Refusals are counted
+(<code>net.to_air_refused</code>, <code>net.air_full</code> for a full queue, <code>net.air_busy</code> for one given up or aged,
+<code>net.air_dropped</code>); only confirmed packets are retried over the air.</li>
+<li>Air to host: the data service hands every packet it receives to <code>hostlink_net_packet()</code> (its <code>dmrDataEnv_t.packet</code>
+hook). Two packets wait for the host link task, which delivers SAP 4 as IP (ICMP, UDP, SCTP) with the addresses of
+its header (3.1), SAP 3 as UDP, and anything else as raw data on port 40078; a packet that finds the IN endpoint
+busy goes on the next pass, and packets are dropped while the link is down. Confirmed data responses are the data service's and don't go up.</li>
+<li>The radio's own services (<code>core/net</code>, <code>core/snmp</code>; <code>ipGateway.h</code> &quot;The radio's own services&quot;). The <code>core/net</code> ones run
+in the host link task, started and polled by <code>core/net/net.c</code> (<code>net_start</code> / <code>net_poll</code> from <code>hostlink_net.c</code>); the
+<abbr class="gl" tabindex="0" title="Simple Network Management Protocol: reading a device&#x27;s state over the network." data-more="snmp.html">SNMP</abbr> agent is started by <code>hostlink.c</code> (it answers over the air in either USB personality). Receive: <abbr class="gl" tabindex="0" title="Transmission Control Protocol: IP connections with ordered, guaranteed delivery." data-more="../dev/glossary.html#t-tcp">TCP</abbr> segments to
+the radio's address go to the one TCP handler (<code>ipGatewaySetTCP</code>, <a href="tcp-services.html">tcp-services.md</a>); UDP
+datagrams to the radio's address, or to the link-local block 224.0.0.0/24, on a port in the gateway's one table
+(<code>ipGatewayUdpBind</code>, at most <code>IPGW_UDP_PORTS</code> = 8) go to that service, from any source address on the link.
+224.0.0.0/24 never goes over the air, bound or not. A port bound with <code>ipGatewayUdpBindAir</code> also takes UDP received
+over the air for our own DMR ID and its address (SAP 4 UDP or SAP 3, handed to <code>ipGatewayUdpFromAir</code> by <code>hostlink_net_packet</code> in the
+radio task, link up or not) instead of the host, with the sender's DMR ID and <code>fromAir</code> set; the service answers
+over the air itself. Bound now: <abbr class="gl" tabindex="0" title="Multicast DNS: finding a device on a local network by a `.local` name." data-more="mdns.html">mDNS</abbr> on 5353 (<code>mdns.md</code>), <abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="tftp.html">TFTP</abbr> on 69 and its transfer's own port (<code>tftp.md</code>), SNMP on
+161, from the air too (<a href="snmp.html">snmp.md</a>). Send to the link: one buffer and one path for TCP and UDP, layer 4 built
+at <code>ipGatewayLocalPayload()</code> and sent with <code>ipGatewaySendLocal</code> (<code>ipGatewayUdpSend</code> adds the UDP header first): from
+the radio's address, IP TTL 255, to the host's MAC, the broadcast MAC or a group's multicast MAC.</li>
+<li><abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">Debug link</abbr> view, section <code>hotspot</code>: <code>usb.network usb.net_up usb.boot_network net.passthrough net.passthrough_active net.fixed_link net.link_ip net.link_in_force net.host_ip net.radio_ip net.frames_in net.to_air net.to_air_refused net.packets_air net.packets_up net.packets_dropped net.air_sent net.air_busy net.air_dropped net.air_failed net.air_full</code>; section <code>net_link</code>: the MTUs <code>net.mtu net.air_mtu</code> and their drops <code>net.air_too_big net.frag_needed net.up_too_big</code> (3.2), with <abbr class="gl" tabindex="0" title="Point-to-point protocol: IP over a serial link." data-more="ppp.html">PPP</abbr> built <code>ppp.mru ppp.peer_mru</code> (<a href="ppp.html">ppp.md</a> 2); the queue's depth, chaining and the guard are in the <code>air</code> section (<a href="debuglink.html">debuglink.md</a>); the
+compression and confirmed delivery counters are in the <code>dmr_ip</code> section (<code>dmr-data.md</code> 12.5), the radio's own
+services' in the <code>net</code> and <code>net_svc</code> sections.</li>
+<li>Test hook: the debug link's DMR_DATA IP_SEND hands a UDP datagram to <code>ipGatewayIPToAir</code>, the same path as a datagram
+from the host, without switching USB (<code>tests/hil/test_dmr_ip.py</code>).</li>
+</ul>
+<p>The radio's own TCP services on its address (status page, <abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="../user/22-glossary.html#t-kiss">KISS</abbr> <abbr class="gl" tabindex="0" title="Terminal node controller: the modem that turns packet data into audio tones and back." data-more="../dev/glossary.html#t-tnc">TNC</abbr>, <abbr class="gl" tabindex="0" title="Hamlib&#x27;s network rig control protocol, used by loggers and SDR programs." data-more="../user/22-glossary.html#t-rigctld">rigctld</abbr>, APRS-IS) are in
+<a href="tcp-services.html">tcp-services.md</a>; TCP to other radios is not carried.</p>
+<p>Voice over the network personality (<abbr class="gl" tabindex="0" title="The UDP stream that carries a call&#x27;s audio between RadioFoundry and a network gateway." data-more="../dev/glossary.html#t-usrp">USRP</abbr> audio, host PTT, COS) is designed in <a href="usb-audio.html">usb-audio.md</a> 4.2;
+not built yet.</p>
+<h3 id="31-routing-and-ip-addresses">3.1 Routing and IP addresses</h3>
+<p>A data packet carries DMR IDs, and with the full IPv4 header (SAP 4) also IPv4 addresses. The two need not agree:
+a packet to a gateway radio's DMR ID may carry the address of a host behind that radio. The compressed header (SAP 3)
+has no addresses, so a receiver rebuilds them from the IDs as 12.x.y.z (radio) and 225.x.y.z (talkgroup). A packet
+goes compressed only when both of its addresses are these (<a href="dmr-data.html">dmr-data.md</a> 11.1).</p>
+<p>Host to air, by the IPv4 destination, first match:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Destination</th>
+<th>DMR destination</th>
+<th>IP destination on the air</th>
+<th>TTL on the air</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>the all call, 255.255.255.255, the link broadcast (UDP to 4000-4099 or the raw port only)</td>
+<td><abbr class="gl" tabindex="0" title="DMR talkgroup 16777215, heard by every radio on the slot." data-more="../user/22-glossary.html#t-all-call">all call</abbr> 16777215, group</td>
+<td>225.255.255.255</td>
+<td>1</td>
+</tr>
+<tr>
+<td>the group range, the multicast range</td>
+<td>the talkgroup</td>
+<td>225.x.y.z</td>
+<td>1</td>
+</tr>
+<tr>
+<td>the individual range</td>
+<td>the radio</td>
+<td>12.x.y.z</td>
+<td>the host's</td>
+</tr>
+<tr>
+<td>any other unicast address, with a gateway ID set</td>
+<td>the gateway ID, individual</td>
+<td>the address as sent</td>
+<td>the host's less 1; dropped at 1 or 0</td>
+</tr>
+<tr>
+<td>anything else</td>
+<td>not sent</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>The IP source on the air is always our own ID's address (12.x.y.z of the channel's DMR ID): the host's link
+address means nothing on the air, and an answer must come back to this radio.</li>
+<li>&quot;Any other unicast address&quot; excludes 0.0.0.0/8, 127.0.0.0/8, 169.254.0.0/16, 224.0.0.0 and up, the gateway's own
+ranges, the radio's and the host's addresses, and on a fixed link the link's /24. Datagrams to the raw port never
+take the off-net route: raw data has no header to carry the address.</li>
+<li>No ICMP time exceeded goes back for a packet dropped at TTL 1. A packet with TTL 0 is dropped on every route.</li>
+<li>Group packets always go with TTL 1: the air is the group's one hop, so no gateway that hears one routes it on.</li>
+<li>The host routes the off-net prefixes through the radio itself (for example a route to 192.168.10.0/24 via the
+radio's address). DHCP option 121 routes only the gateway's ranges.</li>
+<li>The gateway ID is the data setting <code>ipGatewayId</code> (<a href="dmr-data.html">dmr-data.md</a> 8), 0 by default: off-net packets are
+dropped, as before it existed. The <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>'s settings area can hold it (key 0x0002,
+<a href="codeplug-settings.html">codeplug-settings.md</a>); Settings &gt; Connections &gt; Data services sets it.</li>
+</ul>
+<p>Air to host: the IP addresses come from the header (SAP 4) or from the IDs (SAP 3).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>IP destination</th>
+<th>Delivered to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>the CAI address of the DMR destination (exactly 12.x.y.z / 225.x.y.z)</td>
+<td>as before: our ID's to the host's address and MAC, a talkgroup's to its multicast group, the all call to the broadcast, another radio's to its address in the individual range at the monitor MAC</td>
+</tr>
+<tr>
+<td>our own ID's address in another form (12.x.y.z or the individual range)</td>
+<td>the host's address and MAC</td>
+</tr>
+<tr>
+<td>a multicast group, 255.255.255.255</td>
+<td>its multicast MAC, the broadcast</td>
+</tr>
+<tr>
+<td>another unicast address, in a packet to our DMR ID</td>
+<td>the host's MAC, the address kept: we are the gateway, the host routes it on</td>
+</tr>
+<tr>
+<td>another unicast address, between other radios</td>
+<td>the monitor MAC, the address kept</td>
+</tr>
+<tr>
+<td>0.0.0.0/8, 127.0.0.0/8</td>
+<td>dropped</td>
+</tr>
+</tbody>
+</table></div>
+<p>The source is the sender's address in the individual range when it is the sender ID's <abbr class="gl" tabindex="0" title="Common air interface: Motorola&#x27;s name for the DMR air interface, also the name of its IP addressing on the air." data-more="../dev/glossary.html#t-cai">CAI</abbr> address, else kept as it is.
+A kept source must be an off-net address: one in the individual range or 12.0.0.0/8 would pass for another radio, and
+the host's, the radio's, the link's or a group's isn't from the air. The packet is dropped otherwise.</p>
+<p>The packet reaches the host with the TTL it had on the air (TTL 1 for a talkgroup, 64 for SAP 3 to a radio), so a
+packet that goes round a loop of gateway radios runs out. One with TTL 0 is dropped.</p>
+<p>A packet to our DMR ID whose IP destination is not our ID's address is never taken by the radio's own services (<abbr class="gl" tabindex="0" title="Text message service: Motorola&#x27;s text message format on DMR. The standard&#x27;s own short data uses other formats." data-more="../user/22-glossary.html#t-tms">TMS</abbr>,
+<abbr class="gl" tabindex="0" title="Automatic Registration Service: a radio tells a presence server it is on the air." data-more="../user/22-glossary.html#t-ars">ARS</abbr>, <abbr class="gl" tabindex="0" title="Location Request and Response Protocol: a dispatcher asks a radio for its position. Motorola&#x27;s position format; the standard has LIP." data-more="../user/22-glossary.html#t-lrrp">LRRP</abbr>, text, SNMP): it goes to the host only.</p>
+<h3 id="32-mtus">3.2 MTUs</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>MTU</th>
+<th>Value</th>
+<th>What sets it</th>
+<th>How the host learns it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Link</td>
+<td>586 (<code>IPGW_LINK_MTU</code>)</td>
+<td>the gateway's 600-octet frames (<code>IPGW_MAX_FRAME</code>) less the Ethernet header</td>
+<td>DHCP option 26 in the OFFER and <abbr class="gl" tabindex="0" title="Acknowledgment: the reply that says a message arrived." data-more="../dev/glossary.html#t-ack">ACK</abbr>; PPP: the <abbr class="gl" tabindex="0" title="A MOTOTRBO system of several Capacity Plus sites joined by a network." data-more="../dev/glossary.html#t-linked-capacity-plus">LCP</abbr> MRU, 584 (<a href="ppp.html">ppp.md</a> 2)</td>
+</tr>
+<tr>
+<td>Air</td>
+<td>596 (<code>IPGW_AIR_MTU</code> = <code>DMR_DATA_IP_MTU</code>)</td>
+<td>one transmission (<a href="dmr-data.html">dmr-data.md</a> 12.8)</td>
+<td>it needn't: not below the link's</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>The link MTU covers everything the gateway passes: the radio's own services (TFTP's 512-octet blocks are 544 octets
+of IP, <a href="tftp.html">tftp.md</a>), the host's own address and the air. A frame longer than 600 octets is dropped at USB
+before the gateway sees it. The <abbr class="gl" tabindex="0" title="Network control model: the USB class that makes the radio appear as a network adapter." data-more="../dev/glossary.html#t-ncm">NCM</abbr> descriptor's maximum segment size stays at its 1514 default; DHCP gives the
+real figure.</li>
+<li>The air MTU is not below the link's (a build-time assert in <code>ipGateway.c</code>), so every host packet for the air goes in
+one transmission, confirmed or not, with the header it gets on air (SAP 3 or SAP 4, or none for the raw port): the
+user data on air is never longer than the IPv4 packet. The host needs no path MTU discovery to reach other radios.</li>
+<li>The gateway still measures each host packet for the air (<code>ipGatewayAirLength</code>) against <code>IPGW_AIR_MTU</code>, for a build
+whose air is narrower than its link. None is on a radio: <code>net.air_too_big</code> and <code>net.frag_needed</code> stay 0. Such a
+packet would be dropped before the air queue and counted (<code>net.air_too_big</code>); with DF set, the gateway sends an ICMP
+type 3 code 4 from the radio's address to the sender, the air MTU as the next-hop MTU, quoting the IP header and the
+first 8 octets (<code>net.frag_needed</code>); DF clear, no ICMP (code 4 is defined only for DF, RFC 1191); none for an ICMP
+message other than an echo or echo reply, or for a multicast or broadcast destination (RFC 1122 3.2.2). The host
+test <code>ipGatewayTestAir440</code> builds the gateway with <code>IPGW_AIR_MTU=440</code> and runs all of it.</li>
+<li>Linux keeps no path MTU below <code>net.ipv4.route.min_pmtu</code> (552 by default): an air MTU below that would not hold on a
+Linux host. One reason the air MTU follows the link's.</li>
+<li>From the air, the receiver takes up to 608 octets of user data (another make's radio may send that much). What is
+longer than the link as IPv4 is dropped and counted (<code>net.up_too_big</code>). There is no ICMP: the sender is on air.</li>
+<li>IP fragments from the host are dropped, without an ICMP.</li>
+<li>PPP shares the gateway's input (<code>ipGatewayEthernetIn</code>): the same holds there.</li>
+<li>Built with <code>CONFIG_DMR_IP_GATEWAY</code>; nothing of it without the gateway.</li>
+</ul>
+<h2 id="4-tests">4. Tests</h2>
+<ul>
+<li>Host: <code>tests/host/hostlinkNetTest.c</code> (the gateway with a fake interface and fake air ops: unicast, multicast and raw
+to air, refusals, <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr> serial both ways with chunking and a busy endpoint, IP and short data from the air, link down;
+then the default air side against a fake data service: the queue, the bursts decoded back by the codec's receiver
+into the IP / <abbr class="gl" tabindex="0" title="Service access point: the field in a DMR data header that says what the payload is (IP, short data, GPS and so on)." data-more="../dev/glossary.html#t-sap">SAP</abbr> 10 packet, SAP 3 for ports outside 4000-4099 and SAP 4 for 4007, the head held while the
+service has the packet, a busy service retried, the 2 s give-up, the packet hook, the off-net destination and TTL
+through the queue, a packet to our ID for another address passed to the host),
+and the gateway's own <code>ipGatewayTest*</code> with pcaps checked by tshark (<code>testOffNet</code>: the routing and addresses of
+3.1; <code>testDHCP</code>: option 26; <code>testAirMtu</code>: the air MTU of 3.2: the longest frame to the air whole with SAP 3,
+SAP 4, the raw port and ICMP echo, nothing back; in <code>ipGatewayTestAir440</code>, the ICMP replies and their checksums, DF
+clear, multicast, an ICMP error not answered). <abbr class="gl" tabindex="0" title="A radio a dispatch program on a computer uses to reach the fleet over the air." data-more="../user/22-glossary.html#t-control-station">Control station</abbr> mode: section 5.6.</li>
+<li><abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr>: <code>tests/hil/test_usb_network.py</code> (<code>--allow-usb-switch</code>). <code>tests/hil/test_usb_network_services.py</code> runs the host
+port's protocols over UDP 3334: the <abbr class="gl" tabindex="0" title="Transmitting on one frequency and receiving on another at the same time. Repeaters do, and so does the duplex hotspot setup." data-more="split-duplex.html">split duplex</abbr> extension (protocol, and the <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> half's labels against a bench call
+with <code>--allow-rf --allow-service-stop</code>) and the <abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="../user/22-glossary.html#t-kiss">KISS</abbr> <abbr class="gl" tabindex="0" title="Terminal node controller: the modem that turns packet data into audio tones and back." data-more="../dev/glossary.html#t-tnc">TNC</abbr> (TNC mode, a host position from SetHardware 'N'). All pass
+on 4a9c002. One protocol at a time: the radio answers the sender of the last frame, so a tool closes its socket
+before another protocol's tool opens one. <code>tests/hil/test_dmr_ip.py</code> (on air, the bench modem decoding; its last
+test sends from the host over the USB network). <code>tests/hil/test_dmr_ip_burst.py</code>: bursts each way and the MTUs of
+3.2 (the view keys, option 26 on the host, the largest datagram each way, the ICMP reply on a raw socket). The radio's own services: <code>tests/hil/test_tcp_services.py</code>,
+<code>tests/hil/test_net_services.py</code> (<code>mdns.md</code> 5, <code>tftp.md</code> 6).</li>
+</ul>
+<h2 id="5-control-station-mode">5. Control station mode</h2>
+<p>Dispatch software on a PC (TRBOnet, SmartPTT and the like) uses a radio on USB as its <abbr class="gl" tabindex="0" title="A radio a dispatch program on a computer uses to reach the fleet over the air." data-more="../user/22-glossary.html#t-control-station">control station</abbr>: the
+PC sends and <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receives</abbr> the fleet's data through it, and it answers for the radio's own <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr> itself (text messages,
+registration, location). Switch: <code>CONFIG_DMR_CONTROL_STATION</code> (= <code>CONFIG_DMR_IP_GATEWAY</code>). The pieces:</p>
+<h3 id="51-boot-as-the-adapter">5.1 Boot as the adapter</h3>
+<p>The stored <code>usb_mode</code> (section 1): the radio comes up as the network adapter at power-on, so the PC finds it
+without anyone switching it, with the 10 s fallback to serial for a host that doesn't configure it.</p>
+<h3 id="52-the-pc-is-the-endpoint-passthrough">5.2 The PC is the endpoint (passthrough)</h3>
+<p>Stored setting <code>net_flags</code> bit <code>SETTINGS_NET_PASSTHROUGH</code> (Settings &gt; Connections &gt; PC answers data). In force while
+it is set <strong>and</strong> the network link is up (host configured: <code>hostlink_net_passthrough_active()</code>, view key
+<code>net.passthrough_active</code>); with the PC unplugged the radio's own services answer again, so a radio left in this mode
+is never deaf.</p>
+<p>What passthrough changes is defined by one rule: everything with an IP header (<abbr class="gl" tabindex="0" title="Service access point: the field in a DMR data header that says what the payload is (IP, short data, GPS and so on)." data-more="../dev/glossary.html#t-sap">SAP</abbr> 4, or SAP 3 compressed <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr>/IP)
+addressed to the radio's ID or one of its groups belongs to the PC; the link layer stays with the radio, because the
+PC can't send it.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Packet to the radio</th>
+<th>Without passthrough</th>
+<th>With passthrough</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>any data packet</td>
+<td>forwarded to the PC (as now)</td>
+<td>forwarded to the PC</td>
+</tr>
+<tr>
+<td>confirmed data (C_HEAD, A bit)</td>
+<td><abbr class="gl" tabindex="0" title="European Telecommunications Standards Institute, which publishes the DMR standard." data-more="../dev/glossary.html#t-etsi">ETSI</abbr> response from the radio</td>
+<td>ETSI response from the radio (the PC can't send it)</td>
+</tr>
+<tr>
+<td>ARS, UDP 4005 (answers to the radio's registration, queries)</td>
+<td>the radio's <abbr class="gl" tabindex="0" title="Automatic Registration Service: a radio tells a presence server it is on the air." data-more="../user/22-glossary.html#t-ars">ARS</abbr></td>
+<td>ignored; the radio's own registration, refresh and deregistration stop (the PC registers)</td>
+</tr>
+<tr>
+<td>Motorola TMS, UDP 4007</td>
+<td>inbox, <abbr class="gl" tabindex="0" title="Text message service: Motorola&#x27;s text message format on DMR. The standard&#x27;s own short data uses other formats." data-more="../user/22-glossary.html#t-tms">TMS</abbr> <abbr class="gl" tabindex="0" title="Acknowledgment: the reply that says a message arrived." data-more="../dev/glossary.html#t-ack">ACK</abbr> from the radio</td>
+<td>PC only: no ACK, no inbox entry</td>
+</tr>
+<tr>
+<td>ETSI IP text, UDP 5016</td>
+<td>inbox</td>
+<td>PC only</td>
+</tr>
+<tr>
+<td>LRRP, UDP 4001</td>
+<td>answered by the radio</td>
+<td>PC only; running triggers and queued requests are dropped when passthrough starts</td>
+</tr>
+<tr>
+<td>NMEA position, UDP 10110</td>
+<td><abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> station list (and the PC)</td>
+<td>PC only</td>
+</tr>
+<tr>
+<td>other UDP, ICMP, SCTP</td>
+<td>PC (no service of the radio's)</td>
+<td>PC</td>
+</tr>
+<tr>
+<td>ETSI defined short data, UDT text (no IP header)</td>
+<td>inbox, ETSI response</td>
+<td>unchanged (and forwarded raw on 40078)</td>
+</tr>
+<tr>
+<td>call alert, radio check, emergency alarm (CSBK)</td>
+<td>answered by the radio per its settings</td>
+<td>unchanged</td>
+</tr>
+<tr>
+<td>the TMS ACK of a message the radio's own user sent</td>
+<td>completes it</td>
+<td>still completes it (nothing is sent)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The PC's replies (and anything else it sends to a radio ID or <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr>) go out as now: built by the radio with its own
+<abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> ID as the source, so to the fleet they come from the control station. The data service counts what it left to the
+PC in <code>data.pt_yielded</code> and shows <code>data.pt_active</code> (<abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> section <code>dmr_ext</code>). Spec of the data side:
+<code>dmr-data.md</code> 10.</p>
+<h3 id="53-link-addressing">5.3 Link addressing</h3>
+<p>Stored setting <code>net_flags</code> bit <code>SETTINGS_NET_FIXED_LINK</code> with <code>net_link_ip</code> (Settings &gt; Connections &gt; USB link
+address: &quot;By DMR ID&quot; / &quot;192.168.10.x&quot;). It fits the gateway's design because the gateway's addressing has only two
+link-local facts, the radio's address and the host's, and the rest (the 12/8 and 225/8 ranges, the air side) doesn't
+depend on them:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>By DMR ID (default)</th>
+<th>Fixed link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>radio</td>
+<td>12.<ID> xor 1</td>
+<td><code>net_link_ip</code>, default 192.168.10.1</td>
+</tr>
+<tr>
+<td>host (DHCP)</td>
+<td>12.<ID>/32</td>
+<td>the next address, 192.168.10.2, netmask 255.255.255.0</td>
+</tr>
+<tr>
+<td>option 121 / 249</td>
+<td>the radio on the link, 12/8 and 225/8 via the radio</td>
+<td>12/8 and 225/8 (and the group range) via the radio</td>
+</tr>
+<tr>
+<td>ARP answered</td>
+<td>every address but the host's</td>
+<td>the radio's address only</td>
+</tr>
+<tr>
+<td>packets to the radio's own ID from the air</td>
+<td>to 12.<ID> (the host's address)</td>
+<td>rewritten to the host's fixed address</td>
+</tr>
+<tr>
+<td>broadcasts to the host (all call, monitor)</td>
+<td>255.255.255.255</td>
+<td>255.255.255.255</td>
+</tr>
+<tr>
+<td>host to air broadcast</td>
+<td>255.255.255.255, the <abbr class="gl" tabindex="0" title="DMR talkgroup 16777215, heard by every radio on the slot." data-more="../user/22-glossary.html#t-all-call">all call</abbr> address</td>
+<td>also the link's 192.168.10.255</td>
+</tr>
+<tr>
+<td>radios per host</td>
+<td>several (each has its own pair)</td>
+<td>one (every radio has the same pair)</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>net_link_ip</code> must be a unicast address outside the 12/8, 225/8 (and group) ranges with a last octet of 1-253;
+anything else (or 0) means the default 192.168.10.1 when set from the UI, or the DMR ID addressing when the debug link
+stores an unusable address (<code>ipGatewaySetFixedLink</code> refuses it; <code>net.link_in_force</code> shows what is used). A change
+applies at once on the radio's side; the PC picks it up at its next <abbr class="gl" tabindex="0" title="Dynamic Host Configuration Protocol: how a device gets its IP address on a network." data-more="../dev/glossary.html#t-dhcp">DHCP</abbr> exchange (the radio refuses the renewal of
+the old address, so at the latest when the 10 min lease runs out; unplugging the cable is quicker).</p>
+<p>What the dispatch application must be told, in either mode: the control station's IP address (the radio's link
+address: 192.168.10.1 or 12.<ID> xor 1), the radio network 12.0.0.0/8 for radio IDs and 225.0.0.0/8 for talkgroups
+(already routed through the radio by DHCP), the radio's own DMR ID, the data ports (ARS 4005, TMS 4007, <abbr class="gl" tabindex="0" title="Location Request and Response Protocol: a dispatcher asks a radio for its position. Motorola&#x27;s position format; the standard has LIP." data-more="../user/22-glossary.html#t-lrrp">LRRP</abbr> 4001,
+ETSI text 5016). Headers on the air follow the radio's compression setting (<code>dmr-data.md</code> 11: by default UDP
+outside 4000-4099, ETSI text 5016 among them, goes with the SAP 3 compressed header; set <code>ip.compress</code> off for
+full IPv4 headers). An application that expects to talk to
+the radio itself over a vendor control protocol (<abbr class="gl" tabindex="0" title="A Motorola radio control protocol; XCMP commands travel over it. Neither is part of the standard." data-more="../dev/glossary.html#t-xnl">XNL</abbr> / XCMP and the like) can't use it: the radio is a router, not a
+vendor control head.</p>
+<h3 id="54-settings-and-the-debug-link">5.4 Settings and the debug link</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Setting (<code>settings_t</code>)</th>
+<th>Values</th>
+<th>UI (Settings &gt; Connections)</th>
+<th>Debug link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>usb_mode</code></td>
+<td>0 serial (default), 1 network at power-on</td>
+<td>USB network at start</td>
+<td>radio op 27 bit 0, <code>usb.boot_network</code></td>
+</tr>
+<tr>
+<td><code>net_flags</code> &amp; <code>SETTINGS_NET_PASSTHROUGH</code></td>
+<td>off (default) / on</td>
+<td>PC answers data</td>
+<td>op 27 bit 1, <code>net.passthrough</code>, <code>net.passthrough_active</code></td>
+</tr>
+<tr>
+<td><code>net_flags</code> &amp; <code>SETTINGS_NET_FIXED_LINK</code></td>
+<td>off (default: by DMR ID) / on</td>
+<td>USB address</td>
+<td>op 27 bit 2, <code>net.fixed_link</code></td>
+</tr>
+<tr>
+<td><code>net_link_ip</code></td>
+<td>0 = 192.168.10.1</td>
+<td>(the default only)</td>
+<td>op 27 IP, <code>net.link_ip</code>, <code>net.link_in_force</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Radio op 27 (<code>debuglink.md</code> 3.8): flags u8, link IP u32 little endian; stored, and applied at once
+(<code>hostlink_settings_changed</code>). <code>rfoundry_debug.py radio usb-settings [boot] [passthrough] [fixed[=IP]]</code>; no words: all off.</p>
+<h3 id="55-not-done">5.5 Not done</h3>
+<ul>
+<li><abbr class="gl" tabindex="0" title="DMR packet data the receiving radio acknowledges. What didn&#x27;t arrive is sent again." data-more="../user/22-glossary.html#t-confirmed-data">Confirmed data</abbr> from the PC per packet: the PC can't ask for it itself; the data service confirms the gateway's
+packets by its rules (per destination ID or UDP port, <code>dmr-data.md</code> 12), the same for the PC's packets as for any
+host's.</li>
+<li>Voice: the control station passes data only (voice over the network personality is <code>usb-audio.md</code> 4.2).</li>
+</ul>
+<h3 id="56-tests">5.6 Tests</h3>
+<ul>
+<li>Host: <code>ipGatewayTest*</code> <code>testFixedLink</code> (refused addresses, DHCP offer and routes, the renewal NAK, ARP, to air from
+the fixed address, the link broadcast, UDP serial, delivery to our ID rewritten to the host, all call and monitor
+broadcasts, ping, back to the DMR ID; written to the pcaps tshark checks); <code>hostlinkNetTest</code> (passthrough follows
+the link, the fixed link end to end: an ETSI IP text from the air reaches 192.168.10.2, the PC's answer goes over
+the air from the radio's ID); <code>dmrDataServiceTest</code> <code>testPassthrough</code> (the table in 5.2); <code>radioCoreTest</code> (the
+settings records).</li>
+<li><abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr>: <code>tests/hil/test_control_station.py</code> (opt-in, below). The lead runs it against a dispatch application.</li>
+</ul>
+<p>HIL plan (<code>tests/hil/README.md</code>):</p>
+<ol>
+<li><code>test_usb_settings_stored</code> (radio, <code>--allow-usb-switch</code>): op 27 stores each bit; the view keys follow; all off at
+the end.</li>
+<li><code>test_boot_network</code> (<code>--allow-usb-switch --allow-reboot</code>): with <code>usb_mode</code> 1, a reboot comes back as 1FC9:0096 and
+the debug link answers over <code>udp:&lt;radio IP&gt;</code>; the setting is then cleared over UDP and the radio rebooted to serial.
+Manually on macOS 26: a host that doesn't configure the adapter gets the serial port back 10 s after plugging in.</li>
+<li><code>test_fixed_link</code> (network mode): op 27 fixed, the host renews DHCP, gets 192.168.10.2, pings 192.168.10.1, the
+debug link answers at <code>udp:192.168.10.1</code>.</li>
+<li><code>test_passthrough_text</code> (<code>--allow-rf --allow-service-stop</code>, <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench): passthrough on, the bench sends an ETSI IP
+text and a TMS with an ACK request to the radio's ID; the PC's socket on UDP 5016 / 4007 gets them, the radio's
+inbox count doesn't change, <code>data.tms_acks_sent</code> doesn't move, <code>data.pt_yielded</code> does; a confirmed packet still
+gets the radio's ETSI response (the bench hears it).</li>
+<li><code>test_passthrough_reply</code> (same): the PC sends UDP 4007 to the bench's ID; the bench hears the packet with the
+radio's DMR ID as the source.</li>
+<li>A dispatch application (manual): its control station set to the radio's link address, its own ARS / TMS / LRRP on.
+With passthrough on, a text from a fleet radio appears in the application and only there, its reply reaches the
+fleet radio from the control station's ID, a location request from it is answered by the fleet radio (the control
+station doesn't answer for itself), and the radio's own ARS registration does not appear in its log.</li>
+</ol>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/usb-network.md">Vedi il sorgente di questa pagina</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="In questa pagina">
+		<p class="eyebrow">In questa pagina</p>
+		<ul><li class="l2"><a href="#1-one-personality-at-a-time">1. One personality at a time</a></li><li class="l2"><a href="#2-frames">2. Frames</a></li><li class="l2"><a href="#3-the-gateway-coredmripgatewayc-corehostlinkhostlink_netc">3. The gateway (core/dmr/ipGateway.c, core/hostlink/hostlink_net.c)</a></li><li class="l3"><a href="#31-routing-and-ip-addresses">3.1 Routing and IP addresses</a></li><li class="l3"><a href="#32-mtus">3.2 MTUs</a></li><li class="l2"><a href="#4-tests">4. Tests</a></li><li class="l2"><a href="#5-control-station-mode">5. Control station mode</a></li><li class="l3"><a href="#51-boot-as-the-adapter">5.1 Boot as the adapter</a></li><li class="l3"><a href="#52-the-pc-is-the-endpoint-passthrough">5.2 The PC is the endpoint (passthrough)</a></li><li class="l3"><a href="#53-link-addressing">5.3 Link addressing</a></li><li class="l3"><a href="#54-settings-and-the-debug-link">5.4 Settings and the debug link</a></li><li class="l3"><a href="#55-not-done">5.5 Not done</a></li><li class="l3"><a href="#56-tests">5.6 Tests</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Unisciti alla comunità RadioFoundry</strong><span class="small muted">Domande, aiuto con la tua radio e novità, su Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Hai trovato un bug? Vuoi che la tua radio sia supportata?</strong><span class="small muted">Apri una segnalazione su GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry ha licenza MIT · <a href="https://github.com/radiofoundry/radiofoundry">Codice sorgente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunità</a> · <a href="../../../it/docs/index.html">Documenti</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Novità</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

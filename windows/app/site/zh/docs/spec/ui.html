@@ -1,0 +1,1479 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The user interface · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="The user interface · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/spec/ui.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/ui.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/ui.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/ui.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/ui.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/ui.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/spec/ui.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/ui.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/ui.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/ui.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="规范">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 规范</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html" aria-current="page">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">本页尚未翻译，目前显示英文。</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="the-user-interface">The user interface</h1>
+<p>How <code>core/ui</code> implements the first-principles UX in <code>docs/ux</code> (<code>principles.md</code>, <code>information-architecture.md</code>,
+<code>task-flows.md</code>, <code>wireframes/</code>, <code>usability-tests.md</code>). The UX documents say what the radio does; this page says how
+the code is laid out, who owns the data behind each screen, and how the UI is tested without a radio.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Contents</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1, 2</td>
+<td>File layout, screens and the stack</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Key meanings and key assignment</td>
+</tr>
+<tr>
+<td>4, 5, 6</td>
+<td>Data other packages own, build switches, <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr></td>
+</tr>
+<tr>
+<td>7, 8</td>
+<td>Host simulator and tests, decisions and open points</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="1-layout">1. Layout</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>File</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gfx.c</code>, <code>fonts.c</code>, <code>fmt.c</code></td>
+<td>drawing in a viewport inside the display's safe-area insets, fonts, number / text formatting</td>
+</tr>
+<tr>
+<td><code>ui_screens.c</code></td>
+<td>drawing only: status strip, title, hint row, lists, Home, call screens, Quick tiles, banners, emergency</td>
+</tr>
+<tr>
+<td><code>ui_app.c</code></td>
+<td>behavior without the <abbr class="gl" tabindex="0" title="Real-time operating system: the scheduler that runs the firmware&#x27;s tasks." data-more="../dev/glossary.html#t-rtos">RTOS</abbr>: the navigation stack, global keys, Home and Quick keys, filters, Recent, events, banners</td>
+</tr>
+<tr>
+<td><code>ui_menus.c</code></td>
+<td>every list screen and the screen table <code>ui_scr[]</code>: Hub, Actions, Compose, Contacts, Messages, Recent, Zones, Zone, the zone editor's (2.2), Channels, Channel, Tools, Settings, Picker, Info, Confirm, Scan, Roaming</td>
+</tr>
+<tr>
+<td><code>ui_find.c</code></td>
+<td>type-to-find (T9 word starts, numbers, channel positions)</td>
+</tr>
+<tr>
+<td><code>ui_svc.h</code>, <code>ui_svc_stub.c</code></td>
+<td>the thin interface to data other packages own, with weak &quot;not in this build&quot; <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stubs</abbr> (section 4)</td>
+</tr>
+<tr>
+<td><code>ui_svc_radio.c</code>, <code>ui_svc_data.c</code>, <code>ui_svc_storage.c</code></td>
+<td>the strong implementations on the radio core, the <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> data service and the settings store / <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> editing</td>
+</tr>
+<tr>
+<td><code>ui.c</code></td>
+<td>the UI task: splash (the mark, beside the name on a panel too short to stack them (128x64), the name, the two <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> boot text lines from the codeplug, board and version; <code>ui_draw_splash</code> in ui_screens.c), 50 ms frame pacing, backlight, status copy for the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr></td>
+</tr>
+</tbody>
+</table></div>
+<p><code>ui_app.c</code> and <code>ui_menus.c</code> never call the RTOS. The firmware drives them from <code>ui.c</code>; the host simulator
+(section 7) drives the same files.</p>
+<p>Spacing on the displays under 200 px high (<code>UI_TALL_PX</code>): the status strip and, from 100 px high, each list row take
+one pixel more than the text cell, so lines never touch (easy to read comes before one more row; principles.md 5).
+The board's safe-area insets (<code>hal_display_t.inset_*</code>) are outside the drawing area (<code>gfx_width</code> / <code>gfx_height</code>),
+for panel edges hidden by the case (for example 5 px left and right under a lens). At 160x120i5 a list shows 7 rows, at 160x128 7, at
+240x320i10x5 11, at 128x64 5. The 240 px class keeps 6 px between rows and a separate title row;
+<code>uiSim --layout</code> fails a class whose row pitch drops below these. A narrow portrait panel (120x160) keeps the 128 px
+class's small font (24 characters a line) and takes the 160 px class's channel and <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr> fonts. Home's Activity region shows the last caller on two lines
+(name, then &quot;<abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">TG</abbr> 91 11s ago&quot;) where it has the rows for them, else one line where the name gives way first; a single
+line (&quot;No calls heard yet&quot;) is centered in the region. While a hardware option is pending (<code>board_hwopt_pending</code>: one
+the board asks for, or one waiting for a restart) the idle region says so first, in the warning color (&quot;Set: Board
+revision&quot;, or &quot;Restart to apply&quot;), with &quot;<abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">Transmit</abbr> waits for it&quot; under it where there is a second line, and the hint
+row gives the place to set it (&quot;Settings&gt;Advanced&gt;Hardware&quot;) or &quot;Turn the radio off and on&quot;. PTT then shows the same
+reason (<code>TXDENY_HWOPT</code>). Text that doesn't fit is shortened (an alternate, the name
+dropped, then an ellipsis), never drawn in a smaller font.</p>
+<p>A page title is in Title Case: every word capitalized except a, an, the, and, or, to, of, in, on, for and by
+inside the title; acronyms and units as written (&quot;Unsaved Changes&quot;, &quot;<abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> Group List&quot;, &quot;Single-Freq Repeater&quot;, &quot;Send To&quot;).
+A fixed prefix ahead of a name is lowercase in the middle (&quot;Talk to Ops&quot;, &quot;Zone for A&quot;). Names and counts in a title
+(&quot;1 of 3&quot;, a zone's name) are shown as stored. List rows, values, hints, toasts and banners keep sentence case, so the
+row that opens a page can differ from its title: the Settings row &quot;Talk &amp; listen&quot; opens &quot;Talk &amp; Listen&quot;.
+A page title is centered on the screen at every display class, moved only as far as it must to clear what shares its
+row (the state pill, the lock, the unread count).</p>
+<p>The hint row is groups separated by two spaces (<code>&quot;OK open  # more  Back&quot;</code>). The group for the Back key (it starts with
+&quot;Back&quot;) is drawn against the right edge, under the key; the other groups run from the left, and those that don't fit
+are left out whole from the right. A toast is one centered line instead. A banner or a two-line toast starts in a gap
+between lines of the screen under it (a row all one color), never through a line of text.</p>
+<p>Hints and toasts call the QUICK and CONTEXT keys <code>*</code> and <code>#</code>. A radio without those keys gives its own names
+(<code>board.quick_label</code>, <code>board.context_label</code>: for example a front panel's own key names), and each <code>*</code> or <code>#</code> that stands alone is
+drawn as that name (&quot;OK Menu  P1 Quick&quot;). On a radio with no digit keys a hint group that starts with a digit
+(&quot;0-9 find&quot;) is left out. Toasts keep their numbers.</p>
+<p>Text is shortened with a middle ellipsis only as a last resort (P5 allows it for names on Home). Before that:</p>
+<ul>
+<li>A list row keeps its label whole and gives the value the room left: values carry text alternates (<code>font.h</code>) down to
+a short form or nothing (Hub's zone name, Find's kind, Zones' &quot;Here, 16 channels&quot; / &quot;Here, 16 ch&quot; / &quot;Here&quot;, ages: &quot;11s ago&quot; / &quot;11s&quot;).
+A row marked <code>UI_ITEM_PREVIEW</code> (a message) is cut at its end, at a word.</li>
+<li>Hints and toasts take the longest alternate that fits; a toast that still doesn't fit takes a second line above the
+hint row. Banners give the title and the text two lines each (&quot;<abbr class="gl" tabindex="0" title="A DMR page that makes another radio ring." data-more="../user/22-glossary.html#t-call-alert">Call alert</abbr> from&quot; / &quot;Jodi Ruiz&quot;), and a message
+banner shows two lines of the message from the inbox.</li>
+<li>Home's talk target line (DMR target or FM frequency) drops to the small font as a whole, then takes the target's
+short form; a frequency is never shortened. Large-text Home picks the largest font each line fits in, and takes the
+short form before it would go below the medium font. The short form of a talkgroup is its number (&quot;TG 91 World&quot;
+becomes &quot;TG 91&quot;); of a private contact, its name (&quot;Joe Smith 9991234&quot; becomes &quot;Joe Smith&quot;). A contact's ID alone
+says nothing at a glance, so it is what goes. An ID without a contact is shown as the ID.</li>
+<li>While a <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> frequency is being typed in <abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="../user/22-glossary.html#t-dual-watch">dual watch</abbr>, its selected pane shows the digits and blanks for the remaining
+places in place of the old frequency, including on Large text Home. The other pane keeps its frequency. Back removes
+a digit; OK or # tunes the selected pane.</li>
+<li>The RX and TX screens put the number in the title (&quot;TG 91&quot;) and the talkgroup's or contact's name on a line of its
+own; a <abbr class="gl" tabindex="0" title="A short text, usually a callsign and name, sent along with DMR voice." data-more="../user/22-glossary.html#t-talker-alias">talker alias</abbr> takes two lines when it needs them. A <abbr class="gl" tabindex="0" title="A DMR call to one radio." data-more="../user/22-glossary.html#t-private-call">private call</abbr>'s title says &quot;Private&quot; where a group call's
+says &quot;TG&quot;: &quot;Private 9991234&quot; while transmitting (just &quot;Private&quot; where that doesn't fit), &quot;Private to you&quot; or
+&quot;Private to Joe Smith&quot; while receiving. The TX screen's target line follows the short form rule above, and its
+detail line ends in &quot;Private&quot; or &quot;Group&quot;. The word is the cue, not a color: the privacy (encryption) marker is
+&quot;Priv&quot; in blue, and a private call is not encrypted.</li>
+</ul>
+<p><code>uiSim --ellipsis</code> (section 7) lists what is still shortened; <code>uiSim --layout</code> fails the build on a middle ellipsis
+with ordinary content.</p>
+<p>When entering a list screen, if the screen has not set a nonzero focus, select the first row that is neither
+informational nor disabled. If every row is one or the other, select the first disabled row (a text row is never
+focused). Returning with Back preserves the parent focus; manual navigation can still reach disabled rows to explain
+why they are unavailable.</p>
+<p>Core code never includes a board header and never tests a radio define. What differs by radio comes from the board
+descriptor: the display geometry and insets (<code>hal_display_t</code>), and the key map (<code>board.keymap</code>), which turns keys
+into logical actions (<code>hal_input.h</code>).</p>
+<h2 id="2-screens-and-the-stack">2. Screens and the stack</h2>
+<p>The stack holds up to 6 frames; Home is frame 0. Each screen is a <code>ui_scr_def_t</code> (<code>ui_nav.h</code>): a name (the debug
+link's <code>ui.screen</code>), flags, and callbacks for list rows, SELECT, CONTEXT, the <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr> of the focused row, a title,
+a body, raw keys, drawing and entry. List screens need only <code>count</code> and <code>item</code>; the generic list code does focus,
+scrolling, numbered shortcuts (<code>SF_NUMBERED</code>: 1-9, then 0 for the 10th row; later rows have none), T9 filtering (<code>SF_FILTER</code>), and the long-press target.</p>
+<p>A filtered list's rows are raw rows (<code>raw_count</code>, <code>raw_label</code>) that have a label and, with keys typed, match them.
+With keys typed the list is the first <code>UI_FILTER_MAX</code> (128) matches. With none it is every row: the first 126 are kept
+in an index, and in a longer list its last two slots are a cursor (its row and raw row) stepped over the raw rows, so a list of 1024 contacts
+scrolls to its end (and Up from the top wraps to it) without <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> for a full index. A jump to the end steps over every
+raw row once.</p>
+<p>A record a row costs a flash read a row, about 0.2-0.3 ms each on a radio with polled <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> flash, so the long lists
+(every contact, every channel) give two more callbacks. <code>raw_each</code> gives every row's label in one pass, a block of
+records a read (<code>codeplug_contacts_each</code>, <code>codeplug_channel_names_each</code>); with no key typed only which rows exist
+counts, and a list of channels then reads nothing (the in-use map is in RAM). <code>raw_used</code> says whether a row exists
+without its label, for the cursor's steps. With 1024 channels a key took 0.34 s before, 0.11 s after; opening the list
+0.29 s before, under 10 ms after. A list without them reads its rows one by one.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Screen</th>
+<th>Name</th>
+<th>Reached by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Home</td>
+<td><code>home</code></td>
+<td>start, long BACK from anywhere</td>
+</tr>
+<tr>
+<td>Quick settings</td>
+<td><code>quick</code></td>
+<td>QUICK (<code>*</code>), or long SELECT on a radio without a QUICK key</td>
+</tr>
+<tr>
+<td>Hub</td>
+<td><code>hub</code></td>
+<td>SELECT on Home: 1 Contacts, 2 Messages, 3 Recent, 4 Zones, 5 Channels, 6 Tools, 7 Settings (0 Last caller on a radio without CONTEXT)</td>
+</tr>
+<tr>
+<td>Find</td>
+<td><code>find</code></td>
+<td>a digit on Home</td>
+</tr>
+<tr>
+<td>Actions</td>
+<td><code>actions</code></td>
+<td>CONTEXT (<code>#</code>) on a person, a <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr>, the last caller, a message</td>
+</tr>
+<tr>
+<td>Recent</td>
+<td><code>recent</code></td>
+<td>Hub 3</td>
+</tr>
+<tr>
+<td>Zones</td>
+<td><code>zones</code></td>
+<td>Hub 4: the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr>, then every zone with its channel count, then &quot;Create New Zone&quot; with <code>CONFIG_ZONE_EDIT</code> (2.2). OK goes to the zone, CONTEXT opens its channels (<code>zone</code>; long OK on a radio without CONTEXT)</td>
+</tr>
+<tr>
+<td>Zone</td>
+<td><code>zone</code></td>
+<td>CONTEXT in Zones: the zone's channels in order, OK goes to one. With <code>CONFIG_ZONE_EDIT</code> also the zone's editor (2.2): &quot;Add channel&quot; first, &quot;Zone options&quot; last, CONTEXT on a channel opens Channel actions</td>
+</tr>
+<tr>
+<td>Channel actions</td>
+<td><code>zchannel</code></td>
+<td>CONTEXT (long OK without CONTEXT) on a channel in a zone's list (2.2)</td>
+</tr>
+<tr>
+<td>Add Channel</td>
+<td><code>zpick</code></td>
+<td>&quot;Add channel&quot; in a zone's list: the stored channels the zone doesn't hold, T9 filtered (2.2)</td>
+</tr>
+<tr>
+<td>In Zones</td>
+<td><code>chzones</code></td>
+<td>the channel editor's Zones row (2.1, <code>CONFIG_ZONE_EDIT</code>): every zone, &quot;In&quot; where it holds the channel. OK puts the channel in (at the end) or takes it out, at once, as the zone editor's changes (2.2)</td>
+</tr>
+<tr>
+<td>Zone options</td>
+<td><code>zoneedit</code></td>
+<td>&quot;Zone options&quot; in a zone's list: Rename, Copy as new zone, Share zone to... (with <code>CONFIG_ZONE_SHARE</code>), Delete zone (2.2)</td>
+</tr>
+<tr>
+<td>Delete Zone</td>
+<td><code>zonedel</code></td>
+<td>Delete zone in Zone options: the confirmation, &quot;No, keep it&quot; first (P7)</td>
+</tr>
+<tr>
+<td>Channels</td>
+<td><code>channels</code></td>
+<td>Hub 5: every <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> channel as number and name, in number order, filtered by T9. The value (also in a zone's list): <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> frequency and talkgroup, &quot;438.250 TG3100&quot;, or FM; beside a long name &quot;438.250 3100&quot;, then &quot;TG3100&quot; (the name is never cut for it). The first row is &quot;New from current&quot;, New channel from current settings (2.1). OK opens the channel (<code>channel</code>), CONTEXT goes to it</td>
+</tr>
+<tr>
+<td>Channel</td>
+<td><code>channel</code></td>
+<td>OK in Channels: the channel's settings, editable (2.1). The last rows go to it (in the zone in use if it holds the channel, else the first zone that does; in none, &quot;Not in any zone&quot;), share it (with <code>CONFIG_ZONE_SHARE</code>), save, and save as a new channel</td>
+</tr>
+<tr>
+<td>Text entry</td>
+<td><code>text</code></td>
+<td>OK on a text row (a channel's name): keypad letters, 2.1</td>
+</tr>
+<tr>
+<td>Unsaved Changes</td>
+<td><code>discard</code></td>
+<td>BACK in the channel editor with unsaved changes (2.1), or in the contact editor (2.4); titled &quot;Save as FM?&quot; or &quot;Save as <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr>?&quot; before a save that would remove a channel's own mode (2.1)</td>
+</tr>
+<tr>
+<td>New Contact</td>
+<td><code>contactedit</code></td>
+<td>New contact in Contacts, Find's &quot;Create contact 3100&quot;, or Save as contact in a station's or talkgroup's actions (<code>CONFIG_CONTACT_EDIT</code>): the contact editor (2.4)</td>
+</tr>
+<tr>
+<td>List picker</td>
+<td><code>chpick</code></td>
+<td>OK on a channel's <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> contact or <abbr class="gl" tabindex="0" title="The talkgroups a channel listens to. The codeplug calls it the RX group list." data-more="../user/22-glossary.html#t-listen-list">RX group list</abbr> row: &quot;None&quot;, then every stored contact or list, T9 filtered</td>
+</tr>
+<tr>
+<td>Talk target picker</td>
+<td><code>picker</code></td>
+<td>long CONTEXT on a DMR channel (else &quot;Talk target: DMR channels only&quot;), TALK_TARGET (a side key set to it), Quick 8. Its last rows: &quot;Type a number...&quot; (Find) and &quot;Select contact...&quot; (Contacts, whose keys are the picker's)</td>
+</tr>
+<tr>
+<td>Diagnostics</td>
+<td><code>diag</code></td>
+<td>Tools 7, Settings &gt; Advanced</td>
+</tr>
+<tr>
+<td>Share</td>
+<td><code>zone_share</code></td>
+<td>without <code>CONFIG_ZONE_EDIT</code>: CONTEXT in a zone's channels (<code>zone</code>): Share zone to..., Share channel to... (<a href="zone-share.html">zone-share.md</a> 7). With the zone editor these are rows of Zone options and Channel actions (2.2)</td>
+</tr>
+<tr>
+<td>Share To</td>
+<td><code>zone_share_to</code></td>
+<td>a pick in Share, Channel actions, Zone options or the channel editor: the contacts, T9 filtered. Digits that make an ID add &quot;Private ID 9991234&quot; and &quot;TG 9991234&quot; after the contacts (&quot;Not saved&quot;), so a station that isn't a contact can be sent to. OK sends and returns to the zone's list (to the channel editor from there)</td>
+</tr>
+<tr>
+<td>Zone Share Received</td>
+<td><code>zone_offer</code></td>
+<td>CONTEXT on the offer's banner, or Tools &gt; Zones/Chs Received while one waits; titled Channel Share Received (shorter where it doesn't fit) for one channel: the offer's text, then Import, Preview, Reject (<a href="zone-share.html">zone-share.md</a> 5.2)</td>
+</tr>
+<tr>
+<td>Offer preview</td>
+<td><code>zone_offer_preview</code></td>
+<td>Preview in Zone Share Received: the offered channels, &quot;Not in band&quot; dimmed</td>
+</tr>
+<tr>
+<td>Add to zone</td>
+<td><code>zone_offer_zone</code></td>
+<td>Import of a one-channel offer: the zone it goes in</td>
+</tr>
+<tr>
+<td>Roaming</td>
+<td><code>roaming</code></td>
+<td>Tools 8 (7 without diagnostics): roaming on for this zone, roam now, lock to this site (<a href="dmr-roaming.html">dmr-roaming.md</a> 6.2)</td>
+</tr>
+<tr>
+<td>Freq Trim</td>
+<td><code>freq-trim</code></td>
+<td>Settings &gt; Advanced &gt; Freq trim (radio-features.md 6.1): the trim in <abbr class="gl" tabindex="0" title="Parts per million: a frequency error as a fraction of the frequency. At 450 MHz, 1 ppm is 450 Hz." data-more="../dev/glossary.html#t-ppm">ppm</abbr> (-10.0..+10.0) in large type, a slider under it from -10 to +10 (filled from 0 to the value; the -10 / 0 / +10 scale where there's room), then what it moves a carrier by at 440 MHz and at 144 MHz, in Hz (&quot;At 440 MHz&quot; where it fits beside -4400 Hz, else &quot;@ 440 MHz&quot;), and &quot;+ to increase frequency&quot; (&quot;+ to increase freq&quot; where the full line doesn't fit) above the hint where there's room. Up / Right / Down / Left (or the knob, one step a detent) step 0.1 ppm, 0.5 ppm a repeat while held, and are saved at once. A board that applies the trim when it tunes retunes once the value has held still for 400 ms</td>
+</tr>
+<tr>
+<td>(radio-features.md 6.1), so a counter or a hotspot shows each step without a reception dropped at every press. # flips the sign; on 0 it starts a negative entry (a radio without CONTEXT gets a minus by stepping below 0, and typed digits keep it). Digits type the size in tenths as a calculator does (4 5 = 4.5 ppm), keeping the sign; a digit past 10.0 is refused (&quot;Up to 10.0 ppm&quot;); BACK takes the last digit back and with none left drops the entry; OK sets it. OK with nothing typed leaves the page</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>My Radio</td>
+<td><code>dmr-id</code></td>
+<td>Settings &gt; My radio &gt; <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr> and name: the radio model above the rows DMR ID (<code>CONFIG_DMR</code>), Radio name, Boot 1 and Boot 2, from the codeplug. On DMR ID, digits type an ID as the channel editor's Own ID (2.1): the first digit replaces the shown one, a digit that would take it past <code>CODEPLUG_DMR_ID_MAX</code> (16776415) is refused, BACK takes the last digit back and with none typed leaves the ID as it was, OK writes it into the codeplug (with nothing typed, leaves it; 0 is refused: &quot;IDs start at 1&quot;). OK on a name row opens Text entry (2.1, <code>CONFIG_CHANNEL_EDIT</code>; without it &quot;Typing: not in this build&quot;); OK there writes the radio name (<code>codeplug_set_radio_name</code>) or the boot line (<code>codeplug_set_boot_text</code>) as a storage job (<code>ui_svc_name_set</code>), &quot;Saved&quot;</td>
+</tr>
+<tr>
+<td>Signaling Tone Steps</td>
+<td><code>sig-chain</code></td>
+<td>Settings &gt; Signaling tones &gt; Start / End / Idle steps (the title is Start Tone, End Tone or Idle Tone): the event's ten steps, a row each (&quot;Step 1&quot;, value &quot;1570 Hz  40 ms&quot;, or &quot;-&quot; when its length is 0), above them &quot;Length: n / 900 ms&quot; or &quot;Standard sound&quot; with no step. OK on a step opens its frequency (digits type it, Up / Down / the knob step it by 10, 0 to 3400), OK takes it and opens the length (0 to 900 ms in steps of 10), OK saves both; a value off the steps or out of the range is refused with what fits, BACK leaves the step as it was. A step that was off starts at 40 ms. A length of 0 ends the chain (<a href="radio-features.html">radio-features.md</a> 4.3)</td>
+</tr>
+<tr>
+<td>Data Services</td>
+<td><code>data-services</code></td>
+<td>Settings &gt; Connections &gt; Data services (<code>CONFIG_DMR_ARS</code> or <code>CONFIG_DMR_IP_GATEWAY</code>): the rows <abbr class="gl" tabindex="0" title="Automatic Registration Service: a radio tells a presence server it is on the air." data-more="../user/22-glossary.html#t-ars">ARS</abbr> server and IP gateway, each a DMR ID or Off, and above them &quot;Saved in the codeplug&quot; and the ARS state (Off, Registering, Registered, Refused, No answer). Digits type an ID as My Radio's DMR ID; 0 is Off. OK sets it as a storage job, &quot;Saved&quot;: the key goes into the codeplug's settings area when the area can be written, and the setting is saved as the radio's own (<a href="codeplug-settings.html">codeplug-settings.md</a> 5.2). It isn't a codeplug write that asks about another firmware's codeplug. Only a key that is present and can't be updated refuses it: &quot;Couldn't write the codeplug: not saved&quot;</td>
+</tr>
+<tr>
+<td>Language</td>
+<td><code>language</code></td>
+<td>Settings &gt; Display &gt; Language (the last row; its value is the language in use): every language the firmware has a catalog for, each in its own name (&quot;English&quot;, &quot;Español&quot;), the one in use marked &quot;In use&quot;. OK switches at once and goes back; a language this image was built without is dimmed and OK says &quot;Not in this build&quot; (2.5)</td>
+</tr>
+<tr>
+<td>About</td>
+<td><code>about</code></td>
+<td>Settings &gt; My radio &gt; About, and Settings &gt; Advanced &gt; About: a text page (<code>ui_draw_text_page</code>) in the smallest font, word-wrapped and never shortened, Up / Down / the knob scroll a line. <code>SF_NO_STRIP</code>: no status strip while the radio is idle (the owner's request); RX or TX draws it again, so the TX / RX pill still shows (P2)</td>
+</tr>
+<tr>
+<td>Message text</td>
+<td><code>message-read</code></td>
+<td>The Full message row, first in a message (<code>message</code>) whose text the screen shortens: the sender, the age and the whole text on a text page as About's (no dim labels: the sender wrote the colons). Whether the row is there is decided when the message opens, so the rows never shift under the cursor. PTT calls the sender</td>
+</tr>
+<tr>
+<td>Hardware</td>
+<td><code>hwopt</code></td>
+<td>Settings &gt; Advanced &gt; Hardware, only on a radio with hardware options (<code>hal/hal_hwopt.h</code>, such as a board revision) the board didn't detect (<code>HWOPT_ST_HIDDEN</code> rows are left out, and with none left the row is too): each option with the stored choice, &quot;Not set&quot; in the warning color while the board asks for it (<code>HWOPT_ST_ASK</code>). OK shows the next choice (marked <code>*</code> until stored), long OK stores it; the toast says &quot;Stored: restart to apply&quot; when a restart is still due (a board without a state hook: whenever the option applies from the next start-up). The simulator has no options, so the gallery has no picture of it</td>
+</tr>
+</tbody>
+</table></div>
+<p>The gallery (section 7) shows every screen at every display class.</p>
+<h3 id="21-channel-editor">2.1 Channel editor</h3>
+<p>The Channel screen edits a working copy of the channel. Nothing is written until the user saves.</p>
+<p>Rows by kind. A row with two values flips on OK; a row with more opens the spinner, so the knob picks the value
+instead of OK pressed once per step. The rows shown follow the copy's mode, so a mode change adds or removes rows at once.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>OK does</th>
+<th>Rows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Toggle</td>
+<td>the other value, at once</td>
+<td>Mode (steps through the modes, below; in a listen band it shows what the radio receives, AM or FM, and OK keeps it there with the band's receive-only toast), RX only, Bandwidth (FM), <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">Timeslot</abbr> (DMR), <abbr class="gl" tabindex="0" title="Voice-operated transmit." data-more="../user/22-glossary.html#t-vox">VOX</abbr> (FM), <abbr class="gl" tabindex="0" title="DMR radio to radio on one frequency, with no repeater. The standard calls it DMO." data-more="../dev/glossary.html#t-direct-mode">Direct mode</abbr> (DMR), Talk permit beeps (DMR), <abbr class="gl" tabindex="0" title="A short text, usually a callsign and name, sent along with DMR voice." data-more="../user/22-glossary.html#t-talker-alias">Talker alias</abbr> TS1 / TS2 (DMR), Scan, Battery saver</td>
+</tr>
+<tr>
+<td>Spin</td>
+<td>opens the spinner: the knob or Up / Down step through the values, shown as they change; digits type where the value is a number; OK keeps, BACK cancels (the quick-tile and Settings-number editor)</td>
+<td>Power (the board's levels, then &quot;Radio's&quot;), <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">Color code</abbr> (0-15), TX time-out (0 = &quot;Radio's&quot;, 15-495 s in steps of 15), RX <abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-ctcss">CTCSS</abbr>/DCS and TX CTCSS/DCS (None, the CTCSS (PL) tones, the <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-dcs">DCS</abbr> codes normal then inverted. Digits type a tone: CTCSS in Hz with the last digit the tenths, &quot;885&quot; 88.5, and a value under 60 Hz read as whole Hz, &quot;67&quot; 67.0; a leading 0 types a DCS code, &quot;023&quot; D023N, digits 8 and 9 refused. OK refuses a CTCSS tone outside 60.0-260.0 Hz and a DCS code not on the standard list; a step of the knob goes on from the typed tone. In a build without <code>CONFIG_SUBTONE</code>, such as a small-flash board's, the tone rows only show the stored tone and OK toasts &quot;Tones: not in this build&quot;)</td>
+</tr>
+<tr>
+<td>Direct entry</td>
+<td>opens an editor that takes digits</td>
+<td>RX and TX frequency (as VFO entry: MHz digits, then decimals, refused out of band as typed), Own ID (0 = &quot;Radio's&quot;, up to 16776415, <code>CODEPLUG_DMR_ID_MAX</code>)</td>
+</tr>
+<tr>
+<td>Text</td>
+<td>opens Text entry</td>
+<td>Name</td>
+</tr>
+<tr>
+<td>Pick</td>
+<td>opens the List picker</td>
+<td>TX contact, RX group list</td>
+</tr>
+<tr>
+<td>Read only</td>
+<td>nothing</td>
+<td>Number; Zones without <code>CONFIG_ZONE_EDIT</code></td>
+</tr>
+<tr>
+<td>Zones</td>
+<td>opens In Zones (<code>chzones</code>) with <code>CONFIG_ZONE_EDIT</code></td>
+<td>Zones (a stored channel only)</td>
+</tr>
+<tr>
+<td>Action</td>
+<td>runs it</td>
+<td>Tune to this ch, Share channel to... (with <code>CONFIG_ZONE_SHARE</code>: Share To for the stored channel; with unsaved changes &quot;Save first: hold OK&quot;), Save, Save as new channel</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>A changed row shows the temporary mark (<code>UI_ITEM_TEMP</code>, the dot Home uses).</li>
+<li>Long SELECT anywhere saves, as long SELECT makes a quick setting permanent. The Save row does the same.</li>
+<li>BACK with unsaved changes opens Unsaved Changes (<code>discard</code>): &quot;No, keep editing&quot; first (the default, P7), then &quot;Yes,
+discard&quot;. Long BACK still goes Home (P3) and drops the copy without asking.</li>
+<li>Save checks the copy first and names the first problem in a toast: an empty name, RX out of every band, TX out of
+the transmit bands on a channel that isn't RX only, a DMR channel whose RX takes no DMR (&quot;Receive only band: set
+FM&quot;), a DMR channel without a TX contact unless it is RX only (the contact is whom PTT calls).</li>
+<li>DMR goes wherever FM goes: any band of the table, receive-only ones included, but never a listen band (the air band
+on a radio with AM receive, the broadcast receiver's range). <code>radio_listen_band()</code> (<code>core/radio/radio_bands.h</code>) is
+the rule, the same one the VFO's mode change follows. A typed RX in a receive-only band makes the copy RX only, and FM
+only in a listen band. A DMR channel in a receive-only band, or on a radio with no transmit band, saves RX only.</li>
+<li>Save writes with <code>codeplug_set_channel</code> as a storage job (<code>ui_svc_write_channel</code>), like Save to channel, so the UI
+never waits for a flash erase. A failed write raises <code>UI_EV_SAVE_FAILED</code>. The radio core re-reads the channel in
+use when <code>codeplug_serial()</code> changes, so any save drops its <abbr class="gl" tabindex="0" title="A change that lasts until the channel changes or you press Back on Home. Hold OK to keep it." data-more="../user/22-glossary.html#t-temporary-change">temporary changes</abbr>, whichever channel was written.
+Whether the written channel is the one in use is decided when the job is posted, on the UI task.</li>
+<li>Save as new channel writes the copy to the lowest free number (<code>codeplug_free_channel</code>) and opens that channel.
+&quot;No free channel&quot; when all 1024 are used. The new channel is in no zone until its Zones row or a zone's Add channel puts it in one (2.2);
+Copy here makes a copy that goes in a zone as it is saved.</li>
+<li>New from current (the first row in Channels: New channel from current settings) fills a copy from what the radio uses now: the channel in use
+with its temporary changes, or the VFO. It opens as an unsaved channel at the lowest free number, named after the
+source with a number appended (or the frequency, from the VFO).</li>
+<li>OK on Mode steps FM, DMR, P25, NXDN, then the channel's own kind, and round to FM. A step is offered where it can
+run: DMR with <code>CONFIG_DMR</code>; P25 and NXDN where the radio runs them (<code>UI_FEAT_P25</code>, <code>UI_FEAT_NXDN</code>, as the VFO's
+mode tile), and not in a copy made by Copy here, which takes its source's tag and has no block of its own; a kind
+of its own (a trunked channel, <a href="channel-modes.html">channel-modes.md</a>) only on the channel opened as one, since its
+system can't be picked here. In a listen band only FM. The step back to the mode the channel was opened with
+restores it as it was, with its system and its NAC or RAN: a slip on the row is taken back by pressing on. A
+channel made P25 starts with NAC 293 both ways and squelch normal, one made NXDN with RAN 1 both ways at 9600 bit/s;
+either keeps its talk target and own ID, and Save writes it as a stored channel of the kind with that block. The
+row's changed mark counts the kind. Saving a stored channel of a kind as a plain one or one of another kind
+replaces its tag, so Save asks first on the <code>discard</code> screen, titled &quot;Save as FM?&quot; (or &quot;Save as DMR?&quot;; &quot;Unsaved
+Changes&quot; when it becomes another kind): the kind's name and &quot;settings will be removed&quot;, &quot;No, keep editing&quot; first (the default; BACK is the same), then &quot;Yes,
+save&quot;. Save as new channel takes nothing from the stored channel and isn't asked. Save as new channel and Copy here pass the source's number
+(<code>ui_svc_write_channel</code>'s <code>from</code>, <code>zone_op_t.from</code>), so the copy takes the source's tag (channel-modes.md 2.4).</li>
+<li>A P25 channel (a stored one, or New from current on a channel or VFO in P25) shows Mode as &quot;P25&quot; and only the rows
+P25 uses: Name, Number, Mode, NAC, RX, TX, Power, RX only, TX contact (the talk target), Own ID (the unit ID),
+Talkaround (On or Auto, the record's direct-mode bit), the TX time-out, Scan, Battery saver. Saving a plain channel in
+P25 writes a stored P25 channel from the radio's P25 settings (<a href="p25-codeplug.html">p25-codeplug.md</a> 2.3).</li>
+<li>An NXDN channel the same way: Mode &quot;NXDN&quot;, then RAN and Rate in place of NAC, no Talkaround. Own ID over 65519 is
+refused (&quot;NXDN IDs go up to 65519&quot;).</li>
+<li>NAC shows the received NAC in hex, then the sent one where they differ (&quot;F7E/293&quot;); RAN the same in decimal. OK opens
+it. NAC: digits type hex digits (up to 3; a fourth starts over), Up and Down step the last one through 0-F (so A-F
+are reached), with none typed they step the whole NAC; BACK takes a digit back. RAN: a spinner 0-63 that also takes
+digits, as Color code. OK sets both ways, except F7E (every NAC) and RAN 0 (every RAN), which set the received one
+only; F7F (a repeater's) is refused (&quot;F7F is for repeaters&quot;). Rate: OK toggles 9600 and 4800 bit/s. A changed NAC, RAN
+or rate is saved with the channel (<code>ui_svc_write_channel_air</code>): the record, then the block over its tag's, the rest
+of the tag kept (<code>p25_conv_save</code>, <code>nxdn_conv_save</code>), or for a plain channel in that mode the block given with the
+talk target and talkaround from the radio's settings. Copy here shows no NAC, RAN or Rate row: the copy takes its
+source's tag, and they are changed on the copy afterwards.</li>
+</ul>
+<p>Text entry supports both keypad conventions radios use: more presses of the same key (2: A B C 2 a b c) and <code>#</code> for
+the input mode, with BACK to delete (and to leave once the field is empty). In ABC and abc, keys 2-9 cycle their
+letters, the digit, then the letters in the other case; 1 cycles <code>. - / , ' &amp; ( ) @ _ ! ? 1</code>, 0 a space, 0, <code>+ # *</code>.
+The same key again within 1 s takes the next character; another key or the pause moves on. The title shows the mode
+(&quot;Name ABC&quot;). In 123 a digit types itself, and a held digit types itself in any mode (principles 3).
+CONTEXT (<code>#</code>) cycles ABC → 123 → abc (ABC first). BACK deletes the last character and, on an empty field, leaves
+without changing the name (the phone convention, the one exception to P4); QUICK (<code>*</code>) and Left delete too, and in
+text entry QUICK doesn't open quick settings. OK keeps the name. Without a keypad (class F): Up / Down step the last character (down past the space deletes it), OK adds the next
+one, long OK keeps. Names stop at <code>CODEPLUG_NAME_LEN</code> (16).</p>
+<p>Typed rows (frequencies, the ID): BACK takes back the last digit, and with none typed closes the editor; OK keeps what
+is typed, and with nothing typed leaves the row as it was. A new RX frequency moves TX with it, keeping a repeater's
+offset. Where that offset would put TX outside every band, TX becomes the new RX (simplex). Own ID refuses a digit
+that would take it past 16776415 (the IDs above it are the network's: gateways, <abbr class="gl" tabindex="0" title="DMR talkgroup 16777215, heard by every radio on the slot." data-more="../user/22-glossary.html#t-all-call">all call</abbr>), and takes at most 8
+digits.</p>
+<h3 id="22-zone-editor">2.2 Zone editor</h3>
+<p>With <code>CONFIG_ZONE_EDIT</code> a zone's list (<code>zone</code>) edits the zone. Every change is written at once, as a storage job
+(<code>ui_svc_zone_edit</code>), so there is nothing to save or discard and the UI never waits for a flash erase. Changes made
+faster than the flash takes them (a digit pressed again in Channel actions) wait in a queue of 4 and are written in
+order by one job; a fifth is refused. The job runs <code>zone_edit_apply</code> (<code>core/codeplug/zone_edit.h</code>), the same layer an
+import uses. A failed change raises <code>UI_EV_SAVE_FAILED</code> with the reason (&quot;Zone full&quot;, &quot;No room for another zone&quot;,
+&quot;Already at the end&quot;, &quot;That zone is gone&quot;, &quot;That channel is gone&quot;, &quot;Couldn't write the codeplug&quot;) and drops the changes
+queued after it, since they were made on a list that didn't happen. A change is checked whole before anything is
+written: a new zone with a missing or repeated channel is refused, and a Copy here whose zone can't be written deletes
+the channel it wrote. The lists read the codeplug again when <code>codeplug_serial()</code> changes and the queue is empty, so
+they show the change within a fraction of a second.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Where</th>
+<th>Row or key</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A zone's list</td>
+<td>&quot;Add channel&quot; (first row)</td>
+<td>opens Add channel (<code>zpick</code>): every stored channel the zone doesn't hold, number and name, T9 filtered. OK inserts it after the channel in use when this is the zone in use, else at the end</td>
+</tr>
+<tr>
+<td></td>
+<td>a channel, OK</td>
+<td>goes to it (as before)</td>
+</tr>
+<tr>
+<td></td>
+<td>a channel, CONTEXT (long OK without CONTEXT)</td>
+<td>opens Channel actions (<code>zchannel</code>) on it</td>
+</tr>
+<tr>
+<td></td>
+<td>&quot;Zone options&quot; (last row)</td>
+<td>opens Zone options (<code>zoneedit</code>)</td>
+</tr>
+<tr>
+<td>Zones</td>
+<td>&quot;Create New Zone&quot; (last row)</td>
+<td>Text entry on the name; OK writes an empty zone with it (<code>ZONE_OP_NEW</code>, the lowest free slot, as Copy as new zone), &quot;Added <name>&quot;, and Zones focuses it once written. An empty name makes none. Its list then starts with Add channel</td>
+</tr>
+<tr>
+<td>Channel actions</td>
+<td>1 Move up, 2 Move down</td>
+<td>swaps it with its neighbor. The menu stays open, so the digit again moves it on; the toast gives the position (&quot;Position 4 of 16&quot;), and &quot;Already first&quot; / &quot;Already last&quot; at the ends</td>
+</tr>
+<tr>
+<td></td>
+<td>3 Copy here</td>
+<td>the channel editor (2.1) on an unsaved copy at the lowest free number, named with &quot; 2&quot; appended (a copy of the channel in use keeps its temporary changes). Save writes it and inserts it after its source in one job (<code>ZONE_OP_ADD_NEW</code>); BACK asks as for any unsaved channel. Refused first with &quot;No free channel&quot; or &quot;Zone full&quot;</td>
+</tr>
+<tr>
+<td></td>
+<td>4 Edit channel</td>
+<td>the channel editor on the channel</td>
+</tr>
+<tr>
+<td></td>
+<td>5 Share channel to...</td>
+<td>with <code>CONFIG_ZONE_SHARE</code>: Share To (<code>zone_share_to</code>) for this channel (<a href="zone-share.html">zone-share.md</a> 7). Waits while a zone change is still being saved (&quot;Saving the zone: try again&quot;): the send reads the stored zone</td>
+</tr>
+<tr>
+<td></td>
+<td>6 Remove from zone (5 without zone sharing)</td>
+<td>takes it out of this zone at once, &quot;Removed from <zone>&quot;. The channel stays in Channels and any other zone</td>
+</tr>
+<tr>
+<td>Zone options</td>
+<td>1 Rename</td>
+<td>text entry on the zone's name (2.1); OK writes it, an empty name is refused</td>
+</tr>
+<tr>
+<td></td>
+<td>2 Copy as new zone</td>
+<td>a new zone with the same channels, named with &quot; 2&quot; appended, then back to Zones</td>
+</tr>
+<tr>
+<td></td>
+<td>3 Share zone to...</td>
+<td>with <code>CONFIG_ZONE_SHARE</code>: Share To (<code>zone_share_to</code>) for the whole zone (zone-share.md 7)</td>
+</tr>
+<tr>
+<td></td>
+<td>4 Delete zone (3 without zone sharing)</td>
+<td>asks first (<code>zonedel</code>): &quot;Delete <name>? Channels stay.&quot; with &quot;No, keep it&quot; focused (P7). Yes deletes it and returns to Zones</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>
+<p>Channel actions and Edit channel replace their menu on the stack, so the deepest path (Home, Hub, Zones, the zone,
+the channel editor, text entry) fits the six frames.</p>
+</li>
+<li>
+<p>A zone holds at most <code>codeplug_zone_capacity()</code> channels (80, or 16 with the old layout) and a channel once; there
+are at most <code>CODEPLUG_ZONES_MAX</code> zones.</p>
+</li>
+<li>
+<p>With no zones stored the radio shows one zone, &quot;All channels&quot;, that holds every channel. The first change stores it
+as a real zone 0, so the user keeps what they saw; it can't be deleted until then (&quot;It holds every channel&quot;).</p>
+</li>
+<li>
+<p>A new zone takes the lowest free slot, so it can come ahead of zones already there, and deleting a zone moves the
+ones after it up. <code>zone_edit.c</code> logs each such shift (<code>zone_edit_shifts</code>, the last <code>ZONE_SHIFT_LOG</code> = 8 kept), and
+every holder of a zone index maps it with <code>zone_edit_map</code> once no zone write is under way (<code>zone_edit_busy</code>). Zone
+sharing's import adds its zones through the same layer and is followed the same way, editor or not
+(<code>CONFIG_ZONE_WRITE</code>). A reader more than 8 shifts behind keeps
+its indexes.</p>
+</li>
+<li>
+<p>The settings hold zone indexes too (the zone in use, the roaming zones). An add or delete that moves indexes is
+noted in the settings before the codeplug write, and the saved indexes are moved in the settings record that clears
+the note (<code>core/codeplug/zone_settle.c</code>). After a power cut anywhere in between, the next power on finishes the
+note from the zone list (<code>zone_edit_settle</code>), so the radio comes back on the same zone. The radio core's own saves
+leave the zone fields alone until it has followed.</p>
+</li>
+<li>
+<p>What follows a moved zone, and what happens when the zone itself was deleted:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Holder</th>
+<th>Moved</th>
+<th>Deleted</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The zone in use (radio core, saved as the settings' zone)</td>
+<td>follows; the radio stays on its channel</td>
+<td>the zone that took its index (the last zone when it was the last), on the same channel if that zone holds it, else its first usable channel</td>
+</tr>
+<tr>
+<td>Dual watch's channels (radio core and <code>ui_dual.c</code>)</td>
+<td>follow</td>
+<td>the pane's channel is found by number in another zone; when no zone holds it the watch ends (&quot;<abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="../user/22-glossary.html#t-dual-watch">Dual watch</abbr> off&quot;)</td>
+</tr>
+<tr>
+<td>The last B and A kept while the watch is off</td>
+<td>found again by channel number</td>
+<td>found again by channel number</td>
+</tr>
+<tr>
+<td>Roaming zone flags (settings <code>roam_zones</code>)</td>
+<td>follow, saved again</td>
+<td>the flag is cleared</td>
+</tr>
+<tr>
+<td>Open screens: Zones' focus, a zone's list, Zone options, Channel actions</td>
+<td>follow</td>
+<td>the zone's screens close, &quot;That zone was deleted&quot;</td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<p>Saved references by channel number (dual watch's B setting, scan lists) need no change.</p>
+</li>
+<li>
+<p>A zone scan ends when the zone in use's channel list changes under it (its skipped channels are kept by position); a
+rename doesn't end it.</p>
+</li>
+<li>
+<p>Removing the channel in use from the zone in use moves the radio to the next usable channel in the zone. A move in
+the zone in use keeps the radio on its channel at its new position.</p>
+</li>
+<li>
+<p>The <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>'s <code>zone.edits</code> counts the zone edits written since start-up and <code>zone.edit_last</code> is the last result
+(<code>zone_edit_result_t</code>, 0 = OK).</p>
+</li>
+</ul>
+<h3 id="23-gps-screen">2.3 GPS screen</h3>
+<p>With <code>CONFIG_GPS_SKY</code>, Tools &gt; Position (<code>gps</code>, <code>ui_gps.c</code>) has four pages, three on a panel at least <code>UI_TALL_PX</code> tall
+(Status takes in Grid there). Up and Down (the knob) turn them and wrap; the digits go to one. It opens on Status. Every draw reads <code>ui_svc_position</code> and the satellites one at a time
+(<code>ui_svc_gps_sat</code>), so the screen keeps one byte, its page.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Shows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Status</td>
+<td>the fix in large type (3D Fix, 2D Fix, or Fix when no GSA gave the mode, in the RX color; Searching, No signal in the warning color), then as many rows as fit: satellites used and seen, latitude and longitude (6 decimals, <code>sb_coord</code>), altitude, speed with a compass point, HDOP with good / fair / poor, UTC (with a fix only: it is the fix's time). On a tall panel, with a fix, also the locator right of the fix and each coordinate in degrees, minutes, seconds under it, dim</td>
+</tr>
+<tr>
+<td>Sky</td>
+<td>a polar plot, north up: the horizon and 45 degree rings, each satellite with a known position as a dot, filled when the fix uses it, hollow when not, gray when it has no signal. Labeled (G12, C23) where the plot is 80 px or wider: right of the dot, else left, and left out where it would touch another dot or label. A legend names each system heard with used / seen: full names where they fit, else GPS, GLO, GAL, BDS, QZS. Beside the plot, or under it in two columns on a tall panel</td>
+</tr>
+<tr>
+<td>Signal</td>
+<td>satellites in the fix of those seen, then one bar per satellite with a signal (<abbr class="gl" tabindex="0" title="Signal to noise ratio." data-more="../dev/glossary.html#t-snr">SNR</abbr> above 0), its height the SNR (50 dB-Hz full), filled when used. The satellite numbers under the bars: one row where two digits fit a bar, else two rows taking turns</td>
+</tr>
+<tr>
+<td>Grid</td>
+<td>the Maidenhead locator (6 characters) large, then the position in degrees, minutes, seconds and in decimal degrees (6 decimals). &quot;No fix yet&quot; without a fix. Not on a tall panel</td>
+</tr>
+</tbody>
+</table></div>
+<p>Colors name the system (GPS blue, GLONASS red, Galileo yellow, BeiDou green, QZSS purple; darker on the light theme),
+and the legend says them in words (P5). A monochrome panel draws everything in ink. Without a GPS, or with it off, the
+screen says so and points to Settings &gt; Location. Without <code>CONFIG_GPS_SKY</code> the same Tools row opens a page of text
+(fix, satellites, position, altitude).</p>
+<h3 id="24-contact-editor">2.4 Contact editor</h3>
+<p>With <code>CONFIG_CONTACT_EDIT</code> (DMR and the channel editor), New Contact (<code>contactedit</code>) makes a contact on the radio. It
+opens from:</p>
+<ul>
+<li>Contacts: New contact, the first row (before the contacts, so 1024 of them never push it out of reach, and a typed
+filter, which keeps the first 128 matches, keeps it when it matches). The editor starts empty, on a talkgroup. With the editor Contacts is never empty; a filter that matches nothing says &quot;No contact
+matches&quot;.</li>
+<li>Find: &quot;Create contact 3100&quot;, the last row for a typed number no contact has as its ID. Up to 6 digits start it as a
+talkgroup, 7 and more (a DMR ID) as a person.</li>
+<li>Actions: Save as contact (item 7 for a person, item 4 for a talkgroup), for a target that isn't a contact. Its ID,
+type and name come with it.</li>
+</ul>
+<p>The name starts as the target's name, else &quot;TG 3100&quot; for a talkgroup or the ID for a person.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Row</th>
+<th>OK does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>opens Text entry (2.1)</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>opens an editor that takes digits, as the channel editor's Own ID: the first digit starts a new ID, a digit past 16777214 is refused, BACK takes back a digit and with none typed closes it, OK keeps (nothing typed: unchanged)</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>Talkgroup / Private, flips</td>
+</tr>
+<tr>
+<td>Timeslot</td>
+<td>Channel's / TS 1 / TS 2: the contact's timeslot override</td>
+</tr>
+<tr>
+<td>Save</td>
+<td>saves</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>Long SELECT anywhere saves. BACK opens Unsaved Changes (&quot;Discard this new contact?&quot;), &quot;No, keep editing&quot; first.</li>
+<li>Save checks first and names the first problem in a toast: an empty name, a private ID past 16776415
+(<code>CODEPLUG_DMR_ID_MAX</code>), a contact with the same ID and type (&quot;Already a contact: Q1AAA Joe&quot;), no free contact
+(&quot;No room for more contacts&quot;, 1024).</li>
+<li>Save writes the lowest free contact with <code>codeplug_set_contact</code> as a storage job (<code>ui_svc_write_contact</code>). A failed
+write raises <code>UI_EV_SAVE_FAILED</code>. The radio core's name cache follows <code>codeplug_serial()</code>.</li>
+<li>After a save the editor closes. From actions they show again, &quot;In contacts&quot; and under the new name; from Contacts
+the list shows again and lists the contact once the job has written it; from Find the radio goes Home, since Find's
+rows are the number's.</li>
+<li>Editing or deleting a stored contact is not built yet (#74). A <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> write afterwards replaces contacts made on the
+radio.</li>
+</ul>
+<h3 id="25-languages">2.5 Languages</h3>
+<p>The UI's text is English in the source, marked for translation with a key (<code>core/ui/i18n.h</code>): <code>TR(KEY, &quot;...&quot;)</code>
+returns the text in the language in use, <code>TRN(KEY, &quot;...&quot;)</code> is a <code>tr_id_t</code> for a static table's entry that is
+translated where it is shown (screen titles, hints and empty texts are translated in <code>list_draw</code>), and <code>TRX(KEY, &quot;...&quot;)</code>
+one for table text no catalog translates. With a language built a <code>tr_id_t</code> is the key's number and a lookup reads
+the language's table at it; a key without a translation shows its English, from the English table. Without any
+language built it is the English itself. Anything that isn't marked (names, numbers, the standard abbreviations) is
+shown as it is. The tables are built by <code>tools/i18n.py</code> from the marks and <code>core/ui/lang/&lt;code&gt;.po</code>, an entry per key
+(<a href="../dev/translating.html">translating.md</a>).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Rule</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Which languages</td>
+<td>Every catalog is listed in Settings &gt; Display &gt; Language. Each has a <abbr class="gl" tabindex="0" title="A CONFIG_ option that turns a feature&#x27;s code in or out of the build." data-more="../build-config.html">build switch</abbr>, <code>CONFIG_LANG_&lt;CODE&gt;</code> (section 5); one built without is dimmed</td>
+</tr>
+<tr>
+<td>Switching</td>
+<td>At once, no restart; nothing caches translated text. Stored in <code>settings_t.lang</code> (<a href="settings-store.html">settings-store.md</a> 3); a stored language the image lacks reads as English</td>
+</tr>
+<tr>
+<td>Default</td>
+<td>Until the user picks one (the setting empty, also after a factory reset), the build's default: the language whose <code>CONFIG_LANG_DEFAULT_&lt;CODE&gt;</code> is on, else English. Picking English stores <code>en</code>, so it stays English in any build. The web flasher sets the switch from its Radio language choice</td>
+</tr>
+<tr>
+<td>Characters</td>
+<td>One byte a character: <abbr class="gl" tabindex="0" title="The 7-bit character set of plain text." data-more="../dev/glossary.html#t-ascii">ASCII</abbr>, the glyph bytes of <code>font.h</code>, and Latin-1 0xA0..0xFF. The fonts carry the Latin-1 glyphs only in a build with a language (<code>CONFIG_LANG_ANY</code>); the 5x8 font has none. Without them a Latin-1 byte is drawn as its letter without the accent (&quot;Espanol&quot;), so names stay readable</td>
+</tr>
+<tr>
+<td>CJK languages</td>
+<td>A language whose script the fonts have no glyph for (Chinese, <code>CONFIG_LANG_ZH</code>) writes its catalog in UTF-8 instead, marked by an <code>X-Glyphs: utf8</code> header. The text layer decodes a character at a time (<code>gfx_utf8_next</code>), draws it from the CJK face (<code>core/ui/cjk_font_data.c</code>, one 16x16 glyph per character the catalogs use, built by <code>tools/cjkfont.py</code>), and advances 16 px; Latin and digits in the same line keep their font's cell. The 16 px cell is the height of the 8x16 font: in a larger font it sits at the bottom of the cell, on the Latin baseline, and in the 6x12 font its top 4 rows are clipped. A character with no glyph is a box. Text is cut at the end, whole characters only (<code>gfx_text_fit</code>), and a line may wrap after any CJK character (<code>wrap_line</code>): neither ever splits a character</td>
+</tr>
+<tr>
+<td>Lengths</td>
+<td>A translation may be longer than its English. Text goes into fixed buffers through <code>str_copy</code> or <code>sb_str</code>, which cut it; a row too long for the screen is shortened as any row is (<code>gfx_text_fit</code>, text alternates)</td>
+</tr>
+<tr>
+<td>Not translated</td>
+<td>Search words of the settings (Find matches the English words and the shown name), debug link names and values, protocol text sent off the radio (<abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr>, the debug link). The canned text messages are the exception: sent in the language in use</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="3-key-meanings">3. Key meanings</h2>
+<p>The same on every screen (information-architecture.md, key maps 7.1 to 7.5):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Press</th>
+<th>Long press</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BACK</td>
+<td>up one level, or clear one thing on Home (entry, banner, scan, reply, <abbr class="gl" tabindex="0" title="Playing every talkgroup on the timeslot (promiscuous mode; &quot;hear all&quot; in older RadioFoundry builds)." data-more="../user/22-glossary.html#t-digital-monitor">digital monitor</abbr>, <abbr class="gl" tabindex="0" title="A change that lasts until the channel changes or you press Back on Home. Hold OK to keep it." data-more="../user/22-glossary.html#t-temporary-change">temporary change</abbr>)</td>
+<td>Home</td>
+</tr>
+<tr>
+<td>SELECT</td>
+<td>open / choose</td>
+<td>the alternative (save, permanent, Quick on radios without a QUICK key)</td>
+</tr>
+<tr>
+<td>QUICK</td>
+<td>Quick settings (closes them again)</td>
+<td>lock / unlock the keys</td>
+</tr>
+<tr>
+<td>CONTEXT</td>
+<td>the focused item's actions; a banner's target while one is up</td>
+<td>Recent</td>
+</tr>
+<tr>
+<td>TALK_TARGET</td>
+<td>the <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr> picker</td>
+<td></td>
+</tr>
+<tr>
+<td>digits</td>
+<td>Find on Home, numbered rows in lists, T9 letters in filters; nothing while PTT keys the radio; on FM the input task gives them, * and # to the radio core as <abbr class="gl" tabindex="0" title="Dual tone multi frequency: the touch tones a keypad sends, in the audio." data-more="../user/22-glossary.html#t-dtmf">DTMF</abbr> and the UI never sees them (<code>radio-features.md</code> 3.7)</td>
+<td>speed dial (a toast for now); nothing while PTT keys the radio</td>
+</tr>
+<tr>
+<td>PTT</td>
+<td>talk to the focused person or <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr> once (<abbr class="gl" tabindex="0" title="A talk target used for one call and its reply window." data-more="../user/22-glossary.html#t-one-shot">one-shot</abbr>), else the channel's target</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Radios without some keys fall back as the key maps say (few-key map F in the tests). Up / Down on Home change the
+channel (Settings &gt; Keys &gt; Up/Down on Home: or the zone, or on a <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> channel the talk target, stepping through the
+channel's contact and its <abbr class="gl" tabindex="0" title="The talkgroups a channel listens to. The codeplug calls it the RX group list." data-more="../user/22-glossary.html#t-listen-list">listen list</abbr>; the arrow keys only: the channel knob, ENC_STEP, always steps the channel or the
+<abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> frequency, #25), USER_1 / USER_4 the zone, USER_3 the power, long USER_3 speaks the status (a
+toast until voice prompts exist).</p>
+<p>A channel switch read as a position (<code>hal_input_t.position</code>, <code>drivers/input/chswitch</code>) isn't a step: the input task
+selects that position in the zone (<code>radio_req_zone_pos</code>), at power-on too, so the channel is always the one the knob
+points at, and again after a zone change (a new zone starts on its first channel). It asks again until the radio is
+on it, so a turn during a transmission, in <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> mode or before the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> is loaded takes effect afterward; a
+position past the end of the zone changes nothing. Once on it, the knob is left alone until it moves or the zone
+changes, so a scan stands. Its position is <code>input.switch_pos</code> in the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> view
+(-1: no switch, or not settled). A radio's hardware page says which kind of knob it has.</p>
+<p>VFO_TOGGLE goes between the channel and the VFO, &quot;VFO&quot; and &quot;Back to channels&quot; (in <abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="../user/22-glossary.html#t-dual-watch">dual watch</abbr>, on the selected side).
+It is the VFO / MR key's short press, and any side key can send it with the VFO/Channel function (3.1). The VFO / MR
+key's long press, COPY_VFO, copies the channel to the VFO (<code>dmr-voice.md</code> 2.2). A board with a dedicated VFO/MR key
+gives its long press to COPY_VFO, and <code>keyassignTest</code> checks every board's key map for it. That key is a key map entry
+with fixed meanings (not one of the <code>board.side_keys</code>), so Settings &gt; Keys doesn't change it.</p>
+<p>EMERGENCY is hold-to-activate (principles P2): a key whose long action is EMERGENCY needs <code>INPUT_HOLD_MS</code> (1.5 s)
+whatever the long press time (<code>input_long_threshold</code>, core/input). Which key carries it is the board's key map
+(<code>board.keymap</code>): for example a side key's long action in builds with <code>CONFIG_DMR_EMERGENCY</code> (else long USER_3 as above), or a dedicated SOS key; the short press stays USER_3. A hold toggles:
+&quot;EMERGENCY sent: hold again to cancel&quot;, &quot;Emergency canceled&quot; (<code>ui_svc_emergency_active</code> reads the radio core's state,
+so a cancel from elsewhere counts). A board whose key map has no EMERGENCY entry has no emergency key (for example a board whose third side key isn't located yet).</p>
+<p>PTT while the keys are locked works unless Settings &gt; Key lock &gt; PTT when locked is off: the UI then tells the input
+layer (<code>ui_svc_ptt_block</code>, <code>input_set_ptt_block</code>), which keeps PTT DOWN from the radio core (UP always passes), and the
+UI gives an error beep and &quot;PTT is off while locked: hold * to unlock&quot;.
+The same setting blocks Tone burst DOWN; UP always passes so locking cannot prevent an existing burst from ending.</p>
+<p>The state pill follows <code>radio_view_t.state</code>. <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> also shows while the monitor holds an FM squelch open (MON stays beside
+the mode). DMR's monitor key is digital monitor and leaves it IDLE.</p>
+<p>On DMR the pill shows <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> whenever the stack is on the air, with or without PTT. Data burst lists (<abbr class="gl" tabindex="0" title="Automatic Registration Service: a radio tells a presence server it is on the air." data-more="../user/22-glossary.html#t-ars">ARS</abbr>, <abbr class="gl" tabindex="0" title="Short message service: text messages. On DMR, short data carries them." data-more="../user/22-glossary.html#t-sms">SMS</abbr>, a
+position, a <abbr class="gl" tabindex="0" title="A DMR page that makes another radio ring." data-more="../user/22-glossary.html#t-call-alert">call alert</abbr> or its <abbr class="gl" tabindex="0" title="Acknowledgment: the reply that says a message arrived." data-more="../dev/glossary.html#t-ack">ACK</abbr>, the IP gateway, a roaming probe) set <code>RS_TX</code> with <code>RDMR_TX_DATA</code> (<code>dmr_follow</code>).
+Home keeps its own screen for them, and the activity line says SENDING instead of TALKING (in dual watch, &quot;SENDING on
+A&quot;). The pill shows RX while data or <abbr class="gl" tabindex="0" title="Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control." data-more="dmr-data.html">CSBK</abbr> bursts arrive on our slot and <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr>, until the call fade time
+(<code>DMR_CALL_FADE_MS</code>) after the last one, even with no call running (<code>dmr_call.c</code> <code>data_receiving</code>). The green <abbr class="gl" tabindex="0" title="Light-emitting diode: the radio&#x27;s status light." data-more="../user/22-glossary.html#t-led">LED</abbr>
+stays for a call being played.</p>
+<p>Small displays (under 200 px tall) merge a screen's title into the status strip: the state pill shows only when not
+idle, the bars and the battery (icon and percent) give way, so the title is centered across the whole row; the lock
+and the unread count stay. Home shows the battery, and the low battery banner warns on any screen. On a radio without
+a battery, <code>CAP_NO_BATTERY</code>, the battery is drawn nowhere, and Tools &gt; Battery, Settings &gt; Power saving &gt; Battery saver and Low battery warning are left
+out of their lists, so the other Tools rows move up), and only the name part of the title is
+shortened with a middle ellipsis (the prefix stays whole: &quot;Quick COUNTY DMR&quot;, not &quot;Quick ..tions&quot;).</p>
+<h3 id="31-key-assignment">3.1 Key assignment</h3>
+<p>Switch: <code>CONFIG_KEY_ASSIGN</code>. The board lists the keys a user may reassign (<code>board.side_keys</code>, <code>side_key_count</code> of them,
+up to 9) and their names (<code>board.side_key_names</code>, as printed on the radio; without it the rows say &quot;Key 1&quot;, &quot;Key 2&quot;,
+...). The list holds every key with a function of its own: side keys first, numbered SK1, SK2, ... from the top, then
+any others. Keys the menus need (OK, Back, the arrows, digits, QUICK, CONTEXT, PTT, volume) are not on it. A key's
+position in the list is its role. Each role has a press and a long press, and each takes one function:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Function (<code>keyfn_t</code>)</th>
+<th>Action sent</th>
+<th style="text-align:center">Press</th>
+<th style="text-align:center">Long press</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default (0)</td>
+<td>what the board's key map gives</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td>Nothing (1)</td>
+<td>none</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td>Monitor (2)</td>
+<td>MONITOR as raw edges; the radio core picks by mode (#19): FM, the squelch open while held; DMR, a short press toggles digital monitor (the hear all latch) on its release</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">no (but the key's hold slot works with it: on DMR channels a hold runs the hold function and doesn't toggle; on FM holding is the squelch break and the UI drops it)</td>
+</tr>
+<tr>
+<td>Talk target (3)</td>
+<td>TALK_TARGET</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td>Power level (4)</td>
+<td>POWER: the next level</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td>Next zone (5), Prev zone (6)</td>
+<td>ZONE_UP, ZONE_DOWN</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td>Scan (7)</td>
+<td>SCAN: on / off</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td>Emergency (8)</td>
+<td>EMERGENCY, hold to activate (1.5 s)</td>
+<td style="text-align:center">no: P2</td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td>(9)</td>
+<td>retired (was Hear all / Digital monitor): reads as Default. The Monitor function toggles digital monitor on DMR (#19)</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td>(10)</td>
+<td>retired (was Monitor on/off): reads as Default. The Monitor function does both jobs (#19)</td>
+<td style="text-align:center">no</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td>Key lock (11)</td>
+<td>LOCK: lock, and unlock while locked (as long QUICK)</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td>Call back (12)</td>
+<td>CALL_BACK: talk for now to the last call heard, its talkgroup or, for a <abbr class="gl" tabindex="0" title="A DMR call to one radio." data-more="../user/22-glossary.html#t-private-call">private call</abbr>, its caller (<code>dmr-voice.md</code> 2)</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td>Home zone (13)</td>
+<td>HOME_ZONE: the codeplug's first zone (the <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr>'s zone order picks it; no setting, the settings record has no byte to spare). Leaves the VFO; &quot;Home zone: <name>&quot;</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td>Copy to VFO (14)</td>
+<td>COPY_VFO: copy the channel in effect to the VFO and open it (<code>dmr-voice.md</code> 2.2). In the VFO: &quot;Already in VFO&quot;. A channel the VFO can't hold gets a &quot;VFO: ...&quot; toast and nothing changes. Offered in builds with a VFO (<code>CONFIG_VFO_FM</code> or <code>CONFIG_VFO_DMR</code>)</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td>VFO/Channel (17)</td>
+<td>VFO_TOGGLE: between the channel and the VFO, as a VFO / MR key does (&quot;VFO&quot;, &quot;Back to channels&quot;; in dual watch, the selected side). Offered in builds with a VFO</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td>Tone burst (18)</td>
+<td>TONE_BURST raw edges: FM repeater access, at least 1 s; offered with <code>CONFIG_FM_TX_TONES</code></td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td>TG name / number (19)</td>
+<td>TALK_LABEL: Home's talk line puts the talkgroup's name first, or back to its number first; the same as Settings &gt; Display &gt; Talkgroup name first, and saved. Toast &quot;Talkgroup name first&quot; / &quot;Talkgroup number first&quot;. Offered in builds with DMR</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+</tr>
+</tbody>
+</table></div>
+<p>POWER, ZONE_UP, ZONE_DOWN, SCAN, CALL_BACK, HOME_ZONE, COPY_VFO, VFO_TOGGLE and TALK_LABEL do the same on a press and a long
+press and work on any screen. LOCK also gets through while the keys are locked, to unlock them. TALK_TARGET opens the picker on
+a long press too. A monitor key given a press of its own loses its hold: its long press is nothing until set. A Monitor press with a hold
+function: the input engine sends DOWN, the LONG (value 1) at the threshold and UP (value 1 when the LONG ran); the
+radio core then doesn't toggle digital monitor (RREQ_MONITOR 2), and the UI drops the LONG on FM.</p>
+<p>Tone burst uses both edges of the press key and suppresses its long-press function. A tap sends 1 s; a longer hold
+sends until release. Timing, PTT interaction and refusals are in <a href="radio-features.html#33-roger-beep-and-1750-hz-burst-config_fm_tx_tones">radio-features.md</a>.</p>
+<p>Storage: the open-firmware codeplug's ten quick-key slots (<abbr class="gl" tabindex="0" title="Electrically erasable programmable read-only memory: a small chip that keeps settings." data-more="../dev/glossary.html#t-eeprom">EEPROM</abbr> 0x7524, 2 bytes LE each,
+<code>open-firmware-cps.md</code> 7.2). Slot 0 is the marker 0x4B02 (&quot;K&quot;, layout 2); slot 1 + k is role k, its press in the low
+byte and its long press in the high byte, for 9 roles. Layout 1 (marker 0x4B01: slot 1 + 2k role k's press, slot 2 + 2k
+its long press, 3 roles) is still read; the first change rewrites it as layout 2 with its roles kept. Without either
+marker the slots are another firmware's and every key is the board's; the first change clears them and writes the
+marker. A value that isn't a <code>keyfn_t</code>, or isn't allowed in its
+slot (monitor on a long press, emergency on a press), reads as Default. The values are append-only (gotchas 9.11).</p>
+<p><strong>Home keys.</strong> A board may also list keys the menus need but that are printed as programmable keys (arrows printed P1,
+P2): <code>board.home_keys</code>, <code>home_key_names</code>, <code>home_key_count</code>, up to <code>KEYASSIGN_HOME_KEYS</code> (4). Their roles follow the
+side keys (<code>side_key_count + i</code>), in the same slots and Settings &gt; Keys rows. A home key with a function in either slot
+sends <code>ACT_HOME_KEY_1 + i</code> on a press and a long press (<code>keyassign_build_home</code>, repeat kept). The UI turns that back
+first thing (<code>ui_svc_home_key</code>, <code>keyassign_home_event</code>): on Home (the bottom of the stack, no frequency being typed)
+the slot's function, or the key map's own action for Default, nothing for Nothing, and a long press's repeats send
+nothing once it has a function; on any other screen the key map's own action, so the arrows keep working in the menus.
+Monitor and Tone burst need raw edges, and Emergency the 1.5 s hold the input engine gives only a key whose long action
+is Emergency (a home key's long action is its home key action, so its hold would fire at the ordinary long press). None
+of the three can go on a home key (<code>keyassign_home_allowed</code>): Settings skips them and a slot holding one reads as
+Default. Settings shows Default as what the key does on Home (&quot;Prev zone&quot;, &quot;Next zone&quot;).
+With dual watch on, Home's arrows pick A or B (a home key left at Default still does).</p>
+<p>Both places edit the same slots, so there is one copy:</p>
+<ul>
+<li>Settings &gt; Keys (rows SK1, SK1 hold, SK2, ...: a pair per role, named by <code>side_key_names</code>): the change applies at once
+(<code>keyassign_build</code>, then <code>input_set_keymap</code>, which the input task takes when no key is held) and a storage job
+writes the slots. A failed write shows &quot;Couldn't save the keys: for now only&quot;. Rows past <code>side_key_count + home_key_count</code> are left
+out of the list.</li>
+<li>The codeplug (a CPS or <abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="tftp.html">TFTP</abbr> write): <code>ui_svc_keys_poll</code> reads the slots again when <code>codeplug_serial()</code> changes and
+rebuilds the key map. <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr> has no editor for them; a CPS that writes back an old image brings back its keys.</li>
+</ul>
+<h2 id="4-data-other-packages-own">4. Data other packages own</h2>
+<p>The UI asks through <code>ui_svc.h</code>. Each call has a weak definition in <code>ui_svc_stub.c</code> that behaves as &quot;not in this
+build&quot; (screens dim what isn't there and say why on SELECT); the owning package's strong definition replaces it at
+link time. <code>ui_svc_features()</code> ORs the bits each package reports.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Calls</th>
+<th>Owner</th>
+<th>State in this branch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ui_svc_talk_to</code> temporary / default</td>
+<td>dmr-voice (radio core)</td>
+<td><code>ui_svc_radio.c</code>: <code>radio_req_dmr_target</code>, <code>radio_req_dmr_target_clear</code></td>
+</tr>
+<tr>
+<td><code>ui_svc_talk_to</code> permanent (<code>ui_svc_save_talk_target</code>), <code>ui_svc_save_channel</code>, <code>ui_svc_setting_get/set</code>, <code>ui_svc_feat_storage</code></td>
+<td>storage-cps</td>
+<td><code>ui_svc_storage.c</code>: the channel is rewritten with <code>codeplug_set_channel</code> (power, bandwidth, tones; a temporary squelch goes to the default squelch preference); settings are read from where they are kept: the radio core's settings (<code>radio_get_settings</code>, saved by the radio core), <code>settings_t</code> (brightness, default squelch, <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> allowed), the data service's answers (<code>dmr_data_get_settings</code>); the <abbr class="gl" tabindex="0" title="The time after a call during which PTT answers it." data-more="../user/22-glossary.html#t-reply-window">reply window</abbr>, mic gain, the reference trim (<code>ref_trim_ppb</code>), mic <abbr class="gl" tabindex="0" title="Automatic gain control: the receiver adjusting itself to the signal level." data-more="../dev/glossary.html#t-agc">AGC</abbr> and mic noise reduction (<code>accent</code> bits 6-7), auto lock, long press and repeat times, the GPS options, theme, Up/Down on Home, <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr> name first (<code>updown_home</code> bit 7), low battery level, auto power off and the <code>ui_flags</code> bits (large text, hint row, message tone, <abbr class="gl" tabindex="0" title="A short text, usually a callsign and name, sent along with DMR voice." data-more="../user/22-glossary.html#t-talker-alias">talker alias</abbr>, PTT when locked, hear all by default, vibrate as an off bit) have <code>settings_t</code> fields (appended, settings-store.md); the talk permit and scan stop tones are the radio core's (<code>radio_settings_t.talk_permit</code>, <code>scan_beep</code>), the emergency tone the emergency service's (<code>rx_tone</code>); the call end, <abbr class="gl" tabindex="0" title="Transmit timeout: the longest transmission the radio allows." data-more="../user/22-glossary.html#t-tot">TOT</abbr> warning, battery and <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> denied tones are the radio core's (<code>radio_settings_t.tones_off</code>), each with a key of the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>'s settings area that holds over it (<code>radio_tone_rows</code>, <a href="codeplug-settings.html">codeplug-settings.md</a> 3); a set follows the keyed-setting rule (5.2) as a storage job, like the data service's IDs; the privacy key type and key (Settings &gt; Privacy) are key slot 1 of the key store (<code>privacy_type[0]</code>, <code>privacy_key[0]</code>, <code>privacy_active</code>), and a change while privacy is on goes to the radio core at once (<code>radio_req_dmr_privacy</code>); only the ones without a field stay in <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> (voice prompts). Both saves run as a storage job on the housekeeping task (<code>storage_job_post</code>), not on the UI task: the change takes effect for now at once, the temporary mark goes when the write lands, and a failed write raises <code>UI_EV_SAVE_FAILED</code> (&quot;Couldn't save: still for now only&quot;). Save to channel also writes the temporary mode, <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr> and <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr></td>
+</tr>
+<tr>
+<td><code>ui_svc_factory_reset</code></td>
+<td>storage-cps</td>
+<td><code>ui_svc_storage.c</code>, as a storage job: <code>settings_t</code> back to its defaults and saved, then <code>storage_native_erase</code> (the native area, only when it carries the native magic or is already blank; never the open-firmware codeplug, calibration or a foreign region), then a restart (<code>board.system-&gt;reboot</code>), or a radio core reload where the board can't restart</td>
+</tr>
+<tr>
+<td><code>ui_svc_focus_target</code> (one-shot PTT to the focused row), <code>ui_svc_dmr_timeslot</code>, <code>ui_svc_dmr_color_code</code>, <code>ui_svc_mode</code>, <code>ui_svc_hear_all</code></td>
+<td>dmr-voice / radio core</td>
+<td><code>ui_svc_radio.c</code> on the new requests <code>radio_req_dmr_focus</code>, <code>radio_req_dmr_timeslot</code>, <code>radio_req_dmr_color_code</code>, <code>radio_req_mode</code>, <code>radio_req_dmr_hear_all</code> (radio-features.md, dmr-voice.md). Timeslot, color code and mode are <abbr class="gl" tabindex="0" title="A change that lasts until the channel changes or you press Back on Home. Hold OK to keep it." data-more="../user/22-glossary.html#t-temporary-change">temporary changes</abbr> (temp bits 0x20, 0x40, 0x80) that BACK on Home undoes and Save to channel keeps; the hear-all latch ends with the channel, a mode change or BACK on Home (not with the call)</td>
+</tr>
+<tr>
+<td><code>ui_svc_privacy</code>, <code>ui_svc_monitor</code>, <code>ui_svc_vox</code></td>
+<td>radio core</td>
+<td><code>ui_svc_radio.c</code>: <code>radio_req_dmr_privacy</code> on the active privacy slot (else the first set one), <code>radio_req_monitor</code> as a latch, the <code>vox</code> setting (all / off) with <code>radio_view_t.vox_on</code> for the tile</td>
+</tr>
+<tr>
+<td><code>ui_svc_emergency</code>, <code>ui_svc_feat_ext</code></td>
+<td>dmr-ext</td>
+<td>weak seams: the EMERGENCY key action calls <code>ui_svc_emergency</code>, and dmr-ext reports <code>UI_FEAT_EMERGENCY</code> through its own strong <code>ui_svc_feat_ext</code>; without it the key says &quot;Emergency isn't in this build&quot;</td>
+</tr>
+<tr>
+<td><code>ui_svc_scan</code>, <code>ui_svc_scan_skip</code>, <code>ui_svc_feat_radio</code>; scanning state from <code>radio_view_t.scan</code></td>
+<td>radio-features</td>
+<td><code>ui_svc_radio.c</code>: <code>radio_req_scan</code> (toggle, stop, nuisance)</td>
+</tr>
+<tr>
+<td><code>ui_svc_roam</code> (<code>UI_FEAT_ROAMING</code>); roaming state from <code>radio_view_t.roam</code> (the Home chip, <code>ROAM</code> in the strip, Tools &gt; Roaming, the &quot;Moved to&quot; toast)</td>
+<td>radio core (CONFIG_DMR_ROAMING)</td>
+<td><code>ui_svc_radio.c</code>: <code>radio_req_roam</code></td>
+</tr>
+<tr>
+<td><code>hostlink_network_mode</code>, <code>board.netif-&gt;up</code>: the strip's USB word (<code>ui_state_t.usb_net</code>, polled in <code>ui_app_tick</code> so a change without a key press redraws): <code>IP</code> while USB is a network adapter, and right after it an up and a down arrow standing close (as U+21C5, a phone's data link mark) once the computer has brought the adapter up (the debug link's <code>usb.net_up</code>, <a href="usb-network.html">usb-network.md</a> 1); after SCAN / ROAM / MON, which win while they last; not on screens that merge their title into the strip</td>
+<td>host link and the board's netif (CONFIG_USB_NETWORK, CONFIG_HOSTLINK)</td>
+<td>direct calls; Tools &gt; USB network uses the first too</td>
+</tr>
+<tr>
+<td><code>ui_svc_beep</code></td>
+<td>radio-features</td>
+<td><code>ui_svc_radio.c</code>: <code>radio_req_beep(BEEP_KEY)</code> on every press and long press</td>
+</tr>
+<tr>
+<td><code>ui_svc_apply</code> (key tones, tone volume, TX timeout, backlight time, battery saver, talk permit tone, mic gain, reference trim, mic AGC, mic noise reduction)</td>
+<td>radio-features</td>
+<td><code>ui_svc_radio.c</code>: <code>radio_set_settings</code>, at start-up and on each change; the reference trim goes to <code>radio_set_ref_trim</code> (radio-features.md 6.1); mic gain goes to <code>radio_set_mic_gain</code> (2 dB a step, 5 = the board's levels: the board's FM and <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> mic gain where it has <code>hal_radio_t.mic_gain</code>, else DMR scales the samples before the <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">vocoder</abbr>; radio-features.md 3.6); mic AGC and mic noise reduction to <code>ambeVoiceSetEncodeOptions</code> (tone frames always, plus each option that is on; <code>dmr-voice.md</code> 6), and with AGC on the mic gain is step 5</td>
+</tr>
+<tr>
+<td><code>ui_svc_beep</code> kinds (key, error, message, battery low)</td>
+<td>radio-features</td>
+<td><code>ui_svc_radio.c</code>: a table from <code>UI_BEEP_*</code> to <code>BEEP_*</code> (<code>BEEP_MESSAGE</code> is the new-message tone)</td>
+</tr>
+<tr>
+<td><code>UI_FEAT_VOLUME</code>, <code>UI_SET_VOLUME</code></td>
+<td>radio-features</td>
+<td><code>ui_svc_radio.c</code>: the feature bit when <code>radio_volume_soft()</code> (no knob, a board volume hook); <code>ui_svc_storage.c</code>: the step in <code>settings_t.volume</code>, and <code>radio_req_volume</code> so it is in force at once. The UI side is the volume screen (<code>SCR_VOLUME</code>, opened by <code>ACT_VOLUME</code>) and Settings &gt; Sound &gt; Volume, both only with the feature (<code>radio-features.md</code> 4.2)</td>
+</tr>
+<tr>
+<td><code>UI_SET_DMR_ID</code></td>
+<td>storage-cps</td>
+<td><code>ui_svc_storage.c</code>: the codeplug's own <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr> (<code>codeplug_dmr_id</code>); a set (1..<code>CODEPLUG_DMR_ID_MAX</code>) posts a storage job that calls <code>codeplug_set_dmr_id</code>, and the radio core takes the new ID when <code>codeplug_serial()</code> changes. A <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> read shows it</td>
+</tr>
+<tr>
+<td><code>ui_svc_vibrate</code> patterns (message, call, emergency), <code>UI_FEAT_VIBRATE</code></td>
+<td>radio-features</td>
+<td><code>ui_svc_radio.c</code> (CONFIG_VIBRATE): a table from <code>UI_VIBE_*</code> to <code>VIBE_*</code> for <code>radio_req_vibrate</code>; the feature bit when the board has <code>hal_power_t.vibrate</code> (<code>radio-features.md</code> 4.1). Weak no-op otherwise</td>
+</tr>
+<tr>
+<td><code>ui_svc_ptt_block</code>, <code>ui_svc_emergency_active</code></td>
+<td>input / dmr-ext</td>
+<td><code>ui_svc_radio.c</code>: <code>input_set_ptt_block</code>; <code>ui_svc_emergency.c</code>: <code>dmr_emergency_state</code></td>
+</tr>
+<tr>
+<td>backlight dim / off</td>
+<td>radio-features</td>
+<td><code>ui.c</code>: <code>radio_backlight_pct</code> (dims on a low battery too); full again on a key, a banner or the emergency screen (<code>ui_app_take_wake</code>) and while <code>radio_view_wakes</code> (radio-features.md 5.3)</td>
+</tr>
+<tr>
+<td><code>ui_svc_msg_*</code>, <code>ui_svc_radio_check</code>, <code>ui_svc_call_alert</code>, <code>ui_svc_poll</code>, <code>ui_svc_feat_data</code></td>
+<td>dmr-data</td>
+<td><code>ui_svc_data.c</code> on <code>dmr_data_api.h</code>; <code>ui_svc_msg_delete</code> is <code>sms_inbox_delete</code></td>
+</tr>
+<tr>
+<td><code>ui_svc_position</code></td>
+<td>the position service (<code>ui_svc_position.c</code>, <code>position_gps</code>): the board GPS's last fix and satellite count, false while it is off or silent for a minute</td>
+<td><abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr> (no <code>CONFIG_GPS</code>): &quot;No GPS, or it is off&quot;; the GPS settings are dimmed with &quot;No GPS on this radio&quot; on boards without <code>CAP_GPS</code> or whose module wasn't heard at start-up</td>
+</tr>
+<tr>
+<td>USB mode (Tools &gt; USB network)</td>
+<td>hostlink</td>
+<td><code>hostlink_network_mode</code>, <code>hostlink_request_usb_network</code> (with <code>CONFIG_USB_NETWORK</code> and <code>CONFIG_HOSTLINK</code>)</td>
+</tr>
+<tr>
+<td>talker alias, private call start</td>
+<td>dmr-voice</td>
+<td>read from <code>radio_view_t.dmr</code>; <code>UI_EV_PRIVATE_CALL</code> is not raised by anyone yet</td>
+</tr>
+</tbody>
+</table></div>
+<p>A request to save channel changes reports the reason when it cannot start: the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> keeps its settings
+automatically, hotspot mode must end first, a stored channel must be selected, or another storage job must finish.
+The Home and Quick save keys and Actions &gt; Save to channel use the same messages.</p>
+<p>Auto power off is the UI's: <code>ui_app_power_off_due()</code> turns true after Settings &gt; Power saving &gt; Auto power off without use
+(keys, <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr>, TX, scan and hotspot count as use), with a banner and beep one minute before; the housekeeping loop
+(core/app) then powers off as for the knob, except that if the power is still on 2 s after releasing the latch it
+latches again, cancels the radio core's power off (<code>radio_req_power_off_cancel</code>) and raises <code>UI_EV_POWER_OFF_FAILED</code>
+(&quot;Couldn't switch off / Turn the knob off&quot;). The low battery warning is the UI's too: a banner (and the low beep
+while the radio core's level is still OK) at Settings &gt; Power saving &gt; Low battery warning, repeated every 5 minutes, reset
+3 % above it.</p>
+<p>Inbound events go through <code>ui_notify()</code> (a ring of 4, safe from any task) or, for packages the UI polls, through
+<code>ui_svc_poll()</code> once per UI pass. They become banners for 8 s: message received, delivered / not delivered, call
+alert, alert answered, <abbr class="gl" tabindex="0" title="A DMR request another radio answers automatically, to show it is on and in range." data-more="../user/22-glossary.html#t-radio-check">radio check</abbr> answered (with the round trip) or not, <abbr class="gl" tabindex="0" title="A DMR call to one radio." data-more="../user/22-glossary.html#t-private-call">private call</abbr>, emergency, hotspot started.
+A zone share offer's banner has no timer (<code>ui_banner_t.hold</code>): it stays over every screen until CONTEXT opens it, BACK
+(on any screen, before anything else) hides it, the offer screen opens from Tools, or the offer ends (<a href="zone-share.html">zone-share.md</a> 5.2).</p>
+<h2 id="5-build-switches">5. Build switches</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Switch</th>
+<th>Default</th>
+<th>Off</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CONFIG_UI_SETTINGS</code></td>
+<td>y</td>
+<td>the Settings menu is left out (about 5.3 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr>, <code>docs/feature-matrix.md</code>); settings keep their stored values and are set with <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr>; Settings shows one row saying so, Find finds no settings</td>
+</tr>
+<tr>
+<td><code>CONFIG_DIAG</code></td>
+<td>y</td>
+<td>no diagnostics page (Tools has no Diagnostics row; Roaming moves up to 7)</td>
+</tr>
+<tr>
+<td><code>CONFIG_FONT_XL</code></td>
+<td>n</td>
+<td>the 16x32 font for 240 px and wider displays</td>
+</tr>
+<tr>
+<td><code>CONFIG_FONT_AA</code></td>
+<td>n</td>
+<td>the bitmap fonts (Spleen) on color panels; on, the sizes from 6x12 up are anti-aliased (JetBrains Mono Bold, coverage 0..3 a pixel, blended with what is under them; <code>gfx.c</code>). Mono radios leave it off. On a 4 bpp panel (every color board) the edge grays share the 16 palette entries with the screen's own colors; a screen that already uses many colors loses some of them, and some font sizes or colors can then be slightly harder to read</td>
+</tr>
+<tr>
+<td><code>CONFIG_FONT_BIG</code></td>
+<td>n</td>
+<td>on (needs <code>FONT_AA</code>), the 240 px class draws lists, labels, the status strip and hints in a 9x18 font instead of 8x16, and its small print in 8x16 instead of 6x12</td>
+</tr>
+<tr>
+<td><code>CONFIG_ZONE_EDIT</code></td>
+<td>= <code>CHANNEL_EDIT</code></td>
+<td>a zone's list only goes to its channels: no Add channel, Channel actions or Zone options (2.2). Needs <code>CONFIG_CHANNEL_EDIT</code></td>
+</tr>
+<tr>
+<td><code>CONFIG_CONTACT_EDIT</code></td>
+<td>= <code>CHANNEL_EDIT</code> and <code>DMR</code></td>
+<td>no contact editor (2.4): Contacts has no New contact row, Find has no Create contact row and Save as contact stays dimmed. Needs <code>CONFIG_CHANNEL_EDIT</code> and <code>CONFIG_DMR</code></td>
+</tr>
+<tr>
+<td><code>CONFIG_GPS_SKY</code></td>
+<td>= GPS and <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr></td>
+<td>Tools &gt; Position is a page of text instead of the GPS screen (2.3) and the satellite sentences aren't read (about 5.2 KB, 176 B of <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr>)</td>
+</tr>
+<tr>
+<td><code>CONFIG_LANG_ES</code></td>
+<td>y</td>
+<td>Spanish is listed dimmed in Settings &gt; Display &gt; Language (2.5); without any language the lookup and the fonts' Latin-1 glyphs are left out</td>
+</tr>
+<tr>
+<td><code>CONFIG_UI_COLOR</code></td>
+<td>y (n on a board with a monochrome panel)</td>
+<td>Settings &gt; Display has no Theme, Highlight color or Filled status bar row and the screen keeps the dark theme's colors (about 600 B). For radios whose only screen is monochrome</td>
+</tr>
+</tbody>
+</table></div>
+<p>Screens for features that are off (<code>CONFIG_DMR</code>, <code>CONFIG_HOTSPOT</code>, <code>CONFIG_VFO_FM</code>, <code>CONFIG_VFO_DMR</code>, <code>CONFIG_SCAN</code>, data features) are
+left out or dimmed with the feature. Some radios' default images have only a few KB free (<code>docs/feature-matrix.md</code>); the UI was about 50 KB when last measured (<code>gfx</code> + fonts about 11 KB, screens and behavior the rest). The frame buffer (40 KB by default) bounds the display: 240x320 at
+16 bpp renders only in the simulator, which overrides <code>GFX_FB_BYTES</code> and <code>GFX_MAX_ROWS</code>. Every color board builds the 16-color frame buffer instead
+(<code>GFX_INDEXED</code>, bpp 4): 37.5 KB at 240x320, 9.6 KB at 160x120 and 10 KB at 160x128, against 150, 37.5 and 40 KB at
+16 bpp. A mono board sizes the buffer to its panel (128x64 at 1 bpp is 1 KB). Drawing still takes RGB565 colors, and
+<code>gfx.c</code> keeps a 16-entry palette of the ones on the screen. An entry gets a new color
+only once nothing drawn since the last clear uses it; anti-aliased edges never take the last 4 free entries and
+otherwise get the nearest color already there. The <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>'s screen captures read it as RGB565; <code>/api/screen.bmp</code> sends the indexes with the palette.</p>
+<p>With <code>CONFIG_NET_WEBCTL</code> the web control page keeps a copy of the screen (<code>docs/spec/tcp-services.md</code> 5.1).
+<code>gfx_flush</code> marks each row it sends the panel, and <code>webctl.c</code> sends the marked rows and unmarks them. The UI task
+calls <code>gfx_frame_begin</code> before it draws and <code>gfx_flush</code> ends the frame, so the host link task, which runs above the UI,
+reads rows only between frames (<code>gfx_frame_idle</code>).</p>
+<p>Without <code>CONFIG_FONT_AA</code> a screen uses at most 9 colors (the gallery, all 93 screens), so 4 bpp renders it exactly as
+16 bpp does. With <code>CONFIG_FONT_AA</code> the edge grays add up to 20 colors on the busiest screen (Messages); on 14 of the
+93 screens some edge grays and colors are replaced by the nearest palette entry, and some font sizes or colors can be
+slightly harder to read. The 160 px boards leave <code>FONT_AA</code> off for that reason.</p>
+<h2 id="6-debug-link">6. Debug link</h2>
+<p>The link section (<code>docs/spec/debuglink.md</code>) carries the UI's state for <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> tests: <code>ui.screen</code>, <code>ui.depth</code>,
+<code>ui.focus</code>, <code>ui.count</code>, <code>ui.locked</code>, <code>ui.banner</code>, <code>ui.toast</code>, <code>ui.query</code>, <code>ui.draws</code>. Tests check these rather than
+pixels, so they hold on any display.</p>
+<h2 id="7-host-simulator-and-tests">7. Host simulator and tests</h2>
+<p><code>tests/host/sim/</code> runs the real <code>core/ui</code> files against a simulated board (any display geometry, any of the key
+maps K full keypad, M navigation keys, V a mobile's front panel with a hand-mic keypad, F few keys, P that front
+panel alone), radio core, the usability-test <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> (3 zones,
+40 channels, 30 contacts) and the services of section 4.</p>
+<pre><code>make -C tests/host run-ui                                      # gfxTest, uiFlowTest, the layout check
+make -C tests/host ui-gallery                                  # docs/ux/screens/&lt;class&gt;/&lt;screen&gt;.png, sheets/&lt;class&gt;.png
+make -C tests/host ui-sheets GEOM=128x64                       # contact sheet only, tests/host/out/sheets/
+tests/host/uiSim --geom 160x120i5 --script &quot;ok 4 down ok expect:zone=1&quot; --out zone.png --scale 3
+</code></pre>
+<p>The gallery draws a color page (Home with its filled status bar, the Channels list) once more in each highlight color
+<code>UI_GALLERY_COLORS</code> names, as <code>&lt;screen&gt;__&lt;color&gt;.png</code> right after the page, on color displays only; screens that only
+differ in color (<code>home_plain</code>) are left out at 128x64. The list is set in
+<code>.github/workflows/ui-gallery.yml</code> (<code>docs/dev/ci.md</code>), and <code>make ui-gallery</code> reads it from there. Home (filled and plain
+status bar), <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr>, <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr>, the Channels list and Settings &gt; Display are also drawn in the light and high-contrast themes, as
+<code>&lt;screen&gt;__light.png</code> and <code>&lt;screen&gt;__high_contrast.png</code> (color displays).</p>
+<p>Geometries: <code>160x120i5</code> (160x120 visible, 5 px inset left and right), <code>160x128</code> (both 160 px classes render through the 4 bpp frame buffer, as the boards do),
+<code>240x320i10x5</code> (16 colors, insets 10 px left and right, 5 px top and bottom), <code>128x64</code> (mono), <code>240x320</code>, or any
+<code>WxH</code>, <code>WxHiN</code> (inset N all round), <code>WxHiNxM</code> (N left and right, M top and bottom), <code>WxHm</code> (mono). The 240 px classes
+draw the anti-aliased fonts (<code>CONFIG_FONT_AA</code>), and <code>240x320i10x5</code> the larger text too
+(<code>CONFIG_FONT_BIG</code>); the others the bitmap ones. Script tokens:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>up down left right ok back quick ctx 0..9 tt mon user1..user4 emerg enc+ enc-</code></td>
+<td>a short press (counted)</td>
+</tr>
+<tr>
+<td><code>long:&lt;key&gt;</code></td>
+<td>a long press (counted)</td>
+</tr>
+<tr>
+<td><code>ptt</code>, <code>ptt:&lt;ms&gt;</code>, <code>pttdown</code>, <code>pttup</code></td>
+<td>PTT (counted)</td>
+</tr>
+<tr>
+<td><code>mondown</code>, <code>monup</code></td>
+<td>the monitor key held, then released (FM: the squelch held open)</td>
+</tr>
+<tr>
+<td><code>color:&lt;name&gt;</code>, <code>strip:on|off</code></td>
+<td>Settings &gt; Display &gt; Highlight color (<code>red orange yellow teal light_blue purple pink default</code>) and Filled status bar, set directly</td>
+</tr>
+<tr>
+<td><code>wait:&lt;ms&gt;</code></td>
+<td>time passes</td>
+</tr>
+<tr>
+<td><code>rx:&lt;src&gt;,&lt;dst&gt;,g|p[,name]</code>, <code>rxend</code>, <code>call:&lt;src&gt;,&lt;dst&gt;,g|p</code></td>
+<td>a <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> call heard</td>
+</tr>
+<tr>
+<td><code>msg:&lt;src&gt;,&lt;text&gt;</code>, <code>alert:&lt;src&gt;</code>, <code>emergency:&lt;src&gt;</code>, <code>privcall:&lt;src&gt;</code>, <code>hotspot:on|off</code>, <code>battery:&lt;pct&gt;</code></td>
+<td>events</td>
+</tr>
+<tr>
+<td><code>shot:&lt;name&gt;</code></td>
+<td>save the screen</td>
+</tr>
+<tr>
+<td><code>offfailed</code></td>
+<td>the auto power off didn't cut the power (<code>UI_EV_POWER_OFF_FAILED</code>)</td>
+</tr>
+<tr>
+<td><code>worst</code></td>
+<td>worst-case codeplug content from here on (<code>sim_worst</code>: 16-character names, 8-digit <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroups</abbr>, 7-digit IDs, channels 985-1024, 80-channel zones)</td>
+</tr>
+<tr>
+<td><code>power:&lt;n&gt;</code></td>
+<td>the radio's power level index</td>
+</tr>
+<tr>
+<td><code>expect:&lt;key&gt;=&lt;value&gt;</code></td>
+<td>check: <code>screen focus depth count zone pos vfo freq mode tx txid txpriv talk locked query banner toast power sq ts cc temporary writes checks sent text scanning privacy hearall monitor hotspot beeps radio_tot radio_backlight beep pttblock poweroff wake usbnet set&lt;id&gt;</code> (<code>wake</code> 1 when a banner or the emergency screen asked for the backlight since the last check, <code>beep</code> the last beep kind, <code>set&lt;id&gt;</code> a setting's stored value; <code>_</code> = space, <code>*</code> = anything)</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>uiFlowTest</code> runs every task flow of <code>task-flows.md</code> with the press budgets of <code>usability-tests.md</code> on four display
+and key map pairs (K at 160x120i5, M at 128x64, V at 128x64, K at 240x320) plus the few-key fallbacks and the
+front panel alone (P at 128x64: no digits, the panel's key names in the hints).
+A crawler then visits every reachable screen and checks the rules that hold everywhere: BACK leaves every screen, long
+BACK reaches Home, long QUICK locks on Home and nowhere else, long CONTEXT opens the <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr> picker on a DMR channel, the status strip is drawn (except About while idle),
+PTT shows TX, and every field-use screen is at most 3 presses deep. The crawler runs with K, M, F and P. The About check scrolls the page to its end at
+every display class and fails if any text was shortened.</p>
+<p><code>uiSim --ellipsis [GEOM]</code> lists every text shortened with a middle ellipsis on the gallery screens and the settings
+pages (lists scrolled through): <code>gfx_text_fit</code> reports each one through <code>gfx_fit_trace</code> in host builds
+(<code>GFX_FIT_TRACE</code>). Use it after changing wording or layout.</p>
+<p><code>uiSim --layout [GEOM]</code> (run by <code>run-ui</code>, so CI) is the layout check: the gallery screens, the settings pages and the
+worst-case screens at every geometry, with ordinary and worst-case content. <code>gfx_draw_trace</code> (host builds) reports
+every text, fill and clear with its rectangle; the check fails on a text outside the safe area or cut by its clip box,
+overlapping texts, words with no space between them, a box over part of a text, an overlay cutting a line in half, an
+invisible text (its cells one color after it is drawn), and a middle ellipsis with ordinary content
+(<code>docs/ux/wireframes/README.md</code>). On color displays it runs in every theme. <code>RFOUNDRY_LAYOUT_SHOTS=DIR</code> saves every screen
+checked.</p>
+<p><abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr>: <code>tests/hil/test_ui.py</code> (<code>tests/hil/README.md</code>) replays the main sequences on the radio over the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>.</p>
+<h2 id="8-decisions-and-open-points">8. Decisions and open points</h2>
+<ul>
+<li>Task flow 12 budgets 3 presses into the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr>, but flow 2 opens Zones on the current zone (so a zone two away is
+2 presses); the VFO row is first, so entering it takes 4 (OK 4 Up OK). The test uses 4; the owner decides.</li>
+<li>Power on radios with many levels: the Quick tile cycles three presets (low, the board's default, highest); the full
+list is in Settings.</li>
+<li>Long BACK on Home no longer opens diagnostics (P3: one meaning per key); they are in Tools 7. The firmware boots
+into Home.</li>
+<li>The long-press and key-repeat times are stored in <code>settings_t</code> and handed to the input layer (<code>input_set_timing</code>,
+clamped to 200..3000 ms and 40..1000 ms); auto lock locks the keys after its time without a key press (counted on
+Home and in menus alike; injected keys count). A key map with neither QUICK nor BACK (side keys only) is never
+locked by auto lock, since no key there unlocks it; a side key set to key lock still locks and unlocks.</li>
+<li>Mic <abbr class="gl" tabindex="0" title="Automatic gain control: the receiver adjusting itself to the signal level." data-more="../dev/glossary.html#t-agc">AGC</abbr> and mic noise reduction are the <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">vocoder</abbr>'s (<abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> only). Each is dimmed (&quot;Not on this radio&quot;) when the board's
+vocoder lacks the option (<code>hal_vocoder_t.options</code>), and in a build without DMR. While Mic AGC is on, Mic gain shows
+&quot;AGC&quot;, is dimmed, OK says &quot;Mic AGC sets the level&quot;
+and the gain is step 5, the board's levels (FM too on a radio whose board sets the gain).</li>
+<li>Mic gain acts on FM and DMR where the board sets it in its audio path (<code>hal_radio_t.mic_gain</code>), else on DMR only,
+in software before the vocoder (radio-features.md 3.6). The
+GPS options are stored but act on nothing (no GPS owner); they are dimmed on boards without <code>CAP_GPS</code>.</li>
+<li>Freq trim (Advanced, the last row: Up from the top) is shown only on a radio whose board has <code>hal_radio_t.ref_trim</code>
+(<code>UI_FEAT_REF_TRIM</code>). The row shows the trim in <abbr class="gl" tabindex="0" title="Parts per million: a frequency error as a fraction of the frequency. At 450 MHz, 1 ppm is 450 Hz." data-more="../dev/glossary.html#t-ppm">ppm</abbr> and opens the Freq Trim page (<code>freq-trim</code>, section 2).</li>
+<li>Voice prompts are dimmed (&quot;Voice prompts aren't built yet: no recorded speech&quot;).</li>
+<li>Theme switches the color palette (dark, light, high contrast). Highlight color (Default, Red, Orange, Yellow, Teal,
+Light blue, Purple, Pink) and Filled status bar (Settings &gt; Display, <code>settings_t.accent</code>) are for color displays
+too. On a 1 bpp display the three rows are dimmed (&quot;Colors are for color screens&quot;); a build without
+<code>CONFIG_UI_COLOR</code> (section 5) has no such rows. A color other than
+Default is the list and tile focus (with black text) and Home's channel number (on the light theme the number stays
+the text color: the light shades don't read on white). The filled bar (on by default) is reverse video: the status
+strip's background in the color (light gray with Default, white in the high-contrast theme), its text and icons
+black, the IDLE pill inverse on it; <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr>, <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> and NO TX keep their own pill colors and words (P5). On it the pill is the strip's full height (a one-cell
+pill left a line of the strip's color under it) against the bezel, its corners rounded by two pixels. Left of the
+pill's middle the strip is the screen's background, so no strip color shows beside its left end. On the right a
+one-pixel black edge follows the curve: the pill colors are close in lightness to the strip colors, so hue alone
+would not separate them. Warnings on the strip (SCAN, MON, ROAM, unread messages, the lock, a low battery) keep
+a color: a dark shade picked per strip color, dark amber where it reads and dark blue on red, orange and pink, at
+least 5:1 on its strip after RGB565 rounding. The shades are light so black
+text reads on them (at least 7.5:1 after RGB565 rounding); the red is lighter and pinker than TX's red, and there is
+no green, which would hide the RX pill. Gallery: <code>home_dmr*</code>, <code>home_plain</code>, <code>channels*</code> (section 7).</li>
+<li>The VFO has a mode of its own (<code>dmr-voice.md</code> 2.1). The Mode tile (tile 4 in the VFO only) switches it FM / DMR (&quot;VFO: DMR&quot;, no &quot;for now&quot;: it is kept), and in a build with only one VFO kind the tile is dimmed (&quot;VFO: one mode in this build&quot;). On a channel tile 4 is &quot;To VFO&quot; (<code>dmr-voice.md</code> 2.2): it copies what is in effect on the channel to the VFO and opens it on Home (&quot;Copied to VFO&quot;); a channel the VFO can't hold is refused with a toast. A channel has no temporary mode change any more. In DMR the quick menu is the DMR one: <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">Timeslot</abbr>, Color and Talk to change the VFO's own settings, with no dot on Home. The <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr> picker lists the VFO's current target first (&quot;Current&quot;); both OK and hold OK keep the target for the VFO.</li>
+<li>The privacy key is typed in decimal (Anytone 0..65535). Number rows take typed digits; a value outside the range or
+between steps is refused with the range. Only key slot 1 is reachable from the menu.</li>
+<li>Switching USB to network has no confirmation (P7: reversible); the info page says what stops and how to get back.</li>
+<li>A failed message isn't kept for a retry: the banner says &quot;Not delivered: send it again&quot;.</li>
+<li>Compose offers canned texts only (&quot;OK&quot;, &quot;On my way&quot;, &quot;Call me&quot;, &quot;Can't talk now&quot;), sent in the language in use (2.5); free text is dimmed.</li>
+<li>Deleting a message has no undo (<code>sms_inbox_delete</code> removes it from the <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> inbox).</li>
+<li>Save to channel and the permanent talk target write the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> as a storage job on the housekeeping task, so the
+UI no longer stalls for the flash write. A permanent target must be a stored contact: a typed ID is set for now at
+once and the job then says &quot;Not a stored contact: for now only&quot;.</li>
+<li><abbr class="gl" tabindex="0" title="A talk target used for one call and its reply window." data-more="../user/22-glossary.html#t-one-shot">One-shot</abbr> PTT: the row with the focus in the picker or a list is handed to the radio core (<code>radio_req_dmr_focus</code>);
+PTT then talks to it once, and the radio follows it for a <abbr class="gl" tabindex="0" title="The time after a call during which PTT answers it." data-more="../user/22-glossary.html#t-reply-window">reply window</abbr> (the reply time setting, else the
+codeplug's <abbr class="gl" tabindex="0" title="How long after a call a repeater or radio keeps the call&#x27;s talkgroup ready for a reply." data-more="../user/22-glossary.html#t-hang-time">hang time</abbr>) before going back to the channel's talk target. A channel change, the call ending outside
+the window, Reply cancel or a new manual target end it.</li>
+</ul>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/ui.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#1-layout">1. Layout</a></li><li class="l2"><a href="#2-screens-and-the-stack">2. Screens and the stack</a></li><li class="l3"><a href="#21-channel-editor">2.1 Channel editor</a></li><li class="l3"><a href="#22-zone-editor">2.2 Zone editor</a></li><li class="l3"><a href="#23-gps-screen">2.3 GPS screen</a></li><li class="l3"><a href="#24-contact-editor">2.4 Contact editor</a></li><li class="l3"><a href="#25-languages">2.5 Languages</a></li><li class="l2"><a href="#3-key-meanings">3. Key meanings</a></li><li class="l3"><a href="#31-key-assignment">3.1 Key assignment</a></li><li class="l2"><a href="#4-data-other-packages-own">4. Data other packages own</a></li><li class="l2"><a href="#5-build-switches">5. Build switches</a></li><li class="l2"><a href="#6-debug-link">6. Debug link</a></li><li class="l2"><a href="#7-host-simulator-and-tests">7. Host simulator and tests</a></li><li class="l2"><a href="#8-decisions-and-open-points">8. Decisions and open points</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

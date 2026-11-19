@@ -1,0 +1,841 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W) · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W) · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/spec/hardware-mduv380.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/hardware-mduv380.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/hardware-mduv380.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/hardware-mduv380.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/hardware-mduv380.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/hardware-mduv380.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/spec/hardware-mduv380.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/hardware-mduv380.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/hardware-mduv380.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/hardware-mduv380.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="规范">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 规范</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html" aria-current="page">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">本页尚未翻译，目前显示英文。</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<!-- Copyright (c) 2026 The RadioFoundry Authors -->
+<h1 id="tyt-md-uv380-hardware-md-uv390-retevis-rt3s-md-uv390-plus-10-w">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</h1>
+<p>The <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="../user/22-glossary.html#t-tyt">TYT</abbr> MD-UV380, the MD-UV390 (the same radio in an IP67 case), the Retevis RT3S and the MD-UV390 &quot;Plus&quot; 10 W radio are
+the DM-1701's board family: STM32F405VGT6, <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr>, one <abbr class="gl" tabindex="0" title="The RF transceiver chip that sets the frequency, deviation and power of many handheld DMR radios. Programmed over I2C." data-more="../dev/glossary.html#t-at1846s">AT1846S</abbr> for both bands, a 160 x 128 color <abbr class="gl" tabindex="0" title="Liquid crystal display: the radio&#x27;s screen." data-more="../user/22-glossary.html#t-lcd">LCD</abbr> on the 8-bit
+8080 bus, a 16 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">MB</abbr> <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> <abbr class="gl" tabindex="0" title="The flash chip type that holds code and can run it in place." data-more="../dev/glossary.html#t-nor">NOR</abbr> flash, a 3-row keypad matrix on the LCD data lines, a quadrature channel encoder, a volume
+potentiometer with the power switch, and USB on <abbr class="gl" tabindex="0" title="USB On-The-Go: the controller can act as the host or the device." data-more="../dev/glossary.html#t-otg">OTG_FS</abbr>. GPS is a factory option (&quot;G&quot; models).</p>
+<p>This file lists <strong>only what differs from the DM-1701</strong>. Everything not mentioned here is as in
+<a href="hardware-dm1701.html">hardware-dm1701.md</a> (RadioFoundry's working board, <code>boards/dm1701</code>), and that file's section 17 already
+holds a variants table this file expands.</p>
+<p>Status: <strong>nothing in this file has been run on an MD-UV380.</strong> Where a value says &quot;the TYT 19.26 images&quot;, it was read
+from the four TYT 19.26 images (<a href="codec-mduv380.html">codec-mduv380.md</a>): that settles what the vendor software does, not
+what a radio does. The port is <code>boards/mduv380</code> on the family's shared
+code in <code>boards/uv380_family</code>: every difference below is an entry of <code>uvf_variant</code> or <code>uvf_key_matrix</code> in
+<code>boards/mduv380/board.c</code>, a pin in <code>boards/uv380_family/pins.h</code>, or the <code>POWER</code> build option. The order to check them on
+a radio is <a href="../testing/mduv380-bringup.html">mduv380-bringup.md</a>.</p>
+<p>Values marked <code>(unverified)</code> are not confirmed on a radio or in a datasheet; <code>?</code> means not found or contradictory. As nothing
+in this file has been run on an MD-UV380, treat every value as unverified until a radio confirms it. Values marked
+&quot;(images)&quot; are read from the TYT 19.26 images. Sources: the
+DM-1701 spec (<a href="hardware-dm1701.html">hardware-dm1701.md</a>) and the codec spec (<a href="codec-mduv380.html">codec-mduv380.md</a>).</p>
+<hr />
+<h2 id="1-summary-of-differences-from-the-dm-1701">1. Summary of differences from the DM-1701</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Area</th>
+<th>DM-1701</th>
+<th>MD-UV380 / UV390 / RT3S 5 W</th>
+<th>MD-UV390 Plus 10 W</th>
+<th>Section</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visible LCD rows</td>
+<td>120 (8 hidden rows)</td>
+<td>all 128, no row offset (the vendor images use no offset on either radio, section 4)</td>
+<td>as 5 W</td>
+<td>4</td>
+</tr>
+<tr>
+<td>LCD type mapping (sec. reg 3 byte 0x1D)</td>
+<td>DM-1701 table; type 2 treated as 3</td>
+<td>MD-UV380 table, always RGB, type 2 kept</td>
+<td>as 5 W</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Key matrix</td>
+<td>DM-1701 table, P1/P2 keys</td>
+<td>MD-UV380 table, no P1/P2</td>
+<td>as 5 W</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Top (orange) key</td>
+<td>row 2 D5</td>
+<td>none: row 2 D5 unused</td>
+<td>as 5 W</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Side keys</td>
+<td>D7 SK1, D6 SK2</td>
+<td>D7 SK1, D6 SK2</td>
+<td>as 5 W</td>
+<td>5</td>
+</tr>
+<tr>
+<td>PA band select</td>
+<td>PC6</td>
+<td>PC6</td>
+<td><strong>PD8</strong></td>
+<td>3</td>
+</tr>
+<tr>
+<td>LCD backlight</td>
+<td>PD8</td>
+<td>PD8</td>
+<td><strong>PC6</strong></td>
+<td>3, 4</td>
+</tr>
+<tr>
+<td>Battery ADC</td>
+<td>raw / 37.5 per 0.1 V</td>
+<td>raw / 40.3</td>
+<td>raw / 40.3</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Volume pot range</td>
+<td>29..2075, break 318</td>
+<td>UV380 22..2070 / 309; RT3S 23..2020 / 317</td>
+<td>19..2054 / 308</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Power levels</td>
+<td>5 W</td>
+<td>5 W</td>
+<td>10 W (2, 3, 5, 10 W at the top four levels)</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Power fractions</td>
+<td>DM-1701 rows</td>
+<td>5 W rows</td>
+<td>10 W rows</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Working-copy power conversion</td>
+<td>DM-1701 row</td>
+<td>5 W row</td>
+<td>10 W row</td>
+<td>8</td>
+</tr>
+<tr>
+<td>AT1846S DMR AF gain</td>
+<td>0x44 = 0x07EF</td>
+<td>the same driver value, untested (<a href="hardware-dm1701.html">hardware-dm1701.md</a> 5.5)</td>
+<td></td>
+<td>2</td>
+</tr>
+<tr>
+<td>GPS</td>
+<td>not fitted</td>
+<td>G models: USART1 <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> PA10, power PA9</td>
+<td>G models</td>
+<td>9</td>
+</tr>
+<tr>
+<td>DFU key</td>
+<td>DM-1701 key</td>
+<td>MD-UV380 key</td>
+<td>same</td>
+<td>11</td>
+</tr>
+<tr>
+<td>Stock codec</td>
+<td>V02.06 at 0x08074714</td>
+<td><abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="../user/22-glossary.html#t-tyt">TYT</abbr> and Retevis builds 18.11 to 219.74, same codec, different addresses</td>
+<td>10 W builds of 19.74 and 219.74, same codec</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Wake from the alarm / sleep</td>
+<td>orange key</td>
+<td>SK2 + PTT held together</td>
+<td>as 5 W</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Open-firmware CPS radio type</td>
+<td>8 (BGR) / 10 (RGB)</td>
+<td>6</td>
+<td>6</td>
+<td>10</td>
+</tr>
+</tbody>
+</table></div>
+<p>The same between the two: the <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr>, clock tree and HSE, internal flash map up to the codec, every
+<abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> pin and bus, the <abbr class="gl" tabindex="0" title="The RF transceiver chip that sets the frequency, deviation and power of many handheld DMR radios. Programmed over I2C." data-more="../dev/glossary.html#t-at1846s">AT1846S</abbr> bus and address, I2S3, the <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> flash bus, PTT pins, LEDs, the encoder pins, the
+power latch, the RX supply switches, the <abbr class="gl" tabindex="0" title="Power amplifier: the stage that boosts the transmit signal to the output power." data-more="../dev/glossary.html#t-pa">PA</abbr> enables, the APC <abbr class="gl" tabindex="0" title="Digital to analog converter." data-more="../dev/glossary.html#t-dac">DAC</abbr>, the RX audio mux, USB pins.</p>
+<hr />
+<h2 id="2-mcu-clocks-rf-chips">2. MCU, clocks, RF chips</h2>
+<p>As the DM-1701: an 8 MHz HSE, <abbr class="gl" tabindex="0" title="Phase locked loop: the circuit that holds the radio&#x27;s synthesizer on its frequency." data-more="../dev/glossary.html#t-pll">PLL</abbr> M 8, N 288, P 4, Q 6, SYSCLK 72 MHz, AHB /1, APB2 72 MHz, APB1 36 MHz, flash latency
+5 wait states with the caches on (images). The HSE is a <strong>crystal</strong>: the images start it with bypass off. The port
+tries the crystal first and falls back to bypass when it never starts (<code>UVF_HSE_XTAL_FIRST</code>), and the diagnostics
+page says which mode started.</p>
+<p>The vendor clock library assumes a 12 MHz crystal (SYSCLK 108 MHz, APB2 108 MHz, APB1 54 MHz); the real clocks are the
+72 / 72 / 36 MHz above. Only the <abbr class="gl" tabindex="0" title="Inter-integrated circuit: a 2-wire bus for small chips such as the RF transceiver." data-more="../dev/glossary.html#t-i2c">I2C</abbr> setup (it asks for 100 kHz, which comes out near 66.7 kHz on the real APB1) and
+the GPS <abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="../dev/glossary.html#t-uart">UART</abbr> use the library's numbers; the timers use fixed constants (images). The GPS consequence is in section 9.</p>
+<p><abbr class="gl" tabindex="0" title="The RF transceiver chip that sets the frequency, deviation and power of many handheld DMR radios. Programmed over I2C." data-more="../dev/glossary.html#t-at1846s">AT1846S</abbr>: the same I2C pins (SCL PA8, SDA PC9), 7-bit address 0x2E. The I2C3 peripheral is on those pins, as on the DM-1701. AT1846S GPIO0 on PB1 and GPIO6 (squelch out in the DM-1701's 0x1F setting) on PB2 (unverified); neither pin is used
+by the DM-1701 port, and the DM-1701 spec has no entry for them (?: may hold on the DM-1701 too).</p>
+<p>The AT1846S register tables of <a href="hardware-dm1701.html">hardware-dm1701.md</a> apply, with these differences in the images:</p>
+<ul>
+<li><strong>Init.</strong> The same registers and values, plus one write, 0x0F = 0x8A24 (the DM-1701's init step 27 lists it too).
+0x44 is 0x07FF at init (<abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> 100 %) and 0x04FF in a second mode function, as on the DM-1701. The shared driver
+sets 0x44 = 0x07EF in DMR (1 dB under full, the DM-1701's <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> level window, 5.5); open item 9 checks it here.</li>
+<li><strong>Frequency set.</strong> The routine writes reg 0x05 from 0x8443, 0x8543, 0x8643 or 0x8763, chosen by testing the frequency
+against multiples of 26 MHz and 182 MHz (spur avoidance), where the DM-1701 image writes 0x8643 once. It ends with
+reg 0x30 = 0x4026 (RX on, band bits 00); the DM-1701 image writes that only in its callers.</li>
+</ul>
+<p><abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr>: as the DM-1701, including the calibration-driven reference oscillator and modulation. The register sequences
+in the images equal the DM-1701's except: extra 0xE4 = 0x27 writes in the FM <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> setup; no 0xE4 = 0x24 / 0x23 writes in
+two other setups; a few page-4 0x10 = 0x6C / 0x40 writes in a different order; different page-4 0x35 and 0x37 table
+values (images). Which of these matter on air is open. The user's reference trim adds to the calibrated MOD1 offset as
+on the DM-1701 (<code>boards/uv380_family</code>, hardware-dm1701.md 12.4); unchecked on this radio.</p>
+<hr />
+<h2 id="3-pin-differences">3. Pin differences</h2>
+<p>Only two pins differ, and only on the Plus 10 W:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Pin</th>
+<th>DM-1701 / RT84 / MD-UV380 5 W / RT3S</th>
+<th>MD-UV390 Plus 10 W</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PC6</td>
+<td><abbr class="gl" tabindex="0" title="Power amplifier: the stage that boosts the transmit signal to the output power." data-more="../dev/glossary.html#t-pa">PA</abbr> band select (low <abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="../user/22-glossary.html#t-vhf">VHF</abbr>, high <abbr class="gl" tabindex="0" title="Ultra high frequency: 300 MHz to 3 GHz. The amateur 70 cm band is UHF." data-more="../user/22-glossary.html#t-uhf">UHF</abbr>)</td>
+<td><abbr class="gl" tabindex="0" title="Liquid crystal display: the radio&#x27;s screen." data-more="../user/22-glossary.html#t-lcd">LCD</abbr> backlight</td>
+</tr>
+<tr>
+<td>PD8</td>
+<td>LCD backlight (<abbr class="gl" tabindex="0" title="Pulse width modulation: a pin switched on and off to give an average level, as for backlight or tone." data-more="../dev/glossary.html#t-pwm">PWM</abbr> by <abbr class="gl" tabindex="0" title="Direct memory access: moving data between memory and a peripheral without the processor." data-more="../dev/glossary.html#t-dma">DMA</abbr> from TIM1)</td>
+<td>PA band select</td>
+</tr>
+</tbody>
+</table></div>
+<p>The 5 W column is reported as PC6 for the VHF/UHF PA switch and PD8 for the backlight (unverified). The backlight
+dimming of writes BSRR of the backlight pin's port, so on the 10 W radio the DMA target is GPIOC instead
+of GPIOD.</p>
+<p>Pins those notes list that the DM-1701 spec doesn't (unverified), not used by RadioFoundry today: PB1 <abbr class="gl" tabindex="0" title="The RF transceiver chip that sets the frequency, deviation and power of many handheld DMR radios. Programmed over I2C." data-more="../dev/glossary.html#t-at1846s">AT1846S</abbr> GPIO0, PB2
+AT1846S GPIO6, PC3 not connected on a stock radio.</p>
+<p>PB11 / PE14 are the channel selector: the same quadrature encoder (section 5).</p>
+<p>Other pins the images drive, as on the DM-1701 (images): backlight PD8 (high = on), PA band select PC6 (high above
+200 MHz, else low; PC5 is set in the <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> path), green <abbr class="gl" tabindex="0" title="Light-emitting diode: the radio&#x27;s status light." data-more="../user/22-glossary.html#t-led">LED</abbr> PE0, red LED PE1, speaker mute PB8, audio amplifier PB9, mic
+power PA13, <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> switches PA2 and PA5, RX audio mux PD9. The beep is PWM on PC8 (TIM8 CH3; PC7 is set up as TIM8 CH2
+too): the images set PC7 and PC8 to AF3 (inferred, not seen run).</p>
+<hr />
+<h2 id="4-display">4. Display</h2>
+<p>Same bus, controller family, init tables and backlight as <a href="hardware-dm1701.html">hardware-dm1701.md</a> 9, with these differences:</p>
+<ul>
+<li>
+<p><strong>No hidden rows.</strong> All 128 rows are visible: no 8-row offset in RASET, RASET end 128, no blank-row clearing. The
+<abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> screen grab sends the frame buffer from row 0.</p>
+</li>
+<li>
+<p><strong>Panel type.</strong> Read from <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> flash security register 3, byte 0x1D, low two bits, as on the DM-1701. The MD-UV380
+image keeps all four types, where the DM-1701 image knows only one init path. What the images do per type (images):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Init table</th>
+<th>0xFD parameter</th>
+<th>MADCTL written</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>ST7735-class (<a href="hardware-dm1701.html">hardware-dm1701.md</a> 9.3)</td>
+<td>-</td>
+<td>0x08</td>
+</tr>
+<tr>
+<td>1</td>
+<td>same</td>
+<td>-</td>
+<td>0xC8</td>
+</tr>
+<tr>
+<td>2</td>
+<td>the 0xFE / 0xEF unlock table (same section)</td>
+<td>0x4F</td>
+<td>0x88</td>
+</tr>
+<tr>
+<td>3</td>
+<td>same</td>
+<td>0x40</td>
+<td>0x08</td>
+</tr>
+</tbody>
+</table></div>
+<p>The DM-1701 image has only the ST7735-class path (frame rate parameters 05 04 04, extra 0xF0 0x01 and 0xFC 0x80),
+MADCTL 0xC8 for type 1 and 0x08 for every other type, and no unlock table. In both images the pixel window is CASET =
+y and RASET = 159 - x, with no offset (so the images show no row offset difference between the two radios).</p>
+<p>The port maps each factory type to the same driver type (identity mapping) and always sets RGB order, with its
+driver's own MADCTL values (0xA0 / 0x60 / 0xE0 / 0xA0 for types 0-3). Open: the BGR bit (0x08) is set in all four
+vendor values and how that relates to the port's RGB setting; the DM-1701 bench found type 2 with MADCTL 0xE0
+mirrored top to bottom (<a href="hardware-dm1701.html">hardware-dm1701.md</a> 20), and whether MD-UV380 type 2 panels need it is
+unverified (?).</p>
+</li>
+<li>
+<p><strong>10 W identification.</strong> Security register 3 byte 0x1C = 0xF4 was reported as the Plus 10 W marker (unverified). The
+<abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="../user/22-glossary.html#t-tyt">TYT</abbr> 19.26 images <strong>never read byte 0x1C</strong>, so nothing in them confirms it. The port reads it at start-up: a 5 W image
+refuses to <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> when the marker is present (it would drive the <abbr class="gl" tabindex="0" title="Power amplifier: the stage that boosts the transmit signal to the output power." data-more="../dev/glossary.html#t-pa">PA</abbr> band select through the backlight pin), and a
+10 W image does not require it, or a Plus without the marker could never transmit. A wrong guess swaps the backlight
+and the PA band select, so confirm on both kinds of radio before relying on it.</p>
+</li>
+<li>
+<p>Backlight: PD8 (5 W) or PC6 (10 W), active high.</p>
+</li>
+</ul>
+<p><a href="radios.html">radios.md</a> lists HX8302A (unverified).</p>
+<hr />
+<h2 id="5-keypad-side-keys-encoder-ptt">5. Keypad, side keys, encoder, PTT</h2>
+<p>Matrix (rows PA6, PD2, PD3; columns D0-D7 as on the DM-1701):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Row</th>
+<th>D0</th>
+<th>D1</th>
+<th>D2</th>
+<th>D3</th>
+<th>D4</th>
+<th>D5</th>
+<th>D6</th>
+<th>D7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Row 0 (PA6)</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>0</td>
+<td>*</td>
+</tr>
+<tr>
+<td>Row 1 (PD2)</td>
+<td>green (menu)</td>
+<td>up</td>
+<td>down</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>#</td>
+<td>red (back)</td>
+</tr>
+<tr>
+<td>Row 2 (PD3)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>side key 2</td>
+<td>side key 1</td>
+</tr>
+</tbody>
+</table></div>
+<p>The matrix and the scan are the same in all four 19.26 images (images). Row 2 has no entries at D0-D5, and no matrix
+position is an orange / emergency key (the DM-1701's row 2 D5 is unused).</p>
+<p>Scan: <strong>active low.</strong> The rows are driven low with the columns read through pull-ups, then the columns driven low and
+the rows read through pull-ups; two or more low columns or rows are rejected as ghosts. The scan runs only while the
+<abbr class="gl" tabindex="0" title="Liquid crystal display: the radio&#x27;s screen." data-more="../user/22-glossary.html#t-lcd">LCD</abbr> chip select (PD6) is high. This differs from the DM-1701 spec's description (<a href="hardware-dm1701.html">hardware-dm1701.md</a> 10.1:
+rows driven high, columns pulled down); the port uses the shared scan of the DM-1701 either way.</p>
+<p>Confidence of the table (images): the digits, <code>*</code>, <code>#</code> and up / down are read from the key handlers. Red (row 1 D7) and
+green (row 1 D0) rest on the same code as the DM-1701 image, where red is bench-confirmed, as do the two side keys;
+their top / bottom order follows the DM-1701's and the image does not state it. The factory side-key functions are not in
+the application (they come from the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>).</p>
+<ul>
+<li>No P1/P2 keys and no orange key. Up / down are front keys, not
+left / right.</li>
+<li>Side key 1 (D7) is the top side key, the one held with PTT to enter the bootloader.</li>
+<li>Wake from the alarm: SK2 + PTT held together.</li>
+<li>PTT PE11 (sampled three times, debounced), external PTT PE12, encoder A PE14 / B PB11: as the DM-1701.</li>
+<li><strong>Encoder.</strong> Direction is the same as the DM-1701's; only the sampled edge differs (images). The MD-UV380 image
+interrupts on the B line (PB11) and the DM-1701 image on the A line (PE14), both on both edges, and each posts one
+virtual key per edge. With the same wiring, A leading B gives &quot;next&quot; in both, so the direction is not reversed.
+Which rotation is clockwise and the edges per detent are not in the images (?).</li>
+<li><strong>Power-on combinations</strong> (images). With PTT released at start, a row-2 key plus D6 toggles a stored frequency-range
+preset (the marker is in the copy of security register 3): D6 and D7 together select 450-460 / 150-160 MHz, D6 alone
+446.00625-446.19375 / 149.025-149.1125 MHz. PTT held plus a row-2 key plus D6 enters a hidden test mode (it shows
+&quot;TEST..&quot;). The application has no bootloader entry (no jump, no magic <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> word): the PTT + side key entry is the
+bootloader's own. RadioFoundry implements none of these presets or the test mode.</li>
+</ul>
+<hr />
+<h2 id="6-analog-inputs">6. Analog inputs</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>MD-UV380 5 W</th>
+<th>RT3S</th>
+<th>Plus 10 W</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Battery, 0.1 V</td>
+<td>raw / 40.3</td>
+<td>raw / 40.3</td>
+<td>raw / 40.3</td>
+</tr>
+<tr>
+<td>Volume pot min / max / break</td>
+<td>22 / 2070 / 309</td>
+<td>23 / 2020 / 317</td>
+<td>19 / 2054 / 308</td>
+</tr>
+</tbody>
+</table></div>
+<p>PA0 is reported at 0-1600 mV and PA1 through a 1:3 divider (unverified, ?). The RT3S reading is unstable at the bottom of the pot. Power-off threshold (5.5 V, switch sensed through the battery line) and the
+temperature sensor: as the DM-1701.</p>
+<p>The images (images): ADC1 scans six ranks (IN9, IN1, IN0, IN3, IN0, IN1), as in the DM-1701 image; the battery is IN1
+on PA1, the volume IN0. The battery value is the average of 8 samples in raw counts. The low and high battery levels
+come from security register 1 table bytes 2 and 3, times 16 counts; the defaults, used when the byte is 0xFF or above
+0xC9, are low 0x940 (2368) and high 0xC32 (3122) counts. The raw / 40.3 volt scale is not in the images (they compare
+raw counts), so it is not confirmed.</p>
+<hr />
+<h2 id="7-tx-power">7. TX power</h2>
+<p>Same <abbr class="gl" tabindex="0" title="Digital to analog converter." data-more="../dev/glossary.html#t-dac">DAC</abbr> (PA4) and level scheme as, with these interpolation fractions (220 MHz rows are the old
+firmware's untested estimates):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Radio</th>
+<th>Band</th>
+<th>f0</th>
+<th>f1</th>
+<th>f2</th>
+<th>f3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5 W</td>
+<td><abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="../user/22-glossary.html#t-vhf">VHF</abbr></td>
+<td>0.35</td>
+<td>0.70</td>
+<td>0.34</td>
+<td>0.61</td>
+</tr>
+<tr>
+<td>5 W</td>
+<td>220 MHz</td>
+<td>0.38</td>
+<td>0.70</td>
+<td>0.30</td>
+<td>0.59</td>
+</tr>
+<tr>
+<td>5 W</td>
+<td><abbr class="gl" tabindex="0" title="Ultra high frequency: 300 MHz to 3 GHz. The amateur 70 cm band is UHF." data-more="../user/22-glossary.html#t-uhf">UHF</abbr></td>
+<td>0.40</td>
+<td>0.70</td>
+<td>0.25</td>
+<td>0.55</td>
+</tr>
+<tr>
+<td>Plus 10 W</td>
+<td>VHF / 220 MHz</td>
+<td>0.58</td>
+<td>0.83</td>
+<td>0.21</td>
+<td>0.45</td>
+</tr>
+<tr>
+<td>Plus 10 W</td>
+<td>UHF</td>
+<td>0.55</td>
+<td>0.75</td>
+<td>0.17</td>
+<td>0.43</td>
+</tr>
+</tbody>
+</table></div>
+<p>On the 10 W radio the top four levels are 2, 3, 5 and 10 W (<a href="hardware-dm1701.html">hardware-dm1701.md</a> 7). Measured output (one radio) UHF 1.4 / 2.6 / 5.1 W,
+VHF 1.1 / 2.1 / 4.3 W (unverified).</p>
+<hr />
+<h2 id="8-calibration">8. Calibration</h2>
+<p>The same 512-byte layout as the DM-1701's (security registers 1 and 2, working copy at 0x010000 with the same marker for
+the open-firmware <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr>). <strong>The <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="../user/22-glossary.html#t-tyt">TYT</abbr> images read only the factory registers</strong> (images): security registers 1 and 2 (256 B
+each, at 0x1000 and 0x2000) go into one 512-byte <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> table, and no working copy at flash 0x10000 is read.</p>
+<ul>
+<li>Power rows (<abbr class="gl" tabindex="0" title="Ultra high frequency: 300 MHz to 3 GHz. The amateur 70 cm band is UHF." data-more="../user/22-glossary.html#t-uhf">UHF</abbr> at 0x10, <abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="../user/22-glossary.html#t-vhf">VHF</abbr> at 0x19, then 0x20...) hold real points at the even offsets; the images overwrite the
+odd slots with the average of their neighbors.</li>
+<li>The <abbr class="gl" tabindex="0" title="Digital to analog converter." data-more="../dev/glossary.html#t-dac">DAC</abbr> gets the row byte times 255, left-aligned (about the byte times 16 in 12 bits).</li>
+<li>Table bytes 0x02 and 0x03 are the battery level thresholds (section 6).</li>
+</ul>
+<p>Only the power conversion when deriving the working copy differs:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Radio</th>
+<th>Band</th>
+<th>k0</th>
+<th>k1</th>
+<th>k2</th>
+<th>k3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5 W</td>
+<td>VHF / UHF</td>
+<td>0.63 / 0.72</td>
+<td>1.00</td>
+<td>1.00 / 1.05</td>
+<td>1.10 / 1.25</td>
+</tr>
+<tr>
+<td>Plus 10 W</td>
+<td>VHF / UHF</td>
+<td>0.35 / 0.40</td>
+<td>0.65 / 0.70</td>
+<td>1.25 / 1.20</td>
+<td>1.40 / 1.35</td>
+</tr>
+</tbody>
+</table></div>
+<p>The open-firmware CPS calibration window (0x10000, 512 bytes) is served as on the DM-1701.</p>
+<hr />
+<h2 id="9-gps">9. GPS</h2>
+<p>G models (MD-UV380G / MD-UV390 GPS / RT3S GPS) carry a JumpStar JS-H210 module on the display / keypad board; the
+non-GPS boards have no footprint (unverified). Its <abbr class="gl" tabindex="0" title="The text format GPS receivers use to report position and time." data-more="../user/22-glossary.html#t-nmea">NMEA</abbr> output is on <strong>USART1 <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr>, PA10</strong>, and its power switch is
+<strong>PA9</strong>, high = on: the same pins the DM-1701 spec lists for its unfitted GPS, not the MD-380's
+USART3. Receive only, 8N1, a 100-byte interrupt-driven line buffer. <strong>9600 baud on the wire</strong> (images): the images ask the vendor
+library for 14400, which assumes the 12 MHz crystal of section 2, and 14400 x 8 / 12 = 9600. The parser takes NMEA RMC
+(talker GP or GN, status 'A'). PA9 is driven only in the GPS images (the module's power gate); the non-GPS images never
+drive it. Nothing is sent to the module. The port tries 9600 first and keeps 14400 in the hunt until a G model confirms.</p>
+<p>Detection: the same board ships with and without the module (unverified). A listen-first probe as on the MD-380 (<a href="hardware-md380.html">hardware-md380.md</a> 13.2), with PA9 driven
+high for the listen window and back low if nothing is heard, avoids needing a model flag (?: on a non-GPS radio PA9
+drives nothing that is known). The vendor firmware files differ between GPS and non-GPS radios (section 11).</p>
+<p>Once heard, PA9 follows Settings &gt; Location &gt; GPS (<code>board_t.gps</code> = <code>stm32_gps</code>): off stops USART1 and
+drives PA9 low, on drives it high and restarts USART1 at the rate found. <code>boards/uv380_family/gps_uvf.c</code>.</p>
+<hr />
+<h2 id="10-usb-and-model-reporting">10. USB and model reporting</h2>
+<p>Same <abbr class="gl" tabindex="0" title="USB On-The-Go: the controller can act as the host or the device." data-more="../dev/glossary.html#t-otg">OTG_FS</abbr> core and descriptors as the DM-1701. The open-firmware <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> radio type is 6 (the DM-1701 reports 8 or 10 by panel color order). RadioFoundry's <code>tools/cps_client.py</code> already maps type 6 to &quot;MD-UV380&quot;. A single RadioFoundry
+image can tell a Plus 10 W radio by section 4's security register byte; it cannot tell an MD-UV380 from an RT3S or
+UV390 (no known model byte) (?).</p>
+<hr />
+<h2 id="11-bootloader-and-stock-images">11. Bootloader and stock images</h2>
+<p>Entering the bootloader: hold PTT and the top side key (SK1) at power on (unverified). The <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="../user/22-glossary.html#t-tyt">TYT</abbr>/AnyRoad <abbr class="gl" tabindex="0" title="Device Firmware Upgrade: the USB protocol of the radio&#x27;s bootloader." data-more="../user/22-glossary.html#t-dfu">DFU</abbr>
+loader, protocol and sector list are the DM-1701's (<a href="hardware-dm1701.html">hardware-dm1701.md</a> 15.2). Switched on
+normally, the original firmware is a DFU device with the same IDs, told apart by alt 0's layout and refused by the
+flashers (15.1). The MD-UV380's bootloader strings have not been read on a radio (?): the generic rule applies. The image is XOR-encrypted with the MD-UV380 key, SHA-256
+<code>739ce35cc8db6e72f95598effac1a01ae71dbe2a5792c1a69acaee5dbf634991</code>, first bytes 00 AA 89 89, the same key for the
+MD-UV390 and the MD-2017 (<a href="hardware-dm1701.html">hardware-dm1701.md</a> 15.3). <code>stockfw.derive_key</code> recovers exactly this
+key from every vendor file listed in <a href="codec-mduv380.html">codec-mduv380.md</a>, TYT's and Retevis's (measured).</p>
+<p><strong>Retevis RT3S.</strong> Its bootloader takes the same key. Every RT3S file Retevis publishes (18.11, 18.16, 19.06, 219.60) is
+encrypted with it, its 18.11 and 18.16 files are TYT's byte for byte, Retevis ships TYT's updater (the same file, by
+SHA-256), and its instructions give the same entry keys (side key 1 and PTT at power on). That settles what the RT3S
+updater sends; the RT3S bootloader itself has not been dumped (its USB strings and <abbr class="gl" tabindex="0" title="General purpose input/output: a pin the firmware can read or drive." data-more="../dev/glossary.html#t-gpio">GPIO</abbr> check, ?).</p>
+<p>The application carries the text &quot;Digital Radio in USB mode&quot; and the string &quot;AnyRoad Technology&quot; and no USB VID / PID
+literal (images). It is plain and executed in place from 0x0800C000, so a flash readout equals the decrypted
+application by address.</p>
+<p>The initial stack pointer rule (: below the top of <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr>) is documented for this radio too (unverified).
+Whether the MD-UV380 bootloader checks the same GPIO combination (PE8 low and PE11 low) and the stack pointer word as
+the DM-1701's dumped loader is unknown (?: needs a dump from an MD-UV380).</p>
+<p>The images read <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> flash at fixed addresses 0x2008, 0x2040, 0x2054, 0x2080, 0x20F0, 0x2100, 0x2154, 0x5A70, 0x416D0,
+0x45100, 0x48B00, 0x48D00, 0x48F00 and 0x490A0, the same as the DM-1701 image; its other reads use computed addresses
+(images). Security register 3 bytes read: 0x11 and 0x12 (the band limits, below), 0x14-0x1B, 0x1D (bits 0-1 <abbr class="gl" tabindex="0" title="Liquid crystal display: the radio&#x27;s screen." data-more="../user/22-glossary.html#t-lcd">LCD</abbr> type;
+bits 2, 5 and 6 are UI feature flags of unknown meaning), 0x20, 0x34 and 0x38.</p>
+<p>Band limits: when security register 3 bytes 0x11 and 0x12 read 0xFF, the images use the defaults <abbr class="gl" tabindex="0" title="Ultra high frequency: 300 MHz to 3 GHz. The amateur 70 cm band is UHF." data-more="../user/22-glossary.html#t-uhf">UHF</abbr> 400-480 MHz and <abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="../user/22-glossary.html#t-vhf">VHF</abbr>
+136-174 MHz (images).</p>
+<p>Stock files: OutSecurityBin, two segments (SPI flash resources at 0x00060000 + 0x5D400, the
+application at 0x0800C000), blank model field. TYT names four builds per release:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Prefix</th>
+<th>Build</th>
+<th>Radios</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V</td>
+<td><abbr class="gl" tabindex="0" title="Comma separated values: a table as plain text, as programming software exports it." data-more="../user/22-glossary.html#t-csv">CSV</abbr> (large contact list)</td>
+<td>non-GPS</td>
+</tr>
+<tr>
+<td>D</td>
+<td>REC (recording)</td>
+<td>non-GPS</td>
+</tr>
+<tr>
+<td>P</td>
+<td>CSV-GPS</td>
+<td>GPS</td>
+</tr>
+<tr>
+<td>S</td>
+<td>GPS-REC</td>
+<td>GPS</td>
+</tr>
+</tbody>
+</table></div>
+<p>Every supported file's name and hash is in <a href="codec-mduv380.html">codec-mduv380.md</a>, the Plus 10 W builds of 19.74 and
+219.74 among them. TYT's release notes number the lines: 019.xx without AES, 119.xx AES with 16 groups, 219.xx AES with
+255 groups.</p>
+<hr />
+<h2 id="12-codec">12. Codec</h2>
+<p>The <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE+2</abbr> codec is in every MD-UV380 stock application, the same library as the DM-1701's with the DM-1701's entry
+offsets, relinked, at a different address in each build (<abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="../user/22-glossary.html#t-tyt">TYT</abbr> 18.11 to 219.74, Retevis RT3S 19.06 and 219.60). Its
+output is bit-identical to the DM-1701 codec's in the emulator for every build. The merge places it like the
+DM-1701's: tables at their stock address, the code after them (or at the start of sector 10 where it doesn't fit),
+the descriptor at the end of sector 11; the application has sectors 3-9 and &quot;keep codec&quot; works.
+Addresses, tags and checksums, and the extraction recipe: <a href="codec-mduv380.html">codec-mduv380.md</a>.</p>
+<hr />
+<h2 id="13-variants">13. Variants</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Radio</th>
+<th>Difference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MD-UV380</td>
+<td>the base 5 W board</td>
+</tr>
+<tr>
+<td>MD-UV390</td>
+<td>the same radio in an IP67 case</td>
+</tr>
+<tr>
+<td>Retevis RT3S</td>
+<td>rebadged MD-UV380; its own volume pot curve (section 6)</td>
+</tr>
+<tr>
+<td>G models</td>
+<td>JS-H210 GPS on USART1 / PA9</td>
+</tr>
+<tr>
+<td>MD-UV390 Plus 10 W</td>
+<td>PC6 / PD8 swapped, 10 W power tables, security register 3 byte 0x1C = 0xF4 reported but never read by the <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="../user/22-glossary.html#t-tyt">TYT</abbr> images, board layout differs somewhat (unverified)</td>
+</tr>
+<tr>
+<td>MD-2017</td>
+<td>trackball, two <abbr class="gl" tabindex="0" title="The RF transceiver chip that sets the frequency, deviation and power of many handheld DMR radios. Programmed over I2C." data-more="../dev/glossary.html#t-at1846s">AT1846S</abbr>; not covered here</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="14-unknowns-that-need-a-radio">14. Unknowns that need a radio</h2>
+<p>The 19.26 images settled what the vendor software does; nothing has run on a radio, so every row is still unverified
+there.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Unknown</th>
+<th>State</th>
+<th>How to settle it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>HSE crystal or bypass</td>
+<td>images: crystal, bypass off; the port tries crystal first</td>
+<td>USB enumerates on HSE; read which mode started</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Panel types 0-3: MADCTL, RGB / BGR</td>
+<td>images: init table and MADCTL per type (section 4); the BGR bit and type 2 orientation open</td>
+<td>the boot screen is upright, not mirrored and the right colors; read sec. reg 3 byte 0x1D</td>
+</tr>
+<tr>
+<td>3</td>
+<td>10 W detection by sec. reg 3 byte 0x1C</td>
+<td>open: the images never read the byte, so 0xF4 is unconfirmed</td>
+<td>read it on a 5 W and a 10 W radio before trusting it for the pin swap</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Key matrix and side key order</td>
+<td>images: matrix as section 5; red / green and the side key order inferred from the DM-1701 image</td>
+<td>press each key, compare with section 5</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Encoder direction</td>
+<td>images: same direction as the DM-1701; clockwise and edges per detent open</td>
+<td>clockwise = next channel</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Battery divider (40.3)</td>
+<td>open: no scale in the images; thresholds are raw counts</td>
+<td>compare against a meter</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Volume pot ranges per model</td>
+<td>open</td>
+<td>read the raw value at both ends</td>
+</tr>
+<tr>
+<td>8</td>
+<td>GPS on PA10 / PA9, 9600 baud; PA9 on non-GPS radios</td>
+<td>images: 9600 on the wire, PA9 driven only in the GPS images</td>
+<td>G model: sentences arrive; non-G: nothing breaks</td>
+</tr>
+<tr>
+<td>9</td>
+<td><abbr class="gl" tabindex="0" title="The RF transceiver chip that sets the frequency, deviation and power of many handheld DMR radios. Programmed over I2C." data-more="../dev/glossary.html#t-at1846s">AT1846S</abbr> <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> AF gain, <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> offset and <abbr class="gl" tabindex="0" title="Automatic gain control: the receiver adjusting itself to the signal level." data-more="../dev/glossary.html#t-agc">AGC</abbr></td>
+<td>open: 0x07EF, <abbr class="gl" tabindex="0" title="Ultra high frequency: 300 MHz to 3 GHz. The amateur 70 cm band is UHF." data-more="../user/22-glossary.html#t-uhf">UHF</abbr> offset 0 and 0x32 = 0x4490, the DM-1701's values</td>
+<td><code>test_dmr_audio_rx_deviation</code>, <code>test_dmr_audio_rx_offset_wide</code>, <code>test_dmr_audio_rx_strong</code>; <code>tools/dmr_rx_sweep.py --reg 0:0x44</code> (<code>--detune</code> for offsets) for the window, <code>--reg 0:0x32 --field 2:0</code> at -75 to -45 dBm for the AGC</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Power fractions and k factors</td>
+<td>open; the images' power rows are averaged between points (section 8)</td>
+<td>power meter at each level, band edges</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Bootloader entry check and stack rule</td>
+<td>open; the application has no entry code</td>
+<td>dump the loader (RDP 1 allows the application to read it)</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Codec voice on air</td>
+<td>open: bit-identical in the emulator for every build (<a href="codec-mduv380.html">codec-mduv380.md</a>)</td>
+<td>DMR <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> and RX through the placed codec</td>
+</tr>
+<tr>
+<td>13</td>
+<td>PB1 / PB2 (AT1846S GPIO0 / GPIO6)</td>
+<td>open; not needed for a port</td>
+<td>scope while the squelch opens</td>
+</tr>
+<tr>
+<td>14</td>
+<td><abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> differences (section 2) and AT1846S reg 0x05 cases</td>
+<td>images only</td>
+<td>DMR and FM TX / RX at the band edges</td>
+</tr>
+<tr>
+<td>15</td>
+<td>USB VID / PID of the application</td>
+<td>not in the images</td>
+<td>enumerate on a radio</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Model byte to tell an MD-UV380 from an RT3S or UV390</td>
+<td>not found</td>
+<td>none known</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Beep <abbr class="gl" tabindex="0" title="Pulse width modulation: a pin switched on and off to give an average level, as for backlight or tone." data-more="../dev/glossary.html#t-pwm">PWM</abbr> on PC8</td>
+<td>images set the pin to TIM8 CH3; details not read</td>
+<td>scope the pin</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="15-sources">15. Sources</h2>
+<p>This repo: <a href="hardware-dm1701.html">hardware-dm1701.md</a> (sections cited) and <a href="codec-mduv380.html">codec-mduv380.md</a>. Everything else on this page is unverified.</p>
+<h2 id="receive-past-the-rated-bands">Receive past the rated bands</h2>
+<p>134-136, 200-260 and 480-520 MHz: the <abbr class="gl" tabindex="0" title="The RF transceiver chip that sets the frequency, deviation and power of many handheld DMR radios. Programmed over I2C." data-more="../dev/glossary.html#t-at1846s">AT1846S</abbr> data sheet. <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">Receive</abbr> only, FM, off by default (<a href="radio-features.html">radio-features.md</a> 6.2). Not measured on the radio.</p>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/hardware-mduv380.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#1-summary-of-differences-from-the-dm-1701">1. Summary of differences from the DM-1701</a></li><li class="l2"><a href="#2-mcu-clocks-rf-chips">2. MCU, clocks, RF chips</a></li><li class="l2"><a href="#3-pin-differences">3. Pin differences</a></li><li class="l2"><a href="#4-display">4. Display</a></li><li class="l2"><a href="#5-keypad-side-keys-encoder-ptt">5. Keypad, side keys, encoder, PTT</a></li><li class="l2"><a href="#6-analog-inputs">6. Analog inputs</a></li><li class="l2"><a href="#7-tx-power">7. TX power</a></li><li class="l2"><a href="#8-calibration">8. Calibration</a></li><li class="l2"><a href="#9-gps">9. GPS</a></li><li class="l2"><a href="#10-usb-and-model-reporting">10. USB and model reporting</a></li><li class="l2"><a href="#11-bootloader-and-stock-images">11. Bootloader and stock images</a></li><li class="l2"><a href="#12-codec">12. Codec</a></li><li class="l2"><a href="#13-variants">13. Variants</a></li><li class="l2"><a href="#14-unknowns-that-need-a-radio">14. Unknowns that need a radio</a></li><li class="l2"><a href="#15-sources">15. Sources</a></li><li class="l2"><a href="#receive-past-the-rated-bands">Receive past the rated bands</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

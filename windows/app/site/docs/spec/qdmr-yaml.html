@@ -1,0 +1,754 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>qdmr YAML codeplug · RadioFoundry</title>
+<meta name="description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="qdmr YAML codeplug · RadioFoundry">
+<meta property="og:description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:url" content="https://radiofoundry.org/docs/spec/qdmr-yaml.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="The radios RadioFoundry runs on, each showing a different screen.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/qdmr-yaml.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/qdmr-yaml.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/qdmr-yaml.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/qdmr-yaml.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/qdmr-yaml.html">
+<link rel="icon" href="../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../" data-home="../../" data-gl-more="More">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../index.html">
+			<img src="../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Main"><a href="../../radios/index.html">Radios</a><a href="../../features/index.html">Features</a><a href="../../flash/index.html">Install</a><a href="../../codeplug/index.html">Codeplug</a><a href="../../docs/index.html" aria-current="page">Docs</a><a href="../../screenshots/index.html">Screenshots</a><a href="../../tools/index.html">Tools</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Language" title="Language">EN</summary><nav aria-label="Language"><a href="../../docs/spec/qdmr-yaml.html" aria-current="true" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../es/docs/spec/qdmr-yaml.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../it/docs/spec/qdmr-yaml.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../zh/docs/spec/qdmr-yaml.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Switch light and dark" title="Switch light and dark">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Specifications">
+		<p class="eyebrow"><a href="../../docs/index.html">Documentation</a> / Specifications</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html" aria-current="page">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<!-- Copyright (c) 2026 The RadioFoundry Authors -->
+<h1 id="qdmr-yaml-codeplug">qdmr YAML codeplug</h1>
+<p><abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr> and its command-line tool <code>dmrconf</code> save a <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> as a <abbr class="gl" tabindex="0" title="A text file format. qdmr stores its codeplug as YAML." data-more="../user/22-glossary.html#t-yaml">YAML</abbr> file, the &quot;extensible codeplug&quot;. The Codeplug
+Editor opens and saves this file, so a codeplug can move between qdmr and the editor in both directions. This spec
+covers the file as qdmr 0.15 writes it, the editor's mapping to the open-firmware records
+(<a href="open-firmware-cps.html">open-firmware-cps.md</a> 7), and what each direction leaves out.</p>
+<p>Sources: qdmr's published manual (the &quot;Extensible Codeplug File Format&quot; chapter), files written by qdmr 0.15.1, and
+<code>dmrconf encode</code> run on test files, with the binary it writes decoded by the editor's own decoder. qdmr's source is
+<abbr class="gl" tabindex="0" title="GNU General Public License. RadioFoundry does not use GPL code." data-more="../dev/glossary.html#t-gpl">GPL</abbr> and was not read (<a href="../CLEANROOM.html">CLEANROOM.md</a>).</p>
+<p>Code: <code>site/static/js/codeplug/yaml.js</code> (the YAML subset), <code>site/static/js/codeplug/qdmr.js</code> (the mapping),
+<code>site/static/js/editor/qdmrpart.js</code> (the editor's Open and Save), tests in <code>site/tests/qdmr.test.mjs</code>.</p>
+<h2 id="1-syntax">1. Syntax</h2>
+<p>The file is one <abbr class="gl" tabindex="0" title="A text file format. qdmr stores its codeplug as YAML." data-more="../user/22-glossary.html#t-yaml">YAML</abbr> 1.2 document. <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr> uses a small part of YAML, and <code>yaml.js</code> reads that part:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Construct</th>
+<th>Example</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Document markers</td>
+<td><code>---</code> first, <code>...</code> last</td>
+<td>Optional. A second document is refused</td>
+</tr>
+<tr>
+<td>Block map</td>
+<td><code>settings:</code> and indented keys</td>
+<td>Two-space indent</td>
+</tr>
+<tr>
+<td>Block list</td>
+<td><code>  - dmr:</code></td>
+<td>qdmr indents a list two spaces under its key</td>
+</tr>
+<tr>
+<td>Flow map</td>
+<td><code>{id: cont1, name: TG 9, number: 9}</code></td>
+<td>Contacts, radio IDs and group lists are written this way</td>
+</tr>
+<tr>
+<td>Flow list</td>
+<td><code>A: [ch1, ch2]</code>, <code>B: []</code></td>
+<td>References and paths</td>
+</tr>
+<tr>
+<td>Plain scalar</td>
+<td><code>name: Repeater TS1</code>, <code>name: 201</code></td>
+<td>A plain <code>201</code> reads as a number; names are converted back to text</td>
+</tr>
+<tr>
+<td>Quoted scalar</td>
+<td><code>password: &quot;&quot;</code>, <code>'It''s'</code>, <code>&quot;a\tb&quot;</code></td>
+<td>Double quotes take the usual escapes</td>
+</tr>
+<tr>
+<td>Null</td>
+<td><code>rxTone: ~</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Tag</td>
+<td><code>power: !default &quot;&quot;</code></td>
+<td><code>!default</code>: use the radio's global value</td>
+</tr>
+<tr>
+<td>Comment</td>
+<td><code># ...</code></td>
+<td>After whitespace, outside quotes</td>
+</tr>
+<tr>
+<td>Block scalar</td>
+<td>`</td>
+<td><code>, </code>&gt;<code>with</code>-<code>or</code>+`</td>
+</tr>
+</tbody>
+</table></div>
+<p>Anchors, aliases, complex keys and tabs in indentation are refused with an error. The writer quotes a string when the
+plain form would read back as something else (a number, <code>true</code>, empty, leading space, <code>: </code> or <code>#</code>).</p>
+<h2 id="2-structure">2. Structure</h2>
+<p>The top-level keys, in <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr>'s order:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Holds</th>
+<th>Editor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>version</code></td>
+<td>qdmr version that wrote the file</td>
+<td>Written as <code>0.15.1</code>; not checked on import</td>
+</tr>
+<tr>
+<td><code>settings</code></td>
+<td>Radio-wide settings: <code>power</code>, <code>defaultID</code>, <code>boot</code>, <code>audio</code>, <code>tone</code>, <code>gnss</code>, <code>dmr</code> and others</td>
+<td>Part, see 4.1</td>
+</tr>
+<tr>
+<td><code>radioIDs</code></td>
+<td>The radio's <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR IDs</abbr>: <code>- dmr: {id, name, number}</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>contacts</code></td>
+<td><code>- dmr: {...}</code> digital contacts, <code>- dtmf: {...}</code> <abbr class="gl" tabindex="0" title="Dual tone multi frequency: the touch tones a keypad sends, in the audio." data-more="../user/22-glossary.html#t-dtmf">DTMF</abbr> contacts</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>groupLists</code></td>
+<td><abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> group lists: <code>{id, name, contacts: [refs]}</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>channels</code></td>
+<td><code>- dmr: {...}</code> and <code>- fm: {...}</code> channels</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>zones</code></td>
+<td><code>{id, name, A: [refs], B: [refs]}</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>scanLists</code></td>
+<td>Scan lists</td>
+<td>Dropped</td>
+</tr>
+<tr>
+<td><code>positioning</code></td>
+<td><code>- aprs: {...}</code> <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> systems, <code>- dmr: {...}</code> <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> position reporting</td>
+<td>APRS only</td>
+</tr>
+<tr>
+<td><code>roaming</code></td>
+<td>Roaming channels and zones</td>
+<td>Dropped</td>
+</tr>
+<tr>
+<td><code>commercial</code></td>
+<td><code>encryptionKeys</code></td>
+<td>Dropped</td>
+</tr>
+<tr>
+<td><code>sms</code></td>
+<td>Message format and templates</td>
+<td>Dropped</td>
+</tr>
+</tbody>
+</table></div>
+<p>Older qdmr versions and the manual name the element types <code>digital</code> and <code>analog</code>. The import accepts both spellings;
+the export writes <code>dmr</code> and <code>fm</code>, as qdmr 0.15 does.</p>
+<h3 id="21-references">2.1 References</h3>
+<p>Every element has an <code>id</code> that is unique in the file. Other elements refer to it by that id: a channel's <code>contact</code>,
+<code>groupList</code>, <code>radioId</code> and <code>aprs</code>, a zone's <code>A</code> and <code>B</code>, a group list's <code>contacts</code>, an APRS system's <code>revert</code>. qdmr
+writes ids as a prefix and a count (<code>ch12</code>, <code>cont3</code>, <code>grp1</code>, <code>zone2</code>, <code>aprs1</code>, <code>id1</code>), and the export does the same
+in table order. The import doesn't depend on the form. A reference to an id the file doesn't define is dropped.</p>
+<h3 id="22-values">2.2 Values</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>Forms read</th>
+<th>Form written</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Frequency</td>
+<td><code>439.5625 MHz</code>, <code>145500 kHz</code>, <code>Hz</code>, <code>GHz</code>, a bare number in MHz</td>
+<td><code>439.5625 MHz</code></td>
+</tr>
+<tr>
+<td>Duration</td>
+<td><code>3 min</code>, <code>45 s</code>, <code>500 ms</code>, a bare number in seconds, <code>infinite</code> / <code>off</code> (0), <code>!default</code></td>
+<td><code>3 min</code>, <code>45 s</code>, <code>infinite</code></td>
+</tr>
+<tr>
+<td>Sub-tone</td>
+<td><code>{ctcss: 67}</code>, <code>{ctcss: 67 Hz}</code>, <code>{dcs: 23}</code>, <code>{dcs: -754}</code> (negative = inverted), <code>~</code></td>
+<td><code>{ctcss: 67 Hz}</code>, <code>{dcs: -754}</code>, <code>~</code></td>
+</tr>
+<tr>
+<td>Power</td>
+<td><code>Min</code>, <code>Low</code>, <code>Mid</code>, <code>High</code>, <code>Max</code>, <code>!default</code></td>
+<td>Same</td>
+</tr>
+<tr>
+<td>Location</td>
+<td>Maidenhead locator, 4, 6 or 8 characters, or <code>&quot;&quot;</code></td>
+<td>6 characters</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td><code>true</code>, <code>false</code></td>
+<td>Same</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="3-elements">3. Elements</h2>
+<h3 id="31-radio-ids-and-settings">3.1 Radio IDs and settings</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>qdmr</th>
+<th>Editor</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>settings.defaultID</code></td>
+<td></td>
+<td>Names the radio ID that is the radio's own</td>
+</tr>
+<tr>
+<td>default radio ID <code>number</code></td>
+<td>Radio, <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr></td>
+<td></td>
+</tr>
+<tr>
+<td>default radio ID <code>name</code></td>
+<td>Radio, radio name</td>
+<td>Shortened to 8 characters</td>
+</tr>
+<tr>
+<td>other radio IDs</td>
+<td>Channel <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> ID</td>
+<td>A channel whose <code>radioId</code> names another ID gets that ID as its own DMR ID</td>
+</tr>
+<tr>
+<td><code>settings.boot.message1</code>, <code>message2</code></td>
+<td>Boot text lines 1 and 2</td>
+<td>16 characters</td>
+</tr>
+<tr>
+<td><code>settings.dmr.groupCallHangTime</code>, <code>privateCallHangTime</code></td>
+<td>Group and private hang</td>
+<td>In 500 ms steps (open-firmware-cps.md 7.3.2, the unit our firmware assumes)</td>
+</tr>
+<tr>
+<td><code>settings.gnss.fixedPositionEnabled</code>, <code>fixedPosition</code></td>
+<td><abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr>: use fixed position, latitude, longitude</td>
+<td>Applied to every APRS configuration</td>
+</tr>
+<tr>
+<td><code>settings.audio.vox</code></td>
+<td></td>
+<td>Decides a channel's <abbr class="gl" tabindex="0" title="Voice-operated transmit." data-more="../user/22-glossary.html#t-vox">VOX</abbr> when the channel says <code>!default</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>The export writes one radio ID for the radio (<code>id1</code>) and one more for each distinct channel DMR ID. Other settings
+(<code>power</code>, <code>audio</code>, <code>tone</code>, the boot logo and password, <abbr class="gl" tabindex="0" title="A short text, usually a callsign and name, sent along with DMR voice." data-more="../user/22-glossary.html#t-talker-alias">talker alias</abbr> encoding and so on) are radio settings the
+<abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> image doesn't hold in the editor's model; the import ignores them and the export leaves them out, so <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr>
+uses its defaults.</p>
+<p>qdmr has no field for the <abbr class="gl" tabindex="0" title="Automatic Registration Service: a radio tells a presence server it is on the air." data-more="../user/22-glossary.html#t-ars">ARS</abbr> server and IP gateway (the settings area, <a href="codeplug-settings.html">codeplug-settings.md</a>).
+The import leaves them as the open codeplug has them, absent in a new one, and the export leaves them out.</p>
+<h3 id="32-contacts">3.2 Contacts</h3>
+<p><code>openGD77</code> is the name qdmr gives its block of per-contact and per-channel extension keys for the open-firmware radios.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>qdmr</th>
+<th>Editor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dmr.name</code></td>
+<td>Name (16 characters)</td>
+</tr>
+<tr>
+<td><code>dmr.type</code>: <code>GroupCall</code>, <code>PrivateCall</code>, <code>AllCall</code></td>
+<td>Call type: group, private, all</td>
+</tr>
+<tr>
+<td><code>dmr.number</code></td>
+<td>ID (<abbr class="gl" tabindex="0" title="DMR talkgroup 16777215, heard by every radio on the slot." data-more="../user/22-glossary.html#t-all-call">all call</abbr>: 16777215)</td>
+</tr>
+<tr>
+<td><code>dmr.openGD77.timeSlotOverride</code>: <code>None</code>, <code>TS1</code>, <code>TS2</code></td>
+<td><abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">Timeslot</abbr>: channel's, 1, 2</td>
+</tr>
+<tr>
+<td><code>dmr.ring</code></td>
+<td>Dropped (written as <code>false</code>)</td>
+</tr>
+<tr>
+<td><code>dtmf.name</code>, <code>dtmf.number</code></td>
+<td><abbr class="gl" tabindex="0" title="Dual tone multi frequency: the touch tones a keypad sends, in the audio." data-more="../user/22-glossary.html#t-dtmf">DTMF</abbr> contact name and code</td>
+</tr>
+</tbody>
+</table></div>
+<p>In the export, DTMF contacts follow the digital contacts and continue their id count.</p>
+<h3 id="33-rx-group-lists">3.3 RX group lists</h3>
+<p><code>name</code> and <code>contacts</code> map directly. A list keeps its first 32 contacts.</p>
+<h3 id="34-channels">3.4 Channels</h3>
+<p>Both types:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>qdmr</th>
+<th>Editor</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>Name</td>
+<td>16 characters</td>
+</tr>
+<tr>
+<td><code>rxFrequency</code>, <code>txFrequency</code></td>
+<td><abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr>, <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> frequency</td>
+<td>10 Hz grid</td>
+</tr>
+<tr>
+<td><code>power</code></td>
+<td>Power byte: <code>Min</code> 1, <code>Low</code> 3, <code>Mid</code> 6, <code>High</code> 9, <code>Max</code> 10, <code>!default</code> 0</td>
+<td>open-firmware-cps.md 7.3.3. Another stored level exports as <code>!default</code></td>
+</tr>
+<tr>
+<td><code>timeout</code></td>
+<td>TX timeout</td>
+<td>15 s steps, rounded up. <code>!default</code> is 0, the radio's TX timeout. A channel has no &quot;off&quot;: <code>infinite</code> and <code>0</code> also become 0 (note <code>tot_off</code>). The export writes 0 as <code>!default</code></td>
+</tr>
+<tr>
+<td><code>rxOnly</code></td>
+<td>RX only</td>
+<td></td>
+</tr>
+<tr>
+<td><code>vox</code></td>
+<td>VOX on or off</td>
+<td>A number above 0 is on, <code>off</code> or 0 is off, <code>!default</code> follows <code>settings.audio.vox</code>. The export writes <code>1</code> or <code>off</code></td>
+</tr>
+<tr>
+<td><code>openGD77.scanZoneSkip</code>, <code>scanAllSkip</code></td>
+<td>Zone skip, all-channel skip</td>
+<td></td>
+</tr>
+<tr>
+<td><code>openGD77.beep</code></td>
+<td>Not &quot;no beep&quot;</td>
+<td></td>
+</tr>
+<tr>
+<td><code>openGD77.powerSave</code></td>
+<td>Not &quot;no economy&quot;</td>
+<td></td>
+</tr>
+<tr>
+<td><code>openGD77.location</code></td>
+<td>Use location, latitude, longitude</td>
+<td>Locator to the center of its square. The export writes a 6-character locator, about 5 km</td>
+</tr>
+<tr>
+<td><code>openGD77.talkerAliasTS1</code>, <code>TS2</code>: <code>None</code>, <code>APRS</code>, <code>Text</code>, <code>Both</code></td>
+<td>Talker alias TX on TS1, TS2: 0-3</td>
+<td><code>APRS</code> and <code>Both</code> send our position in the channel's calls (<code>dmr-voice.md</code> 3.1)</td>
+</tr>
+<tr>
+<td><code>aprs</code></td>
+<td>APRS configuration</td>
+<td>Only an APRS system the file defines</td>
+</tr>
+<tr>
+<td><code>scanList</code></td>
+<td>Dropped</td>
+<td></td>
+</tr>
+<tr>
+<td><code>admit</code></td>
+<td>Dropped</td>
+<td>Written as <code>Always</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>DMR channels:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>qdmr</th>
+<th>Editor</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>colorCode</code></td>
+<td><abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">Color code</abbr></td>
+<td>0-15</td>
+</tr>
+<tr>
+<td><code>timeSlot</code>: <code>TS1</code>, <code>TS2</code></td>
+<td>Timeslot</td>
+<td></td>
+</tr>
+<tr>
+<td><code>contact</code></td>
+<td>TX contact</td>
+<td></td>
+</tr>
+<tr>
+<td><code>groupList</code></td>
+<td><abbr class="gl" tabindex="0" title="The talkgroups a channel listens to. The codeplug calls it the RX group list." data-more="../user/22-glossary.html#t-listen-list">RX group list</abbr></td>
+<td></td>
+</tr>
+<tr>
+<td><code>radioId</code></td>
+<td>Channel DMR ID</td>
+<td><code>!default</code> or the default ID: none</td>
+</tr>
+<tr>
+<td><code>roaming</code></td>
+<td>Roaming flag</td>
+<td>Any value sets it; the export writes <code>!default &quot;&quot;</code></td>
+</tr>
+<tr>
+<td><code>extended.talkaround</code></td>
+<td><abbr class="gl" tabindex="0" title="DMR radio to radio on one frequency, with no repeater. The standard calls it DMO." data-more="../dev/glossary.html#t-direct-mode">DMO</abbr> flag</td>
+<td></td>
+</tr>
+<tr>
+<td>other <code>extended</code> keys</td>
+<td>Dropped</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>FM channels:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>qdmr</th>
+<th>Editor</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bandwidth</code>: <code>Narrow</code>, <code>Wide</code></td>
+<td>12.5 or 25 kHz</td>
+<td></td>
+</tr>
+<tr>
+<td><code>rxTone</code>, <code>txTone</code></td>
+<td>Tones</td>
+<td></td>
+</tr>
+<tr>
+<td><code>squelch</code></td>
+<td>Squelch level</td>
+<td>qdmr's 1-10 is doubled onto the record's 1-21; <code>0</code> and <code>!default</code> are the radio's default. The export halves it</td>
+</tr>
+<tr>
+<td><code>extended.reverseBurst</code></td>
+<td>Dropped</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>The <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="sfr.html">SFR</abbr> settings (flag, bytes A and B) have no qdmr counterpart; the export leaves them out and says so.</p>
+<h3 id="35-zones">3.5 Zones</h3>
+<p><code>name</code> and <code>A</code> map to a zone and its channels. qdmr's zones have two lists, A and B, while an open-firmware zone has
+one. A zone with an empty B list imports as one zone. A zone with channels in both imports as two, <code>&lt;name&gt; A</code> and
+<code>&lt;name&gt; B</code>, which is also what <code>dmrconf encode</code> writes for this radio. The export writes each zone as an A list with an
+empty B list. A zone keeps its first 80 channels.</p>
+<h3 id="36-aprs">3.6 APRS</h3>
+<p>An <code>aprs</code> element under <code>positioning</code> becomes an APRS configuration (open-firmware-cps.md 7.3.8):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>qdmr</th>
+<th>Editor</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>Name</td>
+<td>8 characters</td>
+</tr>
+<tr>
+<td><code>source</code></td>
+<td>SSID</td>
+<td>The call sign part is dropped; the radio sends its own</td>
+</tr>
+<tr>
+<td><code>path</code></td>
+<td>Path 1 and 2</td>
+<td>Entries after the second are dropped</td>
+</tr>
+<tr>
+<td><code>icon</code></td>
+<td>Symbol table <code>/</code> and symbol</td>
+<td>Table below; an unknown name imports as the car <code>/&gt;</code></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td>Comment</td>
+<td>23 characters</td>
+</tr>
+<tr>
+<td><code>revert</code></td>
+<td>TX frequency</td>
+<td>The TX frequency of the FM channel it names. The export names the first FM channel on that frequency</td>
+</tr>
+<tr>
+<td><code>opengd77.baud</code>: 300, 1200</td>
+<td>300 baud flag</td>
+<td></td>
+</tr>
+<tr>
+<td><code>opengd77.transmitQSY</code></td>
+<td>QSY flag</td>
+<td></td>
+</tr>
+<tr>
+<td><code>period</code></td>
+<td>Dropped</td>
+<td>The radio sets the beacon interval in its menu</td>
+</tr>
+<tr>
+<td><code>destination</code></td>
+<td>Dropped</td>
+<td>Written as <code>APN000-0</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>The export builds <code>source</code> from the radio name (letters and digits, up to 6) and the SSID, or <code>N0CALL</code> and the SSID
+when the radio name has none. The silent and ambiguity settings have no qdmr counterpart.</p>
+<p><code>dmr</code> elements under <code>positioning</code> (position reports over DMR) have no counterpart and are dropped.</p>
+<p>qdmr's icon names, each a symbol of the primary table (<code>/</code>), as <code>dmrconf encode</code> writes them:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Names</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>!</code> - <code>/</code></td>
+<td>PoliceStation, None, Digipeater, Phone, DXCluster, HFGateway, SmallPlane, MobileSatelliteStation, WheelChair, Snowmobile, RedCross, BoyScout, Home, X, RedDot</td>
+</tr>
+<tr>
+<td><code>0</code> - <code>9</code></td>
+<td>Circle0 - Circle9</td>
+</tr>
+<tr>
+<td><code>:</code> - <code>@</code></td>
+<td>Fire, Campground, Motorcycle, RailEngine, Car, FileServer, HCFuture</td>
+</tr>
+<tr>
+<td><code>A</code> - <code>Z</code></td>
+<td>AidStation, BBS, Canoe, (D has none), Eyeball, Tractor, GridSquare, Hotel, TCPIP, (J has none), School, Logon, MacOS, NTSStation, Balloon, PoliceCar, TBD, RV, Shuttle, SSTV, Bus, ATV, WXService, Helo, Yacht, Windows</td>
+</tr>
+<tr>
+<td><code>[</code> - <code>`</code></td>
+<td>Jogger, Triangle, PBBS, LargePlane, WXStation, DishAntenna</td>
+</tr>
+<tr>
+<td><code>a</code> - <code>z</code></td>
+<td>Ambulance, Bike, ICP, FireStation, Horse, FireTruck, Glider, Hospital, IOTA, Jeep, SmallTruck, Laptop, MicE, Node, EOC, Rover, Grid, Antenna, PowerBoat, TruckStop, TruckLarge, Van, Water, XAPRS, Yagi, Shelter</td>
+</tr>
+</tbody>
+</table></div>
+<p>A symbol from the alternate table, or <code>/D</code> and <code>/J</code>, exports as <code>None</code> with a note.</p>
+<h2 id="4-what-each-direction-reports">4. What each direction reports</h2>
+<p>The import returns the record counts and a list of notes, each a code and a count, for what it changed or left out:
+names shortened, scan lists, roaming, encryption keys, <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> position reporting, <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> periods, extra path entries,
+unknown icons, lists and zones over their limits, records over the table limits, unknown element types, channels
+without a valid frequency, sub-tones that aren't <abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-ctcss">CTCSS</abbr> or <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-dcs">DCS</abbr>, channels whose timeout was off. The editor lists them after the import.</p>
+<p>The export returns notes for <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="sfr.html">SFR</abbr> settings, power levels <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr> has no name for, channel locations rounded to a locator,
+APRS frequencies with no FM channel to name, APRS symbols with no icon, and the silent and ambiguity flags. The VFOs
+and the <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr> database are never part of a qdmr file.</p>
+<p>An import replaces the channel, zone, contact, <abbr class="gl" tabindex="0" title="Dual tone multi frequency: the touch tones a keypad sends, in the audio." data-more="../user/22-glossary.html#t-dtmf">DTMF</abbr> contact, <abbr class="gl" tabindex="0" title="The talkgroups a channel listens to. The codeplug calls it the RX group list." data-more="../user/22-glossary.html#t-listen-list">RX group list</abbr> and APRS tables and the settings in 3.1, as
+one undoable change. Everything else in the open <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> (the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> frequencies, the radio's other settings, the DMR ID
+database) stays. The VFOs lose their contact, list and APRS references, since those pointed into the old tables.
+Records are numbered in file order.</p>
+<h2 id="5-qdmrs-own-binary-encoding">5. qdmr's own binary encoding</h2>
+<p><code>dmrconf encode -R openuv380</code> on the same file writes the same channels, contacts, lists, zones, <abbr class="gl" tabindex="0" title="Dual tone multi frequency: the touch tones a keypad sends, in the audio." data-more="../user/22-glossary.html#t-dtmf">DTMF</abbr> contacts and
+boot settings as the editor, with these differences (<abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr> 0.15.1):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>qdmr writes</th>
+<th>Editor writes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TX contact of a channel with an RX group list</td>
+<td>0</td>
+<td>The contact</td>
+</tr>
+<tr>
+<td>Squelch (channel byte 0x37)</td>
+<td>0</td>
+<td>The level (3.4)</td>
+</tr>
+<tr>
+<td>Group and private hang</td>
+<td>0 (the bytes are left zero)</td>
+<td>The settings (3.1)</td>
+</tr>
+<tr>
+<td>APRS symbol (bytes 0x1D, 0x1E)</td>
+<td>Table index (0 primary) and symbol index (character - 0x21)</td>
+<td>The characters, as <code>core/codeplug/codeplug.c</code> reads them</td>
+</tr>
+<tr>
+<td>APRS TX frequency</td>
+<td>0</td>
+<td>The <code>revert</code> channel's <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> frequency</td>
+</tr>
+<tr>
+<td>APRS record magic</td>
+<td>0x4152 (older layout)</td>
+<td>0x4153</td>
+</tr>
+<tr>
+<td>A channel without an <code>openGD77</code> block</td>
+<td>Beep and power save off</td>
+<td>Beep and power save on</td>
+</tr>
+<tr>
+<td>A contact without an <code>openGD77</code> block</td>
+<td><abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">Timeslot</abbr> override TS1</td>
+<td>No override</td>
+</tr>
+<tr>
+<td>Channel without location, <code>settings.gnss.fixedPosition</code> set</td>
+<td>The fixed position</td>
+<td>No location</td>
+</tr>
+<tr>
+<td><code>radioId: !default</code></td>
+<td>Flag 1 bit 7 set with ID 0</td>
+<td>Bit 7 clear, 00 16 00</td>
+</tr>
+<tr>
+<td><code>extended.talkaround</code>, <code>roaming</code></td>
+<td>Not written</td>
+<td><abbr class="gl" tabindex="0" title="DMR radio to radio on one frequency, with no repeater. The standard calls it DMO." data-more="../dev/glossary.html#t-direct-mode">DMO</abbr> and roaming flags</td>
+</tr>
+</tbody>
+</table></div>
+<p>The <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> symbol difference means the firmware reads no symbol from a <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> qdmr wrote (it takes a byte below <code>!</code>
+as none). A codeplug written by the editor carries the symbol characters.</p>
+<h2 id="6-tests">6. Tests</h2>
+<p><code>site/tests/qdmr.test.mjs</code> covers the <abbr class="gl" tabindex="0" title="A text file format. qdmr stores its codeplug as YAML." data-more="../user/22-glossary.html#t-yaml">YAML</abbr> subset, the value formats, an import of a file written in <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr>'s form, the
+round trips YAML to model to YAML and cpsSim's <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> to YAML to model, and the Tools page converters. When
+<code>dmrconf</code> is installed, a test exports a codeplug, runs <code>dmrconf encode -R openuv380</code> on it and compares the decoded
+binary with the editor's encoding, field by field, apart from the differences in section 5. Without <code>dmrconf</code> that
+test is skipped.</p>
+
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/qdmr-yaml.md">View the source of this page</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="On this page">
+		<p class="eyebrow">On this page</p>
+		<ul><li class="l2"><a href="#1-syntax">1. Syntax</a></li><li class="l2"><a href="#2-structure">2. Structure</a></li><li class="l3"><a href="#21-references">2.1 References</a></li><li class="l3"><a href="#22-values">2.2 Values</a></li><li class="l2"><a href="#3-elements">3. Elements</a></li><li class="l3"><a href="#31-radio-ids-and-settings">3.1 Radio IDs and settings</a></li><li class="l3"><a href="#32-contacts">3.2 Contacts</a></li><li class="l3"><a href="#33-rx-group-lists">3.3 RX group lists</a></li><li class="l3"><a href="#34-channels">3.4 Channels</a></li><li class="l3"><a href="#35-zones">3.5 Zones</a></li><li class="l3"><a href="#36-aprs">3.6 APRS</a></li><li class="l2"><a href="#4-what-each-direction-reports">4. What each direction reports</a></li><li class="l2"><a href="#5-qdmrs-own-binary-encoding">5. qdmr&#x27;s own binary encoding</a></li><li class="l2"><a href="#6-tests">6. Tests</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Join the RadioFoundry community</strong><span class="small muted">Questions, help with your radio and news, on Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Found a bug? Want your radio supported?</strong><span class="small muted">Open an issue on GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry is MIT licensed · <a href="https://github.com/radiofoundry/radiofoundry">Source Code</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Community</a> · <a href="../../docs/index.html">Docs</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Changelog</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>USB 网络模式 · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="USB 网络模式 · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/user/15-usb-network.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/user/15-usb-network.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/user/15-usb-network.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/user/15-usb-network.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/user/15-usb-network.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/user/15-usb-network.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/user/15-usb-network.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/user/15-usb-network.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/user/15-usb-network.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/user/15-usb-network.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="用户手册">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 用户手册</p>
+		<ul><li><a href="index.html">RadioFoundry 用户手册</a></li><li><a href="01-introduction.html">简介</a></li><li><a href="02-installing.html">安装</a></li><li><a href="03-first-boot.html">首次启动</a></li><li><a href="04-programming.html">为电台编程</a></li><li><a href="05-keys-and-navigation.html">按键与导航</a></li><li><a href="06-home-screen.html">主屏幕</a></li><li><a href="07-channels-zones-vfo.html">信道、区域与 VFO</a></li><li><a href="08-fm.html">FM</a></li><li><a href="09-dmr.html">DMR</a></li><li><a href="10-messages-and-signaling.html">消息、呼叫提示与电台检查</a></li><li><a href="11-emergency.html">紧急</a></li><li><a href="12-scan.html">扫描与双守候</a></li><li><a href="13-aprs.html">APRS</a></li><li><a href="14-hotspot.html">热点模式</a></li><li><a href="15-usb-network.html" aria-current="page">USB 网络模式</a></li><li><a href="16-battery-and-power.html">电池与供电</a></li><li><a href="17-settings.html">设置</a></li><li><a href="18-moving-from-stock-md380.html">从原厂 MD-380 固件迁移</a></li><li><a href="19-moving-from-stock-dm32.html">从原厂 DM-32UV 固件迁移</a></li><li><a href="20-troubleshooting.html">故障排查</a></li><li><a href="21-faq.html">常见问题</a></li><li><a href="22-glossary.html">术语表</a></li><li><a href="23-radios.html">电台参考</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<h1 id="usb-network-mode">USB 网络模式</h1>
+<p>在 USB 网络模式中，电台是电脑的 USB 网卡。它通过 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> 分组数据把 IPv4 分组路由到其他电台，并向电脑提供状态页、rig 控制、<abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="22-glossary.html#t-kiss">KISS</abbr>、<abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="../spec/tftp.html">TFTP</abbr> 和 <abbr class="gl" tabindex="0" title="Simple Network Management Protocol: reading a device&#x27;s state over the network." data-more="../spec/snmp.html">SNMP</abbr>。它位于有 USB 的电台镜像中。经 DMR 到另一台电台的 IP 仅在主机测试中验证。各项服务在各电台上的检查情况见<a href="23-radios.html">电台参考</a>。不含该功能的构建（<code>CONFIG_DMR_IP_GATEWAY=n</code>）会在<strong>工具 &gt; USB 网络</strong>中显示“USB 网络：此构建不含”。</p>
+<h2 id="switching-the-radio-to-network-mode">把电台切换到网络模式</h2>
+<p>除非<strong>启动时 USB 网络</strong>开启（见下文），电台启动时是 USB 串口。要切换，请打开<strong>工具 &gt; USB 网络</strong>（<strong>OK</strong>、<strong>6</strong>、<strong>4</strong>）。页面说明 USB 当前模式以及会有哪些变化。聚焦“USB 切到网络”并按 <strong>OK</strong>。电台提示“USB 现为网卡”并返回主屏幕，状态行显示 IP。电脑设置好网卡且 IP 可通后，其旁会出现一个向上和一个向下箭头。USB 作为网卡期间，<abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr>、热点主机和串口调试链路都无法访问电台。</p>
+<p>要回到串口，再次打开<strong>工具 &gt; USB 网络</strong>并选择“USB 切到串口”（“USB 已恢复为串口”），或重启电台。工具页中该行显示当前模式（串口或网络）。</p>
+<p>开发者也可通过调试链路切换：</p>
+<pre><code>tools/rfoundry_debug.py radio usb network
+</code></pre>
+<p>电台会短暂从 USB 消失，然后作为网卡回来（USB ID 1FC9:0096）。Linux、macOS、Windows 10 和 11 使用内置驱动。若电脑在 10 秒内未设置好网卡，电台会回到串口。</p>
+<h2 id="starting-in-network-mode">以网络模式启动</h2>
+<p><strong>设置 &gt; 连接 &gt; 启动时 USB 网络</strong>使电台以网卡启动。若电脑在插入后 10 秒内未设置好网卡，电台会重新变为串口，直到重启。这样你总能访问它来关闭该设置。电台会等待电脑。在远离电脑时开机，之后再插入，它仍是网卡。</p>
+<h2 id="addresses">地址</h2>
+<p>电脑通过 DHCP 从电台取得地址：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>谁</th>
+<th>地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>你的电脑</td>
+<td>12.x.y.z，由你的 <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr> 得出（例如 ID 3101234 为 12.47.82.50）</td>
+</tr>
+<tr>
+<td>电台</td>
+<td>你电脑地址翻转最低位（12.47.82.51）</td>
+</tr>
+<tr>
+<td>另一台电台</td>
+<td>由其 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> ID 得出的 12.x.y.z</td>
+</tr>
+<tr>
+<td>一个通话组</td>
+<td>由通话组编号得出的 225.x.y.z</td>
+</tr>
+</tbody>
+</table></div>
+<p>发往另一台电台或通话组地址的分组会在当前 DMR 信道上经空中发出。来自其他电台的分组到达网卡。DMR 分组数据远慢于任何有线网络。2 秒内无法发出的分组会被丢弃。<a href="#control-station-for-dispatch-software">控制站模式</a>的固定地址会替换前两行。</p>
+<h2 id="serial-tools-in-network-mode">网络模式下的串口工具</h2>
+<p>调试链路、<abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="../spec/mmdvm-protocol.html">MMDVM</abbr> 热点协议和 <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="04-programming.html">CPS</abbr> 协议仍可通过电台地址的 UDP 端口 3334 访问：</p>
+<pre><code>tools/rfoundry_debug.py --port udp:12.47.82.51 version
+</code></pre>
+<p>MMDVMHost 以同样方式连接（<code>Protocol=udp</code>、<code>ModemAddress=&lt;电台地址&gt;</code>、<code>ModemPort=3334</code>）。<abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr> 只按串口 USB ID 查找电台，因此请在串口模式下为电台编程。</p>
+<h2 id="finding-the-radio-by-name">按名称查找电台</h2>
+<p>电台会在网卡上应答多播 DNS（Bonjour、Avahi）。其名称为 <code>rfoundry-&lt;DMR ID&gt;.local</code>，例如 <code>rfoundry-3101234.local</code>。它会广播自己的服务。Bonjour 服务浏览器会按你的呼号、电台型号和 <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr> 列出它，例如“N0CALL XR-100UV (3101234)”：</p>
+<pre><code>ping rfoundry-3101234.local
+dns-sd -B _rfoundry-debug._udp            # macOS；Linux 上为 avahi-browse -r _rfoundry-debug._udp
+tools/rfoundry_debug.py --port udp:rfoundry-3101234.local version
+</code></pre>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>服务</th>
+<th>端口</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>_rfoundry-debug._udp</code></td>
+<td>3334</td>
+<td>经 UDP 的调试链路（以及其他串口协议）</td>
+</tr>
+<tr>
+<td><code>_mmdvm._udp</code></td>
+<td>3334</td>
+<td>供 MMDVMHost 使用的 <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="../spec/mmdvm-protocol.html">MMDVM</abbr> 调制解调器</td>
+</tr>
+<tr>
+<td><code>_tftp._udp</code></td>
+<td>69</td>
+<td>经 <abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="../spec/tftp.html">TFTP</abbr> 的电台频率（见下文）</td>
+</tr>
+<tr>
+<td><code>_snmp._udp</code></td>
+<td>161</td>
+<td><abbr class="gl" tabindex="0" title="Simple Network Management Protocol: reading a device&#x27;s state over the network." data-more="../spec/snmp.html">SNMP</abbr> 代理（见下文）</td>
+</tr>
+<tr>
+<td><code>_http._tcp</code></td>
+<td>80</td>
+<td>状态页</td>
+</tr>
+<tr>
+<td><code>_kiss-tnc._tcp</code></td>
+<td>8001</td>
+<td><abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="22-glossary.html#t-kiss">KISS</abbr> over TCP</td>
+</tr>
+<tr>
+<td><code>_rigctld._tcp</code></td>
+<td>4532</td>
+<td>Hamlib rig 控制</td>
+</tr>
+</tbody>
+</table></div>
+<p>每项的 TXT 记录都包含板型、<abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> ID、呼号和固件版本。</p>
+<h2 id="services-on-the-radio">电台上的服务</h2>
+<p>电台在自身地址的这些 TCP 端口上应答，仅经 USB 线，绝不走空中。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>端口</th>
+<th>服务</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>80</td>
+<td>电台前面板。在浏览器中打开 <code>http://&lt;电台地址&gt;/</code>。它显示电台及其实时屏幕和 <abbr class="gl" tabindex="0" title="Light-emitting diode: the radio&#x27;s status light." data-more="22-glossary.html#t-led">LED</abbr>，以及信道、频率、信号和电池。移动台上还会画出其手咪。点击按键或使用键盘。侧键和顶键在电台边缘外也有带标签的按钮，信道旋钮上方的箭头每次点击转一格（按住持续转动）。键盘按键：数字、<code>*</code> 和 <code>#</code>；方向键；Enter 选择（绿色键或 MENU）；Esc 或 Backspace 返回（红色键或 BACK）；<code>[</code> 和 <code>]</code>（或 Page Up/Page Down）转动信道旋钮；按住 Space 通话。页面在图片旁列出你的电台具有的键盘按键。<strong>收听</strong>播放电台接收到的内容（在有网络音频的电台，<a href="#linking-audio-allstarlink-and-dvswitch">音频互联</a>）；经编程线（PPP，见下文）时页面没有“收听”，因为线缆对音频来说太慢。按键只能从插入电台的那台电脑操作；同一时间只有一个页面控制电台，其他页面只显示状态。程序可读取 <code>/status</code>（JSON）以及调试链路的各段 <code>/api/view?section=core</code></td>
+</tr>
+<tr>
+<td>8001</td>
+<td>供 <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="13-aprs.html">APRS</abbr> 程序（APRSdroid、Xastir、YAAC）使用的 <abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="22-glossary.html#t-kiss">KISS</abbr> over TCP。把程序的 TNC 设为“KISS over TCP”、电台地址、端口 8001。先在工具 &gt; APRS 中开启 <strong>USB 上的 KISS</strong>。电台只发送来自你自己呼号的分组。在无法接收 APRS 的电台上（<a href="23-radios.html">电台参考</a>），程序只能看到自己发送的内容</td>
+</tr>
+<tr>
+<td>4532</td>
+<td>供日志、SDR 和卫星程序使用的 Hamlib rig 控制。选择“Hamlib NET rigctl”，地址为电台地址、端口 4532，或运行 <code>rigctl -m 2 -r &lt;电台地址&gt;:4532 f</code>。程序可读取和设置频率、读取模式和 S 表，以及按下发射。设置信道频率会切换到 <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr>。发射只能从你的电脑进行，每次按键最多 3 分钟</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="aprs-is-from-the-radio">电台自身连接 APRS-IS</h3>
+<p>电台可以自己连接 APRS-IS 服务器并把你的位置发送到那里。你的电脑必须把电台的流量转发到互联网：</p>
+<pre><code># macOS（en0：你的互联网连接）
+sudo sysctl -w net.inet.ip.forwarding=1
+echo &quot;nat on en0 from 12.47.82.51 to any -&gt; (en0)&quot; | sudo pfctl -ef -
+# Linux（eth0：你的互联网连接，usb0：电台）
+sudo sysctl -w net.ipv4.ip_forward=1
+sudo iptables -t nat -A POSTROUTING -s 12.47.82.51/32 -o eth0 -j MASQUERADE
+sudo iptables -A FORWARD -i usb0 -o eth0 -j ACCEPT
+sudo iptables -A FORWARD -i eth0 -o usb0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+</code></pre>
+<p>请用你电台的地址代替 12.47.82.51。然后给电台一个服务器的 IP 地址。电台无法解析名称。<code>dig +short rotate.aprs2.net</code> 可给出一些地址。你还可以给出它接收的消息和分组的范围（公里）：</p>
+<pre><code>curl &quot;http://12.47.82.51/api/aprsis?server=44.31.12.34:14580&amp;range=50&quot;
+curl &quot;http://12.47.82.51/api/aprsis&quot;              # 状态
+curl &quot;http://12.47.82.51/api/aprsis?server=off&quot;   # 停止
+</code></pre>
+<p>电台用其 APRS 呼号和由呼号计算出的通行码登录。当 <strong>USB 上的 KISS</strong> 和“发送到 APRS-IS”开启时（<code>tools/rfoundry_debug.py aprs set to_is 1</code>），你的信标会发往 APRS-IS。</p>
+<h2 id="linking-audio-allstarlink-and-dvswitch">音频互联：AllStarLink 与 DVSwitch</h2>
+<p>电台在 UDP 端口 34001 上使用 USRP 语音协议，即 AllStarLink 的 USRP 信道驱动和 DVSwitch Analog_Bridge 所用的协议。电脑上的节点会听到电台接收的内容并通过它说话，如同一个射频链路：</p>
+<ul>
+<li>AllStarLink：在节点 <code>rpt.conf</code> 段中设置 <code>rxchannel = usrp/&lt;电台地址&gt;:34001:32001</code>。</li>
+<li>Analog_Bridge：<code>txPort = 34001</code>、<code>rxPort = 32001</code>，目的地为电台地址。</li>
+</ul>
+<p>电台接收到信号时（静噪打开，或正在播放 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> 呼叫），会把音频发送到电脑的 UDP 端口 32001，并以静噪作为按下标志。程序按下时，电台在当前信道上发射其音频：FM 上经电台自身的发射音频（适用其亚音和频偏限制），DMR 上作为发往信道联系人的呼叫。程序松开、停止发送或 3 分钟后，电台停止发射。接收音频跟随音量旋钮。<code>tools/usrp_client.py</code> 是一个小型测试程序（<code>tools/usrp_client.py &lt;电台地址&gt; tone 1000 3</code> 发送 3 秒音调）。</p>
+<p>哪些电台能以这种方式发射 FM 见<a href="23-radios.html">电台参考</a>；其他电台上 USRP 只承载 DMR。</p>
+<h2 id="programming-over-the-network">经网络编程</h2>
+<p>电台在其地址上运行 <abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="../spec/tftp.html">TFTP</abbr> 服务器。任何 TFTP 客户端都可用：</p>
+<pre><code>curl tftp://rfoundry-3101234.local/codeplug.bin -o backup.bin       # 读取电台频率
+curl -T edited.bin tftp://rfoundry-3101234.local/codeplug.bin        # 写入它
+curl tftp://rfoundry-3101234.local/info.txt                          # 板型、固件、ID、地址
+</code></pre>
+<p><code>codeplug.bin</code> 与 <code>tools/cps_client.py read</code> 生成的 716,384 字节镜像相同。任一来源的文件都可用任一方式写入。写入在存储前会先检查。电台先检查大小，再确认文件是电台频率。文件错误、传输中途停止或传输中拔线都会让电台频率保持原样。存储新电台频率时断电，会在下次开机时完成。电台与使用 <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="04-programming.html">CPS</abbr> 时一样保留自己的快捷键，并在写入后立即重新读取电台频率。</p>
+<p><abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr> 数据库（为不是联系人的 ID 显示名称）有自己的文件：</p>
+<pre><code>curl tftp://rfoundry-3101234.local/iddb.bin -o iddb.bin             # 读取 ID 数据库
+curl -T iddb.bin tftp://rfoundry-3101234.local/iddb.bin              # 写入它
+</code></pre>
+<p><code>iddb.bin</code> 只包含数据库。新数据库开始到达时，电台会丢弃旧数据库；整个文件到达后重新显示名称。传输中断会在下次尝试前没有数据库，绝不会留下损坏的数据库。这不需要暂存区，因此在无法写入 <code>codeplug.bin</code> 的电台上也可用。</p>
+<p>电台频率编辑器用<strong>保存 &gt; 用于 USB 网络</strong>保存的 <code>codeplug.bin</code>，在电台频率含 ID 数据库时也会携带该数据库。只有当客户端发送文件大小时（如 <code>curl</code> 所做），电台才会从中取用数据库。否则，以及使用任何较旧的 <code>codeplug.bin</code> 时，电台保留现有数据库。电台频率部分按上述方式写入。</p>
+<p>要停止经网络的写入（<code>codeplug.bin</code> 和 <code>iddb.bin</code>），请关闭<strong>设置 &gt; 连接 &gt; TFTP 写入电台频率</strong>。读取仍然可用。</p>
+<h2 id="monitoring-the-radio-with-snmp">用 SNMP 监视电台</h2>
+<p>电台在其地址的端口 161 上应答 <abbr class="gl" tabindex="0" title="Simple Network Management Protocol: reading a device&#x27;s state over the network." data-more="../spec/snmp.html">SNMP</abbr> 2c 版请求（为 flash 空间省去 SNMP 的构建除外）。任何 SNMP 管理器都可用。仓库中有一个小的：</p>
+<pre><code>tools/rfoundry_snmp.py walk 12.47.82.51                 # 电台报告的所有内容
+tools/rfoundry_snmp.py get 12.47.82.51 rfoundryBatteryVoltage.0 rfoundryChannelName.0
+tools/rfoundry_snmp.py traps                            # 事件实时到达（需要端口 162：Linux 上为 root）
+</code></pre>
+<p>电台报告其身份（<abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr>、电台名、型号、固件）、电池、信道、频率、功率、正在进行的 DMR 呼叫和最后听到的呼叫、消息和数据计数器、<abbr class="gl" tabindex="0" title="Automatic Registration Service: a radio tells a presence server it is on the air." data-more="22-glossary.html#t-ars">ARS</abbr> 状态以及 USB 网络计数器。这些对象在 <code>docs/spec/RFOUNDRY-MIB.txt</code> 中描述。把它载入你的管理器即可看到名称而不是数字。</p>
+<p>USB 作为网卡时，电台还会向你的电脑发送事件（端口 162）：开机、呼叫开始和结束、收到文本消息、紧急、ARS 变化和低电量。</p>
+<p>读团体名为 <code>public</code>。更改设置需要写团体名，在你设置之前处于关闭状态：</p>
+<pre><code>tools/rfoundry_debug.py snmp write MySecret             # 经串口，在切换到网络模式之前
+tools/rfoundry_snmp.py -c MySecret set 12.47.82.51 sysName.0 s:N0CALL
+tools/rfoundry_debug.py snmp status                     # 代理的设置与计数器
+</code></pre>
+<p>其他电台可在空中向其 12.x.y.z 地址查询本台（除非你允许写入，否则只读）。空中事件只发给你指定的管理器电台（<code>tools/rfoundry_debug.py snmp set rf_manager &lt;DMR ID&gt;</code>）。除紧急外，每分钟最多一次。没有加密。SNMP 团体名以明文传输。</p>
+<h2 id="network-over-the-programming-cable-ppp">经编程线的网络（PPP）</h2>
+<p>没有 USB 的电台（<a href="23-radios.html">电台参考</a>）可通过编程线和 PPP 获得同样的网络。电台没有 USB 且运行 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> 时，其镜像会包含 PPP。其他构建需要 <code>CONFIG_NET_PPP=y</code>。在电脑上以 root 运行以下命令。pppd 随 macOS 和大多数 Linux 系统提供。</p>
+<pre><code>sudo tools/rfoundry_ppp.sh /dev/ttyUSB0                 # Linux
+sudo tools/rfoundry_ppp.sh /dev/cu.usbserial-XXXX       # macOS
+</code></pre>
+<p>pppd 启动时电台会自行切换到 PPP。它给电脑的地址与 USB 网络模式相同。上述服务工作方式相同，只是更慢（115200 波特时约 10 KB/s）。前面板页面可用，但没有“收听”按钮；在大尺寸彩色屏上，其屏幕更新可能需要几秒。<code>sudo tools/rfoundry_ppp.sh --stop</code> 挂断，线缆恢复为编程和调试链路。详情见 <code>docs/spec/ppp.md</code>。</p>
+<h2 id="control-station-for-dispatch-software">供调度软件使用的控制站</h2>
+<p>调度软件（TRBOnet、SmartPTT 等）可把电台用作控制站。电脑随后经电台收发车队的消息、位置和注册。</p>
+<ol>
+<li>开启<strong>启动时 USB 网络</strong>并重启电台，或在<strong>工具 &gt; USB 网络</strong>中切换。</li>
+<li>开启<strong>PC 应答数据</strong>。电脑连接期间，发往你电台 <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr> 的文本消息、位置请求和注册应答只交给电脑。电台不再自行应答，不把消息放入收件箱，也不向在线状态服务器注册。它仍会确认要求确认的数据分组，仍会应答呼叫提示和电台检查。拔下电脑后，电台恢复自行应答。</li>
+<li>若软件要求固定地址，请把 <strong>USB 地址</strong>设为 192.168.10.x。此时电台为 192.168.10.1，电脑获得 192.168.10.2。拔插线缆以便电脑取得新地址。</li>
+</ol>
+<p>在调度软件中设置：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>控制站地址</td>
+<td>电台的地址：192.168.10.1，或由你的 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> ID 翻转最低位得出的 12.x.y.z</td>
+</tr>
+<tr>
+<td>电台网络</td>
+<td>12.0.0.0/8</td>
+</tr>
+<tr>
+<td>通话组网络</td>
+<td>225.0.0.0/8</td>
+</tr>
+<tr>
+<td>DMR ID</td>
+<td>你电台的 DMR ID</td>
+</tr>
+</tbody>
+</table></div>
+<p>电脑发送的内容会以你电台的 DMR ID 经空中发出。每台电脑只能有一台电台使用固定地址。</p>
+<h2 id="shorter-packets-and-confirmed-delivery">更短的分组与确认送达</h2>
+<p>发往其他电台的 UDP 分组使用压缩头（ETSI 的“UDP/IP 头压缩”）。头为 5 到 9 字节，而不是 28 字节。端口在 4000-4099 的分组保留完整头，因为 <abbr class="gl" tabindex="0" title="Motorola&#x27;s DMR product line. Its extensions (ARS, TMS, LRRP, Capacity Plus) are not in the ETSI standard." data-more="22-glossary.html#t-mototrbo">MOTOTRBO</abbr> 文本、位置和在线状态服务器在那里监听。每个分组可节省一到两个数据块（空中 60–120 ms）。无法读取它的电台很少。为它们，或为压缩这些端口：</p>
+<pre><code>tools/rfoundry_debug.py data ip-settings off        # 始终使用完整头
+tools/rfoundry_debug.py data ip-settings all        # 压缩每个 UDP 分组
+</code></pre>
+<p>发往电台的分组也可作为确认数据发送。对方电台确认每个分组，电台重发未到达的部分。默认总共尝试 4 次。最多可指定两个目的地（<abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr>）或 UDP 端口：</p>
+<pre><code>tools/rfoundry_debug.py data ip-settings auto rules id=3101234 port=161 tries=4
+</code></pre>
+<p>通话组分组绝不确认。发往不应答电台的分组会每次都发送后才丢弃，因此只在有帮助时启用确认。设置保存在电台中。</p>
+<h2 id="packet-size">分组大小</h2>
+<p>网络链路接受最大 586 字节的分组。电台通过 DHCP 把该大小告诉电脑，并通过 PPP 作为其 MRU（584）告知；该大小的每个分组都能在一次空中传输中完成：最多 558 字节 UDP 数据（PPP 上为 556）。电脑上无需设置。</p>
+<p>满尺寸分组会占用信道约 3 秒（发送确认时约 4 秒）。小分组更快，在弱信道上更可能送达：丢失一个突发就丢失整个分组。</p>
+<h2 id="other-networks-through-a-gateway-radio">经网关电台访问其他网络</h2>
+<p>默认情况下，电台只承载代表 <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr> 的地址：电台为 12.x.y.z，通话组为 225.x.y.z。从电脑发往其他任何地址的分组都会被丢弃。</p>
+<p>若你车队中的另一台电台是某个网络的网关（例如调度电脑上的 <abbr class="gl" tabindex="0" title="Motorola&#x27;s DMR product line. Its extensions (ARS, TMS, LRRP, Capacity Plus) are not in the ETSI standard." data-more="22-glossary.html#t-mototrbo">MOTOTRBO</abbr> 控制站），请把该电台的 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> ID 告诉本台：</p>
+<pre><code>tools/rfoundry_debug.py data ip-settings auto rules gateway=3100500
+tools/rfoundry_debug.py data ip-settings auto rules gateway=0      # 再次关闭
+</code></pre>
+<p>该命令会一次性设置所有 IP 设置，因此请重复你使用的任何 <code>id=</code>、<code>port=</code> 或 <code>tries=</code>。设置保存在电台中。</p>
+<p>然后在电脑上为该网络添加一条经电台地址的路由。例如，在 Linux 上以 <code>usb0</code> 为电台：</p>
+<pre><code>sudo ip route add 10.20.0.0/16 via 12.0.39.20 dev usb0     # 电台地址（见上文“地址”）
+</code></pre>
+<p>发往该网络的分组会经空中送到网关电台，分组中带有真正的目的地址。它们始终使用完整头，绝不使用压缩头。每个分组的生存时间（TTL）减一，TTL 为零的分组会被丢弃。电台把它收到的 TTL 传给电脑，因此困在两台网关电台之间循环的分组会耗尽。应答以发送者的真实地址回到你电台的 DMR ID，电台再把它们交给电脑。</p>
+
+		<nav class="prev-next"><a class="prev" href="14-hotspot.html">热点模式</a><a class="next" href="16-battery-and-power.html">电池与供电</a></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/user/15-usb-network.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#switching-the-radio-to-network-mode">把电台切换到网络模式</a></li><li class="l2"><a href="#starting-in-network-mode">以网络模式启动</a></li><li class="l2"><a href="#addresses">地址</a></li><li class="l2"><a href="#serial-tools-in-network-mode">网络模式下的串口工具</a></li><li class="l2"><a href="#finding-the-radio-by-name">按名称查找电台</a></li><li class="l2"><a href="#services-on-the-radio">电台上的服务</a></li><li class="l3"><a href="#aprs-is-from-the-radio">电台自身连接 APRS-IS</a></li><li class="l2"><a href="#linking-audio-allstarlink-and-dvswitch">音频互联：AllStarLink 与 DVSwitch</a></li><li class="l2"><a href="#programming-over-the-network">经网络编程</a></li><li class="l2"><a href="#monitoring-the-radio-with-snmp">用 SNMP 监视电台</a></li><li class="l2"><a href="#network-over-the-programming-cable-ppp">经编程线的网络（PPP）</a></li><li class="l2"><a href="#control-station-for-dispatch-software">供调度软件使用的控制站</a></li><li class="l2"><a href="#shorter-packets-and-confirmed-delivery">更短的分组与确认送达</a></li><li class="l2"><a href="#packet-size">分组大小</a></li><li class="l2"><a href="#other-networks-through-a-gateway-radio">经网关电台访问其他网络</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

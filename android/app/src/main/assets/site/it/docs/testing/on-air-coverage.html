@@ -1,0 +1,447 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="it" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>On-air test coverage · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="On-air test coverage · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:url" content="https://radiofoundry.org/it/docs/testing/on-air-coverage.html">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Le radio su cui gira RadioFoundry, ognuna con una schermata diversa.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/testing/on-air-coverage.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/testing/on-air-coverage.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/testing/on-air-coverage.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/testing/on-air-coverage.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/testing/on-air-coverage.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../it/" data-gl-more="Altro">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../it/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principale"><a href="../../../it/radios/index.html">Radio</a><a href="../../../it/features/index.html">Funzioni</a><a href="../../../it/flash/index.html">Installa</a><a href="../../../it/codeplug/index.html">Codeplug</a><a href="../../../it/docs/index.html" aria-current="page">Documenti</a><a href="../../../it/screenshots/index.html">Schermate</a><a href="../../../it/tools/index.html">Strumenti</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Lingua" title="Lingua">IT</summary><nav aria-label="Lingua"><a href="../../../docs/testing/on-air-coverage.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/testing/on-air-coverage.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/testing/on-air-coverage.html" aria-current="true" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/testing/on-air-coverage.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Passa da chiaro a scuro" title="Passa da chiaro a scuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Test">
+		<p class="eyebrow"><a href="../../../it/docs/index.html">Documentazione</a> / Test</p>
+		<ul><li><a href="index.html">Testing</a></li><li><a href="results/index.html">Bring-up results</a></li><li><a href="backlight-curve.html">Backlight curve</a></li><li><a href="dm1801pro-bringup.html">DM-1801 Pro bring-up checklist</a></li><li><a href="dm32-bringup.html">DM-32UV bring-up checklist</a></li><li><a href="dmr-bench.html">DMR bench testing on the SDR bench</a></li><li><a href="md380-bringup.html">MD-380 bring-up checklist</a></li><li><a href="md9600-bringup.html">MD-9600 bring-up checklist</a></li><li><a href="mduv380-bringup.html">MD-UV380 bring-up checklist</a></li><li><a href="mmdvm-audit.html">MMDVM implementation audit (2d45a21)</a></li><li><a href="on-air-coverage.html" aria-current="page">On-air test coverage</a></li><li><a href="power-calibration.html">Transmit power calibration with a wattmeter</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Questa pagina non è ancora tradotta; è mostrata in inglese.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="on-air-test-coverage">On-air test coverage</h1>
+<p>Which user-visible feature has an automated test on the radio and the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench (<code>tests/hil</code>), and what the last
+run showed. Features come from the README's &quot;What it does&quot; and area table, the manual's feature groups
+(<code>docs/user/01-introduction.md</code>) and the build switches (<code>docs/build-config.md</code>). <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> has its own coverage notes
+(<code>docs/spec/aprs.md</code> 13).</p>
+<p>This page covers the DM-1701 only. The other radios' checks are in their bring-up pages and in the
+<a href="../feature-matrix.html#checked-on-each-radio">feature matrix</a>.</p>
+<p>Status: <strong>on air</strong> = a test checks it over the air and passed; <strong>radio</strong> = a test checks it on the radio without
+<abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> (or only the radio's side of an RF exchange); <strong>partial</strong> = only part of the feature can be checked on this
+bench (why in the notes); <strong>xfail</strong> = the test runs and fails for a known, documented gap; <strong>fails</strong> = the test
+runs and finds a real firmware problem (left failing on purpose); <strong>not run</strong> = a test exists but wasn't in the last
+run; <strong>none</strong> = no automated test. Last run:
+2026-10-10 on the DM-1701, firmware <code>5a13814</code> (main, every feature built), radio at its lowest power on the <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> test frequency.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Test</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DMR group call receive, voice to the speaker</td>
+<td><code>test_dmr_rx</code>, <code>test_dmr_voice</code></td>
+<td>on air</td>
+<td>every burst and frame counted</td>
+</tr>
+<tr>
+<td>DMR audio both ways (decoded level, frames not repeated, the radio's own over decoded)</td>
+<td><code>test_dmr_audio_smoke</code></td>
+<td>not run</td>
+<td>added 2026-10-22 after the DM-1801 Pro played every call silent with every counter clean</td>
+</tr>
+<tr>
+<td>DMR late entry</td>
+<td><code>test_dmr_call_features::test_late_entry</code></td>
+<td>on air</td>
+<td></td>
+</tr>
+<tr>
+<td>DMR private calls in</td>
+<td><code>test_dmr_call_features</code></td>
+<td>on air</td>
+<td>to us played, to another ID not</td>
+</tr>
+<tr>
+<td>DMR transmit (voice call)</td>
+<td><code>test_dmr_tx::test_dmr_tx_off_air</code></td>
+<td>on air</td>
+<td>content strict; waveform checks from the bench board's envelope, not judged while the receiver clips</td>
+</tr>
+<tr>
+<td>Talker alias receive</td>
+<td><code>test_dmr_call_features::test_talker_alias</code></td>
+<td>on air</td>
+<td></td>
+</tr>
+<tr>
+<td>Talker alias transmit</td>
+<td><code>test_dmr_tx::test_dmr_tx_talker_alias</code></td>
+<td>on air</td>
+<td>needs <code>--allow-codeplug-write</code>: the test channel's alias flag set over <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr>, backed up and restored byte for byte; the rig's callsign decoded by the SDR and the bench modem</td>
+</tr>
+<tr>
+<td>Basic privacy receive</td>
+<td><code>test_dmr_call_features::test_privacy_service_option</code></td>
+<td>on air</td>
+<td>the bench can't scramble: drop without a key, play with one</td>
+</tr>
+<tr>
+<td>Basic privacy transmit</td>
+<td><code>test_dmr_tx::test_dmr_privacy_tx</code></td>
+<td>on air (signaling)</td>
+<td>service option 0x40 and <abbr class="gl" tabindex="0" title="Feature set ID: the byte that says whether a message is standard or manufacturer specific." data-more="../dev/glossary.html#t-fid">FID</abbr> 0x10 checked; the scrambling itself isn't (unknown microphone frames)</td>
+</tr>
+<tr>
+<td>ETSI GPS Info in calls, in / out</td>
+<td><code>test_dmr_call_features::test_gps_info</code>, <code>test_dmr_tx::test_dmr_gps_tx</code></td>
+<td>on air</td>
+<td>in: the one GPS Info <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr> the bench sends can be missed on the first call played after a restart</td>
+</tr>
+<tr>
+<td>Data, text messages, call alert, radio check in</td>
+<td><code>test_dmr_data</code> (rf)</td>
+<td>on air</td>
+<td></td>
+</tr>
+<tr>
+<td>Data, text messages, call alert, radio check out</td>
+<td><code>test_dmr_data</code> (radio_tx)</td>
+<td>on air</td>
+<td>1 to 3 of 3 tries heard with a good <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr>, content strict</td>
+</tr>
+<tr>
+<td>LRRP immediate answers</td>
+<td><code>test_dmr_data::test_lrrp_immediate_on_air</code></td>
+<td>on air</td>
+<td>the bench modem asks; the answer's request ID and fixed position, or result 0x10 without one, decoded from the radio's packet; with APRS built and without</td>
+</tr>
+<tr>
+<td>ARS registration, LRRP triggered reports</td>
+<td>none on air</td>
+<td>none</td>
+<td>need a presence server / dispatcher on air; host-tested (<code>dmrDataServiceTest</code>, <code>dmrDataChainTest</code>)</td>
+</tr>
+<tr>
+<td>Emergency alarm and call in</td>
+<td><code>test_dmr_emergency</code> (rf)</td>
+<td>on air</td>
+<td></td>
+</tr>
+<tr>
+<td>Emergency alarm and call out, the key</td>
+<td><code>test_dmr_emergency</code> (radio_tx)</td>
+<td>on air</td>
+<td>alarm tries counted like the data tries</td>
+</tr>
+<tr>
+<td>Hotspot protocol</td>
+<td><code>test_hotspot</code></td>
+<td>radio</td>
+<td></td>
+</tr>
+<tr>
+<td>Hotspot voice and data, both ways</td>
+<td>none on air</td>
+<td>none</td>
+<td>the USB protocol is <code>test_hotspot</code>; the call path through it is host-tested</td>
+</tr>
+<tr>
+<td>Hotspot CW ID</td>
+<td><code>test_hotspot_cwid</code></td>
+<td>on air</td>
+<td>the Morse tone itself checked since the tone fix</td>
+</tr>
+<tr>
+<td>MMDVM SFR</td>
+<td><code>test_hotspot_sfr</code></td>
+<td>passes (2026-10-12)</td>
+<td>mode switching; a 3-superframe bench call goes up whole and is repeated whole on <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">TS2</abbr> (17-18 of 18 voice bursts, terminator). Repeat delay 210 ms, not 90 ms (<code>docs/spec/sfr.md</code> 3)</td>
+</tr>
+<tr>
+<td>Split duplex repeater (experimental)</td>
+<td><code>test_split_duplex</code></td>
+<td>pass</td>
+<td>2026-10-12 (b027277): protocol; <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> half with our framing (335 bursts, <abbr class="gl" tabindex="0" title="TDMA channel: the TACT bit that names the timeslot, so a radio can tell TS1 from TS2." data-more="../dev/glossary.html#t-tc">TC</abbr> alternating 334/334, <abbr class="gl" tabindex="0" title="Access type: the TACT bit that tells a radio whether the slot is free to transmit in." data-more="../dev/glossary.html#t-at">AT</abbr> following SET_AT, 83 short LCs, one key-up); TX half voice (3 headers, 3 superframes with the embedded LC, terminator, no sync errors); <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> half (residual 11 µs, the label flips with the epoch). Not yet: a real TX / RX pair (<code>docs/spec/split-duplex.md</code> 10.1)</td>
+</tr>
+<tr>
+<td>USB network adapter</td>
+<td><code>test_usb_network</code></td>
+<td>radio</td>
+<td><abbr class="gl" tabindex="0" title="Dynamic Host Configuration Protocol: how a device gets its IP address on a network." data-more="../dev/glossary.html#t-dhcp">DHCP</abbr>, ping and the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> over <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr>, back to serial (macOS 26). With <code>ff6268b</code> the Mac once never configured the adapter and the radio stayed in network mode; since <code>5a13814</code> it falls back to serial after 10 s</td>
+</tr>
+<tr>
+<td>Host port protocols over UDP 3334 (split duplex extension, KISS)</td>
+<td><code>test_usb_network_services</code></td>
+<td>not run</td>
+<td><code>--allow-usb-switch</code></td>
+</tr>
+<tr>
+<td>TCP services (HTTP, KISS over TCP, rigctld, APRS-IS)</td>
+<td><code>test_tcp_services</code></td>
+<td>not run</td>
+<td>host-tested against a scripted <abbr class="gl" tabindex="0" title="Transmission Control Protocol: IP connections with ordered, guaranteed delivery." data-more="../dev/glossary.html#t-tcp">TCP</abbr> peer (<code>netSvcTest</code>, <code>tcpTest</code>)</td>
+</tr>
+<tr>
+<td>mDNS, TFTP codeplug</td>
+<td><code>test_net_services</code></td>
+<td>not run</td>
+<td>host-tested (<code>mdnsTest</code>, <code>tftpTest</code>)</td>
+</tr>
+<tr>
+<td>SNMP agent over USB</td>
+<td><code>test_snmp</code></td>
+<td>not run</td>
+<td>host-tested against an independent manager (<code>snmpPeer</code>); over the air untested</td>
+</tr>
+<tr>
+<td>Control station mode (settings, boot as network, fixed link, passthrough)</td>
+<td><code>test_control_station</code></td>
+<td>not run</td>
+<td>passthrough tests need <code>--allow-rf --allow-service-stop</code></td>
+</tr>
+<tr>
+<td>IP over DMR, our side (SAP 3 compressed and full headers, confirmed data retries)</td>
+<td><code>test_dmr_ip</code></td>
+<td>not run</td>
+<td>decoded off air by the bench modem with <code>tools/bench/dmr_packet.py</code>; the bench can't answer <abbr class="gl" tabindex="0" title="DMR packet data the receiving radio acknowledges. What didn&#x27;t arrive is sent again." data-more="../user/22-glossary.html#t-confirmed-data">confirmed data</abbr>, so ACKs and selective retry are host-tested only</td>
+</tr>
+<tr>
+<td>IP over DMR in bursts and at the largest size (5 datagrams back to back each way, the largest datagram each way, one block more from the air; one octet more to the air and the ICMP fragmentation needed only on firmware with a narrower air MTU)</td>
+<td><code>test_dmr_ip_burst</code></td>
+<td>not run</td>
+<td>the radio's counters and the host's socket pass or fail; what the bench modem misses of the radio's bursts is a warning</td>
+</tr>
+<tr>
+<td>IP over DMR, end to end</td>
+<td>none</td>
+<td>none (rig)</td>
+<td>needs a second station that speaks IP over DMR data</td>
+</tr>
+<tr>
+<td>Roaming (settings, zone flag, roam now)</td>
+<td><code>test_roaming</code> radio tests</td>
+<td>radio</td>
+<td></td>
+</tr>
+<tr>
+<td>Roaming to the bench repeater, beacon surveys</td>
+<td><code>test_roaming</code> rf tests</td>
+<td>none (rig)</td>
+<td>need a repeater-pair channel and a second frequency in the rig's <code>tx_mhz</code></td>
+</tr>
+<tr>
+<td>FM receive</td>
+<td><code>test_fm::test_fm_receive_bench</code>, <code>test_fm::test_fm_receive_bench_vhf</code>, <code>test_fm::test_noaa_receive</code></td>
+<td>not run</td>
+<td>the bench board's FM carrier; <abbr class="gl" tabindex="0" title="Very high frequency: 30 to 300 MHz. The amateur 2 m band is VHF." data-more="../user/22-glossary.html#t-vhf">VHF</abbr> at the board's top level; NOAA (optional) where the rig hears it</td>
+</tr>
+<tr>
+<td>CTCSS / DCS encode</td>
+<td><code>test_fm_tx</code></td>
+<td>on air</td>
+<td></td>
+</tr>
+<tr>
+<td>CTCSS / DCS decode</td>
+<td><code>test_fm::test_rx_tone_decode_bench</code>, <code>test_fm::test_rx_tone_squelch</code></td>
+<td>not run</td>
+<td>the bench board's FM carrier with the tone (opens), another tone and none (stays muted); NOAA (optional) untoned</td>
+</tr>
+<tr>
+<td>12.5 / 25 kHz deviation</td>
+<td><code>test_fm_tx::test_fm_tx_bandwidth</code></td>
+<td>on air</td>
+<td>25 / 12.5 kHz <abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-ctcss">CTCSS</abbr> deviation ratio 1.99 (368 / 733 Hz) since <code>0458936</code> (25 kHz keeps the 12.5 kHz tone deviation field; the mode doubles it); 4.0 on this run</td>
+</tr>
+<tr>
+<td>1750 Hz burst</td>
+<td><code>test_fm_tx::test_fm_tx_tone_burst</code></td>
+<td>on air</td>
+<td>2 s of 1750.0 Hz at 1.43 kHz peak; silent before <code>ff6268b</code> (voice source in the wrong register bits), 3.3 kHz peak at <code>ff6268b</code></td>
+</tr>
+<tr>
+<td>Roger beep</td>
+<td><code>test_fm_tx::test_fm_tx_roger_beep</code></td>
+<td>on air</td>
+<td>1200 / 900 Hz at the end of the over, none when off; silent before <code>ff6268b</code></td>
+</tr>
+<tr>
+<td>TX inhibit, TOT warning and time-out</td>
+<td><code>test_radio_features</code></td>
+<td>radio</td>
+<td>the radio's state, not the RF</td>
+</tr>
+<tr>
+<td>Power levels</td>
+<td><code>test_fm_tx::test_fm_tx_power_levels</code></td>
+<td>none (rig)</td>
+<td>skipped: the RTL-SDR clips at gain 0 even at 50 mW; needs an attenuator</td>
+</tr>
+<tr>
+<td>VOX</td>
+<td><code>test_radio_features::test_vox_quiet</code>, <code>test_mic_level</code> (the level, radio only)</td>
+<td>partial</td>
+<td>no key-up in silence, none from a beep in the speaker; a voice key-up needs sound at the microphone</td>
+</tr>
+<tr>
+<td>Battery saver</td>
+<td><code>test_radio_features::test_battery_save*</code></td>
+<td>on air</td>
+<td>cycles when idle, MONITOR and a bench call wake it</td>
+</tr>
+<tr>
+<td>Zone scan stopping for calls</td>
+<td><code>test_radio_features::test_scan_stops_on_dmr_call</code></td>
+<td>on air</td>
+<td></td>
+</tr>
+<tr>
+<td>VFO scan</td>
+<td><code>test_radio_features::test_vfo_scan*</code></td>
+<td>on air</td>
+<td>holds on the bench's carrier</td>
+</tr>
+<tr>
+<td>Dual watch</td>
+<td><code>test_radio_features::test_dual_watch*</code></td>
+<td>on air</td>
+<td>holds on the channel with the call</td>
+</tr>
+<tr>
+<td>qdmr reads</td>
+<td><code>test_cps</code></td>
+<td>radio</td>
+<td></td>
+</tr>
+<tr>
+<td>qdmr writes</td>
+<td><code>test_cps::test_cps_write_dry_run</code>, <code>test_cps_write_restore</code></td>
+<td>radio</td>
+<td>the dry run first; the write only with <code>--allow-codeplug-write</code></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="before-this-round">Before this round</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Before</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DMR transmit</td>
+<td>test failed on <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> clipping and the overloaded bench modem's <abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="../dev/glossary.html#t-fec">FEC</abbr> corrections</td>
+</tr>
+<tr>
+<td>Data and emergency out</td>
+<td>tests needed all 3 tries heard; the overloaded bench modem heard 1-2 (and read others with bit errors)</td>
+</tr>
+<tr>
+<td>Talker alias transmit, privacy transmit</td>
+<td>no test (the alias check was skipped: the test channel sends none)</td>
+</tr>
+<tr>
+<td>SFR, USB network, VOX, split duplex</td>
+<td>not in the radio's build; tests skipped</td>
+</tr>
+<tr>
+<td>Hotspot CW ID</td>
+<td>passed on a keyed carrier with no tone in it</td>
+</tr>
+<tr>
+<td>CTCSS / DCS decode</td>
+<td>no test</td>
+</tr>
+<tr>
+<td>1750 Hz burst, roger beep</td>
+<td>radio state only (<code>tone_burst=1</code>, <code>roger=1</code>): passed while nothing went on air</td>
+</tr>
+<tr>
+<td>Power levels, battery saver</td>
+<td>no test</td>
+</tr>
+<tr>
+<td>VFO scan, dual watch</td>
+<td>radio only (no signal to stop for)</td>
+</tr>
+<tr>
+<td>qdmr writes</td>
+<td>test never run; no dry run</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/testing/on-air-coverage.md">Vedi il sorgente di questa pagina</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="In questa pagina">
+		<p class="eyebrow">In questa pagina</p>
+		<ul><li class="l2"><a href="#before-this-round">Before this round</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Unisciti alla comunità RadioFoundry</strong><span class="small muted">Domande, aiuto con la tua radio e novità, su Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Hai trovato un bug? Vuoi che la tua radio sia supportata?</strong><span class="small muted">Apri una segnalazione su GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry ha licenza MIT · <a href="https://github.com/radiofoundry/radiofoundry">Codice sorgente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunità</a> · <a href="../../../it/docs/index.html">Documenti</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Novità</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

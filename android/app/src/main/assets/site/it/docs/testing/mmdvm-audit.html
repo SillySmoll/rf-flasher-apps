@@ -1,0 +1,487 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="it" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MMDVM implementation audit (2d45a21) · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="MMDVM implementation audit (2d45a21) · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:url" content="https://radiofoundry.org/it/docs/testing/mmdvm-audit.html">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Le radio su cui gira RadioFoundry, ognuna con una schermata diversa.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/testing/mmdvm-audit.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/testing/mmdvm-audit.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/testing/mmdvm-audit.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/testing/mmdvm-audit.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/testing/mmdvm-audit.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../it/" data-gl-more="Altro">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../it/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principale"><a href="../../../it/radios/index.html">Radio</a><a href="../../../it/features/index.html">Funzioni</a><a href="../../../it/flash/index.html">Installa</a><a href="../../../it/codeplug/index.html">Codeplug</a><a href="../../../it/docs/index.html" aria-current="page">Documenti</a><a href="../../../it/screenshots/index.html">Schermate</a><a href="../../../it/tools/index.html">Strumenti</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Lingua" title="Lingua">IT</summary><nav aria-label="Lingua"><a href="../../../docs/testing/mmdvm-audit.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/testing/mmdvm-audit.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/testing/mmdvm-audit.html" aria-current="true" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/testing/mmdvm-audit.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Passa da chiaro a scuro" title="Passa da chiaro a scuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Test">
+		<p class="eyebrow"><a href="../../../it/docs/index.html">Documentazione</a> / Test</p>
+		<ul><li><a href="index.html">Testing</a></li><li><a href="results/index.html">Bring-up results</a></li><li><a href="backlight-curve.html">Backlight curve</a></li><li><a href="dm1801pro-bringup.html">DM-1801 Pro bring-up checklist</a></li><li><a href="dm32-bringup.html">DM-32UV bring-up checklist</a></li><li><a href="dmr-bench.html">DMR bench testing on the SDR bench</a></li><li><a href="md380-bringup.html">MD-380 bring-up checklist</a></li><li><a href="md9600-bringup.html">MD-9600 bring-up checklist</a></li><li><a href="mduv380-bringup.html">MD-UV380 bring-up checklist</a></li><li><a href="mmdvm-audit.html" aria-current="page">MMDVM implementation audit (2d45a21)</a></li><li><a href="on-air-coverage.html">On-air test coverage</a></li><li><a href="power-calibration.html">Transmit power calibration with a wattmeter</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Questa pagina non è ancora tradotta; è mostrata in inglese.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="mmdvm-implementation-audit-2d45a21">MMDVM implementation audit (2d45a21)</h1>
+<p>An audit of the <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="../spec/mmdvm-protocol.html">MMDVM</abbr> modem implementation at commit 2d45a21 against <code>docs/spec/mmdvm-protocol.md</code>: its section 7 test
+list and the per-client needs of a standard host, the bench tools and the
+behavior of the aftermarket firmware. Done by reading the code; nothing was run on a radio.</p>
+<p>Files: <code>core/hotspot/{mmdvm.c,mmdvm.h,hotspot.c,hotspot.h}</code>, the carried-over <code>hotspotUplink.c</code>, <code>hotspotData.c</code>,
+<code>dmrDataFrame.c</code>, <code>core/hostlink/hostlink.c</code>, <code>drivers/usb/{usb_device.c,tusb_config.h}</code>, <code>platform/stm32f4/usb.c</code>,
+<code>tests/host/mmdvmTest.c</code>, <code>tools/mmdvm_probe.py</code>, and TinyUSB 0.21.0 (<code>third_party/tinyusb</code>) where its behavior
+matters.</p>
+<p>Severity:</p>
+<ul>
+<li><strong>Blocker</strong>: the feature can't work on the radio.</li>
+<li><strong>High</strong>: a supported client fails or gets corrupt data.</li>
+<li><strong>Medium</strong>: a client misbehaves, loses data now and then, or fills its log.</li>
+<li><strong>Low</strong>: differs from the spec with little effect.</li>
+<li><strong>Info</strong>: confirmed correct, or the spec should change.</li>
+</ul>
+<h2 id="status-2026-10-10-branch-agenthotspot-net">Status (2026-10-10, branch agent/hotspot-net)</h2>
+<p>The findings below are as written at 2d45a21. Where they stand now, checked against the code and the host tests
+(nothing below has been run on a radio since):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Finding</th>
+<th>Status</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A-1 no board wires the hotspot</td>
+<td>fixed: the radio core registers <code>radio_hs_ops</code> (<code>core/radio/radio_hotspot.c</code>)</td>
+<td><code>radioCoreTest</code> test_hotspot_session</td>
+</tr>
+<tr>
+<td>A-2 hotspot left while DTR is clear</td>
+<td>fixed: only a DTR drop (an edge) ends <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> mode (<code>hostlink_policy.c</code>)</td>
+<td><code>mmdvmTest</code> test_hostlink_dtr</td>
+</tr>
+<tr>
+<td>A-3 uplink EMB / embedded signaling</td>
+<td>fixed</td>
+<td><code>mmdvmTest</code> test_uplink_emb</td>
+</tr>
+<tr>
+<td>A-4 silence fill across a superframe</td>
+<td>fixed (modulo 6)</td>
+<td>test_uplink_wrapped_gap</td>
+</tr>
+<tr>
+<td>A-5 DMR_SHORTLC NAK, I-2 DMR_START NAK</td>
+<td>fixed: taken silently (ACKed in <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="../spec/sfr.html">SFR</abbr> mode)</td>
+<td>test_config, <code>hotspotSfrTest</code></td>
+</tr>
+<tr>
+<td>A-6 SEND_CWID NAK</td>
+<td>fixed: ACKed in idle; keyed in Morse on FM on boards with <code>tx_tone</code> (the DM-1701 so far; radio core CW keyer, <code>tx_tone_key</code>; host-tested, not yet on air)</td>
+<td>test_cwid, radioCoreTest test_hotspot_cwid, tests/hil/test_hotspot_cwid.py</td>
+</tr>
+<tr>
+<td>A-8 slot 1 space / SFR hook</td>
+<td>the hook exists (<code>mmdvm_ext_t.space</code>); simplex keeps 0, which the spec allows</td>
+<td>test_ext_space, <code>hotspotSfrTest</code></td>
+</tr>
+<tr>
+<td>A-9 no RSSI after uplink bursts</td>
+<td>fixed (<abbr class="gl" tabindex="0" title="The RF transceiver chip that sets the frequency, deviation and power of many handheld DMR radios. Programmed over I2C." data-more="../dev/glossary.html#t-at1846s">AT1846S</abbr> raw scale)</td>
+<td>test_uplink_rssi</td>
+</tr>
+<tr>
+<td>A-10 no DMR_LOST on SET_FREQ mid-call</td>
+<td>fixed</td>
+<td>test_retune_lost</td>
+</tr>
+<tr>
+<td>A-11 SET_MODE idle doesn't stop TX</td>
+<td>fixed</td>
+<td>test_mode_idle</td>
+</tr>
+<tr>
+<td>A-12 POCSAG refused</td>
+<td>fixed: accepted, never <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmits</abbr></td>
+<td>test_pocsag</td>
+</tr>
+<tr>
+<td>A-13 NAK / accept mismatches</td>
+<td>fixed</td>
+<td>test_config</td>
+</tr>
+<tr>
+<td>A-14 no space margin</td>
+<td>fixed: <code>hotspot_space()</code> keeps 2 frames back (<code>SPACE_MARGIN</code>)</td>
+<td>code</td>
+</tr>
+<tr>
+<td>A-15 <code>enter</code> inside every frame</td>
+<td>fixed: rate limited (1 s) and posted to the radio task</td>
+<td>test_slow_enter, test_hotspot_session</td>
+</tr>
+<tr>
+<td>T-1 coverage gaps</td>
+<td>covered by the tests named above</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Found since:</p>
+<ul>
+<li><strong>H-1 (<abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> test, fixed): &quot;hotspot entered through the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>&quot; failed with <code>hs.enter_attempts=2</code>,
+<code>hs.running=0</code>.</strong> The test's <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="../spec/mmdvm-protocol.html">MMDVM</abbr> client opened the port with pyserial's default DTR set; closing it dropped DTR,
+and the host link leaves hotspot mode on that edge (spec 5.1). By the time the debug link looked, the session was
+over. <code>hs.enter_attempts</code> counts every session since boot, so 2 meant two sessions that had each taken the modem,
+not two refused attempts. The radio core path was reproduced on the host (a <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> channel, the radio
+task above and below the host link task in priority): the modem is taken on the first frame or on the retry 1 s
+later. Fix: <code>tests/hil/test_hotspot.py</code> opens with DTR clear (as a Windows host may) and checks the slot 2
+space, <code>hs.running</code> and <code>hs.starts</code>; new view keys <code>hostlink.left</code> (why the last session ended), <code>hs.starts</code>,
+<code>hs.stops</code>.</li>
+<li><strong>SFR mode</strong>: built behind <code>CONFIG_SFR</code> (<code>docs/spec/sfr.md</code>): spec 6.1-6.4 answered by <code>core/hotspot/hotspotSfr.c</code>,
+host-tested by <code>hotspotSfrTest</code>. The on-air repeat needs per-burst <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> switching in the driver (sfr.md 3).</li>
+<li><strong>Network transport</strong>: MMDVM over <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr> 3334 in the USB network personality (<code>docs/spec/usb-network.md</code>); the DTR
+rule does not apply there, the 20 s idle timeout does.</li>
+</ul>
+<p>Updated per-client view: A standard host on Linux and Windows should work for voice and data in
+simplex; <abbr class="gl" tabindex="0" title="A station&#x27;s callsign sent in Morse code. A standalone SFR repeater channel sends one in FM every few minutes after traffic (Settings &gt; Talk &amp; listen &gt; SFR CW ID)." data-more="../user/14-hotspot.html">CW ID</abbr> keyed on boards with <code>tx_tone</code> (the DM-1701 so far; host-tested only).</p>
+<h2 id="summary">Summary</h2>
+<p>The protocol responder is sound:</p>
+<ul>
+<li>framing, long-frame skipping and resynchronization;</li>
+<li>protocol 1 version and status layouts;</li>
+<li>SET_CONFIG and SET_FREQ ACKs, and SET_MODE accepted before SET_CONFIG;</li>
+<li>downlink classification from the burst itself when the control byte is 0;</li>
+<li>idle and <abbr class="gl" tabindex="0" title="A DMR header that announces encryption with a changing key. RadioFoundry never plays such calls." data-more="../user/22-glossary.html#t-pi-header">PI</abbr> bursts dropped without a <abbr class="gl" tabindex="0" title="Acknowledgment: the reply that says a message arrived." data-more="../dev/glossary.html#t-ack">NAK</abbr>;</li>
+<li>one call per transmission, keyed on the host's terminator, with back-to-back calls held behind each other;</li>
+<li>NAK 5 with no wraparound when the buffer is full;</li>
+<li>every header sent up, late entry, DMR_LOST 500 ms after the last burst;</li>
+<li>the <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> status bit;</li>
+<li>nothing sent before the host's first command.</li>
+</ul>
+<p>What needs fixing:</p>
+<ul>
+<li>On the radio the <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> can't start: no board registers the radio operations (A-1).</li>
+<li>A host that clears DTR (a Windows host) knocks the radio out of hotspot mode on every poll (A-2).</li>
+<li>Uplink voice bursts B-F have a malformed <abbr class="gl" tabindex="0" title="Embedded signaling: the 32 bits in the middle of a voice burst that carry link control." data-more="../dev/glossary.html#t-emb">EMB</abbr> and zeroed embedded signaling (A-3).</li>
+<li>The uplink silence fill doesn't handle a superframe boundary (A-4).</li>
+<li>DMR_SHORTLC, which a standard host sends on every call even in simplex, gets a NAK (A-5).</li>
+<li>SEND_CWID gets a NAK (A-6).</li>
+</ul>
+<h2 id="1-findings">1. Findings</h2>
+<h3 id="a-1-blocker-no-board-wires-the-hotspot-to-the-radio-core">A-1 Blocker: no board wires the hotspot to the radio core</h3>
+<ul>
+<li><strong>Where</strong>: <code>core/hotspot/hotspot.h:43</code> (<code>hotspot_set_radio</code>). The only caller is <code>tests/host/mmdvmTest.c:332</code>. Without
+it, <code>hotspot_start()</code> returns false (<code>hotspot.c:270-272</code>), and <code>mmdvm.c:281-283</code> tries again on every frame.</li>
+<li><strong>Spec</strong>: 2.4 (space), 2.8 (<abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> data), 7.4 and 7.5. The <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> must take the modem and run.</li>
+<li><strong>Code</strong>: on the radio, GET_VERSION is answered, but status always reports slot 2 space 0 and every DMR_DATA2 gets
+<abbr class="gl" tabindex="0" title="Acknowledgment: the reply that says a message arrived." data-more="../dev/glossary.html#t-ack">NAK</abbr> 2. A host logs a NAK for every frame of every network call.</li>
+<li><strong>Fix</strong>: the radio core implements the radio operations: enter, set_freq, set_power, leave, carrier and changed.
+<code>enter</code> stops FM and the DMR call stack and hands over the modem; <code>carrier</code> comes from the receiver's noise level.
+Register them at startup on every board that builds the hotspot. Until then, the description or the docs should
+not claim the hotspot works.</li>
+</ul>
+<h3 id="a-2-high-hotspot-mode-is-left-whenever-dtr-is-clear">A-2 High: hotspot mode is left whenever DTR is clear</h3>
+<ul>
+<li><strong>Where</strong>: <code>core/hostlink/hostlink.c:172</code> (<code>!port-&gt;connected()</code>). <code>connected</code> is TinyUSB's DTR test
+(<code>drivers/usb/usb_device.c:170-173</code>). <code>tools/mmdvm_probe.py:41</code> sets DTR for this reason.</li>
+<li><strong>Spec</strong>: 5.1. Don't gate anything on DTR. A host on Windows may open the port with DTR cleared. Test T-USB-2.</li>
+<li><strong>Code</strong>: with DTR clear, the first frame enters hotspot mode and is answered, and then the next pass of the task
+calls <code>leave_hotspot()</code>. That resets the configuration (<code>mmdvm_end</code>) and gives the modem back. Every frame enters
+and leaves again, so SET_CONFIG and SET_FREQ never stick and calls can't work. Linux and macOS raise DTR on open,
+so hosts there aren't affected.</li>
+<li><strong>Fix</strong>: never require DTR. Leave hotspot mode only after 20 s without a frame (already there), on USB unmount or
+suspend, on the user's exit, or on a DTR drop from set to clear (a POSIX host closing the port). Never because DTR
+has not been set. TinyUSB 0.21.0 keeps sending while DTR is clear (its <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> <abbr class="gl" tabindex="0" title="First in, first out: a queue of data between a producer and a consumer." data-more="../dev/glossary.html#t-fifo">FIFO</abbr> only becomes overwritable,
+<code>cdc_device.c:427-432</code>), so nothing else needs DTR.</li>
+</ul>
+<h3 id="a-3-high-uplink-voice-b-f-carry-a-wrong-emb-and-empty-embedded-signaling">A-3 High: uplink voice B-F carry a wrong EMB and empty embedded signaling</h3>
+<ul>
+<li><strong>Where</strong>: <code>core/hotspot/hotspot.c:148-169</code> (voice_to_frame).</li>
+<li><strong>Spec</strong>: 2.8, modem to host. The 33 bytes must be a well-formed burst: correct <abbr class="gl" tabindex="0" title="Embedded signaling: the 32 bits in the middle of a voice burst that carry link control." data-more="../dev/glossary.html#t-emb">EMB</abbr> (<abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="../user/22-glossary.html#t-color-code">color code</abbr>, <abbr class="gl" tabindex="0" title="Link control start/stop: the 2-bit field of a burst&#x27;s embedded signaling that says which fragment it carries." data-more="../dev/glossary.html#t-lcss">LCSS</abbr>, QR(16,7)
+parity) and the embedded signaling for B-E made from the call's <abbr class="gl" tabindex="0" title="Link control: the call&#x27;s addressing (source, destination, group or private) that DMR repeats through a voice call." data-more="../dev/glossary.html#t-lc">LC</abbr>, as the aftermarket firmware did. Test U-10.</li>
+<li><strong>Code</strong>: the EMB's 7 information bits are set, but its 9 parity bits and all 32 embedded-signaling bits are 0.
+With zero parity the EMB doesn't give the color code and LCSS the burst should carry.
+Then:
+<ul>
+<li>A host's late entry fails.</li>
+<li>Embedded fragments are collected in the wrong order.</li>
+<li><abbr class="gl" tabindex="0" title="A short text, usually a callsign and name, sent along with DMR voice." data-more="../user/22-glossary.html#t-talker-alias">Talker alias</abbr> and in-call GPS from the sender never reach the host.</li>
+</ul>
+</li>
+<li><strong>Fix</strong>:
+<ul>
+<li>Build B-F the way a transmitter does. The EMB is color code, <abbr class="gl" tabindex="0" title="A DMR header that announces encryption with a changing key. RadioFoundry never plays such calls." data-more="../user/22-glossary.html#t-pi-header">PI</abbr> 0 and the LCSS of the position, with QR(16,7,6)
+parity per <abbr class="gl" tabindex="0" title="European Telecommunications Standards Institute, which publishes the DMR standard." data-more="../dev/glossary.html#t-etsi">ETSI</abbr> <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">TS</abbr> 102 361-1 B.3.2 (not in <code>core/dmr/fec</code> yet: add it there, clean, from the standard).</li>
+<li>The embedded bits of B-E are the four fragments of the call's LC (<code>dmr_emb_lc_encode</code> in <code>core/dmr/call/dmr_lc.h</code>
+already makes them). F carries null embedded signaling.</li>
+<li>When the modem reports a decoded embedded LC that differs (talker alias, GPS: <abbr class="gl" tabindex="0" title="Full link control opcode: the field of a link control message that says its kind." data-more="../dev/glossary.html#t-flco">FLCO</abbr> 4-7), send that superframe's
+fragments for it, so the alias reaches the host.</li>
+<li>Add a host test that decodes the uplink EMB and embedded LC with the clean decoders.</li>
+</ul>
+</li>
+</ul>
+<h3 id="a-4-medium-uplink-silence-fill-skips-bursts-across-a-superframe-boundary">A-4 Medium: uplink silence fill skips bursts across a superframe boundary</h3>
+<ul>
+<li><strong>Where</strong>: <code>core/hotspot/hotspot.c:722-726</code>. The fill runs from the first missing position up to, but not
+including, the received burst's position, by increasing position only.</li>
+<li><strong>Spec</strong>: 2.8 and gotchas 8.5. Missed bursts are filled with silence at their positions, so the B-F sequence
+the host expects carries on. <code>hotspotUplink.h:48</code> and <code>hotspotUplink.c:228-238</code> give the fill range modulo 6.</li>
+<li><strong>Code</strong>: when the range wraps (E received, then F and A missed, then B), nothing is filled. B arrives right after
+E, a host drops it and the rest of the superframe (360 ms of audio).</li>
+<li><strong>Fix</strong>: fill every position from the first missing one, stepping modulo 6, up to the received burst's position.
+An A in the fill gets the voice sync, as now. Add a host test with a wrapped gap.</li>
+</ul>
+<h3 id="a-5-medium-dmr_shortlc-gets-nak-2">A-5 Medium: DMR_SHORTLC gets NAK 2</h3>
+<ul>
+<li><strong>Where</strong>: <code>core/hotspot/mmdvm.c:308-311</code>.</li>
+<li><strong>Spec</strong>: 2.10. A standard host sends DMR_SHORTLC around every call, in simplex too.
+Accept and ignore it, with no NAK. Test D-8.</li>
+<li><strong>Code</strong>: NAK 2. A warning per call in the host's log, shown by Pi-Star style dashboards.</li>
+<li><strong>Fix</strong>: take DMR_SHORTLC of any length silently (no ACK needed).</li>
+</ul>
+<h3 id="a-6-medium-send_cwid-gets-nak-2">A-6 Medium: SEND_CWID gets NAK 2</h3>
+<ul>
+<li><strong>Where</strong>: <code>core/hotspot/mmdvm.c:312-313</code>.</li>
+<li><strong>Spec</strong>: 2.11. In idle, ACK it and send the callsign in Morse on FM, with the TX bit set while keying. In any
+other state, NAK 5.</li>
+<li><strong>Code</strong>: always NAK 2. A standard host with <abbr class="gl" tabindex="0" title="A station&#x27;s callsign sent in Morse code. A standalone SFR repeater channel sends one in FM every few minutes after traffic (Settings &gt; Talk &amp; listen &gt; SFR CW ID)." data-more="../user/14-hotspot.html">CW ID</abbr> enabled logs a NAK every time, and no station ID goes out. The
+operator may count on that ID for licensing.</li>
+<li><strong>Fix</strong>: implement CW ID per 2.11: accept only in idle, ACK, key FM, send the Morse (about 20 wpm), keep the TX bit
+set until done, then restore the DMR setup fully (gotchas 8.13). Until then, list it as a limitation in
+the feature matrix.</li>
+</ul>
+<h3 id="a-8-low-slot-1-space-reported-as-0-in-simplex-spec-says-10-no-sfr-hook-for-it">A-8 Low: slot 1 space reported as 0 in simplex (spec says 10); no SFR hook for it</h3>
+<ul>
+<li><strong>Where</strong>: <code>core/hotspot/mmdvm.c:180</code>.</li>
+<li><strong>Spec</strong>: 2.4 says the constant 10. 6.2 says both space bytes
+carry the outbound slot's space in <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="../spec/sfr.html">SFR</abbr> mode.</li>
+<li><strong>Code</strong>: 0.
+<ul>
+<li>A standard host then never writes DMR_DATA1. That is harmless, even better, since it would only get NAK 2.</li>
+<li>The bench tools only print it.</li>
+<li><strong>Confirmed deviation, accepted</strong>: the spec will say &quot;0 or 10 in simplex&quot;.</li>
+</ul>
+</li>
+<li><strong>Problem left for SFR</strong>: the extension interface (<code>mmdvm.h:123-129</code>) can append bytes and OR flags, but can't set
+offset 7. When SFR is ported with an outbound TS1, a host that writes DMR_DATA1 gated on offset 7 would
+never send.</li>
+<li><strong>Fix</strong>: keep 0 in plain simplex. When SFR is on, report the outbound slot's space at offsets 7 and 8 (an
+extension hook for the space values).</li>
+</ul>
+<h3 id="a-9-low-no-rssi-after-uplink-bursts">A-9 Low: no RSSI after uplink bursts</h3>
+<ul>
+<li><strong>Where</strong>: <code>core/hotspot/hotspot.c:171-179</code>. Frames go up with length 37.</li>
+<li><strong>Spec</strong>: 2.8 and 5.4. Optional. The aftermarket firmware sent 2 bytes (00, then the <abbr class="gl" tabindex="0" title="The RF transceiver chip that sets the frequency, deviation and power of many handheld DMR radios. Programmed over I2C." data-more="../dev/glossary.html#t-at1846s">AT1846S</abbr> register 0x1B high
+byte). On that raw scale, dBm = raw − 151 at 300 MHz and up, −164 + raw × 32 / 27 below. Test U-8.</li>
+<li><strong>Code</strong>: none.</li>
+<li><strong>Fix</strong>: when the modem reports an <abbr class="gl" tabindex="0" title="Received signal strength indicator: how strong the received signal is, in dBm." data-more="../user/22-glossary.html#t-rssi">RSSI</abbr> for the burst (<code>rssi_dbm</code> in <code>dmr_burst_t</code> is non-zero), send two bytes
+after the burst (frame length 39), big endian: 00, then the raw value on the AT1846S scale. Use the raw reading
+directly if the board can pass it, otherwise invert the formula above for the band in use. Leave them off when
+the RSSI is unknown. On radios with another <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> chip, document the scale.</li>
+</ul>
+<h3 id="a-10-low-no-dmr_lost-when-set_freq-interrupts-a-call-being-heard">A-10 Low: no DMR_LOST when SET_FREQ interrupts a call being heard</h3>
+<ul>
+<li><strong>Where</strong>: <code>core/hotspot/hotspot.c:331-355</code>. The uplink call is reset with no DMR_LOST.</li>
+<li><strong>Spec</strong>: 2.7 and test C-16. If an uplink call is open, send DMR_LOST2 before the SET_FREQ ACK. A host may
+otherwise keep such a call open.</li>
+<li><strong>Code</strong>: silent reset. A standard host doesn't retune in operation, so the effect is small.</li>
+<li><strong>Fix</strong>: if the uplink call is open when SET_FREQ arrives, send DMR_LOST2 first, then reset, retune and ACK.</li>
+</ul>
+<h3 id="a-11-low-set_mode-idle-doesnt-stop-a-transmission">A-11 Low: SET_MODE idle doesn't stop a transmission</h3>
+<ul>
+<li><strong>Where</strong>: <code>core/hotspot/mmdvm.c:245</code>. Only the state byte changes.</li>
+<li><strong>Spec</strong>: 2.6 and test D-12. Idle stops new traffic for TX, ends a call in progress with a terminator within a
+superframe, clears the queue, and the TX bit clears once off air.</li>
+<li><strong>Code</strong>: a buffered or running call carries on. A standard host sends idle only after its mode hang (3 s after network
+traffic), so it doesn't normally hit this.</li>
+<li><strong>Fix</strong>: on SET_MODE idle, end a call in progress (our terminator), drop what's queued, then ACK.</li>
+</ul>
+<h3 id="a-12-low-set_mode-and-set_config-refuse-pocsag-06">A-12 Low: SET_MODE and SET_CONFIG refuse POCSAG (06)</h3>
+<ul>
+<li><strong>Where</strong>: <code>core/hotspot/mmdvm.c:194</code> and <code>:237</code>.</li>
+<li><strong>Spec</strong>: 2.5 and 2.6. Accept 06, keep receiving, report POCSAG space 0 or 1, never transmit pages.</li>
+<li><strong>Code</strong>: NAK 4. A host with POCSAG enabled (the Pi-Star default) logs a NAK each time a page arrives.</li>
+<li><strong>Fix</strong>: ACK 06 and treat it like DMR for reception; leave POCSAG space at 0.</li>
+</ul>
+<h3 id="a-13-low-values-the-spec-says-to-nak-are-accepted-and-vice-versa">A-13 Low: values the spec says to NAK are accepted, and vice versa</h3>
+<ul>
+<li><strong>Color code</strong>: above 15 is masked to 4 bits instead of NAK 4 (<code>mmdvm.c:201</code>; test C-4). Fix: NAK 4.</li>
+<li><strong>DMR_DATA length</strong>: payloads longer than 34 bytes are accepted (<code>mmdvm.c:255</code>; test D-6). Fix: NAK 4 unless the
+frame is exactly 37 bytes.</li>
+<li><strong>SERIAL and TRANSPARENT</strong>: get NAK 1 (<code>mmdvm.c:332-336</code>). The spec says drop silently (2.12): hosts send them
+for a Nextion on the modem port and for transparent data, and log every NAK. Fix: drop both silently, as
+QSO_INFO already is.</li>
+<li><strong>FM_PARAMS1-4</strong>: get NAK 2. A host configured with FM sends them during startup and stops on the NAK
+The spec says ACK and ignore (2.14). Fix: ACK and ignore.</li>
+</ul>
+<h3 id="a-14-low-no-margin-in-the-reported-space">A-14 Low: no margin in the reported space</h3>
+<ul>
+<li><strong>Where</strong>: <code>core/hotspot/hotspot.c:797-807</code>. Space is free ring places, minus 1 while a call is open.</li>
+<li><strong>Spec</strong>: 2.4. Report the free count minus at least 2 for frames already written while the status was on its way.</li>
+<li><strong>Code</strong>: a margin of 1 (the open-call terminator place) plus the host's own rule of never using its last place.
+That is enough in steady state. At the start of a call the host writes up to the full reported count in one
+clump, and frames in flight can produce a NAK 5 (a lost frame) at the edge.</li>
+<li><strong>Fix</strong>: subtract one more place. Test D-5 with a host that writes right up to its limit.</li>
+</ul>
+<h3 id="a-15-medium-latent-enter-is-attempted-inside-every-frames-handling">A-15 Medium (latent): <code>enter</code> is attempted inside every frame's handling</h3>
+<ul>
+<li><strong>Where</strong>: <code>core/hotspot/mmdvm.c:281-283</code>.</li>
+<li><strong>Spec</strong>: 2.4 and 3.1. Status replies within tens of milliseconds; the version reply within about 300 ms.</li>
+<li><strong>Code</strong>: today <code>hotspot_start()</code> fails at once (A-1). Once wired, the radio core's <code>enter</code> (stopping FM and the
+DMR call stack, a retune) runs before every reply for as long as the radio refuses (transmitting, in a menu, DMR
+disabled). If it blocks, it delays every GET_STATUS and can trip a host's 2 s reset.</li>
+<li><strong>Fix</strong>: <code>enter</code> must not block (post a request and return). Try it again at most about once a second, not per
+frame. Always answer GET_VERSION and GET_STATUS first.</li>
+</ul>
+<h3 id="i-1-info-zlp-after-replies-that-end-on-a-64-byte-boundary">I-1 Info: ZLP after replies that end on a 64-byte boundary</h3>
+<p>TinyUSB 0.21.0 sends the zero-length packet itself when a transfer ends on a packet boundary
+(<code>third_party/tinyusb/src/class/cdc/cdc_device.c:521-522</code>), and <code>cdc_write</code> flushes after each frame. The spec's
+requirement is met. Still run T-USB-1 on the radio.</p>
+<h3 id="i-2-info-dmr_start-gets-nak-2">I-2 Info: DMR_START gets NAK 2</h3>
+<p><code>mmdvm.c:308-311</code>. A standard host sends DMR_START only in duplex, so no current
+client is affected. The spec says ignore it. Low priority: take it silently along with DMR_SHORTLC (A-5).</p>
+<h3 id="i-3-info-dmr_lost-timing-correct">I-3 Info: DMR_LOST timing correct</h3>
+<p>DMR_LOST2 goes up 500 ms after a call's last burst of any kind (<code>hotspotUplink.h:13</code>, checked on every
+<code>hotspot_poll</code>, which runs at least every 5 ms). It isn't sent during a header run. That meets 2.9 and the bench's
+0.4-0.8 s window. The host test (<code>mmdvmTest.c</code>, uplink section) checks 0 before and 1 after.</p>
+<h3 id="i-4-info-tx-status-bit-lifetime-correct">I-4 Info: TX status bit lifetime correct</h3>
+<p><code>hotspot_transmitting()</code> (<code>hotspot.c:809-812</code>) is set from the first buffered frame, through the modem's transmission,
+until <code>DMR_EV_TX_DONE</code>. It also covers queued data lists and the modem's own transmitting state, and is derived from
+the modem state machine, not the <abbr class="gl" tabindex="0" title="Power amplifier: the stage that boosts the transmit signal to the output power." data-more="../dev/glossary.html#t-pa">PA</abbr> (gotchas 3.1). Carrier detect is reported only while not transmitting.
+Confirm on air that TX_DONE comes after the terminator slot (gotchas 3.2, test D-11).</p>
+<h3 id="i-5-info-confirmed-against-the-test-list">I-5 Info: confirmed against the test list</h3>
+<ul>
+<li><strong>Framing</strong>:
+<ul>
+<li>F-1 to F-8 by construction: resync on bytes other than 0xE0, length below 3 resynced, long frames skipped whole,
+unknown command NAK 1.</li>
+<li>F-9: nothing goes up before the first frame (the uplink runs only while the hotspot runs).</li>
+</ul>
+</li>
+<li><strong>Version and status</strong>: V-1. S-1: 13 bytes, byte 3 = 02, byte 12 = 0; byte 7 differs, see A-8. S-3 and S-4
+(overflow flags reported once). S-5.</li>
+<li><strong>Configuration</strong>: C-1, C-2 (SET_MODE DMR before SET_CONFIG is ACKed), C-3 (other mode bits ignored), C-5, C-7, C-8,
+C-9 (POCSAG frequency ignored, only the board's range applies), C-10, C-12.</li>
+<li><strong>Downlink</strong>:
+<ul>
+<li>D-1, D-2 and D-3 (control 0 classified from sync and slot type; idle and PI headers dropped without a NAK; one
+header or eight).</li>
+<li>D-4 (the old call ends with a terminator, the new one keys again).</li>
+<li>D-5 (NAK 5, no wraparound, TX overflow reported once).</li>
+<li>D-7, D-9 and D-10 (data lists and lone <abbr class="gl" tabindex="0" title="Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control." data-more="../spec/dmr-data.html">CSBKs</abbr>).</li>
+<li>DMR_ABORT takes no reply and drops the queue.</li>
+</ul>
+</li>
+<li><strong>Uplink</strong>: U-1 (every header), U-2 (late-entry header made from the embedded LC, silence from A), U-4, U-6, U-7
+(data only within a data transmission), U-9.</li>
+<li><strong>Timing</strong>: T-4 (20 s idle timeout, configuration forgotten).</li>
+<li><strong>Extensions</strong>: X-4 and X-5 in a build without the extension (NAK 1), and through the hook.</li>
+<li><strong>Transport</strong>: frames are written whole from the host-link task only, so replies and uplink frames never
+interleave.</li>
+</ul>
+<h3 id="t-1-test-coverage-gaps-testshostmmdvmtestc-toolsmmdvm_probepy">T-1 Test coverage gaps (<code>tests/host/mmdvmTest.c</code>, <code>tools/mmdvm_probe.py</code>)</h3>
+<p>Missing:</p>
+<ul>
+<li>A host test decoding the uplink EMB and embedded LC (A-3).</li>
+<li>A wrapped uplink gap (A-4).</li>
+<li>DMR_SHORTLC, SEND_CWID, SERIAL, TRANSPARENT and FM_PARAMS answers (A-5, A-6, A-13).</li>
+<li>DMR_LOST before the SET_FREQ ACK during a call (A-10).</li>
+<li>SET_MODE idle mid-call (A-11).</li>
+<li>RSSI bytes (A-9).</li>
+<li>A host link test with DTR clear (A-2).</li>
+<li>A slow <code>enter</code> (A-15).</li>
+<li>The probe always raises DTR. Add a <code>--no-dtr</code> run (T-USB-2).</li>
+</ul>
+<h2 id="2-per-client-verdict-at-2d45a21">2. Per-client verdict at 2d45a21</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Client</th>
+<th>Verdict</th>
+<th>Blocking items</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Standard host, Linux / Pi-Star</td>
+<td>handshake and polling OK; no calls until A-1; then voice works, with a malformed uplink <abbr class="gl" tabindex="0" title="Embedded signaling: the 32 bits in the middle of a voice burst that carry link control." data-more="../dev/glossary.html#t-emb">EMB</abbr>, <abbr class="gl" tabindex="0" title="Acknowledgment: the reply that says a message arrived." data-more="../dev/glossary.html#t-ack">NAK</abbr> warnings per call and lost bursts at wrapped gaps</td>
+<td>A-1, A-3, A-5, A-4</td>
+</tr>
+<tr>
+<td>Standard host, Windows</td>
+<td>broken: config never sticks</td>
+<td>A-2 (and the above)</td>
+</tr>
+<tr>
+<td>Bench tools (<code>hs_normal.py</code>, copies)</td>
+<td><abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr> transport not in this build; over serial, uplink cases are at risk from A-4 and downlink cases from A-1</td>
+<td>A-1, A-4</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/testing/mmdvm-audit.md">Vedi il sorgente di questa pagina</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="In questa pagina">
+		<p class="eyebrow">In questa pagina</p>
+		<ul><li class="l2"><a href="#status-2026-10-10-branch-agenthotspot-net">Status (2026-10-10, branch agent/hotspot-net)</a></li><li class="l2"><a href="#summary">Summary</a></li><li class="l2"><a href="#1-findings">1. Findings</a></li><li class="l3"><a href="#a-1-blocker-no-board-wires-the-hotspot-to-the-radio-core">A-1 Blocker: no board wires the hotspot to the radio core</a></li><li class="l3"><a href="#a-2-high-hotspot-mode-is-left-whenever-dtr-is-clear">A-2 High: hotspot mode is left whenever DTR is clear</a></li><li class="l3"><a href="#a-3-high-uplink-voice-b-f-carry-a-wrong-emb-and-empty-embedded-signaling">A-3 High: uplink voice B-F carry a wrong EMB and empty embedded signaling</a></li><li class="l3"><a href="#a-4-medium-uplink-silence-fill-skips-bursts-across-a-superframe-boundary">A-4 Medium: uplink silence fill skips bursts across a superframe boundary</a></li><li class="l3"><a href="#a-5-medium-dmr_shortlc-gets-nak-2">A-5 Medium: DMR_SHORTLC gets NAK 2</a></li><li class="l3"><a href="#a-6-medium-send_cwid-gets-nak-2">A-6 Medium: SEND_CWID gets NAK 2</a></li><li class="l3"><a href="#a-8-low-slot-1-space-reported-as-0-in-simplex-spec-says-10-no-sfr-hook-for-it">A-8 Low: slot 1 space reported as 0 in simplex (spec says 10); no SFR hook for it</a></li><li class="l3"><a href="#a-9-low-no-rssi-after-uplink-bursts">A-9 Low: no RSSI after uplink bursts</a></li><li class="l3"><a href="#a-10-low-no-dmr_lost-when-set_freq-interrupts-a-call-being-heard">A-10 Low: no DMR_LOST when SET_FREQ interrupts a call being heard</a></li><li class="l3"><a href="#a-11-low-set_mode-idle-doesnt-stop-a-transmission">A-11 Low: SET_MODE idle doesn&#x27;t stop a transmission</a></li><li class="l3"><a href="#a-12-low-set_mode-and-set_config-refuse-pocsag-06">A-12 Low: SET_MODE and SET_CONFIG refuse POCSAG (06)</a></li><li class="l3"><a href="#a-13-low-values-the-spec-says-to-nak-are-accepted-and-vice-versa">A-13 Low: values the spec says to NAK are accepted, and vice versa</a></li><li class="l3"><a href="#a-14-low-no-margin-in-the-reported-space">A-14 Low: no margin in the reported space</a></li><li class="l3"><a href="#a-15-medium-latent-enter-is-attempted-inside-every-frames-handling">A-15 Medium (latent): enter is attempted inside every frame&#x27;s handling</a></li><li class="l3"><a href="#i-1-info-zlp-after-replies-that-end-on-a-64-byte-boundary">I-1 Info: ZLP after replies that end on a 64-byte boundary</a></li><li class="l3"><a href="#i-2-info-dmr_start-gets-nak-2">I-2 Info: DMR_START gets NAK 2</a></li><li class="l3"><a href="#i-3-info-dmr_lost-timing-correct">I-3 Info: DMR_LOST timing correct</a></li><li class="l3"><a href="#i-4-info-tx-status-bit-lifetime-correct">I-4 Info: TX status bit lifetime correct</a></li><li class="l3"><a href="#i-5-info-confirmed-against-the-test-list">I-5 Info: confirmed against the test list</a></li><li class="l3"><a href="#t-1-test-coverage-gaps-testshostmmdvmtestc-toolsmmdvm_probepy">T-1 Test coverage gaps (tests/host/mmdvmTest.c, tools/mmdvm_probe.py)</a></li><li class="l2"><a href="#2-per-client-verdict-at-2d45a21">2. Per-client verdict at 2d45a21</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Unisciti alla comunità RadioFoundry</strong><span class="small muted">Domande, aiuto con la tua radio e novità, su Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Hai trovato un bug? Vuoi che la tua radio sia supportata?</strong><span class="small muted">Apri una segnalazione su GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry ha licenza MIT · <a href="https://github.com/radiofoundry/radiofoundry">Codice sorgente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunità</a> · <a href="../../../it/docs/index.html">Documenti</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Novità</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

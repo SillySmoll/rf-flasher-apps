@@ -1,0 +1,121 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="it" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clean-room rules · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Clean-room rules · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:url" content="https://radiofoundry.org/it/docs/CLEANROOM.html">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Le radio su cui gira RadioFoundry, ognuna con una schermata diversa.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/CLEANROOM.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/CLEANROOM.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/CLEANROOM.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/CLEANROOM.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/CLEANROOM.html">
+<link rel="icon" href="../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../" data-home="../../it/" data-gl-more="Altro">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../it/index.html">
+			<img src="../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principale"><a href="../../it/radios/index.html">Radio</a><a href="../../it/features/index.html">Funzioni</a><a href="../../it/flash/index.html">Installa</a><a href="../../it/codeplug/index.html">Codeplug</a><a href="../../it/docs/index.html" aria-current="page">Documenti</a><a href="../../it/screenshots/index.html">Schermate</a><a href="../../it/tools/index.html">Strumenti</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Lingua" title="Lingua">IT</summary><nav aria-label="Lingua"><a href="../../docs/CLEANROOM.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../es/docs/CLEANROOM.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../it/docs/CLEANROOM.html" aria-current="true" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../zh/docs/CLEANROOM.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Passa da chiaro a scuro" title="Passa da chiaro a scuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Progetto">
+		<p class="eyebrow"><a href="../../it/docs/index.html">Documentazione</a> / Progetto</p>
+		<ul><li><a href="index.html">Documentation</a></li><li><a href="CLEANROOM.html" aria-current="page">Clean-room rules</a></li><li><a href="build-config.html">Build configuration</a></li><li><a href="feature-matrix.html">Feature matrix</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Questa pagina non è ancora tradotta; è mostrata in inglese.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="clean-room-rules">Clean-room rules</h1>
+<p>Some of RadioFoundry's authors also worked on a popular alternative aftermarket firmware for these radios (&quot;the aftermarket firmware&quot; in these docs), whose license forbids commercial use. RadioFoundry is a separate project, not a fork or a successor. None of the aftermarket firmware's code, or code derived from it, may enter this repository or its history. These rules say how the work is split so that holds.</p>
+<h2 id="roles">Roles</h2>
+<p><strong>Spec writers (the &quot;dirty&quot; side)</strong> may read the aftermarket firmware trees (its repository and branches, its upstream releases, other firmware sources and binaries). They write:</p>
+<ul>
+<li>prose specs in <code>docs/spec/</code>: hardware facts (addresses, register values, pin maps, timing, formats), behavior, protocols and known gotchas. No code, no pseudo-code that tracks the structure of an aftermarket firmware function, no copied comments or identifiers beyond the names of standard things (register names from datasheets, protocol field names from specs).</li>
+<li><code>docs/spec/capabilities.md</code>: what the aftermarket firmware can do on each radio, as user-level capabilities. No menu trees, screen layouts or key mappings from it.</li>
+<li>the carry-over package (below).</li>
+</ul>
+<p><strong>Implementers (the &quot;clean&quot; side)</strong> work only in this repository plus a read-only external reference folder kept outside it. They never open the aftermarket firmware trees, their upstream releases, or any source derived from them. Their inputs are <code>docs/</code>, the carry-over package, datasheets and manuals, public standards (<abbr class="gl" tabindex="0" title="European Telecommunications Standards Institute, which publishes the DMR standard." data-more="dev/glossary.html#t-etsi">ETSI</abbr> <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="user/22-glossary.html#t-timeslot">TS</abbr> 102 361, the <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="spec/mmdvm-protocol.html">MMDVM</abbr> protocol) and permissively licensed third-party code.</p>
+<p>The UI is designed in <code>docs/ux/</code> from first principles of good radio usability, not from the aftermarket firmware's menus.</p>
+<h2 id="carry-over-package">Carry-over package</h2>
+<p>The authors' own work moves over; the aftermarket firmware's doesn't.</p>
+<ul>
+<li><strong>(a) Whole files written entirely by us</strong>, for example the <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="user/22-glossary.html#t-dmr">DMR</abbr> data service, <abbr class="gl" tabindex="0" title="Location Request and Response Protocol: a dispatcher asks a radio for its position. Motorola&#x27;s position format; the standard has LIP." data-more="user/22-glossary.html#t-lrrp">LRRP</abbr>, privacy, IP gateway, <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="user/14-hotspot.html">hotspot</abbr> uplink/data/frame code, <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="spec/sfr.html">SFR</abbr>, the Baofeng calibration reader and the host tests. They are copied into this repository with MIT SPDX headers. Their old commit is noted in a provenance record the maintainers keep outside this repository.</li>
+<li><strong>(b) Every change we made inside imported files, on every aftermarket firmware tree</strong>, as diff hunks with 3 lines of context. Each hunk has a note with the commit, what the surrounding code did, the symptom, why the fix works, and what new code must do or avoid. The context and removed lines are aftermarket firmware text, so <strong>(b) lives only in the reference directory and is never committed here</strong>. Implementers read it to learn the lessons, then write new code.</li>
+<li><strong>(c) <code>docs/spec/gotchas.md</code></strong>: the same lessons in prose, grouped by subsystem. Committed here.</li>
+</ul>
+<h2 id="not-allowed-in-this-repository">Not allowed in this repository</h2>
+<ul>
+<li>Aftermarket firmware code, headers, tables, fonts, strings or comments, or code derived from them, including the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="dev/cps-and-codeplug.html">codeplug</abbr> structs as C code (the layout is described in prose in <code>docs/spec/open-firmware-cps.md</code> and implemented fresh).</li>
+<li>Micrium uC/OS, C-SKY or Dahua SDK code, or any file without a clear permissive license.</li>
+<li><abbr class="gl" tabindex="0" title="GNU General Public License. RadioFoundry does not use GPL code." data-more="dev/glossary.html#t-gpl">GPL</abbr> code (MMDVMHost <abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="dev/glossary.html#t-fec">FEC</abbr>, Linux vsprintf, …). FEC is written fresh from <abbr class="gl" tabindex="0" title="European Telecommunications Standards Institute, which publishes the DMR standard." data-more="dev/glossary.html#t-etsi">ETSI</abbr> <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="user/22-glossary.html#t-timeslot">TS</abbr> 102 361-1.</li>
+<li>The <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="dev/codec.html">AMBE</abbr> codec or any stock firmware image.</li>
+</ul>
+<h2 id="records-and-checks">Records and checks</h2>
+<ul>
+<li>Every source file has an SPDX header, and <code>reuse lint</code> must pass. <code>docs/dev/ci.md</code> says what it still reports.</li>
+<li>Every file is accounted for in the maintainers' provenance record, kept outside this repository. Each entry is <code>ours</code> (with the original commit), <code>clean</code> (with the spec section) or <code>third-party</code> (with the license, upstream and version).</li>
+<li>Before each release, a similarity scan of this tree against the aftermarket firmware trees must have no unreviewed hits. Run it with <code>tools/similarity_scan.py REF...</code> or <code>RFOUNDRY_SIMILARITY_REFS=&quot;REF...&quot; tools/ci.sh</code> (docs/testing/README.md).</li>
+<li><code>tools/license_grep.sh</code> finds no <code>commercial</code>, <code>Micrium</code>, <code>GPL</code>, <code>G4KLX</code>, <code>Roger Clark</code>, <code>Kai Ludwig</code> or similar markers outside <code>docs/</code> and <code>LICENSES/</code>.</li>
+</ul>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/CLEANROOM.md">Vedi il sorgente di questa pagina</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="In questa pagina">
+		<p class="eyebrow">In questa pagina</p>
+		<ul><li class="l2"><a href="#roles">Roles</a></li><li class="l2"><a href="#carry-over-package">Carry-over package</a></li><li class="l2"><a href="#not-allowed-in-this-repository">Not allowed in this repository</a></li><li class="l2"><a href="#records-and-checks">Records and checks</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Unisciti alla comunità RadioFoundry</strong><span class="small muted">Domande, aiuto con la tua radio e novità, su Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Hai trovato un bug? Vuoi che la tua radio sia supportata?</strong><span class="small muted">Apri una segnalazione su GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry ha licenza MIT · <a href="https://github.com/radiofoundry/radiofoundry">Codice sorgente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunità</a> · <a href="../../it/docs/index.html">Documenti</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Novità</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

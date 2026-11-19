@@ -1,0 +1,928 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="it" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DM-1701: hosting the AMBE+2 codec · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="DM-1701: hosting the AMBE+2 codec · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:url" content="https://radiofoundry.org/it/docs/spec/codec-dm1701.html">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Le radio su cui gira RadioFoundry, ognuna con una schermata diversa.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/codec-dm1701.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/codec-dm1701.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/codec-dm1701.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/codec-dm1701.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/codec-dm1701.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../it/" data-gl-more="Altro">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../it/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principale"><a href="../../../it/radios/index.html">Radio</a><a href="../../../it/features/index.html">Funzioni</a><a href="../../../it/flash/index.html">Installa</a><a href="../../../it/codeplug/index.html">Codeplug</a><a href="../../../it/docs/index.html" aria-current="page">Documenti</a><a href="../../../it/screenshots/index.html">Schermate</a><a href="../../../it/tools/index.html">Strumenti</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Lingua" title="Lingua">IT</summary><nav aria-label="Lingua"><a href="../../../docs/spec/codec-dm1701.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/codec-dm1701.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/codec-dm1701.html" aria-current="true" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/codec-dm1701.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Passa da chiaro a scuro" title="Passa da chiaro a scuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Specifiche">
+		<p class="eyebrow"><a href="../../../it/docs/index.html">Documentazione</a> / Specifiche</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html" aria-current="page">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Questa pagina non è ancora tradotta; è mostrata in inglese.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="dm-1701-hosting-the-ambe2-codec">DM-1701: hosting the AMBE+2 codec</h1>
+<p>The codec has run on a radio at the address the merge places it (2026-10-19, &quot;Open items&quot;).</p>
+<p>Rule: the radio runs the codec that its own Baofeng firmware shipped. The user's machine extracts it from the firmware
+file the user supplies. No codec bytes go in this repository or in released binaries.</p>
+<h2 id="firmware-files">Firmware files</h2>
+<p>The archive github.com/daniel5600/BAOFENG-DM1701-Original-Firmware holds V02.06, in a <abbr class="gl" tabindex="0" title="Comma separated values: a table as plain text, as programming software exports it." data-more="../user/22-glossary.html#t-csv">CSV</abbr> and a noCSV variant, plus the
+manufacturer's upgrade tool installer.</p>
+<p>The V02.01 to V02.03 files are downloadable from Radioddity's bucket <code>dm-1701.s3.amazonaws.com</code> (the zips named
+&quot;DM-1701 Programming Software V1.0x &amp; Firmware V02.0x&quot;). No V02.04, V02.05 or V02.07 file is known.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>version</th>
+<th>file</th>
+<th>size</th>
+<th>sha256</th>
+<th>codec start</th>
+<th>codec source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>V02.06 CSV (primary)</strong></td>
+<td><code>DM-1701(CSV)-V02.06.bin</code></td>
+<td>1272320</td>
+<td><code>0314efd4c62625661a2d693261ae682dff8a1b075a30620f3dbda4be065de32d</code></td>
+<td>0x08074714</td>
+<td>yes, map <code>dm1701-v0206-csv</code></td>
+</tr>
+<tr>
+<td>V02.06 noCSV</td>
+<td><code>DM-1701(noCSV)-V02.06.bin</code></td>
+<td>1283584</td>
+<td><code>4230c8d0aabf15f3f165c29a118a5f8f9b906a2d9b7d215c1d8a7bc0e3978bd9</code></td>
+<td>0x080770F0</td>
+<td>yes, map <code>dm1701-v0206-nocsv</code></td>
+</tr>
+<tr>
+<td>V02.03 CSV</td>
+<td><code>DM-1701(CSV)-V02.03 Only for Radioddity.bin</code></td>
+<td>1272320</td>
+<td><code>35a045d7a71164183b164d6ecfdd9e349c757b3539be67a16fecd68ca6f65948</code></td>
+<td>0x080746D4</td>
+<td>yes, map <code>dm1701-v0203-csv</code></td>
+</tr>
+<tr>
+<td>V02.03 noCSV</td>
+<td><code>DM-1701-V02.03 Only for Radioddity.bin</code></td>
+<td>1283584</td>
+<td><code>0a23d563fba04a1874c1e4eb4c0c23bf86e1d17da37cd3681f06ea71ad9c800a</code></td>
+<td>0x080770B0</td>
+<td>yes, map <code>dm1701-v0203-nocsv</code></td>
+</tr>
+<tr>
+<td>V02.02 CSV</td>
+<td><code>DM-1701(CSV)-V02.02.bin</code></td>
+<td>1272320</td>
+<td><code>643650e821db3adf3e0b203437fcdd776d6a7754bc01c0359bd30785ff2478f7</code></td>
+<td>0x080746D4</td>
+<td>yes, map <code>dm1701-v0203-csv</code></td>
+</tr>
+<tr>
+<td>V02.01 CSV</td>
+<td><code>Firmware-DM-1701(CSV)-V02.01.bin</code></td>
+<td>1272320</td>
+<td><code>cd9ff4bdb7ba1c464299f3e366bfe72f2e948f3505a8fe54ac19047bff4d6713</code></td>
+<td>0x080746D4</td>
+<td>yes, map <code>dm1701-v0203-csv</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>V02.01, V02.02 and V02.03 CSV have byte-identical codec code and table windows, so one codec map serves all three
+(<code>tools/rfoundry/rfoundry/codec_maps/dm1701/dm1701-v0203-csv.json</code>, found by the code window's SHA-256). The noCSV
+files keep the codec at other addresses, each with its own map (<code>dm1701-v0206-nocsv.json</code>, <code>dm1701-v0203-nocsv.json</code>).
+These six files are every DM-1701 stock build known (2026-10-25); all six are codec sources.</p>
+<h3 id="files-without-the-codec">Files without the codec</h3>
+<p>rfoundry and the web flasher name these by SHA-256 (<code>stockfw.py</code> <code>NO_CODEC_FILES</code>) and refuse them as a codec source,
+a key source or original firmware, as for any file that is not the manufacturer's.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>file</th>
+<th>size</th>
+<th>sha256</th>
+<th>codec</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>an open-firmware build</td>
+<td>804256</td>
+<td><code>a09ab4d364d199853204ebdf068ba0886d7e7bb99689f08437aae52104474a7e</code></td>
+<td>none</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>A plain application image (no container) linked at 0x0800C000, ending at 0x080D05A0. It may come zipped with small
+<code>.gla</code> language files, which the opener sets aside.</li>
+<li>It holds neither part of the codec: no 64-byte block of the V02.06 CSV code or table window is in it. The file ends
+below the stock table window (0x080D19F0).</li>
+<li>It expects the code at 0x0807537C, which it leaves blank (0xFF from there to 0x080BDF2C). It checks the codec's first
+word there and calls encode (+0x130) and decode (+0x5D8), the V02.06 CSV entry offsets. What puts the codec there is
+outside the file.</li>
+</ul>
+<h3 id="md-9600-files">MD-9600 files</h3>
+<p>The open-firmware install (the OpenGD77 family's DM-1701 build) starts from the <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="../user/22-glossary.html#t-tyt">TYT</abbr> MD-9600 V4 firmware (V16.45), and
+the codec it calls at 0x0807537C is that firmware's. A DM-1701 that ran it carries the <strong>MD-9600 codec</strong>, not the
+DM-1701's. It is the same codec in function: the same entry offsets, state sizes and calls (the <abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="../dev/glossary.html#t-fec">FEC</abbr> decode offset
+differs and is not used), bit-identical in a host emulator (<a href="codec-md9600.html">codec-md9600.md</a> &quot;Verification&quot;).</p>
+<p>The MD-9600 board takes more files than the 21 below: the 03.xx, 04.03, 06.03 and Retevis RT90 V5 ones have a map and an
+MD-9600 profile only (<a href="codec-md9600.html">codec-md9600.md</a>).</p>
+<p>So the MD-9600 files (21, V06.09, V06.24, V16.24, V16.45, V26.45 and D26.57, below) are DM-1701 codec sources too, each with its own map
+(<code>tools/rfoundry/rfoundry/codec_maps/md9600/</code>) and profile (<code>stockfw.py</code>, <code>&quot;file_radio&quot;: &quot;MD-9600&quot;</code>):</p>
+<ul>
+<li><strong>The codec only.</strong> They are encrypted with the MD-9600's key, which the tools derive from the file itself. They never
+give the DM-1701 bootloader key and are never restored as the radio's firmware. The key comes from a DM-1701 file, a
+key file, a radio running RadioFoundry, or the open-firmware backup's read of the bootloader.</li>
+<li><strong>Tables moved.</strong> The stock table windows (0x080AB13C to 0x080AFFE0) lie in sector 9, the application's. The merge
+moves the table window (the codec's own data, the map's cut) with the code (<code>codecmap.move_window</code>): every table
+reference, island pointer and island reference follows the tables, every self reference the code, and the islands'
+calls into the code are re-encoded for both. The tables go to 0x080D0000 plus their stock offset in a 4 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> page, the
+code to the next page after them at its own stock page offset.</li>
+<li><strong>Checked by running it.</strong> Each build, moved as the merge moves it, was run in the host emulator with only the moved
+windows mapped (the stock addresses unmapped): 30 frames <code>32b5fdbac4a399c9</code>, 300 stress frames <code>7b0f10283a8114ce</code>,
+as the stock build gives.</li>
+</ul>
+<p>Placements (tag 0x96VVxxxx: VV the variant, 0 CSV, 1 CSV-GPS, 2 REC, 3 GPS-REC; xxxx the version):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>build</th>
+<th>file</th>
+<th>tag</th>
+<th>tables (address, length, CRC-32)</th>
+<th>code (address, length, CRC-32)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V16.45 CSV</td>
+<td><code>MD9600-CSV(V4)-V16.45.bin</code></td>
+<td>0x96001645</td>
+<td>0x080D02BC, 0x11036, 0xD4FB8040</td>
+<td>0x080E2C98, 0xF214, 0x07D97C60</td>
+</tr>
+<tr>
+<td>P16.45 CSV-GPS</td>
+<td><code>MD9600-CSV-GPS(V4)-P16.45.bin</code></td>
+<td>0x96011645</td>
+<td>0x080D0A7C, 0x110B6, 0x53687A8C</td>
+<td>0x080E2434, 0xF238, 0xDB9C6525</td>
+</tr>
+<tr>
+<td>D16.45 REC</td>
+<td><code>MD9600-REC(V4)-D16.45.bin</code></td>
+<td>0x96021645</td>
+<td>0x080D0820, 0x11046, 0x407C8912</td>
+<td>0x080E2E38, 0xF234, 0x5C29A9B4</td>
+</tr>
+<tr>
+<td>S16.45 GPS-REC</td>
+<td><code>MD9600-GPS-REC(V4)-S16.45.bin</code></td>
+<td>0x96031645</td>
+<td>0x080D0FE0, 0x110C6, 0x2E4B09C6</td>
+<td>0x080E3630, 0xF1FC, 0x7E5C1170</td>
+</tr>
+<tr>
+<td>V06.09 CSV</td>
+<td><code>MD9600-CSV-V06.09.bin</code></td>
+<td>0x96000609</td>
+<td>0x080D013C, 0x10FE6, 0x028B006A</td>
+<td>0x080E2B18, 0xF214, 0x51334F80</td>
+</tr>
+<tr>
+<td>P06.09 CSV-GPS</td>
+<td><code>MD9600-CSV-GPS-P06.09.bin</code></td>
+<td>0x96010609</td>
+<td>0x080D06FC, 0x11066, 0x9E0642E5</td>
+<td>0x080E20B8, 0xF234, 0x7C7A0876</td>
+</tr>
+<tr>
+<td>D06.09 REC</td>
+<td><code>MD9600-REC-D06.09.bin</code></td>
+<td>0x96020609</td>
+<td>0x080D0660, 0x10FF6, 0x8EFB3BDF</td>
+<td>0x080E2C9C, 0xF210, 0x53A7AF3B</td>
+</tr>
+<tr>
+<td>S06.09 GPS-REC</td>
+<td><code>MD9600-GPS-REC-S06.09.bin</code></td>
+<td>0x96030609</td>
+<td>0x080D0C60, 0x11076, 0x4758C9EE</td>
+<td>0x080E2280, 0xF22C, 0xB54871EE</td>
+</tr>
+<tr>
+<td>V06.24 CSV</td>
+<td><code>MD9600-CSV-V06.24.bin</code></td>
+<td>0x96000624</td>
+<td>0x080D02BC, 0x10FE6, 0x337667F2</td>
+<td>0x080E2C78, 0xF232, 0xF977B4D6</td>
+</tr>
+<tr>
+<td>P06.24 CSV-GPS</td>
+<td><code>MD9600-CSV-GPS-P06.24.bin</code></td>
+<td>0x96010624</td>
+<td>0x080D09FC, 0x11066, 0x2D8040A6</td>
+<td>0x080E23CC, 0xF21E, 0x25094D99</td>
+</tr>
+<tr>
+<td>S06.24 GPS-REC</td>
+<td><code>MD9600-GPS-REC-S06.24.bin</code></td>
+<td>0x96030624</td>
+<td>0x080D0F60, 0x11076, 0x49D18C19</td>
+<td>0x080E2594, 0xF216, 0x69B987A1</td>
+</tr>
+<tr>
+<td>D06.24 REC</td>
+<td><code>MD9600-REC-D06.24.bin</code></td>
+<td>0x96020624</td>
+<td>0x080D07E0, 0x10FF6, 0xDDBD5036</td>
+<td>0x080E2DFC, 0xF22E, 0x05F34587</td>
+</tr>
+<tr>
+<td>V16.24 CSV</td>
+<td><code>MD9600-CSV(V4)-V16.24.bin</code></td>
+<td>0x96001624</td>
+<td>0x080D05FC, 0x10FE6, 0x8C4CD107</td>
+<td>0x080E2FB0, 0xF23A, 0xE413CEF1</td>
+</tr>
+<tr>
+<td>P16.24 CSV-GPS</td>
+<td><code>MD9600-CSV-GPS(V4)-P16.24.bin</code></td>
+<td>0x96011624</td>
+<td>0x080D0D3C, 0x11066, 0x1BA5D665</td>
+<td>0x080E2704, 0xF226, 0xB2F7AB22</td>
+</tr>
+<tr>
+<td>S16.24 GPS-REC</td>
+<td><code>MD9600-GPS-REC(V4)-S16.24.bin</code></td>
+<td>0x96031624</td>
+<td>0x080D02A0, 0x11076, 0xFC643CC9</td>
+<td>0x080E28CC, 0xF21E, 0x111C3DB7</td>
+</tr>
+<tr>
+<td>D16.24 REC</td>
+<td><code>MD9600-REC(V4)-D16.24.bin</code></td>
+<td>0x96021624</td>
+<td>0x080D0B20, 0x10FF6, 0x82E6D100</td>
+<td>0x080E2134, 0xF236, 0x4FD7EB93</td>
+</tr>
+<tr>
+<td>P26.45 CSV-GPS</td>
+<td><code>MD9600-CSV-GPS(2571V5)-P26.45.bin</code></td>
+<td>0x96012645</td>
+<td>0x080D013C, 0x110B6, 0x230044AB</td>
+<td>0x080E2B18, 0xF212, 0x757367A4</td>
+</tr>
+<tr>
+<td>S26.45 GPS-REC</td>
+<td><code>MD9600-GPS-REC(2571V5)-S26.45.bin</code></td>
+<td>0x96032645</td>
+<td>0x080D06E0, 0x110C6, 0x960E46C6</td>
+<td>0x080E2D14, 0xF216, 0xD772D25B</td>
+</tr>
+<tr>
+<td>D26.45 REC</td>
+<td><code>MD9600-REC(2571V5)-D26.45.bin</code></td>
+<td>0x96022645</td>
+<td>0x080D0EE0, 0x11046, 0x5D4334F8</td>
+<td>0x080E251C, 0xF20E, 0x3CE9E9D7</td>
+</tr>
+<tr>
+<td>D26.57 REC</td>
+<td><code>MD9600-REC(2571V4)-D26.57.bin</code></td>
+<td>0x96022657</td>
+<td>0x080D05E0, 0x11032, 0x782C12BE</td>
+<td>0x080E2C3C, 0xF1EE, 0x24D32768</td>
+</tr>
+<tr>
+<td>V26.45 CSV</td>
+<td><code>MD9600-CSV(2571V5)-V26.45.bin</code></td>
+<td>0x96002645</td>
+<td>0x080D09BC, 0x11036, 0xDA6E4D8D</td>
+<td>0x080E237C, 0xF22E, 0x0095F077</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="finding-the-codec-in-a-flash-read">Finding the codec in a flash read</h3>
+<p>The open-firmware backup (<code>openfw.js</code>, and <code>stockfw.from_moved</code> in rfoundry) reads the <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr> flash, then looks for the codec
+in three ways:</p>
+<ol>
+<li>At a supported file's stock addresses, or where RadioFoundry's merge put it (with its descriptor): <code>from_flash</code>.</li>
+<li>Anywhere else: every word-aligned 0x4FF0E92D is a candidate code start. For every profile with a map, the code's self
+references give the code's move, and its table references and island pointers give the tables' move (all must
+agree). Both moves are undone. The islands' calls into the code may point anywhere, as long as all were moved by one
+amount: a tool that moved the code but left the tables verbatim leaves them calling the old address.</li>
+<li>The undone code and tables must match the stock SHA-256s. The codec is then placed as a merge from that file places
+it.</li>
+</ol>
+<p>So the read finds a DM-1701 or MD-9600 codec whether the code moved by any amount and the tables stayed or moved too.
+Where the OpenGD77 installer puts the tables is not known; the search does not assume it.</p>
+<h2 id="container-and-encryption">Container and encryption</h2>
+<p>The files are &quot;OutSecurityBin&quot; upgrade files:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>offset</th>
+<th>contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00</td>
+<td><code>OutSecurityBin</code></td>
+</tr>
+<tr>
+<td>0x10</td>
+<td>model <code>DM1701</code> (blank in the V02.06 files)</td>
+</tr>
+<tr>
+<td>0x7C</td>
+<td>u32 segment count (2)</td>
+</tr>
+<tr>
+<td>0x80</td>
+<td>segments as (u32 address, u32 length)</td>
+</tr>
+<tr>
+<td>0x100</td>
+<td>payload</td>
+</tr>
+</tbody>
+</table></div>
+<p>The two segments are:</p>
+<ol>
+<li>(0x00060000, 0x5D400): resources for the external <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> flash, such as fonts.</li>
+<li>(0x0800C000, 0xD9400 for <abbr class="gl" tabindex="0" title="Comma separated values: a table as plain text, as programming software exports it." data-more="../user/22-glossary.html#t-csv">CSV</abbr> or 0xDC000 for noCSV): the application in internal flash.</li>
+</ol>
+<p>The payload is XORed with the model's 1024-byte key (<a href="hardware-dm1701.html">hardware-dm1701.md</a> 15.3):</p>
+<pre><code>plain[i] = file[0x100 + i] ^ key[i % 1024]
+</code></pre>
+<p>The application starts at payload offset 0x5D400 (file offset 0x5D500) and is linked at 0x0800C000. The V02.06
+CSV vector table holds SP 0x20003618 and reset 0x080E120D. For any app address A,
+file offset = A - 0x0800C000 + 0x5D500, and the cipher index = (file offset - 0x100) % 1024.</p>
+<h2 id="codec-in-the-v0206-csv-file">Codec in the V02.06 CSV file</h2>
+<p>All addresses in this section are where the file holds the codec. The merge moves the code
+(<a href="codec-placement.html">codec-placement.md</a>, &quot;<abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr> radios&quot;; &quot;Hosting&quot; below).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>item</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code window</td>
+<td>flash 0x08074714..0x08084930, file offset 0xC5C14, length 0x1021C, cipher phase 0x314</td>
+</tr>
+<tr>
+<td>code sha256 (decrypted)</td>
+<td><code>1d8d04603b288e102f70252c1dd489600dfde656eccea6264e7bf4fac413f0cd</code></td>
+</tr>
+<tr>
+<td>first word</td>
+<td>0x4FF0E92D (<code>push.w {r4-r11, lr}</code>)</td>
+</tr>
+<tr>
+<td>encode</td>
+<td>0x08074844 (+0x130)</td>
+</tr>
+<tr>
+<td>encode ECC</td>
+<td>0x08074BFC (+0x4E8)</td>
+</tr>
+<tr>
+<td>decode</td>
+<td>0x08074CEC (+0x5D8)</td>
+</tr>
+<tr>
+<td>tables referenced</td>
+<td>0x080D19F0..0x080E3A6B (46 distinct literal targets)</td>
+</tr>
+<tr>
+<td>table window (as carved)</td>
+<td>flash 0x080D19F0..0x080E4240, file offset 0x122EF0, length 0x12850, cipher phase 0x1F0, sha256 <code>b99f14e72bf72555946c1f04e8a1636652e6f62843baaf7a135787879e028894</code></td>
+</tr>
+<tr>
+<td>table window (codec data only)</td>
+<td>flash 0x080D19F0..0x080E3A72, length 0x12082: the codec map's minimal window, from the first data object to the end of the last</td>
+</tr>
+</tbody>
+</table></div>
+<p>The V02.01, V02.02 and V02.03 <abbr class="gl" tabindex="0" title="Comma separated values: a table as plain text, as programming software exports it." data-more="../user/22-glossary.html#t-csv">CSV</abbr> values are the same, minus 0x40. Their code window is 0x080746D4
+(file 0xC5BD4, sha256 <code>2ff7b7a8...a86a4cc9</code>) and their table window is 0x080D19B0 (file 0x122EB0, sha256
+<code>ab3cfb49...54f1379b</code>). V02.06 is not only V02.03 shifted. 119 halfwords of the code window differ. Those are the
+table literals (+0x40) and calls from non-codec code inside the window.</p>
+<p>The codec maps of the two layouts agree site for site: the same entry offsets, the same 1 self reference, 2 island
+pointers, 70 table references, 4 island references, 2 islands, 12 island calls and 52 data objects at the same offsets,
+every address 0x40 lower in V02.01 to V02.03. Three objects' trimmed lengths differ, because their bound is the next
+address that stock code outside the codec loads; the minimal table window (0x12082 bytes) is the same.</p>
+<p>The noCSV files have a larger application segment (0xDC000) and the codec higher up:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>file</th>
+<th>code window (address, length, sha256)</th>
+<th>table window (address, length 0x12850, sha256)</th>
+<th>codec data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V02.06 noCSV</td>
+<td>0x080770F0, 0x10200, <code>c34e4588...0b870566</code></td>
+<td>0x080D4794, <code>de6e8494...d1683acf</code></td>
+<td>0x080D4794..0x080E6826 (0x12092)</td>
+</tr>
+<tr>
+<td>V02.03 noCSV</td>
+<td>0x080770B0, 0x10200, <code>4fccfdda...f756a3ce</code></td>
+<td>0x080D4754, <code>b5a73a19...425f537a</code></td>
+<td>0x080D4754..0x080E67E6 (0x12092)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The noCSV code is the CSV code of its version with 0x1C bytes fewer at offset 0x4A00, past every entry point. The
+entry offsets are the same. Inside the table window, other data between the codec's objects is sized differently, so
+the codec's objects sit at +0x2DA4, +0x2E20 and +0x2DB4 from the CSV file's, and the codec data is 0x10 bytes longer.
+The noCSV maps agree with the CSV maps site for site: every reference in the code points to the same object at the
+same offset, and every island call to the same code offset. V02.03 noCSV is V02.06 noCSV 0x40 lower, the same
+relation as between the CSV files.</p>
+<p>The maps differ in one place: the CSV maps have 5 <code>groups</code>, the noCSV maps 4. The extra CSV group is the 96-byte
+object at 0x080D2C30 and the 3072-byte object at 0x080D2C90 (V02.06; 0x40 lower in V02.03). The first is read
+through one indexed load, and the reads observed in the emulator reach its last byte. In the CSV files the second
+object starts right there, so the analysis can't show that the index never runs on into it, and it keeps the two at
+their distance (a group). In the noCSV files 0x7C bytes of data the codec doesn't use lie between the same two objects
+(0x080D5A34..0x080D5AB0 in V02.06 noCSV), so the first ends at that data and each object stands alone. Both objects have
+the same length, references and observed reads in all four maps. Groups only constrain moving objects apart; the merge
+keeps the table window at its stock address, so this changes nothing in the placed codec.</p>
+<h3 id="position-dependence">Position dependence</h3>
+<ul>
+<li>Calls and branches inside the codec are PC-relative. The three entry points make no calls outside the window.
+Other code inside the window does call out, but the codec never runs it.</li>
+<li>The code reaches its tables through 46 distinct absolute literals at 63 sites. The code is therefore tied to the
+table address. Moving the code block and the table block as two contiguous blocks requires patching those 63 words.</li>
+<li>The codec touches no fixed <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> address (unverified for every path).</li>
+</ul>
+<h2 id="extraction-recipe-v0206-csv">Extraction recipe (V02.06 CSV)</h2>
+<ol>
+<li>Check the file's sha256 (<code>0314efd4...</code>) and the header (segment table as above).</li>
+<li>Decrypt file[0xC5C14 .. +0x1021C] with cipher index (offset - 0x100) % 1024. Expect the first word to be
+0x4FF0E92D and the sha256 to be <code>1d8d0460...</code>.</li>
+<li>Decrypt the table window file[0x122EF0 .. +0x12850] the same way. Expect sha256 <code>b99f14e7...</code>.</li>
+<li>Place them as <a href="codec-placement.html">codec-placement.md</a> &quot;<abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr> radios&quot; says: the tables, cut to 0x12082 bytes,
+stay at 0x080D19F0; the code moves to 0x080E3A74 (V02.01 to V02.03: every address 0x40 lower, map
+<code>dm1701-v0203-csv.json</code>; noCSV: the table below &quot;Hosting&quot;, maps <code>dm1701-v0206-nocsv.json</code> and
+<code>dm1701-v0203-nocsv.json</code>). Rewrite the one literal in the code that points into the code
+and the 12 calls (BL) from the islands in the table window back into the code (the codec map
+<code>tools/rfoundry/rfoundry/codec_maps/dm1701/dm1701-v0206-csv.json</code>, <code>self_refs</code> and <code>branches</code>).</li>
+<li>Write the descriptor at 0x080FFF80 (<code>platform/stm32f4/codec_desc.h</code>): code and table window with their CRC-32s.
+The merge happens on the user's machine (rfoundry, <code>tools/codec_extract.py</code>, the web flasher, or <code>make</code> with the
+firmware file in <code>codecs/</code>), never in a release.</li>
+</ol>
+<h2 id="hosting">Hosting</h2>
+<p>The code runs in place from internal flash, at the address the merge moves it to. The tables stay at their original
+address, so the code's 63 table literals stay as they are.</p>
+<ul>
+<li>
+<p><code>boards/dm1701/memory.ld</code> keeps the application out of every flash sector the codec uses:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>region</th>
+<th>sectors</th>
+<th>V02.06 <abbr class="gl" tabindex="0" title="Comma separated values: a table as plain text, as programming software exports it." data-more="../user/22-glossary.html#t-csv">CSV</abbr></th>
+<th>V02.01, V02.02, V02.03 CSV</th>
+<th>V02.06 noCSV</th>
+<th>V02.03 noCSV</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>application</td>
+<td>3-9</td>
+<td>0x0800C000..0x080BFFFF (720 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr>)</td>
+<td>the same</td>
+<td>the same</td>
+<td>the same</td>
+</tr>
+<tr>
+<td>table window</td>
+<td>10, 11</td>
+<td>0x080D19F0..0x080E3A72</td>
+<td>0x080D19B0..0x080E3A32</td>
+<td>0x080D4794..0x080E6826</td>
+<td>0x080D4754..0x080E67E6</td>
+</tr>
+<tr>
+<td>code window</td>
+<td>11</td>
+<td>0x080E3A74..0x080F3C90</td>
+<td>0x080E3A34..0x080F3C50</td>
+<td>0x080E6828..0x080F6A28</td>
+<td>0x080E67E8..0x080F69E8</td>
+</tr>
+<tr>
+<td>descriptor</td>
+<td>11</td>
+<td>0x080FFF80, 128 bytes</td>
+<td>the same</td>
+<td>the same</td>
+<td>the same</td>
+</tr>
+</tbody>
+</table></div>
+<p>The board's codec windows are the union of the layouts; a merge writes the layout of the file it merges.</p>
+<p>A firmware update then erases and writes only sectors 3-9 and leaves the codec in place (hardware-dm1701.md 1.4,
+docs/dev/release.md &quot;Codec handling&quot;).</p>
+</li>
+<li>
+<p>The firmware takes the code's address from the descriptor and calls the entries at their offsets from it.</p>
+</li>
+<li>
+<p>Before the move, the original addresses kept sectors 7, 8, 10 and 11 (512 KB) for about 140 KB of codec, and the application
+got sectors 3-6 (336 KB) with sector 9 apart.</p>
+</li>
+<li>
+<p>Each supported file is keyed by its sha256 (<code>tools/rfoundry/rfoundry/stockfw.py</code> <code>PROFILES</code>). One codec id for
+every file, <code>dm1701-v0206-csv-s11</code>; the descriptor's tag tells the layouts apart, and
+<code>boards/dm1701/vocoder_dm1701.c</code> pins each:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>files</th>
+<th>tag</th>
+<th>tables (address, length, CRC-32)</th>
+<th>code (address, length, CRC-32)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V02.06 CSV</td>
+<td>0x0206</td>
+<td>0x080D19F0, 0x12082, 0xC1EEFA8B</td>
+<td>0x080E3A74, 0x1021C, 0x485BFC13</td>
+</tr>
+<tr>
+<td>V02.01, V02.02, V02.03 CSV</td>
+<td>0x0203</td>
+<td>0x080D19B0, 0x12082, 0x811EC3C0</td>
+<td>0x080E3A34, 0x1021C, 0x99B02204</td>
+</tr>
+<tr>
+<td>V02.06 noCSV</td>
+<td>0x10206</td>
+<td>0x080D4794, 0x12092, 0x3EDE91FF</td>
+<td>0x080E6828, 0x10200, 0xAF82F7D0</td>
+</tr>
+<tr>
+<td>V02.03 noCSV</td>
+<td>0x10203</td>
+<td>0x080D4754, 0x12092, 0x217E610A</td>
+<td>0x080E67E8, 0x10200, 0x96264D90</td>
+</tr>
+</tbody>
+</table></div>
+<p>The three older files put the same bytes at the same addresses, so they share one tag. A release accepts only the
+tags it was built with: a release from before 0x0203 finds no codec in a radio merged from V02.01 to V02.03 and runs
+FM only until the codec is merged again. The same holds for the noCSV tags (bit 16 set) and releases from before
+them.</p>
+</li>
+</ul>
+<h2 id="open-items">Open items</h2>
+<ul>
+<li>Done: the codec map's minimal table window ends at 0x080E3A72, and the merge writes only that much. The code window
+still includes some non-codec bytes, which are never executed.</li>
+<li>Done 2026-10-19 with the code moved to 0x080E3A74: the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> reported <code>dm1701-v0206-csv-s11</code>, on-air speech <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr>
+decoded 234 of 234 frames, and the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench modem decoded the radio's voice <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr>.</li>
+<li>V02.01 to V02.03 <abbr class="gl" tabindex="0" title="Comma separated values: a table as plain text, as programming software exports it." data-more="../user/22-glossary.html#t-csv">CSV</abbr> (2026-10-25): checked in a host emulator only, not yet on the radio. With the code window and
+the minimal table window only, and with the codec as the merge places it (code at 0x080E3A34, the 12 calls
+re-encoded), a 300 frame stress run gives air bits and decoded <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> bit-identical to the V02.06 codec's, and the <abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="../dev/glossary.html#t-fec">FEC</abbr>
+decode results agree. Each real file decrypts, places and matches the profile's hashes in rfoundry and
+<code>tools/codec_extract.py</code>.</li>
+<li>V02.06 and V02.03 noCSV (2026-10-25): checked the same way, in a host emulator only, not yet on the radio. Placed
+(code at 0x080E6828 and 0x080E67E8), the 300 frame stress run gives air bits and decoded PCM bit-identical to the
+V02.06 CSV codec's; each real file decrypts, places and matches its profile's hashes.</li>
+</ul>
+<h2 id="codec-state-init-and-calls">Codec state init and calls</h2>
+<p>The sequence below is what <code>boards/dm1701/vocoder_dm1701.c</code> and <code>platform/stm32f4/codec_call.c</code> run. It is checked on a
+host against the codec windows, and has run on a radio (&quot;Open items&quot;).</p>
+<h3 id="init">Init</h3>
+<p>E is the encoder state block, D the decoder state block.</p>
+<ol>
+<li>
+<p>Set E+0x1730 = 0x1840 (first encode flags), E+0x173E = 0x2000, E+0x1744.. = -22, 20, -10, -40, 0x4000, 3276, 3276,
+1310, 10, 20, E+0x1740 = 128, E+0x1742 = -20, D+0x97A = 0, D+0x992 = 128, D+0x994 = -20.</p>
+</li>
+<li>
+<p>Calls (offsets from the codec start, 0x08074714 in the V02.06 <abbr class="gl" tabindex="0" title="Comma separated values: a table as plain text, as programming software exports it." data-more="../user/22-glossary.html#t-csv">CSV</abbr> file):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>call</th>
+<th>address</th>
+<th>arguments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>encoder init</td>
+<td>0x08074998 (+0x284)</td>
+<td>(E, 1, 1)</td>
+</tr>
+<tr>
+<td>FEC init</td>
+<td>0x08074BE0 (+0x4CC)</td>
+<td>(E+0x16E4, 1): the encoder side's <abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="../dev/glossary.html#t-fec">FEC</abbr> state, used by encode <abbr class="gl" tabindex="0" title="Error correcting code: a code that repairs damaged bits, such as the one a NAND flash needs." data-more="../dev/glossary.html#t-ecc">ECC</abbr></td>
+</tr>
+<tr>
+<td>decoder init</td>
+<td>0x08074DE4 (+0x6D0)</td>
+<td>(D, 1)</td>
+</tr>
+<tr>
+<td>FEC init</td>
+<td>0x08074BE0 (+0x4CC)</td>
+<td>(D+0x7F8, 1): the decoder side's FEC state, used by the FEC decode below</td>
+</tr>
+<tr>
+<td>encoder parameters</td>
+<td>0x08074F5C (+0x848)</td>
+<td>(E, -22, 20, -10, then on the stack -40, 0x4000, 3276, 3276, 1310, 10, 20)</td>
+</tr>
+<tr>
+<td>encoder set</td>
+<td>0x080748D4 (+0x1C0)</td>
+<td>(E, 128, -20)</td>
+</tr>
+<tr>
+<td>decoder set</td>
+<td>0x08074D9C (+0x688)</td>
+<td>(D, 128, -20)</td>
+</tr>
+<tr>
+<td>decode</td>
+<td>0x08074CEC (+0x5D8)</td>
+<td>(D+0xAD6, 80, D+0xB7C, 0, stack 8, 0, D): one decode of an all-zero frame, flags 8</td>
+</tr>
+</tbody>
+</table></div>
+<p>The DM-32UV codec takes the same parameter values (<a href="codec-dm32.html">codec-dm32.md</a> section C).</p>
+</li>
+</ol>
+<h3 id="state-sizes-measured">State sizes (measured)</h3>
+<p>Each block was placed so that it ends at an unmapped page. The codec then faults on any access past the end.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>block</th>
+<th>size</th>
+<th>notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>decoder state D</td>
+<td>0x7EC (2028) bytes</td>
+<td>decode, decoder init and set touch nothing past it (0x7E8 faults)</td>
+</tr>
+<tr>
+<td>encoder state E</td>
+<td>0x16E0 (5856) bytes</td>
+<td>0x16D0 faults</td>
+</tr>
+<tr>
+<td>FEC state</td>
+<td>0x44 bytes each</td>
+<td>only for the codec's own FEC routines (encode ECC, FEC decode)</td>
+</tr>
+<tr>
+<td>stack</td>
+<td>3822 bytes peak</td>
+<td>measured over init, encode and decode. Allow 4 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> plus the caller.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The blocks are passed by pointer and can live anywhere (RadioFoundry uses CCM). No fixed <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> address is touched. With
+everything else unmapped, init, 30 frames of encode and decode and the ECC routine ran without a fault. The code uses
+no FPU instructions.</p>
+<h3 id="per-frame-calls-two-per-20-ms-frame-80-samples-each">Per-frame calls (two per 20 ms frame, 80 samples each)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>call</th>
+<th>r0</th>
+<th>r1</th>
+<th>r2</th>
+<th>r3</th>
+<th>stack [0], [1], [2], [3]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>encode</td>
+<td>49-bit out buffer (one bit per halfword)</td>
+<td>0 (E+0x173A, zero)</td>
+<td><abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> in, this half</td>
+<td>80</td>
+<td>flags, half (0 / 1), 0x2000, E</td>
+</tr>
+<tr>
+<td>decode</td>
+<td>PCM out, this half</td>
+<td>80</td>
+<td>49-bit in buffer (one bit per halfword)</td>
+<td>0 (D+0x98E, zero)</td>
+<td>flags, half (0 / 1), D</td>
+</tr>
+<tr>
+<td>encode ECC</td>
+<td>bit buffer (49 in, 72 out)</td>
+<td>same buffer</td>
+<td>0 (E+0x173C, zero)</td>
+<td>FEC state</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>
+<p>Encode flags: a set of feature bits, one value on every call of a transmission (the init value at E+0x1730
+is 0x1840). The bit meanings were measured on the DM-1801 Pro and MD-380 builds of this codec family
+(<a href="codec-md380.html">codec-md380.md</a>, &quot;Encode flags&quot;;
+<a href="codec-dm1801pro.html">codec-dm1801pro.md</a> section 3): 0x40 noise suppression, 0x800 noise gate, 0x1000 tone frames,
+0x2000 input <abbr class="gl" tabindex="0" title="Automatic gain control: the receiver adjusting itself to the signal level." data-more="../dev/glossary.html#t-agc">AGC</abbr>.
+<strong>On this build they are unverified</strong>: the code is the same family, but the bits were not measured on it. RadioFoundry's
+host passes the same word as the MD-380's (<code>drivers/vocoder/ambe2_flags.h</code>, 0x1840 by default). The encoder reads
+the PCM and never writes it. Its output is the 49 parameter bits only. A privacy <abbr class="gl" tabindex="0" title="Exclusive or: a bit operation that flips bits where the other operand has a 1." data-more="../dev/glossary.html#t-xor">XOR</abbr>
+(E+0x189C ^= E+0x19BC, 49 halfwords) is applied to them before encode ECC. Encode ECC turns them into the
+72 air bits in air order (one per halfword, the <abbr class="gl" tabindex="0" title="Most significant bit (or byte): the first, highest-value one." data-more="../dev/glossary.html#t-msb">MSB</abbr> of byte 0 first).</p>
+</li>
+<li>
+<p>Decode flags: unpack the 72 received bits and run the codec's FEC decode. XOR the privacy keystream
+onto the 49 bits and pass flags = D+0x97C (0) OR the FEC routine's result. The FEC decode is at 0x08075268
+(+0xB54) with these arguments:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>r0</th>
+<th>r1</th>
+<th>r2</th>
+<th>r3</th>
+<th>stack</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>out</td>
+<td>0</td>
+<td>in</td>
+<td>1 (bits per symbol; it accepts soft bits)</td>
+<td>flags, D+0x7F8</td>
+</tr>
+</tbody>
+</table></div>
+<p>The result is 0 for a good frame and 4 when C0 is uncorrectable (4 or more errors). This was measured over 300
+frames with 0-4 injected errors per code word. With flags 4 (or 8) the decoder repeats the previous frame. The two
+decode calls of a frame use the same bit buffer, and the first one rewrites it.</p>
+</li>
+<li>
+<p>The codec's 49-bit order is the standard <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE+2</abbr> order (C0 data, C1 data, C2, C3, MSB first). Its ECC output
+matches <code>core/dmr/ambe/ambeFec.c</code> on 249 of 249 vectors (random, all zeros, all ones, each single bit). Seven of
+them are in <code>tests/host/ambeFecTest.c</code>. The firmware therefore runs encode / decode only and does the air frame FEC
+in core/dmr/ambe.</p>
+</li>
+<li>
+<p>The AMBE silence frame the call stack sends (B9 E8 81 52 61 73 00 2A 6B) is a valid frame (0 FEC errors) and decodes
+to silence (peak |sample| 1 after 10 frames) with the decoder.</p>
+</li>
+<li>
+<p>A 1 kHz tone at -12 dBFS through encode and decode comes back at about 945 zero crossings per second (the first
+frames are the codec's delay). This confirms the init sequence and arguments.</p>
+</li>
+</ul>
+<h3 id="hosting-in-radiofoundry">Hosting in RadioFoundry</h3>
+<ul>
+<li>
+<p><code>platform/stm32f4/hrc/vocoder.c</code> with this build's profile in <code>boards/dm1701/vocoder_dm1701.c</code>:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>function</th>
+<th>does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>present()</code></td>
+<td>checks the descriptor, that the code and tables are where one of the profiles in &quot;Hosting&quot; puts them, with its placed CRC-32s, the first word 0x4FF0E92D and the <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> of both windows (computed once)</td>
+</tr>
+<tr>
+<td><code>reset()</code></td>
+<td>marks the state block empty; the next encode or decode builds its half of the init</td>
+</tr>
+<tr>
+<td><code>encode()</code> / <code>decode()</code></td>
+<td>make the two calls per frame; the first encode after a decode (or after <code>reset()</code>) runs the encoder's half of the init on the zeroed block, the first decode after an encode the decoder's</td>
+</tr>
+</tbody>
+</table></div>
+<p>Without the codec it reports not present (FM only).</p>
+</li>
+<li>
+<p>State: one 0x16E0-byte CCM block holds E or D, never both (<a href="codec-placement.html">codec-placement.md</a>, &quot;<abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr>
+radios&quot;).</p>
+</li>
+<li>
+<p><code>platform/stm32f4/codec_call.c</code> holds a file-scope assembly veneer <code>stm32_codec_call(fn, args, n)</code> with its own
+frame. It loads r0-r3 from the array and puts the rest on an 8-byte aligned stack. It restores SP from a saved
+frame register. The call therefore does not depend on how the caller was compiled (gotcha 4.1). To the compiler it
+is an ordinary external call, which orders memory around it (gotcha 4.4). It was verified on a host with a
+misaligned caller stack.</p>
+</li>
+<li>
+<p><code>tools/codec_extract.py</code> builds the merged image (recipe above) on the user's machine. A run with the real
+firmware file and a key file matching hardware-dm1701.md 15.3 reproduces both window hashes and the placed CRCs above.</p>
+</li>
+</ul>
+<h3 id="still-open">Still open</h3>
+<ul>
+<li>On the radio: audio quality, levels (decoded output is lower than the input; the encoder input level the codec
+expects is unknown) and timing (encode + decode per 20 ms on the STM32 at 144 MHz).</li>
+<li>The encode flags bits on this build (see &quot;Per-frame calls&quot;): measure 0x40, 0x800, 0x1000 and 0x2000 as on the
+MD-380 build, or confirm on air.</li>
+<li>The init fields are constants after init. Whether anything changes them (E+0x173A, E+0x173C, D+0x98E, D+0x97A)
+during a call is unverified.</li>
+</ul>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/codec-dm1701.md">Vedi il sorgente di questa pagina</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="In questa pagina">
+		<p class="eyebrow">In questa pagina</p>
+		<ul><li class="l2"><a href="#firmware-files">Firmware files</a></li><li class="l3"><a href="#files-without-the-codec">Files without the codec</a></li><li class="l3"><a href="#md-9600-files">MD-9600 files</a></li><li class="l3"><a href="#finding-the-codec-in-a-flash-read">Finding the codec in a flash read</a></li><li class="l2"><a href="#container-and-encryption">Container and encryption</a></li><li class="l2"><a href="#codec-in-the-v0206-csv-file">Codec in the V02.06 CSV file</a></li><li class="l3"><a href="#position-dependence">Position dependence</a></li><li class="l2"><a href="#extraction-recipe-v0206-csv">Extraction recipe (V02.06 CSV)</a></li><li class="l2"><a href="#hosting">Hosting</a></li><li class="l2"><a href="#open-items">Open items</a></li><li class="l2"><a href="#codec-state-init-and-calls">Codec state init and calls</a></li><li class="l3"><a href="#init">Init</a></li><li class="l3"><a href="#state-sizes-measured">State sizes (measured)</a></li><li class="l3"><a href="#per-frame-calls-two-per-20-ms-frame-80-samples-each">Per-frame calls (two per 20 ms frame, 80 samples each)</a></li><li class="l3"><a href="#hosting-in-radiofoundry">Hosting in RadioFoundry</a></li><li class="l3"><a href="#still-open">Still open</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Unisciti alla comunità RadioFoundry</strong><span class="small muted">Domande, aiuto con la tua radio e novità, su Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Hai trovato un bug? Vuoi che la tua radio sia supportata?</strong><span class="small muted">Apri una segnalazione su GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry ha licenza MIT · <a href="https://github.com/radiofoundry/radiofoundry">Codice sorgente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunità</a> · <a href="../../../it/docs/index.html">Documenti</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Novità</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

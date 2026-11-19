@@ -1,0 +1,254 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>故障排查 · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="故障排查 · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/user/20-troubleshooting.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/user/20-troubleshooting.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/user/20-troubleshooting.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/user/20-troubleshooting.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/user/20-troubleshooting.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/user/20-troubleshooting.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/user/20-troubleshooting.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/user/20-troubleshooting.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/user/20-troubleshooting.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/user/20-troubleshooting.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="用户手册">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 用户手册</p>
+		<ul><li><a href="index.html">RadioFoundry 用户手册</a></li><li><a href="01-introduction.html">简介</a></li><li><a href="02-installing.html">安装</a></li><li><a href="03-first-boot.html">首次启动</a></li><li><a href="04-programming.html">为电台编程</a></li><li><a href="05-keys-and-navigation.html">按键与导航</a></li><li><a href="06-home-screen.html">主屏幕</a></li><li><a href="07-channels-zones-vfo.html">信道、区域与 VFO</a></li><li><a href="08-fm.html">FM</a></li><li><a href="09-dmr.html">DMR</a></li><li><a href="10-messages-and-signaling.html">消息、呼叫提示与电台检查</a></li><li><a href="11-emergency.html">紧急</a></li><li><a href="12-scan.html">扫描与双守候</a></li><li><a href="13-aprs.html">APRS</a></li><li><a href="14-hotspot.html">热点模式</a></li><li><a href="15-usb-network.html">USB 网络模式</a></li><li><a href="16-battery-and-power.html">电池与供电</a></li><li><a href="17-settings.html">设置</a></li><li><a href="18-moving-from-stock-md380.html">从原厂 MD-380 固件迁移</a></li><li><a href="19-moving-from-stock-dm32.html">从原厂 DM-32UV 固件迁移</a></li><li><a href="20-troubleshooting.html" aria-current="page">故障排查</a></li><li><a href="21-faq.html">常见问题</a></li><li><a href="22-glossary.html">术语表</a></li><li><a href="23-radios.html">电台参考</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<h1 id="troubleshooting">故障排查</h1>
+<h2 id="installing">安装</h2>
+<p>网页安装器的“选择症状”步骤会在屏幕上涵盖其中大部分内容。下表也适用于 <code>rfoundry</code> 命令行。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>原因与处理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“找不到电台引导程序”</td>
+<td>电台未处于引导程序，或线缆只能充电。关闭电台。按住电台的引导程序按键（<a href="23-radios.html">电台参考</a>中你电台的“安装”一节）并开机；屏幕保持黑屏。换一个 USB 口或线缆。Windows：可能缺少引导程序驱动（<a href="02-installing.html#windows-the-bootloader-driver">步骤</a>）</td>
+</tr>
+<tr>
+<td>“拒绝访问”</td>
+<td>Linux：添加 rfoundry 打印的 udev 规则，然后拔插。Windows：用 Zadig 安装引导程序驱动（<a href="02-installing.html#windows-the-bootloader-driver">步骤</a>）</td>
+</tr>
+<tr>
+<td>“引导程序忙”</td>
+<td>另一个程序占用了它（<abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="04-programming.html">CPS</abbr>、带 USB 直通的虚拟机）。关闭它并重新插入</td>
+</tr>
+<tr>
+<td>网页安装器提示电台端口或 USB 连接被占用</td>
+<td>关闭占用电台的其他程序或浏览器标签（CPS、<abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr>、热点主机、第二个安装器标签），然后重试。Windows：引导程序驱动（<a href="02-installing.html#windows-the-bootloader-driver">步骤</a>）。Linux：你的用户需要有权访问该设备</td>
+</tr>
+<tr>
+<td>网页安装器无法使用某个固件文件</td>
+<td>它会说明原因：其他电台的文件、不是厂商文件、尚无适配配方的版本、下载损坏。<a href="02-installing.html#when-the-installer-cant-use-a-file">各提示的含义</a></td>
+</tr>
+<tr>
+<td>备份或安装中断后电台停留在更新模式，电源开关无效</td>
+<td>在网页安装器中选择<strong>电台停留在更新模式</strong>，选择电台（若询问也选择线缆），它会重启电台到正常模式或说明方法（<a href="02-installing.html#if-something-goes-wrong">详情</a>）。若加载器无应答，取出电池几秒</td>
+</tr>
+<tr>
+<td>刷写后屏幕一直黑屏</td>
+<td>电台仍在引导程序中。关机再开机，不要按任何键</td>
+</tr>
+<tr>
+<td>每次开机都是白色背光屏和常亮红灯，电台始终不启动</td>
+<td>由于应用程序缺失或不完整，电台卡在厂商更新模式。其他部分没有损坏。请用网页安装器重新安装（<a href="23-radios.html">电台参考</a>中你电台的“安装”一节说明是否适用）</td>
+</tr>
+<tr>
+<td>“准备电台失败”，或电台在编程线上无响应</td>
+<td>把线缆插到底再试，或换用 FTDI、CP210x 或 PL2303 芯片的线缆。慢速线缆模式现在始终开启：没有单独的按钮。若仍失败，请选择<strong>使用厂商更新模式</strong>：开机时按住电台的更新模式按键（<a href="23-radios.html">电台参考</a>中你电台的“安装”一节）。编解码器需要原厂固件文件或程序存储器备份（<a href="02-installing.html#if-something-goes-wrong">安装</a>）</td>
+</tr>
+<tr>
+<td>刷写中途停止</td>
+<td>把电台置于引导程序并再次运行同一命令。rfoundry 绝不擦除引导程序</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="command-line-installs-advanced">命令行安装（进阶）</h2>
+<p>网页安装器会在屏幕上显示这些内容并引导修复。使用 <code>rfoundry</code> 安装时同样适用，包括安装器的<a href="02-installing.html#install-from-the-command-line-with-a-kit">手动安装包</a>。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>原因与处理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“未知原厂文件……不是受支持的编解码器来源”</td>
+<td>rfoundry 按 SHA-256 识别原厂文件。请下载<a href="02-installing.html">安装</a>中为你的电台指定的确切文件</td>
+</tr>
+<tr>
+<td>“……是宝锋/TYT 官方固件文件，不是 RadioFoundry 镜像”</td>
+<td>你把原厂文件当成了镜像。请提供 RadioFoundry 镜像（或 <code>--release</code>），并用 <code>--stock</code> 提供原厂文件</td>
+</tr>
+<tr>
+<td>“rfoundry 无法判断电台是否带有编解码器”</td>
+<td>用 RadioFoundry 启动电台并运行 <code>rfoundry probe</code>，或提供 <code>--stock</code> 让 rfoundry 写入编解码器</td>
+</tr>
+<tr>
+<td>“找不到 libusb”（从源码运行）</td>
+<td>安装 libusb（<code>brew install libusb</code> 或 <code>apt install libusb-1.0-0</code>），或使用自带它的 rfoundry 可执行文件</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="everyday-use">日常使用</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>原因与处理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DMR 呼叫显示但没有声音，“无编解码器：语音关闭”</td>
+<td>电台没有可用编解码器。见<a href="02-installing.html#no-codec-no-codec-voice-off">安装，无编解码器</a></td>
+</tr>
+<tr>
+<td>DMR 呼叫显示“其他通话组：不播放”</td>
+<td>其通话组不是通话目标、不在收听列表中，也不是回复目标。按<strong>监听</strong>（数字监听），或在 <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr> 中把该通话组加入信道的接收组列表。鹦鹉模式播放你自己的呼叫（来源是你自己的 ID）时，与其他呼叫一样播放</td>
+</tr>
+<tr>
+<td>“已加密：不播放”</td>
+<td>该呼叫使用基础加密，而电台没有匹配密钥，或使用了电台无法播放的更强加密</td>
+</tr>
+<tr>
+<td>发射时显示“电台频率中无 DMR ID”</td>
+<td>写入含你 <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr> 的电台频率（<a href="04-programming.html">为电台编程</a>）</td>
+</tr>
+<tr>
+<td>“信道忙”</td>
+<td>有人在时隙上通话。等呼叫结束</td>
+</tr>
+<tr>
+<td>“中继台无应答”</td>
+<td>中继台未响应。检查频率、色码、时隙以及你与中继台的距离</td>
+</tr>
+<tr>
+<td>FM 没有声音</td>
+<td>静噪关闭，或信道需要亚音。按住<strong>监听</strong>打开静噪。用 <strong>*</strong>、<strong>3</strong> 检查亚音</td>
+</tr>
+<tr>
+<td>按键无作用且屏幕显示“按键已锁”</td>
+<td>长按 <strong>*</strong> 解锁。检查<strong>设置 &gt; 加密 &gt; 自动锁键</strong></td>
+</tr>
+<tr>
+<td>“此处未使用”</td>
+<td>该键在此屏幕上没有功能</td>
+</tr>
+<tr>
+<td>“……：此构建不含”</td>
+<td>该功能在此构建中关闭，或尚未构建</td>
+</tr>
+<tr>
+<td>电台卡在热点屏幕</td>
+<td>某个主机打开了串口。按 <strong>OK</strong>，或停止主机程序。关闭<strong>设置 &gt; 连接 &gt; 允许热点</strong>可防止</td>
+</tr>
+<tr>
+<td>区域或信道自行改变</td>
+<td>扫描正在运行（状态行显示 SCAN）。在主屏幕按 <strong>返回</strong></td>
+</tr>
+<tr>
+<td>qdmr、rfoundry 或热点主机找不到电台串口</td>
+<td>USB 处于网络模式。在<strong>工具 &gt; USB 网络</strong>中切回，或关闭<strong>设置 &gt; 连接 &gt; 启动时 USB 网络</strong>并重启。调试链路和 <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="../spec/mmdvm-protocol.html">MMDVM</abbr> 也会在 UDP 端口 3334 上应答（<a href="15-usb-network.html#serial-tools-in-network-mode">USB 网络</a>）</td>
+</tr>
+<tr>
+<td>网络模式下电脑拿不到地址</td>
+<td>电脑在 10 秒内未设置好网卡时，电台会回到串口。确认电脑出现新的网卡，然后重试切换</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="settings-are-not-kept">设置未保存</h2>
+<p>如果重启后设置恢复默认，且 <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr> 写入失败，说明电台在 RadioFoundry 保存设置的闪存区域中发现了其他固件的数据。RadioFoundry 不会擦除它，因此你不会意外丢失数据。电台在内存中使用默认值运行。</p>
+<p>要把该区域交给 RadioFoundry（开发者，经调试链路）：</p>
+<pre><code>tools/rfoundry_debug.py storage info     # 显示 region=foreign
+tools/rfoundry_debug.py storage claim --out ~/rfoundry-backup    # 保存该区域的副本，然后为 RadioFoundry 擦除
+</code></pre>
+<p><code>storage claim</code> 会在擦除任何内容之前，把该区域的旧内容和校准副本保存到 <code>--out</code> 目录中的文件。它会拒绝保存在 git 工作树内。</p>
+<p>有些设置目前按设计就是“不保留”：见<a href="17-settings.html">设置</a>中的状态列。</p>
+<h2 id="diagnostics">诊断</h2>
+<p><strong>OK</strong>、<strong>6</strong>、<strong>7</strong>（工具 &gt; 诊断）显示用于台架检查的原始读数：按键、接收机电平、<abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> 调制解调器的状态和计数器、电池、板子自身的线路。<strong>*</strong> 翻页。<strong>返回</strong> 离开。</p>
+<img src="../ux/screens/160x120i5/diagnostics.png" width="200" alt="诊断页面">
+<p>开发者可通过 USB 用 <code>tools/rfoundry_debug.py diag</code> 和 <code>tools/rfoundry_debug.py view</code> 获得同样及更多信息。</p>
+<h2 id="getting-help">获取帮助</h2>
+<p>请在 Facebook 的 <a href="https://www.facebook.com/groups/radiofoundry/">RadioFoundry 社区群组</a>提问：其他用户和开发者会在那里回答问题、协助安装并发布消息。网页安装器会在每条错误信息下方链接该群组和 GitHub issues。</p>
+<h2 id="reporting-a-problem">报告问题</h2>
+<p>请在<a href="https://github.com/radiofoundry/radiofoundry/issues/new/choose">项目仓库</a>中提交 issue。请附上固件版本（<strong>设置 &gt; 我的电台 &gt; 关于</strong>）、电台型号、你做了什么、期望什么以及发生了什么。截图会有帮助：<code>tools/rfoundry_debug.py screenshot -o screen.png</code> 可通过 USB 保存一张。</p>
+<p>如果电台自行重启，请查看<strong>设置 &gt; 高级 &gt; 崩溃日志</strong>（<a href="17-settings.html#crash-log">设置</a>）并把其内容复制到 issue 中。开发者可用 <code>tools/rfoundry_debug.py crash</code> 获取完整记录。</p>
+
+		<nav class="prev-next"><a class="prev" href="19-moving-from-stock-dm32.html">从原厂 DM-32UV 固件迁移</a><a class="next" href="21-faq.html">常见问题</a></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/user/20-troubleshooting.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#installing">安装</a></li><li class="l2"><a href="#command-line-installs-advanced">命令行安装（进阶）</a></li><li class="l2"><a href="#everyday-use">日常使用</a></li><li class="l2"><a href="#settings-are-not-kept">设置未保存</a></li><li class="l2"><a href="#diagnostics">诊断</a></li><li class="l2"><a href="#getting-help">获取帮助</a></li><li class="l2"><a href="#reporting-a-problem">报告问题</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

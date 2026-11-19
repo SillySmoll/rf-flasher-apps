@@ -1,0 +1,285 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MD-UV380 bring-up checklist · RadioFoundry</title>
+<meta name="description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="MD-UV380 bring-up checklist · RadioFoundry">
+<meta property="og:description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:url" content="https://radiofoundry.org/docs/testing/mduv380-bringup.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="The radios RadioFoundry runs on, each showing a different screen.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/testing/mduv380-bringup.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/testing/mduv380-bringup.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/testing/mduv380-bringup.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/testing/mduv380-bringup.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/testing/mduv380-bringup.html">
+<link rel="icon" href="../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../" data-home="../../" data-gl-more="More">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../index.html">
+			<img src="../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Main"><a href="../../radios/index.html">Radios</a><a href="../../features/index.html">Features</a><a href="../../flash/index.html">Install</a><a href="../../codeplug/index.html">Codeplug</a><a href="../../docs/index.html" aria-current="page">Docs</a><a href="../../screenshots/index.html">Screenshots</a><a href="../../tools/index.html">Tools</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Language" title="Language">EN</summary><nav aria-label="Language"><a href="../../docs/testing/mduv380-bringup.html" aria-current="true" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../es/docs/testing/mduv380-bringup.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../it/docs/testing/mduv380-bringup.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../zh/docs/testing/mduv380-bringup.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Switch light and dark" title="Switch light and dark">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Testing">
+		<p class="eyebrow"><a href="../../docs/index.html">Documentation</a> / Testing</p>
+		<ul><li><a href="index.html">Testing</a></li><li><a href="results/index.html">Bring-up results</a></li><li><a href="backlight-curve.html">Backlight curve</a></li><li><a href="dm1801pro-bringup.html">DM-1801 Pro bring-up checklist</a></li><li><a href="dm32-bringup.html">DM-32UV bring-up checklist</a></li><li><a href="dmr-bench.html">DMR bench testing on the SDR bench</a></li><li><a href="md380-bringup.html">MD-380 bring-up checklist</a></li><li><a href="md9600-bringup.html">MD-9600 bring-up checklist</a></li><li><a href="mduv380-bringup.html" aria-current="page">MD-UV380 bring-up checklist</a></li><li><a href="mmdvm-audit.html">MMDVM implementation audit (2d45a21)</a></li><li><a href="on-air-coverage.html">On-air test coverage</a></li><li><a href="power-calibration.html">Transmit power calibration with a wattmeter</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<!-- Copyright (c) 2026 The RadioFoundry Authors -->
+<h1 id="md-uv380-bring-up-checklist">MD-UV380 bring-up checklist</h1>
+<p>The MD-UV380 port (<code>make BOARD=mduv380</code>, and <code>POWER=10w</code> for an MD-UV390 Plus 10 W) builds, passes its host tests and runs on radios
+(community testers). This page is the order to try it in, what each stage proves, and what to change when
+it doesn't work. The stage numbers match the unknowns table in <a href="../spec/hardware-mduv380.html">hardware-mduv380.md</a>
+section 14. Every row names the knob in the source that the likely failure points at.</p>
+<p>The radio is a <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="../user/22-glossary.html#t-tyt">TYT</abbr> MD-UV380, MD-UV390 or Retevis RT3S, with or without GPS. The port is the UV380 board family's code
+(<code>boards/uv380_family</code>, shared with the DM-1701) with this radio's data in <code>boards/mduv380/board.c</code> (<code>uvf_variant</code>,
+<code>uvf_key_matrix</code>). Most stages check one entry of that data.</p>
+<p>The bench is remote: nobody presses keys or looks at the screen. Every check below reads something over the debug
+link (<code>tools/rfoundry_debug.py</code>) or on the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench, and the diagnostics page lines (<code>diag</code>) carry the raw readings.</p>
+<p>The feature checklist, with every feature's required <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> tests and the last recorded result, is
+<code>tools/bringup.py list --radio mduv380</code>. <code>tools/bringup.py run --radio mduv380</code> records a run
+(<a href="https://github.com/radiofoundry/radiofoundry/blob/main/tests/hil/README.md#bring-up-mode">tests/hil/README.md</a>). This page keeps the hardware steps and what to
+change when one fails.</p>
+<h2 id="status">Status</h2>
+<p>Runs on radios (community testers). The codec builds were checked on a host: <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="../user/22-glossary.html#t-tyt">TYT</abbr> 19.26; TYT 19.74 and
+219.74, 5 W and 10 W; TYT and Retevis 18.11 and 18.16; Retevis RT3S 19.06 and 219.60. A first <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> test
+should use a 19.26 file and one whose code goes to the start of sector 10 (RT3S 219.60, any 219.74, S19.74).</p>
+<h2 id="0-before-anything">0. Before anything</h2>
+<ol>
+<li>Back up the radio: the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> with the stock <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr>, then the whole <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="../dev/glossary.html#t-spi">SPI</abbr> flash and the internal flash through the
+<abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr> (<code>rfoundry backup</code>). The factory calibration is in the SPI flash security registers; RadioFoundry only reads it.</li>
+<li>Build: <code>make BOARD=mduv380</code> (5 W) or <code>make BOARD=mduv380 POWER=10w</code> (Plus 10 W). With a supported <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="../user/22-glossary.html#t-tyt">TYT</abbr> or Retevis
+file in <code>codecs/</code> (<a href="../spec/codec-mduv380.html">codec-mduv380.md</a>, &quot;Stock files&quot;), the build also writes <code>_codec.bin</code>
+with the codec merged in.</li>
+<li>Flash with <code>rfoundry flash</code> through the TYT bootloader (PTT and SK1 held at power on) or the web flasher.</li>
+</ol>
+<h2 id="1-it-boots">1. It boots</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Pass</th>
+<th>If not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USB enumerates as <code>RadioFoundry MD-UV380</code></td>
+<td>the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> answers <code>info</code></td>
+<td>HSE mode (unknown 1): <code>diag</code> line &quot;hse&quot;: <code>ext</code> or <code>xtal</code> says which started; <code>HSI</code> means neither (<code>boards/uv380_family/system_uvf.c</code>)</td>
+</tr>
+<tr>
+<td>Boot reason, crash log empty</td>
+<td><code>rfoundry_debug.py crash</code> empty</td>
+<td><code>tools/crash_decode.py</code> on the report</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="2-display">2. Display</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Pass</th>
+<th>If not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Panel type</td>
+<td><code>diag</code> &quot;panel type&quot; 0-3</td>
+<td>unknown 2: the factory byte (security register 3, 0x1D) maps through <code>uvf_variant.panel_type</code> / <code>panel_rgb</code></td>
+</tr>
+<tr>
+<td>Picture upright, not mirrored, colors right</td>
+<td>the screen capture (<code>rfoundry_debug.py screen</code>) matches the gallery</td>
+<td>the MADCTL of the type (<code>drivers/display/st7735</code>), <code>madctl_xor</code> in <code>display_uvf.c</code></td>
+</tr>
+<tr>
+<td>All 128 rows</td>
+<td>no blank or wrapped band at the bottom</td>
+<td><code>UVF_LCD_HIDDEN_ROWS</code> (board.mk)</td>
+</tr>
+<tr>
+<td>Backlight dims</td>
+<td>the brightness setting changes the current draw</td>
+<td>PD8 (5 W) / PC6 (10 W): <code>pins.h</code></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="3-keys-channel-knob-power-flash">3. Keys, channel knob, power, flash</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Pass</th>
+<th>If not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Each key reports the right name</td>
+<td>the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>'s key view, with each key pressed by the <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> key test or a helper at the radio</td>
+<td>unknown 4: <code>uvf_key_matrix</code> in <code>boards/mduv380/board.c</code>; <code>diag</code> shows raw rows</td>
+</tr>
+<tr>
+<td>Encoder: clockwise is the next channel</td>
+<td><code>rfoundry_debug.py</code> encoder counters</td>
+<td>unknown 5: the decoder's rest state (<code>input_uvf.c</code>)</td>
+</tr>
+<tr>
+<td>Battery voltage within 0.1 V of a meter</td>
+<td><code>diag</code> &quot;bat raw&quot;</td>
+<td>unknown 6: <code>uvf_variant.bat_mul</code> / <code>bat_div</code></td>
+</tr>
+<tr>
+<td>Volume 0 at the stop, 100 at the top</td>
+<td><code>diag</code> &quot;vol raw&quot; at both ends</td>
+<td>unknown 7: <code>vol_min</code>, <code>vol_break</code>, <code>vol_max</code></td>
+</tr>
+<tr>
+<td>SPI flash JEDEC 0xEF4018</td>
+<td><code>info</code></td>
+<td><code>flash_uvf.c</code> (<code>device</code>)</td>
+</tr>
+<tr>
+<td>Calibration read</td>
+<td><code>diag</code> &quot;cal&quot; factory or working</td>
+<td>the k factors <code>uvf_variant.cal_k</code>, the reader <code>calibration_uvf.c</code></td>
+</tr>
+<tr>
+<td>10 W marker</td>
+<td>read security register 3 byte 0x1C on a 5 W and on a Plus 10 W radio (<code>rfoundry backup</code> keeps the security registers); <code>diag</code> &quot;<abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> off: 10 W radio, 5 W image&quot; means a 5 W image found the marker</td>
+<td>unknown 3: the <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="../user/22-glossary.html#t-tyt">TYT</abbr> images never read the byte, so the marker is unconfirmed; a 10 W image doesn't require it. <code>MDUV380_DEFS=-DMDUV380_10W_CHECK=0</code> skips it</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="4-at1846s-hr_c6000">4. AT1846S, HR_C6000</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Pass</th>
+<th>If not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Both chips answer</td>
+<td><code>diag</code> &quot;<abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">C6000</abbr> 4:10=80&quot;, &quot;errs 0&quot;</td>
+<td><code>radio_uvf.c</code> bus set-up (the same pins as the DM-1701)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="5-fm-receive">5. FM receive</h2>
+<p><code>tests/hil</code> FM <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> cases on the test frequency against the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench (<code>--fm-mhz</code>).</p>
+<h2 id="6-fm-transmit-dummy-load">6. FM transmit (dummy load)</h2>
+<p>The lowest power first. <code>tests/hil</code> FM <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> cases with <code>--allow-rf</code>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Pass</th>
+<th>If not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Carrier on frequency, deviation</td>
+<td>the bench's FM check</td>
+<td>the TX offset in <code>radio_uvf.c</code>, the calibration's I/Q rows</td>
+</tr>
+<tr>
+<td>Power per level</td>
+<td>a power meter at each level, both band edges</td>
+<td>unknown 10: <code>uvf_variant.frac</code>, <code>cal_k</code></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="7-dmr-receive">7. DMR receive</h2>
+<p>The codec needs the merged image (<code>_codec.bin</code>). <code>diag</code> <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> counters, <code>tests/hil</code> DMR <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> cases from the bench HAT.</p>
+<h2 id="8-dmr-transmit-dummy-load-then-a-hotspot-or-repeater">8. DMR transmit (dummy load, then a hotspot or repeater)</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Pass</th>
+<th>If not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The bench decodes our bursts and voice</td>
+<td><code>tests/hil -m radio_tx</code> <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> cases</td>
+<td>unknown 9: <abbr class="gl" tabindex="0" title="The RF transceiver chip that sets the frequency, deviation and power of many handheld DMR radios. Programmed over I2C." data-more="../dev/glossary.html#t-at1846s">AT1846S</abbr> 0x44 AF gain; unknown 12: the codec descriptor (<code>vocoder_mduv380.c</code> profile)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="9-gps">9. GPS</h2>
+<p>G models only. <code>diag</code> and the <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> position: the module is powered on PA9 for 5 s at start-up, kept on when <abbr class="gl" tabindex="0" title="The text format GPS receivers use to report position and time." data-more="../user/22-glossary.html#t-nmea">NMEA</abbr> is
+heard on USART1 (PA10, 9600 baud), switched off otherwise (unknown 8, <code>boards/mduv380/board.c</code>).</p>
+<h2 id="10-after-the-bench">10. After the bench</h2>
+<p>Record each result in <a href="../spec/hardware-mduv380.html">hardware-mduv380.md</a> (unknowns table) and in this page's Status,
+and move the radio's <code>[status]</code> in <code>boards/mduv380/board.toml</code> on.</p>
+
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/testing/mduv380-bringup.md">View the source of this page</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="On this page">
+		<p class="eyebrow">On this page</p>
+		<ul><li class="l2"><a href="#status">Status</a></li><li class="l2"><a href="#0-before-anything">0. Before anything</a></li><li class="l2"><a href="#1-it-boots">1. It boots</a></li><li class="l2"><a href="#2-display">2. Display</a></li><li class="l2"><a href="#3-keys-channel-knob-power-flash">3. Keys, channel knob, power, flash</a></li><li class="l2"><a href="#4-at1846s-hr_c6000">4. AT1846S, HR_C6000</a></li><li class="l2"><a href="#5-fm-receive">5. FM receive</a></li><li class="l2"><a href="#6-fm-transmit-dummy-load">6. FM transmit (dummy load)</a></li><li class="l2"><a href="#7-dmr-receive">7. DMR receive</a></li><li class="l2"><a href="#8-dmr-transmit-dummy-load-then-a-hotspot-or-repeater">8. DMR transmit (dummy load, then a hotspot or repeater)</a></li><li class="l2"><a href="#9-gps">9. GPS</a></li><li class="l2"><a href="#10-after-the-bench">10. After the bench</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Join the RadioFoundry community</strong><span class="small muted">Questions, help with your radio and news, on Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Found a bug? Want your radio supported?</strong><span class="small muted">Open an issue on GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry is MIT licensed · <a href="https://github.com/radiofoundry/radiofoundry">Source Code</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Community</a> · <a href="../../docs/index.html">Docs</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Changelog</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

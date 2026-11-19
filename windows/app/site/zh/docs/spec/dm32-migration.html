@@ -1,0 +1,308 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DM-32UV flashing and migration from the vendor firmware · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="DM-32UV flashing and migration from the vendor firmware · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/spec/dm32-migration.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/dm32-migration.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/dm32-migration.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/dm32-migration.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/dm32-migration.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/dm32-migration.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/spec/dm32-migration.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/dm32-migration.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/dm32-migration.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/dm32-migration.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="规范">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 规范</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html" aria-current="page">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">本页尚未翻译，目前显示英文。</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="dm-32uv-flashing-and-migration-from-the-vendor-firmware">DM-32UV flashing and migration from the vendor firmware</h1>
+<p>How <code>tools/serial_loader.py</code> writes firmware through the Baofeng bootloader, and how <code>tools/dm32_migrate.py</code> moves a
+DM-32UV from its stock firmware to RadioFoundry and keeps the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr>. The user guide is
+<a href="../user/19-moving-from-stock-dm32.html">Moving from stock DM-32UV firmware</a>. The MD-380 counterpart, whose structure
+and safety rules this follows, is <a href="md380-migration.html">md380-migration.md</a>.</p>
+<p>Neither tool has been run against a radio (see <code>docs/testing/dm32-bringup.md</code>). Facts marked (T) were tested with dmrconf
+0.15.1 on files, or against the simulators in the self-tests. <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr> is <abbr class="gl" tabindex="0" title="GNU General Public License. RadioFoundry does not use GPL code." data-more="../dev/glossary.html#t-gpl">GPL</abbr>: RadioFoundry runs <code>dmrconf</code> as an external
+program and contains none of its code.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>The flasher</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Where the codeplug goes on RadioFoundry</td>
+</tr>
+<tr>
+<td>3</td>
+<td>dmrconf facts</td>
+</tr>
+<tr>
+<td>4-5</td>
+<td>The migration sequence and its conversion report</td>
+</tr>
+<tr>
+<td>6-7</td>
+<td>The kit and the self-test</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Open points</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="1-the-flasher-serial_loaderpy">1. The flasher (<code>serial_loader.py</code>)</h2>
+<p>Implements <a href="hardware-dm32.html">hardware-dm32.md</a> 13.2 on any pyserial port, 115200 8N1. <code>--model dm1801pro</code> runs the same
+steps against the DM-1801 Pro's loader: only the ID string (<code>BF1801-V1</code>), the key combination and the missing codec slot
+differ (<a href="hardware-dm1801pro.html">hardware-dm1801pro.md</a> 6.2).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Handling</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Input</td>
+<td>A raw application image (linked for 0x0300C000), or a <code>BFUV32-V2</code> file: the 256-byte header is checked (<code>BFUV32-V2</code> at 0, <code>END</code> at 0xFD) and stripped (13.1). ELF files and other <code>BFU</code> versions are refused</td>
+</tr>
+<tr>
+<td>Size</td>
+<td>1 to 0xF4000 bytes (0x0300C000..0x03100000). An image starting with 16 blank bytes is refused. The RadioFoundry codec slot (&quot;DDRC&quot; at 0x030E8000, <code>tools/hrc7000_codec.py</code>) is reported when present</td>
+</tr>
+<tr>
+<td>Steps 1-6</td>
+<td>Fixed exchanges, 2 s each. Step 1 is sent up to three times. No answer: &quot;is the radio in update mode? PTT + SK1 at power-on, green <abbr class="gl" tabindex="0" title="Light-emitting diode: the radio&#x27;s status light." data-more="../user/22-glossary.html#t-led">LED</abbr>&quot;. A wrong answer names the step and both byte strings</td>
+</tr>
+<tr>
+<td>Step 7</td>
+<td><code>00 FF</code>, the 128-byte block (file name, NUL, decimal size), CRC-16/XMODEM big endian. The answer <code>06 43</code> comes after the erase: the wait is 30 s (13.2 says up to about 15 s)</td>
+</tr>
+<tr>
+<td>Step 8</td>
+<td>Per 1 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr>: <code>02</code>, wait <code>43</code>, then block number n (from 1, 0xFF wraps to 0x00), 0xFF - n, 1024 bytes (the last zero padded), <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr>. <code>06</code> accepts. A <code>15</code> (<abbr class="gl" tabindex="0" title="Acknowledgment: the reply that says a message arrived." data-more="../dev/glossary.html#t-ack">NAK</abbr>), another answer or a timeout resends the block from <code>02</code>, up to four times. Then the flash stops: the application area is erased, update mode is needed again</td>
+</tr>
+<tr>
+<td>Step 9</td>
+<td><code>04</code>; an answer within 0.5 s is read but not required</td>
+</tr>
+<tr>
+<td>Ports</td>
+<td><code>--port</code>, or the only USB-serial bridge among CH340 / CH341 / CH9102 (1A86), FTDI (0403: 6001, 6010, 6014, 6015), CP210x (10C4:EA60) and PL2303 (067B:2303)</td>
+</tr>
+<tr>
+<td>Recovery</td>
+<td><code>--stock FILE</code> flashes a stock <code>BFUV32-V2</code> file the same way</td>
+</tr>
+</tbody>
+</table></div>
+<p>Assumptions not in 13.2 (to check on the first radio): the bootloader answers a bad block with <code>15</code>, it accepts a
+block sent again after a NAK, and it ignores the file name and size.</p>
+<p>The self-test (<code>--self-test</code>, T) runs the flasher against <code>FakeBootloader</code>, the radio side of 13.2: every step's
+bytes, the header CRC, block number, complement and CRC per block, and the image as written. Cases: a 301-block
+image (numbers wrap) with three blocks damaged on the line and resent; a block refused every time; a silent radio; a
+wrong step-2 answer; an erase that never ends. Plus the CRC check value, header and frame layout, file unwrapping and
+size checks.</p>
+<h2 id="2-where-the-codeplug-goes-on-radiofoundry">2. Where the codeplug goes on RadioFoundry</h2>
+<ul>
+<li>RadioFoundry's DM-32 board keeps the open-firmware <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> (the <abbr class="gl" tabindex="0" title="Electrically erasable programmable read-only memory: a small chip that keeps settings." data-more="../dev/glossary.html#t-eeprom">EEPROM</abbr> image and the flash image of
+<a href="open-firmware-cps.html">open-firmware-cps.md</a> 7) at <strong>+0x700000</strong> in the 16 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">MB</abbr> data flash: EEPROM image
+0x700000, flash image 0x720000 (<code>boards/dm32/flash_dm32.c</code>, <code>boards/dm32/board.mk</code>). The settings ring and the
+journal are at 0x711000..0x71AFFF, the native area at 0xF00000.</li>
+<li>Below 0x700000 is stock data: the stock codeplug pages and the factory calibration (0x001000..0x0C8FFF), the stock
+contact database and more (<a href="hardware-dm32.html">hardware-dm32.md</a> 10.1). RadioFoundry's flash driver refuses every write and
+erase there. Nothing in this migration writes there either.</li>
+<li>The <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> shim takes <strong>physical</strong> addresses on area 1 and in <code>X 1</code> / <code>X 2</code> (<a href="cps-protocol.html">cps-protocol.md</a>
+2.2-2.3). <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr>'s open firmware drivers use the <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr> addresses (EEPROM image at 0, flash image at 0x20000). With
+the DM-32, they would read stock bytes and have every write refused. <strong>dmrconf can't write RadioFoundry's DM-32 directly.</strong></li>
+<li>The board has no <code>cps</code> descriptor, so the radio info reports type 6 (MD-UV380), not 11.</li>
+<li>The shim speaks on UART0 through the programming cable. <code>dmrconf --device</code> would reach it, but the address
+problem above remains.</li>
+</ul>
+<p>So the tool uses dmrconf only offline (encode, decode) and writes with <code>tools/cps_client.py</code>, which takes an
+<code>offset</code> (<code>--offset 0x700000</code> on its command line) added to every area 1 address and <code>X 1</code> sector.</p>
+<h2 id="3-dmrconf-facts">3. dmrconf facts</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Fact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Radio keys (0.15.1)</td>
+<td><code>dm32uv</code> (the Baofeng DM-32UV firmware), <code>openuv380</code> (<abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr>'s open firmware driver for the <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr> radios: the open-firmware layout RadioFoundry serves)</td>
+</tr>
+<tr>
+<td>Stock read</td>
+<td><code>dmrconf read --radio dm32uv [--device PORT] backup-stock.dfu</code> over the programming cable. Untested: whether <code>--device</code> wants the full path, and whether detection works on its own</td>
+</tr>
+<tr>
+<td>dm32uv binary (T)</td>
+<td>One DfuSe target &quot;Baofeng DM32UV <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">Codeplug</abbr>&quot;, 4 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> elements at data flash addresses (0x4000, 0xB000, 0xF000..0x12000, 0x42000, ...)</td>
+</tr>
+<tr>
+<td>openuv380 binary (T)</td>
+<td>DfuSe with an empty &quot;<abbr class="gl" tabindex="0" title="Electrically erasable programmable read-only memory: a small chip that keeps settings." data-more="../dev/glossary.html#t-eeprom">EEPROM</abbr>&quot; target and a &quot;FLASH&quot; target of four elements at the wire addresses 0x80 (0x5FE0 bytes), 0x7500 (0x3B00), 0x20000 (0x11A0), 0x9B000 (0x13E60). These are exactly qdmr's write regions (<a href="cps-protocol.html">cps-protocol.md</a> 2.5)</td>
+</tr>
+<tr>
+<td>DfuSe framing (T)</td>
+<td>Prefix <code>DfuSe</code> 01, size, target count; targets with alternate setting 1, named; suffix FF FF FF FF FF FF 1A 01 &quot;UFD&quot; 10 and a CRC-32 that is the bitwise NOT of zlib's. The tool's writer reproduces dmrconf's files byte for byte</td>
+</tr>
+<tr>
+<td>Conversion (T)</td>
+<td><code>decode --radio dm32uv</code> then <code>encode --radio openuv380</code> works on a dm32uv file; the round trip keeps channels, zones up to 68, contacts, <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> group lists and the radio ID; scan lists are dropped. The encoder drops the <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> contact of a channel that has an <abbr class="gl" tabindex="0" title="The talkgroups a channel listens to. The codeplug calls it the RX group list." data-more="../user/22-glossary.html#t-listen-list">RX group list</abbr>; the shared conversion cleans the lists first and puts the contacts back (<a href="codeplug-port.html">codeplug-port.md</a>)</td>
+</tr>
+<tr>
+<td>Callsign DB (T)</td>
+<td><code>encode-db --radio openuv380 --id ID [--database FILE] [--limit N]</code> gives one element at wire address 0x50000 (header &quot;IdN...&quot;), within RadioFoundry's flash image (0x750000 physical)</td>
+</tr>
+<tr>
+<td>A dmrconf crash (T)</td>
+<td><code>encode --radio dm32uv</code> of a <abbr class="gl" tabindex="0" title="A text file format. qdmr stores its codeplug as YAML." data-more="../user/22-glossary.html#t-yaml">YAML</abbr> with 1100 contacts ended in &quot;Cannot resolve offset 49000h&quot; (exit 139). Seen only on synthetic files</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="4-sequence-all">4. Sequence (<code>all</code>)</h2>
+<ol start="0">
+<li>Preflight: dmrconf with both drivers, pyserial, the helper scripts, the cable, the image (and the codec slot:
+without it the tool asks, or merges from <code>--codec-from DM32.01.01.049.bin</code> with <code>hrc7000_codec.py</code>).</li>
+<li>Backup (stock firmware, normal mode): <code>dmrconf detect</code>, <code>read --radio dm32uv</code> to <code>backup-stock.dfu</code>, <code>decode</code> to
+<code>backup-stock.yaml</code> (or <code>--from FILE</code>). Then offline: <code>encode --radio openuv380</code> to <code>rfoundry-codeplug.dfu</code> (the exact
+bytes restore writes), <code>decode</code> to <code>rfoundry-codeplug.yaml</code>, and the conversion report (below). Over a limit: asks
+(<code>--accept-trim</code>). A users <abbr class="gl" tabindex="0" title="Comma separated values: a table as plain text, as programming software exports it." data-more="../user/22-glossary.html#t-csv">CSV</abbr> becomes <code>users.json</code>, checked with <code>encode-db</code> (md380_migrate's code).</li>
+<li>Flash: announce update mode, ask, <code>serial_loader.Flasher</code> over the cable.</li>
+<li>Wait for RadioFoundry (<code>rfoundry_debug.py --port PORT ping</code>), <code>version</code> must say DM-32. <code>storage info</code>: <code>none</code> stops,
+<code>foreign</code> is claimed after a prompt (<code>storage claim --out</code> dumps it into the work directory first), <code>ours</code> goes on.
+3b. Data flash backup through RadioFoundry's <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> reads (area 1, physical, 512 bytes a request): 0x000000..0x0C9000 by default
+(<code>dataflash-000000-0C9000.bin</code>, with a check that the calibration page, ID byte 2, is in it), all 16 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">MB</abbr> with
+<code>--flash-backup full</code>, nothing with <code>none</code>. Skipped when the file is already in the work directory.</li>
+<li><abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">Codeplug</abbr>: read the regions of <code>rfoundry-codeplug.dfu</code> at +0x700000 into <code>openfw-window-before.bin</code> (whatever the stock
+firmware left there), write the sectors that differ (<code>X 1/2/3</code>, 32 bytes a request as <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr>), <code>C 6 0</code> (save and
+restart). Wait for RadioFoundry, read back, build <code>readback-rfoundry.dfu</code> from the read and <code>decode</code> it; the counts must match
+what was written (after RadioFoundry's limits). Byte differences are counted and logged.</li>
+<li>ID database: <code>encode-db</code> to <code>iddb.dfu</code> (around the codeplug's radio ID, or <code>--id</code>), the area saved to
+<code>iddb-area-before.bin</code>, then written the same way. RadioFoundry's window ends at 0xF00000 (image 0x800000), below qdmr's
+UV380 limit, so a database that runs past it (the full world list, about 8.5 MB) is encoded again with <code>--limit</code>
+set to the records that fit, about 300,000 at 27 bytes; dmrconf keeps the ones nearest the radio's ID. A
+<code>--db-limit</code> given by the user is left as it is.</li>
+</ol>
+<p>Every step stops on failure. The work directory (<code>~/RadioFoundry-DM32-migration/&lt;date-time&gt;/</code>: <code>migration.log</code>,
+<code>dmrconf.log</code> with every dmrconf command and its output, <code>state.json</code>, the backups and reports) is never deleted.
+<code>restore --workdir DIR</code> resumes from step 3; <code>restore --yaml FILE</code> converts and writes an edited qdmr file.</p>
+<h2 id="5-the-conversion-report">5. The conversion report</h2>
+<p><code>conversion-report.txt</code> and <code>.json</code> in the work directory:</p>
+<ul>
+<li>item counts per section, stock and after the openuv380 round trip;</li>
+<li>what RadioFoundry's limits leave out (1024 channels, 68 zones, 1024 contacts, 76 <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> group lists), by name;</li>
+<li>sections that shrink or vanish (scan lists, roaming, positioning, extra radio IDs, ...);</li>
+<li>names longer than 16 characters, names outside <abbr class="gl" tabindex="0" title="The 7-bit character set of plain text." data-more="../dev/glossary.html#t-ascii">ASCII</abbr>, and names that differ after the round trip;</li>
+<li>channels outside the DM-32's bands (136-174, 400-480 MHz, <code>boards/dm32/board.c</code>).</li>
+</ul>
+<p>Never carried over: stock menu, key and display settings, encryption keys, the stock contact database.</p>
+<h2 id="6-package">6. Package</h2>
+<p><code>dm32_migrate.py package OUTDIR --image rfoundry_dm32_codec.bin</code> copies <code>dm32_migrate.py</code>, <code>serial_loader.py</code>,
+<code>cps_client.py</code>, <code>rfoundry_debug.py</code>, <code>md380_migrate.py</code> (shared <abbr class="gl" tabindex="0" title="A text file format. qdmr stores its codeplug as YAML." data-more="../user/22-glossary.html#t-yaml">YAML</abbr>, users-file and session code), <code>hrc7000_codec.py</code>,
+<code>docs/testing/dm32-bringup.md</code>, the image(s) and <code>--include</code> files into a directory, with the rfoundry package and
+its codec maps at <code>rfoundry/rfoundry/</code>, and writes <code>README.txt</code>, <code>requirements.txt</code> (pyserial) and <code>SHA256SUMS</code>. Every
+helper is loaded from the script's own directory and the package from <code>rfoundry/</code> beside it, as in the repository, so
+the kit runs as it is. <code>--self-test</code> checks that. The image is checked (size, header) and a missing codec slot is
+reported.</p>
+<h2 id="7-self-test-dm32_migratepy---self-test-in-toolscish">7. Self-test (<code>dm32_migrate.py --self-test</code>, in <code>tools/ci.sh</code>)</h2>
+<p>Offline, no dmrconf (T): DfuSe round trip, suffix, <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> and size checks; flat image and regions; a synthetic stock
+<abbr class="gl" tabindex="0" title="A text file format. qdmr stores its codeplug as YAML." data-more="../user/22-glossary.html#t-yaml">YAML</abbr> (70 zones, long and non-ASCII names, out-of-band channels, scan lists, roaming, two radio IDs) through the
+report against its expected openuv380 round trip; <code>cps_client</code> with offset 0x700000 against <code>FakeCpsRadio</code> (the
+shim's DM-32 map: physical addresses, writes only in 0x700000..0x710000 and 0x720000..0xF00000): the backup before
+writing, the write lands at +0x700000, bytes outside the regions and everything below 0x700000 unchanged, the read
+back matches and rebuilds the same DfuSe file, writes without the offset are refused, the stock data flash backup
+finds the calibration page. Then the flasher's self-test.</p>
+<h2 id="8-open-points-need-a-radio">8. Open points (need a radio)</h2>
+<ul>
+<li>Everything in section 1 marked as an assumption, and the real erase time.</li>
+<li><code>dmrconf read --radio dm32uv</code> with <code>--device</code>: the port name form, and the reading speed.</li>
+<li>Whether the shim's 32-byte requests over UART0 are reliable at 115200; a larger <code>CPS_BLOCK</code> would be faster.</li>
+<li>Whether the stock firmware leaves data at 0x700000 and up (voice recordings, 10.1). The tool saves those
+regions before writing; RadioFoundry's <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">codeplug</abbr> decoder ignores bytes outside <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr>'s regions.</li>
+<li>The radio info reports type 6. A shim-side offset for area 1 on this board would let qdmr program the radio directly;
+this tool would then need <code>CPS_OFFSET = 0</code>.</li>
+</ul>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/dm32-migration.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#1-the-flasher-serial_loaderpy">1. The flasher (serial_loader.py)</a></li><li class="l2"><a href="#2-where-the-codeplug-goes-on-radiofoundry">2. Where the codeplug goes on RadioFoundry</a></li><li class="l2"><a href="#3-dmrconf-facts">3. dmrconf facts</a></li><li class="l2"><a href="#4-sequence-all">4. Sequence (all)</a></li><li class="l2"><a href="#5-the-conversion-report">5. The conversion report</a></li><li class="l2"><a href="#6-package">6. Package</a></li><li class="l2"><a href="#7-self-test-dm32_migratepy---self-test-in-toolscish">7. Self-test (dm32_migrate.py --self-test, in tools/ci.sh)</a></li><li class="l2"><a href="#8-open-points-need-a-radio">8. Open points (need a radio)</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

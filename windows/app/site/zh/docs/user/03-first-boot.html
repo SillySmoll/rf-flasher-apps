@@ -1,0 +1,174 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>首次启动 · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="首次启动 · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/user/03-first-boot.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/user/03-first-boot.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/user/03-first-boot.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/user/03-first-boot.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/user/03-first-boot.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/user/03-first-boot.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/user/03-first-boot.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/user/03-first-boot.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/user/03-first-boot.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/user/03-first-boot.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="用户手册">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 用户手册</p>
+		<ul><li><a href="index.html">RadioFoundry 用户手册</a></li><li><a href="01-introduction.html">简介</a></li><li><a href="02-installing.html">安装</a></li><li><a href="03-first-boot.html" aria-current="page">首次启动</a></li><li><a href="04-programming.html">为电台编程</a></li><li><a href="05-keys-and-navigation.html">按键与导航</a></li><li><a href="06-home-screen.html">主屏幕</a></li><li><a href="07-channels-zones-vfo.html">信道、区域与 VFO</a></li><li><a href="08-fm.html">FM</a></li><li><a href="09-dmr.html">DMR</a></li><li><a href="10-messages-and-signaling.html">消息、呼叫提示与电台检查</a></li><li><a href="11-emergency.html">紧急</a></li><li><a href="12-scan.html">扫描与双守候</a></li><li><a href="13-aprs.html">APRS</a></li><li><a href="14-hotspot.html">热点模式</a></li><li><a href="15-usb-network.html">USB 网络模式</a></li><li><a href="16-battery-and-power.html">电池与供电</a></li><li><a href="17-settings.html">设置</a></li><li><a href="18-moving-from-stock-md380.html">从原厂 MD-380 固件迁移</a></li><li><a href="19-moving-from-stock-dm32.html">从原厂 DM-32UV 固件迁移</a></li><li><a href="20-troubleshooting.html">故障排查</a></li><li><a href="21-faq.html">常见问题</a></li><li><a href="22-glossary.html">术语表</a></li><li><a href="23-radios.html">电台参考</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<h1 id="first-boot">首次启动</h1>
+<h2 id="turning-the-radio-on">开机</h2>
+<p>用电源开关打开电台。在手台上，电源开关就是音量旋钮，顺时针转过“咔嗒”一声即可。各电台的开关位置见<a href="23-radios.html">电台参考</a>。启动画面显示约一秒，然后电台进入主屏幕。启动画面期间按下的键会被忽略。</p>
+<p>启动画面显示 RadioFoundry 标志，以及电台频率中的两行启动文字。底部显示电台型号和固件版本：发行版名称，例如 v26.11（发布的年月），或发行版之间的构建所使用的提交。启动文字每行 16 个字符，在电台频率中设置，例如你的呼号和姓名。</p>
+<img src="../ux/screens/160x120i5/boot.png" width="200" alt="启动画面">
+<p>关闭电台时，再次使用电源开关。在手台上，逆时针转动音量旋钮直到“咔嗒”一声。见<a href="16-battery-and-power.html#turning-off">关机</a>。</p>
+<h2 id="channels-on-a-new-installation">新安装后的信道</h2>
+<p>RadioFoundry 从电台的 SPI 闪存读取电台频率，其布局与电台频率编辑器和 <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr> 写入的一致。电台频率保存信道、区域、联系人和你的 <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr>。当 RadioFoundry 在其中找不到信道时，会使用六个内置的 FM 单工信道：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>信道</th>
+<th>频率</th>
+<th>带宽</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Simplex 145.500</td>
+<td>145.500 MHz</td>
+<td>25 kHz</td>
+</tr>
+<tr>
+<td>Simplex 146.520</td>
+<td>146.520 MHz</td>
+<td>25 kHz</td>
+</tr>
+<tr>
+<td>Simplex 146.550</td>
+<td>146.550 MHz</td>
+<td>25 kHz</td>
+</tr>
+<tr>
+<td>Simplex 433.500</td>
+<td>433.500 MHz</td>
+<td>12.5 kHz</td>
+</tr>
+<tr>
+<td>Simplex 446.000</td>
+<td>446.000 MHz</td>
+<td>12.5 kHz</td>
+</tr>
+<tr>
+<td>Simplex 446.500</td>
+<td>446.500 MHz</td>
+<td>12.5 kHz</td>
+</tr>
+</tbody>
+</table></div>
+<p>在这些频率上发射之前，请确认它们在你的地区是合法的。<strong>设置 &gt; 高级 &gt; 电台频率</strong>会显示电台使用哪些信道：“内置信道”或“由 <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="04-programming.html">CPS</abbr> 写入”。</p>
+<p>运行过原厂固件的电台仍保留该固件的电台频率。RadioFoundry 启动时会检查电台频率。当它不是 RadioFoundry（开源固件）的电台频率时，电台会忽略它并使用内置信道。此时<strong>设置 &gt; 高级 &gt; 电台频率</strong>还会显示“其他固件电台频率：已忽略”。不会擦除任何内容：电台频率编辑器仍可读取并转换它。写入一份电台频率即可替换它。</p>
+<p>第一次在电台上保存内容（信道、联系人、区域、你的 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> ID）时，会先在<strong>旧电台频率</strong>屏幕上询问：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>取消</td>
+<td>不保存任何内容。这是默认选项，返回键效果相同</td>
+</tr>
+<tr>
+<td>新建</td>
+<td>新建一份空的 RadioFoundry 电台频率并保存你的更改。旧电台频率中的信道、联系人、DMR ID 和电台名会被擦除。请先备份</td>
+</tr>
+<tr>
+<td>仍然使用</td>
+<td>不擦除任何内容，按原样使用旧电台频率。你的更改不会被保存：请重新操作</td>
+</tr>
+</tbody>
+</table></div>
+<p>“仍然使用”会被记住，直到向电台写入电台频率或执行恢复出厂设置。</p>
+<h2 id="programming-the-radio">为电台编程</h2>
+<p>在项目网站上用电台频率编辑器编写信道、区域、联系人、通话组列表和你的 <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr>（<a href="04-programming.html">为电台编程</a>）。<abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="04-programming.html">qdmr</abbr> 是另一种选择。大多数设置也可以在电台上更改（<a href="17-settings.html">设置</a>）。信道、联系人和 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> ID 来自电台频率。</p>
+<p>DMR 需要你的 DMR ID。没有它，电台会拒绝在 DMR 信道上发射，并显示“电台频率中无 DMR ID”。<strong>设置 &gt; 我的电台 &gt; DMR ID 和名称</strong>会显示电台现有的 ID，并可在电台上设置：它会写入电台频率。</p>
+<h2 id="checks-after-installing">安装后的检查</h2>
+<ol>
+<li><strong>设置 &gt; 我的电台 &gt; 关于</strong>（也在<strong>高级</strong>下）会显示“RadioFoundry”、你刷入的版本和电台型号。其下还会列出作者，以及固件中各项内容的许可证。</li>
+<li>在 FM 信道上，长按<strong>监听</strong>打开静噪。你会听到噪声。这说明接收机和音频通路工作正常。</li>
+<li>在 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> 信道上，如果编解码器未合并，主屏幕底行会显示“无编解码器：语音关闭”。见<a href="02-installing.html#no-codec-no-codec-voice-off">安装，无编解码器</a>。</li>
+<li>更改一项设置，例如<strong>设置 &gt; 显示 &gt; 亮度</strong>。关闭电台再开机。确认设置仍然保留。若未保留，见<a href="20-troubleshooting.html">故障排查</a>中的“设置未保存”。</li>
+</ol>
+
+		<nav class="prev-next"><a class="prev" href="02-installing.html">安装</a><a class="next" href="04-programming.html">为电台编程</a></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/user/03-first-boot.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#turning-the-radio-on">开机</a></li><li class="l2"><a href="#channels-on-a-new-installation">新安装后的信道</a></li><li class="l2"><a href="#programming-the-radio">为电台编程</a></li><li class="l2"><a href="#checks-after-installing">安装后的检查</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

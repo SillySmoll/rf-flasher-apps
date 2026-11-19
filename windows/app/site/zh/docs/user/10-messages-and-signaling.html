@@ -1,0 +1,221 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>消息、呼叫提示与电台检查 · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="消息、呼叫提示与电台检查 · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/user/10-messages-and-signaling.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/user/10-messages-and-signaling.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/user/10-messages-and-signaling.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/user/10-messages-and-signaling.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/user/10-messages-and-signaling.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/user/10-messages-and-signaling.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/user/10-messages-and-signaling.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/user/10-messages-and-signaling.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/user/10-messages-and-signaling.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/user/10-messages-and-signaling.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="用户手册">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 用户手册</p>
+		<ul><li><a href="index.html">RadioFoundry 用户手册</a></li><li><a href="01-introduction.html">简介</a></li><li><a href="02-installing.html">安装</a></li><li><a href="03-first-boot.html">首次启动</a></li><li><a href="04-programming.html">为电台编程</a></li><li><a href="05-keys-and-navigation.html">按键与导航</a></li><li><a href="06-home-screen.html">主屏幕</a></li><li><a href="07-channels-zones-vfo.html">信道、区域与 VFO</a></li><li><a href="08-fm.html">FM</a></li><li><a href="09-dmr.html">DMR</a></li><li><a href="10-messages-and-signaling.html" aria-current="page">消息、呼叫提示与电台检查</a></li><li><a href="11-emergency.html">紧急</a></li><li><a href="12-scan.html">扫描与双守候</a></li><li><a href="13-aprs.html">APRS</a></li><li><a href="14-hotspot.html">热点模式</a></li><li><a href="15-usb-network.html">USB 网络模式</a></li><li><a href="16-battery-and-power.html">电池与供电</a></li><li><a href="17-settings.html">设置</a></li><li><a href="18-moving-from-stock-md380.html">从原厂 MD-380 固件迁移</a></li><li><a href="19-moving-from-stock-dm32.html">从原厂 DM-32UV 固件迁移</a></li><li><a href="20-troubleshooting.html">故障排查</a></li><li><a href="21-faq.html">常见问题</a></li><li><a href="22-glossary.html">术语表</a></li><li><a href="23-radios.html">电台参考</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<h1 id="messages-call-alert-and-radio-check">消息、呼叫提示与电台检查</h1>
+<p>文本消息、呼叫提示和电台检查在 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> 信道上工作。<a href="23-radios.html">电台参考</a>说明哪些电台已验证这些功能。它们都不需要编解码器。发送需要可发射的 DMR 信道和你的 <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="22-glossary.html#t-dmr-id">DMR ID</abbr>。</p>
+<h2 id="receiving-a-message">接收消息</h2>
+<p>消息到达时，电台显示带发送者和开头几个词的横幅 8 秒。横幅显示期间按 <strong>#</strong> 打开消息。除非关闭<strong>设置 &gt; 声音 &gt; 消息提示音</strong>，电台会随横幅播放短促的三音提示。有振动马达的电台还会振动两次，除非关闭<strong>设置 &gt; 声音 &gt; 振动</strong>。呼叫提示或发给你的私密呼叫振动一次长振，紧急情况振动四次。</p>
+<img src="../ux/screens/160x120i5/banner_message.png" width="200" alt="消息横幅">
+<p>横幅之后，状态行显示“M”和未读消息数，hub 中“消息”旁显示“1 条新”。</p>
+<h2 id="reading-messages">阅读消息</h2>
+<ol>
+<li>
+<p>按 <strong>OK</strong>、<strong>2</strong>（消息）。最新的在最前。未读消息高亮显示。</p>
+</li>
+<li>
+<p>聚焦消息并按 <strong>OK</strong>。电台显示发送者、到达时间及文本，并把它标记为已读。</p>
+</li>
+<li>
+<p>文本下方：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>行</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>显示全文</td>
+<td>在单独的页面上显示全文。<strong>上</strong>、<strong>下</strong>键滚动，<strong>返回</strong>键返回。仅当文本太长、屏幕以“…”截断时出现</td>
+</tr>
+<tr>
+<td>回复“OK”</td>
+<td>向发送者发送“OK”</td>
+</tr>
+<tr>
+<td>回复“在路上”</td>
+<td>向发送者发送“在路上”</td>
+</tr>
+<tr>
+<td>呼叫</td>
+<td>临时把发送者设为通话目标</td>
+</tr>
+<tr>
+<td>删除</td>
+<td>删除消息。无法撤销</td>
+</tr>
+</tbody>
+</table></div>
+</li>
+</ol>
+<p>在消息上按 <strong>#</strong> 打开其发送者的操作。在打开的消息中按 <strong>PTT</strong> 呼叫发送者。</p>
+<img src="../ux/screens/160x120i5/messages.png" width="200" alt="消息">
+<img src="../ux/screens/160x120i5/message_view.png" width="200" alt="一条消息">
+<img src="../ux/screens/160x120i5/message_long.png" width="200" alt="长消息：显示全文">
+<img src="../ux/screens/160x120i5/message_read.png" width="200" alt="">
+<p>电台在内存中保留最近收到的 4 条消息。关机后丢失。</p>
+<h2 id="sending-a-message">发送消息</h2>
+<ol>
+<li>打开该人或通话组的操作。在主屏幕按 <strong>#</strong> 处理最近呼叫者，或在联系人上按 <strong>#</strong>。</li>
+<li>按 <strong>3</strong>（消息）。</li>
+<li>选择文本（“OK”“在路上”“给我回电”或“现在不方便通话”）。按 <strong>OK</strong> 发送。文本按电台语言发送（设置 &gt; 显示 &gt; 语言）。</li>
+</ol>
+<img src="../ux/screens/160x120i5/compose.png" width="200" alt="消息编辑">
+<p>电台显示“正在发送至……”并返回主屏幕。发给个人的消息会请求确认。没有确认时，电台会以各种格式重试。结果以横幅显示：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>横幅</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“已送达……”</td>
+<td>对方的电台确认了消息</td>
+</tr>
+<tr>
+<td>“……无应答”，并有“未送达：请重发”</td>
+<td>没有收到确认。消息不会保留待重试。请从操作中重发</td>
+</tr>
+<tr>
+<td>“已发送至……”</td>
+<td>发往通话组的消息已发出。通话组消息没有确认</td>
+</tr>
+</tbody>
+</table></div>
+<p>关闭确认式 IP 数据后（<code>tools/rfoundry_debug.py data ip-settings auto off</code>），发给个人的 ETSI 消息也只发送一次，并显示“已发送至”。</p>
+<p>自行输入文本尚未构建。“编写……”为灰色。你发送的消息不会存储在电台中。</p>
+<h2 id="sending-over-aprs">消息格式</h2>
+<p><strong>设置 &gt; 连接 &gt; 消息格式</strong>选择你发送消息所用的格式。无论该设置如何，电台都能读取三种格式。回复会使用其所回复消息的格式。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>格式</th>
+<th>适用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ETSI（默认）</td>
+<td>标准 <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> 文本消息（ETSI IP 文本）。设为“DMR 标准”文本的电台和调度软件可读取。发往个人会确认送达</td>
+</tr>
+<tr>
+<td>ETSI 短</td>
+<td>只显示 ETSI 短数据消息的电台。会确认送达</td>
+</tr>
+<tr>
+<td>Motorola</td>
+<td>设为 Motorola 文本消息（<abbr class="gl" tabindex="0" title="Text message service: Motorola&#x27;s text message format on DMR. The standard&#x27;s own short data uses other formats." data-more="22-glossary.html#t-tms">TMS</abbr>）的 <abbr class="gl" tabindex="0" title="Motorola&#x27;s DMR product line. Its extensions (ARS, TMS, LRRP, Capacity Plus) are not in the ETSI standard." data-more="22-glossary.html#t-mototrbo">MOTOTRBO</abbr> 电台和调度软件。会确认送达。在不支持 Motorola TMS 的构建中不可用</td>
+</tr>
+</tbody>
+</table></div>
+<p>如果你的电台在 ETSI 成为默认之前设置过并保存了数据设置，它会继续发送 Motorola 消息，直到你更改设置。</p>
+<h2 id="message-formats">呼叫提示</h2>
+<p>呼叫提示会寻呼另一台电台。即使对方没有收听你的通话组，它也会在那里响铃。</p>
+<ol>
+<li>打开该人的操作（主屏幕按 <strong>#</strong>，或在联系人上按 <strong>#</strong>）。</li>
+<li>按 <strong>5</strong>（呼叫提示）。电台显示“呼叫提示至……”并返回主屏幕。</li>
+<li>电台最多尝试 3 次。结果以横幅显示：“……应答了提示”或“……无应答”。</li>
+</ol>
+<p>有人向你发送呼叫提示时，电台显示“来自……的呼叫提示”，并提示“PTT 回复”。横幅显示期间按 <strong>#</strong> 打开呼叫者的操作。除非关闭<strong>设置 &gt; 连接 &gt; 应答呼叫提示</strong>，你的电台会确认该提示。</p>
+<img src="../ux/screens/160x120i5/banner_call_alert.png" width="200" alt="呼叫提示横幅">
+<h2 id="call-alert">电台检查</h2>
+<p>电台检查要求另一台电台应答，无需对方操作。它显示该电台是否开机并在范围内。</p>
+<ol>
+<li>打开该人的操作。</li>
+<li>按 <strong>4</strong>（电台检查）。电台显示“正在检查……”。</li>
+<li>电台最多尝试 3 次。结果以横幅显示。“……已应答（0.8 秒）”给出往返时间。“……：无应答”附有“关机、超出范围或在别处”。</li>
+</ol>
+<p>在<strong>设置 &gt; 连接 &gt; 应答电台检查</strong>开启时（默认），你的电台会应答他人的电台检查。应答是电台在你未按 PTT 时进行的短发射；如果不希望如此，请关闭该设置。</p>
+<img src="../ux/screens/160x120i5/banner_radio_check.png" width="200" alt="电台检查结果">
+<h2 id="radio-check">注册（ARS）与位置（LRRP）</h2>
+<p><abbr class="gl" tabindex="0" title="Automatic Registration Service: a radio tells a presence server it is on the air." data-more="22-glossary.html#t-ars">ARS</abbr> 在开机时和切换信道后向在线状态服务器注册。设置服务器 ID 之前处于关闭状态。尚无菜单项。开发者通过调试链路设置。</p>
+<p><abbr class="gl" tabindex="0" title="Location Request and Response Protocol: a dispatcher asks a radio for its position. Motorola&#x27;s position format; the standard has LIP." data-more="22-glossary.html#t-lrrp">LRRP</abbr> 应答调度员的位置请求。没有 GPS 的电台（<a href="23-radios.html">电台参考</a>）回答“无定位”。<strong>设置 &gt; 位置 &gt; 应答 GPS 请求</strong>可关闭应答。</p>
+
+		<nav class="prev-next"><a class="prev" href="09-dmr.html">DMR</a><a class="next" href="11-emergency.html">紧急</a></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/user/10-messages-and-signaling.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#receiving-a-message">接收消息</a></li><li class="l2"><a href="#reading-messages">阅读消息</a></li><li class="l2"><a href="#sending-a-message">发送消息</a></li><li class="l2"><a href="#sending-over-aprs">消息格式</a></li><li class="l2"><a href="#message-formats">呼叫提示</a></li><li class="l2"><a href="#call-alert">电台检查</a></li><li class="l2"><a href="#radio-check">注册（ARS）与位置（LRRP）</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

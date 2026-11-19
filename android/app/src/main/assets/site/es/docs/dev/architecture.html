@@ -1,0 +1,340 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Architecture · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Architecture · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/docs/dev/architecture.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/dev/architecture.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/dev/architecture.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/dev/architecture.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/dev/architecture.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/dev/architecture.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../es/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../../es/radios/index.html">Radios</a><a href="../../../es/features/index.html">Funciones</a><a href="../../../es/flash/index.html">Instalar</a><a href="../../../es/codeplug/index.html">Codeplug</a><a href="../../../es/docs/index.html" aria-current="page">Documentación</a><a href="../../../es/screenshots/index.html">Capturas</a><a href="../../../es/tools/index.html">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../../docs/dev/architecture.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/dev/architecture.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/dev/architecture.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/dev/architecture.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Guía del desarrollador">
+		<p class="eyebrow"><a href="../../../es/docs/index.html">Documentación</a> / Guía del desarrollador</p>
+		<ul><li><a href="index.html">Developer Documentation</a></li><li><a href="adding-a-mode.html">Adding a Mode</a></li><li><a href="adding-a-radio.html">Adding a Radio</a></li><li><a href="architecture.html" aria-current="page">Architecture</a></li><li><a href="board-registry.html">The Board Registry</a></li><li><a href="building.html">Building</a></li><li><a href="ci-runners.html">CI Runners and Images</a></li><li><a href="ci.html">Continuous Integration</a></li><li><a href="codec.html">The Codec</a></li><li><a href="codeplug-editor.html">The Codeplug Editor</a></li><li><a href="contributing.html">Contributing</a></li><li><a href="cps-and-codeplug.html">CPS, Codeplug and Settings</a></li><li><a href="debug-link.html">Debug Link</a></li><li><a href="glossary.html">Developer glossary</a></li><li><a href="manual-pdf.html">The User Manual PDF</a></li><li><a href="release.html">Releases</a></li><li><a href="stack-check.html">Stack Check</a></li><li><a href="testing.html">Testing</a></li><li><a href="translating.html">Translating</a></li><li><a href="web-flasher.html">The Web Flasher</a></li><li><a href="website.html">The Web Site</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Esta página aún no está traducida; se muestra en inglés.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="architecture">Architecture</h1>
+<p>One radio-independent core runs on every radio. Each radio adds a board directory that describes it and drives its
+chips. The core never includes a board or platform header and never tests a radio define: what differs by radio
+reaches it at run time through the board descriptor, <code>board_t</code> in <a href="https://github.com/radiofoundry/radiofoundry/blob/main/hal/board.h">hal/board.h</a>.</p>
+<h2 id="layers">Layers</h2>
+<pre><code> core/        DMR stack, radio core, UI, codeplug, settings, storage, hotspot, host link, CPS, debug link,
+              APRS, IP services (TCP, HTTP, mDNS, TFTP, SNMP)
+   |  calls only hal/*.h and board.&lt;field&gt;
+ hal/         interfaces: board_t, radio, DMR modem, audio, vocoder, display, input, flash, power, stream, netif,
+              system, AFSK, broadcast receiver
+   |  implemented by
+ boards/&lt;b&gt;/  the radio: board_t, pins, key map, how its build differs from the platform's, codec hosting, chip glue;
+              radios of one board design share it in a family directory (adding-a-radio.md)
+   |  uses
+ drivers/     chips shared by several radios: AT1846S, BK4819, FD6818, SKY72310, HR_C6000, HR_C7000, ST7735, ST7789,
+              RDA5807M, SPI NOR, key matrix, encoder, NMEA GPS, USB; and the math they share (mic level, battery)
+ platform/&lt;p&gt;/ the SoC: start-up, clocks, interrupts, time base, FreeRTOS port glue, and the build defaults its
+              boards share (stm32f4, hrc7000)
+ third_party/ FreeRTOS, TinyUSB, ST HAL and CMSIS (submodules, permissive licenses)
+</code></pre>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>core/</code></td>
+<td>Portable C. Tests every radio difference through <code>board</code> (bands, power levels, display geometry and insets, key map, optional hooks that may be NULL). Host tests compile it unchanged</td>
+</tr>
+<tr>
+<td><code>hal/</code></td>
+<td>Headers only: structs of function pointers and the data types between core and board</td>
+</tr>
+<tr>
+<td><code>drivers/</code></td>
+<td>One chip each, no knowledge of the radio it sits in beyond what its init call is given. Also header-only helpers the boards share, such as <code>audio/miclevel</code> (the <abbr class="gl" tabindex="0" title="Voice-operated transmit." data-more="../user/22-glossary.html#t-vox">VOX</abbr> level) and <code>power/battery</code> (the battery average and charge estimate)</td>
+</tr>
+<tr>
+<td><code>boards/</code></td>
+<td>The only place that knows the radio. Fills in <code>board_t</code>; maps physical keys to logical actions</td>
+</tr>
+<tr>
+<td><code>platform/</code></td>
+<td>The <abbr class="gl" tabindex="0" title="System on chip: the processor and its on-chip peripherals." data-more="glossary.html#t-soc">SoC</abbr>, shared by every radio on it (the <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="glossary.html#t-stm32">STM32F405</abbr> radios share <code>platform/stm32f4</code>), and in subdirectories the glue for a chip on that SoC that several radios share (<code>platform/stm32f4/hrc</code>, <code>gps_uart</code>, <code>spi_flash</code>, <code>fsmc_keypad</code>), built for the boards that list it in <code>BOARD_DIRS</code>. Also the build defaults: <code>platform.mk</code> (compiler, part defines, <abbr class="gl" tabindex="0" title="Hardware abstraction layer: the interfaces the core uses instead of touching a chip." data-more="architecture.html">HAL</abbr> modules), <code>config.mk</code> (feature defaults), <code>common.ld</code> (the memory layout), <code>FreeRTOSConfig.h</code>. A board's files list only how it differs</td>
+</tr>
+</tbody>
+</table></div>
+<p>Besides <code>board_t</code>, every board provides three functions (<code>hal/board.h</code>): <code>board_early_init</code> (pins and clocks before
+the <abbr class="gl" tabindex="0" title="Real-time operating system: the scheduler that runs the firmware&#x27;s tasks." data-more="glossary.html#t-rtos">RTOS</abbr>), <code>board_init</code> (from the first task) and <code>board_rf_safe</code> (transmitter off with register writes only). The
+platform calls <code>board_rf_safe</code> first in <code>main()</code>, in its fault handlers and before every software reset or jump out
+of the application; the crash capture in <code>core/crash</code> calls it too. It must work with interrupts off, without the
+RTOS and before the clocks are set up (<a href="../spec/crash-log.html">crash-log.md</a> 8).</p>
+<p><abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> chip drivers share three interfaces in <code>drivers/rf</code>:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Interface</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rfbus</code></td>
+<td>A chip's register bus: write, read, a millisecond wait and a write count. <code>rfbus_3w_t</code> is the bit-banged 3-wire bus; a board fills its pin functions. A driver takes an <code>rfbus_t *</code> and never touches pins</td>
+</tr>
+<tr>
+<td><code>subaudio</code></td>
+<td>The <abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-ctcss">CTCSS</abbr>, tone and <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-dcs">DCS</abbr> words every chip family uses, rounded or truncated as the caller needs</td>
+</tr>
+<tr>
+<td><code>superhet</code></td>
+<td>The two roles of a superheterodyne: main transceiver and LO, as tables of ops. A driver that can fill a role exports its ops; the board detects its chips, binds each to its ops and calls only those. Steps that depend on the board (band pins, calibration lookups) stay in the board</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="tasks">Tasks</h2>
+<p>FreeRTOS tasks, created by <a href="https://github.com/radiofoundry/radiofoundry/blob/main/core/app/app.c">core/app/app.c</a> (its header comment has the priorities and stack
+sizes):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Owner</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>start / housekeeping</td>
+<td><code>core/app</code></td>
+<td>Start-up, then the power switch poll, settings saves and <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="cps-and-codeplug.html">codeplug</abbr> writes (storage jobs)</td>
+</tr>
+<tr>
+<td>radio</td>
+<td><code>core/radio</code></td>
+<td>The radio state machine: requests, status poll, squelch, PTT, time-out, the <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> call stack tick, the data service</td>
+</tr>
+<tr>
+<td>dmr</td>
+<td>board</td>
+<td>Modem events to the DMR call stack or the <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr></td>
+</tr>
+<tr>
+<td>audio</td>
+<td>board</td>
+<td><abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="glossary.html#t-pcm">PCM</abbr> blocks; the <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="codec.html">vocoder</abbr> runs here</td>
+</tr>
+<tr>
+<td>input</td>
+<td><code>core/input</code></td>
+<td>Key scan, gestures; PTT and monitor go straight to the radio core</td>
+</tr>
+<tr>
+<td>host</td>
+<td><code>core/hostlink</code></td>
+<td>The host port: <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="../spec/mmdvm-protocol.html">MMDVM</abbr> hotspot, <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> shim, <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="debug-link.html">debug link</abbr>; in network mode the IP gateway and the radio's own services (<code>core/net</code>, <code>core/snmp</code>)</td>
+</tr>
+<tr>
+<td>usb</td>
+<td><code>drivers/usb</code></td>
+<td>TinyUSB device stack</td>
+</tr>
+<tr>
+<td>ui</td>
+<td><code>core/ui</code></td>
+<td>Frame pacing, drawing, the UI's behavior</td>
+</tr>
+<tr>
+<td>gps</td>
+<td>board</td>
+<td><abbr class="gl" tabindex="0" title="The text format GPS receivers use to report position and time." data-more="../user/22-glossary.html#t-nmea">NMEA</abbr> from the GPS module, on radios that have one</td>
+</tr>
+</tbody>
+</table></div>
+<p>Other tasks talk to the radio core through requests (<code>radio_req_*</code>, queued, never waiting) and read a copy of its
+state (<code>radio_view_t</code>). The UI never calls the <abbr class="gl" tabindex="0" title="Real-time operating system: the scheduler that runs the firmware&#x27;s tasks." data-more="glossary.html#t-rtos">RTOS</abbr> from its behavior code, so the host simulator runs it unchanged.</p>
+<h2 id="the-core-by-directory">The core, by directory</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Directory</th>
+<th>Spec</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>core/radio</code></td>
+<td><a href="../spec/radio-features.html">radio-features</a>, <a href="../spec/dmr-roaming.html">dmr-roaming</a>, <a href="../spec/airband-and-broadcast.html">airband-and-broadcast</a></td>
+<td>The radio state machine (<code>radio_sm.c</code>), its task, scan, beeps, battery, Morse, roaming, air band and broadcast <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr></td>
+</tr>
+<tr>
+<td><code>core/dmr/call</code></td>
+<td><a href="../spec/dmr-voice.html">dmr-voice</a>, <a href="../spec/dmr-modem.html">dmr-modem</a></td>
+<td>The <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> call stack: <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk targets</abbr>, filters, late entry, <abbr class="gl" tabindex="0" title="A short text, usually a callsign and name, sent along with DMR voice." data-more="../user/22-glossary.html#t-talker-alias">talker alias</abbr></td>
+</tr>
+<tr>
+<td><code>core/dmr/fec</code>, <code>core/dmr/ambe</code></td>
+<td><a href="../spec/dmr-modem.html">dmr-modem</a></td>
+<td><abbr class="gl" tabindex="0" title="European Telecommunications Standards Institute, which publishes the DMR standard." data-more="glossary.html#t-etsi">ETSI</abbr> <abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="glossary.html#t-fec">FEC</abbr>, <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="codec.html">AMBE</abbr> frame FEC and the voice path around the codec</td>
+</tr>
+<tr>
+<td><code>core/dmr/*.c</code></td>
+<td><a href="../spec/dmr-data.html">dmr-data</a>, <a href="../spec/dmr-emergency.html">dmr-emergency</a>, <a href="../spec/sfr.html">sfr</a>, <a href="../spec/usb-network.html">usb-network</a></td>
+<td>Data service (<abbr class="gl" tabindex="0" title="Short message service: text messages. On DMR, short data carries them." data-more="../user/22-glossary.html#t-sms">SMS</abbr>, <abbr class="gl" tabindex="0" title="Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control." data-more="../spec/dmr-data.html">CSBK</abbr> signaling, <abbr class="gl" tabindex="0" title="Automatic Registration Service: a radio tells a presence server it is on the air." data-more="../user/22-glossary.html#t-ars">ARS</abbr>, <abbr class="gl" tabindex="0" title="Location Request and Response Protocol: a dispatcher asks a radio for its position. Motorola&#x27;s position format; the standard has LIP." data-more="../user/22-glossary.html#t-lrrp">LRRP</abbr>, <abbr class="gl" tabindex="0" title="DMR packet data the receiving radio acknowledges. What didn&#x27;t arrive is sent again." data-more="../user/22-glossary.html#t-confirmed-data">confirmed data</abbr>, <abbr class="gl" tabindex="0" title="Service access point: the field in a DMR data header that says what the payload is (IP, short data, GPS and so on)." data-more="glossary.html#t-sap">SAP</abbr> 3 compression), emergency, privacy, <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="../spec/sfr.html">SFR</abbr>, IP gateway</td>
+</tr>
+<tr>
+<td><code>core/hotspot</code></td>
+<td><a href="../spec/mmdvm-protocol.html">mmdvm-protocol</a>, <a href="../spec/split-duplex.html">split-duplex</a></td>
+<td><abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="../spec/mmdvm-protocol.html">MMDVM</abbr> modem protocol, the <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr>, MMDVM SFR and the <abbr class="gl" tabindex="0" title="Transmitting on one frequency and receiving on another at the same time. Repeaters do, and so does the duplex hotspot setup." data-more="../spec/split-duplex.html">split duplex</abbr> repeater</td>
+</tr>
+<tr>
+<td><code>core/net</code></td>
+<td><a href="../spec/tcp-services.html">tcp-services</a>, <a href="../spec/mdns.html">mdns</a>, <a href="../spec/tftp.html">tftp</a></td>
+<td>The minimal <abbr class="gl" tabindex="0" title="Transmission Control Protocol: IP connections with ordered, guaranteed delivery." data-more="glossary.html#t-tcp">TCP</abbr> and the radio's services on the USB network link: <abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="../user/22-glossary.html#t-kiss">KISS</abbr>, HTTP, <abbr class="gl" tabindex="0" title="Hamlib&#x27;s network rig control protocol, used by loggers and SDR programs." data-more="../user/22-glossary.html#t-rigctld">rigctld</abbr>, APRS-IS, <abbr class="gl" tabindex="0" title="Multicast DNS: finding a device on a local network by a `.local` name." data-more="../spec/mdns.html">mDNS</abbr>, <abbr class="gl" tabindex="0" title="Trivial File Transfer Protocol: a minimal way to copy files to and from a device." data-more="../spec/tftp.html">TFTP</abbr></td>
+</tr>
+<tr>
+<td><code>core/snmp</code></td>
+<td><a href="../spec/snmp.html">snmp</a></td>
+<td>SNMPv2c agent, the RadioFoundry MIB, notifications</td>
+</tr>
+<tr>
+<td><code>core/aprs</code></td>
+<td><a href="../spec/aprs.html">aprs</a></td>
+<td>The <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> engine and its two backends: AX.25 / <abbr class="gl" tabindex="0" title="Audio frequency shift keying: data as two audio tones on an FM carrier. APRS at 1200 baud uses it." data-more="glossary.html#t-afsk">AFSK</abbr> (beacons, messages, KISS <abbr class="gl" tabindex="0" title="Terminal node controller: the modem that turns packet data into audio tones and back." data-more="glossary.html#t-tnc">TNC</abbr>, <abbr class="gl" tabindex="0" title="A station that passes APRS packets between the air and the APRS-IS internet network." data-more="../user/22-glossary.html#t-igate">iGate</abbr> rules) and positions over DMR</td>
+</tr>
+<tr>
+<td><code>core/position</code></td>
+<td><a href="../spec/position.html">position</a></td>
+<td>Where the radio is (board GPS, host <abbr class="gl" tabindex="0" title="The text format GPS receivers use to report position and time." data-more="../user/22-glossary.html#t-nmea">NMEA</abbr>, fixed position) for DMR GPS Info, LRRP and APRS; NMEA parsing</td>
+</tr>
+<tr>
+<td><code>core/usbaudio</code></td>
+<td><a href="../spec/usb-audio.html">usb-audio</a></td>
+<td><abbr class="gl" tabindex="0" title="The UDP stream that carries a call&#x27;s audio between RadioFoundry and a network gateway." data-more="glossary.html#t-usrp">USRP</abbr> and the jitter buffer (host tested, not in an image yet)</td>
+</tr>
+<tr>
+<td><code>core/hostlink</code></td>
+<td><a href="../spec/cps-protocol.html">cps-protocol</a> 1</td>
+<td>Dispatch of the host port by first byte; the USB network side</td>
+</tr>
+<tr>
+<td><code>core/cps</code></td>
+<td><a href="../spec/cps-protocol.html">cps-protocol</a></td>
+<td>The open-firmware <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> shim</td>
+</tr>
+<tr>
+<td><code>core/codeplug</code></td>
+<td><a href="../spec/open-firmware-cps.html">open-firmware-cps</a>, <a href="../spec/codeplug-native.html">codeplug-native</a></td>
+<td><abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="cps-and-codeplug.html">Codeplug</abbr> reading and editing, the <abbr class="gl" tabindex="0" title="The number that identifies your radio on DMR. Amateur IDs come from RadioID.net." data-more="../user/22-glossary.html#t-dmr-id">DMR ID</abbr> database</td>
+</tr>
+<tr>
+<td><code>core/settings</code>, <code>core/storage</code></td>
+<td><a href="../spec/settings-store.html">settings-store</a></td>
+<td>The settings ring, the sector journal, the foreign region guard</td>
+</tr>
+<tr>
+<td><code>core/ui</code></td>
+<td><a href="../spec/ui.html">ui</a>, <a href="https://github.com/radiofoundry/radiofoundry/tree/main/docs/ux">docs/ux</a></td>
+<td>Drawing, screens, navigation, Find, the services the UI calls</td>
+</tr>
+<tr>
+<td><code>core/input</code></td>
+<td><a href="../spec/ui.html">ui</a> 3</td>
+<td>Gesture engine (press, long, repeat), injected keys</td>
+</tr>
+<tr>
+<td><code>core/debuglink</code></td>
+<td><a href="../spec/debuglink.html">debuglink</a></td>
+<td>The debug protocol and its view sections</td>
+</tr>
+<tr>
+<td><code>core/app</code></td>
+<td></td>
+<td>Start-up and housekeeping</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="the-uis-seams">The UI's seams</h2>
+<p>The UI asks for data other packages own through <code>core/ui/ui_svc.h</code>. Each call has a weak &quot;not in this build&quot; <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="glossary.html#t-stub">stub</abbr> in
+<code>ui_svc_stub.c</code>; the owning package's strong definition replaces it at link time. A screen whose feature is missing is
+dimmed and says why. See <a href="../spec/ui.html">ui.md</a> section 4.</p>
+<h2 id="build-switches">Build switches</h2>
+<p>Features that cost flash sit behind <code>CONFIG_</code> switches (<code>config/features.mk</code>, <code>core/config.h</code>). Code tests them with
+<code>#if CONFIG_X</code>; whole directories drop out in the Makefile. See <a href="building.html">Building</a>.</p>
+<h2 id="gotchas">Gotchas</h2>
+<p><a href="../spec/gotchas.html">docs/spec/gotchas.md</a> collects the lessons from earlier firmware work, by subsystem: modem
+timing, <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> buffering, data retries, storage. Read the section for the subsystem you touch.</p>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/dev/architecture.md">Ver el código fuente de esta página</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="En esta página">
+		<p class="eyebrow">En esta página</p>
+		<ul><li class="l2"><a href="#layers">Layers</a></li><li class="l2"><a href="#tasks">Tasks</a></li><li class="l2"><a href="#the-core-by-directory">The core, by directory</a></li><li class="l2"><a href="#the-uis-seams">The UI&#x27;s seams</a></li><li class="l2"><a href="#build-switches">Build switches</a></li><li class="l2"><a href="#gotchas">Gotchas</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

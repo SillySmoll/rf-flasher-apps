@@ -1,0 +1,1743 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="it" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Web Flasher · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="The Web Flasher · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:url" content="https://radiofoundry.org/it/docs/dev/web-flasher.html">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Le radio su cui gira RadioFoundry, ognuna con una schermata diversa.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/dev/web-flasher.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/dev/web-flasher.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/dev/web-flasher.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/dev/web-flasher.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/dev/web-flasher.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../it/" data-gl-more="Altro">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../it/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principale"><a href="../../../it/radios/index.html">Radio</a><a href="../../../it/features/index.html">Funzioni</a><a href="../../../it/flash/index.html">Installa</a><a href="../../../it/codeplug/index.html">Codeplug</a><a href="../../../it/docs/index.html" aria-current="page">Documenti</a><a href="../../../it/screenshots/index.html">Schermate</a><a href="../../../it/tools/index.html">Strumenti</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Lingua" title="Lingua">IT</summary><nav aria-label="Lingua"><a href="../../../docs/dev/web-flasher.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/dev/web-flasher.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/dev/web-flasher.html" aria-current="true" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/dev/web-flasher.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Passa da chiaro a scuro" title="Passa da chiaro a scuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Guida per sviluppatori">
+		<p class="eyebrow"><a href="../../../it/docs/index.html">Documentazione</a> / Guida per sviluppatori</p>
+		<ul><li><a href="index.html">Developer Documentation</a></li><li><a href="adding-a-mode.html">Adding a Mode</a></li><li><a href="adding-a-radio.html">Adding a Radio</a></li><li><a href="architecture.html">Architecture</a></li><li><a href="board-registry.html">The Board Registry</a></li><li><a href="building.html">Building</a></li><li><a href="ci-runners.html">CI Runners and Images</a></li><li><a href="ci.html">Continuous Integration</a></li><li><a href="codec.html">The Codec</a></li><li><a href="codeplug-editor.html">The Codeplug Editor</a></li><li><a href="contributing.html">Contributing</a></li><li><a href="cps-and-codeplug.html">CPS, Codeplug and Settings</a></li><li><a href="debug-link.html">Debug Link</a></li><li><a href="glossary.html">Developer glossary</a></li><li><a href="manual-pdf.html">The User Manual PDF</a></li><li><a href="release.html">Releases</a></li><li><a href="stack-check.html">Stack Check</a></li><li><a href="testing.html">Testing</a></li><li><a href="translating.html">Translating</a></li><li><a href="web-flasher.html" aria-current="page">The Web Flasher</a></li><li><a href="website.html">The Web Site</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Questa pagina non è ancora tradotta; è mostrata in inglese.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="the-web-flasher">The Web Flasher</h1>
+<p>The browser tool that backs up, installs, updates and restores a radio, from <code>site/static/js/flasher/</code>. For users it is the
+recommended way to install RadioFoundry (<a href="../user/02-installing.html">Installing</a>); this page is for people who change it.
+The site that hosts it is described in <a href="website.html">website.md</a>.</p>
+<p>The flasher is plain ES modules. The logic ports rfoundry, and the tests check the two agree:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Does</th>
+<th>Ported from</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>stockfw.js</code></td>
+<td>Stock file container, decryption, codec extraction, key derivation (column vote and runner-up search; the byte-pair refinement some keys need isn't ported)</td>
+<td><code>rfoundry/stockfw.py</code></td>
+</tr>
+<tr>
+<td><code>vendorfile.js</code></td>
+<td>Every vendor file a user picks, on every radio's page (below)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>explain.js</code></td>
+<td>Why a vendor file can't be used, as one of six problems, and what an error report says about the file (below)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>bytes.js</code></td>
+<td>Byte helpers (hex, <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="glossary.html#t-crc">CRC</abbr>, concatenation) shared by the modules</td>
+<td></td>
+</tr>
+<tr>
+<td><code>codecmap.js</code></td>
+<td>Codec maps: which words a relocated codec rewrites (<a href="../spec/codec-placement.html">codec-placement.md</a>)</td>
+<td><code>rfoundry/codecmap.py</code></td>
+</tr>
+<tr>
+<td><code>plan.js</code></td>
+<td>Sector plans: keep, merge, and restore (a whole image put back exactly)</td>
+<td><code>rfoundry/plan.py</code></td>
+</tr>
+<tr>
+<td><code>manifest.js</code></td>
+<td>Release manifest checks</td>
+<td><code>rfoundry/manifest.py</code></td>
+</tr>
+<tr>
+<td><code>decide.js</code></td>
+<td>Keep or merge the codec</td>
+<td><code>rfoundry/cli.py</code> <code>decide_codec</code></td>
+</tr>
+<tr>
+<td><code>dfu.js</code></td>
+<td>The AnyRoad <abbr class="gl" tabindex="0" title="Device Firmware Upgrade: the USB protocol of the radio&#x27;s bootloader." data-more="../user/22-glossary.html#t-dfu">DFU</abbr> bootloader over WebUSB. <code>WebUsbTransport.open</code> refuses the radio switched on normally (<code>normalMode</code>: the board's <code>dfu_layout</code>, else a layout of only the bootloader's sectors) before it claims the interface. <code>run</code> erases and writes in the board's sector order; for a codec move (<code>plan.js</code> <code>vectorLast</code>) the application's first sector is erased first and written last. Every USB call fails after 10 s with no reply (<code>USB_TIMEOUT_MS</code>, a lost connection to the user), so a radio that stops answering can't hold the page</td>
+<td><code>rfoundry/dfu.py</code></td>
+</tr>
+<tr>
+<td><code>codecsave.js</code></td>
+<td>The codec read back from a radio that runs RadioFoundry (where stock keeps it, where the merge placed it, or where an earlier release's layout placed it: <code>codecSegments()</code> moves that copy to the current layout), checked against the profile's hashes, and a copy kept in IndexedDB, one per radio by its chip UID (a move reads the codec again and falls back only to that radio's copy): before every update that erases it, elsewhere once, so an install that can't keep or check the codec (a radio back on stock firmware, in its bootloader, or after an interrupted install) needs no stock file</td>
+<td><code>rfoundry/codecsave.py</code></td>
+</tr>
+<tr>
+<td><code>bootkey.js</code></td>
+<td>The bootloader key from a radio that runs RadioFoundry: the bootloader read over READ_MEM, the block with the key's SHA-256</td>
+<td><code>rfoundry/bootkey.py</code></td>
+</tr>
+<tr>
+<td><code>origbackup.js</code></td>
+<td>The backup before the install through the original firmware's or the bootloader's DFU device, behind an allowlist (below)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>origversion.js</code></td>
+<td>The original firmware's version read before an install, and the hardware option it settles (below)</td>
+<td><code>rfoundry/origversion.py</code></td>
+</tr>
+<tr>
+<td><code>link.js</code></td>
+<td>The <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="debug-link.html">debug link</abbr> and open-firmware <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> reads and writes over Web Serial</td>
+<td><code>rfoundry/debuglink.py</code>, <a href="../spec/open-firmware-cps.html">open-firmware-cps.md</a></td>
+</tr>
+<tr>
+<td><code>backends.js</code></td>
+<td>The radio access backend registry: which steps and views a radio's family uses (below)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>readers.js</code></td>
+<td>Bulk memory readers for backups: the debug link and the <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="glossary.html#t-stm32">STM32F4</abbr> loader (below)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>backup.js</code>, <code>zip.js</code></td>
+<td>Backup bundles</td>
+<td></td>
+</tr>
+<tr>
+<td><code>restore.js</code></td>
+<td>What a bundle can put back, and the plans for it</td>
+<td></td>
+</tr>
+<tr>
+<td><code>select.js</code></td>
+<td>À la carte feature selection with the dependencies, matching prebuilt variants</td>
+<td></td>
+</tr>
+<tr>
+<td><code>update.js</code></td>
+<td>The Update task's build: which build a radio runs (below) and the build its update installs</td>
+<td></td>
+</tr>
+<tr>
+<td><code>codeplug.js</code></td>
+<td><abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="cps-and-codeplug.html">Codeplug</abbr> formats and the converter registry</td>
+<td></td>
+</tr>
+<tr>
+<td><code>migrate.js</code></td>
+<td>The original firmware's channels after an install: a stock codeplug found, converted, written and read back (below)</td>
+<td><code>tools/codeplug_port.py</code></td>
+</tr>
+<tr>
+<td><code>fake.js</code></td>
+<td>A simulated radio: bootloader with a flash model, RadioFoundry's serial port, a synthetic stock file</td>
+<td><code>rfoundry/fakedfu.py</code></td>
+</tr>
+<tr>
+<td><code>stub.js</code>, <code>lz4.js</code></td>
+<td>The <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="glossary.html#t-hr-c7000">HR_C7000</abbr> <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="glossary.html#t-stub">boot stub</abbr>: loaded through the boot <abbr class="gl" tabindex="0" title="Read-only memory: code fixed in the chip." data-more="glossary.html#t-rom">ROM</abbr> or handed over by RadioFoundry, then reads, sector writes and the <abbr class="gl" tabindex="0" title="Light-emitting diode: the radio&#x27;s status light." data-more="../user/22-glossary.html#t-led">LED</abbr></td>
+<td><code>stub/stubtool.py</code></td>
+</tr>
+<tr>
+<td><code>f4stub.js</code></td>
+<td>The STM32F4 loader: handed over by RadioFoundry, the board record (CONFIG) and its echo, then the install in the interlock's order and <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="glossary.html#t-spi">SPI</abbr> flash writes</td>
+<td><code>stub/f4stub.py</code></td>
+</tr>
+<tr>
+<td><code>c7000v1.js</code></td>
+<td>Rebuilds a version 1 codec slot (from before the codec moved) as version 2</td>
+<td></td>
+</tr>
+<tr>
+<td><code>c7000.js</code></td>
+<td>HR_C7000 program flash: what a read holds, the codec found by content, the codec slot, what an install writes</td>
+<td><code>tools/hrc7000_codec.py</code></td>
+</tr>
+<tr>
+<td><code>fakec7000.js</code></td>
+<td>A simulated HR_C7000 radio: boot ROM window, RadioFoundry's debug link (VERSION, 0x1A), the stub, both flash chips and the Baofeng updater (<code>FakeBfLoader</code>)</td>
+<td><code>tools/serial_loader.py</code> <code>FakeBootloader</code></td>
+</tr>
+<tr>
+<td><code>usmart.js</code>, <code>iap.js</code>, <code>bfloader.js</code>, <code>iapui.js</code></td>
+<td>The stock side of an HR_C7000 radio, by protocol: the stub loaded through a stock debug console (USMART, <code>flash.stock_console</code>), the factory update mode write (IAP or the Baofeng updater, <code>flash.update_mode</code>) and their steps</td>
+<td><code>tools/serial_loader.py</code> (<code>bfloader.js</code>)</td>
+</tr>
+<tr>
+<td><code>c7000ui.js</code>, <code>radiotop.js</code></td>
+<td>The HR_C7000 backend: its steps (connect, back up and check, write, check) and the radio picture with its LED</td>
+<td></td>
+</tr>
+<tr>
+<td><code>dom.js</code></td>
+<td>DOM helpers and strings shared by <code>app.js</code> and <code>c7000ui.js</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>app.js</code></td>
+<td>The page: the tasks, the shared steps and the <code>anyroad-dfu</code> backend</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Add <code>#sim=&lt;radio&gt;-stock</code> to the flasher's address to run every step against a simulated radio on its stock firmware,
+<code>#sim=&lt;radio&gt;</code> against one that runs RadioFoundry (an STM32F4 radio updates through the STM32F4 loader, an HR_C7000 radio
+through the loader hand-over). <code>#sim</code> alone is the first radio on stock firmware. The fake comes from the radio's data
+(<code>fakeC7000Options()</code> and <code>c7000Simulation()</code> in <code>fakec7000.js</code>, <code>simulation()</code> in <code>fake.js</code>): a radio with a stock
+console gets one, with its first stock version. <code>#sim=&lt;radio&gt;-romfail</code> is an HR_C7000 radio on stock firmware whose boot
+ROM refuses the load, to practice the factory update mode; <code>#sim=&lt;radio&gt;-slowcable</code> one on a cable too slow for the
+boot ROM's 48 ms window, to check that the page's answer sent ahead gets through; <code>#sim=&lt;radio&gt;-deafcable</code> one on a
+cable that carries the radio's data and none of the page's; a radio with the Baofeng updater enters it when switched on
+with &quot;Hold the Keys and Turn On&quot;.</p>
+<h2 id="the-beta-notice">The beta notice</h2>
+<p>The page opens a dialog (<code>templates/partials/beta_notice.html</code>, opened by <code>beta.js</code>) before anything else: what can
+go wrong, that the radio can always be recovered, where to get help, and common questions folded into accordions
+(testing, damage, channels and settings, fixes, feedback). It shows once per browser session and again once 12 hours
+have passed since it was closed, so a tab left open still sees it (<code>sessionStorage</code> key <code>rfoundry.betaNoticeSeen</code>
+holds the time of the last close, set on any close); where storage is blocked it shows on every visit. The installation count
+in <code>flash.beta.lead</code> is written by hand: total successful installations from the backend's <code>flashes</code> table plus about
+50 development installs, rounded down. Raise it now and then.</p>
+<h2 id="vendor-files">Vendor files</h2>
+<p><code>vendorfile.js</code> opens whatever the user picks, the same way on every radio's page. The input can be:</p>
+<ul>
+<li>a firmware <code>.bin</code>;</li>
+<li>a program flash readout;</li>
+<li>a vendor's zip with updaters, manuals and several builds inside, or a zip inside a zip (three levels at most).</li>
+</ul>
+<p>Files are set aside by their content, never their extension: Windows programs, Office documents, PDFs, text and anything
+under 64 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="glossary.html#t-kb">KB</abbr>. Each remaining file is identified against every radio the flasher knows, the most certain way first:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>How</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>SHA-256 in a codec profile or a C-SKY profile. A file in the known files without a profile goes on to step 2. A file known to hold no codec (<code>stockfw.py</code> <code>NO_CODEC_FILES</code>, such as another firmware project's build) is named and stops here</td>
+<td>the codec (and the key); the key only for a known file without a profile; <code>not-vendor</code> for a file without a codec, with rfoundry's message</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="../user/22-glossary.html#t-tyt">TYT</abbr>/Baofeng container (<code>OutSecurityBin</code>) no profile knows: every known bootloader key is tried, the chosen radio's first. A key that decrypts it names the radio, and the decrypted application is searched for the codec's signature word</td>
+<td>the key; &quot;the codec, no recipe for this build&quot;</td>
+</tr>
+<tr>
+<td>3</td>
+<td>The C-SKY codec search: the codec's own hashes wherever the file or readout holds it (<code>c7000.js</code>)</td>
+<td>the codec; &quot;no recipe&quot; when only the signature matches. The signature is the same on every C-SKY radio, so such a file is credited to no radio and never written back as original firmware</td>
+</tr>
+<tr>
+<td>4</td>
+<td>An <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="glossary.html#t-stm32">STM32</abbr> readout, by the codec windows' hashes (<code>stockfw.fromFlash</code>)</td>
+<td>named, not used: the page asks for the manufacturer's file instead</td>
+</tr>
+<tr>
+<td>5</td>
+<td>A C-SKY radio's whole program flash dump whose bootloader ID string names the chosen radio and whose application area holds code (<code>c7000.js</code> <code>isProgmemDump</code>), with no codec step 3 knows</td>
+<td>kind <code>progmem</code>: a restore source, never a codec source. The restore puts it back as a backup's program memory is (application and codec slot, never the bootloader)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The best file for the chosen radio is used:</p>
+<ol>
+<li>one with the codec;</li>
+<li>then one that gives the key;</li>
+<li>then the first by name.</li>
+</ol>
+<p>The page lists what each file is: used, for another radio, set aside and why. A codec found by its signature alone is
+never taken. Moving the codec needs that build's map, because its calls into the rest of the vendor firmware differ
+per build (<a href="../spec/codec-placement.html">codec-placement.md</a>).</p>
+<h3 id="when-a-file-cant-be-used">When a file can't be used</h3>
+<p><code>explain.js</code> sorts every failure with a vendor file into one problem. <code>stockfw.js</code> <code>StockError</code> and <code>c7000.js</code>
+<code>CodecError</code> carry its code; <code>vendorfile.js</code> marks each file it opened (<code>problem</code> on a file no radio claims, on
+anything set aside).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>When</th>
+<th>The page says to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>other-radio</code></td>
+<td>The file is identified for another radio the flasher knows (its SHA-256, a key that opens it, the codec's hashes). <code>extract()</code> refuses it by name before decrypting it, here and in rfoundry</td>
+<td>pick this radio's file, or open the other radio's page</td>
+</tr>
+<tr>
+<td><code>wrong-key</code></td>
+<td>A vendor container no known bootloader key opens: another model, or a modified build</td>
+<td>pick the manufacturer's file for this radio</td>
+</tr>
+<tr>
+<td><code>not-vendor</code></td>
+<td>No vendor container: a plain image, another firmware project's build, a zip without a firmware file</td>
+<td>pick the manufacturer's file, not another project's</td>
+</tr>
+<tr>
+<td><code>unmapped</code></td>
+<td>This radio's build, but no codec map for it yet: a known build without a profile (kind <code>key</code>), an unknown one whose codec was found (<code>codec-unmapped</code>), or a C-SKY codec no profile describes</td>
+<td>pick one of the supported files, which the notice lists in full (<code>supportedFiles()</code>: a C-SKY radio's profiles with a stock file first, then the files its codec sources name; a source that isn't a file, such as a program flash read, in a sentence of its own), or send the file</td>
+</tr>
+<tr>
+<td><code>dump</code></td>
+<td>A program memory dump of this radio (kind <code>progmem</code>) given to the codec step: a firmware version nobody has mapped yet. It restores, but its codec can't be used in an install</td>
+<td>send it from the notice's button so it can be mapped (<code>progmem-dump</code>), or select a different firmware file: the notice links the board's <code>stock_download</code> when it has one and folds the supported files into an accordion</td>
+</tr>
+<tr>
+<td><code>damaged</code></td>
+<td>A cut-short file or a damaged zip</td>
+<td>download it again</td>
+</tr>
+<tr>
+<td><code>internal</code></td>
+<td>A check that fails after the file was identified: a fault in the page or its data, not the file</td>
+<td>nothing: it has been reported (or report it, without error reports)</td>
+</tr>
+</tbody>
+</table></div>
+<p>For <code>unmapped</code> the notice names the version when the file is known, says when the file's bootloader key still works,
+and lists every supported file (folded above 12). When the install goes on without the file's codec (a kept codec),
+<code>keepNote()</code> picks a second notice on the codec step that says what <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> voice then depends on: the radio's verified
+codec, an unverified one, or none. None also covers a radio on its original firmware when no stock version of that
+radio keeps the codec where RadioFoundry uses it (<code>codec.installed</code> empty).</p>
+<p>Each notice gives what happened, why and what to do. The exact message is under <strong>Technical details</strong> and in the error
+report. The same notices come on the <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="glossary.html#t-hr-c7000">HR_C7000</abbr> pages (<code>c7000ui.js</code> gets <code>problemNotice</code> and <code>failureNotice</code>).</p>
+<p>A radio that doesn't answer the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="debug-link.html">debug link</abbr> probe is told apart by what its port gave (<code>link.js</code> <code>silence()</code>,
+<code>whyNoAnswer()</code>): nothing (<code>silent</code>), debug link frames that weren't the reply (<code>link</code>), or other bytes (<code>other</code>). When
+the first byte is <code>-</code>, the open-firmware <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr>'s refusal (<a href="../spec/open-firmware-cps.html">open-firmware-cps.md</a> 2), the
+page reads the radio info (area 9, section 4) and checks its structure, with a revision or a build date. Only that read
+is sent, never a <code>C</code> control command. A match is <code>openfw</code>: a radio on another open firmware (the OpenGD77 family), or a
+RadioFoundry build with the CPS shim but without the debug link, which answers the same way and can't be told apart in
+general. Right after an install, the done step passes the written build's manifest: when the radio's revision is that
+build's commit, or its feature list leaves out <code>DEBUGLINK</code>, the kind is <code>rfoundry-nodebug</code> and the page says the build
+has no debug link.</p>
+<p>Where the radio answered (<code>openfw</code>, <code>rfoundry-nodebug</code>), the connection worked, so the page gives the next step instead
+of the cable and driver tips: on the &quot;current firmware&quot; step a button that chooses <strong>Another open firmware</strong> (on a
+board <code>openfw.js</code> backs up from, an <code>openfw</code> answer goes straight to that choice with its backup); on the radio, done
+and backup steps one line (<code>connectHelp()</code>).</p>
+<p>The &quot;current firmware&quot; step has four choices (<code>explain.js</code> <code>NOW_CHOICES</code>): RadioFoundry, original firmware, <strong>Another
+open firmware</strong> and <strong>Other / Not sure</strong>. The last two are the same to the install (<code>S.now.kind</code> <code>unknown</code>: the codec
+decision and the steps don't change); <code>S.now.openfw</code> marks the first, for the pressed button and the error report.
+On a board <code>openfw.js</code> supports, <strong>Another open firmware</strong> also offers <strong>Check the Radio</strong> and, once the probe
+recognized the radio (<code>S.now.radioType</code>, <code>git</code>), the backup below. <strong>Other / Not sure</strong> doesn't: its route is the stock
+file.</p>
+<p>The browser's own USB and serial errors (<code>NetworkError</code>, <code>InvalidStateError</code>, a failed <code>fetch</code>) say little. <code>errorText()</code>
+puts what to do in front of them: close the program that holds the port, check the cable, the Windows driver or the
+Linux device permission, reload the page.</p>
+<h3 id="sending-a-file">Sending a file</h3>
+<p>The page offers <strong>Send this file for further analysis</strong> for <code>unmapped</code>, <code>wrong-key</code> and <code>internal</code>, when what was
+picked holds a vendor firmware container: a file with the <code>OutSecurityBin</code> or the C-SKY stock header, 4 MB at most.
+For <code>dump</code> it offers <strong>Send This Firmware to the RadioFoundry Team to Be Mapped</strong> with the program memory dump itself
+(reason <code>progmem-dump</code>): the backend takes a dump by the bootloader ID in its first 48 KB. It
+comes both when the codec can't be taken from the file and when a later step fails on a file identified for this radio
+(placing the codec, restoring). Readouts, other files and a file identified as another radio's are never offered. The
+text asks for the manufacturer's original file only. The file goes to the backend only on the user's click, with:</p>
+<ul>
+<li>its name;</li>
+<li>the radio being flashed;</li>
+<li>what the page found (<code>codec-unmapped</code>, <code>key</code>, <code>key-unknown</code>, <code>unknown-container</code>, or the problem);</li>
+<li>the site version;</li>
+<li>an optional note (it asks where the file came from). For <code>internal</code>, the page's message is added to it.</li>
+</ul>
+<p>The backend (<code>POST /v1/samples</code>, raw body, the rest as query parameters) checks the header (or a dump's bootloader ID)
+and the size itself. It rate-limits per address and per day, caps the total storage, keeps one copy per SHA-256 and never serves a file back.
+Simulations don't offer it.</p>
+<h3 id="what-an-error-report-says-about-the-file">What an error report says about the file</h3>
+<p>Every error report carries <code>vendor_file</code> (<code>vendorContext()</code>) once a vendor file was picked. It never holds the file's
+bytes:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>board</code></td>
+<td>The radio being flashed</td>
+</tr>
+<tr>
+<td><code>picked</code></td>
+<td>What the user chose: name (80 characters at most), size, SHA-256</td>
+</tr>
+<tr>
+<td><code>files</code>, <code>skipped</code></td>
+<td>Each file opened: path, size, SHA-256, the radio it is for, how it was identified, the known name, its problem; each file set aside and why</td>
+</tr>
+<tr>
+<td><code>used</code>, <code>profile</code></td>
+<td>The file the page took, and its codec profile with that profile's radio</td>
+</tr>
+<tr>
+<td><code>key</code></td>
+<td>Where the bootloader key came from: <code>sim</code>, <code>saved</code>, <code>file</code> or <code>radio</code></td>
+</tr>
+<tr>
+<td><code>decision</code></td>
+<td>The codec decision (mode, source) or the task (<code>restore</code>)</td>
+</tr>
+<tr>
+<td><code>problem</code></td>
+<td>The problem, the other radio, the exact message (300 characters at most)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The start page's privacy text says that a report names the stock firmware file, never its contents, and that the
+flash log includes the browser's language setting.</p>
+<h3 id="the-flash-log-and-the-vendor-file">The flash log and the vendor file</h3>
+<p>A use reports its milestones to the flash log, each once: the build request (custom builds), the start, the first
+data on the radio (<code>first_byte</code>), the last (<code>last_byte</code>), the end of the write (<code>result</code>) and the check on the
+&quot;Done&quot; step (<code>verify</code>, with its outcome). <code>flashMark()</code> sends the three data events to
+<code>POST /v1/flashes/{id}/events</code> from each install route's progress callback and from <code>doneView()</code>. A row with
+<code>first_byte</code> and no <code>last_byte</code> is a write that stopped midway. A row with no <code>started</code> is a build nobody wrote.</p>
+<p>The flash log (<code>POST /v1/flashes</code>, <code>PATCH /v1/flashes/{id}</code>) also records which vendor firmware a use involved, so a
+failed install can be traced to a file. Only lengths, SHA-256 hashes and a short id; never bytes (those go only through
+<a href="#sending-a-file">Sending a file</a>, on the user's click):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Fields</th>
+<th>What</th>
+<th>Set</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>stock_len</code>, <code>stock_sha256</code>, <code>stock_id</code></td>
+<td>The vendor file in use (<code>S.stock</code>: the inner file <code>vendorfile.js</code> chose for a zip) and what the page took it for (<code>logId()</code>: <code>codec:&lt;known build&gt;</code>, <code>no-recipe:&lt;board&gt;</code>, <code>key:&lt;board&gt;</code>, <code>problem:&lt;problem&gt;</code>, <code>known:&lt;name&gt;</code>, <code>unknown</code>)</td>
+<td>with the start of the use, when a file was picked by then</td>
+</tr>
+<tr>
+<td><code>readout_len</code>, <code>readout_sha256</code>, <code>readout_id</code></td>
+<td>The internal flash (program memory on the C-SKY radios) read from the radio, and <code>known:&lt;name&gt;</code> or the kind of firmware that was running (<code>noteReadout()</code>)</td>
+<td>with the start when an earlier readout belongs to the use (the backups around an install); with the end for the backup task, which reads after it starts</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>flashStarted()</code> adds the fields known then to the POST and <code>flashFinished()</code> adds them again to the PATCH; the
+backend keeps a field the PATCH leaves out. Opting out (<code>?reporting=0</code>) and simulations send nothing, as for the rest of
+the log. A backend without these columns ignores the extra fields.</p>
+<p>The POST and the build request (<code>POST /v1/builds</code>, when it carries the use's id) also carry <code>languages</code>; the PATCH
+and the events don't. Both requests carry <code>adapter</code>, and the PATCH carries <code>trail</code>:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>languages</code></td>
+<td>The browser's language preferences (<code>navigator.languages</code>, the first 5; else <code>navigator.language</code>), such as <code>[&quot;en-US&quot;, &quot;en&quot;]</code>. The backend keeps at most 10 tags of 35 characters and an older one ignores the field</td>
+</tr>
+<tr>
+<td><code>adapter</code></td>
+<td><code>{vid, pid, chip, product}</code> of the USB device in use (<code>adapter.js</code>). <code>chip</code> from the vendor id: <code>FTDI</code> (0403), <code>CH340</code> (1a86), <code>CP210x</code> (10c4), <code>PL2303</code> (067b), <code>radio USB</code> (the radio's own port), <code>DFU bootloader</code>, else <code>other</code>. <code>product</code> only from WebUSB. Never a serial number</td>
+</tr>
+<tr>
+<td><code>trail</code></td>
+<td>The newest 200 breadcrumbs (<code>diag.trail()</code>, scrubbed, 300 characters each), the oldest dropped to keep the keepalive request under 64 KB</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="breadcrumbs">Breadcrumbs</h3>
+<p><code>diag.note()</code> lines record what the page decided, built in <code>trail.js</code> (names, sizes, hashes and reasons; never bytes):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Line</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>file picked</code></td>
+<td>A vendor file: name, size, SHA-256 prefix, <code>logId()</code>, what it matched, its problem and why (<code>whyNot()</code>: also for a pick nothing in which serves, and for the restore's file)</td>
+</tr>
+<tr>
+<td><code>restore bundle</code></td>
+<td>The restore task's input: whether it holds program memory, whether it is a vendor file, the part names</td>
+</tr>
+<tr>
+<td><code>write range</code></td>
+<td>A cable radio's install or restore write: how many sectors, the first and last address written, and whether the bootloader area (read before and after the write) is <code>unchanged</code>, <code>changed</code> (the write then fails) or <code>not checked</code> (also when the write failed part way)</td>
+</tr>
+<tr>
+<td><code>codec search at known addresses</code>, <code>moved codec search</code></td>
+<td>The codec search in an open-firmware read: each stage, the profile and address found, or how many code starts were checked and why the nearest failed</td>
+</tr>
+<tr>
+<td><code>codec decision</code></td>
+<td><code>decideCodec()</code>: mode, source, why; or why none</td>
+</tr>
+<tr>
+<td><code>key</code></td>
+<td>Where the bootloader key came from</td>
+</tr>
+<tr>
+<td><code>write plan</code></td>
+<td>Mode, sectors erased, written (with content), kept, blocks, the codec profile</td>
+</tr>
+<tr>
+<td><code>open firmware backup</code></td>
+<td>The key and codec found in the open-firmware read</td>
+</tr>
+<tr>
+<td><code>verify</code>, <code>verify failed</code></td>
+<td>What the radio reported after the install</td>
+</tr>
+<tr>
+<td><code>cable radio check</code>, <code>cable radio codec decision</code></td>
+<td>The cable radio's read choices and codec decision</td>
+</tr>
+<tr>
+<td><code>no codec confirm</code></td>
+<td>The answer to the dialog Install opens before an install without the codec: <code>go</code>, <code>back</code> or <code>stay</code></td>
+</tr>
+<tr>
+<td><code>adapter</code></td>
+<td>The USB device, once per change</td>
+</tr>
+</tbody>
+</table></div>
+<p>The cable log (<code>logBox()</code>) also goes to the trail, so a boot <abbr class="gl" tabindex="0" title="Read-only memory: code fixed in the chip." data-more="glossary.html#t-rom">ROM</abbr> load that fails leaves the bytes received.</p>
+<p>Every Sentry event carries the newest 40 lines in <code>contexts.rfoundry.trail</code>, the adapter in <code>contexts.rfoundry.adapter</code>
+and the tag <code>adapter_chip</code>.</p>
+<h3 id="report-a-problem">Report a Problem</h3>
+<p><code>report.js</code> <code>reportDialog()</code>. With the backend configured (the flasher), Send posts to the project's backend
+(<code>problemreport.js</code>), not Sentry:</p>
+<ol>
+<li><code>POST /v1/reports</code> with <code>{result, flash_id, tool, tool_version, board, task, step, decisions, trail, error, message, contact, adapter}</code>. <code>result</code> is <code>problem</code> when the install verified and <code>failed</code> otherwise. <code>decisions</code> holds
+<code>codec_mode</code>, <code>codec_source</code>, <code>key_source</code>, <code>plan</code> and <code>files</code> (role, name, length, SHA-256, id). The answer is 201
+with <code>id</code> and an upload <code>token</code>.</li>
+<li>Each checked file: <code>POST /v1/reports/{id}/files?kind=stock|backup|readout&amp;name=&amp;token=</code>, <code>application/octet-stream</code>.
+A refused file (413, 409, 410, 429, ...) is listed under the result. The report still counts.</li>
+</ol>
+<p>The files offered are the vendor file picked, the internal flash read and the last backup the page saved. All are
+checked by default. The message and the email address are optional. The dialog says what is sent and that files and
+the address are deleted within 90 days. It works with <code>?reporting=0</code>, since the user sends it. <code>#sim</code> answers
+locally (<code>practiceFetch</code>) and sends nothing.</p>
+<p>Where it is offered: the button under every failure notice (<code>errorNotice()</code>, <code>problemNotice()</code>), the failed checks of
+the install, cable radio and loader routes, the quiet &quot;Something wrong? Report a Problem&quot; link on Verify, and the nav
+bar under every other step (<code>render()</code>), so a page stuck waiting on the radio, with no error shown, can still send its
+trail. It gives way to another Report a Problem the step shows (the stylesheet hides <code>.nav-report</code>). A report's
+<code>result</code> is the step's verdict (<code>problem</code> from a verify), else <code>failed</code> after an error, else <code>problem</code>. The verdict is
+dropped when the user leaves its step.</p>
+<p>Every failure says what to do next: the message itself, or <code>errorNotice(text, { next })</code> beside it. Where the step can
+run again in place, <code>{ retry }</code> puts Try Again in the notice. Pressing it removes the notice first, so a second
+failure replaces the first instead of stacking under it. A step that shows its result in a status area clears that
+area at the start of each run.</p>
+<h2 id="the-update-task">The Update task</h2>
+<p><strong>Update</strong> reaches a radio that runs RadioFoundry with one port chooser (its USB port and the programming cables),
+probes it, and lets the radio's backend take the connection: the <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="glossary.html#t-stm32">STM32</abbr> radios keep the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="debug-link.html">debug link</abbr> (<code>S.link</code>), the
+<abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="glossary.html#t-hr-c7000">HR_C7000</abbr> radios hand the open cable to their connect step (<code>c7000ui.js</code> <code>adoptCable</code>), which enters the <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="glossary.html#t-stub">stub</abbr> without
+asking for the port again. The steps are <code>update</code>, then the backend's: <code>write</code>, <code>done</code> on the STM32 radios (the loader
+route when it can, the bootloader otherwise), <code>connect</code>, <code>check</code>, <code>write</code>, <code>done</code> on the HR_C7000 radios, whose check
+reads only the codec slot unless the user asked for a backup. <strong>Edit Build</strong> (or a build the radio can't name) puts
+<code>build</code> after <code>update</code>. On the HR_C7000 radios an update that keeps the codec runs from the check to the write without
+another click, once per cable session; a failed write, and the step reached by <strong>Back</strong>, wait for the button.</p>
+<p>Which build runs (<code>update.js</code> <code>currentBuild</code>), from VERSION (<a href="../spec/debuglink.html">debuglink.md</a> 3.1):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Radio says</th>
+<th>Build</th>
+<th>The update</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>preset=</code> a variant, <code>off=</code></td>
+<td>that variant</td>
+<td>the same variant; features it gained since are listed</td>
+</tr>
+<tr>
+<td><code>preset=custom</code>, the build service's record of it a variant's switches</td>
+<td>that variant</td>
+<td>as above</td>
+</tr>
+<tr>
+<td><code>preset=custom</code>, <code>off=</code> equal to a variant's in its release</td>
+<td>that variant</td>
+<td>as above</td>
+</tr>
+<tr>
+<td><code>preset=custom</code>, <code>off=</code></td>
+<td>custom</td>
+<td>every switch as it was; each feature added since is asked, On or Off, before Update. A switch a kept feature now needs comes on with it and is listed. A feature it had on that now needs what the radio can't have is listed with that need (<code>Selection.blockers</code>); the user disables them or edits the build</td>
+</tr>
+<tr>
+<td>neither (older firmware)</td>
+<td>its <code>features=</code> against the variants of its release, by the names <code>features=</code> can carry (<code>features.json</code> <code>reported</code>)</td>
+<td>one exact match: that variant; else the build step, from the closest</td>
+</tr>
+</tbody>
+</table></div>
+<p>An update never moves a radio off its variant, and never changes its start language unless the user picks one. The
+build service sets every switch on the make command line, so its builds said <code>preset=custom</code> until it passed
+<code>RFOUNDRY_PRESET</code>; for those, the page asks the service which build it made (<code>GET /v1/builds/match</code> with the radio's
+board, <code>git=</code> and <code>off=</code>: the largest build at that commit with none of <code>off=</code>). That record gives the build's exact
+switches: the variant they are, the start language aside (<code>sameVariant</code>, the same rule as the service's), and every
+switch the build knew, so one newer than it is asked about, never taken as on.</p>
+<p>The start language is VERSION <code>start=</code>, else the record's start switch. Without either, a start switch that <code>off=</code>
+doesn't name is on only if the build is at least as new as that switch (<code>langsuggest.js</code> <code>START_SINCE</code>). A record that
+an Update asked for, on firmware without <code>start=</code>, may carry a start language that update set by mistake (before this
+rule, every radio updated came up in the newest language): the page asks whether to keep it or start in English
+(<code>START_KEEP</code>), and Update waits for the answer.</p>
+<p>The release a radio's build came from is the one with its commit, else the newest one older than its <code>git_time</code>. What
+that release knew is its variants' features and its manifests' <code>off</code> lists (<code>tools/release.py</code>): a switch in neither
+is new. A release from before manifests carried <code>off</code> names only its variants' features, so a switch a custom build had
+on in no variant reads as new, once.</p>
+<p>A start-language switch (<code>LANG_DEFAULT_&lt;CODE&gt;</code>) is never asked about. One that <code>off=</code> doesn't name is on only when the
+radio's <code>git_time</code> is at or after that switch's merge (<code>START_SINCE</code> in <code>langsuggest.js</code>), with or without releases;
+otherwise it is off and the radio keeps the language it starts in. A new start switch needs its entry there (a host test
+checks it).</p>
+<p>The <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="cps-and-codeplug.html">Codeplug</abbr> Editor's <strong>Update Firmware</strong> opens <code>flash/index.html#update</code> and closes its own connection.</p>
+<h2 id="the-original-firmware-version">The original firmware version</h2>
+<p>A board with <code>[flash.original_version]</code> (<a href="board-registry.html#original-firmware-version">board-registry.md</a>) has a
+hardware option RadioFoundry can't detect but its original firmware's version settles. The install learns it before
+the write and stores it after the first start, so nobody picks it. The web flasher (<code>origversion.js</code>) and rfoundry
+(<code>origversion.py</code>) do the same steps:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Web flasher</th>
+<th>rfoundry <code>flash</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Read</td>
+<td>Current firmware step, under <strong>Original firmware</strong> and <strong>Other / Not sure</strong>: <strong>Read Firmware Version</strong> opens the WebUSB chooser on the bootloader's USB IDs; a device showing <code>interface</code> gets the read, any other (the bootloader) gets nothing. Optional</td>
+<td>Before it asks for the bootloader, when no RadioFoundry answered the probe: reads a device with the bootloader's IDs that is connected and shows <code>interface</code>, or asks to connect the radio switched on normally (<code>--yes</code>: only one already there). <code>--no-version-read</code> skips it</td>
+</tr>
+<tr>
+<td>2. Map</td>
+<td><code>major</code> gives the choice. The bootloader (by its strings, or its 0x54 answer) is told as &quot;in update mode already&quot;; a version not listed or no answer (a stall) is unknown. None of them settles anything, and none is an alarm</td>
+<td>The same, as a <code>version</code> line</td>
+</tr>
+<tr>
+<td>3. Bootloader</td>
+<td><strong>Connect</strong> refuses a device showing <code>interface</code> (and the very WebUSB device that answered): the original firmware has the bootloader's USB IDs</td>
+<td><code>check_bootloader</code> refuses a device showing <code>interface</code>; <code>wait_for_dfu</code> passes over the device that answered (its bus and address) and waits for the bootloader</td>
+</tr>
+<tr>
+<td>4. Store</td>
+<td>After the install, once the check reads the radio: HWOPT LIST, then SET when no choice is stored. A stored choice that differs is shown and kept: a person set it. The notice says &quot;applies the next time the radio is switched on&quot; only when the radio reports <code>restart</code> after the store</td>
+<td>The same, after <code>verify_after</code>'s probe. <code>--no-verify</code> (or no <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="debug-link.html">debug link</abbr>) prints how to set it on the radio instead</td>
+</tr>
+<tr>
+<td>5. Ask</td>
+<td>Then any option the radio still reports as <code>ask</code> (HWOPT <code>state</code>, <a href="../spec/debuglink.html#325-hwopt">debuglink.md</a>): the board can't detect it and nothing above settled it (another open firmware ran before, a version not listed, no read). A warning panel first in the check's result: the radio won't <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> until it is set, a button per choice, and the original firmware versions behind each choice from <code>major</code>. A refused choice (the board found it can't be right) says so and stays on offer; <code>restart</code> after the store says to switch the radio off and on. On the <strong>Another open firmware</strong> path the current-firmware step says ahead that this may come (<code>flash.hwopt.ahead</code>)</td>
+<td><code>hwopt_prompt</code>: the same on a terminal (numbered choices; Enter or no terminal says where to set it on the radio)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Only the requests of the read are sent: GETSTATUS, CLRSTATUS or ABORT to reach dfuIDLE, DNLOAD block 0 <code>A2 02</code>, two
+GETSTATUS, ABORT, UPLOAD block 0 of 1024 bytes. The fakes (<code>fake.js</code> with <code>originalVersion</code>, rfoundry's
+<code>fakedfu.FakeOriginalFirmware</code>) fail on any other request; <code>site/tests/origversion.test.mjs</code> and
+<code>tools/rfoundry/tests/test_origversion.py</code> check the sequence, the parse, the table and the store.</p>
+<h2 id="backup-before-the-install">Backup before the install</h2>
+<p>A board with <code>[flash.original_backup]</code> (<a href="board-registry.html#backup-before-the-install">board-registry.md</a>) is backed up
+before anything is written, through the <abbr class="gl" tabindex="0" title="Device Firmware Upgrade: the USB protocol of the radio&#x27;s bootloader." data-more="../user/22-glossary.html#t-dfu">DFU</abbr> device its original firmware or its bootloader shows (<code>origbackup.js</code>).
+The Current firmware step offers it under <strong>Original firmware</strong> and <strong>Other / Not sure</strong>, above the version read:
+recommended, never required.</p>
+<ol>
+<li><strong>Back Up Now</strong> opens the WebUSB chooser on the bootloader's USB IDs. The interface strings say which device it is
+(<code>deviceKind</code>): the original firmware (<code>original_version.interface</code>), the bootloader (<code>loader_interface</code>), or
+neither (refused, nothing sent).</li>
+<li>The info blocks (<code>info</code>), each a block 0 command <code>A2 ss</code> and an UPLOAD of block 0.</li>
+<li>Before program mode, one snapshot of the internal flash from its start: 65535 bytes, then 32768, 16384, 8192 and
+4096 until the host passes one (Linux stops at 4096). It holds the radio's bootloader.</li>
+<li><strong>Everything</strong> (<code>spi</code>, about 6 minutes) or <strong>Channels and settings only</strong> (<code>quick</code>): program mode (<code>91 01</code>), the
+address set to 0, then 1 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="glossary.html#t-kb">KB</abbr> blocks with a progress bar. <strong>Stop</strong> ends the read early; the part read is kept. The
+bootloader gives <code>loader_spi</code> at most, and the page says a full backup needs the radio switched on normally.</li>
+<li>The original firmware is left with <code>91 05</code>: it restarts and runs normally again. The bootloader stays in program
+mode: the page remembers that USB device, and a write to it starts at <code>91 31</code> (<code>Dfu.run</code> <code>programMode</code>), since the
+bootloader takes <code>91 01</code> once. A power cycle makes a new device and the whole sequence.</li>
+<li>The bundle is a backup bundle (<code>rfoundry-backup/1</code>, below): <code>info/info-&lt;ss&gt;.bin</code> (<code>info-&lt;ss&gt;</code>),
+<code>bootloader-&lt;bytes&gt;.bin</code> (<code>internal-flash-mirror</code>, at 0x08000000), <code>spi-flash.bin</code> or <code>spi-flash-0-&lt;n&gt;MB.bin</code>
+(<code>spi-flash</code>, complete only when it is all of <code>spi</code>). <code>backup.json</code> carries <code>original_backup</code> (the device, the
+version, the bootloader's version, the choice, whether the radio restarted, the browser) and <code>firmware_now</code> /
+<code>firmware_before</code> (<code>stock</code> with the version when the original firmware answered). Named
+<code>&lt;model&gt;_Original_&lt;last 8 UID digits&gt;_&lt;date&gt;.zip</code>. The <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="cps-and-codeplug.html">Codeplug</abbr> Editor's import and the channel conversion read
+<code>spi-flash</code> from it as from any bundle; Restore offers only putting the original firmware back from a file.</li>
+</ol>
+<p><code>Guard</code> is an allowlist in front of the transport: GETSTATUS, CLRSTATUS, ABORT, UPLOAD (1024 bytes, or the one
+snapshot of block 2 before program mode), and DNLOAD block 0 with exactly <code>A2 ss</code>, <code>21</code> + address, <code>91 01</code>, or <code>91 05</code>
+(original firmware only). Anything else throws before it is sent. The fake radio (<code>fake.js</code>) models both devices: the
+mode byte and its gates, the ignored block number of the snapshot, the bootloader's 1 MB, the restart on <code>91 05</code>, a
+host's transfer cap (<code>usbCap</code>), and a list of every request outside the allowlist that reached it (<code>forbidden</code>).
+<code>site/tests/origbackup.test.mjs</code> checks the allowlist, the order, both devices, the bundle, and a write after a
+bootloader backup.</p>
+<p>The bundle holds the radio's calibration and its bootloader. It is saved as a download only: it is not kept for the
+report attachments (<code>S.lastBackup</code>), and the flash log and breadcrumbs get only its size and part count.</p>
+<h2 id="radio-access-backends">Radio access backends</h2>
+<p>A radio's <code>flash.backend</code> in <code>data/radios.json</code> names how the page reaches it (from the board.toml <code>[flash] family</code>,
+<code>tools/boards.py</code> FAMILIES). <code>app.js</code> runs the tasks and the steps every
+radio shares (radio, build, bundle, symptom, recover); the backend supplies the rest. A new way to install or back up
+a radio, such as another bootloader protocol or a stock firmware's own read-back protocol, is a new module that calls
+<code>register()</code> from <code>backends.js</code> and is imported by <code>app.js</code>. The task flow doesn't change.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>What it gives</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>The <code>flash.backend</code> value</td>
+</tr>
+<tr>
+<td><code>available(radio, fb, task)</code></td>
+<td>Whether the page can run <code>install</code> or <code>backup</code> on the radio (grayed out in the radio list otherwise)</td>
+</tr>
+<tr>
+<td><code>steps(task, {recovering})</code></td>
+<td>The task's step ids, or null for the shared default</td>
+</tr>
+<tr>
+<td><code>views</code></td>
+<td>A view function per step the backend owns</td>
+</tr>
+<tr>
+<td><code>stepLabel(step, task)</code></td>
+<td>Optional: the <code>flash.step.*</code> key of a step's name</td>
+</tr>
+<tr>
+<td><code>recovery</code></td>
+<td>The help task: <code>first</code> (<code>updatemode</code> checks the bootloader first, <code>fix</code> goes to the choices), <code>stock</code> (<code>file</code>: stock firmware from the user's stock file; <code>restore</code>: from a backup), <code>reach</code> and <code>stockText</code> (string keys), and optionally <code>extra(radio, fb)</code>: more reinstall choices, each <code>{id, title, text, prepare()}</code> (string keys; <code>prepare</code> runs once the install task is set up)</td>
+</tr>
+<tr>
+<td><code>ownsBundle(bundle)</code></td>
+<td>Optional: a backup bundle this backend restores with its own view</td>
+</tr>
+<tr>
+<td><code>vendorRestore(radio, file, fb)</code></td>
+<td>Optional: a restore bundle from the radio's original firmware file, so the restore task takes that file too</td>
+</tr>
+<tr>
+<td><code>ownImage(fb, board, data)</code></td>
+<td>Optional: a user's own image file, split into the image and anything the backend keeps (a merged codec slot)</td>
+</tr>
+<tr>
+<td><code>release()</code></td>
+<td>Optional: let go of a port or loader still held (Start Over, another radio)</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Backend</th>
+<th>Radios</th>
+<th>Module</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>anyroad-dfu</code></td>
+<td><code>usb-dfu</code> family (<abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="glossary.html#t-stm32">STM32F4</abbr> radios)</td>
+<td><code>app.js</code> (<code>dfu.js</code>, <code>f4stub.js</code>)</td>
+</tr>
+<tr>
+<td><code>c7000-stub</code></td>
+<td><code>serial-loader</code>, <code>serial-iap</code> and <code>boot-rom</code> families (<abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="glossary.html#t-hr-c7000">HR_C7000</abbr> radios)</td>
+<td><code>c7000ui.js</code> (<code>stub.js</code>, <code>c7000.js</code>)</td>
+</tr>
+<tr>
+<td><code>none</code></td>
+<td>any other</td>
+<td>none: the radio is listed but grayed out</td>
+</tr>
+</tbody>
+</table></div>
+<p>A radio without a backend the page knows gets <code>none</code>, so a family can come before its module. The
+contract tests are in <code>site/tests/backends.test.mjs</code>.</p>
+<p>Bulk reads for a backup go through readers (<code>readers.js</code>). <code>backup.js</code> <code>readRadio</code> reads the small parts only the
+<abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="debug-link.html">debug link</abbr> has (radio info, security registers) first. It then tries the readers it is given, in order, and the debug
+link reads the memories when none opens. A reader may also have <code>security()</code>, the security registers or null: the
+STM32F4 loader's SREAD (stub-stm32f4.md 6.2), each register checked against the <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="glossary.html#t-crc">CRC</abbr> the loader sends. A reader has <code>open(progress)</code> (false: not possible now, nothing changed),
+<code>used</code>, <code>read(mem, addr, n)</code> giving <code>{data, complete}</code>, <code>close()</code> and <code>abort()</code>. A new read-back protocol is a reader,
+and the bundle format and the backup step stay as they are.</p>
+<h2 id="backup-bundles-rfoundry-backup1">Backup bundles (<code>rfoundry-backup/1</code>)</h2>
+<p>A zip the user keeps: <code>backup.json</code> (the radio, its chip UID, the firmware when the backup was taken and before RadioFoundry,
+each part's address, size, SHA-256 and whether the read completed), <code>internal-flash.bin</code> (from the application
+base; the bootloader is never read or written), <code>spi-flash.bin</code>, <code>security-registers.bin</code> (the factory calibration),
+<code>radio-info.bin</code>, and <code>stock-firmware.bin</code> when the user gave one.</p>
+<p><code>spi-flash.bin</code> is the radio's own memory chip: <code>backup.spi_size</code>, or less when the radio reports a smaller chip
+(<code>spiBytes</code>: the radio info's flash part id, or the loader's <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="glossary.html#t-spi">SPI</abbr> flash size from HELLO). Some radios of a model came
+with a smaller chip, and a read past its end is refused or wraps around. A backup over another open firmware sizes its
+read the same way (<code>newState</code>). Restoring the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="cps-and-codeplug.html">codeplug</abbr> and opening the backup in the Codeplug Editor need only the
+codeplug's regions (<code>TFTP_SIZE</code>), not the whole open-firmware span.</p>
+<p><code>openBundle()</code> also reads a backup whose files sit in one folder (<code>bundleFolder()</code>): what macOS's Compress makes of a
+backup it unpacked, <code>__MACOSX/</code> ignored. The restore picker and the codeplug editor use the same test.</p>
+<p>The user picks what to read, each with a time estimate: from a short timed read of this radio, or through the loader
+from its measured speeds (stub-stm32f4.md 11) plus the hand-over and the restart:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Choice</th>
+<th>Reads</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Everything</td>
+<td>The internal flash, the whole SPI flash, the security registers</td>
+</tr>
+<tr>
+<td>Firmware and calibration</td>
+<td>The internal flash and the security registers</td>
+</tr>
+<tr>
+<td>Codeplug and calibration</td>
+<td>The codeplug span of the SPI flash (emulated <abbr class="gl" tabindex="0" title="Electrically erasable programmable read-only memory: a small chip that keeps settings." data-more="glossary.html#t-eeprom">EEPROM</abbr> to the end of the open-firmware image) and the security registers</td>
+</tr>
+</tbody>
+</table></div>
+<p>Reads ask for 32 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="glossary.html#t-kb">KB</abbr> at a time. RadioFoundry answers that much (open-firmware-cps.md 2.1); older builds answer 2045 bytes, and
+the reader takes what comes back.</p>
+<p>What can be read depends on the firmware running:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Radio runs</th>
+<th>Read</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RadioFoundry</td>
+<td>Everything, through the <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> reads (areas 1, 5, 9 and 10): the whole SPI flash, the internal flash, the security registers</td>
+</tr>
+<tr>
+<td>RadioFoundry with stub entry (STM32F4)</td>
+<td>The same. The radio info comes over the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="debug-link.html">debug link</abbr>; the internal flash, the SPI flash and the security registers come through the <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="glossary.html#t-stm32">STM32F4</abbr> loader, once it has taken the radio's board record, every 4 KB block checked against the radio's <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="glossary.html#t-crc">CRC</abbr>, and the radio then restarts into RadioFoundry. The codeplug choice stays on the debug link (the hand-over would cost more than it saves). A loader that doesn't start leaves RadioFoundry running, and the debug link reads everything. After a first install the hand-over is the one the build just written offers: Verify asks it (<code>afterOffer</code>), since the probe before the install found the original firmware. A build whose codeplug protocol has no area 10 still gets the security registers, through the loader's SREAD (protocol 5). When both read them and the copies differ, the loader's checked copy is <code>security-registers.bin</code> and the other is kept as <code>security-registers-codeplug-protocol.bin</code>, marked incomplete</td>
+</tr>
+<tr>
+<td>Another open firmware (OpenGD77 family)</td>
+<td>Everything but the security registers, over that firmware's CPS (<code>openfw.js</code>, below)</td>
+</tr>
+<tr>
+<td>Stock (STM32F4)</td>
+<td>Nothing: the bootloader can't read flash (read protection level 1) and the stock firmware's own USB protocol has no spec here. The install therefore backs up right after writing RadioFoundry: flashing never touches the SPI flash, and RadioFoundry doesn't write to a foreign settings region until it is claimed, so the stock codeplug, calibration and resources are still intact</td>
+</tr>
+</tbody>
+</table></div>
+<p>A CPS read the radio doesn't answer is tried up to five times, 0.3, 1, 2 and 3 s apart (<code>link.js</code> <code>cpsRead</code>): a radio
+quiet for a few seconds must not end a backup halfway. A read answered after a retry goes on the trail. Reads a build
+may not answer at all (the radio info and security registers in <code>backup.js</code>, the <code>openfw.js</code> probe) keep 3 tries, and a
+probe asks once.</p>
+<h2 id="channels-after-an-install-migratejs">Channels after an install (<code>migrate.js</code>)</h2>
+<p>A radio installed from its stock firmware still holds the stock <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="cps-and-codeplug.html">codeplug</abbr>, in a layout RadioFoundry does not read. The
+last step of the install brings it over by default, on every radio whose stock codeplug the browser converts. The
+backup panel before it says so (<code>flash.backup.after_channels</code>). With a backup that holds the stock codeplug the step
+writes without asking; without one it asks first:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0. Skip</td>
+<td>An update, a move from another open firmware, a board without a memory chip (<code>backup.spi_size</code> 0), or a backup from this visit that read every stock family's tables and found none (<code>channelsWanted</code>): nothing is read. A radio without a settings region (STORAGE INFO unavailable: a chip too small for the board's flash map) stores no codeplug: the step says so and ends</td>
+</tr>
+<tr>
+<td>1. Read</td>
+<td>The codeplug span over the <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr>, no further than the radio's chip. The stock codeplug comes from this visit's backup when it holds one (<code>stockSource</code>), else from the live read, further on a family whose stock tables reach past the span (<code>readSpan</code>)</td>
+</tr>
+<tr>
+<td>2. Recognize</td>
+<td><code>classify</code> (<a href="../spec/codeplug-stock-tyt.html">codeplug-stock-tyt.md</a> 2). A RadioFoundry codeplug, a blank chip or an unknown layout ends the step: nothing is written</td>
+</tr>
+<tr>
+<td>3. Convert</td>
+<td><code>importStock</code>, the Codeplug Editor's conversion, with its counts and notes. No channels ends the step</td>
+</tr>
+<tr>
+<td>4. Prepare</td>
+<td>The settings area is claimed (<code>prepareStorage</code>), as before a codeplug restore</td>
+</tr>
+<tr>
+<td>5. Write</td>
+<td>The radio's bytes with the converted image over the codeplug's regions (<code>writeRanges</code>, as a Codeplug Editor write), in the 4 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="glossary.html#t-kb">KB</abbr> sectors that differ (<code>codeplugSectors</code>). The radio's own settings block, the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> pair, the ID database area, RadioFoundry's own areas and protected data keep the radio's bytes</td>
+</tr>
+<tr>
+<td>6. Check</td>
+<td>The span read back: every written sector holds its bytes (the VFO pair aside: a read shows the live VFOs), and the decoded codeplug has the converted counts. A mismatch is reported as a problem and the step stops</td>
+</tr>
+</tbody>
+</table></div>
+<p>The backup's copy comes first because the backup ends by claiming the settings area. On a family whose stock tables
+lie inside that area (zones on the 256 KB layout), the live read no longer holds them.</p>
+<p>It runs at once when the backup taken in this visit holds the stock codeplug (the <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="glossary.html#t-spi">SPI</abbr> flash read covers <code>readSpan</code>).
+Without one it waits for the user and says that the original bytes may be lost: on a board whose stock codeplug shares
+sectors with RadioFoundry's codeplug, the write replaces them. A failure at any step leaves RadioFoundry running without
+channels and says so. With the backup, the Codeplug Editor converts the original codeplug from there; without one, the
+message says whether the original is still on the radio (a read or conversion failure writes nothing).</p>
+<p>The boards whose stock codeplug the browser converts are those in the <abbr class="gl" tabindex="0" title="A Chinese maker of DMR radios." data-more="../user/22-glossary.html#t-tyt">TYT</abbr> family layouts of <code>codeplug/stock_tyt.js</code>,
+and those whose paged stock codeplug <code>codeplug/stock_baofeng.js</code> reads (<a href="../feature-matrix.html">feature-matrix.md</a>).</p>
+<h3 id="hr_c7000-radios-c7000uijs-bringchannels">HR_C7000 radios (<code>c7000ui.js</code> <code>bringChannels</code>)</h3>
+<p>The stock codeplug sits in its own pages of the data flash, below RadioFoundry's codeplug, and no step of the install
+writes there. So the step needs no backup and loses nothing:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0. Skip</td>
+<td>Not an install, a radio that ran RadioFoundry before, or a board without a paged stock area (<code>calibration.area</code>) or a codeplug base</td>
+</tr>
+<tr>
+<td>1. Read</td>
+<td>The stock area as this visit's check step read it (<code>c.calArea</code>). Without one (the factory update mode route reads no data memory), RadioFoundry reads it over the CPS, area 1 at its physical addresses</td>
+</tr>
+<tr>
+<td>2. Convert</td>
+<td><code>convertPagedStock</code>. No stock codeplug, or one without channels, ends the step</td>
+</tr>
+<tr>
+<td>3. Write</td>
+<td><code>writeConverted</code> through the Codeplug Editor's transport (<code>CpsSerial</code>), which adds the board's codeplug base: the settings area claimed when foreign, the radio's codeplug read, the bytes that differ written and read back. A codeplug with channels already on the radio is replaced only when the user says so</td>
+</tr>
+<tr>
+<td>4. Check</td>
+<td>The radio's codeplug read again and counted. A mismatch is reported as a problem</td>
+</tr>
+<tr>
+<td>The HR_C7000 backend has no conversion: its stock codeplug stays in the data flash and in the backup</td>
+<td></td>
+</tr>
+<tr>
+<td>(<code>original-channels.bin</code>), and <code>tools/backup_codeplug.py</code> ports it.</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>A bundle can hold both codeplugs, the stock one and RadioFoundry's:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Codeplug</th>
+<th>Where the page reads it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RadioFoundry's</td>
+<td>The Tools page's <code>backup-to-image</code> (<code>codeplug.js</code>) and the Codeplug Editor's open (<code>editor/files.js</code>): the <code>spi-flash</code> part, from address 0</td>
+</tr>
+<tr>
+<td>A stock TYT-family codeplug</td>
+<td>The same, converted by <code>codeplug/stock_tyt.js</code> (<a href="../spec/codeplug-stock-tyt.html">codeplug-stock-tyt.md</a>)</td>
+</tr>
+<tr>
+<td>A stock Baofeng codeplug with a spec in <code>docs/spec/</code></td>
+<td>The same, converted by <code>codeplug/stock_baofeng.js</code> (the first 84 channels)</td>
+</tr>
+<tr>
+<td>Any other stock codeplug</td>
+<td>Nowhere: no spec in <code>docs/spec/</code> describes its records, and only <code>dmrconf</code> (<abbr class="gl" tabindex="0" title="GNU General Public License. RadioFoundry does not use GPL code." data-more="glossary.html#t-gpl">GPL</abbr>, never in the page) decodes it</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>tools/backup_codeplug.py</code> extracts both offline, from any data flash part, at the board's <code>openfw_eeprom</code> and through
+the board's <code>[stock_codeplug]</code> page layout, and decodes them with <code>dmrconf</code> (<a href="../spec/codeplug-port.html">codeplug-port.md</a>
+5). The Codeplug Editor opens the <abbr class="gl" tabindex="0" title="A text file format. qdmr stores its codeplug as YAML." data-more="../user/22-glossary.html#t-yaml">YAML</abbr> it writes. For a stock layout with no spec yet, that is the only way; doing it in
+the page needs a clean-room spec of the layout first (issue #228).</p>
+<h2 id="another-open-firmware-openfwjs">Another open firmware (<code>openfw.js</code>)</h2>
+<p>A radio whose port answers the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="debug-link.html">debug link</abbr> probe with <code>-</code> and gives a valid radio info is on another open firmware
+(<code>link.js</code> <code>whyNoAnswer()</code>, kind <code>openfw</code>). Where the board supports it, the <strong>Another open firmware</strong> choice of the
+current-firmware step offers a full backup before the install, and the install then needs no stock file.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Which boards</td>
+<td><code>openfw.supported()</code>: <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> radio types (<code>board.toml</code> <code>[cps]</code>, <code>cps_radio_types</code> in <code>flash-boards.json</code>), the <code>usb-dfu</code> family, a <code>key_sha256</code>, an integer <code>rom_base</code> and a <code>protected</code> list (where the key is searched). All from board data; <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="glossary.html#t-hr-c7000">HR_C7000</abbr> boards are left out (other install route, area 1 offset)</td>
+</tr>
+<tr>
+<td>What the probe leads to</td>
+<td><code>openfw.recognized()</code>: <code>backup</code> (offered), <code>wrong-type</code> (the radio info names another radio: a wrong pick, with the stock-file route, <strong>Other / Not sure</strong>, one click away), <code>unsupported</code> (the stock-file route, as for any other firmware)</td>
+</tr>
+<tr>
+<td>Radio type</td>
+<td>The radio info's type must be one of the board's, or nothing is read</td>
+</tr>
+<tr>
+<td>Requests</td>
+<td><code>R</code> only: area 9, then area 5 over exactly [<code>rom_base</code>, <code>flash_end</code>) (bootloader included, for the key), then area 1 over the whole <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="glossary.html#t-spi">SPI</abbr> flash. Never <code>C</code> (a <code>C</code> 6 2 saves settings and once hung a radio's USB), never area 10 (some builds don't answer), never more than 2045 bytes per request. 0x7590-0x75FF of area 1 is read in 32-byte requests, so the <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> overlay never applies</td>
+</tr>
+<tr>
+<td>A radio that stops answering</td>
+<td>Each request is asked three times (a read changes nothing). Then the backup stops and keeps what it read (<code>state.stopped</code>, why <code>no answer</code>); after a power cycle the same state continues (<code>readBackup({state})</code>) where it stopped. A refused read (<code>refused</code>) stops the same way. <strong>Stop Reading</strong>, or leaving the step (<code>render()</code> aborts it), stops it as <code>canceled</code>. What was read can be saved as an incomplete bundle</td>
+</tr>
+<tr>
+<td>Fallback</td>
+<td>Whatever the backup didn't give comes from the stock file, as from any other firmware: key or codec not found, a read that stopped before them, a skipped backup, a wrong radio type. The codec step says why (<code>openfwCodecNote()</code>). <code>decideCodec()</code> never keeps a codec it can't verify unless the user forces it</td>
+</tr>
+<tr>
+<td>Speed</td>
+<td>About 190 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="glossary.html#t-kb">KB</abbr>/s (2045-byte requests): 1 MB of <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="glossary.html#t-mcu">MCU</abbr> flash and 16 MB of SPI flash take about 1.5 minutes</td>
+</tr>
+<tr>
+<td>The key</td>
+<td><code>keyFromImage()</code>: the 1024-byte block of the bootloader region whose SHA-256 is the board's <code>key_sha256</code>, searched (<code>bootkey.js</code>), no offset assumed. Stored as a key read from a RadioFoundry radio (<code>S.key</code>, local storage)</td>
+</tr>
+<tr>
+<td>The codec</td>
+<td><code>codecFromImage()</code>: first the forms <code>stockfw.fromFlash()</code> knows (stock addresses, RadioFoundry's placement); then a copy moved anywhere: the codec's first word at each word boundary, the move undone with the codec map (<code>codecmap.js</code> <code>unmoveCode()</code>, <code>unmoveBranches()</code> for tables whose islands call the moved copy or still the stock address), the stock SHA-256s checked (for a profile whose merge cuts the tables, the codec's own data at their start), then placed and checked as a merge from the stock file. Kept as the saved codec (<code>codecsave.js</code>), so <code>decideCodec()</code> merges from the saved copy. Not found: the codec step asks for the stock file as before</td>
+</tr>
+<tr>
+<td>Bundle</td>
+<td><code>firmware_now</code> <code>{kind: &quot;openfw&quot;, radio_type, git, built, flash_id}</code>; <code>radio-info.bin</code>, <code>internal-flash.bin</code> from the application base, <code>spi-flash.bin</code>. No security registers; the bootloader (and the key in it) is read but not stored</td>
+</tr>
+<tr>
+<td>After the install</td>
+<td>The settings area is claimed (<code>prepareStorage()</code>), as after any full backup</td>
+</tr>
+<tr>
+<td>Practice mode</td>
+<td><code>#sim=&lt;board&gt;-openfw</code>: <code>fake.js</code> state <code>openfw</code> (2045-byte clip, VFO overlay, unbounded area 5, silent area 10, hangs); <code>#sim=&lt;board&gt;-openfw-nocodec</code>: the same without the codec, for the stock-file fallback</td>
+</tr>
+</tbody>
+</table></div>
+<p>Not yet tested on a real radio.</p>
+<h2 id="restore">Restore</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Target</th>
+<th>Writes</th>
+<th>Limits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Exactly as backed up (backup taken on RadioFoundry)</td>
+<td>The internal flash image through the bootloader (every sector erased and rewritten), then the <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="cps-and-codeplug.html">codeplug</abbr> areas that differ through <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> writes</td>
+<td>The CPS refuses RadioFoundry's own areas and the calibration window</td>
+</tr>
+<tr>
+<td>Codeplug only (any backup that holds the codeplug span)</td>
+<td>The codeplug areas that differ, through CPS writes; the firmware is not touched</td>
+<td>As above</td>
+</tr>
+<tr>
+<td>Previous open firmware (backup taken on another open firmware)</td>
+<td>That firmware's internal flash image through the bootloader (<code>planInternal</code>)</td>
+<td>The <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="glossary.html#t-spi">SPI</abbr> flash is not written back, as for stock: that firmware's own CPS writes its codeplug from <code>spi-flash.bin</code></td>
+</tr>
+<tr>
+<td>Back to stock</td>
+<td>The stock application from the user's stock file, codec included, through the bootloader. Any file for this radio that its key opens can be used, mapped or not: no codec is taken from it</td>
+<td>The SPI flash stays as it is: writing it back whole needs a firmware command that doesn't exist yet (a gated STORAGE write, like CLAIM). Until then the flasher says so, and the stock codeplug goes back with the vendor CPS</td>
+</tr>
+</tbody>
+</table></div>
+<p>The stock file's resource segment (SPI flash 0x60000) is not written back: how the vendor updater writes it is not
+documented, and RadioFoundry doesn't overwrite it unless an ID database is uploaded.</p>
+<h3 id="protected-regions">Protected regions</h3>
+<p>No write touches a board's protected regions (<a href="board-registry.html#protected-regions">board-registry.md</a>:
+<code>[[flash.protect]]</code>, the factory calibration first). <code>protect.js</code> is the one check, with the data from
+<code>flash-boards.json</code>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Writer</th>
+<th>Over a protected region</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Stub</code> (<code>stub.js</code>)</td>
+<td>Every erase and program command is checked before it is sent; a chip erase is refused. <code>writeProgram</code> refuses an install that overlaps one. The restore task passes <code>carve</code>: those sectors keep what the radio has and show as never written</td>
+</tr>
+<tr>
+<td><code>F4Stub</code> (<code>f4stub.js</code>)</td>
+<td><code>erase</code>, <code>program</code> and <code>writeImage</code> refuse. <code>spiWrite</code> carves</td>
+</tr>
+<tr>
+<td><code>makePlan</code> (<code>plan.js</code>), <code>Dfu.run</code></td>
+<td>Keep and merge plans refuse; a restore plan keeps the sector (<code>keep</code>, &quot;protected&quot;). <code>Dfu.run</code> checks the plan again before the first request</td>
+</tr>
+<tr>
+<td><code>Iap</code>, <code>BfLoader</code></td>
+<td>Refused when the area the loader erases holds one: the vendor loaders erase a fixed span, which can't be carved</td>
+</tr>
+<tr>
+<td>Codeplug restore (<code>codeplugSectors</code>)</td>
+<td>Protected data sectors are left out</td>
+</tr>
+</tbody>
+</table></div>
+<p>The error is a <code>ProtectedError</code> (<code>code</code> &quot;protected&quot;) naming the region and the reason from <code>board.toml</code>. Nothing is
+erased before the check.</p>
+<h2 id="hr_c7000-radios-the-boot-stub">HR_C7000 radios (the boot stub)</h2>
+<p>Radios whose backend is <code>c7000-stub</code> (the <code>serial-loader</code>, <code>serial-iap</code> and <code>boot-rom</code> families; a board with a first
+stage or one the boot <abbr class="gl" tabindex="0" title="Read-only memory: code fixed in the chip." data-more="glossary.html#t-rom">ROM</abbr> starts directly adds a section below) are flashed over their
+programming cable with Web Serial, through the <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="glossary.html#t-stub">boot stub</abbr> (<a href="https://github.com/radiofoundry/radiofoundry/blob/main/stub/README.md">stub/README.md</a>,
+<a href="../spec/debuglink.html">debuglink.md</a> 3.18), or through the radio's factory update mode when the stub can't be loaded
+(below). No loader in the radio is ever written. The install has its own steps:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Connect</td>
+<td>The page looks for a stub that still runs, then for RadioFoundry. RadioFoundry with <code>CONFIG_STUB_ENTRY</code> hands over to the stub (command 0x1A); RadioFoundry without it is restarted with its <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> reboot, which passes the boot ROM's serial window (not yet tried on a radio). Otherwise the page asks the user to switch the radio off and on and catches the boot ROM. The stub image sent carries the board's <abbr class="gl" tabindex="0" title="Light-emitting diode: the radio&#x27;s status light." data-more="../user/22-glossary.html#t-led">LED</abbr> pins in its parameter block (<code>stubFor()</code> in <code>c7000ui.js</code>), so the stub drives no other pin before CONFIG. The radio model is then checked by the bootloader's ID string, and the page sends the stub the board's profile (CONFIG: clocks, <abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="glossary.html#t-uart">UART</abbr>, pins, board id) and checks the echo; the stub refuses writes until then</td>
+</tr>
+<tr>
+<td>Back up and check</td>
+<td>A first install reads the whole program memory (required) and the calibration area; the whole data memory only if asked (off by default: many minutes at 115200 baud). Each choice shows its time: the stub's sector sums count the blank sectors first (no data moved, <code>c7000.js</code> <code>blankCount</code>, at most 8 s per memory, windows spread over the range), and <code>readSeconds</code> turns the used share into wire bytes, plus the radio's own time per sector where it is slower (a <abbr class="gl" tabindex="0" title="The flash chip type that holds large data, such as the codeplug and contacts, in some radios." data-more="glossary.html#t-nand">NAND</abbr>), pessimistically: every used sector whole (no credit for LZ4), 13 bytes a record, at 9000 B/s or the rate measured on this radio, never above the 11,520 B/s of the line; without a count every sector is taken as used (&quot;up to&quot;). The page keeps the program memory in IndexedDB and downloads a backup bundle. A first install can skip the program memory read, before or during it, and take the codec from the stock file instead: only the codec slot is read, and the firmware is reported as not read. An update reads only the codec slot. The page then decides the codec</td>
+</tr>
+<tr>
+<td>Write</td>
+<td>Only sectors whose <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="glossary.html#t-crc">CRC</abbr> differs are written. The first application sector goes last, each sector is read back right away (three tries), and a final pass checks every sector. A board the boot ROM starts directly then gets its flag sector (<a href="#a-board-the-boot-rom-starts-directly">below</a>)</td>
+</tr>
+<tr>
+<td>Check</td>
+<td>The stub resets the chip; the page asks RadioFoundry's VERSION for the build and the codec</td>
+</tr>
+</tbody>
+</table></div>
+<p>A cable whose USB vendor id is a CH340's (1a86) gets a warning on the connect, check, write, backup and restore steps:
+some of these cables fail the backup or the install. The boot ROM load drops an exact echo of each frame it sent (some
+cables loop <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> back to <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr>). A frame not acknowledged logs the first 16 bytes received, and the error names the cable's
+chip.</p>
+<p>A USB-serial cable (FTDI, CH340, CP210x or PL2303 vendor id; not the WebUSB stand-in) is checked as it opens
+(<code>SerialStream.open()</code>, <code>sendsData()</code> in <code>link.js</code>): the port is opened with a 256-byte buffer and takes 8 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="glossary.html#t-kb">KB</abbr> of 0xFF,
+which must leave within their time on the line plus <code>limits.sendCheck</code> (0.7 s + 1.5 s at 115200). An adapter whose
+sending side stopped takes about 1 KB and then nothing, and fails as <code>CableError(&quot;stalled&quot;)</code>: the connect step shows
+the cable fault, with Try Again (<a href="../spec/gotchas.html">gotchas.md</a> 16.6). The pending write is aborted, never
+drained: a drain on such an adapter froze the browser. <code>knownRadioPort()</code> throws that fault when no other granted port
+answers. A cable that passes waits for the burst to leave before the port is closed and opened again with the 64 KB
+buffer, and <code>SerialStream.close()</code> waits for whatever was written (<code>outUntil</code>, at most 3 s): a port closed with data
+still going out stopped one adapter for good, until it was unplugged.</p>
+<p>The boot ROM waits about 48 ms for the answer to its greeting (measured; the radio pages have the timing), and
+the greeting in and the answer out both cross the cable and the browser's read loop. When the load fails, the ROM says
+it stopped waiting (error code <code>rom-late</code>, or <code>rom-booted</code> when no greeting was seen). What it sends then is the
+address it starts, little endian: <code>00 10 00 03</code> with a loader at the start of the flash, <code>00 c0 00 03</code> on a board
+whose flash names the application (<code>rom_entry</code>). <code>romSignOffs()</code> in <code>stub.js</code> takes any 256-byte-aligned program
+flash address, and doesn't count the ones in an echo of the frame just sent (the stub image holds such words).
+The greeting, answers already on their way and then the sign-off is <code>rom-deaf</code>: nothing the cable sends reaches
+the radio, and the connect step shows it as the cable fault <code>oneway</code> instead of offering another try. Two bursts of
+a few bytes 25 to 300 ms apart, then a quiet line, with no greeting in them, is <code>rom-garbled</code>: the ROM's two frames
+read at the wrong rate (a cable adapter in a bad state, <a href="../spec/gotchas.html">gotchas</a> 16.6), shown at once as the cable
+fault <code>rom_garbled</code>. Stray bytes from the power switch come one at a time and don't count. Answering only
+after the greeting arrived failed often on the first try, so every wait for the ROM uses the <strong>slow cable mode</strong>
+(<code>powerCycle()</code> in <code>c7000ui.js</code>; it was once a choice offered after a failure, and a collapsed note on these panels
+says where it went): <code>waitForRom({ repeat: ROM_REPEAT })</code> sends the answer every 30 ms, and on for 150 ms after the
+greeting, so one leaves within 30 ms of it whatever the cable's latency. The page then waits for the line to go quiet
+(the ROM NAKs the extra answers) before block 0. The firmware of a radio left on gets the answers too: RadioFoundry
+ignores them, stock firmware is untested. So on a radio not known to run RadioFoundry the sending starts only after the
+user selects &quot;Radio Is Off&quot;; RadioFoundry's soft reset and a power cycle of a radio it found running RadioFoundry start
+at once. When the load fails, the factory update mode is the main action. <code>stubtool.py --slow-cable</code> does the same.</p>
+<p>The session holds a stub only once it answered HELLO. A cable whose reading stopped (the device lost) is dropped
+before a step uses it, and after a failed backup, restore or check read the page asks the stub for HELLO: one that
+no longer answers (the radio switched off or reset) is dropped too, and Try Again goes to the connect step, which says
+why. Breaks and framing errors never stop the reading: a radio switched off with the cable in gives one after another
+for as long as it is off.</p>
+<p>A page of an <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="glossary.html#t-spi">SPI</abbr> NAND whose bit errors its <abbr class="gl" tabindex="0" title="Error correcting code: a code that repairs damaged bits, such as the one a NAND flash needs." data-more="glossary.html#t-ecc">ECC</abbr> can't correct reads the same every time: the stub answers status 0x0D
+for its sector, in a read (op 09) or a checksum (op 07). The page then reads that sector's two pages itself with SPI
+requests (page read, status, read from cache), twice, and keeps them as the chip holds them. The final checksum pass
+sums a window that holds one sector by sector and leaves it out, and <code>backup.json</code> lists those sectors as <code>nand_ecc</code>.
+<code>stub/stubtool.py</code> reads a NAND the same way (<code>Radio.nand_raw</code>) and prints the list after a <code>--nand</code> read.</p>
+<h3 id="the-factory-update-mode">The factory update mode</h3>
+<p>Every <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="glossary.html#t-hr-c7000">HR_C7000</abbr> board has one: <code>update_mode</code> in its <code>data/radios.json</code> <code>flash</code> entry, from the family in
+<code>tools/boards.py</code> (<code>serial-iap</code>: <code>iap</code>; <code>serial-loader</code>: <code>baofeng</code>), entered by the keys in <code>flash.bootloader</code> (the
+steps) and <code>bootloader_hold</code> (marked on the radio's picture). The registry check refuses a board on such a family with
+no steps.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Protocol</th>
+<th>Module</th>
+<th>What it takes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>iap</code></td>
+<td><code>iap.js</code></td>
+<td>Erase, then 2 KB pages with an additive checksum the loader reports back. The install image starts with the first stage. A radio without a complete application stays in this mode at every power-on, so the page probes for it when nothing else answers</td>
+</tr>
+<tr>
+<td><code>baofeng</code></td>
+<td><code>bfloader.js</code></td>
+<td>The Baofeng updater (the protocol <code>tools/serial_loader.py</code> names, on the radio pages of the boards that use it): steps 1-3 identify the loader by the board's <code>bootloader_id</code>, step 7 erases the whole application area (the codec slot included), then 1 KB blocks, each acknowledged by its CRC-16/XMODEM. A port of <code>tools/serial_loader.py</code>'s <code>Flasher</code>; <code>site/tests/bfloader.test.mjs</code> checks the bytes it sends against the Python tool's (<code>fixtures.py</code>) and runs it against <code>FakeBfLoader</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>The page offers it when the boot ROM load fails (above), in Troubleshooting
+(<code>recovery.extra</code>, &quot;Reinstall in Factory Update Mode&quot;), and where the stock console and the first stage routes offer it.
+Nothing is read from the radio this way, so the check step takes the codec from a file (<code>factoryRoute()</code> in
+<code>c7000ui.js</code>): the stock firmware file where a profile of the board names one, else a program memory backup (or a slot
+this browser kept). The decision is never &quot;keep&quot;: the image is <code>c7.target()</code> with the slot, without the 0xFF tail
+(<code>factoryInstallImage()</code> in <code>iapui.js</code>). Restore writes a backup's application area and slot, or the original firmware
+from its file, the same way. A step the user leaves (Back, Start over) while the page listens for update mode stops
+listening, so a radio switched on with its keys later is not written (<code>site/tests/iapui.test.mjs</code>). The Baofeng updater
+answers steps 1-3 once per power-on, so the session keeps the <code>BfLoader</code> that found it (<code>c.loader</code>, <code>ready</code>) for the
+write and the next try; after a write started, a try waits for update mode again. After the end of transfer the radio
+starts RadioFoundry by itself, so the done step's first check waits 20 s before it asks for a power cycle.</p>
+<p><code>bfloader.js</code> and <code>c7000.js</code> have installed a radio this way from Node, over an FTDI cable (the radio's hardware page
+has the figures). The page around them is checked only in practice mode, and the route is untested on the other
+radios on this loader.</p>
+<h3 id="a-board-the-boot-rom-starts-directly">A board the boot ROM starts directly</h3>
+<p>A board with no vendor loader (<code>boot-rom</code> family, <code>rom_entry</code> in its <code>[flash.stub]</code>) is started by the boot ROM
+itself: after its serial window the ROM reads a flag at program flash 0 (<code>74 68 64 0C</code>, then the entry address, little
+endian) and jumps to that entry. Its original firmware starts below the application area and runs into it, so an
+install overwrites part of it. <code>c7000.boards.&lt;id&gt;.rom_entry</code> in <code>data/flash-boards.json</code> (from <code>stub/stubtool.py</code>
+<code>C7_BOARDS</code>) and <code>c7000.rom_flag</code> carry what the page needs; <code>progmem_size</code> is the whole program flash, which the
+backup reads.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>What changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Back up and check</td>
+<td>The whole program flash is read (<code>c7.totalSize()</code>): the only copy of the original firmware below the application area is this backup</td>
+</tr>
+<tr>
+<td>Write</td>
+<td>After the application and the codec slot are written and verified, <code>installWrite()</code> (<code>c7000ui.js</code>) has <code>Stub.writeRomFlag()</code> make the flag sector name <code>rom_entry</code>: the flag, the entry, then the rest of the sector as it was when it held the flag, else 0xFF (<code>stubtool.py</code> <code>write_rom_flag</code>). It is the last write, so an install stopped before it leaves the radio starting its original firmware, and running the install again writes only that sector</td>
+</tr>
+<tr>
+<td>Bootloader check</td>
+<td>The hash of the area below the application before and after the write leaves out that one sector; the rest of the area is checked as on every board</td>
+</tr>
+<tr>
+<td>Restore</td>
+<td><code>restoreWrite()</code>: the backup must start with the flag (else nothing is written), the radio's flash between the flag sector and the application must already match the backup by CRC (nothing writes it; else nothing is written), then the application area, then the backup's own flag sector, last</td>
+</tr>
+</tbody>
+</table></div>
+<p>The restore puts back the program flash up to the end of the application area; flash past it is not written by any
+route. <code>stubtool.py</code> has no restore: it reads the whole program flash and writes only the application
+area and the flag sector. <code>site/tests/c7000boot.test.mjs</code> runs the backup, the codec from the radio's own flash, the
+install, an install stopped before the flag sector and the restore against the simulated radio (<code>fakec7000.js</code>
+<code>romEntry</code>: it starts what the flag names).</p>
+<h3 id="a-board-with-a-first-stage">A board with a first stage</h3>
+<p>A board with a first stage has no boot ROM window on its cable until the first stage is installed, and may have no
+SPI data flash the page can read. The board's table entry in <code>data/flash-boards.json</code> (<code>c7000.boards.&lt;id&gt;</code>, from
+<code>tools/hrc7000_codec.py</code> <code>BOARDS</code>) carries the program flash size, <code>data_flash</code> and <code>stub_board</code>, the profile the page
+sends in CONFIG (<code>stub/stubtool.py</code> <code>C7_BOARDS</code>). Its <code>data/radios.json</code> <code>flash</code> entry, from board.toml and board.mk,
+names the rest: <code>first_stage</code> (<code>BOOT_SIZE</code>, <code>BOOT_SIGNATURE</code>), <code>stock_console</code> with the <code>stock_versions</code> the console
+route knows, <code>update_mode</code> (the <code>serial-iap</code> family), <code>read_rate</code> (the program memory read's time estimate) and
+<code>codec_version</code> (the stock file the page asks for). The steps are the ones above, with these changes:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>What the page does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RadioFoundry runs (debug link answers)</td>
+<td>The universal stub (<code>data/c7000-stub.json</code>, <code>stubImages()</code> in <code>stub.js</code>) goes into the <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="glossary.html#t-ram">RAM</abbr> span the firmware reports in STUB INFO and copies itself to 0x30000. <code>univFits()</code> refuses a span whose copy would overlap or leave <abbr class="gl" tabindex="0" title="Static RAM: the processor&#x27;s fast working memory." data-more="glossary.html#t-sram">SRAM</abbr>, as <code>stubtool.py</code> does. After HELLO the page sends CONFIG with the board's profile and checks the echo before any write</td>
+</tr>
+<tr>
+<td>RadioFoundry runs but does not answer</td>
+<td>&quot;Recover at Power-On&quot;: the first stage offers the boot ROM handshake for a short time at power-on. The page answers it and loads the universal stub, as the boot ROM route does</td>
+</tr>
+<tr>
+<td>The stock firmware runs</td>
+<td><code>usmart.js</code>: the stock firmware's debug console takes one framed command per write and answers <code>read_addr</code> and <code>write_addr</code>. The page identifies the build from its version string (another build is refused), writes the universal stub word by word into RAM, reads every word back, and points the console's command entry at it. Only RAM addresses can be written, never flash. The stub then copies itself to 0x30000 and the radio continues as from RadioFoundry</td>
+</tr>
+<tr>
+<td>Factory update mode (recovery)</td>
+<td><code>iap.js</code>: the loader's update mode takes <code>Erase</code> and 2 KB pages with additive checksums. Install: the first stage, RadioFoundry and the codec slot in one file; it must start with the first stage's signature (<code>flash.first_stage</code>). Restore: a backup's application area and slot (<code>restoreTarget()</code>), or the original firmware from its file. Offered when nothing answers on the cable, for a stock build the page doesn't know, and as on every HR_C7000 board (<a href="#the-factory-update-mode">above</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The first stage is the only way into the stub from a radio that runs RadioFoundry without answering.
+<code>site/tests/iap.test.mjs</code> runs the console stub load and the IAP write against simulated radios (<code>fakec7000.js</code>) and
+compares the codec carve with <code>tools/hrc7000_codec.py</code>.</p>
+<p>The codec decision (<code>decide()</code> in <code>c7000.js</code>), first match wins:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Keep</td>
+<td>The codec slot in flash checks out (magic, CRC, signature, the board's RAM windows). Only the image is written</td>
+</tr>
+<tr>
+<td>The radio</td>
+<td>The stock firmware in the read holds a known codec (found by its signature and SHA-256, wherever that stock version put it). It is copied into the slot</td>
+</tr>
+<tr>
+<td>This browser</td>
+<td>A slot an earlier run kept in IndexedDB</td>
+</tr>
+<tr>
+<td>A file</td>
+<td>A program memory backup, a known stock firmware file, or an image merged by <code>tools/hrc7000_codec.py</code></td>
+</tr>
+<tr>
+<td>None</td>
+<td>Only when the user asks for it: FM works, <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> voice stays off</td>
+</tr>
+</tbody>
+</table></div>
+<p>An install without the codec asks once more when Install is pressed (<code>nocodec.js</code> <code>confirmNoCodec()</code>), on every route:
+the cable write, the update mode write (decision <code>none</code>) and the bootloader write (a decision with <code>expectCodec</code>
+false). The dialog says DMR voice calls won't work and offers <strong>Go Back and Add the Codec</strong> (the step before, where a
+file is selected) and <strong>Install Anyway</strong>. Escape stays on the step. A bootloader route without a codec step before
+the write (an update) offers only <strong>Install Anyway</strong>. A retry after a failed write doesn't ask again.</p>
+<p>The page never sends a STUB command to RadioFoundry except right before it enters the stub: any STUB command parks RadioFoundry's codec
+until the next restart.</p>
+<p>The build writes the layout and the codec profiles to <code>data/flash-boards.json</code> (<code>c7000</code>, from <code>stub/stubtool.py</code>,
+<code>tools/hrc7000_codec.py</code> and <code>tools/serial_loader.py</code>) and the universal stub image (with its load address, run address and RAM end) to <code>data/c7000-stub.json</code>. Bundle parts:</p>
+<p>Each board's <code>[flash.stub]</code> in <code>board.toml</code> says what there is to back up: the program memory's size (<code>progmem</code>), whether
+the data memory is SPI <abbr class="gl" tabindex="0" title="The flash chip type that holds code and can run it in place." data-more="glossary.html#t-nor">NOR</abbr> flash or an SPI NAND (from the board's NAND driver: the stub's <code>nand</code> flag), and where the
+factory calibration is (<code>calibration</code>, required). The page lists the same three choices for every radio from that data:
+the program memory, the calibration and the whole data memory, each with its size and time.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th><code>calibration</code></th>
+<th>Where</th>
+<th>What the calibration choice reads</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{area, page_id}</code></td>
+<td>A data flash: the 4 KB page of the stock <abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="cps-and-codeplug.html">codeplug</abbr> area [0, <code>area</code>) whose last byte is <code>page_id</code></td>
+<td>The whole area (about 10 seconds), kept as <code>original-channels.bin</code></td>
+</tr>
+<tr>
+<td><code>{progmem, nand, magic}</code></td>
+<td>A NAND radio: a copy in a 4 KB sector of the program memory and one in the NAND, each starting with <code>magic</code></td>
+<td>Both sectors. The NAND copy is looked for at <code>nand</code>, then a block later each time (<code>findNandCalibration</code>): the stock firmware skips its bad blocks, so a bad block at or below the copy moves it up. The bundle keeps the copies starting with <code>magic</code> and names a blank one (<code>calibrationCopies</code>). The program memory choice is then &quot;Program Memory &amp; Calibration&quot;</td>
+</tr>
+</tbody>
+</table></div>
+<p>The NAND is read through the stub's NAND path (<code>stub.js</code> <code>MEM.nand</code>: flags bit 2 on op 07 and 09, the stub configured
+for a NAND board): its 2 KB pages without the spare bytes, two to a 4 KB sector, never written. The whole chip (256 MB)
+reads in minutes because the stub sends a blank sector as its record alone. <code>blankCount</code> samples windows spread over the
+whole range, so the estimate holds for a chip whose data sits in a few areas.</p>
+<p>The count gives how much of a memory is used, not how well it packs. <code>readSeconds</code> takes a used sector whole for its
+time and packed to <code>BEST_PACK</code> (0.3) for <code>least</code>. Where the two differ by a minute or more, the choice shows a range:
+a full data memory packs well with a codeplug and not with an encrypted image.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>File</th>
+<th>Part</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>program-memory.bin</code></td>
+<td><code>c7000-progmem</code></td>
+<td>The whole program memory</td>
+</tr>
+<tr>
+<td><code>data-memory.bin</code></td>
+<td><code>c7000-data</code></td>
+<td>The whole data flash</td>
+</tr>
+<tr>
+<td><code>nand.bin</code></td>
+<td><code>c7000-nand</code></td>
+<td>The whole NAND, 2 KB pages without the spare bytes</td>
+</tr>
+<tr>
+<td><code>original-channels.bin</code></td>
+<td><code>c7000-data-start</code></td>
+<td>The data flash's stock codeplug area, when the whole data memory isn't read</td>
+</tr>
+<tr>
+<td><code>calibration.bin</code></td>
+<td><code>c7000-calibration</code></td>
+<td>A data flash's calibration page, at its own address</td>
+</tr>
+<tr>
+<td><code>calibration.bin</code></td>
+<td><code>c7000-calibration-nand</code></td>
+<td>A NAND radio's NAND copy (4 KB sector), at its NAND address</td>
+</tr>
+<tr>
+<td><code>calibration-program-memory.bin</code></td>
+<td><code>c7000-calibration-progmem</code></td>
+<td>A NAND radio's program memory copy (4 KB sector), at its address</td>
+</tr>
+</tbody>
+</table></div>
+<p>The calibration choice is on by default. Choosing the whole data memory includes it. Restore writes the program memory
+back from the application start up; the data memory is not written.</p>
+<p>Without a backup, the original firmware comes back from its vendor file. The restore task takes the file in place of a
+bundle (<code>vendorRestore</code>) once <code>vendorfile.js</code> identifies it for this radio, mapped or not. <code>c7.progmemFromFile()</code> takes a
+whole program memory readout as it is. A firmware file it lays out as a program memory read holds it: the application
+after the file's header (256 bytes for a <code>BFUV32-V2</code> file, none for a plain one) at the application start, everything
+else erased. The stub or update mode then writes it as it writes a backup. A file larger than the application area is refused as <code>internal</code>.</p>
+<h2 id="stm32f4-radios-the-loader-route">STM32F4 radios (the loader route)</h2>
+<p>An <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="glossary.html#t-stm32">STM32F4</abbr> radio on stock firmware always installs through its bootloader (<code>dfu.js</code>): that is the only way into a
+stock radio. Once it runs RadioFoundry, an update can skip the bootloader. When the &quot;current firmware&quot; step finds RadioFoundry, the page
+asks for the <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="glossary.html#t-stub">STUB</abbr> offer (command 0x1A op 0; on the STM32 it only reports the staging buffer and parks nothing). The
+loader route is used when all of these hold:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RadioFoundry offers stub entry (<code>CONFIG_STUB_ENTRY</code>)</td>
+<td>the hand-over needs it</td>
+</tr>
+<tr>
+<td>RadioFoundry reports the radio's codec, or one where an earlier release kept it (<code>board.codec.former</code>)</td>
+<td>the loader writes only the firmware's own flash, so the codec is either in place or moves with the install: from the copy kept in IndexedDB, else from the stock file the write step asks for (<code>stubSegments</code>; a copy only in the page is never used for a move, <code>decide.js</code> <code>savedKept</code>)</td>
+</tr>
+<tr>
+<td>the image has no codec in it, and no mode was forced under Advanced</td>
+<td>a merge or a forced mode goes through the bootloader</td>
+</tr>
+</tbody>
+</table></div>
+<p>There is no codec step; only a codec move without a kept copy asks for the stock file (which also gives the key), on the write step. The write step sends the embedded stub (<code>data/f4-stub.json</code>, from
+<code>stub/f4stub.py</code>), finds it on the same port or, if it enumerated again, on the granted port with the same serial
+number (one click picks it when the browser didn't keep the grant), and sends it the radio's board record
+(<a href="../spec/stub-stm32f4.html">stub-stm32f4.md</a> 5.2: <abbr class="gl" tabindex="0" title="Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem." data-more="glossary.html#t-spi">SPI</abbr> flash bus, mode and pins, chip select, chip selects held high,
+crystal, the bootloader's end). It reads HELLO again and goes on only when the echo is the record byte for byte, the
+configured flag is set and the application base is 0x0800C000. Then it installs in the order of
+<a href="../spec/stub-stm32f4.html">stub-stm32f4.md</a> 7: sector 3 erased first and its first word written last. A sector that
+also holds bytes the firmware doesn't own (no radio has one since the codec moved) is downloaded as a file before
+anything is erased, and those bytes are written back unchanged. The bootloader route stays on the same step, folded,
+and opens by itself when the loader can't finish. For a codec move the codec segments are built before the radio is
+handed to the loader (<code>stubSegments</code>): with no source the install is refused and the radio is not touched. An install
+cut short leaves the radio in its bootloader at the next power-on, which that route finishes.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Loader answer</th>
+<th>What the page does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HELLO before CONFIG: application base 0, no SPI flash, configured flag clear</td>
+<td>Expected for protocol 4: it sends CONFIG</td>
+</tr>
+<tr>
+<td>CONFIG refused (status <code>0D</code>)</td>
+<td>Stops, nothing written; the bootloader route opens</td>
+</tr>
+<tr>
+<td>The codec guard refuses a plain image over a codec window (<code>f4stub.js</code> <code>guardCodec</code>, <code>codecGuard</code> set)</td>
+<td>Nothing written: restarts the radio out of the loader into its firmware (or says to turn it off and on) and opens the bootloader route</td>
+</tr>
+<tr>
+<td>Any other failure once the loader runs</td>
+<td>Restarts the radio from the loader (<code>resetChip</code>): before sector 3 was erased (<code>F4Stub.erased</code>) it runs its firmware as before, after it it starts in update mode, and the page says which and opens the bootloader route. Only a loader that doesn't answer gets Try Again</td>
+</tr>
+<tr>
+<td>HELLO after CONFIG echoes other bytes, or another application base</td>
+<td>Stops, nothing written</td>
+</tr>
+<tr>
+<td>A write answered <code>11</code> (not configured)</td>
+<td>Stops; the page checks the echo before every write, so this means the loader lost its record</td>
+</tr>
+<tr>
+<td>Protocol 2 (an older loader still running from an earlier session)</td>
+<td>No CONFIG: accepted only for a board whose record matches the wiring built into it (<code>v2_wiring</code>)</td>
+</tr>
+<tr>
+<td>A backup through the loader whose record is refused</td>
+<td>The page restarts the radio into RadioFoundry before it reports the error</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>data/flash-boards.json</code> carries per board (<code>f4stub</code>, from the board registry's <code>[flash.stub]</code> through <code>stub/f4stub.py</code> <code>BOARDS</code> and <code>config_record()</code>): the
+owned flash, the stub's board id, the 24-byte record as hex, and <code>v2_wiring</code>, with the protocol version and record
+length at the top. <code>data/f4-stub.json</code> gives the image and its protocol. The page sends the record as it is and never
+builds one, so the page and <code>stubtool.py</code> can't drift; <code>site/tests/f4stub.test.mjs</code> checks the records and the HELLO
+layout against <code>f4stub.py</code>'s simulated stub (<code>f4-vectors.json</code>, written by <code>site/tests/fixtures.py</code>), and a board
+with other SPI wiring against f4stub's test profile.</p>
+<h2 id="firmware-images-and-custom-builds">Firmware images and custom builds</h2>
+<p>The flasher gets every image, a prebuilt variant's included, by building it on request (<code>requestBuild</code> in <code>app.js</code>)
+when the build step continues. The page sends the radio, the newest release tag (<code>main</code> before the first
+release) and the feature list, waits for the build, and checks the image against its manifest. Release images on the
+site (<code>firmware/&lt;radio&gt;/</code>) are not used by the flasher. The <code>make</code> command that builds the same selection, and a picker
+for the image it produces, stay under &quot;Build it yourself&quot;.</p>
+<p>A radio whose image depends on more than the <abbr class="gl" tabindex="0" title="A CONFIG_ option that turns a feature&#x27;s code in or out of the build." data-more="../build-config.html">feature switches</abbr> lists the choices in board.toml <code>[[build_options]]</code>
+(<code>flash.build_options</code> in <code>data/radios.json</code>, such as a band: <code>BAND=uhf|vhf</code>). The build step asks for each one
+before it builds, or takes it from a connected radio's <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="debug-link.html">debug link</abbr> name (<code>board_name</code>), sends it with the request, and
+refuses an image whose manifest doesn't carry it (<code>build_options</code>). The current-firmware step refuses a radio whose name
+says another value.</p>
+<p>The firmware's language packs are feature switches named <code>LANG_&lt;CODE&gt;</code> (<code>CONFIG_LANG_ES</code>, the code upper-cased). When
+the browser's languages (<code>navigator.languages</code>, primary subtag) include one the radio can have a pack for and the
+selection leaves it out, the build step offers it under the build cards: one button turns the switch on, another
+dismisses the offer until the page reloads. Only the first language the browser asks for that has a pack counts, and
+English (the firmware's own) never does. The code comes from the switch name alone (<code>flasher/langsuggest.js</code>), so a new
+pack needs no flasher change. Strings: <code>flash.build.pack_*</code>.</p>
+<p><strong>Radio language</strong> (<code>LANG_DEFAULT_&lt;CODE&gt;</code>) lists English and every pack the radio can have; one the build leaves out
+reads &quot;(adds it to the build)&quot;. Picking it turns its pack on, and the pick holds across the build cards until the pack
+is turned off by hand (the radio then starts in English). Picking another language takes out a pack the pick added. On
+an installation it is preset to the page's language only when the build has that pack.</p>
+<p>A build too big for the radio fails at the build service with <code>too big: &lt;region&gt; overflowed by &lt;N&gt; bytes</code> (the
+linker's region, flash first). The build step shows it as a notice, not an error to report: how many <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="glossary.html#t-kb">KB</abbr> too big for
+the program memory (or the <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="glossary.html#t-ram">RAM</abbr>), to turn features off in Custom or pick a smaller build, and, when the Radio language
+added a pack, that English leaves it out again (<code>flasher/buildfit.js</code>; strings <code>flash.build.too_big*</code>).</p>
+<h2 id="version-links">Version links</h2>
+<p>To have someone install a version that isn't a release (a commit to try out), send them the flasher with
+<code>?version=</code>:</p>
+<pre><code>https://&lt;site&gt;/flash/?version=&lt;full 40-character commit hash&gt;
+https://&lt;site&gt;/flash/?version=&lt;full commit hash&gt;#radio=&lt;id&gt;
+https://&lt;site&gt;/flash/?version=v26.11
+https://&lt;site&gt;/flash/?version=feature/my_radio
+</code></pre>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Behavior</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What it builds</td>
+<td>The build request sends that ref in place of the newest release tag. The build service takes a release tag, a branch of the main repository (<code>main</code> included) or a full commit hash, and the commit has to be pushed. A branch name passes the service's rule: up to four <code>/</code>-separated parts of letters, digits, <code>_</code>, <code>.</code> and <code>-</code>, no <code>..</code>, no part ending in <code>.lock</code> (<code>version.js</code>). A short hash shows a &quot;can't find&quot; banner and builds nothing.</td>
+</tr>
+<tr>
+<td>How long it lasts</td>
+<td>The tab keeps it in <code>sessionStorage</code> for the session: reloads and visits to other pages keep it, a new browser session doesn't. <code>?version=</code> (empty) drops it.</td>
+</tr>
+<tr>
+<td>On every step</td>
+<td>A banner names the version and has &quot;Install the latest release instead&quot;, which drops it.</td>
+</tr>
+<tr>
+<td>Before the build</td>
+<td>The build step's button says &quot;Get version <hash>&quot;, and a dialog asks for confirmation. The dialog can also switch to the latest release and continue with it.</td>
+</tr>
+<tr>
+<td><code>#radio=</code></td>
+<td>Picks the radio, as on any flasher link.</td>
+</tr>
+<tr>
+<td>A beta</td>
+<td>When the site offers a newer pre-release (<code>site.json</code> <code>beta</code>), the start page and the first install step link to <code>?version=&lt;beta tag&gt;</code> (<a href="release.html#release-names">release.md</a>). The beta is never installed without that link.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Without a link, a radio with no release is built from <code>main</code>. On a preview of another branch (<code>data/site.json</code> <code>branch</code>, from <code>CF_PAGES_BRANCH</code> or the checked-out branch), it is built from that branch instead, so a radio that exists only there can be tried.</p>
+<p>The feature list comes from the site's own release data. A commit with other feature names makes the build fail with
+the service's error.</p>
+<h2 id="a-failed-install-the-help-task">A failed install (the help task)</h2>
+<p>&quot;My radio isn't working&quot; on the start page asks for the radio and the symptom, then walks to a fix. Every screen
+keeps the reassurance that the page never writes the part of the radio that starts update mode.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Won't switch on</td>
+<td>Battery check, then (<abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="glossary.html#t-stm32">STM32</abbr>) a practice of update mode with a connection check, then the fix chooser.</td>
+</tr>
+<tr>
+<td>Stuck on a screen, or the install stopped</td>
+<td>Update mode check (STM32) or straight to the fix chooser (<abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="glossary.html#t-hr-c7000">HR_C7000</abbr>, which the page reaches over the cable at power-on).</td>
+</tr>
+<tr>
+<td>Works but something is wrong</td>
+<td>The fix chooser.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The fix chooser offers installing again (the install steps without the current-firmware question), putting back a
+backup (the restore task with the target preselected) or the original firmware (STM32: the stock file, then update
+mode; HR_C7000: the restore task, with the backup or the original firmware file). Each
+failure message in the install steps links here (<code>helpLink</code>).</p>
+<h2 id="usb-network-mode">USB network mode</h2>
+<p>A radio in USB network mode (1FC9:0096, <a href="../spec/usb-network.html">usb-network.md</a>) has no serial port, and the
+flasher can't reach it another way: pages can't send <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="glossary.html#t-udp">UDP</abbr> (port 3334 carries the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="debug-link.html">debug link</abbr> and <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> in that mode), an
+https page can't fetch from the radio's http status server, and the OS network driver owns the adapter's interfaces,
+so WebUSB can't claim them. WebUSB can still list the device, so the flasher detects it (a radio this page has seen
+before is found without a prompt; otherwise &quot;Check for USB network mode&quot; under every connect button) and tells the user
+to switch USB back to serial on the radio. The bootloader is unaffected: it is a separate USB device.</p>
+<h2 id="the-manual-install-kit">The manual install kit</h2>
+<p>Where the page can't install, <code>manual.js</code> builds a zip for installing from the command line with rfoundry (user view:
+<a href="../user/02-installing.html#install-from-the-command-line-with-a-kit">installing</a>). No release carries an rfoundry
+executable yet, and the tool must come from the site's own commit: <code>manifest.verify</code> refuses a codec profile or board
+it doesn't know. So the site build publishes <code>downloads/rfoundry-tool.zip</code> (<code>site/rfoundrysite/toolzip.py</code>): the
+<code>rfoundry</code> package, <code>tools/serial_loader.py</code>, <code>tools/hrc7000_codec.py</code>, <code>stub/stubtool.py</code> and <code>stub/f4stub.py</code> in the
+repository's layout (<code>serialflash.py</code> loads the tools by path from the package's grandparent), a root <code>rfoundry.py</code>
+launcher, <code>requirements.txt</code> and the license. The zip is reproducible: sorted entries, the commit's time.
+<code>data/site.json</code> <code>tool</code> is <code>{zip, sha256, size}</code>; the page refuses a download that doesn't match it.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kitRoute(radio)</code></td>
+<td><code>dfu</code> (<code>usb-dfu</code> family), <code>serial</code> (<code>serial-loader</code>), or null: rfoundry refuses <code>serial-iap</code>, so that radio gets no kit</td>
+</tr>
+<tr>
+<td><code>missingApi(radio, task, step, apis)</code></td>
+<td>The API an install step needs and the browser lacks: the <code>anyroad-dfu</code> write (USB, or serial on the loader route), the <code>c7000-stub</code> connect (serial)</td>
+</tr>
+<tr>
+<td><code>kitReadme(o)</code></td>
+<td><code>README.txt</code>, a pure function: per-OS setup, the radio's <code>[flash.bootloader] steps</code> (a docs link when there are none), the <code>--dry-run</code> and install commands with the kit's file names, where to get help. English, like rfoundry's output. A <code>serial</code> radio whose codec has no stock file (only a program flash read) gets the <code>stubtool.py --progmem</code> command first</td>
+</tr>
+<tr>
+<td><code>makeKit(o)</code></td>
+<td>Fetches and checks the tool zip, adds <code>README.txt</code> (CRLF), <code>firmware/&lt;base&gt;.bin</code> and <code>.json</code> (<code>&lt;base&gt;</code>: the manifest's <code>image.file</code>, else <code>rfoundry_&lt;board&gt;</code>), <code>stock/&lt;file&gt;</code></td>
+</tr>
+<tr>
+<td><code>kitPanel</code>, <code>kitLine</code></td>
+<td>The panel <code>render()</code> draws in place of a step <code>missingApi</code> names, with the stock file picker when the kit has none; the line under a failure</td>
+</tr>
+</tbody>
+</table></div>
+<p>The stock file is <code>S.stock</code> (the inner file of a vendor zip), else the file the <abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="glossary.html#t-hr-c7000">C7000</abbr> codec step took
+(<code>S.vendorPick</code>); a file with a problem is left out. The line sits under a failed bootloader connect (not a cancelled
+chooser) or write, and under the C7000 connect's failed boot <abbr class="gl" tabindex="0" title="Read-only memory: code fixed in the chip." data-more="glossary.html#t-rom">ROM</abbr> wait or load (<code>ctx.manualKitLine</code> in <code>c7000ui.js</code>). Practice
+mode never offers a kit: its image is random bytes. Tests: <code>site/tests/manual.test.mjs</code>. Untested with a radio.</p>
+<p>The README's setup (<code>kitSetup()</code>) names Python <code>PYTHON_MIN</code> and each package of <code>PACKAGES</code>; the test checks both
+against <code>tools/rfoundry/pyproject.toml</code> and the zip's <code>requirements.txt</code>. The packages are not bundled: pip picks the
+<code>libusb-package</code> build for the user's system, which a kit made in the browser can't know.</p>
+<h2 id="browser-support">Browser support</h2>
+<p>WebUSB and Web Serial: Chrome, Edge and other Chromium browsers on a computer, over https or localhost. Windows needs
+the WinUSB driver for the bootloader (Zadig, once), as rfoundry does. On Windows the bootloader step shows the Zadig
+steps (<a href="../user/02-installing.html#windows-the-bootloader-driver">installing</a>), open until this computer has reached a
+bootloader once, and again with any failed connect: without the driver Chrome either doesn't list the bootloader or
+can't open it. The device name comes from <code>[flash.dfu] product</code> in the board's <code>board.toml</code>.</p>
+<p>Other browsers (Safari, Firefox) can still choose and build the firmware; the step that needs the radio then offers
+the <a href="#the-manual-install-kit">manual install kit</a>.</p>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/dev/web-flasher.md">Vedi il sorgente di questa pagina</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="In questa pagina">
+		<p class="eyebrow">In questa pagina</p>
+		<ul><li class="l2"><a href="#the-beta-notice">The beta notice</a></li><li class="l2"><a href="#vendor-files">Vendor files</a></li><li class="l3"><a href="#when-a-file-cant-be-used">When a file can&#x27;t be used</a></li><li class="l3"><a href="#sending-a-file">Sending a file</a></li><li class="l3"><a href="#what-an-error-report-says-about-the-file">What an error report says about the file</a></li><li class="l3"><a href="#the-flash-log-and-the-vendor-file">The flash log and the vendor file</a></li><li class="l3"><a href="#breadcrumbs">Breadcrumbs</a></li><li class="l3"><a href="#report-a-problem">Report a Problem</a></li><li class="l2"><a href="#the-update-task">The Update task</a></li><li class="l2"><a href="#the-original-firmware-version">The original firmware version</a></li><li class="l2"><a href="#backup-before-the-install">Backup before the install</a></li><li class="l2"><a href="#radio-access-backends">Radio access backends</a></li><li class="l2"><a href="#backup-bundles-rfoundry-backup1">Backup bundles (rfoundry-backup/1)</a></li><li class="l2"><a href="#channels-after-an-install-migratejs">Channels after an install (migrate.js)</a></li><li class="l3"><a href="#hr_c7000-radios-c7000uijs-bringchannels">HR_C7000 radios (c7000ui.js bringChannels)</a></li><li class="l2"><a href="#another-open-firmware-openfwjs">Another open firmware (openfw.js)</a></li><li class="l2"><a href="#restore">Restore</a></li><li class="l3"><a href="#protected-regions">Protected regions</a></li><li class="l2"><a href="#hr_c7000-radios-the-boot-stub">HR_C7000 radios (the boot stub)</a></li><li class="l3"><a href="#the-factory-update-mode">The factory update mode</a></li><li class="l3"><a href="#a-board-the-boot-rom-starts-directly">A board the boot ROM starts directly</a></li><li class="l3"><a href="#a-board-with-a-first-stage">A board with a first stage</a></li><li class="l2"><a href="#stm32f4-radios-the-loader-route">STM32F4 radios (the loader route)</a></li><li class="l2"><a href="#firmware-images-and-custom-builds">Firmware images and custom builds</a></li><li class="l2"><a href="#version-links">Version links</a></li><li class="l2"><a href="#a-failed-install-the-help-task">A failed install (the help task)</a></li><li class="l2"><a href="#usb-network-mode">USB network mode</a></li><li class="l2"><a href="#the-manual-install-kit">The manual install kit</a></li><li class="l2"><a href="#browser-support">Browser support</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Unisciti alla comunità RadioFoundry</strong><span class="small muted">Domande, aiuto con la tua radio e novità, su Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Hai trovato un bug? Vuoi che la tua radio sia supportata?</strong><span class="small muted">Apri una segnalazione su GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry ha licenza MIT · <a href="https://github.com/radiofoundry/radiofoundry">Codice sorgente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunità</a> · <a href="../../../it/docs/index.html">Documenti</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Novità</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

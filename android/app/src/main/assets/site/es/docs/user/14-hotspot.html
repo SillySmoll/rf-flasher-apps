@@ -1,0 +1,209 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hotspot Mode · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Hotspot Mode · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/docs/user/14-hotspot.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/user/14-hotspot.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/user/14-hotspot.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/user/14-hotspot.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/user/14-hotspot.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/user/14-hotspot.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../es/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../../es/radios/index.html">Radios</a><a href="../../../es/features/index.html">Funciones</a><a href="../../../es/flash/index.html">Instalar</a><a href="../../../es/codeplug/index.html">Codeplug</a><a href="../../../es/docs/index.html" aria-current="page">Documentación</a><a href="../../../es/screenshots/index.html">Capturas</a><a href="../../../es/tools/index.html">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../../docs/user/14-hotspot.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/user/14-hotspot.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/user/14-hotspot.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/user/14-hotspot.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Manual del usuario">
+		<p class="eyebrow"><a href="../../../es/docs/index.html">Documentación</a> / Manual del usuario</p>
+		<ul><li><a href="index.html">RadioFoundry User Manual</a></li><li><a href="01-introduction.html">Introduction</a></li><li><a href="02-installing.html">Installing</a></li><li><a href="03-first-boot.html">First Boot</a></li><li><a href="04-programming.html">Programming the Radio</a></li><li><a href="05-keys-and-navigation.html">Keys and Navigation</a></li><li><a href="06-home-screen.html">The Home Screen</a></li><li><a href="07-channels-zones-vfo.html">Channels, Zones and the VFO</a></li><li><a href="08-fm.html">FM</a></li><li><a href="09-dmr.html">DMR</a></li><li><a href="10-messages-and-signaling.html">Messages, Call Alert and Radio Check</a></li><li><a href="11-emergency.html">Emergency</a></li><li><a href="12-scan.html">Scan and Dual Watch</a></li><li><a href="13-aprs.html">APRS</a></li><li><a href="14-hotspot.html" aria-current="page">Hotspot Mode</a></li><li><a href="15-usb-network.html">USB Network Mode</a></li><li><a href="16-battery-and-power.html">Battery and Power</a></li><li><a href="17-settings.html">Settings</a></li><li><a href="18-moving-from-stock-md380.html">Moving from Stock MD-380 Firmware</a></li><li><a href="19-moving-from-stock-dm32.html">Moving from Stock DM-32UV Firmware</a></li><li><a href="20-troubleshooting.html">Troubleshooting</a></li><li><a href="21-faq.html">FAQ</a></li><li><a href="22-glossary.html">Glossary</a></li><li><a href="23-radios.html">Radio Reference</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Esta página aún no está traducida; se muestra en inglés.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="hotspot-mode">Hotspot Mode</h1>
+<p>In <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="14-hotspot.html">hotspot</abbr> mode the radio is a <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> modem for a computer running MMDVMHost, Pi-Star or a similar host. The host
+connects the radio to a DMR network (<abbr class="gl" tabindex="0" title="A worldwide amateur DMR network of linked servers and talkgroups." data-more="22-glossary.html#t-brandmeister">BrandMeister</abbr>, TGIF and others). The radio carries the calls to and from radios
+nearby on one frequency. The radio speaks the <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="../spec/mmdvm-protocol.html">MMDVM</abbr> modem protocol over its serial port. On radios with USB this is
+the USB serial port. On radios without USB it is the programming cable (<a href="23-radios.html">Radio reference</a>).</p>
+<p>Some radios leave hotspot mode out of their default image. On those radios <strong>Tools &gt; Hotspot</strong> is dimmed. The
+<a href="23-radios.html">Radio reference</a> lists them and says where hotspot mode is verified.</p>
+<h2 id="what-you-need">What you need</h2>
+<ul>
+<li>A computer with MMDVMHost (Linux, macOS), or a Pi-Star style image on a Raspberry Pi.</li>
+<li>The radio's USB cable, or its programming cable on a radio without USB.</li>
+<li>The codec isn't needed: the radio passes the <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> frames through without decoding the voice.</li>
+<li><strong>Settings &gt; Connections &gt; <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="14-hotspot.html">Hotspot</abbr> allowed</strong> on (the default).</li>
+</ul>
+<h2 id="setting-up-mmdvmhost">Setting up MMDVMHost</h2>
+<p>Point MMDVMHost's modem at the radio's serial port and run it as a simplex <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="14-hotspot.html">hotspot</abbr>. The parts of <code>MMDVM.ini</code> that
+matter:</p>
+<pre><code>[General]
+Duplex=0
+
+[Info]
+RXFrequency=438800000
+TXFrequency=438800000
+
+[Modem]
+Protocol=uart
+UARTPort=/dev/ttyACM0
+UARTSpeed=115200
+
+[DMR]
+Enable=1
+ColorCode=1
+
+[DMR Network]
+Enable=1
+Slot1=0
+Slot2=1
+</code></pre>
+<ul>
+<li>On USB the port is <code>/dev/ttyACM0</code> (or the next number) on Linux and <code>/dev/cu.usbmodem...</code> on macOS. The radio's
+USB ID is 1FC9:0094.</li>
+<li>Use the same frequency for <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">receive</abbr> and <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">transmit</abbr>, inside the radio's bands (<a href="23-radios.html">Radio reference</a>).</li>
+<li>The radio uses <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="22-glossary.html#t-timeslot">timeslot</abbr> 2 only: enable network slot 2 and disable slot 1.</li>
+<li>The baud rate is ignored on USB. 115200 works.</li>
+<li>Leave the other modes (D-Star, YSF, P25, NXDN, POCSAG, FM) off. The radio refuses them. POCSAG is accepted but never
+transmitted.</li>
+</ul>
+<p>On Pi-Star style images, choose a USB <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="../spec/mmdvm-protocol.html">MMDVM</abbr> modem on the radio's serial port and the settings above.</p>
+<p>The radio reports itself to the host as &quot;RadioFoundry&quot;, the radio model (for example &quot;RadioFoundry XR-100UV&quot;)
+and the firmware version.</p>
+<h2 id="starting">Starting</h2>
+<p>The radio enters <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="14-hotspot.html">hotspot</abbr> mode by itself when the host opens the port and sends its first <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="../spec/mmdvm-protocol.html">MMDVM</abbr> request. The screen
+changes to the hotspot screen.</p>
+<img src="../ux/screens/160x120i5/hotspot.png" width="200" alt="The hotspot screen">
+<p>The hotspot screen shows:</p>
+<ul>
+<li>the state: STARTING, HOTSPOT, <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">RX</abbr> <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="22-glossary.html#t-rf">RF</abbr> while a radio nearby talks, <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">TX</abbr> NET while a network call goes out;</li>
+<li>the frequency, the <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="22-glossary.html#t-color-code">color code</abbr> and the power;</li>
+<li>the current or last call, with its source (&quot;RF&quot; or &quot;Net&quot;), the caller and the <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="22-glossary.html#t-talkgroup">talkgroup</abbr>.</li>
+</ul>
+<p><strong>OK</strong>, <strong>6</strong> (Tools), <strong>3</strong> (Hotspot) shows how to start hotspot mode. While it runs, the page has a &quot;Stop hotspot&quot;
+row.</p>
+<h2 id="while-in-hotspot-mode">While in hotspot mode</h2>
+<ul>
+<li><strong>*</strong> switches between the <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="14-hotspot.html">hotspot</abbr> screen and the diagnostics page.</li>
+<li><strong>PTT</strong> doesn't <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">transmit</abbr> (&quot;Hotspot mode: PTT off&quot;).</li>
+<li>Any other key shows &quot;Hotspot on: OK stops it&quot;.</li>
+<li>If the host asks for a <abbr class="gl" tabindex="0" title="A station&#x27;s callsign sent in Morse code. A standalone SFR repeater channel sends one in FM every few minutes after traffic (Settings &gt; Talk &amp; listen &gt; SFR CW ID)." data-more="14-hotspot.html">CW ID</abbr>, the radio sends it in Morse on FM on the hotspot frequency, then returns to <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr>. The
+Morse is 20 words per minute at 800 Hz.</li>
+</ul>
+<h2 id="stopping">Stopping</h2>
+<p>The radio leaves <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="14-hotspot.html">hotspot</abbr> mode and returns to its channel when:</p>
+<ul>
+<li>you press <strong>OK</strong> or hold <strong>Back</strong> (&quot;Hotspot stopped&quot;);</li>
+<li>the host closes the port, or the USB cable is unplugged;</li>
+<li>the host sends nothing for 20 s.</li>
+</ul>
+<p>To stop the radio from entering hotspot mode at all, turn <strong>Settings &gt; Connections &gt; Hotspot allowed</strong> off.</p>
+<h2 id="mmdvm-sfr-single-frequency-repeater">MMDVM SFR (single frequency repeater)</h2>
+<p>In <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="../spec/mmdvm-protocol.html">MMDVM</abbr> <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="../spec/sfr.html">SFR</abbr> the <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="14-hotspot.html">hotspot</abbr> repeats a call heard on <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="22-glossary.html#t-timeslot">timeslot</abbr> 1 on timeslot 2 of the same frequency. It also sends the
+call to the network. Radios nearby in direct mode hear both. It isn't on every radio (<a href="23-radios.html">Radio reference</a>).</p>
+<p>The host turns MMDVM SFR on by running duplex with the <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">receive</abbr> and <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">transmit</abbr> frequencies equal (<code>Duplex=1</code>,
+<code>RXFrequency</code> = <code>TXFrequency</code>). Setting <code>Duplex=0</code> or different frequencies turns it off.</p>
+<p>The repeat timing measured on air is in the <a href="23-radios.html">Radio reference</a>.</p>
+<h2 id="standalone-sfr">Standalone SFR</h2>
+<p>Experimental: calls through a standalone <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="../spec/sfr.html">SFR</abbr> don't come through reliably yet, between some radios not at all. What
+fails, on which radio, and the workarounds are in <a href="../spec/sfr.html#6-known-issues-by-radio">Known issues by radio</a>.</p>
+<p>A channel can be a single frequency repeater, or a radio using one, without a host. Set the channel's SFR role in the
+<abbr class="gl" tabindex="0" title="The radio&#x27;s programming: channels, zones, contacts, talkgroup lists, DMR ID." data-more="../dev/cps-and-codeplug.html">Codeplug</abbr> Editor. The channel must have one frequency (<abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">receive</abbr> = <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">transmit</abbr>).</p>
+<p>The <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="22-glossary.html#t-vfo">VFO</abbr> can take a role too, with no codeplug change. In the <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="22-glossary.html#t-dmr">DMR</abbr> VFO open <strong>Tools &gt; Single-freq repeater</strong>: <strong>Role</strong>
+steps through Off, User, User (ERDM), Repeater and Repeater (ERDM style); <strong>Inbound slot</strong> switches <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="22-glossary.html#t-timeslot">TS1</abbr> and TS2. The
+VFO keeps its role, also after power off. It works only in DMR with one frequency: with a TX offset the page says the
+role is off. The VFO's <abbr class="gl" tabindex="0" title="A number from 0 to 15 a DMR channel uses. Radios only hear calls with their color code." data-more="22-glossary.html#t-color-code">color code</abbr> is the repeater's on both slots. <strong>Copy to VFO</strong> brings a channel's role along.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>What the radio does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Repeater (Rpt, Rpt Moto)</td>
+<td>Repeats every call heard on the inbound slot on the other slot, 90 ms later. PTT is off (&quot;Repeater channel&quot;). The radio shows receiving while it repeats; the red <abbr class="gl" tabindex="0" title="Light-emitting diode: the radio&#x27;s status light." data-more="22-glossary.html#t-led">LED</abbr> lights while it sends. It stays an ordinary channel while transmit is inhibited, the battery is critical or a scan or <abbr class="gl" tabindex="0" title="Listening on two channels, A and B, and talking on the selected one. With one receiver the radio alternates between them." data-more="22-glossary.html#t-dual-watch">dual watch</abbr> runs, and repeats again once that clears. <strong>Settings &gt; Talk &amp; listen &gt; SFR <abbr class="gl" tabindex="0" title="A station&#x27;s callsign sent in Morse code. A standalone SFR repeater channel sends one in FM every few minutes after traffic (Settings &gt; Talk &amp; listen &gt; SFR CW ID)." data-more="14-hotspot.html">CW ID</abbr></strong> makes it send its callsign in Morse every 5 to 30 minutes, after traffic</td>
+</tr>
+<tr>
+<td>User (User, ERDM)</td>
+<td>Talks on the inbound slot, in step with the repeater. Plays the repeater's copy of a call. <strong>Settings &gt; Talk &amp; listen &gt; SFR receive</strong> can also take the talker's own copy: the first to arrive, or both, with each damaged frame taken from the other copy (Dual-path RX)</td>
+</tr>
+</tbody>
+</table></div>
+<p>All radios on the frequency must use the same inbound slot. A user with inbound slot 2 listens on slot 1, so it still
+hears a user set to inbound slot 1: two set-ups can't share a frequency. There is no CACH on an SFR: users follow the
+repeater's slot sync. <strong>Tools &gt; Single-freq repeater</strong> shows the channel's role, its slots and what the repeater is
+doing. Details are in <a href="../spec/sfr.html">docs/spec/sfr.md</a>.</p>
+<h2 id="two-radios-as-a-duplex-repeater">Two radios as a duplex repeater</h2>
+<p>Experimental: two radios, each on its own port of one computer, act as one full duplex repeater. One <abbr class="gl" tabindex="0" title="Receive." data-more="22-glossary.html#t-rx">receives</abbr>, the
+other <abbr class="gl" tabindex="0" title="Transmit." data-more="22-glossary.html#t-tx">transmits</abbr>. Both need <abbr class="gl" tabindex="0" title="Transmitting on one frequency and receiving on another at the same time. Repeaters do, and so does the duplex hotspot setup." data-more="../spec/split-duplex.html">split duplex</abbr> in their image. The <a href="../feature-matrix.html">feature matrix</a> shows which radios offer it. The computer runs
+<code>tools/split_duplex_host.py</code>. The slot numbering is still being checked on the bench. Details are in
+<a href="../spec/split-duplex.html">docs/spec/split-duplex.md</a>.</p>
+</div>
+		<nav class="prev-next"><a class="prev" href="13-aprs.html">APRS</a><a class="next" href="15-usb-network.html">USB Network Mode</a></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/user/14-hotspot.md">Ver el código fuente de esta página</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="En esta página">
+		<p class="eyebrow">En esta página</p>
+		<ul><li class="l2"><a href="#what-you-need">What you need</a></li><li class="l2"><a href="#setting-up-mmdvmhost">Setting up MMDVMHost</a></li><li class="l2"><a href="#starting">Starting</a></li><li class="l2"><a href="#while-in-hotspot-mode">While in hotspot mode</a></li><li class="l2"><a href="#stopping">Stopping</a></li><li class="l2"><a href="#mmdvm-sfr-single-frequency-repeater">MMDVM SFR (single frequency repeater)</a></li><li class="l2"><a href="#standalone-sfr">Standalone SFR</a></li><li class="l2"><a href="#two-radios-as-a-duplex-repeater">Two radios as a duplex repeater</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

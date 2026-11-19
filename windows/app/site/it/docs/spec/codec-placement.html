@@ -1,0 +1,416 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="it" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Codec placement: moving the stock codec to where RadioFoundry wants it · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Codec placement: moving the stock codec to where RadioFoundry wants it · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo open source per radio digitali.">
+<meta property="og:url" content="https://radiofoundry.org/it/docs/spec/codec-placement.html">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Le radio su cui gira RadioFoundry, ognuna con una schermata diversa.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/codec-placement.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/codec-placement.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/codec-placement.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/codec-placement.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/codec-placement.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../it/" data-gl-more="Altro">
+<a class="skip" href="#main">Vai al contenuto</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../it/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principale"><a href="../../../it/radios/index.html">Radio</a><a href="../../../it/features/index.html">Funzioni</a><a href="../../../it/flash/index.html">Installa</a><a href="../../../it/codeplug/index.html">Codeplug</a><a href="../../../it/docs/index.html" aria-current="page">Documenti</a><a href="../../../it/screenshots/index.html">Schermate</a><a href="../../../it/tools/index.html">Strumenti</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Lingua" title="Lingua">IT</summary><nav aria-label="Lingua"><a href="../../../docs/spec/codec-placement.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/codec-placement.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/codec-placement.html" aria-current="true" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/codec-placement.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Passa da chiaro a scuro" title="Passa da chiaro a scuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Specifiche">
+		<p class="eyebrow"><a href="../../../it/docs/index.html">Documentazione</a> / Specifiche</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html" aria-current="page">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">Questa pagina non è ancora tradotta; è mostrata in inglese.</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="codec-placement-moving-the-stock-codec-to-where-radiofoundry-wants-it">Codec placement: moving the stock codec to where RadioFoundry wants it</h1>
+<p>Status: implemented. Which radios have run the placed codec on the air is in the radios' own codec and hardware pages;
+one <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr> radio's placed codec has been checked only in an emulator (Open items).</p>
+<p>Each radio still runs the <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE+2</abbr> codec its own stock firmware carries, merged on the user's machine
+(<a href="../dev/codec.html">../dev/codec.md</a>). What changes is where it runs. Until now RadioFoundry left the codec at the addresses
+stock linked it to and built its memory map around them. That ties RadioFoundry's layout to one stock build per radio, and
+splits RadioFoundry's flash and <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> into pieces:</p>
+<p>The stock addresses cost differently by <abbr class="gl" tabindex="0" title="System on chip: the processor and its on-chip peripherals." data-more="../dev/glossary.html#t-soc">SoC</abbr> family:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Family</th>
+<th>What the stock addresses cost, before the move</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STM32 radios</td>
+<td>Flash sectors are kept for the codec at its stock address, so the application is split around them or stops inside a sector where the code starts</td>
+</tr>
+<tr>
+<td>HR_C7000 radios</td>
+<td>The RAM window is the union of the stock builds' addresses and splits RAM in two. A build whose codec ran at an address inside RadioFoundry's RAM can't be supported</td>
+</tr>
+</tbody>
+</table></div>
+<p>Each radio's before and after is in its codec page (<code>codec-&lt;id&gt;.md</code>, or the codec section of its hardware page).</p>
+<h2 id="rule">Rule</h2>
+<p>The merge tool moves the codec as one block and rewrites the absolute addresses inside it, so it runs where the
+board's memory map puts it. The bytes come from the user's own stock file or radio, and only ever pass between the
+user's radio, files and machine. The relocation is mechanical: a word that held an address in the old block gets the
+same offset in the new one. Nothing else in the codec changes.</p>
+<p>Which words to rewrite is a property of each stock build, not something to guess on the user's machine. It comes from
+a <strong>codec map</strong>: one per supported stock build, made once by static analysis and kept with the profiles.</p>
+<h2 id="codec-maps">Codec maps</h2>
+<p>A map is a JSON file, <code>tools/rfoundry/rfoundry/codec_maps/&lt;board&gt;/&lt;profile&gt;.json</code>, in format <code>rfoundry-codec-map/1</code>. It
+holds addresses, lengths, offsets and hashes, never codec bytes. rfoundry, <code>tools/hrc7000_codec.py</code> and the web flasher
+(through <code>data/flash-boards.json</code>) read the same files.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profile</code>, <code>board</code>, <code>isa</code></td>
+<td>The build's id, the radio, and <code>thumb2</code> (<abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr>) or <code>csky</code> (<abbr class="gl" tabindex="0" title="The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c7000">HR_C7000</abbr>)</td>
+</tr>
+<tr>
+<td><code>stock</code></td>
+<td>File name, SHA-256 (null when the build is known only from a radio read), version</td>
+</tr>
+<tr>
+<td><code>code</code></td>
+<td>Stock flash address, length, run address (the flash address on STM32; the <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> address stock copies it to on HR_C7000), SHA-256, the length reachable from the entries, the alignment a move must keep</td>
+</tr>
+<tr>
+<td><code>entries</code></td>
+<td>Entry points as offsets from the code start</td>
+</tr>
+<tr>
+<td><code>self_refs</code></td>
+<td>Every word or movw/movt pair in the code that holds an address inside the code's own run range: offset, value. Rewritten when the code moves</td>
+</tr>
+<tr>
+<td><code>table_refs</code></td>
+<td>Every site in the code that holds the address of codec data: offset, kind (literal word or instruction pair), target. Rewritten when the tables move</td>
+</tr>
+<tr>
+<td><code>islands</code></td>
+<td>Code that stock keeps inside a table window (STM32), with <code>island_ptrs</code> (code words that point at it) and <code>island_refs</code> (its references to codec data)</td>
+</tr>
+<tr>
+<td><code>branches</code></td>
+<td>The calls from the islands into the code: site, target. Re-encoded when the code moves</td>
+</tr>
+<tr>
+<td><code>objects</code></td>
+<td>The data objects the table refs point into: start, length (and a conservative length), and how the length is known</td>
+</tr>
+<tr>
+<td><code>groups</code></td>
+<td>Objects the code indexes across, which must keep their distance</td>
+</tr>
+<tr>
+<td><code>table_windows</code></td>
+<td>The stock table windows (as the profiles carve them), and the minimal window from the first object to the end of the last, with its SHA-256</td>
+</tr>
+<tr>
+<td><code>outside_refs</code></td>
+<td>References from the codec to anything outside its windows; empty for every supported build</td>
+</tr>
+<tr>
+<td><code>compaction</code></td>
+<td>The packed size of code plus objects and islands, for the one-sector packing</td>
+</tr>
+</tbody>
+</table></div>
+<p>The maps are in <code>tools/rfoundry/rfoundry/codec_maps/&lt;board&gt;/</code>, one per stock code window the repository supports. A map is found by the SHA-256 of the stock code window,
+so builds with byte-identical code share one (<code>codec_maps/README.md</code>).</p>
+<p>The analyzer that makes the maps reads stock images, so it lives with the other stock analysis tools outside this
+repository. It handles both instruction sets. A new stock build needs a run of it and a review of its notes before its
+map is added here.</p>
+<p>A map is used only for the build its hashes name. The merge checks the stock file (or the carved code and tables) by
+SHA-256, applies the map, and checks the result.</p>
+<h2 id="hr_c7000-radios">HR_C7000 radios</h2>
+<p>The codec already sits in a RadioFoundry slot in program flash (0x030E8000) and is copied to <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> at boot, so it moves at that
+copy.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Before</th>
+<th>After</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Slot</td>
+<td>Version 1: header, code, tables. The code's run address is stock's</td>
+<td>Version 2: the same bytes, unchanged from stock, plus the relocation list (the map's <code>self_refs</code> offsets; <code>table_refs</code> too once tables move) after the tables</td>
+</tr>
+<tr>
+<td>Boot</td>
+<td>Copies the code to its stock address</td>
+<td>Copies the code to the board's codec window and adds (window - stock run address) to each listed word, then checks the signature</td>
+</tr>
+<tr>
+<td>RAM</td>
+<td>Low region, codec window at stock's address, high region</td>
+<td>One region for RadioFoundry from 0x10000; the codec window at the top of <abbr class="gl" tabindex="0" title="Static RAM: the processor&#x27;s fast working memory." data-more="../dev/glossary.html#t-sram">SRAM</abbr>, sized to the largest code among the board's maps; the start-up stack below it</td>
+</tr>
+<tr>
+<td>Tables</td>
+<td>Copied to their stock modem SRAM address</td>
+<td>Unchanged: the board reserves the union of its builds' table windows</td>
+</tr>
+<tr>
+<td>Slot identity</td>
+<td>CRC-32 and SHA-256 of the stock bytes</td>
+<td>The same: the slot keeps stock bytes, so a backup or a kept slot is still recognized by the profile hashes</td>
+</tr>
+</tbody>
+</table></div>
+<p>The codec window (in SRAM) is the largest code among the board's maps, and the table window (in modem SRAM) is the
+union of its builds' tables. Both are in the radio's codec page and the board's linker script.</p>
+<p>Version 2 is the only slot format the firmware and the tools write. A radio with a version 1 slot reports no codec
+(FM works). The web flasher rebuilds such a slot as version 2 when the build has a codec map (<code>c7000v1.js</code>, kept
+only until the developer radios are moved); otherwise the codec is installed again from the stock file. The firmware
+also refuses a slot whose code doesn't fit the window or whose list names a word outside the code. A build without a
+codec map can't be written.</p>
+<p>The runtime <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr>'s window (<code>HRC_STUB_BASE</code>) follows the codec window. The slot tool is <code>tools/hrc7000_codec.py</code>.</p>
+<h2 id="stm32-radios">STM32 radios</h2>
+<p>The codec runs in place from internal flash, so it moves at the merge, and the firmware finds it through a
+<strong>descriptor</strong>: 128 bytes at 0x080FFF80, the end of sector 11.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Magic, version</td>
+<td>&quot;DESC&quot;, 1</td>
+</tr>
+<tr>
+<td>Profile tag</td>
+<td>Which stock build; the firmware supports only the builds whose calling convention it knows</td>
+</tr>
+<tr>
+<td>Code</td>
+<td>Flash address, length, CRC-32</td>
+</tr>
+<tr>
+<td>Table windows</td>
+<td>Count, then up to five (address, length, CRC-32)</td>
+</tr>
+<tr>
+<td>CRC-32</td>
+<td>Of the 124 bytes before it</td>
+</tr>
+</tbody>
+</table></div>
+<p>All <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr> stock codecs seen so far are builds of one library, with the same entry offsets, argument lists and state
+sizes. The codec page of the first radio hosted (&quot;Per-frame calls&quot;) specifies them. Its V02.06 build is the reference
+build that the other codec research pages compare with; <a href="radios.html">radios.md</a> links each radio's pages.</p>
+<p><strong>State.</strong> <code>platform/stm32f4/hrc/vocoder.c</code> keeps one CCM block, the size of the encoder's state, for the encoder's
+state or the decoder's, never both. Voice is simplex (the caller decodes nothing while a transmission runs,
+<a href="dmr-voice.html">dmr-voice.md</a>), and each half of the init touches only its own state, so the first encode after a
+decode runs the encoder's half on the zeroed block (encoder init, <abbr class="gl" tabindex="0" title="Forward error correction: extra bits that let the receiver repair errors without a resend." data-more="../dev/glossary.html#t-fec">FEC</abbr> init on its own small block, encoder
+parameters, encoder set) and the first decode after an encode runs the decoder's (decoder init, decoder set, the
+first decode). <code>reset()</code> only marks the block empty.</p>
+<p>Entry points stay in the firmware, as offsets from the code start. Every window must lie inside the flash the board
+leaves to the codec (a board's <code>memory.ld</code> and its codec page give the sectors).</p>
+<p>A board can take its codec from more than one stock file (<code>[codec] stock</code> in <code>board.toml</code> lists them). The files hold
+the same codec, but each may put its tables at other addresses. The board's codec windows are then the union of every
+file's layout: the image must stay out of all of them, and keeping the codec keeps all of them. A merge writes and
+checks the layout of the file it merges, never the union.</p>
+<p>First step, no table addresses rewritten: the code moves as one block to the start of the last flash sector's free
+part, the tables stay at their stock addresses (cut to the map's minimal window), and the application gets the sectors
+below as one piece. The merge rewrites the code's literal words or movw/movt pairs that point into the code
+(<code>self_refs</code>) and the calls from the islands in the table windows back into the code (<code>branches</code>). Each radio's
+addresses, sectors and rewrite counts are in its codec page.</p>
+<p>The firmware (<code>boards/&lt;radio&gt;/vocoder_&lt;radio&gt;.c</code>) checks the descriptor, that the code and every table window are
+where this build expects them with the expected CRCs, and the code's first word. Only then does it call the codec, and
+it reports the profile with an <code>-s11</code> suffix (<code>&lt;profile&gt;-s11</code>). A build from before the move
+reports the stock id, so the flashing tools see that the codec isn't where the new layout keeps it.</p>
+<p><strong>One id, many builds.</strong> A board reports one codec id for every stock build it accepts; the descriptor's tag tells
+the builds apart. A release accepts only the tags it was built with:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Update</th>
+<th>Codec kept?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>To the same release or a newer one</td>
+<td>Yes, whichever supported build the codec came from</td>
+</tr>
+<tr>
+<td>To a release older than the one that added the codec's build</td>
+<td>No: that release doesn't know the build's tag, finds no codec and runs FM only</td>
+</tr>
+</tbody>
+</table></div>
+<p>The flashing tools see the same id either way, so they keep the codec. Going back to such a release needs the codec
+merged again from a stock file that release supports.</p>
+<p>Second step, window moves: every codec window moves as one block, the code and each table window, so a board can
+give the codec only its last sector or two and the application everything below. The merge rewrites every address
+that points into a moved window: <code>self_refs</code>, <code>table_refs</code> (literal words and movw/movt pairs), <code>island_ptrs</code>,
+<code>island_refs</code>, and the islands' calls into the code (<code>branches</code>). Each window keeps its stock address modulo 16 and
+its bytes in order, so nothing inside a window is repacked. Every site must hold exactly the value the source layout
+implies before it is rewritten, which refuses a wrong build, a wrong layout or a damaged copy. The same rewrite run
+backwards takes a placed copy back to the stock windows (<code>codecmap.relocate</code>). Which boards use it is in
+<a href="../feature-matrix.html">feature-matrix.md</a>; each radio's codec page has its layout.</p>
+<p>The placed CRC-32 of each window follows from a known layout's CRC-32 and the map alone, without the codec bytes
+(<code>codecmap.relocate_crcs</code>: CRC-32 is affine over <abbr class="gl" tabindex="0" title="Exclusive or: a bit operation that flips bits where the other operand has a 1." data-more="../dev/glossary.html#t-xor">XOR</abbr>, and only the listed sites change). A profile whose placed
+windows have no SHA-256 is checked by these CRCs at the merge, and a copy read from a radio is checked by taking it
+back to the stock windows and comparing their SHA-256s.</p>
+<p>Later step, not planned: pack code and table objects into fewer bytes. The maps hold what that needs (objects,
+groups, compaction), but it rewrites far more of the codec than window moves do.</p>
+<h2 id="layouts">Layouts</h2>
+<p>A board's layout is where its merge puts the codec: the application region in <code>memory.ld</code>, the placement of each
+stock profile in <code>tools/rfoundry/rfoundry/stockfw.py</code>, and the profiles the firmware pins in
+<code>boards/&lt;radio&gt;/vocoder_&lt;radio&gt;.c</code>. They change together, and a changed layout gets a new codec id, so a radio
+reports which layout it holds.</p>
+<p>A profile lists the layouts earlier releases used as <code>former</code> entries: their codec id, placement and placed CRCs. The
+board's former ids follow from them (<code>boards.Board.codec_former</code>). The firmware accepts only its current layout: a
+descriptor that names a window below the board's codec flash (<code>flash_lo</code>) is refused before any byte of the codec is
+read, and the radio runs FM only and says &quot;No codec: voice off&quot;.</p>
+<h3 id="moving-to-a-new-layout">Moving to a new layout</h3>
+<p>When a layout gives the application flash that held the codec, the first install of the new layout moves it. The
+flashing tools (rfoundry and the web flasher) do this inside the normal install:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>What happens</th>
+<th>If it stops here</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Probe</td>
+<td>The radio reports a former codec id over the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr></td>
+<td>Nothing written</td>
+</tr>
+<tr>
+<td>2. Read back</td>
+<td>READ_MEM reads every window where the descriptor says the codec is; the copy is checked against the profile (stock SHA-256s after taking it back, every rewritten site). Read on every install that moves, even with a copy saved before</td>
+<td>Nothing written</td>
+</tr>
+<tr>
+<td>3. Save</td>
+<td>The copy is stored on the user's machine, one per radio by its chip UID (INFO_CHIP), and never deleted. rfoundry: <code>&lt;config&gt;/codecs/&lt;board&gt;-&lt;codec id&gt;-&lt;uid&gt;.bin</code>, read again after saving; the web flasher: the browser's IndexedDB</td>
+<td>Nothing written</td>
+</tr>
+<tr>
+<td>4. Plan</td>
+<td>A merge from the copy, moved to the current layout; else from the stock file (or the codec merged into the image); with none, or with keep asked for, the install is refused. Where the radio can't be read, only a copy saved from the same radio (same UID) is used. A copy the web flasher could not store (no IndexedDB, as in a private window), or one rfoundry could not read back from disk, is not used: only the stock file moves the codec then. All of this happens before the radio is handed to the <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr> or the bootloader</td>
+<td>Nothing written</td>
+</tr>
+<tr>
+<td>5. Write</td>
+<td>Bootloader route: the plan's sectors are erased, sector 3 first, then the others are written, sector 3 last (only for a move: other installs keep the board's sector order). Stub route: sector 3 erased first, the other sectors, sector 3 without its first word, a <abbr class="gl" tabindex="0" title="Cyclic redundancy check: a checksum that detects damaged data." data-more="../dev/glossary.html#t-crc">CRC</abbr> check, the first word</td>
+<td>The bootloader starts (sector 3 blank or the image incomplete), or the new application starts with no valid descriptor and runs FM only</td>
+</tr>
+<tr>
+<td>6. Check</td>
+<td>The radio reports the current codec id</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Both routes move the codec; where the radio offers the stub, the tools take that route (rfoundry <code>--route stub</code>, the
+web flasher's loader route), with the same sources: the saved copy, else the stock file.</p>
+<p>Resume rule: after any stop the radio is in its bootloader or runs the new application without voice. The same
+install, run again, finds no codec to keep (no probe, or no codec reported) and merges from the saved copy (a radio in
+its bootloader can't give its UID: the copy saved last), or from the same stock file or merged image, so it finishes
+the move. A stub route that fails after the stub took over restarts the radio: it runs its firmware as before, or, once
+sector 3 was erased, starts in its bootloader, and the tools say which and what finishes it. The bootloader (sectors 0-2) and the stub are never written: every plan is checked against the
+board's protected ranges before the first erase.</p>
+<p>A plain image (no codec merged in) written through the stub over flash whose descriptor names a codec window is
+refused before anything is erased (<code>stub/f4stub.py</code>, the web flasher's <code>f4stub.js</code>): such an install would lose the
+codec without a copy. rfoundry's stub route reads the descriptor over the debug link first and, when it names a window
+in the application's flash, moves the codec as above instead of handing the radio to the stub.</p>
+<h2 id="open-items">Open items</h2>
+<ul>
+<li>A hardware test of voice <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> and <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> with the moved code on each <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32</abbr> radio that has not had one (see the radios' codec
+pages). An emulator run with only the placed windows mapped gives the same air bits and <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> as the stock code at its
+stock address (60 frames, plain and stressed).</li>
+<li>Window moves: an emulator run of each build in the new layout against its stock address, as for the code-only
+move. The table references the maps list
+have not been exercised by a move before; the placed CRCs agree with the maps, the bytes have not been run.</li>
+<li>Window moves on a radio: voice RX and TX after the move, an update in keep mode after it, and a move stopped at
+each step and run again (the radios' codec pages).</li>
+<li>The bootloader route writes sector 3 last, but its blocks in order, the vector table first: the bootloader takes
+each sector's blocks from its start. Power lost during those last 16 blocks may leave a start the bootloader runs;
+the bootloader key combination still recovers the radio. The <abbr class="gl" tabindex="0" title="A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader." data-more="../dev/glossary.html#t-stub">stub</abbr> route avoids that window by writing the first word
+last.</li>
+</ul>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/codec-placement.md">Vedi il sorgente di questa pagina</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="In questa pagina">
+		<p class="eyebrow">In questa pagina</p>
+		<ul><li class="l2"><a href="#rule">Rule</a></li><li class="l2"><a href="#codec-maps">Codec maps</a></li><li class="l2"><a href="#hr_c7000-radios">HR_C7000 radios</a></li><li class="l2"><a href="#stm32-radios">STM32 radios</a></li><li class="l2"><a href="#layouts">Layouts</a></li><li class="l3"><a href="#moving-to-a-new-layout">Moving to a new layout</a></li><li class="l2"><a href="#open-items">Open items</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Unisciti alla comunità RadioFoundry</strong><span class="small muted">Domande, aiuto con la tua radio e novità, su Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Hai trovato un bug? Vuoi che la tua radio sia supportata?</strong><span class="small muted">Apri una segnalazione su GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry ha licenza MIT · <a href="https://github.com/radiofoundry/radiofoundry">Codice sorgente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunità</a> · <a href="../../../it/docs/index.html">Documenti</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Novità</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

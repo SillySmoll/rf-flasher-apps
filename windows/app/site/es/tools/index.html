@@ -1,0 +1,94 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Herramientas · RadioFoundry</title>
+<meta name="description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Herramientas · RadioFoundry">
+<meta property="og:description" content="Firmware multimodo de código abierto para radios digitales.">
+<meta property="og:url" content="https://radiofoundry.org/es/tools/">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Las radios en las que funciona RadioFoundry, cada una con una pantalla distinta.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/tools/">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/tools/">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/tools/">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/tools/">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/tools/">
+<link rel="icon" href="../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-tools" data-root="../../" data-home="../../es/" data-gl-more="Más">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../es/index.html">
+			<img src="../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menú</button>
+		<nav id="site-nav" class="site-nav" aria-label="Principal"><a href="../../es/radios/index.html">Radios</a><a href="../../es/features/index.html">Funciones</a><a href="../../es/flash/index.html">Instalar</a><a href="../../es/codeplug/index.html">Codeplug</a><a href="../../es/docs/index.html">Documentación</a><a href="../../es/screenshots/index.html">Capturas</a><a href="../../es/tools/index.html" aria-current="page">Herramientas</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Idioma" title="Idioma">ES</summary><nav aria-label="Idioma"><a href="../../tools/index.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../es/tools/index.html" aria-current="true" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../it/tools/index.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../zh/tools/index.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<section class="wrap section page-head">
+	<h1>Herramientas</h1>
+	<p class="lead">Los archivos se quedan en la computadora.</p>
+</section>
+<section class="wrap section">
+	<div class="cards tools">
+		<article class="card tool" id="convert">
+			<h2>Conversión de codeplug</h2>
+			<p>Identifica un archivo de codeplug y enumera las conversiones disponibles.</p>
+			<label class="drop"><input type="file" id="convert-file"><span>Elige un archivo de codeplug</span></label>
+			<div id="convert-result" aria-live="polite"></div>
+		</article>
+		<article class="card tool">
+			<h2>Base de datos de contactos <span class="badge badge-planned">Prevista</span></h2>
+			<p>Base de datos de ID DMR de fuentes públicas, filtrada por país o red.</p>
+		</article>
+		<article class="card tool">
+			<h2><a href="../../es/codeplug/index.html">Editor de codeplug</a></h2>
+			<p>Canales, zonas, contactos y la base de datos de ID DMR, leídos de la radio y escritos en ella por USB o con el cable de programación, o guardados en archivos (imagen de codeplug, CSV, YAML de qdmr).</p>
+		</article>
+	</div>
+</section>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Únete a la comunidad de RadioFoundry</strong><span class="small muted">Preguntas, ayuda con tu radio y novedades, en Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>¿Encontraste un error? ¿Quieres que tu radio sea compatible?</strong><span class="small muted">Abre un issue en GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry tiene licencia MIT · <a href="https://github.com/radiofoundry/radiofoundry">Código fuente</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Comunidad</a> · <a href="../../es/docs/index.html">Documentación</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Registro de cambios</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../static/js/site.js?v=31d0e27983"></script>
+<script type="application/json" id="i18n">{"tools.title": "Herramientas", "tools.lead": "Los archivos se quedan en la computadora.", "tools.convert_title": "Conversión de codeplug", "tools.convert_text": "Identifica un archivo de codeplug y enumera las conversiones disponibles.", "tools.convert_drop": "Elige un archivo de codeplug", "tools.contacts_title": "Base de datos de contactos", "tools.contacts_text": "Base de datos de ID DMR de fuentes públicas, filtrada por país o red.", "tools.editor_title": "Editor de codeplug", "tools.editor_text": "Canales, zonas, contactos y la base de datos de ID DMR, leídos de la radio y escritos en ella por USB o con el cable de programación, o guardados en archivos (imagen de codeplug, CSV, YAML de qdmr).", "tools.convert.unknown": "No se reconoce el formato de este archivo. Elige otro archivo de codeplug. Si sigue sin reconocerse, informa del problema.", "tools.convert.format": "Formato: {format}", "tools.convert.none": "Aún no hay conversión para este formato.", "tools.convert.available": "Conversiones disponibles:", "tools.format.rfoundry-backup": "Paquete de copia de seguridad de RadioFoundry (.zip)", "tools.format.tyt-stock": "Codeplug original de la familia TYT: DM-1701, RT84, MD-UV380/390, MD-380 (volcado de flash SPI o imagen de memoria)", "tools.format.dm32-stock": "Codeplug original de Baofeng DM-32UV (lectura de la flash de datos)", "tools.format.openfw-image": "Imagen de codeplug con la disposición de firmware abierto (volcado de flash SPI)", "tools.format.tyt-rdt": "Codeplug del CPS de TYT MD-380 (.rdt)", "tools.format.tyt-uv380-rdt": "Codeplug del CPS de la familia TYT MD-UV380 (.rdt)", "tools.format.tyt-raw": "Imagen de memoria del codeplug de TYT MD-380 (256 KB)", "tools.format.dfuse": "Archivo DfuSe (codeplug binario de qdmr)", "tools.format.yaml": "Codeplug YAML de qdmr", "tools.format.stock-firmware": "Archivo de firmware original (no es un codeplug)", "tools.conv.backup-to-image": "Imagen de codeplug a partir de un paquete de copia de seguridad (disposición de firmware abierto, 1,1 MB)", "tools.conv.stock-to-rfoundry": "Codeplug original a imagen de codeplug de RadioFoundry (disposición de firmware abierto)", "tools.conv.stock-to-yaml": "Codeplug original a YAML de qdmr (a través de la disposición de RadioFoundry)", "tools.conv.rdt-to-rfoundry": "Archivo del CPS de TYT MD-380 a imagen de codeplug de RadioFoundry", "tools.conv.raw-to-rfoundry": "Imagen de memoria de TYT MD-380 a imagen de codeplug de RadioFoundry", "tools.conv.dm32-stock-to-rfoundry": "Codeplug original de DM-32UV a imagen de codeplug de RadioFoundry (formato de firmware abierto)", "tools.conv.dm32-stock-to-yaml": "Codeplug original de DM-32UV a YAML de qdmr (a través del formato de RadioFoundry)", "tools.conv.dfuse-to-rfoundry": "Codeplug binario de qdmr a codeplug de RadioFoundry", "tools.conv.yaml-to-rfoundry": "YAML de qdmr a imagen de codeplug de RadioFoundry (disposición de firmware abierto)", "tools.conv.rfoundry-to-yaml": "Imagen de codeplug de RadioFoundry a YAML de qdmr", "tools.convert.err.no_spi": "Esta copia de seguridad no tiene una lectura de la flash SPI que cubra el codeplug.", "tools.convert.err.unknown_layout": "El codeplug de esta copia de seguridad tiene una disposición que esta página no puede leer.", "tools.convert.err.not_qdmr": "Este archivo no es un codeplug de qdmr.", "tools.convert.err.bad_yaml": "Este archivo no es YAML válido ({error}).", "tools.convert.err.no_stock": "Este archivo no contiene ningún codeplug original que esta página pueda leer.", "tools.convert.planned": "Previsto"}</script><script type="module" src="../../static/js/tools.js?v=31d0e27983"></script>
+</body>
+</html>

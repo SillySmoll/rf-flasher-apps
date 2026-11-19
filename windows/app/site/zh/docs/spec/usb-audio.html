@@ -1,0 +1,1050 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="zh" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analog and DMR voice over USB: feasibility and design · RadioFoundry</title>
+<meta name="description" content="适用于数字电台的开源多模固件。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Analog and DMR voice over USB: feasibility and design · RadioFoundry">
+<meta property="og:description" content="适用于数字电台的开源多模固件。">
+<meta property="og:url" content="https://radiofoundry.org/zh/docs/spec/usb-audio.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="运行 RadioFoundry 的各款电台，每台显示不同的屏幕。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/spec/usb-audio.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/spec/usb-audio.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/spec/usb-audio.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/spec/usb-audio.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/spec/usb-audio.html">
+<link rel="icon" href="../../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../../" data-home="../../../zh/" data-gl-more="更多">
+<a class="skip" href="#main">跳到内容</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../../zh/index.html">
+			<img src="../../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+		<nav id="site-nav" class="site-nav" aria-label="主导航"><a href="../../../zh/radios/index.html">电台</a><a href="../../../zh/features/index.html">功能</a><a href="../../../zh/flash/index.html">安装</a><a href="../../../zh/codeplug/index.html">电台频率</a><a href="../../../zh/docs/index.html" aria-current="page">文档</a><a href="../../../zh/screenshots/index.html">屏幕截图</a><a href="../../../zh/tools/index.html">工具</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="语言" title="语言">ZH</summary><nav aria-label="语言"><a href="../../../docs/spec/usb-audio.html" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../../es/docs/spec/usb-audio.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../../it/docs/spec/usb-audio.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../../zh/docs/spec/usb-audio.html" aria-current="true" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="切换浅色和深色" title="切换浅色和深色">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="规范">
+		<p class="eyebrow"><a href="../../../zh/docs/index.html">文档</a> / 规范</p>
+		<ul><li><a href="index.html">Specifications</a></li><li><a href="air-interface.html">Air interface</a></li><li><a href="airband-and-broadcast.html">Air band AM receive and broadcast FM receive</a></li><li><a href="aprs.html">APRS</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="channel-modes.html">Channel modes</a></li><li><a href="codec-dm1701.html">DM-1701: hosting the AMBE+2 codec</a></li><li><a href="codec-dm1801pro.html">DM-1801 Pro: the AMBE+2 codec and how it is called</a></li><li><a href="codec-dm32.html">DM-32UV: hosting the AMBE+2 codec</a></li><li><a href="codec-md380.html">MD-380: hosting the AMBE+2 codec</a></li><li><a href="codec-md9600.html">MD-9600: hosting the AMBE+2 codec</a></li><li><a href="codec-mduv380.html">MD-UV380 / MD-UV390: hosting the AMBE+2 codec</a></li><li><a href="codec-placement.html">Codec placement: moving the stock codec to where RadioFoundry wants it</a></li><li><a href="codeplug-native.html">Native codeplug (draft)</a></li><li><a href="codeplug-port.html">Codeplug port: vendor codeplug to RadioFoundry</a></li><li><a href="codeplug-settings.html">Codeplug settings area</a></li><li><a href="codeplug-stock-tyt.html">Stock TYT-family codeplugs</a></li><li><a href="cps-fast.html">Fast codeplug protocol</a></li><li><a href="cps-protocol.html">CPS protocol</a></li><li><a href="crash-log.html">Crash log</a></li><li><a href="debuglink.html">USB debug link</a></li><li><a href="dm32-migration.html">DM-32UV flashing and migration from the vendor firmware</a></li><li><a href="dm32-stock-codeplug.html">DM-32UV stock codeplug</a></li><li><a href="dm32-stock-cps.html">DM-32UV vendor programming protocol (interop facts)</a></li><li><a href="dmr-data.html">DMR data services</a></li><li><a href="dmr-emergency.html">DMR emergency</a></li><li><a href="dmr-modem.html">DMR modem behavior and the `dmr_modem` HAL contract</a></li><li><a href="dmr-roaming.html">DMR repeater roaming</a></li><li><a href="dmr-trunking-codeplug.html">DMR Tier III in the codeplug</a></li><li><a href="dmr-trunking.html">DMR Tier III trunking (mobile station)</a></li><li><a href="dmr-voice.html">DMR voice calls</a></li><li><a href="gotchas.html">Gotchas: DMR modem and radio bring-up</a></li><li><a href="hardware-anytone.html">Anytone AT-D868UV / AT-D878UV / AT-D578UV hardware</a></li><li><a href="hardware-db25d.html">Radioddity DB25-D PRO hardware</a></li><li><a href="hardware-dm1701.html">Baofeng DM-1701 hardware (and its STM32 siblings)</a></li><li><a href="hardware-dm1801pro.html">Baofeng DM-1801 Pro hardware</a></li><li><a href="hardware-dm32.html">Baofeng DM-32UV hardware</a></li><li><a href="hardware-gd88.html">Radioddity GD-88 (Kydera DR-880UV) hardware</a></li><li><a href="hardware-md380.html">TYT MD-380 hardware (MD-390, Retevis RT3, and the &quot;G&quot; GPS models)</a></li><li><a href="hardware-md9600.html">TYT MD-9600 / Retevis RT90 hardware (mobile)</a></li><li><a href="hardware-mduv380.html">TYT MD-UV380 hardware (MD-UV390, Retevis RT3S, MD-UV390 Plus 10 W)</a></li><li><a href="hardware-rt10.html">Retevis RT10 hardware</a></li><li><a href="hardware-uv5r-chirp-image.html">CHIRP image of the Baofeng UV-5R</a></li><li><a href="hrc6000-registers.html">HR_C6000 register reference</a></li><li><a href="iddb-compact.html">Compact DMR ID database (format C)</a></li><li><a href="md380-migration.html">MD-380 migration from stock firmware</a></li><li><a href="mdns.html">mDNS and DNS-SD on the USB network link</a></li><li><a href="mmdvm-protocol.html">The MMDVM modem protocol, as a DMR-only radio must speak it</a></li><li><a href="modem-hrc6000.html">HR_C6000 as a DMR modem</a></li><li><a href="modem-hrc7000.html">HR_C7000 as a DMR modem</a></li><li><a href="nand-sectors.html">NOR-like sectors over NAND</a></li><li><a href="nxdn-codeplug.html">NXDN in the codeplug</a></li><li><a href="nxdn.html">NXDN</a></li><li><a href="open-firmware-cps.html">Open-firmware CPS interoperability</a></li><li><a href="p25-codeplug.html">P25 in the codeplug</a></li><li><a href="p25-trunking.html">P25 trunking</a></li><li><a href="p25.html">P25</a></li><li><a href="pa-keyup.html">DMR PA key-up</a></li><li><a href="position.html">Position</a></li><li><a href="ppp.html">PPP on the serial host link</a></li><li><a href="qdmr-yaml.html">qdmr YAML codeplug</a></li><li><a href="radio-features.html">Everyday radio features</a></li><li><a href="radios.html">Radios: hardware survey and port plan</a></li><li><a href="rx2-link.html">The second receiver&#x27;s link</a></li><li><a href="settings-store.html">Settings store and safe flash writes</a></li><li><a href="sfr.html">Single frequency repeater (SFR)</a></li><li><a href="snmp.html">SNMP agent</a></li><li><a href="split-duplex.html">Split duplex repeater (two radios as one duplex MMDVM modem)</a></li><li><a href="stub-entry.html">Stub entry</a></li><li><a href="stub-stm32f4.html">STM32F4 flash stub</a></li><li><a href="tcp-services.html">TCP services on the USB network link</a></li><li><a href="tftp.html">TFTP codeplug access on the USB network link</a></li><li><a href="ui.html">The user interface</a></li><li><a href="usb-audio.html" aria-current="page">Analog and DMR voice over USB: feasibility and design</a></li><li><a href="usb-network.html">USB network personality and the IP gateway</a></li><li><a href="watchdog.html">Hardware watchdog</a></li><li><a href="zone-share.html">Zone sharing over DMR data</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		<p class="notice">本页尚未翻译，目前显示英文。</p>
+		<div lang="en"><!-- SPDX-License-Identifier: MIT -->
+<h1 id="analog-and-dmr-voice-over-usb-feasibility-and-design">Analog and DMR voice over USB: feasibility and design</h1>
+<p>A computer should be able to hear the radio's receiver, <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> through it, and control PTT, channel and frequency
+over USB: as a USB sound card (optionally with a serial port beside it, like the commercial &quot;data radio&quot; interfaces),
+over the serial port, or over the USB network personality (<a href="usb-network.html">usb-network.md</a>). This page is the
+feasibility study and the design. Built so far: <abbr class="gl" tabindex="0" title="The UDP stream that carries a call&#x27;s audio between RadioFoundry and a network gateway." data-more="../dev/glossary.html#t-usrp">USRP</abbr> voice over <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr> on the network personality (<code>CONFIG_NET_USRP</code>,
+9.1) with the stream sharing it needs (<code>core/usbaudio/audio_mux.c</code>, part of 5.1) and an <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> board's FM transmit path (<abbr class="gl" tabindex="0" title="Pulse width modulation: a pin switched on and off to give an average level, as for backlight or tone." data-more="../dev/glossary.html#t-pwm">PWM</abbr> into the microphone input), and a bench probe (<code>CONFIG_AUDIO_PROBE</code>) that measures a board's audio paths. The
+sound card, the serial transports and CAT are not built. Section 9 lists what is in the repository.</p>
+<h2 id="summary">Summary</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DMR voice as PCM, both ways</td>
+<td>Yes on every radio: the <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr> runs the <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE</abbr> codec and already exchanges 8 kHz <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> with the audio codec. A USB endpoint uses the same blocks (5.6)</td>
+</tr>
+<tr>
+<td>FM audio to and from the MCU</td>
+<td>Depends on the radio (section 2)</td>
+</tr>
+<tr>
+<td>USB composite with a sound card</td>
+<td>Fits on the <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32F405</abbr>'s <abbr class="gl" tabindex="0" title="USB On-The-Go: the controller can act as the host or the device." data-more="../dev/glossary.html#t-otg">OTG_FS</abbr>: CDC-ACM + UAC1 or <abbr class="gl" tabindex="0" title="Network control model: the USB class that makes the radio appear as a network adapter." data-more="../dev/glossary.html#t-ncm">CDC-NCM</abbr> + UAC1, not all three, and not serial + sound card + HID (3)</td>
+</tr>
+<tr>
+<td>Recommended protocols</td>
+<td>IP: the <abbr class="gl" tabindex="0" title="The UDP stream that carries a call&#x27;s audio between RadioFoundry and a network gateway." data-more="../dev/glossary.html#t-usrp">USRP</abbr> voice protocol over <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr> (AllStarLink, DVSwitch Analog_Bridge, M17 and <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> bridges speak it) with PTT by its keyup flag; Hamlib's <abbr class="gl" tabindex="0" title="Hamlib&#x27;s network rig control protocol, used by loggers and SDR programs." data-more="../user/22-glossary.html#t-rigctld">rigctld</abbr> protocol, now on the radio (<code>CONFIG_NET_RIGCTL</code>, <a href="tcp-services.html">tcp-services.md</a> 6). Serial: Kenwood-style CAT plus RTS/DTR PTT. Sound card: UAC1, PTT by the serial port's RTS/DTR (CM108-style HID as an alternative personality) (4)</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>About 6 to 9 working weeks for everything, in five phases; phase 0 (the probe) and phase 2 (USRP on the network) are done, phase 1 in part (7)</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1, 2, 3</td>
+<td>Use cases, audio paths per radio family, USB limits</td>
+</tr>
+<tr>
+<td>4, 5, 6</td>
+<td>Protocols, design, behavior and safety</td>
+</tr>
+<tr>
+<td>7, 8</td>
+<td>Phased plan, risks</td>
+</tr>
+<tr>
+<td>9, 10</td>
+<td>What is in the repository, owner questions</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="1-use-cases-and-transports">1. Use cases and transports</h2>
+<ul>
+<li><strong>Digital modes on FM</strong>: fldigi, WSJT-X, JS8Call, VARA FM, Direwolf (<abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> / packet) see a sound card and key PTT
+through a serial port's RTS or DTR, a CAT command set, or a CM108-style HID <abbr class="gl" tabindex="0" title="General purpose input/output: a pin the firmware can read or drive." data-more="../dev/glossary.html#t-gpio">GPIO</abbr>.</li>
+<li><strong>Linking</strong>: AllStarLink, HamVoIP, DVSwitch and similar link a radio to a network as an <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> node. They want 8 kHz
+audio, PTT from the network side, and a carrier-operated squelch (COS) signal from the radio.</li>
+<li><strong><abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> as a USB voice endpoint</strong>: the radio's <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE</abbr> codec turns host <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> into a DMR call and DMR calls into PCM, so a
+computer can join a DMR channel on RF with no codec of its own (DVSwitch-like set-ups, dispatch consoles).</li>
+<li><strong>Remote operation over IP</strong>: the USB network personality already gives the host an IP link to the radio.</li>
+</ul>
+<p>Transports, as the task names them: (a) the USB network personality (<abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr> over <abbr class="gl" tabindex="0" title="Network control model: the USB class that makes the radio appear as a network adapter." data-more="../dev/glossary.html#t-ncm">CDC-NCM</abbr>), (b) the USB serial port
+(CDC-ACM, or a <abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="../dev/glossary.html#t-uart">UART</abbr> on radios without USB), (c) a USB Audio Class sound card, alone or composite with the serial port.</p>
+<h2 id="2-audio-paths-per-radio">2. Audio paths per radio</h2>
+<p>What each radio offers the design. Radios not listed have not been studied.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Radio family</th>
+<th>Host port</th>
+<th><abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr></th>
+<th>FM <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> to the <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr></th>
+<th>FM <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> from the MCU</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STM32 with an HR_C6000</td>
+<td>USB</td>
+<td><abbr class="gl" tabindex="0" title="Inter-IC sound: the bus audio samples travel on between chips." data-more="../dev/glossary.html#t-i2s">I2S</abbr></td>
+<td>the I2S stream (squelch gated) or the modem's RX <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> (ungated), 8 kHz</td>
+<td><abbr class="gl" tabindex="0" title="Pulse width modulation: a pin switched on and off to give an average level, as for backlight or tone." data-more="../dev/glossary.html#t-pwm">PWM</abbr> into the mic input, or the modulator offset register (about 6 bits); <abbr class="gl" tabindex="0" title="Audio frequency shift keying: data as two audio tones on an FM carrier. APRS at 1200 baud uses it." data-more="../dev/glossary.html#t-afsk">AFSK</abbr> from the modem's tone generator</td>
+<td>the board's hardware page</td>
+</tr>
+<tr>
+<td>STM32 with an HR_C5000</td>
+<td>USB</td>
+<td>I2S</td>
+<td>the discriminator on an MCU <abbr class="gl" tabindex="0" title="Analog to digital converter." data-more="../dev/glossary.html#t-adc">ADC</abbr>, unused so far</td>
+<td>through the modem's codec, as with the <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr>; the C5000's FM registers are unconfirmed</td>
+<td>the board's hardware page</td>
+</tr>
+<tr>
+<td>STM32 with an HR_C6000 and an IF chip</td>
+<td>USB</td>
+<td>I2S</td>
+<td>the IF chip's discriminator on an MCU ADC; FM doesn't pass through the modem</td>
+<td>as the HR_C6000 row</td>
+<td>the board's hardware page</td>
+</tr>
+<tr>
+<td>HR_C7000 without USB</td>
+<td><abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="../dev/glossary.html#t-uart">UART</abbr> on the programming cable (no USB connector)</td>
+<td>the <abbr class="gl" tabindex="0" title="System on chip: the processor and its on-chip peripherals." data-more="../dev/glossary.html#t-soc">SoC</abbr>'s mic and speaker PCM buffers</td>
+<td>plausible (documented FM data interrupts and PCM bits), unverified</td>
+<td>plausible, unverified</td>
+<td>the board's hardware page</td>
+</tr>
+</tbody>
+</table></div>
+<p>A discriminator signal is flat (before de-emphasis and the voice filters). Voice needs de-emphasis and a 300 Hz high
+pass in software; 9600 baud packet and AFSK use the flat signal directly. A timer-triggered ADC samples it at 8-48 kHz
+on a second ADC, so the existing ADC scan stays as it is.</p>
+<p>The probe (<code>CONFIG_AUDIO_PROBE</code>, <a href="debuglink.html">debuglink.md</a> 3.14) measures a board's paths on the bench.</p>
+<h3 id="21-budgets">2.1 Budgets</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Estimate</th>
+<th>Basis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sample rate on the radio side</td>
+<td>8 kHz, 16 bit, mono</td>
+<td>the audio codec's word clock; the <abbr class="gl" tabindex="0" title="DVSI&#x27;s voice codec used by DMR. Not part of RadioFoundry. Taken from each radio&#x27;s stock firmware." data-more="../dev/codec.html">AMBE</abbr> codec and the modem's FM chains run at 8 kHz</td>
+</tr>
+<tr>
+<td>Latency, one way</td>
+<td>about 60-100 ms</td>
+<td>20 ms <abbr class="gl" tabindex="0" title="Direct memory access: moving data between memory and a peripheral without the processor." data-more="../dev/glossary.html#t-dma">DMA</abbr> block + 20 ms processing slot + a 40-60 ms jitter buffer (pcm_slip target) + 1 ms USB frames; DMR adds the codec's 60 ms burst rhythm</td>
+</tr>
+<tr>
+<td>CPU</td>
+<td>under 5 % of a 72 MHz Cortex-M4 for FM audio</td>
+<td>resampling 8 to 48 kHz and back with a 48-tap polyphase FIR is about 0.8 M multiply-adds a second each way; framing and the jitter buffer are negligible; the AMBE codec is unchanged from a normal call</td>
+</tr>
+<tr>
+<td>DMA</td>
+<td>none new</td>
+<td>the audio stream already has its DMA; the <abbr class="gl" tabindex="0" title="USB On-The-Go: the controller can act as the host or the device." data-more="../dev/glossary.html#t-otg">OTG_FS</abbr> core has no DMA (TinyUSB runs it in slave mode), so isochronous packets are copied by the <abbr class="gl" tabindex="0" title="Central processing unit." data-more="../dev/glossary.html#t-cpu">CPU</abbr>: 1000 interrupts a second per streaming endpoint, about 100 bytes each at 48 kHz</td>
+</tr>
+<tr>
+<td>USB bandwidth</td>
+<td>under 2 % of full speed</td>
+<td>48 kHz mono 16-bit is 96 bytes per 1 ms frame each way</td>
+</tr>
+<tr>
+<td>RAM</td>
+<td>about 3-4 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr></td>
+<td>jitter buffer 2 KB (1024 samples), resampler state and two isochronous packet buffers about 0.5 KB, <abbr class="gl" tabindex="0" title="The UDP stream that carries a call&#x27;s audio between RadioFoundry and a network gateway." data-more="../dev/glossary.html#t-usrp">USRP</abbr> datagram buffer 0.4 KB, UAC class state; the OTG FIFOs are in the peripheral (3)</td>
+</tr>
+<tr>
+<td>Flash</td>
+<td>about 12-18 KB for everything</td>
+<td>TinyUSB audio class and descriptors about 6-8 KB, resampler 1 KB, USRP and router 2 KB, CAT parser 2-3 KB (<abbr class="gl" tabindex="0" title="Hamlib&#x27;s network rig control protocol, used by loggers and SDR programs." data-more="../user/22-glossary.html#t-rigctld">rigctld</abbr> is already built). A radio whose default image is nearly full needs room made first: <abbr class="gl" tabindex="0" title="Link-time optimization: the compiler optimizes across files. It shrinks the firmware." data-more="../dev/glossary.html#t-lto">LTO</abbr> (about 20 KB) or features off (<a href="../feature-matrix.html">feature-matrix.md</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>On the <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32F4</abbr> radios only the buffers that DMA or USB touches need main RAM; the rest can go in CCM.</p>
+<h2 id="3-usb-what-fits">3. USB: what fits</h2>
+<p>The USB core of the <abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32F405</abbr> radios (<abbr class="gl" tabindex="0" title="USB On-The-Go: the controller can act as the host or the device." data-more="../dev/glossary.html#t-otg">OTG_FS</abbr>) has endpoint 0 plus 3 IN and 3 OUT endpoints and 1.25 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> of <abbr class="gl" tabindex="0" title="First in, first out: a queue of data between a producer and a consumer." data-more="../dev/glossary.html#t-fifo">FIFO</abbr> <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr>
+(<code>USB_OTG_FS_MAX_IN_ENDPOINTS</code> = 4 including EP0 and
+<code>USB_OTG_FS_TOTAL_FIFO_SIZE</code> = 1280 in ST's device header; TinyUSB's <code>dwc2_stm32.h</code>: 4 endpoints, 320 words).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Function</th>
+<th>IN endpoints</th>
+<th>OUT endpoints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CDC-ACM (serial)</td>
+<td>2 (notification, bulk)</td>
+<td>1 (bulk)</td>
+</tr>
+<tr>
+<td>CDC-NCM (network)</td>
+<td>2 (notification, bulk)</td>
+<td>1 (bulk)</td>
+</tr>
+<tr>
+<td>UAC1 mono in + out, asynchronous IN, adaptive OUT</td>
+<td>1 (isochronous)</td>
+<td>1 (isochronous)</td>
+</tr>
+<tr>
+<td>the same with an asynchronous OUT</td>
+<td>2 (isochronous, feedback)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>HID (CM108-style PTT)</td>
+<td>1 (interrupt)</td>
+<td>0 (output reports over EP0)</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Personality</th>
+<th>IN</th>
+<th>OUT</th>
+<th>Fits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CDC-ACM (today)</td>
+<td>2</td>
+<td>1</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>CDC-NCM (today)</td>
+<td>2</td>
+<td>1</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>CDC-ACM + UAC1</td>
+<td>3</td>
+<td>2</td>
+<td><strong>yes</strong></td>
+</tr>
+<tr>
+<td>CDC-NCM + UAC1</td>
+<td>3</td>
+<td>2</td>
+<td><strong>yes</strong></td>
+</tr>
+<tr>
+<td>UAC1 + HID</td>
+<td>2</td>
+<td>1</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>CDC-ACM + UAC1 + HID</td>
+<td>4</td>
+<td>2</td>
+<td>no</td>
+</tr>
+<tr>
+<td>CDC-ACM + CDC-NCM (+ anything)</td>
+<td>4+</td>
+<td>2+</td>
+<td>no (why the network mode is a switch today, <a href="usb-network.html">usb-network.md</a> 1)</td>
+</tr>
+<tr>
+<td>CDC-ACM + UAC1 with feedback endpoint</td>
+<td>4</td>
+<td>2</td>
+<td>no: so the OUT stream must be adaptive (the device follows the host's rate)</td>
+</tr>
+</tbody>
+</table></div>
+<p>FIFO budget for CDC-ACM + UAC1 at 48 kHz: <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> FIFO about 64 words (control, bulk 64 B and isochronous 96 B packets with
+the per-packet status words), <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> FIFOs EP0 16, notification 16, bulk IN 32 (double), isochronous IN 2 x 25 words:
+about 180 of 320 words. Comfortable at 48 kHz, ample at 8 or 16 kHz.</p>
+<p><strong>TinyUSB</strong> (third_party/tinyusb, release 0.21.0) has an audio device class that handles both UAC1 and UAC2
+descriptors (<code>src/class/audio/audio_device.c</code>; <code>TUD_AUDIO10_*</code> descriptor macros in <code>usbd.h</code>), composite devices,
+and a <code>cdc_uac2</code> example of exactly the serial + sound card composite.</p>
+<p><strong>Driverless</strong>: UAC1 binds the in-box class driver on Windows (usbaudio.sys, since long before Windows 10), macOS and
+Linux (snd-usb-audio). UAC2 binds in-box on macOS, Linux and Windows 10 version 1703 and later (usbaudio2.sys).
+CDC-ACM binds in-box everywhere current (usbser.sys on Windows 10+). HID needs no driver. <strong>Choose UAC1</strong>: the widest
+reach, everything a mono 8-48 kHz interface needs, and no clock-source entities to get wrong.</p>
+<p><strong>Rates</strong>: offer 48 kHz (the default alternate setting: what WSJT-X, fldigi and the OS mixers prefer and what CM108
+interfaces offer), plus 16 kHz and 8 kHz (no resampling at 8 kHz; Direwolf and AllStar's 8 kHz paths). The firmware
+resamples 8 kHz to the chosen rate and back.</p>
+<p><strong>Clocks</strong>: the radio's audio clock is the modem's 8 kHz word clock (on its own crystal), not the USB frame
+clock.
+The IN stream (radio to host) is asynchronous: the device sends 47 / 48 / 49 samples per frame (or 7 / 8 / 9 at
+8 kHz) as its clock dictates, which every host handles. The OUT stream is adaptive: the host sends at its rate, and
+the firmware's jitter buffer (<code>core/usbaudio/pcm_slip.c</code>) absorbs the difference by dropping or repeating one sample
+when the fill drifts a block away from its target. At 100 <abbr class="gl" tabindex="0" title="Parts per million: a frequency error as a fraction of the frequency. At 450 MHz, 1 ppm is 450 Hz." data-more="../dev/glossary.html#t-ppm">ppm</abbr> that's one sample every 1.25 s, inaudible on voice and
+harmless to <abbr class="gl" tabindex="0" title="Audio frequency shift keying: data as two audio tones on an FM carrier. APRS at 1200 baud uses it." data-more="../dev/glossary.html#t-afsk">AFSK</abbr> and the <abbr class="gl" tabindex="0" title="Frequency shift keying: data as frequency steps. DMR uses 4-level FSK." data-more="../dev/glossary.html#t-fsk">FSK</abbr> modes (host test: 200 ppm either way for 10 minutes with 15 ms of jitter, no underrun,
+no overflow). The same buffer serves <abbr class="gl" tabindex="0" title="The UDP stream that carries a call&#x27;s audio between RadioFoundry and a network gateway." data-more="../dev/glossary.html#t-usrp">USRP</abbr> and serial audio, whose senders run on the host's clock too.</p>
+<p><strong>IDs</strong>: the radios use NXP's VID with the PIDs that <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr> and the open-firmware <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> look for today (<code>board_usb_ids</code>; <code>platform/stm32f4/platform.h</code> says a
+release should move to an ID of its own). A composite personality changes the interface set, so it needs its own PID (Windows caches the
+driver binding per VID/PID). pid.codes (VID 0x1209) gives open-source projects PIDs for free; the AIOC adapter, an
+MIT-licensed STM32 sound card + serial + CM108-style HID cable, does that (1209:7388).</p>
+<h2 id="4-protocols">4. Protocols</h2>
+<p>The rule: implement what existing software already speaks; add our own only where nothing fits.</p>
+<h3 id="41-control-ptt-frequency-channel-squelch-state">4.1 Control (PTT, frequency, channel, squelch state)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Protocol</th>
+<th>Who speaks it</th>
+<th>Transport</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RTS / DTR PTT</strong> on a serial port</td>
+<td>fldigi, WSJT-X, JS8Call, VARA, Direwolf, Hamlib, almost everything</td>
+<td>CDC-ACM SET_CONTROL_LINE_STATE</td>
+<td>trivial, universal</td>
+<td>the <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="mmdvm-protocol.html">MMDVM</abbr> <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> and the <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> share the port and toggle DTR: PTT must be enabled only in audio sessions (6.3)</td>
+</tr>
+<tr>
+<td><strong>Kenwood-style CAT</strong> (TS-480 / TS-2000 subset: <code>FA</code>, <code>FB</code>, <code>IF</code>, <code>MD</code>, <code>TX</code>, <code>RX</code>, <code>ID</code>, <code>PS</code>, <code>BY</code> for busy)</td>
+<td>Hamlib, fldigi, WSJT-X, JS8Call, VARA's own CAT, Direwolf through Hamlib</td>
+<td>the serial port</td>
+<td>the most widely supported CAT set; <abbr class="gl" tabindex="0" title="The 7-bit character set of plain text." data-more="../dev/glossary.html#t-ascii">ASCII</abbr>, <code>;</code>-terminated, small parser</td>
+<td>ASCII letters collide with the open-firmware CPS's request bytes (<code>R</code>, <code>W</code>, <code>X</code>, <code>C</code>, <code>D</code>): needs a recognizer (two uppercase letters, then digits or <code>;</code>) or a session mode (6.4)</td>
+</tr>
+<tr>
+<td><strong>Hamlib rigctld protocol</strong> (&quot;NET rigctl&quot;, model 2)</td>
+<td>Hamlib clients (WSJT-X, fldigi, JS8Call, GridTracker, Direwolf <code>PTT RIG</code>), default <abbr class="gl" tabindex="0" title="Transmission Control Protocol: IP connections with ordered, guaranteed delivery." data-more="../dev/glossary.html#t-tcp">TCP</abbr> port 4532</td>
+<td>TCP</td>
+<td>one implementation serves every Hamlib client over the network personality; simple line protocol (<code>F</code>, <code>f</code>, <code>T</code>, <code>t</code>, <code>M</code>, <code>m</code>, <code>\dump_state</code>, <code>\chk_vfo</code>, <code>\get_dcd</code>)</td>
+<td>needs TCP, built since (<code>core/net</code>, <a href="tcp-services.html">tcp-services.md</a>). <code>\dump_state</code> is long and version sensitive</td>
+</tr>
+<tr>
+<td>flrig XML-RPC (TCP 12345)</td>
+<td>fldigi, WSJT-X, JS8Call (as &quot;FLRig&quot;)</td>
+<td>HTTP over TCP</td>
+<td>well supported</td>
+<td>XML and HTTP on the radio: too heavy</td>
+</tr>
+<tr>
+<td>CM108-style HID GPIO</td>
+<td>Direwolf (<code>PTT CM108</code>), Hamlib (CM108 PTT type), AllStarLink usbradio / simpleusb (COS on an input, PTT on <abbr class="gl" tabindex="0" title="General purpose input/output: a pin the firmware can read or drive." data-more="../dev/glossary.html#t-gpio">GPIO</abbr> 3)</td>
+<td>USB HID</td>
+<td>Linux stacks key PTT with no serial port; COS can be an input report</td>
+<td>its own personality (doesn't fit beside CDC + UAC, 3); software matching C-Media IDs needs our ID added (AIOC got it into AllStarLink 3)</td>
+</tr>
+<tr>
+<td>our debug link</td>
+<td>our tools and <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> tests</td>
+<td>serial, <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr> 3334</td>
+<td>already has PTT with a firmware time-out, channel, <abbr class="gl" tabindex="0" title="Variable frequency oscillator: tuning any frequency by hand instead of a stored channel." data-more="../user/22-glossary.html#t-vfo">VFO</abbr> frequency, power, squelch, tones (<abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> ops)</td>
+<td>nobody else speaks it</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Recommendation</strong>:</p>
+<ul>
+<li>On the serial port: <strong>RTS/DTR PTT</strong> (configurable which line and polarity; default PTT = RTS asserted, as most
+software defaults to RTS; AIOC uses DTR=1 and RTS=0 after finding that CHIRP-style programmers toggle DTR) and a
+<strong>Kenwood TS-480-style CAT subset</strong> recognized beside the other protocols.</li>
+<li>Over IP: <strong><abbr class="gl" tabindex="0" title="Hamlib&#x27;s network rig control protocol, used by loggers and SDR programs." data-more="../user/22-glossary.html#t-rigctld">rigctld</abbr> on the radio</strong>. Built: port 4532 on the USB network link with a minimal TCP (<code>CONFIG_NET_RIGCTL</code>,
+<a href="tcp-services.html">tcp-services.md</a> 6), so the host bridge first planned here (<code>tools/rfoundry_rig.py</code>) isn't needed.</li>
+<li>In the sound-card-only personality: <strong>CM108-compatible HID</strong> report layout (PTT on GPIO 3 as an output report, COS
+as an input report bit), under our own VID/PID.</li>
+</ul>
+<h3 id="42-audio-over-ip">4.2 Audio over IP</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Protocol</th>
+<th>Who speaks it</th>
+<th>Format</th>
+<th>Fit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>USRP</strong> (named after the GNU Radio hardware it first linked)</td>
+<td>AllStarLink's <abbr class="gl" tabindex="0" title="The UDP stream that carries a call&#x27;s audio between RadioFoundry and a network gateway." data-more="../dev/glossary.html#t-usrp">USRP</abbr> channel driver, DVSwitch Analog_Bridge and its clients, GNU Radio / OP25 repeater scripts, M17 and <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> bridges (usrp2m17)</td>
+<td>UDP; a 32-byte header (&quot;USRP&quot;, sequence, keyup, <abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr>, type) and 160 samples of 8 kHz 16-bit <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr> (20 ms) or 160 bytes of mu-law; PTT is the keyup flag in every frame</td>
+<td><strong>best</strong>: exactly our sample rate and block size, PTT and COS in-band, no session set-up, and it plugs the radio into AllStar / HamVoIP / DVSwitch as an <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> node with no adapter</td>
+</tr>
+<tr>
+<td>RTP (RFC 3550) with PCMU / PCMA (RFC 3551), L16 or Opus (RFC 7587)</td>
+<td>SIP phones, Asterisk, IP radio gateways</td>
+<td>UDP, 12-byte header</td>
+<td>standard, but PTT and COS need a side channel (SIP INFO, RFC 4733 events, or a vendor extension); session set-up (SIP / SDP) is the real cost</td>
+</tr>
+<tr>
+<td>EUROCAE ED-137 (part 1, radio)</td>
+<td>air traffic control radio-over-IP: radios, gateways and voice switches</td>
+<td>RTP with PTT and squelch bits in an RTP header extension, SIP session set-up, keep-alives</td>
+<td>the one standard that is radio over IP with PTT and squelch in the audio stream; but SIP, keep-alives and its conformance rules are a lot of code for a ham radio, and ham software doesn't speak it</td>
+</tr>
+<tr>
+<td>TCI (Expert Electronics' Transceiver Control Interface)</td>
+<td>the SunSDR transceivers' software as server; JTDX, MSHV, some loggers and digital-mode programs as clients</td>
+<td>WebSocket over TCP: text commands (CAT, PTT) and binary audio frames on one connection</td>
+<td>control and two-way audio in one open protocol that digital-mode software already speaks; WebSocket and HTTP upgrade on the radio, and fewer clients than Hamlib plus a sound card</td>
+</tr>
+<tr>
+<td>Mumble</td>
+<td>Mumble servers and clients; hobby radio-over-IP gateways</td>
+<td>TLS control, UDP Opus voice</td>
+<td>push-to-talk voice chat with an ecosystem, but Opus and TLS on the <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr> are too heavy</td>
+</tr>
+<tr>
+<td>VBAN</td>
+<td>VB-Audio's mixers, some <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> software</td>
+<td>UDP port 6980, 28-byte header</td>
+<td>simple, but no PTT; Windows-centric ecosystem</td>
+</tr>
+<tr>
+<td>IAX2 (RFC 5456)</td>
+<td>Asterisk, AllStarLink node-to-node</td>
+<td>UDP 4569, full / mini frames, call signaling</td>
+<td>much more protocol than we need; AllStar nodes link to the radio better through USRP on the node</td>
+</tr>
+<tr>
+<td>Kenwood / Icom / Yaesu remote</td>
+<td>their own apps</td>
+<td>proprietary</td>
+<td>references only</td>
+</tr>
+<tr>
+<td>Zello</td>
+<td>Zello clients</td>
+<td>proprietary over TCP / TLS, Opus</td>
+<td>out of scope</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Recommendation: USRP over UDP</strong>, voice type 0 (16-bit PCM) by default and type 6 (mu-law, half the bytes) as an
+option. The radio sends a frame every 20 ms while its receiver is active (keyup = COS, 5.4) and stops (after a keyup-0
+frame) when it closes; the host's frames with keyup 1 key the transmitter. Ports are configurable; AllStar and
+Analog_Bridge set-ups commonly pair 32001 / 34001 (one side's <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> port is the other's <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> port). The format as
+implemented in <code>core/usbaudio/usrp.c</code> comes from the public descriptions (header words big endian, samples little
+endian, as every known peer runs on little-endian hosts); it must be confirmed against a live Analog_Bridge or
+AllStar node with a packet capture before release (owner question 4). The <abbr class="gl" tabindex="0" title="GNU General Public License. RadioFoundry does not use GPL code." data-more="../dev/glossary.html#t-gpl">GPL</abbr> implementations were not used as a
+source.</p>
+<p><strong>Coexistence with the IP gateway</strong>: the gateway answers the radio's own address on ICMP, <abbr class="gl" tabindex="0" title="Dynamic Host Configuration Protocol: how a device gets its IP address on a network." data-more="../dev/glossary.html#t-dhcp">DHCP</abbr> and UDP 3334, and
+forwards everything else addressed to radio IDs and talkgroups over the air (<a href="usb-network.html">usb-network.md</a> 3). The
+USRP port becomes a third local UDP port of the radio's address; the gateway's air side and the voice side share the
+modem only in the sense that a DMR voice transmission and a data transmission can't overlap (the data service already
+waits for a free channel). In FM mode the gateway has no air side at all, and USRP is the only user.</p>
+<h3 id="43-audio-over-the-serial-port">4.3 Audio over the serial port</h3>
+<p>8 kHz 16-bit PCM is 128 kbit/s each way, 256 kbit/s full duplex: about 2 % of full-speed USB, and CDC-ACM bulk moves
+several Mbit/s on all three host OSes, so it fits with a wide margin (8-bit mu-law halves it). The issue is framing
+on a byte stream that the host link already shares among MMDVM (first byte 0xE0), the debug link (0xA5 0x5A) and the
+CPS (ASCII letters) (<a href="cps-protocol.html">cps-protocol.md</a> 1). Options:</p>
+<ul>
+<li>the debug link's framing: requests are capped at 64 bytes, too small for a 320-byte frame without a new frame kind;</li>
+<li><abbr class="gl" tabindex="0" title="A simple protocol between a computer&#x27;s APRS program and a radio modem (TNC)." data-more="../user/22-glossary.html#t-kiss">KISS</abbr> (FEND 0xC0): the <abbr class="gl" tabindex="0" title="Terminal node controller: the modem that turns packet data into audio tones and back." data-more="../dev/glossary.html#t-tnc">TNC</abbr> framing Direwolf and <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> software speak, but its data frames mean AX.25 packets, and a
+KISS client would misread audio;</li>
+<li><strong>SLIP (RFC 1055) framing of whole USRP datagrams</strong>, first byte 0xC0 (END), which no other protocol on the port
+starts with. The radio runs the same USRP code for serial and IP; a host bridge (<code>socat</code>-like, a few lines of
+Python) turns the serial port into a UDP USRP endpoint, so Analog_Bridge or AllStar can use the radio over the
+serial port too. <strong>Recommended.</strong></li>
+</ul>
+<p>Serial audio matters most on radios whose host port is a <abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="../dev/glossary.html#t-uart">UART</abbr> (section 2), and on hosts where installing the
+network adapter is unwanted. 8 kHz mu-law is 64 kbit/s plus framing, about 70 % of a 115200 baud UART in one
+direction: half duplex works, full duplex doesn't. Most USB-serial cable chips run 460800 baud or more; a faster host
+port is a setting both ends must agree on. With the composite sound card the serial port carries only CAT and
+RTS/DTR.</p>
+<h3 id="44-choices">4.4 Choices</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Transport</th>
+<th>Audio</th>
+<th>Control and PTT</th>
+<th>COS / squelch</th>
+<th>Works with, unchanged</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(c) sound card: CDC-ACM + UAC1</td>
+<td>UAC1 mono, 48 / 16 / 8 kHz</td>
+<td>RTS/DTR, Kenwood CAT on the CDC port; rigctld through the host bridge</td>
+<td>CAT <code>BY</code>, CDC SERIAL_STATE DCD (shows as the port's DCD / RLSD line)</td>
+<td>fldigi, WSJT-X, JS8Call, VARA FM, Direwolf, Hamlib, any SDR-style app</td>
+</tr>
+<tr>
+<td>(c') sound card fob: UAC1 + HID</td>
+<td>UAC1</td>
+<td>CM108-style GPIO output report</td>
+<td>CM108-style input report bit</td>
+<td>Direwolf <code>PTT CM108</code>, Hamlib CM108 PTT, AllStarLink usbradio / simpleusb once our ID is known to them</td>
+</tr>
+<tr>
+<td>(a) network: CDC-NCM (+ UAC1)</td>
+<td>USRP over UDP (or UAC1 beside it)</td>
+<td>USRP keyup; rigctld (host bridge, later on the radio)</td>
+<td>USRP keyup</td>
+<td>AllStarLink, HamVoIP, DVSwitch Analog_Bridge, usrp2m17-style bridges; Hamlib clients through the bridge</td>
+</tr>
+<tr>
+<td>(b) serial only (a UART host port, or CDC-ACM without audio)</td>
+<td>USRP datagrams in SLIP frames</td>
+<td>USRP keyup, CAT</td>
+<td>USRP keyup, CAT <code>BY</code></td>
+<td>the above through the host bridge</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="5-design">5. Design</h2>
+<h3 id="51-the-audio-router-coreaudio-new">5.1 The audio router (core/audio, new)</h3>
+<p>Today the <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> voice code (<code>ambeVoice.c</code>) owns <code>hal_audio_t.start()</code> while in DMR, and beeps start the stream on their
+own in FM (<code>core/radio/beep.c</code>). With USB audio and <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> (the <code>core/aprs</code> work package) there are four consumers of
+the one 8 kHz stream, so one module should own it and hand each block to its users:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Consumer</th>
+<th>Takes the stream's input (mic or <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr> tap)</th>
+<th>Writes the stream's output (speaker or <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr> inject)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DMR voice</td>
+<td>mic blocks to the encoder (TX)</td>
+<td>decoded blocks (RX)</td>
+</tr>
+<tr>
+<td>beeps</td>
+<td></td>
+<td>mixed into the speaker block</td>
+</tr>
+<tr>
+<td>APRS modem</td>
+<td>RX tap blocks to the <abbr class="gl" tabindex="0" title="Audio frequency shift keying: data as two audio tones on an FM carrier. APRS at 1200 baud uses it." data-more="../dev/glossary.html#t-afsk">AFSK</abbr> demodulator</td>
+<td>AFSK tone blocks while it transmits (or the <abbr class="gl" tabindex="0" title="Radio frequency: the signal in the air, as opposed to audio or data inside the radio." data-more="../user/22-glossary.html#t-rf">RF</abbr> chip's tone generator)</td>
+</tr>
+<tr>
+<td>USB / network audio</td>
+<td>RX audio (FM tap, or decoded DMR) to the host; the mic is not sent</td>
+<td>host audio to the TX inject (FM) or the encoder (DMR) while host PTT is keyed</td>
+</tr>
+</tbody>
+</table></div>
+<p>The router keeps the stream running whenever any consumer wants it, calls <code>board.audio_tap-&gt;fm_tx_inject()</code>
+(<code>hal/hal_audio_tap.h</code>) as the active consumers need, and resolves conflicts by priority: local PTT
+and emergency over host PTT, DMR voice over APRS, APRS transmit only on an idle channel. <code>hal_audio_tap.h</code> is the
+interface the USB audio and APRS packages share; the APRS agent should use it rather than adding its own audio hooks.</p>
+<h3 id="52-usb-personalities">5.2 USB personalities</h3>
+<p>The serial / network switch (<a href="usb-network.html">usb-network.md</a> 1) grows into a choice of personalities, each with its
+own PID, chosen by a setting and switched by re-enumeration:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Personality</th>
+<th>Interfaces</th>
+<th>PID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>serial</td>
+<td>CDC-ACM</td>
+<td>today's</td>
+</tr>
+<tr>
+<td>serial + audio</td>
+<td>CDC-ACM, UAC1 (control, speaker streaming, microphone streaming), with an IAD per function</td>
+<td>new</td>
+</tr>
+<tr>
+<td>network</td>
+<td><abbr class="gl" tabindex="0" title="Network control model: the USB class that makes the radio appear as a network adapter." data-more="../dev/glossary.html#t-ncm">CDC-NCM</abbr></td>
+<td>today's</td>
+</tr>
+<tr>
+<td>network + audio</td>
+<td>CDC-NCM, UAC1</td>
+<td>new</td>
+</tr>
+<tr>
+<td>audio fob</td>
+<td>UAC1, HID (CM108-style reports)</td>
+<td>new</td>
+</tr>
+</tbody>
+</table></div>
+<p>UAC1 topology: input terminal &quot;radio receiver&quot; (type 0x0710, radio receiver) to an output terminal USB streaming (the
+host's microphone); USB streaming input terminal to an output terminal &quot;radio transmitter&quot; (0x0711) (the host's
+speaker); a feature unit with mute and volume on the transmit side lets the host set the TX audio level. Product string
+names the radio (the board's product name followed by &quot;audio&quot;), so it is recognizable in sound settings. If a host mishandles the radio
+terminal types, fall back to the generic microphone (0x0201) and speaker (0x0301) types.</p>
+<h3 id="53-rates-and-the-radio-side">5.3 Rates and the radio side</h3>
+<p>The stream stays 8 kHz. Toward UAC at 48 or 16 kHz a polyphase FIR interpolates and decimates (3.4 kHz passband,
+fixed point, about 1 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> of code). The exception is flat FM audio from an <abbr class="gl" tabindex="0" title="Microcontroller: the processor that runs the firmware." data-more="../dev/glossary.html#t-mcu">MCU</abbr> <abbr class="gl" tabindex="0" title="Analog to digital converter." data-more="../dev/glossary.html#t-adc">ADC</abbr> (5.5): it goes to the host at the
+ADC's rate, without the voice band filter. The jitter buffer sits on the host-to-radio side (<code>pcm_slip</code>, target 60 ms); the
+radio-to-host side needs none (the asynchronous IN endpoint carries the radio's own clock). <abbr class="gl" tabindex="0" title="The UDP stream that carries a call&#x27;s audio between RadioFoundry and a network gateway." data-more="../dev/glossary.html#t-usrp">USRP</abbr> frames are exactly
+one 160-sample block each way.</p>
+<h3 id="54-squelch-and-cos">5.4 Squelch and COS</h3>
+<p>The radio core knows when the receiver is &quot;active&quot;: FM squelch open with the right tone, or a DMR call playing
+(<code>radio_status</code>, the <code>state</code> key of the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> view). That one bit is the COS:</p>
+<ul>
+<li>USRP: keyup in the radio's frames; frames flow only while it is set, plus a keyup-0 frame at the end.</li>
+<li>CDC: SERIAL_STATE notification with DCD (needs <code>CFG_TUD_CDC_NOTIFY</code>; Windows exposes it as RLSD, Linux as TIOCM_CD),
+and the Kenwood <code>BY</code> answer.</li>
+<li>HID: an input report bit, as CM108-based interfaces report a COS input.</li>
+<li><abbr class="gl" tabindex="0" title="Hamlib&#x27;s network rig control protocol, used by loggers and SDR programs." data-more="../user/22-glossary.html#t-rigctld">rigctld</abbr>: <code>\get_dcd</code>.</li>
+</ul>
+<p>RX audio sent to the host is gated by the same bit (silence otherwise), so software that has no squelch of its own
+(VOX-keyed linking) doesn't hear noise. A setting &quot;ungated&quot; passes the receiver's audio all the time for decoders that
+prefer to see noise (some packet modems); that needs the FM feed-through on in the chip regardless of the squelch, which
+the probe will show is or isn't independent of the speaker.</p>
+<h3 id="55-fm-audio-voice-or-flat">5.5 FM audio: voice or flat</h3>
+<p>A setting picks what FM audio the host gets and gives, so the same radio serves voice linking and data modems that
+bring their own waveform (9600 baud G3RUH, VARA FM, M17 or other 4FSK, anything a soft modem generates):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>Voice (default)</th>
+<th>Flat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RX</td>
+<td>de-emphasized, voice band (300-3000 Hz), gated by the squelch and tone (5.4)</td>
+<td>the discriminator before de-emphasis and the voice filters, DC coupled where the hardware allows; gated by carrier squelch only, or ungated</td>
+</tr>
+<tr>
+<td>TX</td>
+<td>pre-emphasis, compressor if the channel has it, voice filter, limiter, the channel's sub-audio tone</td>
+<td>no pre-emphasis, no compressor, no voice band filter; the limiter stays as deviation protection (it clips, so the host keeps its level below it); sub-audio tone per a separate setting (off by default in flat)</td>
+</tr>
+<tr>
+<td>Rate</td>
+<td>8 kHz</td>
+<td>the source's rate: 24 or 48 kHz from an MCU ADC on the discriminator; 8 kHz where the audio comes from the modem</td>
+</tr>
+</tbody>
+</table></div>
+<p>What flat means depends on the receive source (section 2):</p>
+<ul>
+<li>Discriminator on an MCU ADC: flat RX is the native path, and at 48 kHz it carries 9600 baud. Flat TX goes through
+the modem with its pre-emphasis, compressor and band-pass bits off (<a href="modem-hrc6000.html">modem-hrc6000.md</a> 8, 8.1).
+Whether the modem's transmit path reaches down to a few tens of Hz, as 9600 baud needs, is a bench measurement.</li>
+<li>FM receive audio from the modem at 8 kHz: flat is limited to about 300 Hz-3.5 kHz, enough for 1200 baud AFSK and
+2400-4800 baud schemes, not 9600. Voice and flat are two settings of the modem's receive filters. If the tap is
+ungated, the squelch gating of 5.4 is done in software from the radio's COS.</li>
+</ul>
+<p>The setting lives with the other USB audio settings, and the host can change it on the control channel (a CAT
+extension and a debug link / rigctld command), so a modem program can switch to flat for a session. <code>hal_audio_tap_t</code>
+carries it: <code>fm_tx_inject()</code> takes the mode, and <code>caps</code> says which modes and rates a board has
+(<code>AUDIO_TAP_FM_RX_RAW</code>, <code>AUDIO_TAP_FM_TX_FLAT</code>). An <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> board offers voice only so far (9.1).</p>
+<h3 id="56-dmr-as-a-usb-voice-endpoint">5.6 DMR as a USB voice endpoint</h3>
+<p>Receive: every DMR call that the radio would play (<abbr class="gl" tabindex="0" title="A DMR group number. Everyone listening to it hears calls to it." data-more="../user/22-glossary.html#t-talkgroup">talkgroup</abbr> and contact filters as for the speaker) goes to the host
+as <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr>, with COS for the call's duration; the call's metadata (source, destination, <abbr class="gl" tabindex="0" title="A short text, usually a callsign and name, sent along with DMR voice." data-more="../user/22-glossary.html#t-talker-alias">talker alias</abbr>) goes to the host on
+the control channel (CAT has no place for it: the debug link view, or USRP TEXT frames, type 2, which Analog_Bridge
+uses for metadata). Transmit: host PTT starts a call to the channel's <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr> (or one the host sets) and the host
+PCM is encoded instead of the microphone. The timing is that of a normal call: the encoder already runs from 20 ms
+blocks queued ahead of the <abbr class="gl" tabindex="0" title="One of the two time slots of a DMR channel, TS1 and TS2." data-more="../user/22-glossary.html#t-timeslot">timeslot</abbr> interrupt (<a href="modem-hrc6000.html">modem-hrc6000.md</a> 6.3). No new codec work, no new
+<abbr class="gl" tabindex="0" title="Central processing unit." data-more="../dev/glossary.html#t-cpu">CPU</abbr>.</p>
+<h2 id="6-behavior-and-safety">6. Behavior and safety</h2>
+<h3 id="61-levels">6.1 Levels</h3>
+<ul>
+<li><abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">RX</abbr>: the FM tap is at the codec's level before the volume knob; the host sets its own capture level. <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> decoded
+audio is the codec's output level.</li>
+<li><abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">TX</abbr>: where the host's audio enters the modem's FM transmit chain (section 2), pre-emphasis, the modem's limiter and
+the channel filter keep the deviation inside the channel whatever the host sends. Where it bypasses the chain, the
+firmware does pre-emphasis and limiting. The
+feature unit volume and a firmware gain scale it; <code>hal_audio_tap_t.fm_tx_nominal_peak</code> (the sample level that gives
+60 % of peak deviation) is measured once on the bench per band and bandwidth with the probe's tone and the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr>
+bench, like the FM deviation calibration.</li>
+<li>Sub-audio (<abbr class="gl" tabindex="0" title="Continuous tone coded squelch system: a sub-audible tone on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-ctcss">CTCSS</abbr> / <abbr class="gl" tabindex="0" title="Digital coded squelch: a sub-audible digital code on FM that opens the squelch only for the right signal." data-more="../user/22-glossary.html#t-dcs">DCS</abbr>) on transmit stays the radio's: the host doesn't have to generate it.</li>
+</ul>
+<h3 id="62-ptt-sources-and-priority">6.2 PTT sources and priority</h3>
+<p>Local PTT (the side key, the accessory jack), <abbr class="gl" tabindex="0" title="Voice-operated transmit." data-more="../user/22-glossary.html#t-vox">VOX</abbr>, the radio's own features, and host PTT (RTS/DTR, CAT <code>TX</code>, HID
+<abbr class="gl" tabindex="0" title="General purpose input/output: a pin the firmware can read or drive." data-more="../dev/glossary.html#t-gpio">GPIO</abbr>, <abbr class="gl" tabindex="0" title="The UDP stream that carries a call&#x27;s audio between RadioFoundry and a network gateway." data-more="../dev/glossary.html#t-usrp">USRP</abbr> keyup, <abbr class="gl" tabindex="0" title="Hamlib&#x27;s network rig control protocol, used by loggers and SDR programs." data-more="../user/22-glossary.html#t-rigctld">rigctld</abbr> <code>T 1</code>). Local PTT wins: pressing it while the host transmits switches the source to the
+microphone for as long as it is held. Emergency always wins. Host PTT is refused (and reported: CAT <code>?;</code>, USRP frames
+ignored) when the radio refuses any transmission: TX inhibit, receive-only channel, busy channel lockout, battery
+critical, out of band.</p>
+<h3 id="63-watchdogs-no-transmission-without-a-live-host">6.3 Watchdogs (no transmission without a live host)</h3>
+<ul>
+<li><strong>USRP</strong>: the host must keep sending keyup frames; 300 ms without one unkeys (<code>USRP_KEYUP_TIMEOUT_MS</code>), and a hard
+per-transmission limit (default 180 s) locks out until the host sends keyup 0 or stops (<code>core/usbaudio/usrp.c</code>,
+host tested).</li>
+<li><strong>RTS/DTR</strong>: honored only while the host has the audio interface streaming (the OUT alternate setting active) or the
+port open with DTR in a CAT session; unplug, suspend, port close or the OUT stream stopping for 1 s unkeys.</li>
+<li><strong>CAT <code>TX;</code></strong>: unkeys when the host has sent nothing on the port for 5 s (CAT clients poll every second or so).</li>
+<li><strong>Always</strong>: the radio's <abbr class="gl" tabindex="0" title="Transmit timeout: the longest transmission the radio allows." data-more="../user/22-glossary.html#t-tot">TOT</abbr> (<code>tot_s</code>, <a href="radio-features.html">radio-features.md</a> 1 and 3.2) applies to host PTT too.</li>
+<li>MMDVMHost and the <abbr class="gl" tabindex="0" title="Customer programming software: the program that writes the codeplug. RadioFoundry uses qdmr." data-more="../user/04-programming.html">CPS</abbr> toggle DTR and RTS as they open the port: line PTT is armed only when the &quot;serial PTT&quot; setting
+is on and no <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="mmdvm-protocol.html">MMDVM</abbr> or CPS session is active (<code>hostlink_mode()</code> idle), so programming the radio can't key it.</li>
+</ul>
+<h3 id="64-sharing-the-serial-port">6.4 Sharing the serial port</h3>
+<p>The host link dispatches by the first byte of a request (<a href="cps-protocol.html">cps-protocol.md</a> 1). CAT commands are two
+uppercase letters followed by digits, a sign or <code>;</code>; open-firmware CPS requests are a letter followed by binary bytes (an
+area or sector number 1-10, or a sub-command 2-7). A CAT recognizer accepts <code>[A-Z][A-Z]</code> followed by <code>[0-9;+-]</code>
+within 3 ms, and a CAT session ends after 2 s without a CAT command, as the CPS session ends today. SLIP-framed USRP
+starts with 0xC0. Both need the host link to accept more than one side protocol (today it takes one, the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr>:
+<code>hostlink_set_side_protocol</code>), a small change in <code>core/hostlink</code>.</p>
+<h3 id="65-interaction-with-the-hotspot-and-the-ui">6.5 Interaction with the hotspot and the UI</h3>
+<ul>
+<li><abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">Hotspot</abbr> mode owns the modem (MMDVM over the serial port or <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr>); USB audio sessions are refused while it runs, and
+entering hotspot mode ends them.</li>
+<li>The <abbr class="gl" tabindex="0" title="Single frequency repeater. It repeats a call from one timeslot on the other timeslot of the same frequency. In MMDVM SFR the hotspot repeats, turned on by its host. In standalone SFR a channel set up in the codeplug repeats on its own, or talks through one." data-more="sfr.html">SFR</abbr> and the IP gateway follow the same rule as the hotspot for DMR transmit (the data service's channel access).</li>
+<li>The UI shows a status chip (&quot;USB&quot;, &quot;NET&quot;) while a host audio session is active and &quot;TX USB&quot; while the host keys;
+the speaker keeps playing received audio unless the user mutes it; the volume knob doesn't change the level sent to
+the host.</li>
+<li>Settings (UI and <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr>): USB personality (serial, serial + audio, network, network + audio, audio fob), serial PTT
+line and polarity, RX gating (squelch / ungated), USRP ports and peer, TX audio gain.</li>
+</ul>
+<h2 id="7-phased-plan-and-effort">7. Phased plan and effort</h2>
+<p>Effort in working days for one developer who knows the code base, including host tests, <abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> tests and docs.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Content</th>
+<th>Switch</th>
+<th>Flash / <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> (<abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32F405</abbr> build)</th>
+<th>Effort</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>the probe and a bench session per board family; done for one <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> board</td>
+<td><code>CONFIG_AUDIO_PROBE</code> (diagnostic)</td>
+<td>6 <abbr class="gl" tabindex="0" title="Kilobytes (1024 bytes)." data-more="../dev/glossary.html#t-kb">KB</abbr> / 2 KB, diagnostic builds only</td>
+<td>1 (bench)</td>
+</tr>
+<tr>
+<td>1</td>
+<td>audio router (5.1) with the <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> voice and beep consumers moved onto it; each board's audio tap; <abbr class="gl" tabindex="0" title="Automatic Packet Reporting System: positions and short messages shared between amateur stations." data-more="../user/13-aprs.html">APRS</abbr> can build on it</td>
+<td>(part of DMR / FM)</td>
+<td>1-2 KB / 0.5 KB</td>
+<td>4-6</td>
+</tr>
+<tr>
+<td>2</td>
+<td>network audio: <abbr class="gl" tabindex="0" title="The UDP stream that carries a call&#x27;s audio between RadioFoundry and a network gateway." data-more="../dev/glossary.html#t-usrp">USRP</abbr> on the IP gateway's address, COS and keyup PTT with the watchdogs, the jitter buffer; a USRP reference client (<abbr class="gl" tabindex="0" title="Hamlib&#x27;s network rig control protocol, used by loggers and SDR programs." data-more="../user/22-glossary.html#t-rigctld">rigctld</abbr> is already on the radio, <a href="tcp-services.html">tcp-services.md</a> 6) for tests; HIL test against the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench. <strong>Done</strong> (9.1); the stream sharing it needed is the part of phase 1 that is built</td>
+<td><code>CONFIG_NET_USRP</code> (needs <code>CONFIG_DMR_IP_GATEWAY</code>)</td>
+<td>4.5 KB / 5.6 KB</td>
+<td>6-8</td>
+</tr>
+<tr>
+<td>3</td>
+<td>sound card: the composite personalities with UAC1 (descriptors, alternate settings, resampler, adaptive OUT into the jitter buffer), CDC SERIAL_STATE, RTS/DTR PTT with its arming rules, the Kenwood CAT subset and the host link's second side protocol; HIL test with a host audio loopback</td>
+<td><code>CONFIG_USB_AUDIO</code> (needs <code>CONFIG_USB</code>)</td>
+<td>9-11 KB / 3 KB</td>
+<td>10-14</td>
+</tr>
+<tr>
+<td>4</td>
+<td>DMR as a voice endpoint over all three transports (5.6), metadata to the host</td>
+<td>follows <code>CONFIG_DMR</code></td>
+<td>1 KB</td>
+<td>3-4</td>
+</tr>
+<tr>
+<td>5</td>
+<td>options: audio fob personality (UAC1 + CM108-style HID), SLIP-framed USRP on the serial port or a <abbr class="gl" tabindex="0" title="Universal asynchronous receiver transmitter: a serial port." data-more="../dev/glossary.html#t-uart">UART</abbr> host port (rigctld on the radio: done, <code>CONFIG_NET_RIGCTL</code>)</td>
+<td><code>CONFIG_USB_AUDIO_HID</code>, <code>CONFIG_USRP_SERIAL</code></td>
+<td>2 / 1.5 KB</td>
+<td>3 + 3</td>
+</tr>
+</tbody>
+</table></div>
+<p>Total: about 30-45 working days for phases 1-4 (6-9 weeks), plus phase 5 options. Phases 2 and 3 are independent
+after phase 1; phase 4 needs only phase 1 and one of 2 / 3. On a radio with no FM path, phases 2-4 still deliver DMR
+over USB.</p>
+<h2 id="8-risks">8. Risks</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Effect</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A radio has no FM path between the MCU and the modem</td>
+<td>no FM over USB on that radio</td>
+<td>the probe settles it per board family first; <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> over USB still works</td>
+</tr>
+<tr>
+<td>USRP byte order or field use differs from the public descriptions</td>
+<td>no audio with real peers</td>
+<td>packet capture against Analog_Bridge / AllStar on the bench before release; the sample order is one <abbr class="gl" tabindex="0" title="A CONFIG_ option that turns a feature&#x27;s code in or out of the build." data-more="../build-config.html">build switch</abbr></td>
+</tr>
+<tr>
+<td>Host PTT stuck on</td>
+<td>transmitting without control</td>
+<td>three watchdogs (6.3) plus the <abbr class="gl" tabindex="0" title="Transmit timeout: the longest transmission the radio allows." data-more="../user/22-glossary.html#t-tot">TOT</abbr>; host tested</td>
+</tr>
+<tr>
+<td>DTR / RTS toggled by MMDVMHost or a CPS keys the radio</td>
+<td>unwanted transmissions</td>
+<td>line PTT armed only in audio sessions and with the setting on (6.3)</td>
+</tr>
+<tr>
+<td>RAM</td>
+<td>composite USB plus buffers may not fit with every feature on</td>
+<td>buffers in CCM where no <abbr class="gl" tabindex="0" title="Direct memory access: moving data between memory and a peripheral without the processor." data-more="../dev/glossary.html#t-dma">DMA</abbr> touches them; jitter buffer sized by setting</td>
+</tr>
+<tr>
+<td>Windows binding a stale driver after a personality change</td>
+<td>the sound card doesn't appear</td>
+<td>a PID per personality (5.2)</td>
+</tr>
+<tr>
+<td>CM108 emulation not matched by software that checks C-Media IDs</td>
+<td>the fob personality ignored by AllStar</td>
+<td>the serial + audio personality covers Direwolf and Hamlib; ask AllStarLink to add our ID (they did for AIOC)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="9-in-the-repository-now">9. In the repository now</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Files</th>
+<th>Tested</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USRP framing, G.711 mu-law, the link state (keyup PTT, keyup watchdog, TX limit with lockout, sequence accounting)</td>
+<td><code>core/usbaudio/usrp.h</code>, <code>usrp.c</code></td>
+<td><code>tests/host/usrpTest.c</code></td>
+</tr>
+<tr>
+<td>jitter buffer with sample slipping</td>
+<td><code>core/usbaudio/pcm_slip.h</code>, <code>pcm_slip.c</code></td>
+<td><code>tests/host/usrpTest.c</code> (±200 <abbr class="gl" tabindex="0" title="Parts per million: a frequency error as a fraction of the frequency. At 450 MHz, 1 ppm is 450 Hz." data-more="../dev/glossary.html#t-ppm">ppm</abbr> and 15 ms jitter for 10 minutes)</td>
+</tr>
+<tr>
+<td>the shared stream (receive ring, transmit jitter buffer, DMR microphone replacement)</td>
+<td><code>core/usbaudio/audio_mux.h</code>, <code>audio_mux.c</code>; <code>radio_sm.c</code> hands the radio's users the wrapped stream</td>
+<td><code>tests/host/usrpNetTest.c</code>, <code>radioFeaturesTest.c</code></td>
+</tr>
+<tr>
+<td>USRP on the network address</td>
+<td><code>core/usbaudio/usrp_net.h</code>, <code>usrp_net.c</code>; <code>tools/usrp_client.py</code> (reference peer)</td>
+<td><code>tests/host/usrpNetTest.c</code>, <code>tests/hil/test_usrp.py</code></td>
+</tr>
+<tr>
+<td>host audio PTT in the radio core</td>
+<td><code>radio_req_ptt_host()</code>, <code>radio_sm.c</code> (<code>host_audio</code>, its watchdog)</td>
+<td><code>tests/host/radioFeaturesTest.c</code></td>
+</tr>
+<tr>
+<td>audio tap: FM transmit audio from the MCU</td>
+<td><code>hal/hal_audio_tap.h</code>; the <abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> board's audio file (<abbr class="gl" tabindex="0" title="Pulse width modulation: a pin switched on and off to give an average level, as for backlight or tone." data-more="../dev/glossary.html#t-pwm">PWM</abbr>) and radio file (<code>&lt;id&gt;_fm_tx_inject</code>) under <code>boards/</code></td>
+<td><abbr class="gl" tabindex="0" title="Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side." data-more="../dev/testing.html">HIL</abbr> <code>test_usrp.py</code></td>
+</tr>
+<tr>
+<td>the probe: registers, PCM levels, HR_C6000 RAM, FM flag watch</td>
+<td><code>core/debuglink/debuglink_audio_probe.c</code>, the board's audio and radio files (<code>CONFIG_AUDIO_PROBE</code> parts), <code>hrc6000_ram()</code>, <code>tools/rfoundry_debug.py aprobe</code></td>
+<td><code>tests/hil/test_audio_probe.py</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Running the probe: <code>tools/rfoundry_debug.py aprobe</code>, on a board with <code>CONFIG_AUDIO_PROBE</code>.</p>
+<h3 id="91-usrp-on-the-network-config_net_usrp">9.1 USRP on the network (CONFIG_NET_USRP)</h3>
+<p>What the radio does with the switch on, in the USB network personality (or <abbr class="gl" tabindex="0" title="Point-to-point protocol: IP over a serial link." data-more="ppp.html">PPP</abbr>):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ports</td>
+<td>listens on <abbr class="gl" tabindex="0" title="User Datagram Protocol: IP packets with no delivery guarantee." data-more="../dev/glossary.html#t-udp">UDP</abbr> 34001 at its own address; sends from 34001 to UDP 32001 (<code>USRP_PORT</code>, <code>USRP_PEER_PORT</code>). An AllStar node's <code>rxchannel = usrp/&lt;radio address&gt;:34001:32001</code>, or Analog_Bridge with <code>txPort = 34001</code>, <code>rxPort = 32001</code></td>
+</tr>
+<tr>
+<td>Peer</td>
+<td>the address of the last valid frame received; before one (or 60 s after the last), the host's address on the link. No setting yet</td>
+</tr>
+<tr>
+<td>Receive (radio to peer)</td>
+<td>a VOICE frame (16-bit <abbr class="gl" tabindex="0" title="Pulse code modulation: audio as a stream of sample numbers." data-more="../dev/glossary.html#t-pcm">PCM</abbr>) every 20 ms while the radio's receiver is active (<code>state</code> rx: FM squelch and tone open, or a <abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> call playing), keyup 1; one keyup 0 frame of silence when it closes; nothing in between. Not while transmitting or in <abbr class="gl" tabindex="0" title="A small DMR modem that connects radios nearby to a DMR network over the internet." data-more="../user/14-hotspot.html">hotspot</abbr> mode</td>
+</tr>
+<tr>
+<td>Receive audio</td>
+<td>FM: the <abbr class="gl" tabindex="0" title="Inter-IC sound: the bus audio samples travel on between chips." data-more="../dev/glossary.html#t-i2s">I2S</abbr> stream's input (the HR_C6000's FM <abbr class="gl" tabindex="0" title="Receive." data-more="../user/22-glossary.html#t-rx">receive</abbr> audio, squelch gated, after its de-emphasis and filters). DMR: the decoded voice the speaker gets (beeps mixed in)</td>
+</tr>
+<tr>
+<td>Transmit</td>
+<td>a frame with keyup 1 after keyup 0 (or none) keys the radio (<code>radio_req_ptt_host</code>); its audio and the following frames' go through a 60 ms jitter buffer. FM: the board's <code>fm_tx_inject</code> (refused on a board without <code>AUDIO_TAP_FM_TX</code>). DMR: the samples replace the microphone's on the way to the encoder; the call goes to the channel's <abbr class="gl" tabindex="0" title="Where PTT goes: a talkgroup, a person or all call." data-more="../user/22-glossary.html#t-talk-target">talk target</abbr></td>
+</tr>
+<tr>
+<td>Unkey</td>
+<td>keyup 0; no keyup frame for 300 ms; 180 s in one transmission (then locked out until keyup 0 or a quiet gap); the radio's <abbr class="gl" tabindex="0" title="Transmit timeout: the longest transmission the radio allows." data-more="../user/22-glossary.html#t-tot">TOT</abbr>; the link going down; and, in the radio task, no host audio for 1 s (<code>AUDIO_MUX_HOST_STALE_MS</code>: the network service doesn't run while the USB link is in the serial personality). No roger beep. A transmission keeps the source it started with: local PTT pressed meanwhile doesn't switch to the microphone</td>
+</tr>
+<tr>
+<td>Refused</td>
+<td>in hotspot mode, and FM on a board without the <abbr class="gl" tabindex="0" title="Transmit." data-more="../user/22-glossary.html#t-tx">transmit</abbr> tap (counted in <code>usrp.refused</code>)</td>
+</tr>
+<tr>
+<td>Debug link</td>
+<td>view section <code>usrp</code> (<a href="debuglink.html">debuglink.md</a> 3.7)</td>
+</tr>
+</tbody>
+</table></div>
+<p>An HR_C6000 board's FM transmit path is PWM into the HR_C6000's differential microphone input: MIC_P / MIC_N on and the microphone (LINEIN1) off while the host transmits, a timer channel with <abbr class="gl" tabindex="0" title="Direct memory access: moving data between memory and a peripheral without the processor." data-more="../dev/glossary.html#t-dma">DMA</abbr> rewriting
+the duty every carrier period, the samples linearly interpolated over the periods with the rounding error carried from
+period to period. The carrier, the full-scale swing and <code>fm_tx_nominal_peak</code> (about 60 % of the peak deviation) are
+the board's; its hardware page has them and the bench figures. The chip's own FM chain does the rest (pre-emphasis,
+limiter, sub-audio tone). On the <abbr class="gl" tabindex="0" title="Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one." data-more="../dev/glossary.html#t-sdr">SDR</abbr> bench a 1 kHz tone at the nominal level goes out at 1.1-1.2 kHz rms deviation
+with 13-16 dB SINAD in the voice band; the probe's plain PWM measures the same, so neither the error feedback nor the
+PWM's resolution is the limit.</p>
+<p>Known limits:</p>
+<ul>
+<li>The receive audio is the speaker's FM feed-through, so it follows the volume knob (the HR_C6000's RX gain), stops
+at volume zero, and drops out while a beep plays (the feed-through is off for PCM). A tap independent of the
+speaker (the RX <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr>, <code>modem-hrc6000.md</code> 8) would fix all three.</li>
+<li>No flat mode: the PWM path stops at the codec's 3.5 kHz, so 9600 baud needs the 0x04 path or a modification.</li>
+<li>Ports and peer are fixed; settings (UI, <abbr class="gl" tabindex="0" title="A free, open source codeplug editor for DMR radios." data-more="../user/04-programming.html">qdmr</abbr>) come with phase 3's settings.</li>
+<li>The wire format is from the public descriptions; a capture against a live AllStar node or Analog_Bridge is still
+owed (owner question 4).</li>
+</ul>
+<h3 id="92-mmdvm-fm-frames">9.2 MMDVM FM frames</h3>
+<p>MMDVMHost can carry FM audio to and from the modem (AllStar linking through its FM network). That frame layout is not in any public prose description we found (2026-10-13): the protocol write-ups predate FM. It can be specified the way the rest of <a href="mmdvm-protocol.html">mmdvm-protocol.md</a> was: by observing what an unmodified MMDVMHost sends to and expects from an <abbr class="gl" tabindex="0" title="Multi-Mode Digital Voice Modem: the modem protocol MMDVMHost speaks." data-more="mmdvm-protocol.html">MMDVM</abbr> modem with FM configured (a serial capture on the bench), written up as black-box behavior. Until then the hotspot only ACKs FM_PARAMS (mmdvm-protocol.md 2.14) and <abbr class="gl" tabindex="0" title="The UDP stream that carries a call&#x27;s audio between RadioFoundry and a network gateway." data-more="../dev/glossary.html#t-usrp">USRP</abbr> (9.1) is the FM network path.</p>
+<h2 id="10-owner-questions">10. Owner questions</h2>
+<ol>
+<li>USB IDs: move to a pid.codes VID 0x1209 block for all personalities now (the existing serial / network PIDs too),
+or keep NXP's VID for serial and network and use pid.codes only for the new ones?</li>
+<li>Default serial PTT line and polarity: RTS asserted (most software's default) or DTR=1 / RTS=0 (AIOC's choice,
+safe with CHIRP-style programmers)? Either way it only arms in audio sessions.</li>
+<li>Which personality should a radio boot into: serial (today), or serial + audio once phase 3 is done?</li>
+<li><abbr class="gl" tabindex="0" title="The UDP stream that carries a call&#x27;s audio between RadioFoundry and a network gateway." data-more="../dev/glossary.html#t-usrp">USRP</abbr>: confirm the wire format with a capture from the owner's AllStar node or Analog_Bridge before the firmware
+relies on it; which ports and peer address as defaults?</li>
+<li><s><abbr class="gl" tabindex="0" title="Hamlib&#x27;s network rig control protocol, used by loggers and SDR programs." data-more="../user/22-glossary.html#t-rigctld">rigctld</abbr> on the radio, or a host bridge?</s> Settled: on the radio (<code>CONFIG_NET_RIGCTL</code>, <a href="tcp-services.html">tcp-services.md</a> 6).</li>
+<li><abbr class="gl" tabindex="0" title="Digital Mobile Radio, the ETSI digital radio standard (TS 102 361)." data-more="../user/22-glossary.html#t-dmr">DMR</abbr> voice endpoint: send DMR call metadata (IDs, <abbr class="gl" tabindex="0" title="A short text, usually a callsign and name, sent along with DMR voice." data-more="../user/22-glossary.html#t-talker-alias">talker alias</abbr>) to the host as USRP TEXT frames (Analog_Bridge's
+convention), on the <abbr class="gl" tabindex="0" title="RadioFoundry&#x27;s USB serial protocol for reading state and driving the radio from a computer." data-more="../dev/debug-link.html">debug link</abbr> only, or both?</li>
+</ol>
+<h2 id="references">References</h2>
+<ul>
+<li><abbr class="gl" tabindex="0" title="The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-hr-c6000">HR_C6000</abbr> user manual (Zhejiang Hongrui; vendor datasheet): 4.5 codec, figure 4.12, 5.3 <abbr class="gl" tabindex="0" title="Random access memory: working memory that loses its content at power off." data-more="../dev/glossary.html#t-ram">RAM</abbr> tables, 6 FM, register
+table (0x06, 0x22, 0x36, 0x37, 0x82, 0xD7, 0xE0-0xE4) and appendix A (FM paths).</li>
+<li><abbr class="gl" tabindex="0" title="STMicroelectronics&#x27; family of ARM microcontrollers. The radios that use it are in the radio survey." data-more="../dev/glossary.html#t-stm32">STM32F405</abbr> device header (<code>stm32f405xx.h</code>, ST, in <code>third_party/cmsis-device-f4</code>): <abbr class="gl" tabindex="0" title="USB On-The-Go: the controller can act as the host or the device." data-more="../dev/glossary.html#t-otg">OTG_FS</abbr> endpoint count and <abbr class="gl" tabindex="0" title="First in, first out: a queue of data between a producer and a consumer." data-more="../dev/glossary.html#t-fifo">FIFO</abbr>
+size. TinyUSB 0.21.0 (MIT): <code>src/class/audio</code>, <code>src/portable/synopsys/dwc2/dwc2_stm32.h</code>, <code>examples/device/cdc_uac2</code>.</li>
+<li>USB Device Class Definition for Audio Devices 1.0 and 2.0; USB CDC 1.2 (ACM, <abbr class="gl" tabindex="0" title="Network control model: the USB class that makes the radio appear as a network adapter." data-more="../dev/glossary.html#t-ncm">NCM</abbr>); USB HID 1.11 (usb.org).</li>
+<li>ITU-T G.711 (mu-law). RFC 1055 (SLIP), RFC 3550 / 3551 (RTP and its audio profile), RFC 4733 (RTP events),
+RFC 5456 (IAX2), RFC 7587 (Opus over RTP).</li>
+<li>Hamlib <code>rigctld(1)</code> manual (the NET rigctl protocol); flrig documentation (XML-RPC).</li>
+<li>AIOC, an MIT-licensed USB sound card + serial + CM108-style HID cable on an STM32: <a href="https://github.com/skuep/AIOC">https://github.com/skuep/AIOC</a>
+(interfaces, PTT lines, rates, ASL3 and Direwolf support as its README states).</li>
+<li>AllStarLink community forum, <abbr class="gl" tabindex="0" title="The UDP stream that carries a call&#x27;s audio between RadioFoundry and a network gateway." data-more="../dev/glossary.html#t-usrp">USRP</abbr> channel driver set-ups (ports 32001 / 34001 with Analog_Bridge):
+<a href="https://community.allstarlink.org/t/linking-allstar-to-a-mmdvm-hotspot-dmr-to-allstar-node-bridge/18146">https://community.allstarlink.org/t/linking-allstar-to-a-mmdvm-hotspot-dmr-to-allstar-node-bridge/18146</a>;
+M17 project wiki, usrp2m17: <a href="https://wiki.m17project.org/usrp2m17_bridge">https://wiki.m17project.org/usrp2m17_bridge</a>; AllStarLink wiki, usbradio channel
+driver: <a href="https://wiki.allstarlink.org/wiki/Chan_usbradio">https://wiki.allstarlink.org/wiki/Chan_usbradio</a>.</li>
+</ul>
+</div>
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/spec/usb-audio.md">查看本页源码</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="本页内容">
+		<p class="eyebrow">本页内容</p>
+		<ul><li class="l2"><a href="#summary">Summary</a></li><li class="l2"><a href="#1-use-cases-and-transports">1. Use cases and transports</a></li><li class="l2"><a href="#2-audio-paths-per-radio">2. Audio paths per radio</a></li><li class="l3"><a href="#21-budgets">2.1 Budgets</a></li><li class="l2"><a href="#3-usb-what-fits">3. USB: what fits</a></li><li class="l2"><a href="#4-protocols">4. Protocols</a></li><li class="l3"><a href="#41-control-ptt-frequency-channel-squelch-state">4.1 Control (PTT, frequency, channel, squelch state)</a></li><li class="l3"><a href="#42-audio-over-ip">4.2 Audio over IP</a></li><li class="l3"><a href="#43-audio-over-the-serial-port">4.3 Audio over the serial port</a></li><li class="l3"><a href="#44-choices">4.4 Choices</a></li><li class="l2"><a href="#5-design">5. Design</a></li><li class="l3"><a href="#51-the-audio-router-coreaudio-new">5.1 The audio router (core/audio, new)</a></li><li class="l3"><a href="#52-usb-personalities">5.2 USB personalities</a></li><li class="l3"><a href="#53-rates-and-the-radio-side">5.3 Rates and the radio side</a></li><li class="l3"><a href="#54-squelch-and-cos">5.4 Squelch and COS</a></li><li class="l3"><a href="#55-fm-audio-voice-or-flat">5.5 FM audio: voice or flat</a></li><li class="l3"><a href="#56-dmr-as-a-usb-voice-endpoint">5.6 DMR as a USB voice endpoint</a></li><li class="l2"><a href="#6-behavior-and-safety">6. Behavior and safety</a></li><li class="l3"><a href="#61-levels">6.1 Levels</a></li><li class="l3"><a href="#62-ptt-sources-and-priority">6.2 PTT sources and priority</a></li><li class="l3"><a href="#63-watchdogs-no-transmission-without-a-live-host">6.3 Watchdogs (no transmission without a live host)</a></li><li class="l3"><a href="#64-sharing-the-serial-port">6.4 Sharing the serial port</a></li><li class="l3"><a href="#65-interaction-with-the-hotspot-and-the-ui">6.5 Interaction with the hotspot and the UI</a></li><li class="l2"><a href="#7-phased-plan-and-effort">7. Phased plan and effort</a></li><li class="l2"><a href="#8-risks">8. Risks</a></li><li class="l2"><a href="#9-in-the-repository-now">9. In the repository now</a></li><li class="l3"><a href="#91-usrp-on-the-network-config_net_usrp">9.1 USRP on the network (CONFIG_NET_USRP)</a></li><li class="l3"><a href="#92-mmdvm-fm-frames">9.2 MMDVM FM frames</a></li><li class="l2"><a href="#10-owner-questions">10. Owner questions</a></li><li class="l2"><a href="#references">References</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>加入 RadioFoundry 社区</strong><span class="small muted">在 Facebook 上提问、获取电台使用帮助和最新消息。</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>发现了错误？希望支持您的电台？</strong><span class="small muted">在 GitHub 上提交问题。</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry 采用 MIT 许可证 · <a href="https://github.com/radiofoundry/radiofoundry">源代码</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">社区</a> · <a href="../../../zh/docs/index.html">文档</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">更新日志</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>

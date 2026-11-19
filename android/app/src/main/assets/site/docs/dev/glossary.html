@@ -1,0 +1,732 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Developer glossary · RadioFoundry</title>
+<meta name="description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RadioFoundry">
+<meta property="og:title" content="Developer glossary · RadioFoundry">
+<meta property="og:description" content="Open-source multi-mode firmware for digital radios.">
+<meta property="og:url" content="https://radiofoundry.org/docs/dev/glossary.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://radiofoundry.org/static/img/social.png?v=31d0e27983">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="The radios RadioFoundry runs on, each showing a different screen.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="generator" content="site/build.py 9e9e6961">
+<link rel="alternate" hreflang="en" href="https://radiofoundry.org/docs/dev/glossary.html">
+<link rel="alternate" hreflang="es" href="https://radiofoundry.org/es/docs/dev/glossary.html">
+<link rel="alternate" hreflang="it" href="https://radiofoundry.org/it/docs/dev/glossary.html">
+<link rel="alternate" hreflang="zh" href="https://radiofoundry.org/zh/docs/dev/glossary.html">
+<link rel="alternate" hreflang="x-default" href="https://radiofoundry.org/docs/dev/glossary.html">
+<link rel="icon" href="../../static/img/icon.svg?v=31d0e27983" type="image/svg+xml">
+<link rel="icon" href="../../static/img/icon-32.png?v=31d0e27983" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../static/img/apple-touch-icon.png?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/tokens.css?v=31d0e27983">
+<link rel="stylesheet" href="../../static/css/site.css?v=31d0e27983">
+<script>try{var t=localStorage.getItem("rfoundry-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-doc" data-root="../../" data-home="../../" data-gl-more="More">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+	<div class="wrap header-row">
+		<a class="brand" href="../../index.html">
+			<img src="../../static/img/icon.svg?v=31d0e27983" alt="" width="28" height="28">
+			<span>Radio<b>Foundry</b></span>
+		</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+		<nav id="site-nav" class="site-nav" aria-label="Main"><a href="../../radios/index.html">Radios</a><a href="../../features/index.html">Features</a><a href="../../flash/index.html">Install</a><a href="../../codeplug/index.html">Codeplug</a><a href="../../docs/index.html" aria-current="page">Docs</a><a href="../../screenshots/index.html">Screenshots</a><a href="../../tools/index.html">Tools</a></nav>
+		<div class="header-tools">
+			<details class="lang-switch"><summary aria-label="Language" title="Language">EN</summary><nav aria-label="Language"><a href="../../docs/dev/glossary.html" aria-current="true" lang="en" hreflang="en" data-hint="This site is also in English." data-go="View in English" data-no="No, thanks">English</a><a href="../../es/docs/dev/glossary.html" lang="es" hreflang="es" data-hint="Este sitio también está en español." data-go="Ver en español" data-no="No, gracias">Español</a><a href="../../it/docs/dev/glossary.html" lang="it" hreflang="it" data-hint="Questo sito è disponibile anche in italiano." data-go="Leggi in italiano" data-no="No, grazie">Italiano</a><a href="../../zh/docs/dev/glossary.html" lang="zh" hreflang="zh" data-hint="本站也提供简体中文版。" data-go="查看简体中文版" data-no="不用了，谢谢">简体中文</a></nav></details>
+			<button class="theme-toggle" type="button" aria-label="Switch light and dark" title="Switch light and dark">◐</button>
+		</div>
+	</div>
+</header>
+<main id="main">
+<div class="wrap doc-layout">
+	<aside class="doc-side" aria-label="Developer Guide">
+		<p class="eyebrow"><a href="../../docs/index.html">Documentation</a> / Developer Guide</p>
+		<ul><li><a href="index.html">Developer Documentation</a></li><li><a href="adding-a-mode.html">Adding a Mode</a></li><li><a href="adding-a-radio.html">Adding a Radio</a></li><li><a href="architecture.html">Architecture</a></li><li><a href="board-registry.html">The Board Registry</a></li><li><a href="building.html">Building</a></li><li><a href="ci-runners.html">CI Runners and Images</a></li><li><a href="ci.html">Continuous Integration</a></li><li><a href="codec.html">The Codec</a></li><li><a href="codeplug-editor.html">The Codeplug Editor</a></li><li><a href="contributing.html">Contributing</a></li><li><a href="cps-and-codeplug.html">CPS, Codeplug and Settings</a></li><li><a href="debug-link.html">Debug Link</a></li><li><a href="glossary.html" aria-current="page">Developer glossary</a></li><li><a href="manual-pdf.html">The User Manual PDF</a></li><li><a href="release.html">Releases</a></li><li><a href="stack-check.html">Stack Check</a></li><li><a href="testing.html">Testing</a></li><li><a href="translating.html">Translating</a></li><li><a href="web-flasher.html">The Web Flasher</a></li><li><a href="website.html">The Web Site</a></li></ul>
+	</aside>
+	<article class="prose doc-body">
+		
+		<!-- SPDX-License-Identifier: MIT -->
+<!-- Generated from docs/glossary.json by tools/glossary.py. Edit the data file, not this page. -->
+<!-- glossary: off -->
+<h1 id="developer-glossary">Developer glossary</h1>
+<p>Protocol, hardware and firmware terms of the specs and developer docs. Terms the user guide uses are in the <a href="../user/22-glossary.html">glossary</a>.</p>
+<h2 id="dmr">DMR</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a id="t-ais"></a>AIS</td>
+<td>Air interface specification, the ETSI name for DMR's over-the-air rules.</td>
+</tr>
+<tr>
+<td><a id="t-als"></a>ALS</td>
+<td>Ambient listening service: a dispatcher turns on a radio's microphone remotely.</td>
+</tr>
+<tr>
+<td><a id="t-at"></a>AT</td>
+<td>Access type: the TACT bit that tells a radio whether the slot is free to transmit in.</td>
+</tr>
+<tr>
+<td><a id="t-ber"></a>BER</td>
+<td>Bit error rate: the share of received bits that were wrong. A measure of how clean a signal is.</td>
+</tr>
+<tr>
+<td><a id="t-bptc"></a>BPTC</td>
+<td>Block product turbo code: the error correction on DMR headers and control blocks.</td>
+</tr>
+<tr>
+<td><a id="t-bs"></a>BS</td>
+<td>Base station: the repeater or modem side of a DMR link, as opposed to the radio (MS).</td>
+</tr>
+<tr>
+<td><a id="t-bs-dwn-act"></a>BS_Dwn_Act</td>
+<td>The CSBK that tells a repeater to start transmitting. It wakes a repeater.</td>
+</tr>
+<tr>
+<td><a id="t-burst"></a>Burst</td>
+<td>One DMR transmission in a slot: 264 bits, with a sync pattern or embedded signaling in the middle.</td>
+</tr>
+<tr>
+<td><a id="t-c-ackd"></a>C_ACKD (C_NACKD, C_WACKD, C_QACKD)</td>
+<td>A Tier III CSBK in which the TSCC accepts a request.</td>
+</tr>
+<tr>
+<td><a id="t-c-acku"></a>C_ACKU (P_ACKU)</td>
+<td>A Tier III CSBK in which a radio acknowledges or answers, for example the authentication response.</td>
+</tr>
+<tr>
+<td><a id="t-c-ahoy"></a>C_AHOY</td>
+<td>A Tier III CSBK that checks on a radio: an authentication challenge or the called party's radio check.</td>
+</tr>
+<tr>
+<td><a id="t-c-aloha"></a>C_ALOHA</td>
+<td>The Tier III CSBK a trunked base station sends to announce the system and its slot timing.</td>
+</tr>
+<tr>
+<td><a id="t-c-rand"></a>C_RAND</td>
+<td>The Tier III CSBK a radio sends to ask for something on the control channel: registration, a call.</td>
+</tr>
+<tr>
+<td><a id="t-c-sys-parms"></a>C_SYS_Parms</td>
+<td>The Tier III system parameters a TSCC sends in its CACH (SLCO 0010): model, network, site, registration flag and slot counter.</td>
+</tr>
+<tr>
+<td><a id="t-c-syscode"></a>C_SYScode</td>
+<td>The 16-bit system code of a Tier III system: MODEL, NET, SITE and PAR. C_ALOHA carries all of it, the CACH the top 14 bits.</td>
+</tr>
+<tr>
+<td><a id="t-cach"></a>CACH</td>
+<td>Common announcement channel: 24 bits ahead of each burst a repeater sends. It carries the slot number and short link control.</td>
+</tr>
+<tr>
+<td><a id="t-codec"></a>Codec</td>
+<td>A voice codec. DMR uses AMBE+2.</td>
+</tr>
+<tr>
+<td><a id="t-csbk"></a>CSBK (CSBKs)</td>
+<td>Control signaling block: a one-burst DMR message for signaling such as call alert, radio check and Tier III control. <a href="../spec/dmr-data.html">More</a></td>
+</tr>
+<tr>
+<td><a id="t-csbko"></a>CSBKO</td>
+<td>CSBK opcode: the field of a CSBK that says its kind.</td>
+</tr>
+<tr>
+<td><a id="t-dd"></a>DD (DD format)</td>
+<td>Defined data format: the field of a short data header that says how its payload is coded (7-bit text, ISO 8859, UTF-16 and so on).</td>
+</tr>
+<tr>
+<td><a id="t-dgna"></a>DGNA</td>
+<td>Dynamic group number assignment: the Tier III system moves a radio into a talkgroup over the air.</td>
+</tr>
+<tr>
+<td><a id="t-direct-mode"></a>Direct mode (DMO)</td>
+<td>DMR radio to radio on one frequency, with no repeater. The standard calls it DMO.</td>
+</tr>
+<tr>
+<td><a id="t-dmrla"></a>DMRLA</td>
+<td>DMR location area: how many of the most significant bits of SITE form SYS_AREA, the registration area.</td>
+</tr>
+<tr>
+<td><a id="t-dpf"></a>DPF</td>
+<td>Data packet format: the field of a data header that says what follows (unconfirmed or confirmed data, UDT, short data).</td>
+</tr>
+<tr>
+<td><a id="t-dt"></a>DT</td>
+<td>Data type: the field of a burst's slot type that says what the burst carries (header, terminator, rate 1/2 block and so on).</td>
+</tr>
+<tr>
+<td><a id="t-emb"></a>EMB</td>
+<td>Embedded signaling: the 32 bits in the middle of a voice burst that carry link control.</td>
+</tr>
+<tr>
+<td><a id="t-etsi"></a>ETSI</td>
+<td>European Telecommunications Standards Institute, which publishes the DMR standard.</td>
+</tr>
+<tr>
+<td><a id="t-fec"></a>FEC</td>
+<td>Forward error correction: extra bits that let the receiver repair errors without a resend.</td>
+</tr>
+<tr>
+<td><a id="t-fid"></a>FID</td>
+<td>Feature set ID: the byte that says whether a message is standard or manufacturer specific.</td>
+</tr>
+<tr>
+<td><a id="t-flco"></a>FLCO</td>
+<td>Full link control opcode: the field of a link control message that says its kind.</td>
+</tr>
+<tr>
+<td><a id="t-foacsu"></a>FOACSU</td>
+<td>Full off air call set up: OACSU with alerting, so the called radio rings and answers before voice.</td>
+</tr>
+<tr>
+<td><a id="t-fsn"></a>FSN</td>
+<td>Fragment sequence number: counts the fragments of a data packet that was split.</td>
+</tr>
+<tr>
+<td><a id="t-lb"></a>LB</td>
+<td>Last block: the flag that marks the final block of a CSBK or data message.</td>
+</tr>
+<tr>
+<td><a id="t-lc"></a>LC (embedded LC)</td>
+<td>Link control: the call's addressing (source, destination, group or private) that DMR repeats through a voice call.</td>
+</tr>
+<tr>
+<td><a id="t-lcss"></a>LCSS</td>
+<td>Link control start/stop: the 2-bit field of a burst's embedded signaling that says which fragment it carries.</td>
+</tr>
+<tr>
+<td><a id="t-llid"></a>LLID</td>
+<td>Logical link ID: the 24-bit address (a DMR ID or a talkgroup number) in a data header.</td>
+</tr>
+<tr>
+<td><a id="t-lpcn"></a>LPCN</td>
+<td>Logical physical channel number: the number of a channel in a Tier III channel plan.</td>
+</tr>
+<tr>
+<td><a id="t-mbc"></a>MBC</td>
+<td>Multi block control: a DMR signaling message that spans several bursts.</td>
+</tr>
+<tr>
+<td><a id="t-mi"></a>MI</td>
+<td>Message indicator: the value that changes with each call and keys its encryption. It travels in the PI header.</td>
+</tr>
+<tr>
+<td><a id="t-mpt-1327"></a>MPT 1327 (MPT)</td>
+<td>The analog trunking standard that Tier III descends from.</td>
+</tr>
+<tr>
+<td><a id="t-ms"></a>MS</td>
+<td>Mobile station: the radio, as opposed to the base station (BS).</td>
+</tr>
+<tr>
+<td><a id="t-oacsu"></a>OACSU</td>
+<td>Off air call set up: signaling that sets up a call before voice is sent. The radio asks over the air and waits for the answer.</td>
+</tr>
+<tr>
+<td><a id="t-p-sys-parms"></a>P_SYS_Parms</td>
+<td>The same system parameters a Tier III payload channel sends in its CACH (SLCO 0011).</td>
+</tr>
+<tr>
+<td><a id="t-pabx"></a>PABX</td>
+<td>Private automatic branch exchange: an office telephone system. Tier III can connect calls to it.</td>
+</tr>
+<tr>
+<td><a id="t-pdu"></a>PDU (PDUs)</td>
+<td>Protocol data unit: one packet or message of a protocol, as the standard defines its fields.</td>
+</tr>
+<tr>
+<td><a id="t-pf"></a>PF</td>
+<td>Protect flag: the bit in link control that marks a protected (encrypted) call.</td>
+</tr>
+<tr>
+<td><a id="t-psn"></a>PSN</td>
+<td>A 3-octet number XORed into the Tier III authentication response when a network uses it.</td>
+</tr>
+<tr>
+<td><a id="t-pstn"></a>PSTN</td>
+<td>Public switched telephone network. Tier III can connect calls to it.</td>
+</tr>
+<tr>
+<td><a id="t-pv-grant"></a>PV_GRANT (TV_GRANT, BTV_GRANT)</td>
+<td>A Tier III grant: the TSCC tells radios which payload channel carries a call. PV is a private voice call, TV a talkgroup voice call, BTV a broadcast talkgroup voice call.</td>
+</tr>
+<tr>
+<td><a id="t-rc"></a>RC</td>
+<td>Reverse channel: signaling the receiver sends back to the transmitter during a call, in space the burst leaves free.</td>
+</tr>
+<tr>
+<td><a id="t-repeater-mode"></a>Repeater mode (RMO)</td>
+<td>DMR through a repeater, which receives on one frequency and transmits on another. The standard calls it RMO.</td>
+</tr>
+<tr>
+<td><a id="t-said"></a>SAID (DAID)</td>
+<td>Source address ID: the field of a compressed UDP/IP header that says where the source IP address comes from, for example from the LLID.</td>
+</tr>
+<tr>
+<td><a id="t-sap"></a>SAP</td>
+<td>Service access point: the field in a DMR data header that says what the payload is (IP, short data, GPS and so on).</td>
+</tr>
+<tr>
+<td><a id="t-slco"></a>SLCO</td>
+<td>Short link control opcode: the field of a short LC message that says its kind.</td>
+</tr>
+<tr>
+<td><a id="t-spid"></a>SPID (DPID)</td>
+<td>Source port ID: the index in a compressed UDP/IP header that stands for a well-known UDP port.</td>
+</tr>
+<tr>
+<td><a id="t-sync"></a>Sync</td>
+<td>The 48-bit pattern in the middle of a burst. It tells the receiver the burst's kind (voice or data, base station or radio) and its timing.</td>
+</tr>
+<tr>
+<td><a id="t-tact"></a>TACT</td>
+<td>The 7 bits at the start of a CACH: AT, TC, LCSS and Hamming parity.</td>
+</tr>
+<tr>
+<td><a id="t-tc"></a>TC</td>
+<td>TDMA channel: the TACT bit that names the timeslot, so a radio can tell TS1 from TS2.</td>
+</tr>
+<tr>
+<td><a id="t-tdma"></a>TDMA</td>
+<td>Time division multiple access. A DMR channel carries two conversations by alternating them in 30 ms slots.</td>
+</tr>
+<tr>
+<td><a id="t-tier-ii"></a>Tier II</td>
+<td>The conventional DMR tier of the standard (TS 102 361-2): repeaters and direct mode without trunking.</td>
+</tr>
+<tr>
+<td><a id="t-tier-iii"></a>Tier III</td>
+<td>The trunked DMR tier of the standard (TS 102 361-4): a control channel assigns traffic channels.</td>
+</tr>
+<tr>
+<td><a id="t-tsc"></a>TSC</td>
+<td>The controller of a Tier III system: the infrastructure side the radio talks to.</td>
+</tr>
+<tr>
+<td><a id="t-tscc"></a>TSCC</td>
+<td>Trunked station control channel: the Tier III channel that carries control signaling.</td>
+</tr>
+<tr>
+<td><a id="t-tsccas"></a>TSCCAS</td>
+<td>TSCC alternate slot: a second control slot of a Tier III site.</td>
+</tr>
+<tr>
+<td><a id="t-udt"></a>UDT</td>
+<td>Unified data transport: DMR short data sent as a plain block of bytes.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="rf-and-hardware">RF and hardware</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a id="t-adc"></a>ADC</td>
+<td>Analog to digital converter.</td>
+</tr>
+<tr>
+<td><a id="t-afc"></a>AFC</td>
+<td>Automatic frequency control: following a transmitter that is slightly off frequency.</td>
+</tr>
+<tr>
+<td><a id="t-agc"></a>AGC</td>
+<td>Automatic gain control: the receiver adjusting itself to the signal level.</td>
+</tr>
+<tr>
+<td><a id="t-at1846s"></a>AT1846S</td>
+<td>The RF transceiver chip that sets the frequency, deviation and power of many handheld DMR radios. Programmed over I2C.</td>
+</tr>
+<tr>
+<td><a id="t-cpu"></a>CPU</td>
+<td>Central processing unit.</td>
+</tr>
+<tr>
+<td><a id="t-crc"></a>CRC</td>
+<td>Cyclic redundancy check: a checksum that detects damaged data.</td>
+</tr>
+<tr>
+<td><a id="t-dac"></a>DAC</td>
+<td>Digital to analog converter.</td>
+</tr>
+<tr>
+<td><a id="t-deviation"></a>Deviation</td>
+<td>How far an FM transmitter's frequency swings from the channel center. It sets loudness and bandwidth.</td>
+</tr>
+<tr>
+<td><a id="t-dma"></a>DMA</td>
+<td>Direct memory access: moving data between memory and a peripheral without the processor.</td>
+</tr>
+<tr>
+<td><a id="t-dsp"></a>DSP</td>
+<td>Digital signal processor: a chip, or a processor core, that does the audio and modem math.</td>
+</tr>
+<tr>
+<td><a id="t-ecc"></a>ECC</td>
+<td>Error correcting code: a code that repairs damaged bits, such as the one a NAND flash needs.</td>
+</tr>
+<tr>
+<td><a id="t-eeprom"></a>EEPROM</td>
+<td>Electrically erasable programmable read-only memory: a small chip that keeps settings.</td>
+</tr>
+<tr>
+<td><a id="t-fifo"></a>FIFO</td>
+<td>First in, first out: a queue of data between a producer and a consumer.</td>
+</tr>
+<tr>
+<td><a id="t-fsk"></a>FSK</td>
+<td>Frequency shift keying: data as frequency steps. DMR uses 4-level FSK.</td>
+</tr>
+<tr>
+<td><a id="t-gpio"></a>GPIO</td>
+<td>General purpose input/output: a pin the firmware can read or drive.</td>
+</tr>
+<tr>
+<td><a id="t-hr-c6000"></a>HR_C6000 (HRC6000, C6000)</td>
+<td>The HRC6000 family: the baseband chip that codes and decodes DMR bursts. The radios that use it are in the radio survey.</td>
+</tr>
+<tr>
+<td><a id="t-hr-c7000"></a>HR_C7000 (HRC7000, C7000)</td>
+<td>The HRC7000 family: the baseband chip of the C-SKY class radios. The radios that use it are in the radio survey.</td>
+</tr>
+<tr>
+<td><a id="t-i2c"></a>I2C (I²C)</td>
+<td>Inter-integrated circuit: a 2-wire bus for small chips such as the RF transceiver.</td>
+</tr>
+<tr>
+<td><a id="t-i2s"></a>I2S</td>
+<td>Inter-IC sound: the bus audio samples travel on between chips.</td>
+</tr>
+<tr>
+<td><a id="t-jtag"></a>JTAG</td>
+<td>A debug and test port of many processors.</td>
+</tr>
+<tr>
+<td><a id="t-mcu"></a>MCU</td>
+<td>Microcontroller: the processor that runs the firmware.</td>
+</tr>
+<tr>
+<td><a id="t-nand"></a>NAND</td>
+<td>The flash chip type that holds large data, such as the codeplug and contacts, in some radios.</td>
+</tr>
+<tr>
+<td><a id="t-nor"></a>NOR</td>
+<td>The flash chip type that holds code and can run it in place.</td>
+</tr>
+<tr>
+<td><a id="t-otg"></a>OTG (OTG_FS)</td>
+<td>USB On-The-Go: the controller can act as the host or the device.</td>
+</tr>
+<tr>
+<td><a id="t-pa"></a>PA</td>
+<td>Power amplifier: the stage that boosts the transmit signal to the output power.</td>
+</tr>
+<tr>
+<td><a id="t-pcm"></a>PCM</td>
+<td>Pulse code modulation: audio as a stream of sample numbers.</td>
+</tr>
+<tr>
+<td><a id="t-pll"></a>PLL</td>
+<td>Phase locked loop: the circuit that holds the radio's synthesizer on its frequency.</td>
+</tr>
+<tr>
+<td><a id="t-ppm"></a>ppm</td>
+<td>Parts per million: a frequency error as a fraction of the frequency. At 450 MHz, 1 ppm is 450 Hz.</td>
+</tr>
+<tr>
+<td><a id="t-pwm"></a>PWM</td>
+<td>Pulse width modulation: a pin switched on and off to give an average level, as for backlight or tone.</td>
+</tr>
+<tr>
+<td><a id="t-ram"></a>RAM</td>
+<td>Random access memory: working memory that loses its content at power off.</td>
+</tr>
+<tr>
+<td><a id="t-rom"></a>ROM</td>
+<td>Read-only memory: code fixed in the chip.</td>
+</tr>
+<tr>
+<td><a id="t-snr"></a>SNR</td>
+<td>Signal to noise ratio.</td>
+</tr>
+<tr>
+<td><a id="t-spi"></a>SPI</td>
+<td>Serial peripheral interface: the 4-wire bus the processor uses to talk to chips such as the modem.</td>
+</tr>
+<tr>
+<td><a id="t-sram"></a>SRAM</td>
+<td>Static RAM: the processor's fast working memory.</td>
+</tr>
+<tr>
+<td><a id="t-stm32"></a>STM32 (STM32F4, STM32F405)</td>
+<td>STMicroelectronics' family of ARM microcontrollers. The radios that use it are in the radio survey.</td>
+</tr>
+<tr>
+<td><a id="t-swd"></a>SWD</td>
+<td>Serial wire debug: the two-wire debug port of ARM processors.</td>
+</tr>
+<tr>
+<td><a id="t-synthesizer"></a>Synthesizer</td>
+<td>The part that makes the radio's transmit and receive frequencies.</td>
+</tr>
+<tr>
+<td><a id="t-tcxo"></a>TCXO</td>
+<td>Temperature compensated crystal oscillator: the stable clock the radio's frequency is derived from.</td>
+</tr>
+<tr>
+<td><a id="t-uart"></a>UART</td>
+<td>Universal asynchronous receiver transmitter: a serial port.</td>
+</tr>
+<tr>
+<td><a id="t-vco"></a>VCO</td>
+<td>Voltage controlled oscillator: the oscillator in a synthesizer, tuned by a voltage.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="vendor-terms">Vendor terms</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a id="t-cai"></a>CAI</td>
+<td>Common air interface: Motorola's name for the DMR air interface, also the name of its IP addressing on the air.</td>
+</tr>
+<tr>
+<td><a id="t-capacity-plus"></a>Capacity Plus (Cap+)</td>
+<td>A MOTOTRBO single-site trunking mode in which the radios share a pool of repeater channels.</td>
+</tr>
+<tr>
+<td><a id="t-connect-plus"></a>Connect Plus</td>
+<td>A MOTOTRBO multi-site trunking system with a central controller.</td>
+</tr>
+<tr>
+<td><a id="t-dcdm"></a>DCDM</td>
+<td>Dual Capacity Direct Mode: Motorola's direct mode that carries two calls on one frequency, one per timeslot.</td>
+</tr>
+<tr>
+<td><a id="t-erdm"></a>ERDM</td>
+<td>Motorola's style of single frequency repeater, with different inbound and outbound color codes.</td>
+</tr>
+<tr>
+<td><a id="t-ipsc"></a>IPSC</td>
+<td>IP Site Connect: Motorola's linking of repeaters over IP.</td>
+</tr>
+<tr>
+<td><a id="t-linked-capacity-plus"></a>Linked Capacity Plus (LCP)</td>
+<td>A MOTOTRBO system of several Capacity Plus sites joined by a network.</td>
+</tr>
+<tr>
+<td><a id="t-xnl"></a>XNL (XCMP)</td>
+<td>A Motorola radio control protocol; XCMP commands travel over it. Neither is part of the standard.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="amateur-and-network">Amateur and network</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a id="t-ack"></a>ACK (NAK)</td>
+<td>Acknowledgment: the reply that says a message arrived.</td>
+</tr>
+<tr>
+<td><a id="t-afsk"></a>AFSK</td>
+<td>Audio frequency shift keying: data as two audio tones on an FM carrier. APRS at 1200 baud uses it.</td>
+</tr>
+<tr>
+<td><a id="t-dhcp"></a>DHCP</td>
+<td>Dynamic Host Configuration Protocol: how a device gets its IP address on a network.</td>
+</tr>
+<tr>
+<td><a id="t-ip"></a>IP</td>
+<td>Internet Protocol: the addressing and packet layer of networks.</td>
+</tr>
+<tr>
+<td><a id="t-ncm"></a>NCM (CDC-NCM)</td>
+<td>Network control model: the USB class that makes the radio appear as a network adapter.</td>
+</tr>
+<tr>
+<td><a id="t-ppp"></a>PPP</td>
+<td>Point-to-point protocol: IP over a serial link. <a href="../spec/ppp.html">More</a></td>
+</tr>
+<tr>
+<td><a id="t-tcp"></a>TCP</td>
+<td>Transmission Control Protocol: IP connections with ordered, guaranteed delivery.</td>
+</tr>
+<tr>
+<td><a id="t-tnc"></a>TNC</td>
+<td>Terminal node controller: the modem that turns packet data into audio tones and back.</td>
+</tr>
+<tr>
+<td><a id="t-udp"></a>UDP</td>
+<td>User Datagram Protocol: IP packets with no delivery guarantee.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="radiofoundry-and-firmware">RadioFoundry and firmware</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a id="t-ascii"></a>ASCII</td>
+<td>The 7-bit character set of plain text.</td>
+</tr>
+<tr>
+<td><a id="t-bcd"></a>BCD</td>
+<td>Binary coded decimal: each decimal digit in 4 bits.</td>
+</tr>
+<tr>
+<td><a id="t-board"></a>Board</td>
+<td>The code and description of one radio model's hardware wiring: pins, chips, memory map. <a href="architecture.html">More</a></td>
+</tr>
+<tr>
+<td><a id="t-ci"></a>CI</td>
+<td>Continuous integration: the checks every change must pass (tools/ci.sh).</td>
+</tr>
+<tr>
+<td><a id="t-debug-link"></a>Debug link</td>
+<td>RadioFoundry's USB serial protocol for reading state and driving the radio from a computer. <a href="debug-link.html">More</a></td>
+</tr>
+<tr>
+<td><a id="t-feature-switch"></a>Feature switch</td>
+<td>A CONFIG_ option that turns a feature's code in or out of the build. <a href="../build-config.html">More</a></td>
+</tr>
+<tr>
+<td><a id="t-gpl"></a>GPL</td>
+<td>GNU General Public License. RadioFoundry does not use GPL code.</td>
+</tr>
+<tr>
+<td><a id="t-hal"></a>HAL</td>
+<td>Hardware abstraction layer: the interfaces the core uses instead of touching a chip. <a href="architecture.html">More</a></td>
+</tr>
+<tr>
+<td><a id="t-hil"></a>HIL</td>
+<td>Hardware in the loop: tests that run against a real radio, and a bench radio or SDR for the other side. <a href="testing.html">More</a></td>
+</tr>
+<tr>
+<td><a id="t-kb"></a>KB (MB)</td>
+<td>Kilobytes (1024 bytes).</td>
+</tr>
+<tr>
+<td><a id="t-lto"></a>LTO</td>
+<td>Link-time optimization: the compiler optimizes across files. It shrinks the firmware.</td>
+</tr>
+<tr>
+<td><a id="t-mit"></a>MIT</td>
+<td>The permissive license RadioFoundry uses.</td>
+</tr>
+<tr>
+<td><a id="t-msb"></a>MSB (LSB)</td>
+<td>Most significant bit (or byte): the first, highest-value one.</td>
+</tr>
+<tr>
+<td><a id="t-os"></a>OS</td>
+<td>Operating system.</td>
+</tr>
+<tr>
+<td><a id="t-rtos"></a>RTOS</td>
+<td>Real-time operating system: the scheduler that runs the firmware's tasks.</td>
+</tr>
+<tr>
+<td><a id="t-sd"></a>SD</td>
+<td>Secure Digital: removable memory card.</td>
+</tr>
+<tr>
+<td><a id="t-sdr"></a>SDR</td>
+<td>Software defined radio: a receiver that digitizes the radio spectrum so software can decode it. The SDR bench uses one.</td>
+</tr>
+<tr>
+<td><a id="t-sil"></a>SIL</td>
+<td>Software in the loop: tests that run the firmware's core on the host with a simulated radio.</td>
+</tr>
+<tr>
+<td><a id="t-soc"></a>SoC</td>
+<td>System on chip: the processor and its on-chip peripherals.</td>
+</tr>
+<tr>
+<td><a id="t-st"></a>ST</td>
+<td>STMicroelectronics, the maker of the STM32 processors.</td>
+</tr>
+<tr>
+<td><a id="t-stub"></a>Stub</td>
+<td>A small program that runs on the radio in place of the firmware so the computer can read or write flash without the stock bootloader.</td>
+</tr>
+<tr>
+<td><a id="t-usrp"></a>USRP</td>
+<td>The UDP stream that carries a call's audio between RadioFoundry and a network gateway.</td>
+</tr>
+<tr>
+<td><a id="t-xip"></a>XIP</td>
+<td>Execute in place: running code straight from flash.</td>
+</tr>
+<tr>
+<td><a id="t-xor"></a>XOR</td>
+<td>Exclusive or: a bit operation that flips bits where the other operand has a 1.</td>
+</tr>
+</tbody>
+</table></div>
+
+		<nav class="prev-next"></nav>
+		<p class="muted small"><a href="https://github.com/radiofoundry/radiofoundry/blob/main/docs/dev/glossary.md">View the source of this page</a></p>
+	</article>
+	<aside class="doc-toc" aria-label="On this page">
+		<p class="eyebrow">On this page</p>
+		<ul><li class="l2"><a href="#dmr">DMR</a></li><li class="l2"><a href="#rf-and-hardware">RF and hardware</a></li><li class="l2"><a href="#vendor-terms">Vendor terms</a></li><li class="l2"><a href="#amateur-and-network">Amateur and network</a></li><li class="l2"><a href="#radiofoundry-and-firmware">RadioFoundry and firmware</a></li></ul>
+	</aside>
+</div>
+
+</main>
+<footer class="site-footer">
+	<div class="wrap footer-help">
+		<a class="help-card" href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">
+			<span class="icon icon-facebook help-card-icon" aria-hidden="true"></span>
+			<span><strong>Join the RadioFoundry community</strong><span class="small muted">Questions, help with your radio and news, on Facebook.</span></span>
+		</a>
+		<a class="help-card" href="https://github.com/radiofoundry/radiofoundry/issues/new/choose" target="_blank" rel="noopener">
+			<span class="icon icon-github help-card-icon" aria-hidden="true"></span>
+			<span><strong>Found a bug? Want your radio supported?</strong><span class="small muted">Open an issue on GitHub.</span></span>
+		</a>
+	</div>
+	
+	<div class="wrap footer-row">
+		<p>RadioFoundry is MIT licensed · <a href="https://github.com/radiofoundry/radiofoundry">Source Code</a> · <a href="https://www.facebook.com/groups/radiofoundry/" target="_blank" rel="noopener">Community</a> · <a href="../../docs/index.html">Docs</a></p>
+		<p class="build-stamp"><a href="https://github.com/radiofoundry/radiofoundry/commits/main">Changelog</a> · <a href="https://github.com/radiofoundry/radiofoundry/commit/9e9e69610f39291a7f052f94bd1040be4ee56e74">9e9e6961</a> · <time datetime="2026-11-19T19:48Z">2026-11-19 19:48 UTC</time></p>
+	</div>
+</footer>
+<script type="module" src="../../static/js/site.js?v=31d0e27983"></script>
+
+</body>
+</html>
